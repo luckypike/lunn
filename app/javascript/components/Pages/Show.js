@@ -2,11 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 Show.propTypes = {
-  node: PropTypes.object
+  node: PropTypes.object,
+  body: PropTypes.object
 }
 
-export default function Show ({ node }) {
+export default function Show ({ node, body }) {
   return (
-    <div>{node.title}</div>
+    <div>
+      <h1>
+        {node.title}
+      </h1>
+
+      {body &&
+        <div
+          dangerouslySetInnerHTML={{
+            __html: body.field_body_value
+          }}
+        />
+      }
+    </div>
   )
 }
