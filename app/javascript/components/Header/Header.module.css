@@ -1,0 +1,29 @@
+.root {
+  display: grid;
+  grid-template-columns: 1fr 2rem 1fr;
+  position: relative;
+  background: #fff;
+}
+
+.search {
+  margin-left: auto;
+}
+
+.locales {
+  display: none;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}

@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
-  before_action :set_url_alias
-  before_action :set_node
+  before_action :set_url_alias, except: :index
+  before_action :set_node, except: :index
+
+  def index; end
 
   private
 
