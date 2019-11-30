@@ -7,6 +7,7 @@ class Nav < ApplicationRecord
   default_scope { order(weight: :asc) }
 
   scope :main, -> { where(menu_name: 'menu-main-nav') }
+  scope :sec, -> { where(menu_name: 'menu-sec-nav') }
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
   scope :depth, ->(depth) { where(depth: depth) }
 

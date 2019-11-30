@@ -2,7 +2,14 @@ class PagesController < ApplicationController
   before_action :set_url_alias, except: :index
   before_action :set_node, except: :index
 
-  def index; end
+  def index
+    @news = Node.news.lang.order(created: :desc).limit(4)
+    @events = Node.events.lang
+      .where('created > ?', Time.current.beginning_of_day)
+      .order(created: :asc).limit(5)
+
+    respond_to :html, :json
+  end
 
   private
 
