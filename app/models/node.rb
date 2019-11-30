@@ -12,4 +12,8 @@ class Node < ApplicationRecord
   def path
     UrlAlias.alias_path "node/#{nid}"
   end
+
+  def text
+    body.field_body_value
+  end
 end

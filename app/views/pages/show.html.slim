@@ -1,1 +1,1 @@
-= react_component 'Pages/Show', { node: @node, body: @node.body }
+= react_component 'Pages/Show', { node: @node.as_json(only: :title, methods: :text), body: @node.body }
