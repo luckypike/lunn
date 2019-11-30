@@ -1,0 +1,24 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: calc(var(--yr) * 3.5);
+  line-height: calc(var(--yr) * 5);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 4);
+    line-height: calc(var(--yr) * 6);
+  }
+}
+
+a {
+  text-decoration: none;
+}

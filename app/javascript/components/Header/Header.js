@@ -8,6 +8,8 @@ import Menu from './Menu'
 import Nav from './Nav'
 import Search from './Search'
 
+import Logo from './Images/Logo.svg'
+
 import styles from './Header.module.css'
 
 Header.propTypes = {
@@ -24,7 +26,9 @@ export default function Header ({ navs }) {
       </div>
 
       <div className={styles.logo}>
-        LOGO
+        <a href="/">
+          <img src={Logo} />
+        </a>
       </div>
 
       <div className={styles.locales}>

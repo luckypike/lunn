@@ -11,12 +11,10 @@ Nav.propTypes = {
 export default function Nav ({ navs, onToggle }) {
   return (
     <div className={styles.root}>
-      <div className={styles.toggle} onClick={onToggle}>
-        TOGGLE
-      </div>
+      <div className={styles.toggle} onClick={onToggle} />
 
       <ul className={styles.navs}>
-        {navs.map(nav =>
+        {navs.filter(n => n.depth === 1).map(nav =>
           <li key={nav.mlid} className={styles.nav}>
             <a href={nav.path}>
               {nav.title}

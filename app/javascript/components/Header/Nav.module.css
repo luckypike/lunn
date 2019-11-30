@@ -1,18 +1,59 @@
 .root {
   display: grid;
-  grid-template-columns: 4rem 1fr;
+  grid-template-columns: calc(var(--yr) * 12) 1fr;
+  user-select: none;
+
+  @media (--s) {
+    grid-template-columns: calc(var(--yr) * 16) 1fr;
+  }
+}
+
+.toggle {
+  width: calc(var(--yr) * 12);
+  height: calc(var(--yr) * 12);
+  padding: calc(var(--yr) * 3);
+  cursor: pointer;
+
+  @media (--s) {
+    width: calc(var(--yr) * 16);
+    height: calc(var(--yr) * 16);
+    padding: calc(var(--yr) * 5);
+  }
+
+  &::after {
+    content: '';
+    background-color: red;
+    display: block;
+    width: calc(var(--yr) * 6);
+    height: calc(var(--yr) * 6);
+  }
 }
 
 .navs {
   margin: 0;
   padding: 0;
   display: none;
+  line-height: calc(var(--yr) * 12);
 
-  @media (--m) {
+  @media (--l) {
+    line-height: calc(var(--yr) * 16);
     display: flex;
+    margin-left: calc(var(--yr) * 16);
   }
 }
 
 .nav {
   list-style: none;
+
+  & a {
+    color: #000;
+
+    &:hover {
+      /* text-decoration: underline; */
+    }
+  }
+
+  &:not(:last-child) {
+    margin-right: calc(var(--xr) * 2);
+  }
 }
