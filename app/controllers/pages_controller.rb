@@ -3,7 +3,9 @@ class PagesController < ApplicationController
   before_action :set_node, except: :index
 
   def index
-    @news = Node.news.lang.order(created: :desc).limit(4)
+    @news = Node.news.lang.includes(:images)
+      .order(created: :desc).limit(4)
+
     @events = Node.events.lang
       .where('created > ?', Time.current.beginning_of_day)
       .order(created: :asc).limit(5)

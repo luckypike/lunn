@@ -1,0 +1,10 @@
+.root {
+  & a {
+    color: white;
+  }
+
+  @media (--m) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}

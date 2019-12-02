@@ -4,6 +4,7 @@ class Node < ApplicationRecord
   self.ignored_columns = %w[changed]
 
   has_one :body, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
+  has_many :images, -> { includes(:attachment).where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
 
   scope :news, -> { where(type: :news) }
   scope :events, -> { where(type: :event) }

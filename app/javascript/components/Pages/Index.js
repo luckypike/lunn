@@ -43,6 +43,7 @@ export default function Index ({ navs }) {
               <div>
                 {news.map(item =>
                   <div key={item.nid}>
+                    <img src={item.images[0].path} width="200" />
                     <a href={item.path}>
                       {item.title}
                     </a>
