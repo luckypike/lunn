@@ -1,0 +1,19 @@
+.at {
+  font-size: calc(var(--yr) * 3);
+  line-height: calc(var(--yr) * 4);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 3.5);
+    line-height: calc(var(--yr) * 5);
+  }
+}
+
+.h3 {
+  font-size: calc(var(--yr) * 5);
+  line-height: calc(var(--yr) * 6);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 8);
+    line-height: calc(var(--yr) * 9);
+  }
+}

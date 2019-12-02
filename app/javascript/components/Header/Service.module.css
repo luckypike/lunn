@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: var(--xr);
+
+  @media (--s) {
+    padding-right: calc(var(--xr) * 2);
+  }
+}
+
+.login {
+  margin-left: var(--xr);
+
+  @media (--s) {
+    margin-left: calc(var(--xr) * 2);
+  }
+}
+
+.button {
+  display: block;
+  composes: at from '../Fonts.module.css';
+  background: var(--hl_color);
+  border-radius: var(--yr);
+  color: #fff;
+  padding: calc(var(--yr) * 2) var(--xr);
+
+  @media (--s) {
+    padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
+  }
+}

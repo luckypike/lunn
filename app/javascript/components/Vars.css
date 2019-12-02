@@ -1,6 +1,20 @@
 :root {
+  --hl_color: #2F53EB;
+
   --yr: 0.25rem;
   --xr: 1rem;
+
+  --s1: 2;
+  --s2: 3;
+  --s3: 6;
+  --s4: 9;
+
+  @media (--s) {
+    --s1: 3;
+    --s2: 4;
+    --s3: 8;
+    --s4: 12;
+  }
 }
 
 @custom-media --s (min-width: 720px);

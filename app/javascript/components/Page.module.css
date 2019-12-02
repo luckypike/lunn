@@ -1,0 +1,12 @@
+.root {
+}
+
+.container {
+  padding: 0 calc(var(--yr) * 4);
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @media (--s) {
+    padding: 0 calc(var(--yr) * 8);
+  }
+}

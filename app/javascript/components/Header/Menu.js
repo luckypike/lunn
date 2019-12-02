@@ -10,12 +10,14 @@ Menu.propTypes = {
 export default function Menu ({ navs }) {
   return (
     <nav className={styles.root}>
-      <ul>
+      <ul className={styles.nav}>
         {navs.filter(item => item.depth === 1).map(n1l =>
-          <li key={n1l.mlid}>
-            <a href={n1l.path}>{n1l.title}</a>
+          <li className={styles.main} key={n1l.mlid}>
+            <a href={n1l.path} className={styles.first}>
+              {n1l.title}
+            </a>
             <ul>
-              {navs.filter(item => item.depth === 2).map(n2l =>
+              {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>
                 <li key={n2l.mlid}>
                   <a href={n2l.path}>{n2l.title}</a>
                 </li>

@@ -1,3 +1,8 @@
 .root {
 
 }
+
+.sec {
+  background-color: var(--hl_color);
+  
+}
