@@ -15,6 +15,6 @@ class Node < ApplicationRecord
   end
 
   def text
-    body.field_body_value
+    body&.field_body_value
   end
 end

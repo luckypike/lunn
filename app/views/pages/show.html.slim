@@ -1,1 +1,4 @@
-= react_component 'Pages/Show', { node: @node.as_json(only: :title, methods: :text), body: @node.body }
+= react_component 'Pages/Show', { \
+  node: @node.as_json(only: :title, methods: :text),
+  navs: @nav.as_json(only: %i[mlid], methods: %i[title path]) \
+}

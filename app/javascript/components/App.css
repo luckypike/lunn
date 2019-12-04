@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: calc(var(--yr) * 3.5);
   line-height: calc(var(--yr) * 5);
 

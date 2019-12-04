@@ -8,6 +8,7 @@ class Nav < ApplicationRecord
 
   scope :main, -> { where(menu_name: 'menu-main-nav') }
   scope :sec, -> { where(menu_name: 'menu-sec-nav') }
+  scope :main_or_sec, -> { where(menu_name: ['menu-sec-nav',  'menu-main-nav']) }
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
   scope :depth, ->(depth) { where(depth: depth) }
 
