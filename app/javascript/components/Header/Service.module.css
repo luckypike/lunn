@@ -1,15 +1,27 @@
 .root {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  padding-right: var(--xr);
 
-  @media (--s) {
-    padding-right: calc(var(--xr) * 2);
+  @media (--m) {
+    justify-content: flex-start;
   }
 }
 
-.login {
+.search {
+  width: calc(var(--yr) * 12);
+  height: calc(var(--yr) * 12);
+  line-height: calc(var(--yr) * 12);
+  text-align: center;
+}
+
+.locales {
+  width: calc(var(--yr) * 12);
+  height: calc(var(--yr) * 12);
+  line-height: calc(var(--yr) * 12);
+  text-align: center;
+}
+
+/* .login {
   margin-left: var(--xr);
 
   @media (--s) {
@@ -28,4 +40,4 @@
   @media (--s) {
     padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
   }
-}
+} */

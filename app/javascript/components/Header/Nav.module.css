@@ -1,27 +1,21 @@
 .root {
-  display: grid;
-  grid-template-columns: calc(var(--yr) * 8) 1fr;
-  padding: calc(var(--yr) * 4);
+  padding: calc(var(--yr) * 2) 0;
   user-select: none;
 
-  @media (--s) {
-    grid-template-columns: calc(var(--yr) * 12) 1fr;
-    padding: calc(var(--yr) * 10) calc(var(--yr) * 8);
+  @media (--m) {
+    display: grid;
+    padding: calc(var(--yr) * 10) 0;
   }
 }
 
 .toggle {
-  width: calc(var(--yr) * 8);
-  height: calc(var(--yr) * 8);
-  padding: 9px 6px;
+  width: calc(var(--yr) * 12);
+  height: calc(var(--yr) * 12);
+  padding: 17px 14px;
   cursor: pointer;
-  margin-left: -6px;
 
-  @media (--s) {
-    padding: 17px 14px;
-    width: calc(var(--yr) * 12);
-    height: calc(var(--yr) * 12);
-    margin-left: -14px;
+  @media (--m) {
+    display: none;
   }
 
   &::after {
@@ -39,9 +33,8 @@
   display: none;
   line-height: calc(var(--yr) * 12);
 
-  @media (--l) {
+  @media (--m) {
     display: flex;
-    margin-left: calc(var(--yr) * 8);
   }
 }
 

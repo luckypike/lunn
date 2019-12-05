@@ -22,18 +22,14 @@ export default function Header ({ navs }) {
   return (
     <div className={styles.container}>
       <header className={styles.root}>
-        <div className={styles.nav}>
-          <Nav navs={navs} onToggle={() => setMenu(!menu)} />
-        </div>
-
         <div className={styles.logo}>
           <a href="/">
             <img src={Logo} />
           </a>
         </div>
 
-        <div className={styles.locales}>
-          LOCALES
+        <div className={styles.nav}>
+          <Nav navs={navs} onToggle={() => setMenu(!menu)} />
         </div>
 
         <div className={styles.service}>

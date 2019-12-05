@@ -1,6 +1,6 @@
 .root {
   display: grid;
-  grid-template-columns: 1fr calc(var(--yr) * 12) 1fr;
+  grid-template-columns: calc(var(--yr) * 16) 1fr calc(var(--yr) * 12);
   position: relative;
   background: #fff;
   height: calc(var(--yr) * 16);
@@ -8,8 +8,12 @@
   margin: 0 auto;
 
   @media (--s) {
-    grid-template-columns: 1fr calc(var(--yr) * 16) 1fr;
+    grid-template-columns: calc(var(--yr) * 28) 1fr calc(var(--yr) * 18);
     height: calc(var(--yr) * 32);
+  }
+
+  @media (--m) {
+    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 28);
   }
 }
 
@@ -18,8 +22,10 @@
 }
 
 .nav {
-  @media (--s) {
-    /* padding: calc(var(--yr) * 8); */
+  order: 1;
+
+  @media (--m) {
+    order: 0;
   }
 }
 
@@ -32,20 +38,19 @@
 }
 
 .logo {
-  padding-top: calc(var(--yr) * 2);
-
-  @media (--s) {
-    padding-top: calc(var(--yr) * 8);
-  }
-
   & a {
+    padding: calc(var(--yr) * 3) 0;
     display: block;
+
+    @media (--s) {
+      padding: calc(var(--yr) * 8) 0;
+    }
   }
 
   & img {
     margin: 0 auto;
     display: block;
-    height: calc(var(--yr) * 12);
+    height: calc(var(--yr) * 10);
 
     @media (--s) {
       height: calc(var(--yr) * 16);

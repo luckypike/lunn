@@ -6,14 +6,12 @@ import styles from './Service.module.css'
 export default function Service () {
   return (
     <div className={styles.root}>
-      <div className={styles.search}>
-        Поиск
+      <div className={styles.locales}>
+        EN
       </div>
 
-      <div className={styles.login}>
-        <a href="#" className={styles.button}>
-          Войти
-        </a>
+      <div className={styles.search}>
+        SE
       </div>
     </div>
   )

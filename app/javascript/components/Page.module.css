@@ -9,4 +9,8 @@
   @media (--s) {
     padding: 0 calc(var(--yr) * 8);
   }
+
+  @media (--m) {
+    padding: 0 calc(var(--yr) * 12);
+  }
 }

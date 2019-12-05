@@ -21,6 +21,10 @@ export default function Nav ({ navs, onToggle }) {
             </a>
           </li>
         )}
+
+        <li className={styles.nav} onClick={onToggle}>
+          Ещё...
+        </li>
       </ul>
     </div>
   )
