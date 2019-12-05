@@ -28,6 +28,12 @@ export default function Index ({ navs }) {
 
   return (
     <div className={page.root}>
+      <div className={styles.video}>
+        <div className={styles.intro}>
+          HOLA
+        </div>
+      </div>
+
       <div className={styles.sec}>
         <div className={page.container}>
           <Sec navs={navs} />

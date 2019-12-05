@@ -2,8 +2,7 @@
   padding: calc(var(--yr) * 2) 0;
   user-select: none;
 
-  @media (--m) {
-    display: grid;
+  @media (--s) {
     padding: calc(var(--yr) * 10) 0;
   }
 }

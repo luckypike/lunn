@@ -2,7 +2,34 @@
 
 }
 
+.video {
+  z-index: -1;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    background-color: #666;
+    padding-top: calc(5 / 4 * 100%);
+
+    @media (--s) {
+      padding-top: calc(2 / 3 * 100%);
+    }
+
+    @media (--m) {
+      padding-top: calc(1 / 2 * 100%);
+    }
+  }
+}
+
+.intro {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
 .sec {
   background-color: var(--hl_color);
-  
 }

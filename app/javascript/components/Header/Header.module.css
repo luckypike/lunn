@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: calc(var(--yr) * 16) 1fr calc(var(--yr) * 12);
   position: relative;
-  background: #fff;
   height: calc(var(--yr) * 16);
   max-width: 120rem;
   margin: 0 auto;
@@ -13,12 +12,19 @@
   }
 
   @media (--m) {
-    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 28);
+    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 36);
   }
 }
 
 .container {
   position: relative;
+
+  &.index {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 }
 
 .nav {

@@ -13,14 +13,15 @@ import Logo from './Images/Logo.svg'
 import styles from './Header.module.css'
 
 Header.propTypes = {
-  navs: PropTypes.array
+  navs: PropTypes.array,
+  index: PropTypes.bool
 }
 
-export default function Header ({ navs }) {
+export default function Header ({ navs, index }) {
   const [menu, setMenu] = useState(false)
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, { [styles.index]: index })}>
       <header className={styles.root}>
         <div className={styles.logo}>
           <a href="/">
