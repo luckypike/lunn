@@ -4,10 +4,11 @@ import PropTypes from 'prop-types'
 
 Show.propTypes = {
   node: PropTypes.object,
-  navs: PropTypes.array
+  navs: PropTypes.array,
+  docs: PropTypes.array
 }
 
-export default function Show ({ node, navs }) {
+export default function Show ({ node, navs, docs }) {
   // const blocks = convertFromHTML(node.text)
   // const state = ContentState.createFromBlockArray(
   //   blocks.contentBlocks,
@@ -38,6 +39,18 @@ export default function Show ({ node, navs }) {
         <div>
           {node.text}
         </div>
+      }
+
+      {docs && docs.length > 0 &&
+        <ul>
+          {docs.map(doc =>
+            <li key={doc.fid}>
+              <a href={doc.path} target="_blank" rel="noopener noreferrer">
+                {doc.title}
+              </a>
+            </li>
+          )}
+        </ul>
       }
     </div>
   )

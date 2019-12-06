@@ -25,8 +25,7 @@ class PagesController < ApplicationController
   end
 
   def set_nav
-    mlid = Nav.main_or_sec.find_by(link_path: @url_alias.source).mlid
+    mlid = Nav.main_or_sec.find_by(link_path: @url_alias.source)&.mlid
     @nav = Nav.lang.where(plid: mlid)
-    pp @nav
   end
 end
