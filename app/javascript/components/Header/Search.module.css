@@ -1,0 +1,17 @@
+.root {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: calc(var(--yr) * 2);
+
+  & svg {
+    display: block;
+    width: calc(var(--yr) * 8);
+    height: calc(var(--yr) * 8);
+  }
+}

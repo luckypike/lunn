@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import Menu from './Menu'
 import Nav from './Nav'
 import Service from './Service'
+import Search from './Search'
 
 import Logo from './Images/Logo.svg'
 
@@ -18,7 +19,8 @@ Header.propTypes = {
 }
 
 export default function Header ({ navs, index }) {
-  const [menu, setMenu] = useState(false)
+  const [menuActive, setMenuActive] = useState(false)
+  const [searchActive, setSearchActive] = useState(true)
 
   return (
     <div className={classNames(styles.container, { [styles.index]: index })}>
@@ -30,16 +32,20 @@ export default function Header ({ navs, index }) {
         </div>
 
         <div className={styles.nav}>
-          <Nav navs={navs} onToggle={() => setMenu(!menu)} />
+          <Nav navs={navs} onToggle={() => setMenuActive(!menuActive)} />
         </div>
 
         <div className={styles.service}>
-          <Service />
+          <Service onSearchToggle={() => setSearchActive(true)} />
         </div>
       </header>
 
-      <div className={classNames(styles.menu, { [styles.active]: menu })}>
+      <div className={classNames(styles.menu, { [styles.active]: menuActive })}>
         <Menu navs={navs} />
+      </div>
+
+      <div className={classNames(styles.search, { [styles.active]: searchActive })}>
+        <Search onSearchToggle={() => setSearchActive(false)} />
       </div>
     </div>
   )
