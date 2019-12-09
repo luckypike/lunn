@@ -19,7 +19,6 @@
 
   &::after {
     content: '';
-    background-color: red;
     display: block;
     width: 20px;
     height: 14px;
@@ -39,9 +38,10 @@
 
 .nav {
   list-style: none;
+  color: #fff;
 
   & a {
-    color: #000;
+    color: #fff;
 
     &:hover {
       /* text-decoration: underline; */

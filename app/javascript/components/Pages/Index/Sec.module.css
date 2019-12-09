@@ -8,3 +8,37 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
+
+.content {
+  display: none;
+}
+
+.qwe {
+  display: block;
+}
+
+.tab {
+  background-color: #fff;
+  padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 2);
+  text-align: center;
+  transform: translateY(-100%);
+  border-top-left-radius: var(--yr);
+  border-top-right-radius: var(--yr);
+  margin-right: var(--xr);
+
+  & a {
+    color: #777;
+  }
+}
+
+.active {
+  background-color: var(--hl_color);
+
+  & a {
+    color: #fff;
+  }
+}
+
+.t {
+  position: relative;
+}

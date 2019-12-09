@@ -17,3 +17,13 @@
     line-height: calc(var(--yr) * 9);
   }
 }
+
+.h0 {
+  font-size: calc(var(--yr) * 10);
+  line-height: calc(var(--yr) * 11);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 16);
+    line-height: calc(var(--yr) * 18);
+  }
+}

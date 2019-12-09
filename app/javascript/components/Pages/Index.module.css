@@ -1,10 +1,31 @@
 .root {
+  display: block;
 
+  @media(--s) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    & .news {
+      grid-column: 1 / 9;
+    }
+
+    & .poster {
+      grid-column: 10 / 13;
+    }
+  }
 }
 
 .video {
   z-index: -1;
   position: relative;
+
+  & > video {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   &::before {
     content: '';
@@ -20,16 +41,110 @@
       padding-top: calc(1 / 2 * 100%);
     }
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 0;
+  }
 }
 
 .intro {
+  z-index: 1;
+  width: 100%;
   position: absolute;
   top: 50%;
-  left: 0;
-  width: 100%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  color: #fff;
+  text-align: center;
 }
 
 .sec {
   background-color: var(--hl_color);
+}
+
+.button {
+  background-color: var(--hl_color);
+  text-align: center;
+  border-radius: var(--yr);
+  padding: calc(var(--yr) * var(--s2)) 0;
+
+  & > a {
+    color: #fff;
+  }
+}
+
+.news_items {
+  display: block;
+
+  @media(--s) {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: calc(var(--yr) * var(--s2));
+  }
+}
+
+.news_item {
+  margin-bottom: calc(var(--yr) * var(--s3));
+
+  & .title {
+    & > a {
+      color: #000;
+    }
+  }
+
+  @media(--s) {
+    grid-column: span 4;
+  }
+}
+
+.image {
+  position: relative;
+  margin-bottom: calc(var(--yr) * var(--s2));
+
+  &::before {
+    display: block;
+    content: '';
+    padding-top: calc(3 / 4.33 * 100%);
+  }
+
+  & img {
+    left: 0;
+    top: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+
+    @media(--s) {
+      border-radius: var(--yr);
+    }
+  }
+}
+
+.events {
+
+}
+
+.event {
+  border-bottom: 1px solid #DBDDDE;
+  margin-bottom: 24px;
+
+  & .title {
+    margin-bottom: 21px;
+  }
+
+  & .qwe {
+    margin-bottom: 14px;
+  }
+
+  @media(--s) {
+
+  }
 }

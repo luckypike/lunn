@@ -20,7 +20,7 @@ Header.propTypes = {
 
 export default function Header ({ navs, index }) {
   const [menuActive, setMenuActive] = useState(false)
-  const [searchActive, setSearchActive] = useState(true)
+  const [searchActive, setSearchActive] = useState(false)
 
   return (
     <div className={classNames(styles.container, { [styles.index]: index })}>
