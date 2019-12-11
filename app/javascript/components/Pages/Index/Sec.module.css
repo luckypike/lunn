@@ -1,11 +1,8 @@
 .root {
+  position: relative;
+
   & a {
     color: white;
-  }
-
-  @media (--m) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -18,27 +15,28 @@
 }
 
 .tab {
+  margin-top: -56px;
   background-color: #fff;
-  padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 2);
-  text-align: center;
-  transform: translateY(-100%);
   border-top-left-radius: var(--yr);
   border-top-right-radius: var(--yr);
   margin-right: var(--xr);
+  padding: calc(var(--yr) * var(--s1)) var(--xr);
+  color: #777;
+  text-align: center;
+  white-space: nowrap;
+  display: block;
+  transition: background .3s,color .2s;
 
-  & a {
-    color: #777;
+  @media(--s) {
+    padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 2);
   }
 }
 
 .active {
   background-color: var(--hl_color);
-
-  & a {
-    color: #fff;
-  }
+  color: #fff;
 }
 
-.t {
-  position: relative;
+.tabs {
+  display: flex;
 }

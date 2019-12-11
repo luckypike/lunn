@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -9,7 +9,7 @@ import Nav from './Nav'
 import Service from './Service'
 import Search from './Search'
 
-import Logo from './Images/Logo.svg'
+import Logo from '!svg-react-loader?!./Images/Logo.svg'
 
 import styles from './Header.module.css'
 
@@ -21,13 +21,20 @@ Header.propTypes = {
 export default function Header ({ navs, index }) {
   const [menuActive, setMenuActive] = useState(false)
   const [searchActive, setSearchActive] = useState(false)
+  const [white, setWhite] = useState(false)
+
+  useEffect(() => {
+    if (index) {
+      setWhite(true)
+    }
+  }, [])
 
   return (
     <div className={classNames(styles.container, { [styles.index]: index })}>
-      <header className={styles.root}>
+      <header className={classNames(styles.root, { [styles.white]: white })}>
         <div className={styles.logo}>
           <a href="/">
-            <img src={Logo} />
+            <Logo />
           </a>
         </div>
 

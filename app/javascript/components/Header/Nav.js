@@ -12,7 +12,7 @@ export default function Nav ({ navs, onToggle }) {
   return (
     <div className={styles.root}>
       <div className={styles.toggle} onClick={onToggle}>
-        <svg viewBox="0 0 20 14" fill="#777">
+        <svg viewBox="0 0 20 14" fill="#fff">
           <rect height="2" width="20" x="0" y="0" />
           <rect height="2" width="20" x="0" y="6" />
           <rect height="2" width="20" x="0" y="12" />

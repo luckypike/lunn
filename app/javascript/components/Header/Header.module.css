@@ -53,7 +53,7 @@
     }
   }
 
-  & img {
+  & svg {
     margin: 0 auto;
     display: block;
     height: calc(var(--yr) * 10);
@@ -97,5 +97,13 @@
   &.active {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+.white {
+  & svg {
+    & path {
+      fill: white;
+    }
   }
 }

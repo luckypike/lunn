@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+// import classNames from 'classnames'
 
 import Intro from '../Video/Intro.mp4'
 import Sec from './Index/Sec'
 
-import fonts from '../Fonts.module.css'
+// import fonts from '../Fonts.module.css'
 import styles from './Index.module.css'
 import page from '../Page.module.css'
 
@@ -36,7 +37,7 @@ export default function Index ({ navs }) {
         </video>
 
         <div className={styles.intro}>
-          <div className={fonts.h0}>Hola</div>
+          <div className={styles.introduction}>Hola</div>
           <div>Нижегородский государственный лингвистический <br /> университет имени Н.А. Добролюбова</div>
         </div>
       </div>
@@ -68,12 +69,6 @@ export default function Index ({ navs }) {
                   </div>
                 )}
               </div>
-
-              <div className={styles.button}>
-                <a href="/news">
-                  Все новости
-                </a>
-              </div>
             </div>
           }
 
@@ -84,9 +79,6 @@ export default function Index ({ navs }) {
               <div className={styles.events}>
                 {events.map(event =>
                   <div key={event.nid} className={styles.event}>
-                    <div className={styles.qwe}>
-                      10
-                    </div>
                     <div className={styles.title}>
                       <a href={event.path}>
                         {event.title}
@@ -94,14 +86,25 @@ export default function Index ({ navs }) {
                     </div>
                   </div>
                 )}
-                <div className={styles.button}>
-                  <a href="#">
-                    Все мероприятия
-                  </a>
-                </div>
               </div>
             </div>
           }
+        </div>
+      </div>
+
+      <div className={page.container}>
+        <div className={styles.buttons}>
+          <div className={styles.all_news}>
+            <a href="/news">
+              Все новости
+            </a>
+          </div>
+
+          <div className={styles.all_poster}>
+            <a href="#">
+              Все мероприятия
+            </a>
+          </div>
         </div>
       </div>
     </div>

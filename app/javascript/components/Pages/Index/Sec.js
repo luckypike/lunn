@@ -15,15 +15,17 @@ export default function Sec ({ navs }) {
 
   return (
     <div className={styles.root}>
-      {navs.filter(n => n.depth === 1).map((n1l, i) =>
-        <div key={n1l.mlid} className={styles.t}>
-          <div className={classNames(styles.tab, { [styles.active]: i === active })} onClick={openTab} data-index={i}>
-            <a href={n1l.path}>
-              {n1l.title}
-            </a>
+      <div className={styles.tabs}>
+        {navs.filter(n => n.depth === 1).map((n1l, i) =>
+          <div key={n1l.mlid} className={classNames(styles.tab, { [styles.active]: i === active })} onClick={openTab} data-index={i}>
+            {n1l.title}
           </div>
+        )}
+      </div>
 
-          <div className={classNames(styles.content, { [styles.qwe]: i === active })}>
+      <div>
+        {navs.filter(n => n.depth === 1).map((n1l, i) =>
+          <div key={i} className={classNames(styles.content, { [styles.qwe]: i === active })}>
             {navs.filter(n => n.depth === 2 && n.plid === n1l.mlid).map(n2l =>
               <div key={n2l.mlid}>
                 <a href={n2l.path}>
@@ -32,8 +34,8 @@ export default function Sec ({ navs }) {
               </div>
             )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
