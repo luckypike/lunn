@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import styles from './Nav.module.css'
 
 Nav.propTypes = {
   navs: PropTypes.array,
-  onToggle: PropTypes.func
+  onToggle: PropTypes.func,
+  index: PropTypes.bool
 }
 
-export default function Nav ({ navs, onToggle }) {
+export default function Nav ({ navs, onToggle, index }) {
   return (
     <div className={styles.root}>
       <div className={styles.toggle} onClick={onToggle}>
@@ -19,7 +21,7 @@ export default function Nav ({ navs, onToggle }) {
         </svg>
       </div>
 
-      <ul className={styles.navs}>
+      <ul className={classNames(styles.navs, { [styles.white]: index })}>
         {navs.filter(n => n.depth === 1).map(nav =>
           <li key={nav.mlid} className={styles.nav}>
             <a href={nav.path}>
@@ -28,7 +30,7 @@ export default function Nav ({ navs, onToggle }) {
           </li>
         )}
 
-        <li className={styles.nav} onClick={onToggle}>
+        <li className={classNames(styles.nav, { [styles.white]: index })} onClick={onToggle}>
           Ещё...
         </li>
       </ul>

@@ -155,14 +155,13 @@
   text-align: center;
 
   & .all_news, & .all_poster {
+    display: block;
     grid-column: 1 / 9;
     background-color: var(--hl_color);
     border-radius: var(--yr);
     padding: calc(var(--yr) * var(--s2)) 0;
-
-    & > a {
-      color: #fff;
-    }
+    color: #fff;
+    cursor: pointer;
   }
 
   & .all_poster {

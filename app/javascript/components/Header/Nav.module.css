@@ -31,6 +31,10 @@
   display: none;
   line-height: calc(var(--yr) * 12);
 
+  & a {
+    color: #000;
+  }
+
   @media (--m) {
     display: flex;
   }
@@ -38,17 +42,16 @@
 
 .nav {
   list-style: none;
+
+  &:not(:last-child) {
+    margin-right: calc(var(--xr) * 2);
+  }
+}
+
+.white {
   color: #fff;
 
   & a {
     color: #fff;
-
-    &:hover {
-      /* text-decoration: underline; */
-    }
-  }
-
-  &:not(:last-child) {
-    margin-right: calc(var(--xr) * 2);
   }
 }

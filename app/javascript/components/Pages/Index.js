@@ -94,17 +94,13 @@ export default function Index ({ navs }) {
 
       <div className={page.container}>
         <div className={styles.buttons}>
-          <div className={styles.all_news}>
-            <a href="/news">
-              Все новости
-            </a>
-          </div>
+          <a href="/news" className={styles.all_news}>
+            Все новости
+          </a>
 
-          <div className={styles.all_poster}>
-            <a href="#">
-              Все мероприятия
-            </a>
-          </div>
+          <a href="#" className={styles.all_poster}>
+            Все мероприятия
+          </a>
         </div>
       </div>
     </div>

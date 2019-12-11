@@ -16,7 +16,7 @@
   cursor: pointer;
 
   & svg {
-    fill: #fff;
+    /* fill: #fff; */
     display: block;
     width: calc(var(--yr) * 8);
     height: calc(var(--yr) * 8);
@@ -24,11 +24,18 @@
 }
 
 .locales {
-  color: #fff;
   width: calc(var(--yr) * 12);
   height: calc(var(--yr) * 12);
   line-height: calc(var(--yr) * 12);
   text-align: center;
+}
+
+.white {
+  color: #fff;
+
+  & svg {
+    fill: #fff;
+  }
 }
 
 /* .login {

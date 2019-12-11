@@ -39,11 +39,11 @@ export default function Header ({ navs, index }) {
         </div>
 
         <div className={styles.nav}>
-          <Nav navs={navs} onToggle={() => setMenuActive(!menuActive)} />
+          <Nav index={index} navs={navs} onToggle={() => setMenuActive(!menuActive)} />
         </div>
 
         <div className={styles.service}>
-          <Service onSearchToggle={() => setSearchActive(true)} />
+          <Service index={index} onSearchToggle={() => setSearchActive(true)} />
         </div>
       </header>
 
