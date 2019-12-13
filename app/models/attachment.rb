@@ -4,6 +4,10 @@ class Attachment < ApplicationRecord
 
 
   def path
-    uri.gsub('public://', 'http://www.lunn.ru/sites/default/files/styles/news_on_front/public/')
+    uri.gsub('public://', '')
+  end
+
+  def host
+    'http://www.lunn.ru/sites/default/files/'
   end
 end

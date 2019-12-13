@@ -10,6 +10,9 @@ class PagesController < ApplicationController
       .where('created > ?', Time.current.beginning_of_day)
       .order(created: :asc).limit(5)
 
+    @sliders = Node.sliders.lang.published
+      .order(created: :desc)
+
     respond_to :html, :json
   end
 

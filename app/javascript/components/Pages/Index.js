@@ -7,6 +7,7 @@ import 'dayjs/locale/ru'
 
 import Intro from '../Video/Intro.mp4'
 import Sec from './Index/Sec'
+import Sliders from './Index/Sliders'
 
 // import fonts from '../Fonts.module.css'
 import styles from './Index.module.css'
@@ -19,6 +20,7 @@ Index.propTypes = {
 export default function Index ({ navs }) {
   const [news, setNews] = useState()
   const [events, setEvents] = useState()
+  const [sliders, setSliders] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
@@ -26,6 +28,7 @@ export default function Index ({ navs }) {
 
       setNews(data.news)
       setEvents(data.events)
+      setSliders(data.sliders)
     }
 
     _fetch()
@@ -52,53 +55,59 @@ export default function Index ({ navs }) {
 
       <div className={pages.container}>
         <div className={styles.root}>
-          {news &&
-            <div className={styles.news}>
-              <h2>Новости</h2>
+          {news && events &&
+            <>
+              <div className={styles.news}>
+                <h2>Новости</h2>
 
-              <div className={styles.news_items}>
-                {news.map(item =>
-                  <div key={item.nid} className={styles.news_item}>
-                    <div className={styles.image}>
-                      <img src={item.images[0].path} />
-                    </div>
+                <div className={styles.news_items}>
+                  {news.map(item =>
+                    <div key={item.nid} className={styles.news_item}>
+                      <div className={styles.image}>
+                        <img src={item.images[0].path} />
+                      </div>
 
-                    <div className={styles.date}>
-                      {dayjs.unix(item.date).locale('ru').format('DD MMMM YYYY')}
-                    </div>
+                      <div className={styles.date}>
+                        {dayjs.unix(item.date).locale('ru').format('DD MMMM YYYY')}
+                      </div>
 
-                    <div className={styles.title}>
-                      <a href={item.path}>
-                        {item.title}
-                      </a>
+                      <div className={styles.title}>
+                        <a href={item.path}>
+                          {item.title}
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
+
+              <div className={styles.poster}>
+                <h2>Афиша</h2>
+
+                <div className={styles.events}>
+                  {events.map(event =>
+                    <div key={event.nid} className={styles.event}>
+                      <div className={styles.title}>
+                        <a href={event.path}>
+                          {event.title}
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
           }
 
-          {events &&
-            <div className={styles.poster}>
-              <h2>Афиша</h2>
-
-              <div className={styles.events}>
-                {events.map(event =>
-                  <div key={event.nid} className={styles.event}>
-                    <div className={styles.title}>
-                      <a href={event.path}>
-                        {event.title}
-                      </a>
-                    </div>
-                  </div>
-                )}
-              </div>
+          {sliders &&
+            <div>
+              <Sliders sliders={sliders} />
             </div>
           }
         </div>
       </div>
 
-      <div className={pages.container}>
+      {/* <div className={pages.container}>
         <div className={styles.buttons}>
           <a href="/news" className={styles.all_news}>
             Все новости
@@ -108,7 +117,7 @@ export default function Index ({ navs }) {
             Все мероприятия
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
