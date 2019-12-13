@@ -1,0 +1,5 @@
+.intro {
+  composes: h0 from '../Fonts.module.css';
+  text-align: center;
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 4));
+}

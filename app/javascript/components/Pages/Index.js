@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
 // import classNames from 'classnames'
 
 import Intro from '../Video/Intro.mp4'
@@ -8,7 +10,7 @@ import Sec from './Index/Sec'
 
 // import fonts from '../Fonts.module.css'
 import styles from './Index.module.css'
-import page from '../Page.module.css'
+import pages from '../Pages.module.css'
 
 Index.propTypes = {
   navs: PropTypes.array
@@ -30,7 +32,7 @@ export default function Index ({ navs }) {
   }, [])
 
   return (
-    <div className={page.root}>
+    <div className={pages.root}>
       <div className={styles.video}>
         <video playsInline autoPlay loop muted>
           <source src={Intro} type="video/mp4" />
@@ -43,12 +45,12 @@ export default function Index ({ navs }) {
       </div>
 
       <div className={styles.sec}>
-        <div className={page.container}>
+        <div className={pages.container}>
           <Sec navs={navs} />
         </div>
       </div>
 
-      <div className={page.container}>
+      <div className={pages.container}>
         <div className={styles.root}>
           {news &&
             <div className={styles.news}>
@@ -59,6 +61,10 @@ export default function Index ({ navs }) {
                   <div key={item.nid} className={styles.news_item}>
                     <div className={styles.image}>
                       <img src={item.images[0].path} />
+                    </div>
+
+                    <div className={styles.date}>
+                      {dayjs.unix(item.date).locale('ru').format('DD MMMM YYYY')}
                     </div>
 
                     <div className={styles.title}>
@@ -92,7 +98,7 @@ export default function Index ({ navs }) {
         </div>
       </div>
 
-      <div className={page.container}>
+      <div className={pages.container}>
         <div className={styles.buttons}>
           <a href="/news" className={styles.all_news}>
             Все новости

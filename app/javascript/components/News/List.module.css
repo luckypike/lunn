@@ -1,0 +1,11 @@
+.root {
+  @media(--s) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+}
+
+.news {
+  grid-column: span 8;
+}
