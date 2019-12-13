@@ -1,14 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import { Title } from '../Pages'
 // import { ContentState, convertFromHTML } from 'draft-js'
 
 Show.propTypes = {
   node: PropTypes.object,
   navs: PropTypes.array,
+  loaf: PropTypes.array,
   docs: PropTypes.array
 }
 
-export default function Show ({ node, navs, docs }) {
+export default function Show ({ node, navs, docs, loaf }) {
   // const blocks = convertFromHTML(node.text)
   // const state = ContentState.createFromBlockArray(
   //   blocks.contentBlocks,
@@ -19,9 +22,10 @@ export default function Show ({ node, navs, docs }) {
 
   return (
     <div>
-      <h1>
-        {node.title}
-      </h1>
+      <Title
+        title={node.title}
+        loaf={loaf}
+      />
 
       {navs && navs.length > 0 &&
         <div>
