@@ -68,7 +68,7 @@ export default function Index ({ navs }) {
                       </div>
 
                       <div className={styles.date}>
-                        {dayjs.unix(item.date).locale('ru').format('DD MMMM YYYY')}
+                        {dayjs.unix(item.created).locale('ru').format('DD MMMM YYYY')}
                       </div>
 
                       <div className={styles.title}>
