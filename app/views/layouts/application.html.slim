@@ -14,3 +14,5 @@ html
     = react_component 'Header/Header', { navs: Nav.main.lang.as_json(methods: %i[path title]), index: current_page?(root_url) }
 
     = yield
+
+    = react_component 'Footer/Footer', { navs: Nav.main_or_sec.lang.unscope(:order).order(menu_name: :desc, weight: :asc).as_json(methods: %i[path title]) }
