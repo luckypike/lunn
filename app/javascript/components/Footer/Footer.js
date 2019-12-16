@@ -1,7 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
+import pages from '../Pages.module.css'
 import styles from './Footer.module.css'
+
+import Vk from '!svg-react-loader?!./Images/Vk.svg'
+import Instagram from '!svg-react-loader?!./Images/Instagram.svg'
+import Facebook from '!svg-react-loader?!./Images/Facebook.svg'
+import Youtube from '!svg-react-loader?!./Images/Youtube.svg'
 
 Footer.propTypes = {
   navs: PropTypes.array
@@ -9,23 +16,87 @@ Footer.propTypes = {
 
 export default function Footer ({ navs }) {
   return (
-    <div>
-      <ul className={styles.nav}>
-        {navs.filter(item => item.depth === 1).map(n1l =>
-          <li className={styles.main} key={n1l.mlid}>
-            <a href={n1l.path} className={styles.first}>
-              {n1l.title}
+    <div className={styles.overlay}>
+      <div className={styles.root}>
+        <ul className={styles.navs}>
+          {navs.filter(item => item.depth === 1).map(n1l =>
+            <li className={styles.main} key={n1l.mlid}>
+              <a href={n1l.path} className={styles.first}>
+                {n1l.title}
+              </a>
+              <ul>
+                {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>
+                  <li key={n2l.mlid}>
+                    <a href={n2l.path} className={styles.second}>
+                      {n2l.title}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </li>
+          )}
+        </ul>
+
+        <div className={styles.info}>
+          <div className={styles.adress}>
+            <div className={styles.index}>Адрес:</div>
+            <div className={styles.text}>603155, Россия, Нижний Новгород, ул. Минина 31а</div>
+            <div>
+              <a href="#" className={styles.button}>
+                Показать на карте
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.connect}>
+            <div className={styles.phone}>
+              <div className={styles.index}>Телефон:</div>
+              <div className={styles.text}>+7 (831) 436-15-75</div>
+            </div>
+
+            <div className={styles.fax}>
+              <div className={styles.index}>Факс:</div>
+              <div className={styles.text}>+7 (831) 416-61-31</div>
+            </div>
+
+            <div className={styles.email}>
+              <div className={styles.index}>Электронная почта:</div>
+              <div>admdep@lunn.ru</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.media}>
+        <div className={styles.title}>
+           © 2007-2019 Нижегородский государственный лингвистический университет имени Н.А. Добролюбова
+        </div>
+        <div className={styles.logos}>
+          <div className={styles.logo}>
+            <a href="#">
+              <Vk />
             </a>
-            <ul>
-              {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>
-                <li key={n2l.mlid}>
-                  <a href={n2l.path}>{n2l.title}</a>
-                </li>
-              )}
-            </ul>
-          </li>
-        )}
-      </ul>
+          </div>
+
+          <div className={styles.logo}>
+            <a href="#">
+              <Facebook />
+            </a>
+          </div>
+
+          <div className={styles.logo}>
+            <a href="#">
+              <Youtube />
+            </a>
+          </div>
+
+          <div className={styles.logo}>
+            <a href="#">
+              <Instagram />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
