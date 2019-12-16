@@ -178,3 +178,7 @@
 .slider {
   grid-column: span 12;
 }
+
+.education {
+  grid-column: span 12;
+}

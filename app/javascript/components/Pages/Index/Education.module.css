@@ -1,0 +1,27 @@
+.root {
+  grid-column: span 12;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
+.blocks {
+  @media(--s) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.block {
+  margin: 0 auto;
+}
+
+.text {
+  text-align: center;
+}
+
+.image {
+  margin-bottom: 64px;
+}

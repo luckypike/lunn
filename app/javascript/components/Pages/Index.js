@@ -8,6 +8,7 @@ import 'dayjs/locale/ru'
 import Intro from '../Video/Intro.mp4'
 import Sec from './Index/Sec'
 import Sliders from './Index/Sliders'
+import Education from './Index/Education'
 
 // import fonts from '../Fonts.module.css'
 import styles from './Index.module.css'
@@ -104,6 +105,10 @@ export default function Index ({ navs }) {
               <Sliders sliders={sliders} />
             </div>
           }
+
+          <div className={styles.education}>
+            <Education />
+          </div>
         </div>
       </div>
 
