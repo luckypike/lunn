@@ -174,3 +174,7 @@
   text-transform: capitalize;
   margin-bottom: calc(var(--yr) * var(--s1));
 }
+
+.slider {
+  grid-column: span 12;
+}

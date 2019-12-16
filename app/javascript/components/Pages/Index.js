@@ -100,7 +100,7 @@ export default function Index ({ navs }) {
           }
 
           {sliders &&
-            <div>
+            <div className={styles.slider}>
               <Sliders sliders={sliders} />
             </div>
           }
