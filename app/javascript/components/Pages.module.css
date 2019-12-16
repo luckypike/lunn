@@ -14,3 +14,43 @@
     padding: 0 calc(var(--yr) * 12);
   }
 }
+
+.loafs {
+  display: none;
+  
+  @media(--s) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.loaf {
+  position: relative;
+  white-space: nowrap;
+  /* overflow: hidden; */
+  margin-right: var(--yr);
+  /* text-overflow: ellipsis; */
+  max-width: 300px;
+
+  &:after {
+    content: "-";
+    color: #777;
+  }
+
+  & a {
+    color: #777;
+    margin-right: var(--yr);
+  }
+
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.main {
+  position: relative;
+  margin-right: var(--yr);
+  color: #777;
+}
