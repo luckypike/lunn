@@ -10,7 +10,7 @@ Title.propTypes = {
 
 export function Title ({ title, loaf }) {
   return (
-    <div>
+    <div className={styles.root}>
       {loaf && loaf.length > 0 &&
         <ul className={styles.loafs}>
           <a className={styles.main} href="/">
@@ -27,7 +27,7 @@ export function Title ({ title, loaf }) {
         </ul>
       }
 
-      <h1>
+      <h1 className={styles.title}>
         {title}
       </h1>
     </div>

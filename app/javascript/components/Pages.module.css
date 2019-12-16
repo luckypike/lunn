@@ -1,4 +1,8 @@
 .root {
+  @media(--s) {
+    grid-column: span 12;
+    margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
+  }
 }
 
 .container {
@@ -17,8 +21,9 @@
 
 .loafs {
   display: none;
-  
+
   @media(--s) {
+    padding: 0;
     display: flex;
     justify-content: center;
   }
@@ -53,4 +58,12 @@
   position: relative;
   margin-right: var(--yr);
   color: #777;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: calc(var(--yr) * var(--s4));
+  @media(--s) {
+    margin-bottom: 0;
+  }
 }
