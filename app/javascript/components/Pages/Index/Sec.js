@@ -23,19 +23,48 @@ export default function Sec ({ navs }) {
         )}
       </div>
 
-      <div>
+      <div className={styles.content}>
         {navs.filter(n => n.depth === 1).map((n1l, i) =>
-          <div key={i} className={classNames(styles.content, { [styles.qwe]: i === active })}>
-            {navs.filter(n => n.depth === 2 && n.plid === n1l.mlid).map(n2l =>
-              <div key={n2l.mlid}>
-                <a href={n2l.path}>
-                  {n2l.title}
-                </a>
-              </div>
-            )}
+          <div key={i} className={classNames(styles.groups, { [styles.inactive]: i !== active })}>
+            <Items items={navs.filter(n => n.depth === 2 && n.plid === n1l.mlid)} />
           </div>
         )}
       </div>
     </div>
+  )
+}
+
+Items.propTypes = {
+  items: PropTypes.array
+}
+
+function Items ({ items }) {
+  const chunk = items.length < 3 ? 1 : Math.floor(items.length / 3)
+
+  const groups = items
+    .reduce((acc, _, i) =>
+      (i % chunk)
+        ? acc
+        : [...acc, items.slice(i, i + chunk)]
+    , [])
+
+  return (
+    <>
+      {[...Array(3)].map((_, i) =>
+        <div key={i} className={styles.group}>
+          {groups[i] && groups[i].map(item =>
+            <a href={item.path} key={item.mlid} className={styles.item}>
+              {item.title}
+            </a>
+          )}
+
+          {i === 0 && groups[3] && groups[3].map(item =>
+            <a href={item.path} key={item.mlid} className={styles.item}>
+              {item.title}
+            </a>
+          )}
+        </div>
+      )}
+    </>
   )
 }
