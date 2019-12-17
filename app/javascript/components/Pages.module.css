@@ -15,7 +15,7 @@
   }
 
   @media (--m) {
-    padding: 0 calc(var(--yr) * 12);
+    padding: 0 calc(var(--yr) * 40);
   }
 }
 
