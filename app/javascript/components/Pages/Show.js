@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Title } from '../Pages'
-// import { ContentState, convertFromHTML } from 'draft-js'
+import Renderer from '../Draft'
 
 import styles from './Show.module.css'
 import pages from '../Pages.module.css'
@@ -16,14 +16,6 @@ Show.propTypes = {
 }
 
 export default function Show ({ node, navs, docs, loaf }) {
-  // const blocks = convertFromHTML(node.text)
-  // const state = ContentState.createFromBlockArray(
-  //   blocks.contentBlocks,
-  //   blocks.entityMap
-  // )
-  //
-  // console.log(state)
-
   return (
     <div className={classNames(styles.root, pages.container)}>
       <Title
@@ -45,7 +37,7 @@ export default function Show ({ node, navs, docs, loaf }) {
 
       {node.text &&
         <div className={styles.text}>
-          {node.text}
+          <Renderer source={node.text} />
         </div>
       }
 
