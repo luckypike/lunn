@@ -52,17 +52,17 @@ export default function Footer ({ navs }) {
           <div className={styles.connect}>
             <div className={styles.phone}>
               <div className={styles.index}>Телефон:</div>
-              <div className={styles.text}>+7 (831) 436-15-75</div>
+              <a href="tel:+78314361575" className={styles.text}>+7 (831) 436-15-75</a>
             </div>
 
             <div className={styles.fax}>
               <div className={styles.index}>Факс:</div>
-              <div className={styles.text}>+7 (831) 416-61-31</div>
+              <a href="tel:+78314166131" className={styles.text}>+7 (831) 416-61-31</a>
             </div>
 
             <div className={styles.email}>
               <div className={styles.index}>Электронная почта:</div>
-              <div>admdep@lunn.ru</div>
+              <a href="mailto:admdep@lunn.ru">admdep@lunn.ru</a>
             </div>
           </div>
         </div>

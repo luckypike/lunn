@@ -54,6 +54,13 @@
 .info {
   color: #B7B7B7;
 
+  & a {
+    color: #B7B7B7;
+  }
+
+  & .phone, & .fax {
+    margin-bottom: 16px;
+  }
 
   @media(--s) {
     grid-column: 10 / span 3;
