@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import fonts from '../Fonts.module.css'
 import pages from '../Pages.module.css'
 import styles from './Footer.module.css'
 
@@ -16,12 +17,12 @@ Footer.propTypes = {
 
 export default function Footer ({ navs }) {
   return (
-    <div className={styles.overlay}>
-      <div className={styles.root}>
+    <div className={classNames(styles.root, pages.container)}>
+      <div className={styles.wrapper}>
         <ul className={styles.navs}>
           {navs.filter(item => item.depth === 1).map(n1l =>
             <li className={styles.main} key={n1l.mlid}>
-              <a href={n1l.path} className={styles.first}>
+              <a href={n1l.path} className={classNames(styles.first, fonts.h4)}>
                 {n1l.title}
               </a>
               <ul>
@@ -66,6 +67,8 @@ export default function Footer ({ navs }) {
           </div>
         </div>
       </div>
+
+      <hr className={styles.line} />
 
       <div className={styles.media}>
         <div className={styles.title}>

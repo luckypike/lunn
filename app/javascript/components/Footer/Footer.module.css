@@ -1,6 +1,15 @@
 .root {
   background-color: #333;
-  border-bottom: 2px solid #B7B7B7;
+  padding-top: 24px;
+  position: relative;
+
+  @media(--s) {
+    padding-top: 48px;
+  }
+}
+
+.wrapper {
+  display: block;
 
   @media(--s) {
     display: grid;
@@ -8,8 +17,11 @@
   }
 }
 
-.overlay {
-  background-color: #333;
+.line {
+  position: absolute;
+  width: 100%;
+  color: #fff;
+  left: 0;
 }
 
 .navs {
@@ -83,6 +95,7 @@
 
   @media(--s) {
     padding: 48px;
+    grid-column: span 12;
 
     & .title {
       text-align: center;
