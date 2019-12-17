@@ -18,10 +18,36 @@
   margin: 0 auto;
 }
 
-.text {
+.title {
   text-align: center;
+  margin-bottom: 32px;
 }
 
 .image {
   margin-bottom: 64px;
+}
+
+.ellipse {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: #EEF1FE;
+  margin: 0 auto 28px auto;
+}
+
+.circle {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background-color: var(--hl_color);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.text {
+  text-align: center;
 }
