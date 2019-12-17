@@ -50,15 +50,19 @@ export default function Show ({ node, navs, docs, loaf }) {
       }
 
       {docs && docs.length > 0 &&
-        <ul>
-          {docs.map(doc =>
-            <li key={doc.fid}>
-              <a href={doc.path} target="_blank" rel="noopener noreferrer">
-                {doc.title}
-              </a>
-            </li>
-          )}
-        </ul>
+        <div className={styles.docs}>
+
+          {/* То, что внутри styles.docs вынести в отдельный компонент! */}
+          <ul>
+            {docs.map(doc =>
+              <li key={doc.fid}>
+                <a href={doc.path} target="_blank" rel="noopener noreferrer">
+                  {doc.title}
+                </a>
+              </li>
+            )}
+          </ul>
+        </div>
       }
     </div>
   )

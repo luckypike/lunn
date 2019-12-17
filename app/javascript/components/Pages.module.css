@@ -37,14 +37,14 @@
   /* text-overflow: ellipsis; */
   max-width: 300px;
 
-  &:after {
-    content: "-";
+  &::after {
+    content: "–";
     color: #777;
+    margin-left: var(--yr);
   }
 
   & a {
     color: #777;
-    margin-right: var(--yr);
   }
 
   &:last-child {
@@ -58,6 +58,13 @@
   position: relative;
   margin-right: var(--yr);
   color: #777;
+
+  &::after {
+    content: "–";
+    /* color: #777; */
+    margin-left: var(--yr);
+
+  }
 }
 
 .title {

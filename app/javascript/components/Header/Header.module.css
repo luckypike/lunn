@@ -73,6 +73,7 @@
   opacity: 0;
   visibility: hidden;
   border-top: 2px solid #eee;
+  z-index: 2;
   /* transform: translateY(calc(var(--yr) * -2)); */
   /* transition: visibility 0s 0.3s, opacity 0.3s, transform 0.3s; */
 

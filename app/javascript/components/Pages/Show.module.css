@@ -1,7 +1,7 @@
 .root {
   @media(--s) {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    /* display: grid; */
+    /* grid-template-columns: repeat(12, 1fr); */
   }
 }
 
@@ -13,7 +13,7 @@
   @media(--s) {
     margin-bottom: calc(var(--yr) * var(--s4));
     padding-bottom: calc(var(--yr) * var(--s4));
-    grid-column: 1 / span 8;
+    /* grid-column: 1 / span 8; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: calc(var(--yr) * var(--s3));
@@ -44,8 +44,13 @@
 }
 
 .text {
-
   @media(--s) {
-    grid-column: 1 / span 8;
+    margin: 0 calc(1 / 8 * 100%);
+  }
+}
+
+.docs {
+  @media(--s) {
+    margin: calc(var(--yr) * var(--s3)) calc(1 / 8 * 100%);
   }
 }
