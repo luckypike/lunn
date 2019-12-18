@@ -8,6 +8,7 @@ import Sliders from './Index/Sliders'
 import Education from './Index/Education'
 import News from './Index/News'
 import Poster from './Index/Poster'
+import Introduction from './Index/Introduction'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
@@ -41,7 +42,9 @@ export default function Index ({ navs }) {
         </video>
 
         <div className={styles.intro}>
-          <div className={styles.introduction}>Hola</div>
+          <div className={styles.introduction}>
+            <Introduction />
+          </div>
           <div>Нижегородский государственный лингвистический <br /> университет имени Н.А. Добролюбова</div>
         </div>
       </div>

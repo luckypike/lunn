@@ -7,8 +7,8 @@ html lang=I18n.locale
     = favicon_link_tag '/apple-touch-icon.png', rel: 'apple-touch-icon'
     = tag('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' })
 
-    = javascript_pack_tag 'app'
     = stylesheet_pack_tag 'app'
+    = javascript_pack_tag 'app'
 
   body
     = react_component 'Header/Header', { navs: Nav.main.lang.as_json(methods: %i[path title]), index: current_page?(root_url) }
