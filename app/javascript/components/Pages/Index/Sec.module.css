@@ -70,6 +70,6 @@
   display: block;
 
   &:not(:last-child) {
-    margin-bottom: calc(var(--yr) * var(--s2));
+    margin-bottom: calc(var(--yr) * var(--s3));
   }
 }

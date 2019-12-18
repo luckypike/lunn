@@ -5,11 +5,11 @@
   margin: 0 auto;
 
   @media(--s) {
-    padding: 24px calc(var(--yr) * 8);
+    padding: 24px calc(var(--yr) * 8) 0;
   }
 
   @media (--m) {
-    padding: 48px calc(var(--yr) * 40);
+    padding: 48px calc(var(--yr) * 40) 0;
   }
 }
 
