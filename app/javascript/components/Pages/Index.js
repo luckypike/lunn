@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import dayjs from 'dayjs'
-import 'dayjs/locale/ru'
-// import classNames from 'classnames'
 
 import Intro from '../Video/Intro.mp4'
 import Sec from './Index/Sec'
 import Sliders from './Index/Sliders'
 import Education from './Index/Education'
+import News from './News/News'
+import Poster from './Poster/Poster'
 
-// import fonts from '../Fonts.module.css'
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
 
@@ -56,54 +54,12 @@ export default function Index ({ navs }) {
 
       <div className={pages.container}>
         <div className={styles.root}>
-          {news && events &&
-            <>
-              <div className={styles.news}>
-                <h2>Новости</h2>
+          {news &&
+            <News news={news} />
+          }
 
-                <div className={styles.news_items}>
-                  {news.map(item =>
-                    <div key={item.nid} className={styles.news_item}>
-                      <div className={styles.image}>
-                        <img src={item.images[0].path} />
-                      </div>
-
-                      <div className={styles.date}>
-                        {dayjs.unix(item.created).locale('ru').format('DD MMMM YYYY')}
-                      </div>
-
-                      <div className={styles.title}>
-                        <a href={item.path}>
-                          {item.title}
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className={styles.poster}>
-                <h2>Афиша</h2>
-
-                <div className={styles.events}>
-                  {events.map(event =>
-                    <div key={event.nid} className={styles.event}>
-                      <div className={styles.created}>
-                        <div className={styles.date}>
-                          {dayjs.unix(event.created).locale('ru').format('DD MMMM YYYY')}
-                        </div>
-                      </div>
-
-                      <div className={styles.title}>
-                        <a href={event.path}>
-                          {event.title}
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
+          {events &&
+            <Poster events={events} />
           }
 
           {sliders &&

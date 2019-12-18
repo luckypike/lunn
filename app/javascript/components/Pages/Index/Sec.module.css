@@ -1,8 +1,13 @@
 .root {
   position: relative;
+  margin-bottom: calc(var(--yr) * var(--s4));
 
   & a {
     color: white;
+  }
+
+  @media(--s) {
+    margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
   }
 }
 

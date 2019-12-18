@@ -1,0 +1,38 @@
+.poster {
+  background: linear-gradient(#fff, #ECEFF1, #fff);
+  padding: 0;
+  margin-bottom: calc(var(--yr) * var(--s3));
+
+  @media(--s) {
+    grid-column: 8 /  13;
+    padding: 0 calc(var(--yr) * var(--s4));
+    margin-bottom: 0;
+  }
+}
+
+.label {
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.events {
+
+}
+
+.event {
+  border-bottom: 1px solid #DBDDDE;
+  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.title {
+  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+}
+
+.date {
+  color: var(--hl_color);
+  text-transform: capitalize;
+  margin-bottom: calc(var(--yr) * var(--s1));
+}
