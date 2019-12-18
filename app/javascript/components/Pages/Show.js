@@ -23,15 +23,9 @@ export default function Show ({ node, navs, docs, loaf }) {
         loaf={loaf}
       />
 
-      {navs && navs.length > 0 &&
-        <div className={styles.navs}>
-          {navs.map(nav =>
-            <div key={nav.mlid} className={styles.nav}>
-              <a href={nav.path}>
-                {nav.title}
-              </a>
-            </div>
-          )}
+      {navs &&
+        <div className={styles.groups}>
+          <Navs navs={navs} />
         </div>
       }
 
@@ -57,5 +51,39 @@ export default function Show ({ node, navs, docs, loaf }) {
         </div>
       }
     </div>
+  )
+}
+
+Navs.propTypes = {
+  navs: PropTypes.array
+}
+
+function Navs ({ navs }) {
+  const chunk = navs.length < 3 ? 1 : Math.floor(navs.length / 3)
+
+  const groups = navs
+    .reduce((acc, _, i) =>
+      (i % chunk)
+        ? acc
+        : [...acc, navs.slice(i, i + chunk)]
+    , [])
+  return (
+    <>
+      {[...Array(3)].map((_, i) =>
+        <div key={i} className={styles.group}>
+          {groups[i] && groups[i].map(nav =>
+            <a href={nav.path} key={nav.mlid} className={styles.nav}>
+              {nav.title}
+            </a>
+          )}
+
+          {i === 0 && groups[3] && groups[3].map(nav =>
+            <a href={nav.path} key={nav.mlid} className={styles.nav}>
+              {nav.title}
+            </a>
+          )}
+        </div>
+      )}
+    </>
   )
 }
