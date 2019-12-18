@@ -15,7 +15,9 @@ export default function Item ({ item }) {
   return (
     <Link item={item} to={item.path} className={styles.news_item}>
       <div className={styles.image}>
-        <img src={item.images[0].path} />
+        {item.images.length > 0 &&
+          <img src={item.images[0].path} />
+        }
       </div>
 
       <div className={styles.info}>

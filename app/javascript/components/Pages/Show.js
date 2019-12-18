@@ -19,7 +19,7 @@ export default function Show ({ node, navs, docs, loaf }) {
   return (
     <div className={classNames(styles.root, pages.container)}>
       <Title
-        title={node.title}
+        h1={node.title}
         loaf={loaf}
       />
 

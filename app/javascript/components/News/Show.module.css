@@ -1,5 +1,14 @@
 .intro {
-  composes: h0 from '../Fonts.module.css';
-  text-align: center;
-  margin-bottom: calc(var(--yr) * calc(var(--s3) * 4));
+  /* composes: h0 from '../Fonts.module.css'; */
+  /* text-align: center; */
+  /* margin-bottom: calc(var(--yr) * calc(var(--s3) * 4)); */
+}
+
+
+.text {
+  hyphens: auto;
+
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
 }
