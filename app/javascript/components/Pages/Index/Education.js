@@ -12,7 +12,7 @@ import Prepods from '!svg-react-loader?!./Images/Prepods.svg'
 export default function Education () {
   return (
     <div className={styles.root}>
-      <div className={classNames(styles.title, fonts.h4)}>
+      <div className={classNames(styles.intro, fonts.h4)}>
          Более 100 лет в сфере образования
       </div>
 

@@ -88,6 +88,12 @@ export default function Index ({ navs }) {
                 <div className={styles.events}>
                   {events.map(event =>
                     <div key={event.nid} className={styles.event}>
+                      <div className={styles.created}>
+                        <div className={styles.date}>
+                          {dayjs.unix(event.created).locale('ru').format('DD MMMM YYYY')}
+                        </div>
+                      </div>
+
                       <div className={styles.title}>
                         <a href={event.path}>
                           {event.title}

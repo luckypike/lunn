@@ -2,7 +2,7 @@
   grid-column: span 12;
 }
 
-.title {
+.intro {
   text-align: center;
   margin-bottom: calc(var(--yr) * var(--s3));
 }
@@ -16,11 +16,14 @@
 
 .block {
   margin: 0 auto;
+  position: relative;
 }
 
 .title {
+  composes: h4 from '../../Fonts.module.css';
   text-align: center;
   margin-bottom: 32px;
+  color: var(--hl_color);
 }
 
 .image {
