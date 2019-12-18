@@ -7,7 +7,7 @@
 }
 
 .groups {
-  display: none;
+  display: block;
   padding: calc(var(--yr) * var(--s4)) 0;
 }
 
