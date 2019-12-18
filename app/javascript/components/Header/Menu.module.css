@@ -1,10 +1,10 @@
 .root {
-  max-width: 120rem;
-  margin: 0 auto;
-  padding: var(--xr);
+  /* max-width: 120rem; */
+  /* margin: 0 auto; */
+  padding: calc(var(--yr) * var(--s3)) 0;
 
   @media (--s) {
-    padding: calc(var(--xr) * 2);
+    /* padding: calc(var(--xr) * 2); */
   }
 
   & ul {
@@ -21,7 +21,36 @@
   }
 }
 
+.container {
+  padding: 0 calc(var(--yr) * 4);
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @media (--s) {
+    padding: 0 calc(var(--yr) * 8);
+  }
+
+  @media (--m) {
+    padding: 0 calc(var(--yr) * 12);
+  }
+
+  @media (--xl) {
+    padding: 0 calc(var(--yr) * 40);
+  }
+}
+
+.l2 {
+  composes: at from '../Fonts.module.css';
+
+  & li {
+    margin-bottom: calc(var(--yr) * 2);
+  }
+}
+
 .main {
+  max-width: 100%;
+  overflow: hidden;
+
   &:not(:last-child) {
     margin-bottom: calc(var(--yr) * var(--s4));
   }
@@ -30,13 +59,21 @@
 .nav {
   @media (--m) {
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+
+  @media (--l) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-column-gap: var(--xr);
   }
 }
 
 .first {
   display: block;
+  hyphens: auto;
+  /* text-overflow: ellipsis; */
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
   composes: h3 from '../Fonts.module.css';
   margin-bottom: calc(var(--yr) * var(--s3));
 }

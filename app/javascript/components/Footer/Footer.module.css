@@ -15,7 +15,21 @@
 }
 
 .container {
-  background-color: #333;
+  padding: 0 calc(var(--yr) * 4);
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @media (--s) {
+    padding: 0 calc(var(--yr) * 8);
+  }
+
+  @media (--m) {
+    padding: 0 calc(var(--yr) * 12);
+  }
+
+  @media (--xl) {
+    padding: 0 calc(var(--yr) * 40);
+  }
 }
 
 .wrapper {

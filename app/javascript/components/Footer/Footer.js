@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import fonts from '../Fonts.module.css'
 import styles from './Footer.module.css'
-import pages from '../Pages.module.css'
+// import pages from '../Pages.module.css'
 
 import Vk from '!svg-react-loader?!./Images/Vk.svg'
 import Instagram from '!svg-react-loader?!./Images/Instagram.svg'
@@ -18,7 +18,7 @@ Footer.propTypes = {
 export default function Footer ({ navs }) {
   return (
     <div className={styles.root}>
-      <div className={pages.container}>
+      <div className={styles.container}>
         <div className={styles.wrapper}>
           <ul className={styles.navs}>
             {navs.filter(item => item.depth === 1).map(n1l =>
