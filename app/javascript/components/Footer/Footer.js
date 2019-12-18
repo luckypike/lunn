@@ -42,8 +42,8 @@ export default function Footer ({ navs }) {
           <div className={styles.adress}>
             <div className={styles.index}>Адрес:</div>
             <div className={styles.text}>603155, Россия, Нижний Новгород, ул. Минина 31а</div>
-            <div>
-              <a href="#" className={styles.button}>
+            <div className={styles.button}>
+              <a href="#">
                 Показать на карте
               </a>
             </div>
@@ -62,7 +62,7 @@ export default function Footer ({ navs }) {
 
             <div className={styles.email}>
               <div className={styles.index}>Электронная почта:</div>
-              <a href="mailto:admdep@lunn.ru">admdep@lunn.ru</a>
+              <a href="mailto:admdep@lunn.ru" className={styles.text}>admdep@lunn.ru</a>
             </div>
           </div>
         </div>

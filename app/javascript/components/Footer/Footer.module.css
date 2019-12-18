@@ -25,6 +25,8 @@
 }
 
 .navs {
+  display: none;
+
   @media(--s) {
     grid-column: span 8;
     display: grid;
@@ -48,7 +50,7 @@
 
 .second {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: calc(var(--yr) * 2);
 }
 
 .info {
@@ -59,55 +61,67 @@
   }
 
   & .phone, & .fax {
-    margin-bottom: 16px;
+    margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
   }
 
   @media(--s) {
     grid-column: 10 / span 3;
+  }
+}
 
-    & .button {
-      border-radius: var(--yr);
-      padding: 10px 16px;
-      background-color: var(--hl_color);
-      color: #fff;
-    }
+.button {
+  border-radius: var(--yr);
+  padding: 10px 16px;
+  background-color: var(--hl_color);
+  color: #fff;
+  width: fit-content;
+
+  & a {
+    color: #fff;
   }
 }
 
 .adress {
+  margin-bottom: calc(var(--yr) * var(--s3));
+
   @media(--s) {
     margin-bottom: 32px;
   }
 }
 
 .index {
-  @media(--s) {
-    margin-bottom: 8px;
-  }
+  margin-bottom: calc(var(--yr) * 2);
 }
 
 .text {
+  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+
   @media(--s) {
-    margin-bottom: 16px;
+    margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
   }
 }
 
 .connect {
+  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
 
+  @media(--s) {
+    margin-bottom: 0
+  }
 }
 
 .media {
   color: #B7B7B7;
   background-color: #333;
+  padding: calc(var(--yr) * var(--s3)) 0;
+
+  & .title {
+    text-align: center;
+    margin-bottom: calc(var(--yr) * var(--s3))
+  }
 
   @media(--s) {
-    padding: 48px;
+    padding: calc(var(--yr) * var(--s4));
     grid-column: span 12;
-
-    & .title {
-      text-align: center;
-      margin-bottom: 24px;
-    }
   }
 }
 
@@ -119,7 +133,7 @@
 
 .logo {
   cursor: pointer;
-  margin-right: 16px;
+  margin-right: calc(var(--yr) * calc(var(--s1) * 2));
   height: 32px;
   width: 32px;
   position: relative;
