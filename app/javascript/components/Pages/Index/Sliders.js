@@ -54,7 +54,7 @@ export default function Sliders ({ sliders }) {
         {sliders.map(slider =>
           <div key={slider.nid}>
             <div className={styles.image} style={{ backgroundImage: `url(${slider.image.path})` }}>
-              <div className={classNames(styles.title, fonts.h3)}>
+              <div className={classNames(styles.title, fonts.h1)}>
                 {slider.title}
               </div>
             </div>

@@ -29,7 +29,7 @@ a {
   text-decoration: none;
 }
 
-ul, li {
+ul, ol {
   list-style: none;
   padding: 0;
   margin: 0;
