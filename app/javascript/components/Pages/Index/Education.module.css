@@ -3,13 +3,16 @@
 }
 
 .intro {
+  composes: h2 from '../../Fonts.module.css';
   text-align: center;
   margin-bottom: calc(var(--yr) * var(--s3));
 }
 
 .blocks {
-  @media(--s) {
-    display: grid;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media(--m) {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -23,13 +26,13 @@
   }
 
   @media(--s) {
-    margin: 0 auto;
+    /* margin: 0 auto; */
   }
 }
 
 .title {
   margin-bottom: calc(var(--yr) * var(--s2));
-  composes: h4 from '../../Fonts.module.css';
+  composes: h2 from '../../Fonts.module.css';
   text-align: center;
   color: var(--hl_color);
 
@@ -42,7 +45,8 @@
   margin-bottom: calc(var(--yr) * var(--s3));
 
   @media(--s) {
-    margin-bottom: 64px;
+    margin-bottom: calc(var(--yr) * var(--s3) * 2);
+    /* margin-bottom: 64px; */
   }
 }
 

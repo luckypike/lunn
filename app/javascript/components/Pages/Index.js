@@ -45,7 +45,10 @@ export default function Index ({ navs }) {
           <div className={styles.introduction}>
             <Introduction />
           </div>
-          <div>Нижегородский государственный лингвистический <br /> университет имени Н.А. Добролюбова</div>
+          <div>
+            Нижегородский государственный лингвистический
+            <br />
+            университет имени Н.А. Добролюбова</div>
         </div>
       </div>
 
@@ -76,18 +79,6 @@ export default function Index ({ navs }) {
           </div>
         </div>
       </div>
-
-      {/* <div className={pages.container}>
-        <div className={styles.buttons}>
-          <a href="/news" className={styles.all_news}>
-            Все новости
-          </a>
-
-          <a href="#" className={styles.all_poster}>
-            Все мероприятия
-          </a>
-        </div>
-      </div> */}
     </div>
   )
 }

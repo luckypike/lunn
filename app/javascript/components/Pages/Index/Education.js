@@ -1,7 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
 
-import fonts from '../../Fonts.module.css'
 import styles from './Education.module.css'
 
 import Lang from '!svg-react-loader?!./Images/Lang.svg'
@@ -12,7 +10,7 @@ import Prepods from '!svg-react-loader?!./Images/Prepods.svg'
 export default function Education () {
   return (
     <div className={styles.root}>
-      <div className={classNames(styles.intro, fonts.h4)}>
+      <div className={styles.intro}>
          Более 100 лет в сфере образования
       </div>
 
@@ -36,14 +34,14 @@ export default function Education () {
           <div className={styles.ellipse}>
             <div className={styles.circle} />
           </div>
-          <div className={styles.text}>преподавателей - профессора <br />и доктора наук</div>
+          <div className={styles.text}>преподавателей — профессора и доктора наук</div>
         </div>
 
         <div className={styles.block}>
           <div className={styles.image}>
             <Studs />
           </div>
-          <div className={styles.title}>{'>'}3000</div>
+          <div className={styles.title}>{'>'} 3000</div>
           <div className={styles.ellipse}>
             <div className={styles.circle} />
           </div>
@@ -58,7 +56,7 @@ export default function Education () {
           <div className={styles.ellipse}>
             <div className={styles.circle} />
           </div>
-          <div className={styles.text}>иностранных преподавателей <br />- носителей языка</div>
+          <div className={styles.text}>иностранных преподавателей — носители языка</div>
         </div>
       </div>
     </div>

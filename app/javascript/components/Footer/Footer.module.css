@@ -1,16 +1,16 @@
 .root {
-  /* background-color: #333; */
-  padding: 24px calc(var(--yr) * 4) 0;
-  position: relative;
+  background-color: #333;
+  padding: calc(var(--yr) * var(--s4)) 0;
+  /* position: relative; */
 
   @media(--s) {
-    padding: 24px calc(var(--yr) * 8) 0;
+    /* padding: 24px calc(var(--yr) * 8) 0; */
   }
 
   @media (--m) {
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 48px calc(var(--yr) * 40) 0;
+    /* max-width: 120rem; */
+    /* margin: 0 auto; */
+    /* padding: 48px calc(var(--yr) * 40) 0; */
   }
 }
 
@@ -23,7 +23,13 @@
 
   @media(--s) {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: var(--xr);
+  }
+
+  @media(--m) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: calc(var(--xr) * 2);
   }
 }
 
@@ -37,13 +43,21 @@
 
 .navs {
   display: none;
+  composes: at from '../Fonts.module.css';
 
-  @media(--s) {
-    grid-column: span 8;
+  @media (--s) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 32px;
+    grid-column: span 2;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: var(--xr);
     margin-bottom: calc(var(--yr) * calc(var(--s4)));
+  }
+
+  @media (--m) {
+    grid-column: span 3;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: calc(var(--xr) * 2);
+
   }
 }
 
@@ -76,8 +90,8 @@
     margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
   }
 
-  @media(--s) {
-    grid-column: 10 / span 3;
+  @media  (--s) {
+    /* grid-column: 10 / span 3; */
   }
 }
 
