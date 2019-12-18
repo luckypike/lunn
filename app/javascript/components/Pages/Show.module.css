@@ -47,12 +47,12 @@
   hyphens: auto;
 
   @media (--s) {
-    margin: 0 calc(1 / 8 * 100%);
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 }
 
 .docs {
   @media (--s) {
-    margin: calc(var(--yr) * var(--s3)) calc(1 / 8 * 100%);
+    margin: calc(var(--yr) * var(--s3)) calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 }

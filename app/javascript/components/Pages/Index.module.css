@@ -33,6 +33,14 @@
     @media (--m) {
       padding-top: calc(1 / 2 * 100%);
     }
+
+    @media (--xl) {
+      /* display: none; */
+    }
+  }
+
+  @media (--xl) {
+    height: 56rem;
   }
 
   &::after {

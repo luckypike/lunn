@@ -1,0 +1,54 @@
+.p {
+  white-space: pre-wrap;
+  margin: 0 0 calc(var(--yr) * 3);
+
+  @media (--s) {
+    margin: 0 0 calc(var(--yr) * 4);
+  }
+}
+
+h2 {
+  &:not(:first-child) {
+    margin-top: calc(var(--yr) * var(--s3));
+  }
+
+  & strong {
+    font-weight: normal;
+  }
+}
+
+.ul {
+  padding-left: 0.5rem;
+
+  & li {
+    margin-bottom: calc(var(--yr) * var(--s1));
+    padding-left: 1.5rem;
+
+    &::before {
+      text-align: center;
+      display: inline-block;
+      width: 1.5rem;
+      content: '\2022';
+      margin-left: -1.5rem;
+    }
+  }
+}
+
+.ol {
+  padding-left: 0.5rem;
+  counter-reset: li;
+
+  & li {
+    margin-bottom: calc(var(--yr) * var(--s1));
+    padding-left: 1.5rem;
+    counter-increment: li;
+
+    &::before {
+      text-align: center;
+      display: inline-block;
+      width: 1.5rem;
+      content: counter(li)'.';
+      margin-left: -1.5rem;
+    }
+  }
+}
