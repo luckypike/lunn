@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Title } from '../Pages'
+import Docs from '../Docs/Docs'
 import Renderer from '../Draft'
+import Navs from '../Navs'
 
 import styles from './Show.module.css'
 import pages from '../Pages.module.css'
@@ -24,9 +26,7 @@ export default function Show ({ node, navs, docs, loaf }) {
       />
 
       {navs &&
-        <div className={styles.groups}>
-          <Navs navs={navs} />
-        </div>
+        <Navs navs={navs} />
       }
 
       {node.text &&
@@ -35,55 +35,11 @@ export default function Show ({ node, navs, docs, loaf }) {
         </div>
       }
 
-      {docs && docs.length > 0 &&
+      {docs &&
         <div className={styles.docs}>
-
-          {/* То, что внутри styles.docs вынести в отдельный компонент! */}
-          <ul>
-            {docs.map(doc =>
-              <li key={doc.fid}>
-                <a href={doc.path} target="_blank" rel="noopener noreferrer">
-                  {doc.title}
-                </a>
-              </li>
-            )}
-          </ul>
+          <Docs docs={docs} />
         </div>
       }
     </div>
-  )
-}
-
-Navs.propTypes = {
-  navs: PropTypes.array
-}
-
-function Navs ({ navs }) {
-  const chunk = navs.length < 3 ? 1 : Math.floor(navs.length / 3)
-
-  const groups = navs
-    .reduce((acc, _, i) =>
-      (i % chunk)
-        ? acc
-        : [...acc, navs.slice(i, i + chunk)]
-    , [])
-  return (
-    <>
-      {[...Array(3)].map((_, i) =>
-        <div key={i} className={styles.group}>
-          {groups[i] && groups[i].map(nav =>
-            <a href={nav.path} key={nav.mlid} className={styles.nav}>
-              {nav.title}
-            </a>
-          )}
-
-          {i === 0 && groups[3] && groups[3].map(nav =>
-            <a href={nav.path} key={nav.mlid} className={styles.nav}>
-              {nav.title}
-            </a>
-          )}
-        </div>
-      )}
-    </>
   )
 }

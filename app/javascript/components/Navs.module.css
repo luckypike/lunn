@@ -1,0 +1,40 @@
+.groups {
+  margin: 0 0 calc(var(--yr) * var(--s4));
+
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s2));
+  }
+
+  @media (--m) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+}
+
+.group {
+  &:not(:last-child) {
+    margin-bottom: calc(var(--yr) * var(--s3));
+  }
+}
+
+.nav {
+  display: block;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border-radius: var(--yr);
+  padding: calc(var(--yr) * var(--s2));
+  color: var(--hl_color);
+  transition: background 0.3s, color 0.3s;
+
+  &:not(:last-child) {
+    margin-bottom: calc(var(--yr) * var(--s2));
+  }
+
+  &:hover {
+    background-color: #f1f1f1;
+    /* color: #000; */
+    /* text-decoration: underline; */
+    /* color: var(--hl_color); */
+  }
+}
