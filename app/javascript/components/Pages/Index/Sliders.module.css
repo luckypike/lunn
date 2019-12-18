@@ -99,5 +99,4 @@
   border-radius: 50%;
   height: 12px;
   width: 12px;
-  transition: .2s height, .2s width, .2s background-color;
 }
