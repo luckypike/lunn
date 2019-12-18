@@ -34,7 +34,6 @@
 
 .date {
   color: var(--hl_color);
-  text-transform: capitalize;
   margin-bottom: calc(var(--yr) * var(--s1));
 }
 
