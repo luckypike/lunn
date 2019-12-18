@@ -4,8 +4,8 @@
   margin-bottom: calc(var(--yr) * var(--s3));
 
   @media(--s) {
-    grid-column: 8 /  13;
-    padding: 0 calc(var(--yr) * var(--s4));
+    grid-column: span 4;
+    padding: 0 calc(var(--xr) * 2);
     margin-bottom: 0;
   }
 }

@@ -1,5 +1,5 @@
 .news {
-  grid-column: 1 / 8;
+  grid-column: span 8;
   margin-bottom: calc(var(--yr) * var(--s3));
 
   @media(--s) {
