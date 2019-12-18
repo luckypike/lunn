@@ -7,8 +7,13 @@ class PagesController < ApplicationController
       .order(created: :desc).limit(4)
 
     @events = Node.events.lang
-      .where('created > ?', Time.current.beginning_of_day)
+      .where('created > ?', Time.current.beginning_of_day.to_i)
       .order(created: :asc).limit(5)
+
+    if @events.size < 5
+      @events = Node.events.lang
+        .order(created: :asc).last(5)
+    end
 
     @sliders = Node.sliders.lang.published
       .includes(:image, :dates)
