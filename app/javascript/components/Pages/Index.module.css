@@ -23,7 +23,7 @@
   &::before {
     content: '';
     display: block;
-    background-color: #666;
+    /* background-color: #666; */
     padding-top: calc(5 / 4 * 100%);
 
     @media (--s) {
@@ -69,37 +69,6 @@
 
 .sec {
   background-color: var(--hl_color);
-}
-
-.button {
-  background-color: var(--hl_color);
-  text-align: center;
-  border-radius: var(--yr);
-  padding: calc(var(--yr) * var(--s2)) 0;
-
-  & > a {
-    color: #fff;
-  }
-}
-
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  text-align: center;
-
-  & .all_news, & .all_poster {
-    display: block;
-    grid-column: 1 / 9;
-    background-color: var(--hl_color);
-    border-radius: var(--yr);
-    padding: calc(var(--yr) * var(--s2)) 0;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  & .all_poster {
-    grid-column: 10 / 13;
-  }
 }
 
 .slider {

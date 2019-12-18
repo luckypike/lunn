@@ -31,6 +31,12 @@ export default function Poster ({ events }) {
           </div>
         )}
       </div>
+
+      <div className={styles.button}>
+        <a href="#">
+          Все мероприятия
+        </a>
+      </div>
     </div>
   )
 }

@@ -35,6 +35,12 @@ export default function News ({ news }) {
           </div>
         )}
       </div>
+
+      <div className={styles.button}>
+        <a href="/news">
+          Все новости
+        </a>
+      </div>
     </div>
   )
 }
