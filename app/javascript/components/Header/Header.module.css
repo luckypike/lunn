@@ -5,6 +5,7 @@
   height: calc(var(--yr) * 16);
   max-width: 120rem;
   margin: 0 auto;
+  z-index: 8;
 
   @media (--s) {
     grid-template-columns: calc(var(--yr) * 28) 1fr calc(var(--yr) * 18);

@@ -10,6 +10,10 @@ end
 json.sliders @sliders do |slider|
   json.partial! slider
 
+  if slider.dates
+    json.dates slider.dates.value
+  end
+
   json.image do
     json.partial! slider.image
     json.path "#{slider.image.attachment.host}#{slider.image.attachment.path}"

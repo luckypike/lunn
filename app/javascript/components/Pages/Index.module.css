@@ -9,10 +9,10 @@
 }
 
 .video {
-  z-index: -1;
   position: relative;
 
   & > video {
+    /* z-index: -1; */
     top: 0;
     position: absolute;
     width: 100%;
@@ -57,7 +57,7 @@
 }
 
 .intro {
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   position: absolute;
   top: 50%;
