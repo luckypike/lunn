@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import fonts from '../Fonts.module.css'
-import pages from '../Pages.module.css'
 import styles from './Footer.module.css'
 
 import Vk from '!svg-react-loader?!./Images/Vk.svg'
@@ -17,7 +16,7 @@ Footer.propTypes = {
 
 export default function Footer ({ navs }) {
   return (
-    <div className={classNames(styles.root, pages.container)}>
+    <div className={styles.root}>
       <div className={styles.wrapper}>
         <ul className={styles.navs}>
           {navs.filter(item => item.depth === 1).map(n1l =>
@@ -68,7 +67,7 @@ export default function Footer ({ navs }) {
         </div>
       </div>
 
-      <hr className={styles.line} />
+      <div className={styles.line} />
 
       <div className={styles.media}>
         <div className={styles.title}>

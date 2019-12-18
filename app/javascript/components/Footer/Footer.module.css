@@ -1,10 +1,15 @@
 .root {
   background-color: #333;
-  padding-top: 24px;
+  padding: 24px calc(var(--yr) * 4) 0;
   position: relative;
+  margin: 0 auto;
 
   @media(--s) {
-    padding-top: 48px;
+    padding: 24px calc(var(--yr) * 8);
+  }
+
+  @media (--m) {
+    padding: 48px calc(var(--yr) * 40);
   }
 }
 
@@ -20,8 +25,9 @@
 .line {
   position: absolute;
   width: 100%;
-  color: #fff;
   left: 0;
+  opacity: 0.08;
+  border-top: 2px solid #fff;
 }
 
 .navs {
@@ -32,6 +38,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 32px;
+    margin-bottom: calc(var(--yr) * calc(var(--s4)));
   }
 }
 
@@ -102,7 +109,7 @@
 }
 
 .connect {
-  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+  margin-bottom: calc(var(--yr) * var(--s3));
 
   @media(--s) {
     margin-bottom: 0
