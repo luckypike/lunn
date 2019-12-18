@@ -8,6 +8,11 @@ html {
   box-sizing: inherit;
 }
 
+hr {
+  /* Проверить почему правило выше не работает! */
+  box-sizing: inherit;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: calc(var(--yr) * 3.5);

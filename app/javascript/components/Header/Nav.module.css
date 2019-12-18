@@ -30,6 +30,7 @@
   padding: 0;
   display: none;
   line-height: calc(var(--yr) * 12);
+  list-style: none;
 
   & a {
     color: #000;
@@ -41,11 +42,11 @@
 }
 
 .nav {
-  list-style: none;
+  margin-right: calc(var(--xr) * 2);
+}
 
-  &:not(:last-child) {
-    margin-right: calc(var(--xr) * 2);
-  }
+.more {
+  cursor: pointer;
 }
 
 .white {

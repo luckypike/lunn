@@ -30,7 +30,7 @@ export default function Nav ({ navs, onToggle, index }) {
           </li>
         )}
 
-        <li className={classNames(styles.nav, { [styles.white]: index })} onClick={onToggle}>
+        <li className={classNames(styles.more, { [styles.white]: index })} onClick={onToggle}>
           Ещё...
         </li>
       </ul>

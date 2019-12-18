@@ -7615,6 +7615,13 @@ redent@^2.0.0:
     indent-string "^3.0.0"
     strip-indent "^2.0.0"
 
+redraft@^0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/redraft/-/redraft-0.10.2.tgz#e8cbc477bb65cebe2231257199262cbd555db19e"
+  integrity sha512-yy5EcJogY+2MlfBu6uwxQ0r5KzWra9lZRfHpG9czGoxOw8k8woHlVD1LlT1hp/n0zLNLvaIJ9EKE1NgcYgfI+A==
+  dependencies:
+    punycode "^2.1.0"
+
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.1.0.tgz#ef51e0f0ea4ad424b77bf7cb41f3e015c70a3f0e"

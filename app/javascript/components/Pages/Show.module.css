@@ -1,7 +1,7 @@
 .root {
-  @media(--s) {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+  @media (--s) {
+    /* display: grid; */
+    /* grid-template-columns: repeat(12, 1fr); */
   }
 }
 
@@ -10,10 +10,10 @@
   margin-bottom: calc(var(--yr) * 6);
   border-bottom: 1px solid #707070;
 
-  @media(--s) {
+  @media (--s) {
     margin-bottom: calc(var(--yr) * var(--s4));
     padding-bottom: calc(var(--yr) * var(--s4));
-    grid-column: 1 / span 8;
+    /* grid-column: 1 / span 8; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: calc(var(--yr) * var(--s3));
@@ -25,12 +25,12 @@
   cursor: pointer;
   margin-bottom: calc(var(--yr) * var(--s2));
 
-  @media(--s) {
+  @media (--s) {
     margin-bottom: 0;
 
     & a {
       color: #000;
-      transition: .2s color;
+      transition: 0.2s color;
     }
 
     &:hover {
@@ -44,8 +44,15 @@
 }
 
 .text {
+  hyphens: auto;
 
-  @media(--s) {
-    grid-column: 1 / span 8;
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%);
+  }
+}
+
+.docs {
+  @media (--s) {
+    margin: calc(var(--yr) * var(--s3)) calc(1 / 8 * 100%);
   }
 }

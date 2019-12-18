@@ -4,13 +4,16 @@
   @media(--s) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: calc(var(--xr) * 2);
 
     & .news {
-      grid-column: 1 / 9;
+      grid-column: span 8;
     }
 
     & .poster {
-      grid-column: 10 / 13;
+      background-color: #f9f9f9;
+      padding-left: calc(var(--xr) * 2);
+      grid-column: span 4;
     }
   }
 }
@@ -90,8 +93,8 @@
 
   @media(--s) {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-column-gap: calc(var(--yr) * var(--s2));
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
   }
 }
 
@@ -105,7 +108,7 @@
   }
 
   @media(--s) {
-    grid-column: span 4;
+    /* grid-column: span 4; */
   }
 }
 

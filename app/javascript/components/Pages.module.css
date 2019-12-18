@@ -1,5 +1,5 @@
 .root {
-  @media(--s) {
+  @media (--s) {
     grid-column: span 12;
     margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
   }
@@ -15,14 +15,14 @@
   }
 
   @media (--m) {
-    padding: 0 calc(var(--yr) * 12);
+    padding: 0 calc(var(--yr) * 40);
   }
 }
 
 .loafs {
   display: none;
 
-  @media(--s) {
+  @media (--s) {
     padding: 0;
     display: flex;
     justify-content: center;
@@ -37,18 +37,18 @@
   /* text-overflow: ellipsis; */
   max-width: 300px;
 
-  &:after {
-    content: "-";
+  &::after {
+    content: "–";
     color: #777;
+    margin-left: var(--yr);
   }
 
   & a {
     color: #777;
-    margin-right: var(--yr);
   }
 
   &:last-child {
-    &:after {
+    &::after {
       display: none;
     }
   }
@@ -58,12 +58,19 @@
   position: relative;
   margin-right: var(--yr);
   color: #777;
+
+  &::after {
+    content: "–";
+    /* color: #777; */
+    margin-left: var(--yr);
+  }
 }
 
 .title {
   text-align: center;
   margin-bottom: calc(var(--yr) * var(--s4));
-  @media(--s) {
+
+  @media (--s) {
     margin-bottom: 0;
   }
 }

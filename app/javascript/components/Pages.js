@@ -14,7 +14,7 @@ export function Title ({ title, loaf }) {
       {loaf && loaf.length > 0 &&
         <ul className={styles.loafs}>
           <a className={styles.main} href="/">
-            Главная -
+            Главная
           </a>
 
           {loaf.map(l =>
