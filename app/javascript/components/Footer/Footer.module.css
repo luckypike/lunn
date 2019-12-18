@@ -1,16 +1,21 @@
 .root {
-  background-color: #333;
+  /* background-color: #333; */
   padding: 24px calc(var(--yr) * 4) 0;
   position: relative;
-  margin: 0 auto;
 
   @media(--s) {
     padding: 24px calc(var(--yr) * 8) 0;
   }
 
   @media (--m) {
+    max-width: 120rem;
+    margin: 0 auto;
     padding: 48px calc(var(--yr) * 40) 0;
   }
+}
+
+.container {
+  background-color: #333;
 }
 
 .wrapper {
