@@ -1,6 +1,10 @@
 .slider {
   position: relative;
-  margin-bottom: 128px;
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media(--s) {
+    margin-bottom: 128px;
+  }
 }
 
 .images {
@@ -44,11 +48,19 @@
 }
 
 .prev {
-  left: 32px;
+  left: 8px;
+
+  @media(--s) {
+    left: 32px;
+  }
 }
 
 .next {
-  right: 32px;
+  right: 8px;
+
+  @media(--s) {
+    right: 32px;
+  }
 }
 
 .nav {
@@ -78,11 +90,16 @@
 .bullets {
   z-index: 2;
   position: absolute;
-  bottom: 32px;
+  bottom: 16px;
   left: 50%;
-  transform: translateX(-50%) translateY(-32px);
+  transform: translateX(-50%);
   height: 12px;
   display: flex;
+
+  @media(--s) {
+    bottom: 32px;
+    transform: translateY(-32px) translateX(-50%);
+  }
 }
 
 .bullet {
