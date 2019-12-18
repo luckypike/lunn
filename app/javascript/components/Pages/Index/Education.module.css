@@ -15,32 +15,49 @@
 }
 
 .block {
-  margin: 0 auto;
+  margin-bottom: calc(var(--yr) * var(--s3));
 
   & svg {
     display: block;
     width: 100%;
   }
+
+  @media(--s) {
+    margin: 0 auto;
+  }
 }
 
 .title {
+  margin-bottom: calc(var(--yr) * var(--s2));
   composes: h4 from '../../Fonts.module.css';
   text-align: center;
-  margin-bottom: 32px;
   color: var(--hl_color);
+
+  @media(--s) {
+    margin-bottom: 32px;
+  }
 }
 
 .image {
-  margin-bottom: 64px;
+  margin-bottom: calc(var(--yr) * var(--s3));
+
+  @media(--s) {
+    margin-bottom: 64px;
+  }
 }
 
 .ellipse {
-  position: relative;
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  background-color: #EEF1FE;
-  margin: 0 auto 28px auto;
+  display: none;
+
+  @media(--s) {
+    display: block;
+    position: relative;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-color: #EEF1FE;
+    margin: 0 auto 28px auto;
+  }
 }
 
 .circle {
