@@ -11,7 +11,7 @@ class PagesController < ApplicationController
       .order(created: :asc).limit(5)
 
     @sliders = Node.sliders.lang.published
-      .includes(:image)
+      .includes(:image, :dates)
       .order(created: :desc)
 
     respond_to :html, :json
