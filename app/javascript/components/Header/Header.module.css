@@ -74,15 +74,17 @@
   opacity: 0;
   visibility: hidden;
   border-top: 2px solid #eee;
-  z-index: 2;
+  z-index: 3;
   transform: translateY(calc(var(--yr) * -2));
-  transition: visibility 0s, opacity 0.3s, transform 0.3s;
+  transition-duration: 0.3s;
+  transition-property: transform opacity;
+  /* transition: visibility 0s, opacity 0.3s, transform 0.3s; */
 
   &.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    transition: visibility 0s, opacity 0.3s, transform 0.3s;
+    /* transition: visibility 0s, opacity 0.3s, transform 0.3s; */
   }
 }
 
