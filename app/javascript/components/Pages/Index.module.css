@@ -73,6 +73,7 @@
 
 .slider {
   grid-column: span 12;
+  overflow: hidden;
 }
 
 .education {

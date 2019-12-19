@@ -23,6 +23,10 @@
   right: calc(var(--xr) * -1);
   bottom: 100%;
   padding: 0 var(--xr);
+
+  @media (--s) {
+    overflow: hidden;
+  }
 }
 
 .tab {
