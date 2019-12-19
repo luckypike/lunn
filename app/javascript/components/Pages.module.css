@@ -36,9 +36,9 @@
 .loaf {
   position: relative;
   white-space: nowrap;
-  /* overflow: hidden; */
+  overflow: hidden;
   margin-right: var(--yr);
-  /* text-overflow: ellipsis; */
+  text-overflow: ellipsis;
   max-width: 300px;
 
   &::after {
@@ -86,5 +86,5 @@
 
   @media (--s) {
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
-  }  
+  }
 }
