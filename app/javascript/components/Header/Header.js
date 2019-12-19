@@ -30,20 +30,20 @@ export default function Header ({ navs, index }) {
   }, [])
 
   return (
-    <div className={classNames(styles.container, { [styles.index]: index })}>
-      <header className={classNames(styles.root, { [styles.white]: white })}>
-        <div className={styles.logo}>
+    <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive })}>
+      <header className={styles.root}>
+        <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
           <a href="/">
             <Logo />
           </a>
         </div>
 
         <div className={styles.nav}>
-          <Nav index={index} navs={navs} onToggle={() => setMenuActive(!menuActive)} />
+          <Nav index={index} navs={navs} menuActive={menuActive} onToggle={() => setMenuActive(!menuActive)} />
         </div>
 
         <div className={styles.service}>
-          <Service index={index} onSearchToggle={() => setSearchActive(true)} />
+          <Service index={index} menuActive={menuActive} onSearchToggle={() => setSearchActive(true)} />
         </div>
       </header>
 

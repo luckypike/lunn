@@ -7,13 +7,14 @@ import styles from './Nav.module.css'
 Nav.propTypes = {
   navs: PropTypes.array,
   onToggle: PropTypes.func,
-  index: PropTypes.bool
+  index: PropTypes.bool,
+  menuActive: PropTypes.bool
 }
 
-export default function Nav ({ navs, onToggle, index }) {
+export default function Nav ({ navs, onToggle, index, menuActive }) {
   return (
     <div className={styles.root}>
-      <div className={classNames(styles.toggle, { [styles.white]: index })} onClick={onToggle}>
+      <div className={classNames(styles.toggle, { [styles.white]: index, [styles.black]: menuActive })} onClick={onToggle}>
         <svg viewBox="0 0 20 14">
           <rect height="2" width="20" x="0" y="0" />
           <rect height="2" width="20" x="0" y="6" />
@@ -21,7 +22,7 @@ export default function Nav ({ navs, onToggle, index }) {
         </svg>
       </div>
 
-      <ul className={classNames(styles.navs, { [styles.white]: index })}>
+      <ul className={classNames(styles.navs, { [styles.white]: index, [styles.black]: menuActive })}>
         {navs.filter(n => n.depth === 1).map(nav =>
           <li key={nav.mlid} className={styles.nav}>
             <a href={nav.path}>
@@ -30,7 +31,7 @@ export default function Nav ({ navs, onToggle, index }) {
           </li>
         )}
 
-        <li className={classNames(styles.more, { [styles.white]: index })} onClick={onToggle}>
+        <li className={classNames(styles.more, { [styles.white]: index, [styles.black]: menuActive })} onClick={onToggle}>
           Ещё...
         </li>
       </ul>

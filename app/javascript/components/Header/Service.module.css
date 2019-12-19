@@ -16,7 +16,7 @@
   cursor: pointer;
 
   & svg {
-    /* fill: #fff; */
+    fill: #000;
     display: block;
     width: calc(var(--yr) * 8);
     height: calc(var(--yr) * 8);
@@ -34,7 +34,19 @@
   color: #fff;
 
   & svg {
-    fill: #fff;
+    & path {
+      fill: #fff;
+    }
+  }
+}
+
+.black {
+  color: #000;
+
+  & svg {
+    & path {
+      fill: #000;
+    }
   }
 }
 
