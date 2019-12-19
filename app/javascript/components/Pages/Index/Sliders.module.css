@@ -38,7 +38,7 @@
   }
 }
 
-.title {
+.content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -46,6 +46,23 @@
   z-index: 2;
   color: #fff;
   text-align: center;
+}
+
+.dates {
+  background-color: var(--hl_color);
+  width: max-content;
+  margin: 0 auto;
+  border-radius: calc(var(--yr) * var(--s2));
+  padding: calc(var(--yr) * 2) calc(var(--yr) * var(--s2));
+  margin-bottom: calc(var(--yr) * var(--s2));
+
+  @media(--s) {
+    margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.5));
+  }
+}
+
+.title {
+
 }
 
 .prev {

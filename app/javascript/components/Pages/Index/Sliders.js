@@ -14,6 +14,8 @@ export default function Sliders ({ sliders }) {
   const slider = useRef()
   const mount = useRef()
 
+  console.log(sliders)
+
   useEffect(() => {
     slider.current = new Siema({
       selector: mount.current,
@@ -54,8 +56,16 @@ export default function Sliders ({ sliders }) {
         {sliders.map(slider =>
           <div key={slider.nid}>
             <div className={styles.image} style={{ backgroundImage: `url(${slider.image.path})` }}>
-              <div className={classNames(styles.title, fonts.h1)}>
-                {slider.title}
+              <div className={styles.content}>
+                {slider.dates &&
+                  <div className={styles.dates}>
+                    {slider.dates}
+                  </div>
+                }
+
+                <div className={classNames(styles.title, fonts.h1)}>
+                  {slider.title}
+                </div>
               </div>
             </div>
           </div>
