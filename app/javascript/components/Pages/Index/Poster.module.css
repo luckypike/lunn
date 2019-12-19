@@ -1,10 +1,10 @@
 .poster {
-  background: linear-gradient(#fff, #ECEFF1, #fff);
   padding: 0;
   margin-bottom: calc(var(--yr) * var(--s3));
   position: relative;
 
   @media(--s) {
+    background: linear-gradient(#fff, #ECEFF1, #fff);
     grid-column: span 4;
     padding: 0 calc(var(--xr) * 2);
     margin-bottom: calc(var(--yr) * var(--s4));
@@ -38,8 +38,9 @@
 }
 
 .button {
+  margin: 0 auto;
+  display: block;
   cursor: pointer;
-  position: static;
   text-align: center;
   border-radius: var(--yr);
   padding: calc(var(--yr) * var(--s2)) 0;
@@ -48,13 +49,5 @@
   & > a {
     color: #fff;
     display: block;
-  }
-
-  @media(--s) {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: calc(100% - calc(var(--xr) * 4));
-    transform: translateX(-50%);
   }
 }

@@ -20,6 +20,7 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: calc(var(--xr) * 2);
     grid-row-gap: calc(var(--yr) * var(--s3));
+    margin-bottom: calc(var(--yr) * var(--s4));
   }
 }
 
@@ -64,6 +65,7 @@
 }
 
 .button {
+  display: block;
   cursor: pointer;
   position: static;
   text-align: center;
@@ -74,12 +76,5 @@
   & > a {
     color: #fff;
     display: block;
-  }
-
-  @media(--s) {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
   }
 }
