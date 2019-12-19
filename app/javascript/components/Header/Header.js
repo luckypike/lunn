@@ -31,6 +31,8 @@ export default function Header ({ navs, index }) {
 
   return (
     <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive })}>
+      <div className={classNames(styles.overlay, { [styles.active]: menuActive })} onClick={() => setMenuActive(!menuActive)} />
+
       <header className={styles.root}>
         <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
           <a href="/">

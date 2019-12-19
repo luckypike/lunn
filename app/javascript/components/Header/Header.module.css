@@ -28,7 +28,6 @@
   }
 
   &.active {
-    background-color: #fff;
     z-index: 3;
   }
 }
@@ -80,7 +79,7 @@
   visibility: hidden;
   border-top: 2px solid #eee;
   z-index: 3;
-  transform: translateY(calc(var(--yr) * -2));
+  transform: translateY(calc(var(--yr) * -34));
   transition-duration: 0.3s;
   transition-property: transform opacity;
   /* transition: visibility 0s, opacity 0.3s, transform 0.3s; */
@@ -88,8 +87,34 @@
   &.active {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(calc(var(--yr) * -16));
     /* transition: visibility 0s, opacity 0.3s, transform 0.3s; */
+    @media(--s) {
+      transform: translateY(calc(var(--yr) * -32));
+    }
+
+    @media(--l) {
+      transform: translateY(calc(var(--yr) * -32));
+    }
+  }
+}
+
+.overlay {
+  visibility: hidden;
+  background: #000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: visibility 0s ease .3s, opacity .3s;
+
+  &.active {
+    visibility: visible;
+    opacity: .4;
+    transition: opacity .3s;
   }
 }
 
