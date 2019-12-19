@@ -6,10 +6,11 @@ import styles from './Pages.module.css'
 Title.propTypes = {
   loaf: PropTypes.array,
   h1: PropTypes.string,
-  h2: PropTypes.string
+  h2: PropTypes.string,
+  desc: PropTypes.string
 }
 
-export function Title ({ h1, h2, loaf }) {
+export function Title ({ h1, h2, loaf, desc }) {
   return (
     <div className={styles.root}>
       {loaf && loaf.length > 0 &&
@@ -38,6 +39,12 @@ export function Title ({ h1, h2, loaf }) {
         <h2 className={styles.h2}>
           {h2}
         </h2>
+      }
+
+      {desc &&
+        <p className={styles.desc}>
+          {desc}
+        </p>
       }
     </div>
   )

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :news, only: %i[index show]
 
-  get '*path', to: 'pages#history', constraints: { path: 'sveden/history' }
+  get '*path', to: 'pages#history', constraints: { path: 'about/history' }
 
   get '*path', to: 'pages#show', constraints: ->(request) { UrlAlias.where(alias: request[:path]).any? }
 end

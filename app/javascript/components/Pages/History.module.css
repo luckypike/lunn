@@ -1,0 +1,51 @@
+.period {
+  color: var(--hl_color);
+}
+
+.years {
+  composes: h3 from '../Fonts.module.css';
+}
+
+.who {
+  composes: at from '../Fonts.module.css';
+  text-align: center;
+}
+
+.img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: var(--hl_color);
+  margin: 0 auto calc(var(--yr) * var(--s2));
+}
+
+.section {
+  padding-bottom: calc(var(--yr) * var(--s3) * 2);
+
+  @media (--m) {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: calc(var(--xr) * 2);
+
+    & .when {
+      grid-column: span 2;
+      text-align: right;
+      padding-right: calc(var(--xr) * 4);
+    }
+
+    & .main {
+      grid-column: span 6;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: calc(var(--xr) * 2);
+    }
+
+    & .who {
+      grid-column: span 1;
+    }
+
+    & .text {
+      grid-column: span 2;
+    }
+  }
+}

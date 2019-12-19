@@ -66,12 +66,10 @@ h2 {
   }
 }
 
-.h0 {
-  font-size: calc(var(--yr) * 10);
-  line-height: calc(var(--yr) * 11);
+p {
+  margin: 0 0 calc(var(--yr) * 3);
 
   @media (--s) {
-    font-size: calc(var(--yr) * 16);
-    line-height: calc(var(--yr) * 18);
+    margin: 0 0 calc(var(--yr) * 4);
   }
 }
