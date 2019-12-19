@@ -18,15 +18,12 @@
 }
 
 .block {
+  position: relative;
   margin-bottom: calc(var(--yr) * var(--s3));
 
   & svg {
     display: block;
     width: 100%;
-  }
-
-  @media(--s) {
-    /* margin: 0 auto; */
   }
 }
 
@@ -41,26 +38,50 @@
   }
 }
 
+.line {
+  display: none;
+
+  @media(--m) {
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 100%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-top: 2px dashed #ECEFF1;
+  }
+}
+
+.container {
+  display: none;
+
+  @media(--m) {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+  }
+}
+
 .image {
   margin-bottom: calc(var(--yr) * var(--s3));
 
   @media(--s) {
     margin-bottom: calc(var(--yr) * var(--s3) * 2);
-    /* margin-bottom: 64px; */
   }
 }
 
 .ellipse {
   display: none;
 
-  @media(--s) {
+  @media(--m) {
     display: block;
     position: relative;
     height: 24px;
     width: 24px;
     border-radius: 50%;
     background-color: #EEF1FE;
-    margin: 0 auto 28px auto;
+    margin: 0 auto;
   }
 }
 

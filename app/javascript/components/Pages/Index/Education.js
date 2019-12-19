@@ -20,8 +20,11 @@ export default function Education () {
             <Lang />
           </div>
           <div className={styles.title}>16</div>
-          <div className={styles.ellipse}>
-            <div className={styles.circle} />
+          <div className={styles.container}>
+            <div className={styles.ellipse}>
+              <div className={styles.circle} />
+            </div>
+            <div className={styles.line} />
           </div>
           <div className={styles.text}>иностранных языков</div>
         </div>
@@ -31,8 +34,11 @@ export default function Education () {
             <Profs />
           </div>
           <div className={styles.title}>80%</div>
-          <div className={styles.ellipse}>
-            <div className={styles.circle} />
+          <div className={styles.container}>
+            <div className={styles.ellipse}>
+              <div className={styles.circle} />
+            </div>
+            <div className={styles.line} />
           </div>
           <div className={styles.text}>преподавателей — профессора и доктора наук</div>
         </div>
@@ -42,8 +48,11 @@ export default function Education () {
             <Studs />
           </div>
           <div className={styles.title}>{'>'} 3000</div>
-          <div className={styles.ellipse}>
-            <div className={styles.circle} />
+          <div className={styles.container}>
+            <div className={styles.ellipse}>
+              <div className={styles.circle} />
+            </div>
+            <div className={styles.line} />
           </div>
           <div className={styles.text}>студентов</div>
         </div>
@@ -53,8 +62,10 @@ export default function Education () {
             <Prepods />
           </div>
           <div className={styles.title}>13</div>
-          <div className={styles.ellipse}>
-            <div className={styles.circle} />
+          <div className={styles.container}>
+            <div className={styles.ellipse}>
+              <div className={styles.circle} />
+            </div>
           </div>
           <div className={styles.text}>иностранных преподавателей — носители языка</div>
         </div>
