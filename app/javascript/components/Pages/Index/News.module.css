@@ -53,6 +53,7 @@
 }
 
 .news_item {
+  cursor: pointer;
   margin-bottom: calc(var(--yr) * var(--s2));
 
   @media(--s) {

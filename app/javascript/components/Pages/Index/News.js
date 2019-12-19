@@ -18,7 +18,7 @@ export default function News ({ news }) {
 
       <div className={styles.news_items}>
         {news.map(item =>
-          <div key={item.nid} className={styles.news_item}>
+          <a href={item.path} key={item.nid} className={styles.news_item}>
             <div className={styles.image}>
               <img src={item.images[0].path} />
             </div>
@@ -28,11 +28,9 @@ export default function News ({ news }) {
             </div>
 
             <div className={styles.title}>
-              <a href={item.path}>
-                {item.title}
-              </a>
+              {item.title}
             </div>
-          </div>
+          </a>
         )}
       </div>
 
