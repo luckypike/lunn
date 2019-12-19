@@ -18,24 +18,26 @@ export default function News ({ news }) {
 
       <div className={styles.news_items}>
         {news.map(item =>
-          <a href={item.path} key={item.nid} className={styles.news_item}>
-            <div className={styles.image}>
-              <img src={item.images[0].path} />
-            </div>
+          <div key={item.nid} className={styles.news_item}>
+            <a href={item.path}>
+              <div className={styles.image}>
+                <img src={item.images[0].path} />
+              </div>
 
-            <div className={styles.date}>
-              {dayjs.unix(item.created).locale('ru').format('DD MMMM YYYY')}
-            </div>
+              <div className={styles.date}>
+                {dayjs.unix(item.created).locale('ru').format('DD MMMM YYYY')}
+              </div>
 
-            <div className={styles.title}>
-              {item.title}
-            </div>
-          </a>
+              <div className={styles.title}>
+                {item.title}
+              </div>
+            </a>
+          </div>
         )}
       </div>
 
       <div className={styles.button}>
-        <a href="/news">
+        <a href="/news?page=1">
           Все новости
         </a>
       </div>

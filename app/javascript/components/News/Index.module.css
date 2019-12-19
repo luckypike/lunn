@@ -3,3 +3,63 @@
   text-align: center;
   margin-bottom: calc(var(--yr) * calc(var(--s3) * 4));
 }
+
+.pages {
+  display: flex;
+  width: max-content;
+  box-shadow: 0 0 0 1px #DCDFE0;
+  border-radius: var(--yr);
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
+.page {
+  position: relative;
+  cursor: pointer;
+  padding: calc(var(--yr) * var(--s1));
+  text-align: center;
+  border-right: 1px solid #DCDFE0;
+
+  & a {
+    display: block;
+    width: calc(var(--yr) * calc(var(--s1) * 2));
+    height: calc(var(--yr) * calc(var(--s1) * 2));
+    color: #747474;
+  }
+
+  &.active {
+    z-index: 2;
+    background-color: var(--hl_color);
+    box-shadow: 0 0 0 1px #2F53EB;
+    border: 1px solid var(--hl_color);
+
+    & a {
+      color: #fff;
+    }
+  }
+}
+
+.left, .right {
+  position: relative;
+  padding: calc(var(--yr) * var(--s1));
+
+  & a {
+    display: block;
+    width: calc(var(--yr) * calc(var(--s1) * 2));
+    height: calc(var(--yr) * calc(var(--s1) * 2));
+  }
+
+  & svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+}
+
+.left {
+  border-right: 1px solid #DCDFE0;
+}
+
+.disable {
+  pointer-events: none;
+}

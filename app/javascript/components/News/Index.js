@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import List from './Index/List'
 
@@ -16,12 +17,9 @@ export default function Index ({ location }) {
   const query = new URLSearchParams(location.search)
   const perPage = 10
 
-  // console.log(query.get('page'))
-
   const page = parseInt(query.get('page')) || 1
 
   const [total, setTotal] = useState(perPage * 5)
-  // const [pages, setPages] = useState()
   const [news, setNews] = useState()
 
   useEffect(() => {
@@ -45,8 +43,6 @@ export default function Index ({ location }) {
   let pagination = 5
   if (total) pagination = Math.ceil(total / perPage)
 
-  // console.log(pages)
-
   return (
     <div className={pages.root}>
       <div className={styles.intro}>
@@ -54,9 +50,8 @@ export default function Index ({ location }) {
       </div>
 
       <div className={pages.container}>
-
-        <Pages pagination={pagination} page={page} />
         <List news={news} />
+        <Pages pagination={pagination} page={page} />
       </div>
     </div>
   )
@@ -73,14 +68,34 @@ function Pages ({ pagination, page }) {
   if (from + 5 > pagination) from = pagination - 5
 
   return (
-    <div>
+    <div className={styles.pages}>
+      <div className={classNames(styles.left, { [styles.disable]: page === 1 })}>
+        <Link to={`/news?page=${page - 1}`}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M15.41,7.41,14,6,8,12l6,6,1.41-1.41L10.83,12Z" fill="#777"/>
+            <path d="M0,0H24V24H0Z" fill="none"/>
+          </svg>
+        </Link>
+      </div>
+
       {[...Array(pagination)].map((_, i) => i + 1).slice(from, from + 5).map(i =>
-        <div key={i}>
+        <div key={i} className={classNames(styles.page, { [styles.active]: page === i })}>
           <Link to={`/news?page=${i}`}>
-            page: {i}
+            {i}
           </Link>
         </div>
       )}
+
+      <div className={styles.right}>
+        <Link to={`/news?page=${page + 1}`}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g transform="translate(24 24) rotate(180)">
+              <path d="M15.41,7.41,14,6,8,12l6,6,1.41-1.41L10.83,12Z" fill="#777"/>
+              <path d="M0,0H24V24H0Z" fill="none"/>
+            </g>
+          </svg>
+        </Link>
+      </div>
     </div>
   )
 }

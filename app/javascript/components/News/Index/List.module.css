@@ -8,4 +8,9 @@
 
 .news {
   grid-column: span 8;
+  margin-bottom: calc(var(--yr) * var(--s3));
+
+  @media(--s) {
+    margin-bottom: calc(var(--yr) * calc(var(--s3) * 2));
+  }
 }

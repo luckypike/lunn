@@ -1,10 +1,19 @@
 .news_item {
   text-decoration: none;
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: calc(var(--yr) * var(--s3));
+  }
 
   @media(--s) {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-column-gap: calc(var(--xr) * 2);
+
+    &:not(:last-child) {
+      margin-bottom: calc(var(--yr) * var(--s4));
+    }
   }
 }
 
