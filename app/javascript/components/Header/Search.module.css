@@ -1,10 +1,45 @@
 .root {
   position: relative;
+  background: #fff;
+}
+
+.input {
+  font-size: 1rem;
+  line-height: calc(var(--yr) * 16);
+  outline: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border: 0;
+  padding-right: calc(var(--yr) * 14);
+  padding-left: calc(var(--yr) * 14);
+
+  @media (--s) {
+    line-height: calc(var(--yr) * 32);
+    padding-right: calc(var(--xr) * 6);
+    padding-left: calc(var(--xr) * 4);
+  }
+}
+
+.icon {
+  display: block;
+  width: calc(var(--yr) * 8);
+  height: calc(var(--yr) * 8);
+  position: absolute;
+  left: calc(var(--yr) * 4);
+  top: 50%;
+  fill: var(--gr_color);
+  transform: translateY(-50%);
+
+  @media (--s) {
+    left: calc(var(--xr) * 2);
+  }
 }
 
 .close {
+  cursor: pointer;
   position: absolute;
-  right: 0;
+  right: calc(var(--yr) * 2);
   top: 50%;
   transform: translateY(-50%);
   padding: calc(var(--yr) * 2);
@@ -13,5 +48,13 @@
     display: block;
     width: calc(var(--yr) * 8);
     height: calc(var(--yr) * 8);
+  }
+
+  @media (--s) {
+    right: calc(var(--xr) * 2);
+  }
+
+  @media (--m) {
+    right: calc(var(--xr) * 3);
   }
 }

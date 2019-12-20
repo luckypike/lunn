@@ -119,7 +119,6 @@
 }
 
 .search {
-  background-color: red;
   position: absolute;
   top: 0;
   left: 0;
@@ -127,10 +126,16 @@
   height: 100%;
   opacity: 0;
   visibility: hidden;
+  z-index: 9;
+  transform: translateY(calc(var(--yr) * -2));
+  /* transition: opacity 0.2s; */
+  transition: visibility 0s ease 0.2s, opacity 0.2s, transform 0.2s;
 
   &.active {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateY(0);
   }
 }
 

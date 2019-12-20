@@ -14,8 +14,6 @@ export default function Sliders ({ sliders }) {
   const slider = useRef()
   const mount = useRef()
 
-  console.log(sliders)
-
   useEffect(() => {
     slider.current = new Siema({
       selector: mount.current,
