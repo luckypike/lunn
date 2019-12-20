@@ -12,6 +12,7 @@
 }
 
 .img {
+  display: block;
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
@@ -31,6 +32,35 @@
       grid-column: span 2;
       text-align: right;
       padding-right: calc(var(--xr) * 4);
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 20px;
+        height: 20px;
+        background: var(--hl_color);
+        display: block;
+        border-radius: 50%;
+        right: 0;
+        top: 0;
+        box-shadow: 0 0 0 6px color-mod(var(--hl_color) a(0.4));
+        z-index: 1;
+      }
+
+      &::before {
+        position: absolute;
+        content: '';
+        width: 0;
+        border-right: 2px dashed #D5D9DB;
+        height: calc(100% + var(--yr) * var(--s3) * 2);
+        /* background: var(--hl_color); */
+        display: block;
+        /* border-radius: 50%; */
+        right: 9px;
+        top: 0;
+        /* box-shadow: 0 0 0 6px color-mod(var(--hl_color) a(0.4)); */
+      }
     }
 
     & .main {
