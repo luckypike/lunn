@@ -73,3 +73,16 @@ p {
     margin: 0 0 calc(var(--yr) * 4);
   }
 }
+
+figure {
+  margin: 0 0 calc(var(--yr) * 3);
+
+  & img {
+    display: block;
+    width: 100%;
+  }
+
+  @media (--s) {
+    margin: 0 0 calc(var(--yr) * 4);
+  }
+}
