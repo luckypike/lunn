@@ -1,1 +1,4 @@
-= react_component 'Pages/History', { node: @node, body: @node.body }
+= react_component 'Pages/History', { \
+  node: @node.as_json(only: :title, methods: :text),
+  loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]) \
+}

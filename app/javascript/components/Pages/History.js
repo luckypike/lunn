@@ -8,14 +8,15 @@ import pages from '../Pages.module.css'
 
 History.propTypes = {
   node: PropTypes.object,
-  body: PropTypes.object
+  loaf: PropTypes.array
 }
 
-export default function History ({ node, body }) {
+export default function History ({ node, loaf }) {
   return (
     <div className={pages.container}>
       <Title
         h1={node.title}
+        loaf={loaf}
       />
 
       <div className={styles.root}>
