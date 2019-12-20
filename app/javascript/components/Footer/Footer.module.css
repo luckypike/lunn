@@ -1,17 +1,6 @@
 .root {
   background-color: #333;
-  padding: calc(var(--yr) * var(--s4)) 0;
-  /* position: relative; */
-
-  @media(--s) {
-    /* padding: 24px calc(var(--yr) * 8) 0; */
-  }
-
-  @media (--m) {
-    /* max-width: 120rem; */
-    /* margin: 0 auto; */
-    /* padding: 48px calc(var(--yr) * 40) 0; */
-  }
+  padding: calc(var(--yr) * var(--s4)) 0 0;
 }
 
 .container {
@@ -152,7 +141,7 @@
 .media {
   color: #B7B7B7;
   background-color: #333;
-  padding: calc(var(--yr) * var(--s3)) 0;
+  padding: calc(var(--yr) * var(--s4)) 0;
 
   & .title {
     text-align: center;
@@ -160,8 +149,7 @@
   }
 
   @media(--s) {
-    padding: calc(var(--yr) * var(--s4));
-    grid-column: span 12;
+    /* grid-column: span 12; */
   }
 }
 
@@ -172,20 +160,20 @@
 }
 
 .logo {
-  cursor: pointer;
+  /* cursor: pointer; */
+  display: block;
   margin-right: calc(var(--yr) * calc(var(--s1) * 2));
-  height: 32px;
-  width: 32px;
-  position: relative;
+  /* position: relative; */
 
   &:last-child {
     margin-right: 0;
   }
 
   & svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+    height: 2rem;
+    width: 2rem;
+    display: block;
+    fill: #fff;
+    opacity: 0.65;
   }
 }

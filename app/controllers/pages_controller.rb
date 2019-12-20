@@ -6,13 +6,18 @@ class PagesController < ApplicationController
     @news = Node.news.lang.includes(:images)
       .order(created: :desc).limit(4)
 
-    @events = Node.events.lang
-      .where('created > ?', Time.current.beginning_of_day.to_i)
-      .order(created: :asc).limit(5)
+    @events = Node.events.includes(:date).joins(:date).lang
+      .where(
+        'field_data_field_date_begin.field_date_begin_value > ?',
+        Time.current.beginning_of_day
+      )
+      .order('field_data_field_date_begin.field_date_begin_value': :asc)
+      .limit(6)
 
-    if @events.size < 5
-      @events = Node.events.lang
-        .order(created: :asc).last(5)
+    if @events.size < 6
+      @events = Node.events.includes(:date).joins(:date).lang
+        .order('field_data_field_date_begin.field_date_begin_value': :asc)
+        .last(6)
     end
 
     @sliders = Node.sliders.lang.published

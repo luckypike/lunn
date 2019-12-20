@@ -20,7 +20,7 @@ export default function Poster ({ events }) {
         {events.map(event =>
           <div key={event.nid} className={styles.event}>
             <div className={styles.date}>
-              {dayjs.unix(event.created).locale('ru').format('DD MMMM YYYY')}
+              {dayjs(event.date).locale('ru').format('DD MMMM YYYY')}
             </div>
 
             <div className={styles.title}>

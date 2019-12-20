@@ -18,8 +18,8 @@ export default function Service ({ onSearchToggle, index, menuActive }) {
       </div>
 
       <div className={classNames(styles.search, { [styles.white]: index, [styles.black]: menuActive })} onClick={onSearchToggle}>
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" clipRule="evenodd" d="M21.14 19.727l5.567 5.566-1.414 1.414-5.681-5.68a8.75 8.75 0 111.529-1.3zM14.75 7A6.758 6.758 0 008 13.75a6.758 6.758 0 006.75 6.75 6.758 6.758 0 006.75-6.75A6.758 6.758 0 0014.75 7z"/>
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.607 18.856h-.922l-.327-.315a7.595 7.595 0 10-.817.817l.315.327v.922l5.835 5.816 1.733-1.733-5.817-5.834zm-7 0a5.25 5.25 0 114.853-3.24 5.243 5.243 0 01-4.853 3.24z" />
         </svg>
       </div>
     </div>
