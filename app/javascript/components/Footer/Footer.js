@@ -4,12 +4,6 @@ import classNames from 'classnames'
 
 import fonts from '../Fonts.module.css'
 import styles from './Footer.module.css'
-// import pages from '../Pages.module.css'
-
-import Vk from '!svg-react-loader?!./Images/Vk.svg'
-import Instagram from '!svg-react-loader?!./Images/Instagram.svg'
-import Facebook from '!svg-react-loader?!./Images/Facebook.svg'
-import Youtube from '!svg-react-loader?!./Images/Youtube.svg'
 
 Footer.propTypes = {
   navs: PropTypes.array

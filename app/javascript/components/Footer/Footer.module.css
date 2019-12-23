@@ -92,10 +92,6 @@
   & .phone, & .fax {
     margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
   }
-
-  @media  (--s) {
-    /* grid-column: 10 / span 3; */
-  }
 }
 
 .button {
@@ -145,11 +141,7 @@
 
   & .title {
     text-align: center;
-    margin-bottom: calc(var(--yr) * var(--s3))
-  }
-
-  @media(--s) {
-    /* grid-column: span 12; */
+    margin-bottom: calc(var(--yr) * var(--s3));
   }
 }
 
@@ -160,10 +152,8 @@
 }
 
 .logo {
-  /* cursor: pointer; */
   display: block;
   margin-right: calc(var(--yr) * calc(var(--s1) * 2));
-  /* position: relative; */
 
   &:last-child {
     margin-right: 0;

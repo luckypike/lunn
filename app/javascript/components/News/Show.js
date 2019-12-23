@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-// import { Link } from '@reach/router'
 import axios from 'axios'
-// import dayjs from 'dayjs'
-// import 'dayjs/locale/ru'
 
 import { Title } from '../Pages'
 import Renderer from '../Draft'
@@ -38,12 +35,6 @@ export default function Show ({ slug }) {
             h2={node.title}
             date={node.created}
           />
-
-          {/* {node.created &&
-            <div className={styles.date}>
-              {dayjs.unix(node.created).locale('ru').format('DD MMMM YYYY')}
-            </div>
-          } */}
 
           {node.images &&
             <Sliders images={node.images} />
