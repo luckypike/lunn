@@ -1,0 +1,6 @@
+- set_meta_tags \
+  title: @node.title
+
+= react_component 'Courses/Show', { \
+  node: @node.as_json(only: :title) \
+}

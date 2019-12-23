@@ -1,3 +1,6 @@
+- set_meta_tags \
+  title: @node.title
+
 = react_component 'Pages/Show', { \
   node: @node.as_json(only: :title, methods: :text),
   docs: @node.docs.as_json(only: [], methods: %i[fid path title wrapper]),

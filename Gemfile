@@ -7,6 +7,7 @@ gem 'mysql2', '>= 0.4.4'
 
 gem 'puma', '~> 4.1'
 
+gem 'meta-tags'
 gem 'react-rails'
 gem 'webpacker'
 

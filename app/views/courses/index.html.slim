@@ -1,0 +1,8 @@
+- set_meta_tags \
+  title: @node.title
+
+= react_component 'Courses/Index', { \
+  node: @node.as_json(only: :title),
+  loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
+  courses: @courses.as_json(only: %i[title nid], methods: %i[path]) \
+}

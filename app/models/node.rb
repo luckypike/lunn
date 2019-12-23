@@ -14,6 +14,7 @@ class Node < ApplicationRecord
   has_many :docs, -> { includes(:attachment).where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
 
   scope :news, -> { where(type: :news) }
+  scope :courses, -> { where(type: :course) }
   scope :events, -> { where(type: %i[news event]) }
   scope :sliders, -> { where(type: :slider_item) }
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
@@ -37,7 +38,7 @@ class Node < ApplicationRecord
 
   def loaf
     mlids = Nav.main_or_sec.find_by(link_path: "node/#{id}")
-      .slice(:p1, :p2, :p3, :p4, :p5, :p6, :p7, :p8, :p9).values
+      &.slice(:p1, :p2, :p3, :p4, :p5, :p6, :p7, :p8, :p9)&.values
 
     Nav.main_or_sec.where(mlid: mlids).unscope(:order).order(depth: :asc)
   end
