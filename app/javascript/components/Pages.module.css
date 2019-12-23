@@ -97,3 +97,9 @@
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 }
+
+.date {
+  text-align: center;
+  color: var(--hl_color);
+  margin-bottom: 0;
+}

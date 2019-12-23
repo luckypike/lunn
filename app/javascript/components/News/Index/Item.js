@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 
 import { Link } from '@reach/router'
+import Renderer from '../../Draft'
 
 import styles from './Item.module.css'
 
@@ -30,7 +31,7 @@ export default function Item ({ item }) {
         </div>
 
         <div className={styles.desc}>
-          {item.desc}
+          <Renderer source={item.desc} />
         </div>
       </div>
     </Link>

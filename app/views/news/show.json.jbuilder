@@ -4,6 +4,6 @@ json.node do
 
   json.images @node.images do |image|
     json.partial! image
-    json.path "#{image.attachment.host}styles/news_on_front/public/#{image.attachment.path}"
+    json.path "#{image.attachment.host}styles/embedded_main/public/#{image.attachment.path}"
   end
 end
