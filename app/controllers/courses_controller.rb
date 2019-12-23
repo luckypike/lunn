@@ -9,5 +9,8 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @loaf = Node.find(
+      UrlAlias.find_by(alias: :courses).source.split('/').last
+    ).loaf
   end
 end
