@@ -13,8 +13,8 @@ Nav.propTypes = {
 
 export default function Nav ({ navs, onToggle, index, menuActive }) {
   return (
-    <div className={styles.root}>
-      <div className={classNames(styles.toggle, { [styles.white]: index, [styles.black]: menuActive })} onClick={onToggle}>
+    <div className={classNames(styles.root, { [styles.white]: index, [styles.black]: menuActive })}>
+      <div className={styles.toggle} onClick={onToggle}>
         <svg viewBox="0 0 20 14">
           <rect height="2" width="20" x="0" y="0" />
           <rect height="2" width="20" x="0" y="6" />
@@ -22,7 +22,7 @@ export default function Nav ({ navs, onToggle, index, menuActive }) {
         </svg>
       </div>
 
-      <ul className={classNames(styles.navs, { [styles.white]: index, [styles.black]: menuActive })}>
+      <ul className={styles.navs}>
         {navs.filter(n => n.depth === 1).map(nav =>
           <li key={nav.mlid} className={styles.nav}>
             <a href={nav.path}>
@@ -31,7 +31,7 @@ export default function Nav ({ navs, onToggle, index, menuActive }) {
           </li>
         )}
 
-        <li className={classNames(styles.more, { [styles.white]: index, [styles.black]: menuActive })} onClick={onToggle}>
+        <li className={styles.more} onClick={onToggle}>
           Ещё...
         </li>
       </ul>
