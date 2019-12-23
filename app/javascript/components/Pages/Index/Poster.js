@@ -10,6 +10,8 @@ Poster.propTypes = {
 }
 
 export default function Poster ({ events }) {
+  console.log(events)
+
   return (
     <div className={styles.poster}>
       <div className={styles.label}>
@@ -33,7 +35,7 @@ export default function Poster ({ events }) {
       </div>
 
       <div className={styles.button}>
-        <a href="#">
+        <a href="/events">
           Все мероприятия
         </a>
       </div>

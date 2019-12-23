@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'index', to: 'pages#index', constraints: ->(req) { req.format == :json }, format: :json
 
   resources :news, only: %i[index show]
+  
+  resources :events, only: %i[index show]
 
   get '*path', to: 'pages#history', constraints: { path: 'about/history' }
 
