@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
+  before_action :set_url_aliases
+
   private
+
+  def set_url_aliases
+    Current.url_aliases = UrlAlias.lang
+  end
 
   def set_url_alias
     @url_alias = UrlAlias.find_by(alias: params[:path])

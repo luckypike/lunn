@@ -28,23 +28,50 @@ export default function Courses ({ courses }) {
             {course.spec || course.title}
           </div>
 
-          {[...Array(3)].filter((_, i) => course[`price_${i + 1}`] && course[`time_${i + 1}`]).map((_, i) =>
+          {[...Array(3)].filter((_, i) => course[`time_${i + 1}`] !== null && course[`places_${i + 1}`] !== null).map((_, i) =>
             <div key={i} className={styles.meta}>
               <div>
                 {forms[i + 1]}
               </div>
 
               <div>
-                {course[`time_${i + 1}`]} года
+                {course[`places_${i + 1}`] > 0 ? course[`places_${i + 1}`] : 'нет'} бюджетных мест
               </div>
 
               <div>
-                {course[`price_${i + 1}`]} ₽
+                {course[`time_${i + 1}`]} года срок обучения
               </div>
+
+              {course[`price_${i + 1}`] !== null &&
+                <div>
+                  {course[`price_${i + 1}`]} руб. в года стоимость обучения
+                </div>
+              }
             </div>
           )}
+
+          <div className={styles.ege}>
+            {course.ege.map(e =>
+              <div key={e} className={styles.e}>
+                <Ege label={e} />
+              </div>
+            )}
+          </div>
         </a>
       )}
     </div>
   )
+}
+
+function Ege ({ label }) {
+  const labels = {
+    foreign: 'Иностранный язык',
+    russian: 'Русский язык',
+    lit: 'Литература',
+    math: 'Математика',
+    history: 'История',
+    social: 'Обществознание'
+  }
+
+  return labels[label] || label
 }

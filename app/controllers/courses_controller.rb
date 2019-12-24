@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Node.courses.lang
-      .with_prices.with_times
+      .with_prices.with_times.with_places
       .includes(
         :field_spec, :field_youtube, :field_ege
       )
@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
 
   def show
     @loaf = Node.find(
-      UrlAlias.find_by(alias: :courses).source.split('/').last
+      UrlAlias.find_by(alias: :programs).source.split('/').last
     ).loaf
   end
 end

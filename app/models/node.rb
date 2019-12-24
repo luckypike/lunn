@@ -21,6 +21,10 @@ class Node < ApplicationRecord
   has_one :field_time_2, -> { where(entity_type: :node) }, class_name: 'Field::Time2', foreign_key: :entity_id
   has_one :field_time_3, -> { where(entity_type: :node) }, class_name: 'Field::Time3', foreign_key: :entity_id
 
+  has_one :field_places_1, -> { where(entity_type: :node) }, class_name: 'Field::Places1', foreign_key: :entity_id
+  has_one :field_places_2, -> { where(entity_type: :node) }, class_name: 'Field::Places2', foreign_key: :entity_id
+  has_one :field_places_3, -> { where(entity_type: :node) }, class_name: 'Field::Places3', foreign_key: :entity_id
+
   has_one :field_spec, -> { where(entity_type: :node) }, class_name: 'Field::Spec', foreign_key: :entity_id
   has_one :field_youtube, -> { where(entity_type: :node) }, class_name: 'Field::Youtube', foreign_key: :entity_id
 
@@ -34,6 +38,7 @@ class Node < ApplicationRecord
 
   scope :with_prices, -> { includes(:field_price_1, :field_price_2, :field_price_3) }
   scope :with_times, -> { includes(:field_time_1, :field_time_2, :field_time_3) }
+  scope :with_places, -> { includes(:field_places_1, :field_places_2, :field_places_3) }
 
   def path
     UrlAlias.alias_path "node/#{nid}"
@@ -73,6 +78,18 @@ class Node < ApplicationRecord
 
   def time_3
     field_time_3&.value
+  end
+
+  def places_1
+    field_places_1&.value
+  end
+
+  def places_2
+    field_places_2&.value
+  end
+
+  def places_3
+    field_places_3&.value
   end
 
   def youtube

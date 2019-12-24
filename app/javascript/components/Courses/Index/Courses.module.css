@@ -15,7 +15,7 @@
   }
 
   @media (--m) {
-    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr; */
   }
 
   @media (--l) {
@@ -41,13 +41,31 @@
 
 .meta {
   composes: at from '../../Fonts.module.css';
-  margin-top: var(--yr);
+  margin-top: calc(var(--yr) * var(--s2));
   color: var(--hl_color);
-  display: flex;
+  /* display: flex; */
 
-  & > div {
+  /* & > div {
     &:not(:last-child) {
       margin-right: 1em;
     }
+  } */
+}
+
+.ege {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--yr) * var(--s2));
+}
+
+.e {
+  composes: at from '../../Fonts.module.css';
+  border-radius: 2px;
+  background-color: #f8f8f8;
+  padding: var(--yr) calc(var(--yr) * 2);
+  margin-bottom: var(--yr);
+
+  &:not(:last-child) {
+    margin-right: var(--yr);
   }
 }
