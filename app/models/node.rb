@@ -13,11 +13,27 @@ class Node < ApplicationRecord
   has_one :image, -> { includes(:attachment).where(entity_type: :node) }, class_name: 'SingleImage', dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
   has_many :docs, -> { includes(:attachment).where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
 
+  has_one :field_price_1, -> { where(entity_type: :node) }, class_name: 'Field::Price1', foreign_key: :entity_id
+  has_one :field_price_2, -> { where(entity_type: :node) }, class_name: 'Field::Price2', foreign_key: :entity_id
+  has_one :field_price_3, -> { where(entity_type: :node) }, class_name: 'Field::Price3', foreign_key: :entity_id
+
+  has_one :field_time_1, -> { where(entity_type: :node) }, class_name: 'Field::Time1', foreign_key: :entity_id
+  has_one :field_time_2, -> { where(entity_type: :node) }, class_name: 'Field::Time2', foreign_key: :entity_id
+  has_one :field_time_3, -> { where(entity_type: :node) }, class_name: 'Field::Time3', foreign_key: :entity_id
+
+  has_one :field_spec, -> { where(entity_type: :node) }, class_name: 'Field::Spec', foreign_key: :entity_id
+  has_one :field_youtube, -> { where(entity_type: :node) }, class_name: 'Field::Youtube', foreign_key: :entity_id
+
+  has_many :field_ege, -> { where(entity_type: :node) }, class_name: 'Field::Ege', foreign_key: :entity_id
+
   scope :news, -> { where(type: :news) }
   scope :courses, -> { where(type: :course) }
   scope :events, -> { where(type: %i[news event]) }
   scope :sliders, -> { where(type: :slider_item) }
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
+
+  scope :with_prices, -> { includes(:field_price_1, :field_price_2, :field_price_3) }
+  scope :with_times, -> { includes(:field_time_1, :field_time_2, :field_time_3) }
 
   def path
     UrlAlias.alias_path "node/#{nid}"
@@ -29,6 +45,42 @@ class Node < ApplicationRecord
 
   def desc
     summary&.field_summary_value
+  end
+
+  def price_1
+    field_price_1&.value
+  end
+
+  def price_2
+    field_price_2&.value
+  end
+
+  def price_3
+    field_price_3&.value
+  end
+
+  def spec
+    field_spec&.value
+  end
+
+  def time_1
+    field_time_1&.value
+  end
+
+  def time_2
+    field_time_2&.value
+  end
+
+  def time_3
+    field_time_3&.value
+  end
+
+  def youtube
+    field_youtube&.value
+  end
+
+  def ege
+    field_ege.map(&:value)
   end
 
   def navs

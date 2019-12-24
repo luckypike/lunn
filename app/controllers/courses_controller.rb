@@ -4,6 +4,10 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Node.courses.lang
+      .with_prices.with_times
+      .includes(
+        :field_spec, :field_youtube, :field_ege
+      )
 
     respond_to :html
   end

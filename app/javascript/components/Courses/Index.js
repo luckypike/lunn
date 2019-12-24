@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 // import classNames from 'classnames'
 
 import { Title } from '../Pages'
+import Courses from './Index/Courses'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
@@ -24,13 +25,9 @@ export default function Show ({ node, courses, docs, loaf }) {
 
       {courses.length > 0 &&
         <div className={styles.courses}>
-          {courses.map(course =>
-            <div key={course.nid}>
-              <a href={course.path}>
-                {course.title}
-              </a>
-            </div>
-          )}
+          <Courses
+            courses={courses}
+          />
         </div>
       }
     </div>
