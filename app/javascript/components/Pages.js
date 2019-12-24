@@ -18,15 +18,21 @@ export function Title ({ h1, h2, loaf, desc, date }) {
     <div className={styles.root}>
       {loaf && loaf.length > 0 &&
         <ul className={styles.loafs}>
-          <a className={styles.main} href="/">
-            Главная
-          </a>
+          <li className={styles.wrapper}>
+            <div className={styles.loaf}>
+              <a href="/">
+                Главная
+              </a>
+            </div>
+          </li>
 
           {loaf.map(l =>
-            <li key={l.mlid} className={styles.loaf}>
-              <a href={l.path}>
-                {l.title}
-              </a>
+            <li key={l.mlid} className={styles.wrapper}>
+              <div className={styles.loaf}>
+                <a href={l.path}>
+                  {l.title}
+                </a>
+              </div>
             </li>
           )}
         </ul>

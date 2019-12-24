@@ -34,39 +34,32 @@
 }
 
 .loaf {
-  position: relative;
-  white-space: nowrap;
   overflow: hidden;
-  margin-right: var(--yr);
   text-overflow: ellipsis;
-  max-width: 300px;
+  white-space: nowrap;
+  max-width: 270px;
+  color: #777;
+
+  & a {
+    color: #777;
+  }
+}
+
+.wrapper {
+  display: flex;
+  margin-right: var(--yr);
+  white-space: nowrap;
 
   &::after {
     content: "–";
     color: #777;
     margin-left: var(--yr);
-  }
-
-  & a {
-    color: #777;
   }
 
   &:last-child {
     &::after {
       display: none;
     }
-  }
-}
-
-.main {
-  position: relative;
-  margin-right: var(--yr);
-  color: #777;
-
-  &::after {
-    content: "–";
-    /* color: #777; */
-    margin-left: var(--yr);
   }
 }
 
