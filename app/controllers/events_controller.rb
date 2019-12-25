@@ -4,7 +4,8 @@ class EventsController < ApplicationController
       format.html
       format.json do
         @events = Node.events.joins(:date).lang
-          .order('field_data_field_date_begin.field_date_begin_value': :asc)
+
+        ActiveRecord::Associations::Preloader.new.preload(@events, :date)
       end
     end
   end
