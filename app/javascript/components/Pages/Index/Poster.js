@@ -10,8 +10,6 @@ Poster.propTypes = {
 }
 
 export default function Poster ({ events }) {
-  console.log(events)
-
   return (
     <div className={styles.poster}>
       <div className={styles.label}>

@@ -63,8 +63,8 @@ export default function Calendar ({ events }) {
             current={current}
             startOfMonth={current.startOf('month').subtract(1, 'day')}
             endOfMonth={current.endOf('month')}
-            events={events}
             day={day}
+            events={events.filter(event => (dayjs(event.date).locale('ru').format('D MM YY') === day.format('D MM YY')))}
           />
         )}
       </div>

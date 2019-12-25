@@ -20,8 +20,6 @@ export default function Show ({ slug }) {
     _fetch()
   }, [])
 
-  console.log(event)
-
   return (
     <div>
       {event &&
