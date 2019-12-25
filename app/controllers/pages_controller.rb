@@ -20,6 +20,9 @@ class PagesController < ApplicationController
         .last(6)
     end
 
+    # TODO: убрать эту загрузку, выяснить почему includes не сработал
+    ActiveRecord::Associations::Preloader.new.preload(@events, :date)
+
     @sliders = Node.sliders.lang.published
       .includes(:image, :dates)
       .order(created: :desc)
