@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { Link } from '@reach/router'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import isBetween from 'dayjs/plugin/isBetween'
@@ -91,9 +92,29 @@ function Day ({ startOfMonth, endOfMonth, events, day }) {
   return (
     <div className={classNames(styles.date, { [styles.today]: isToday() })}>
       {!isOutOfMonth() &&
-        <div className={styles.active}>
-          {day.format('D')}
-        </div>
+        <>
+          {events &&
+            <div className={styles.events}>
+              {events.map((event, i) =>
+                <Link to={event.path} key={i}>
+                  <div className={styles.event}>
+                    <div className={classNames(styles.blue, { [styles.white]: isToday() })}>
+                      {day.format('D')}
+                    </div>
+
+                    <div>event</div>
+                  </div>
+                </Link>
+              )}
+            </div>
+          }
+
+          {events.length < 1 &&
+            <div className={styles.active}>
+              {day.format('D')}
+            </div>
+          }
+        </>
       }
 
       {isOutOfMonth() &&

@@ -81,3 +81,20 @@
 .out {
   color: #777;
 }
+
+.events {
+  position: relative;
+}
+
+.event {
+  composes: at from '../../Fonts.module.css';
+  position: absolute;
+}
+
+.blue {
+  color: var(--hl_color);
+}
+
+.white {
+  color: #fff;
+}
