@@ -63,6 +63,14 @@
     display: block;
     height: calc(var(--yr) * 10);
 
+    & circle {
+      fill: #fff;
+    }
+
+    & path {
+      fill: var(--hl_color);
+    }
+
     @media (--s) {
       height: calc(var(--yr) * 16);
     }
@@ -143,7 +151,11 @@
   &.logo {
     & svg {
       & path {
-        fill: white;
+        fill: #fff;
+      }
+
+      & circle {
+        fill: var(--hl_color);
       }
     }
   }
@@ -154,6 +166,10 @@
     & svg {
       & path {
         fill: var(--hl_color);
+      }
+
+      & circle {
+        fill: #fff;
       }
     }
   }
