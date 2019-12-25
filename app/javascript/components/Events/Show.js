@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { Link } from '@reach/router'
+
+import { Title } from '../Pages'
+import Renderer from '../Draft'
+import pages from '../Pages.module.css'
+
+import styles from './Show.module.css'
 
 Show.propTypes = {
   slug: PropTypes.string
@@ -21,22 +26,21 @@ export default function Show ({ slug }) {
   }, [])
 
   return (
-    <div>
+    <div className={pages.container}>
+
       {event &&
         <>
-          <div>
-            {event.title}
-          </div>
+          <Title
+            h2={event.title}
+          />
 
-          <div>
-            {event.text}
-          </div>
+          {event.text &&
+            <div className={styles.text}>
+              <Renderer source={event.text} />
+            </div>
+          }
         </>
       }
-
-      <Link to="/events">
-        Events
-      </Link>
     </div>
   )
 }
