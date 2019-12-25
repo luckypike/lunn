@@ -61,11 +61,10 @@ export default function Calendar ({ events }) {
         {Array.from({ length: endOfMonth.diff(startOfMonth, 'days') + 1 }, (v, k) => startOfMonth.clone().add(k, 'day')).map((day, _) =>
           <Day
             key={day.year() + '_' + day.month() + '_' + day.date()}
-            current={current}
             startOfMonth={current.startOf('month').subtract(1, 'day')}
             endOfMonth={current.endOf('month')}
-            day={day}
             events={events.filter(event => (dayjs(event.date).locale('ru').format('D MM YY') === day.format('D MM YY')))}
+            day={day}
           />
         )}
       </div>
@@ -95,7 +94,7 @@ function Day ({ startOfMonth, endOfMonth, events, day }) {
         <>
           {events &&
             <div className={styles.events}>
-              {events.map((event, i) =>
+              {events.filter(i => i.path.startsWith('/events/')).map((event, i) =>
                 <Link to={event.path} key={i}>
                   <div className={styles.event}>
                     <div className={classNames(styles.blue, { [styles.white]: isToday() })}>
@@ -105,6 +104,18 @@ function Day ({ startOfMonth, endOfMonth, events, day }) {
                     <div>event</div>
                   </div>
                 </Link>
+              )}
+
+              {events.filter(i => i.path.startsWith('/news/')).map((event, i) =>
+                <a href={event.path} key={i}>
+                  <div className={styles.event}>
+                    <div className={classNames(styles.blue, { [styles.white]: isToday() })}>
+                      {day.format('D')}
+                    </div>
+
+                    <div>event</div>
+                  </div>
+                </a>
               )}
             </div>
           }
