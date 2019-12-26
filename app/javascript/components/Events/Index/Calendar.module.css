@@ -1,3 +1,7 @@
+.root {
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 4));
+}
+
 .months {
   display: flex;
   width: 100%;
@@ -5,7 +9,6 @@
 }
 
 .item {
-
   position: relative;
   width: calc(var(--yr) * 11);
   height: calc(var(--yr) * 11);
@@ -41,8 +44,8 @@
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  /* box-shadow: 0 0 0 1px #DDDEDE; */
   background-color: #ECF0F1;
+  border: 1px solid #DDDEDE;
 }
 
 .weekday {
@@ -50,7 +53,7 @@
   padding: 8px 10px;
 
   &:not(:last-child) {
-    /* border-right: 1px solid #DDDEDE; */
+    border-right: 1px solid #DDDEDE;
   }
 
   @media(--s) {
@@ -61,20 +64,21 @@
 .month {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  border-left: 1px solid #DDDEDE;
 }
 
 .date {
-  box-shadow: 0 0 0 1px #DDDEDE;
   position: relative;
-  padding: calc(var(--yr) * 4) calc(var(--yr) * 5) calc(var(--yr) * calc(var(--s4) * 2));
+  padding: calc(var(--yr) * 2) calc(var(--yr) * 2.5) calc(var(--yr) * var(--s4));
+  border-bottom: 1px solid #DDDEDE;
+  border-right: 1px solid #DDDEDE;
+
+  @media(--s) {
+    padding: calc(var(--yr) * 4) calc(var(--yr) * 5) calc(var(--yr) * calc(var(--s4) * 2));
+  }
 }
 
-.today {
-  color: #fff;
-  background-color: var(--hl_color);
-}
-
-.active {
+.in {
   position: relative;
 }
 
@@ -96,5 +100,10 @@
 }
 
 .white {
+  /* color: #fff; */
+}
+
+.today {
   color: #fff;
+  background-color: var(--hl_color);
 }
