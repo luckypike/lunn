@@ -40,7 +40,7 @@ export default function Education () {
             </div>
             <div className={styles.line} />
           </div>
-          <div className={styles.text}>преподавателей — профессора и доктора наук</div>
+          <div className={styles.text}>преподавателей — кандидаты и доктора наук</div>
         </div>
 
         <div className={styles.block}>
