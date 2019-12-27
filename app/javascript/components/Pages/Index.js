@@ -7,7 +7,7 @@ import Sec from './Index/Sec'
 import Sliders from './Index/Sliders'
 import Education from './Index/Education'
 import News from './Index/News'
-import Poster from './Index/Poster'
+import Events from './Index/Events'
 import Introduction from './Index/Introduction'
 
 import styles from './Index.module.css'
@@ -65,7 +65,7 @@ export default function Index ({ navs }) {
           }
 
           {events &&
-            <Poster events={events} />
+            <Events events={events} />
           }
 
           {sliders &&

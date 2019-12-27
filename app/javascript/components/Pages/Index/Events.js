@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 
-import styles from './Poster.module.css'
+import styles from './Events.module.css'
 
-Poster.propTypes = {
+Events.propTypes = {
   events: PropTypes.array
 }
 
-export default function Poster ({ events }) {
+export default function Events ({ events }) {
   return (
     <div className={styles.poster}>
       <div className={styles.label}>
@@ -20,7 +20,14 @@ export default function Poster ({ events }) {
         {events.map(event =>
           <div key={event.nid} className={styles.event}>
             <div className={styles.date}>
-              {dayjs(event.date).locale('ru').format('DD MMMM YYYY')}
+              <div className={styles.num}>
+                {dayjs(event.date).locale('ru').format('DD')}
+              </div>
+
+              <div className={styles.month}>
+                <div>{dayjs(event.date).locale('ru').format('MMMM')}</div>
+                <div className={styles.day}>{dayjs(event.date).locale('ru').format('dd')}</div>
+              </div>
             </div>
 
             <div className={styles.title}>
@@ -32,11 +39,9 @@ export default function Poster ({ events }) {
         )}
       </div>
 
-      <div className={styles.button}>
-        <a href="/events">
-          Все мероприятия
-        </a>
-      </div>
+      <a href="/events" className={styles.button}>
+        Календарь событий
+      </a>
     </div>
   )
 }
