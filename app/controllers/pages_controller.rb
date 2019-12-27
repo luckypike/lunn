@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def index
     @news = Node.news.lang.includes(:images)
-      .order(created: :desc).limit(4)
+      .order(created: :desc).limit(3)
 
     @events = Node.events.joins(:date).lang
       .where(
