@@ -6,17 +6,13 @@
   @media(--s) {
     /* background: linear-gradient(#fff, #ECEFF1, #fff); */
     grid-column: span 4;
-    padding: 0 calc(var(--xr) * 2);
+    /* padding: 0 calc(var(--xr) * 2); */
     margin-bottom: calc(var(--yr) * var(--s4));
   }
 }
 
 .label {
   margin-bottom: calc(var(--yr) * var(--s4));
-}
-
-.events {
-
 }
 
 .event {
@@ -68,4 +64,22 @@
 .day {
   color: #141414;
   opacity: 0.5;
+}
+
+.buttons {
+  display: flex;
+  margin-bottom: 28px;
+}
+
+.tab {
+  align-self: center;
+  color: var(--gr_color);
+  padding: 8px 30px;
+  cursor: pointer;
+}
+
+.active {
+  color: #fff;
+  background-color: var(--hl_color);
+  border-radius: calc(var(--yr) * 2);
 }
