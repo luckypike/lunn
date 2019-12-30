@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_url_alias
-    @url_alias = UrlAlias.find_by(alias: params[:path])
+    @url_alias = UrlAlias.find_by(alias: params[:path].gsub('.json', ''))
   end
 
   def set_node

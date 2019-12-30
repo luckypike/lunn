@@ -31,6 +31,7 @@ class Node < ApplicationRecord
   has_many :field_ege, -> { where(entity_type: :node) }, class_name: 'Field::Ege', foreign_key: :entity_id
 
   scope :news, -> { where(type: :news) }
+  scope :employees, -> { where(type: :employee) }
   scope :courses, -> { where(type: :course) }
   scope :events, -> { where(type: %i[news event]) }
   scope :sliders, -> { where(type: :slider_item) }

@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   get '*path', to: 'courses#index', constraints: { path: 'programs' }
   get '*path', to: 'courses#show', constraints: { path: %r{programs/.*} }
 
+  get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
+  get '*path', to: 'tutors#show', constraints: { path: %r{tutors/.*} }
+
   get '*path', to: 'pages#show', constraints: ->(request) { UrlAlias.where(alias: request[:path]).any? }
 end
