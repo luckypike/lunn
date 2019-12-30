@@ -30,7 +30,7 @@ export default function News ({ news }) {
                 {item.title}
               </div>
 
-              {i === 0 && item.desc !== null &&
+              {i === 0 && item.desc &&
                 <div className={styles.desc}>
                   <Renderer source={item.desc} />
                 </div>
