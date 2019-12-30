@@ -18,8 +18,8 @@ export default function Events ({ events }) {
 
   const buttons = {
     tab: [
-      { title: 'Календарь' },
-      { title: 'События' }
+      { title: 'События' },
+      { title: 'Календарь' }
     ]
   }
 
@@ -37,7 +37,7 @@ export default function Events ({ events }) {
         )}
       </div>
 
-      {active === 0 &&
+      {active === 1 &&
         <>
           <div>
             <Calendar events={events} />
@@ -45,8 +45,8 @@ export default function Events ({ events }) {
         </>
       }
 
-      {active === 1 &&
-        <>
+      {active === 0 &&
+        <div className={styles.events}>
           {events.map(event =>
             <div key={event.nid} className={styles.event}>
               <div className={styles.date}>
@@ -67,7 +67,7 @@ export default function Events ({ events }) {
               </div>
             </div>
           )}
-        </>
+        </div>
       }
 
       <a href="/events" className={styles.button}>

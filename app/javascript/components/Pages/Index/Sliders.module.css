@@ -135,3 +135,9 @@
   height: 12px;
   width: 12px;
 }
+
+.first {
+  background-image: url('./Images/slide.jpg') !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -53,6 +53,10 @@
     grid-column-gap: calc(var(--yr) * 2);
     grid-row-gap: calc(var(--yr) * 2);
   }
+
+  & a {
+    color: #fff;
+  }
 }
 
 .inactive {
@@ -65,9 +69,42 @@
   background-color: #ECEFF1;
   border-radius: calc(var(--yr) * 2);
   margin-bottom: calc(var(--yr) * 2);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--gr_color);
+
+  &:after {
+    content: '';
+    background-color: #fff;
+    opacity: 0.5;
+  }
 
   @media(--m) {
     margin-bottom: 0;
     padding: 28px 32px 128px;
   }
+}
+
+.image_1 {
+  background-image: url('./Images/1.jpg');
+}
+
+.image_2 {
+  background-image: url('./Images/2.jpg');
+}
+
+.image_3 {
+  background-image: url('./Images/3.jpg');
+}
+
+.image_4 {
+  background-image: url('./Images/4.jpg');
+}
+
+.image_5 {
+  background-image: url('./Images/5.jpg');
+}
+
+.image_6 {
+  background-image: url('./Images/6.jpg');
 }

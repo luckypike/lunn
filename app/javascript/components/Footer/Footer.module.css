@@ -58,6 +58,7 @@
   } */
 
   @media (--s) {
+    grid-row-gap: calc(var(--yr) * 6);
     grid-column: span 4;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: calc(var(--xr) * 2);
@@ -65,7 +66,7 @@
 }
 
 .main {
-  margin-bottom: calc(var(--yr) * var(--s2));
+  /* margin-bottom: calc(var(--yr) * var(--s2)); */
   position: relative;
 
   & .first {
@@ -75,7 +76,7 @@
   }
 
   & a {
-    color: #B7B7B7;
+    color: var(--gr_color);
   }
 }
 
@@ -85,6 +86,10 @@
   &:before {
     content: '+';
     display: block;
+
+    @media(--s) {
+      display: none;
+    }
   }
 }
 

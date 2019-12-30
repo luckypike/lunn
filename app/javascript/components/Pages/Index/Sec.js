@@ -42,7 +42,7 @@ function Items ({ items }) {
   return (
     <>
       {items.map((item, i) =>
-        <a href={item.path} key={i} className={styles.item}>
+        <a href={item.path} key={i} className={classNames(styles.item, styles[`image_${Math.floor(Math.random() * 6) + 1}`])}>
           {item.title}
         </a>
       )}

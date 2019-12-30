@@ -51,9 +51,9 @@ export default function Sliders ({ sliders }) {
       </div>
 
       <div ref={mount} className={styles.images}>
-        {sliders.map(slider =>
+        {sliders.map((slider, i) =>
           <div key={slider.nid}>
-            <div className={styles.image} style={{ backgroundImage: `url(${slider.image.path})` }}>
+            <div className={classNames(styles.image, { [styles.first]: i === 0 })} style={{ backgroundImage: `url(${slider.image.path})` }}>
               <div className={styles.content}>
                 {slider.dates &&
                   <div className={styles.dates}>

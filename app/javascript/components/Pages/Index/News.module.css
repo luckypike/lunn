@@ -1,10 +1,10 @@
 .news {
   grid-column: span 8;
-  margin-bottom: calc(var(--yr) * var(--s3));
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 2));
   position: relative;
 
   @media(--s) {
-    margin-bottom: calc(var(--yr) * var(--s4));
+    margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
   }
 }
 
@@ -71,7 +71,7 @@
   position: static;
   text-align: center;
   border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
   color: #141414;
   background-color: #ECEFF1;
 
