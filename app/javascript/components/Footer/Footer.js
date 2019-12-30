@@ -14,11 +14,43 @@ export default function Footer ({ navs }) {
     <div className={styles.root}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
+          <div className={styles.info}>
+            <div className={styles.title}>
+              © 2007-2019 Нижегородский государственный лингвистический университет имени Н.А. Добролюбова
+            </div>
+
+            <div className={styles.links}>
+              <a className={styles.link} href="#">Отзывы</a>
+              <a className={styles.link} href="#">Обращения граждан</a>
+              <a className={styles.link} href="#">Приемная ректора</a>
+            </div>
+
+            <div className={styles.adress}>
+              <div className={styles.text}>603155, Россия, Нижний Новгород, ул. Минина 31а</div>
+              <a className={styles.button} href="#">Адрес на карте</a>
+            </div>
+
+            <div className={styles.media}>
+              <div>
+                <a href="tel:+78314361575">+7 (831) 436-15-75</a>
+              </div>
+
+              <div>
+                <a href="mailto:admdep@lunn.ru" className={styles.button}>admdep@lunn.ru</a>
+              </div>
+
+              <div>
+                <a href="tel:+78314166131">Факс: +7 (831) 416-61-31</a>
+              </div>
+            </div>
+          </div>
+
           <ul className={styles.navs}>
             {navs.filter(item => item.depth === 1).map(n1l =>
               <li className={styles.main} key={n1l.mlid}>
                 <a href={n1l.path} className={classNames(styles.first, fonts.h4)}>
                   {n1l.title}
+                  <div className={styles.toggle} />
                 </a>
                 <ul>
                   {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>
@@ -32,40 +64,9 @@ export default function Footer ({ navs }) {
               </li>
             )}
           </ul>
-
-          <div className={styles.info}>
-            <div className={styles.adress}>
-              <div className={styles.index}>Адрес:</div>
-              <div className={styles.text}>603155, Россия, Нижний Новгород, ул. Минина 31а</div>
-              <div className={styles.button}>
-                <a href="#">
-                  Показать на карте
-                </a>
-              </div>
-            </div>
-
-            <div className={styles.connect}>
-              <div className={styles.phone}>
-                <div className={styles.index}>Телефон:</div>
-                <a href="tel:+78314361575" className={styles.text}>+7 (831) 436-15-75</a>
-              </div>
-
-              <div className={styles.fax}>
-                <div className={styles.index}>Факс:</div>
-                <a href="tel:+78314166131" className={styles.text}>+7 (831) 416-61-31</a>
-              </div>
-
-              <div className={styles.email}>
-                <div className={styles.index}>Электронная почта:</div>
-                <a href="mailto:admdep@lunn.ru" className={styles.text}>admdep@lunn.ru</a>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div className={styles.line} />
-
-        <div className={styles.media}>
+        {/* <div className={styles.media}>
           <div className={styles.title}>
              © 2007-2019 Нижегородский государственный лингвистический университет имени Н.А. Добролюбова
           </div>
@@ -103,7 +104,7 @@ export default function Footer ({ navs }) {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
