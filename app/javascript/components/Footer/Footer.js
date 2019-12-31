@@ -50,7 +50,7 @@ export default function Footer ({ navs }) {
               <li className={styles.main} key={n1l.mlid}>
                 <a href={n1l.path} className={classNames(styles.first, fonts.h4)}>
                   {n1l.title}
-                  <div className={styles.toggle} />
+                  <div className={styles.plus} />
                 </a>
                 <ul>
                   {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>

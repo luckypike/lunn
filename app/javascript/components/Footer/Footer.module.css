@@ -70,6 +70,7 @@
   position: relative;
 
   & .first {
+    position: relative;
     display: flex;
     color: #fff;
     margin-bottom: calc(var(--yr) * var(--s2));
@@ -80,16 +81,40 @@
   }
 }
 
-.toggle {
-  margin-left: auto;
+.plus {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: .75rem;
+  height: .75rem;
+  padding: 0;
+
+
+  &:before, &:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    transform: translate(-50%,-50%);
+  }
 
   &:before {
-    content: '+';
-    display: block;
+    width: 100%;
+    height: 2px;
+  }
 
-    @media(--s) {
-      display: none;
-    }
+  &::after {
+    width: 2px;
+    height: 100%;
+  }
+
+  @media(--s) {
+    display: none;
   }
 }
 
