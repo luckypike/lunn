@@ -43,7 +43,7 @@ function Items ({ items }) {
     <>
       {items.map((item, i) =>
         <a href={item.path} key={i} className={classNames(styles.item, styles[`image_${Math.floor(Math.random() * 6) + 1}`])}>
-          {item.title}
+          <div className={styles.title}>{item.title}</div>
         </a>
       )}
     </>
