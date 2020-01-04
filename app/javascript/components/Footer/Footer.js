@@ -6,10 +6,11 @@ import fonts from '../Fonts.module.css'
 import styles from './Footer.module.css'
 
 Footer.propTypes = {
-  navs: PropTypes.array
+  navs: PropTypes.array,
+  footer: PropTypes.array
 }
 
-export default function Footer ({ navs }) {
+export default function Footer ({ navs, footer }) {
   return (
     <div className={styles.root}>
       <div className={styles.container}>
@@ -20,7 +21,7 @@ export default function Footer ({ navs }) {
             </div>
 
             <div className={styles.links}>
-              <a className={styles.link} href="#">Отзывы</a>
+              {/* <a className={styles.link} href="#">Отзывы</a> */}
               <a className={styles.link} href="#">Обращения граждан</a>
               <a className={styles.link} href="#">Приемная ректора</a>
             </div>
@@ -48,11 +49,11 @@ export default function Footer ({ navs }) {
           <ul className={styles.navs}>
             {navs.filter(item => item.depth === 1).map(n1l =>
               <li className={styles.main} key={n1l.mlid}>
-                <a href={n1l.path} className={classNames(styles.first, fonts.h4)}>
+                <a href={n1l.path} className={styles.first}>
                   {n1l.title}
                   <div className={styles.plus} />
                 </a>
-                <ul>
+                <ul className={styles.sec}>
                   {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>
                     <li key={n2l.mlid}>
                       <a href={n2l.path} className={styles.second}>
@@ -63,6 +64,18 @@ export default function Footer ({ navs }) {
                 </ul>
               </li>
             )}
+
+            <li className={styles.main}>
+              <ul className={classNames(styles.sec, styles.footer)}>
+                {footer.map(f =>
+                  <li key={f.mlid}>
+                    <a href={f.path} className={styles.second}>
+                      {f.title}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </li>
           </ul>
         </div>
 
