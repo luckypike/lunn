@@ -24,7 +24,7 @@ export default function Events ({ events }) {
   }
 
   return (
-    <div className={styles.poster}>
+    <div className={styles.root}>
       <div className={styles.label}>
         <h2>События</h2>
       </div>
@@ -70,7 +70,7 @@ export default function Events ({ events }) {
         </div>
       }
 
-      <a href="/events" className={styles.button}>
+      <a href="/events" className={styles.more}>
         Все события
       </a>
     </div>

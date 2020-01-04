@@ -10,6 +10,10 @@
   }
 
   @media (--m) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (--l) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
@@ -19,22 +23,34 @@
 }
 
 .item {
-  z-index: 2;
   overflow: hidden;
   position: relative;
   display: block;
   border-radius: calc(var(--yr) * 2);
   margin-bottom: calc(var(--yr) * 2);
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: var(--gr_color);
 
   &:before {
     content: '';
     display: block;
-    min-height: 85px;
+    padding-top: calc(1 / 2 * 100%);
 
     @media(--m) {
       padding-top: calc(2 / 3 * 100%);
     }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
   }
 
   @media(--m) {
@@ -43,10 +59,12 @@
 }
 
 .title {
+  composes: h4 from './Fonts.module.css';
   position: absolute;
   top: calc(var(--yr) * 5);
   left: var(--xr);
-  right: var(--xr);
+  right: calc(var(--xr) * 2);
+  z-index: 1;
 
   @media(--m) {
     top: calc(var(--yr) * 7);

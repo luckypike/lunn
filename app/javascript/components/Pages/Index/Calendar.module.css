@@ -1,5 +1,6 @@
 .root {
   margin-bottom: 28px;
+  max-width: 22rem;
 }
 
 .current {
@@ -42,7 +43,8 @@
 .weekday {
   text-align: center;
   color: #777777;
-  padding: 0 16px 16px;
+  line-height: calc(var(--yr) * 12);
+  /* padding: 0 16px 16px; */
 }
 
 .months {
@@ -52,7 +54,8 @@
 
 .date {
   position: relative;
-  padding: 12px 15px;
+  /* padding: 12px 15px; */
+  line-height: calc(var(--yr) * 12);
   text-align: center;
 }
 
@@ -86,8 +89,8 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  right: -6px;
-  top: -3px;
+  right: 9px;
+  top: 9px;
   transform: translate(3px 6px);
   background-color: var(--hl_color);
   border-radius: 50%;

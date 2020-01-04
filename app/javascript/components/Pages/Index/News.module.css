@@ -1,15 +1,19 @@
 .news {
-  grid-column: span 8;
-  margin-bottom: calc(var(--yr) * calc(var(--s3) * 2));
+  margin-bottom: calc(var(--yr) * var(--s5));
   position: relative;
 
   @media(--s) {
-    margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
+    grid-column: span 12;
+    /* margin-bottom: calc(var(--yr) * calc(var(--s4) * 2)); */
+  }
+
+  @media (--m) {
+    grid-column: span 8;
   }
 }
 
 .label {
-  margin-bottom: calc(var(--yr) * var(--s4));
+  margin-bottom: calc(var(--yr) * var(--s3));
 }
 
 .news_items {
@@ -27,19 +31,21 @@
 .image {
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2));
+  overflow: hidden;
 
   &::before {
     display: block;
     content: '';
-    padding-top: calc(3 / 4.33 * 100%);
+    padding-top: calc(2 / 3 * 100%);
   }
 
   & img {
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
     position: absolute;
     display: block;
     width: 100%;
+    transform: translate(-50%, -50%);
 
     @media(--s) {
       /* border-radius: var(--yr); */
@@ -59,6 +65,16 @@
   @media(--s) {
     margin-bottom: 0;
   }
+
+  &:first-child {
+    & .image {
+      &::before {
+        @media (--s) {
+          padding-top: calc(1 / 2 * 100%);
+        }
+      }
+    }
+  }
 }
 
 .title {
@@ -66,7 +82,8 @@
   margin-bottom: calc(var(--yr) * var(--s1));
 }
 
-.button {
+.more {
+  display: inline-block;
   cursor: pointer;
   position: static;
   text-align: center;
