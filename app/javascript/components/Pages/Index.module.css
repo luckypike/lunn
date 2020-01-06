@@ -8,6 +8,10 @@
   }
 }
 
+.name {
+  composes: h4 from '../Fonts.module.css';
+}
+
 .video {
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2) * 2);

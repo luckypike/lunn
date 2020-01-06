@@ -45,10 +45,11 @@ export default function Index ({ navs }) {
           <div className={styles.introduction}>
             <Introduction />
           </div>
-          <div>
+          <div className={styles.name}>
             Нижегородский государственный лингвистический
             <br />
-            университет имени Н.А. Добролюбова</div>
+            университет имени Н.А. Добролюбова
+          </div>
         </div>
       </div>
 
