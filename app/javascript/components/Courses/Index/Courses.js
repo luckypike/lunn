@@ -8,27 +8,25 @@ Courses.propTypes = {
 }
 
 export default function Courses ({ courses }) {
-  const forms = {
-    1: 'Очная',
-    2: 'Очно-заочная',
-    3: 'Заочная'
-  }
+  // const forms = {
+  //   1: 'Очная',
+  //   2: 'Очно-заочная',
+  //   3: 'Заочная'
+  // }
 
   return (
     <div className={styles.courses}>
       {courses.map(course =>
         <a key={course.nid} href={course.path} className={styles.course}>
-          {course.spec &&
-            <div className={styles.direction}>
-              {course.title}
-            </div>
-          }
+          <div className={styles.direction}>
+            {course.title}
+          </div>
 
-          <div>
+          <div className={styles.title}>
             {course.spec || course.title}
           </div>
 
-          {[...Array(3)].filter((_, i) => course[`time_${i + 1}`] !== null && course[`places_${i + 1}`] !== null).map((_, i) =>
+          {/* {[...Array(3)].filter((_, i) => course[`time_${i + 1}`] !== null && course[`places_${i + 1}`] !== null).map((_, i) =>
             <div key={i} className={styles.meta}>
               <div>
                 {forms[i + 1]}
@@ -48,14 +46,20 @@ export default function Courses ({ courses }) {
                 </div>
               }
             </div>
-          )}
+          )} */}
 
           <div className={styles.ege}>
-            {course.ege.map(e =>
-              <div key={e} className={styles.e}>
-                <Ege label={e} />
-              </div>
-            )}
+            <p>
+              Предметы ЕГЭ
+            </p>
+
+            <ul className={styles.es}>
+              {course.ege.map(e =>
+                <li key={e} className={styles.e}>
+                  <Ege label={e} />
+                </li>
+              )}
+            </ul>
           </div>
         </a>
       )}

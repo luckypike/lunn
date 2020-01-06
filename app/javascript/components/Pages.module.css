@@ -78,7 +78,7 @@
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--s) {
-    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+    margin: 0 calc(1 / 12 * 100%) calc(var(--yr) * var(--s4));
   }
 }
 

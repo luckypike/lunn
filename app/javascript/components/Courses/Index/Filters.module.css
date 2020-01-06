@@ -1,0 +1,26 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: calc(var(--yr) * var(--s2));
+}
+
+.filter {
+  composes: bt from '../../Fonts.module.css';
+  background-color: var(--sp_color);
+  padding: calc(var(--yr) * 2) var(--xr);
+  border-radius: calc(var(--yr) * 2);
+  margin-right: calc(var(--yr) * 2);
+  margin-bottom: calc(var(--yr) * var(--s1));
+  cursor: pointer;
+}
+
+.ege {
+  composes: bt from '../../Fonts.module.css';
+  background-color: var(--sp_color);
+  padding: calc(var(--yr) * 2) var(--xr);
+  border-radius: calc(var(--yr) * 2);
+  margin-right: calc(var(--yr) * 2);
+  margin-bottom: calc(var(--yr) * var(--s1));
+  cursor: pointer;
+  margin-left: auto;
+}

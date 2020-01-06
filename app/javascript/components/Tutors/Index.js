@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Link } from '@reach/router'
 
 import { Title } from '../Pages'
+import Filters from './Index/Filters'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
@@ -30,6 +31,8 @@ export default function Index () {
           h1={node.title}
         />
       }
+
+      <Filters />
 
       {tutors &&
         <div className={styles.tutors}>
