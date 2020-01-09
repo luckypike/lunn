@@ -49,17 +49,18 @@
 }
 
 .first {
+  width: max-content;
   position: relative;
   display: flex;
   color: #fff;
   margin-bottom: calc(var(--yr) * var(--s1));
 }
 
-.main {
+.nav {
   margin-bottom: calc(var(--yr) * var(--s2));
 }
 
-.plus {
+.more {
   display: block;
   position: absolute;
   top: 50%;
@@ -79,6 +80,7 @@
     left: 50%;
     background-color: #fff;
     transform: translate(-50%,-50%);
+    transition: transform .3s ease-in-out;
   }
 
   &:before {
@@ -89,6 +91,12 @@
   &::after {
     width: 2px;
     height: 100%;
+  }
+
+  &.opened {
+    &::after {
+      transform: translate(-50%,-50%) rotate(-90deg);
+    }
   }
 
   @media(--s) {
@@ -102,8 +110,6 @@
 }
 
 .sec {
-  display: none;
-
   &.footer {
     display: block;
   }
@@ -208,4 +214,8 @@
 
 .button {
   text-decoration: underline;
+}
+
+.main {
+  position: relative;
 }
