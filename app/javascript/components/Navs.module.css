@@ -71,3 +71,27 @@
     left: calc(var(--xr) * 2);
   }
 }
+
+.image_1 {
+  background-image: url('./Pages/Index/Images/1.jpg');
+}
+
+.image_2 {
+  background-image: url('./Pages/Index/Images/2.jpg');
+}
+
+.image_3 {
+  background-image: url('./Pages/Index/Images/3.jpg');
+}
+
+.image_4 {
+  background-image: url('./Pages/Index/Images/4.jpg');
+}
+
+.image_5 {
+  background-image: url('./Pages/Index/Images/5.jpg');
+}
+
+.image_6 {
+  background-image: url('./Pages/Index/Images/6.jpg');
+}

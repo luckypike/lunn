@@ -20,8 +20,8 @@
   overflow: scroll;
   margin-bottom: calc(var(--yr) * 7);
 
-  @media (--s) {
-    /* overflow: hidden; */
+  @media (--m) {
+    overflow: hidden;
   }
 }
 
