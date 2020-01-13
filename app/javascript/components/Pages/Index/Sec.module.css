@@ -62,6 +62,10 @@
   composes: item from '../../Navs.module.css';
 }
 
+.external {
+  composes: external from '../../Navs.module.css';
+}
+
 .title {
   composes: title from '../../Navs.module.css';
 }

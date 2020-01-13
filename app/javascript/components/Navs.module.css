@@ -58,6 +58,23 @@
   }
 }
 
+.external {
+  position: absolute;
+  bottom: calc(var(--yr) * 5);
+  left: var(--xr);
+  width: 1.375rem;
+  height: 1.375rem;
+  height: auto;
+  stroke: #fff;
+  stroke-width: 1.5;
+  z-index: 1;
+
+  @media(--m) {
+    bottom: calc(var(--yr) * 7);
+    left: calc(var(--xr) * 2);
+  }
+}
+
 .title {
   composes: h4 from './Fonts.module.css';
   position: absolute;
