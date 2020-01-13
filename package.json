@@ -13,6 +13,7 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.8.17",
     "draft-js": "^0.11.3",
+    "html-react-parser": "^0.10.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "rails-erb-loader": "^5.5.2",
