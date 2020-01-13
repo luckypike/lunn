@@ -30,9 +30,11 @@ export default function Item ({ item }) {
           {item.title}
         </div>
 
-        <div className={styles.desc}>
-          <Renderer source={item.desc} />
-        </div>
+        {item.desc &&
+          <div className={styles.desc}>
+            <Renderer source={item.desc} />
+          </div>
+        }
       </div>
     </Link>
   )
