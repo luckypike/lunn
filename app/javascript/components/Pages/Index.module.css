@@ -8,6 +8,10 @@
   }
 }
 
+.placeholder {
+  min-height: 130vh;
+}
+
 .name {
   composes: h4 from '../Fonts.module.css';
 }

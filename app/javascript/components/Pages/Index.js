@@ -65,6 +65,10 @@ export default function Index ({ navs }) {
             <News news={news} />
           }
 
+          {!news &&
+            <div className={styles.placeholder} />
+          }
+
           {events &&
             <Events events={events} />
           }
