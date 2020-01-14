@@ -18,7 +18,7 @@ export default function Events ({ events }) {
 
   const buttons = {
     tab: [
-      { title: 'События' },
+      { title: 'Анонсы' },
       { title: 'Календарь' }
     ]
   }
@@ -26,7 +26,7 @@ export default function Events ({ events }) {
   return (
     <div className={styles.root}>
       <div className={styles.label}>
-        <h2>События</h2>
+        <h2>Анонсы</h2>
       </div>
 
       <div className={styles.buttons}>
@@ -71,7 +71,7 @@ export default function Events ({ events }) {
       }
 
       <a href="/events" className={styles.more}>
-        Все события
+        Все анонсы
       </a>
     </div>
   )
