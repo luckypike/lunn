@@ -16,5 +16,15 @@ class CoursesController < ApplicationController
     @loaf = Node.find(
       UrlAlias.find_by(alias: :programs).source.split('/').last
     ).loaf
+
+    @url_alias = UrlAlias.find_by(alias: params[:path])
+    if @url_alias.source.start_with?('node/')
+      @course = Node.courses.lang
+        .with_prices.with_times.with_places
+        .includes(:field_spec, :field_youtube, :field_ege)
+        .find(@url_alias.source.split('/').last)
+    end
+
+    respond_to :html
   end
 end

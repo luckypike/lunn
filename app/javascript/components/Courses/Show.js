@@ -2,15 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Title } from '../Pages'
+import Course from './Index/Course'
 
 import pages from '../Pages.module.css'
 
 Show.propTypes = {
   node: PropTypes.object,
-  loaf: PropTypes.array
+  loaf: PropTypes.array,
+  course: PropTypes.object
 }
 
-export default function Show ({ node, loaf }) {
+export default function Show ({ node, loaf, course }) {
   return (
     <div className={pages.container}>
       <Title
@@ -25,6 +27,7 @@ export default function Show ({ node, loaf }) {
         ]}
       />
 
+      <Course course={course} />
     </div>
   )
 }

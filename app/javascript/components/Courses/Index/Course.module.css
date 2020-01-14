@@ -1,0 +1,67 @@
+.root {
+  margin-bottom: calc(var(--yr) * calc(var(--s5)));
+}
+
+.course {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid var(--gr_color);
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 2));
+  border-radius: calc(var(--yr) * 2);
+}
+
+.item {
+  padding: calc(var(--yr) * var(--s3));
+  text-align: center;
+
+  &:not(:last-child) {
+    border-right: 1px solid var(--gr_color);
+  }
+
+  & p {
+    margin-bottom: 0;
+  }
+}
+
+.info {
+  composes: h4 from '../../Fonts.module.css';
+  color: var(--hl_color);
+  margin-bottom: var(--yr);
+}
+
+.youtube {
+  position: relative;
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 2));
+  background-color: #f1f1f1;
+  background-position: center;
+  background-size: cover;
+
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    position: relative;
+    padding-top: calc(9 / 16 * 100%);
+    z-index: -1;
+  }
+
+  & iframe {
+    border-radius: calc(var(--yr) * 2);
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.text {
+  hyphens: auto;
+
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+}
