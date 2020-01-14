@@ -7,14 +7,21 @@ import styles from './Service.module.css'
 Service.propTypes = {
   onSearchToggle: PropTypes.func,
   index: PropTypes.bool,
-  menuActive: PropTypes.bool
+  menuActive: PropTypes.bool,
+  locale: PropTypes.string
 }
 
-export default function Service ({ onSearchToggle, index, menuActive }) {
+export default function Service ({ onSearchToggle, index, menuActive, locale }) {
   return (
     <div className={classNames(styles.root, { [styles.white]: index, [styles.black]: menuActive })}>
       <div className={styles.locales}>
-        EN
+        {locale === 'ru' &&
+          <a href="/en">EN</a>
+        }
+
+        {locale !== 'ru' &&
+          <a href="/">RU</a>
+        }
       </div>
 
       <div className={styles.search} onClick={onSearchToggle}>

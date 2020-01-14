@@ -14,6 +14,7 @@ gem 'webpacker'
 gem 'slim-rails'
 
 gem 'jbuilder'
+gem 'i18n-js'
 
 gem 'bootsnap', require: false
 

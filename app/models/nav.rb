@@ -15,7 +15,12 @@ class Nav < ApplicationRecord
   scope :depth, ->(depth) { where(depth: depth) }
 
   def path
-    UrlAlias.alias_path link_path
+    if mlid == 4708
+      'en/page/study-russian-lunn'
+    else
+      (I18n.locale != I18n.default_locale ? I18n.locale : nil).to_s +
+        UrlAlias.alias_path(link_path)
+    end
   end
 
   def title

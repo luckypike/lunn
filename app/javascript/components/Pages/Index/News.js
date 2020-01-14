@@ -8,14 +8,15 @@ import 'dayjs/locale/ru'
 import styles from './News.module.css'
 
 News.propTypes = {
-  news: PropTypes.array
+  news: PropTypes.array,
+  I18n: PropTypes.object
 }
 
-export default function News ({ news }) {
+export default function News ({ news, I18n }) {
   return (
     <div className={styles.news}>
       <div className={styles.label}>
-        <h2>Новости</h2>
+        <h2>{I18n.t('news.title')}</h2>
       </div>
 
       <div className={styles.news_items}>

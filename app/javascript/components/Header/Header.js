@@ -15,10 +15,11 @@ import styles from './Header.module.css'
 
 Header.propTypes = {
   navs: PropTypes.array,
-  index: PropTypes.bool
+  index: PropTypes.bool,
+  locale: PropTypes.string
 }
 
-export default function Header ({ navs, index }) {
+export default function Header ({ navs, index, locale }) {
   const [menuActive, setMenuActive] = useState(false)
   const [searchActive, setSearchActive] = useState(false)
   const [white, setWhite] = useState(false)
@@ -35,7 +36,7 @@ export default function Header ({ navs, index }) {
 
       <header className={styles.root}>
         <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
-          <a href="/">
+          <a href={`/${locale !== 'ru' ? locale : ''}`}>
             <Logo />
           </a>
         </div>
@@ -45,7 +46,7 @@ export default function Header ({ navs, index }) {
         </div>
 
         <div className={styles.service}>
-          <Service index={index} menuActive={menuActive} onSearchToggle={() => setSearchActive(true)} />
+          <Service index={index} menuActive={menuActive} onSearchToggle={() => setSearchActive(true)} locale={locale} />
         </div>
       </header>
 

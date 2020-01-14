@@ -11,7 +11,7 @@ html lang=I18n.locale
     = javascript_pack_tag 'app'
 
   body
-    = react_component 'Header/Header', { navs: Nav.active.main.lang.as_json(methods: %i[path title]), index: current_page?(root_url) }
+    = react_component 'Header/Header', { navs: Nav.active.main.lang.as_json(methods: %i[path title]), index: current_page?(root_url) || current_page?('/en') }
 
     = yield
 

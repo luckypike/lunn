@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
+import { useI18n } from '../I18n'
+
 import Intro from '../Video/Intro.mp4'
 import Sec from './Index/Sec'
 import Sliders from './Index/Sliders'
@@ -14,17 +16,20 @@ import styles from './Index.module.css'
 import pages from '../Pages.module.css'
 
 Index.propTypes = {
-  navs: PropTypes.array
+  navs: PropTypes.array,
+  locale: PropTypes.string
 }
 
-export default function Index ({ navs }) {
+export default function Index ({ navs, locale }) {
+  const I18n = useI18n(locale)
+
   const [news, setNews] = useState()
   const [events, setEvents] = useState()
   const [sliders, setSliders] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
-      const { data } = await axios.get('/index.json')
+      const { data } = await axios.get((locale !== 'ru' ? `/${locale}` : '') + '/index.json')
 
       setNews(data.news)
       setEvents(data.events)
@@ -62,7 +67,7 @@ export default function Index ({ navs }) {
       <div className={pages.container}>
         <div className={styles.root}>
           {news &&
-            <News news={news} />
+            <News news={news} I18n={I18n} />
           }
 
           {!news &&
