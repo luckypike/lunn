@@ -1,26 +1,83 @@
 .filters {
-  display: flex;
-  flex-wrap: wrap;
+  display: none;
+  position: relative;
+  z-index: 1;
+  /* flex-wrap: wrap; */
   margin-bottom: calc(var(--yr) * var(--s2));
+
+  &.active {
+    display: block;
+  }
+
+  @media (--m) {
+    display: flex;
+
+    &.active {
+      display: flex;
+    }
+  }
 }
 
 .filter {
-  composes: bt from '../../Fonts.module.css';
   background-color: var(--sp_color);
   padding: calc(var(--yr) * 2) var(--xr);
   border-radius: calc(var(--yr) * 2);
   margin-right: calc(var(--yr) * 2);
   margin-bottom: calc(var(--yr) * var(--s1));
   cursor: pointer;
+  position: relative;
+
+  &:hover {
+    & .items {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @media (--m) {
+    /* margin-bottom: 0; */
+  }
 }
 
-.ege {
+.title {
   composes: bt from '../../Fonts.module.css';
-  background-color: var(--sp_color);
-  padding: calc(var(--yr) * 2) var(--xr);
-  border-radius: calc(var(--yr) * 2);
-  margin-right: calc(var(--yr) * 2);
-  margin-bottom: calc(var(--yr) * var(--s1));
-  cursor: pointer;
+}
+
+.handler {
+  display: flex;
+  margin-bottom: calc(var(--yr) * var(--s2));
+
+  @media (--m) {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    top: 0;
+  }
+}
+
+.toggle {
+  @media (--m) {
+    display: none;
+  }
+}
+
+.resetAll {
   margin-left: auto;
+}
+
+.items {
+  composes: at from '../../Fonts.module.css';
+
+  @media (--m) {
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--sp_color);
+    padding: calc(var(--yr) * 2) var(--xr);
+    border-radius: calc(var(--yr) * 2);
+  }
 }

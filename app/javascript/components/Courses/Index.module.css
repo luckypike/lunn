@@ -1,3 +1,4 @@
 .courses {
   margin-bottom: calc(var(--yr) * var(--s4));
+  position: relative;
 }

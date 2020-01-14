@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Router } from '@reach/router'
 // import classNames from 'classnames'
 
 import { Title } from '../Pages'
 import Courses from './Index/Courses'
-import Filters from './Index/Filters'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
@@ -26,11 +26,12 @@ export default function Show ({ node, courses, docs, loaf }) {
 
       {courses.length > 0 &&
         <div className={styles.courses}>
-          <Filters />
-
-          <Courses
-            courses={courses}
-          />
+          <Router>
+            <Courses
+              path="/programs"
+              courses={courses}
+            />
+          </Router>
         </div>
       }
     </div>

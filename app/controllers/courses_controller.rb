@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
     @courses = Node.courses.lang
       .with_prices.with_times.with_places
       .includes(
-        :field_spec, :field_youtube, :field_ege
+        :field_spec, :field_youtube, :field_ege, :field_level
       )
 
     respond_to :html
