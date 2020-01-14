@@ -75,8 +75,8 @@ export default function Course ({ course }) {
       }
 
       <div className={styles.text}>
-        {course.course_text &&
-          <Renderer source={course.course_text} />
+        {course.text &&
+          <Renderer source={course.text} />
         }
       </div>
     </div>

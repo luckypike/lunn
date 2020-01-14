@@ -25,7 +25,6 @@ class Node < ApplicationRecord
   has_one :field_places_2, -> { where(entity_type: :node) }, class_name: 'Field::Places2', foreign_key: :entity_id
   has_one :field_places_3, -> { where(entity_type: :node) }, class_name: 'Field::Places3', foreign_key: :entity_id
 
-  has_one :field_body, -> { where(entity_type: :node) }, class_name: 'Field::Body', foreign_key: :entity_id
   has_one :field_spec, -> { where(entity_type: :node) }, class_name: 'Field::Spec', foreign_key: :entity_id
   has_one :field_youtube, -> { where(entity_type: :node) }, class_name: 'Field::Youtube', foreign_key: :entity_id
 
@@ -100,10 +99,6 @@ class Node < ApplicationRecord
 
   def ege
     field_ege.map(&:value)
-  end
-
-  def course_text
-    field_body&.value
   end
 
   def navs

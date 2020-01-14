@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
     if @url_alias.source.start_with?('node/')
       @course = Node.courses.lang
         .with_prices.with_times.with_places
-        .includes(:field_spec, :field_youtube, :field_ege)
+        .includes(:field_spec, :field_youtube, :field_ege, :body)
         .find(@url_alias.source.split('/').last)
     end
 
