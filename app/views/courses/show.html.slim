@@ -4,7 +4,6 @@
 = react_component 'Courses/Show', { \
   loaf: @loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
   node: @node.as_json(only: :title, methods: :path),
-  docs: @node.docs.as_json(only: [], methods: %i[fid path title wrapper]),
   course: @course \
     .as_json( \
       only: %i[title nid],
