@@ -22,7 +22,7 @@
     width: calc(var(--yr) * 5);
   }
 
-  @media (--m) {
+  @media (--l) {
     display: none;
   }
 }
@@ -38,21 +38,13 @@
     color: #000;
   }
 
-  @media (--m) {
+  @media (--l) {
     display: flex;
   }
 }
 
 .nav {
   margin-right: calc(var(--xr) * 2);
-
-  @media (min-width: 960px) and (max-width: 1000px) {
-    margin-right: 0.75rem;
-  }
-
-  @media (min-width: 1000px) and (max-width: 1080px) {
-    margin-right: var(--xr);
-  }
 }
 
 .more {

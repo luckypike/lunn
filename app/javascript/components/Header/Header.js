@@ -32,7 +32,7 @@ export default function Header ({ navs, index, locale }) {
 
   return (
     <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive })}>
-      <div className={classNames(styles.overlay, { [styles.active]: menuActive })} onClick={() => setMenuActive(!menuActive)} />
+      <div className={classNames(styles.overlay, { [styles.active]: menuActive })} onClick={() => setMenuActive(!menuActive)} onMouseOver={() => setMenuActive(!menuActive)} />
 
       <header className={styles.root}>
         <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
@@ -41,7 +41,7 @@ export default function Header ({ navs, index, locale }) {
           </a>
         </div>
 
-        <div className={styles.nav}>
+        <div className={styles.nav} onMouseEnter={() => setMenuActive(true)} onMouseLeave={() => setMenuActive(!menuActive)}>
           <Nav index={index} navs={navs} menuActive={menuActive} onToggle={() => setMenuActive(!menuActive)} />
         </div>
 
@@ -50,7 +50,7 @@ export default function Header ({ navs, index, locale }) {
         </div>
       </header>
 
-      <div className={classNames(styles.menu, { [styles.active]: menuActive })}>
+      <div className={classNames(styles.menu, { [styles.active]: menuActive })} onMouseEnter={() => setMenuActive(true)}>
         <Menu navs={navs} />
       </div>
 

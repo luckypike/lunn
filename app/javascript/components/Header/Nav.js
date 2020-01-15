@@ -30,10 +30,6 @@ export default function Nav ({ navs, onToggle, index, menuActive }) {
             </a>
           </li>
         )}
-
-        <li className={styles.more} onClick={onToggle}>
-          Ещё...
-        </li>
       </ul>
     </div>
   )

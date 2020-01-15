@@ -13,6 +13,10 @@
   }
 
   @media (--m) {
+    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 18);
+  }
+
+  @media (--l) {
     grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 36);
   }
 }
@@ -33,9 +37,10 @@
 }
 
 .nav {
+  width: max-content;
   order: 1;
 
-  @media (--m) {
+  @media (--l) {
     order: 0;
   }
 }

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-end;
 
-  @media (--m) {
+  @media (--l) {
     justify-content: flex-start;
   }
 }
@@ -48,6 +48,12 @@
 
 .black {
   color: #000;
+
+  & .locales {
+    & a {
+      color: #000;
+    }
+  }
 
   & svg {
     & path {
