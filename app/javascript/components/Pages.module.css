@@ -34,6 +34,7 @@
     padding: 0;
     display: flex;
     justify-content: center;
+    margin-bottom: calc(var(--yr) * var(--s2));
   }
 }
 

@@ -17,6 +17,7 @@ export default function Show ({ node, loaf, course }) {
     <div className={pages.container}>
       <Title
         h1={node.title}
+        h2={course.spec}
         loaf={[
           ...loaf,
           {
