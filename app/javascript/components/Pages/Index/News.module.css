@@ -38,6 +38,10 @@
     display: block;
     content: '';
     padding-top: calc(1 / 2 * 100%);
+
+    @media (--s) {
+      padding-top: calc(2 / 3 * 100%);
+    }
   }
 
   & img {
