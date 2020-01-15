@@ -31,12 +31,6 @@ export default function News ({ news, I18n }) {
                 {item.title}
               </div>
 
-              {i === 0 && item.desc &&
-                <div className={styles.desc}>
-                  <Renderer source={item.desc} />
-                </div>
-              }
-
               <div className={styles.date}>
                 {dayjs.unix(item.created).locale('ru').format('DD MMMM YYYY')}
               </div>

@@ -4,11 +4,13 @@
   position: relative;
 
   @media(--s) {
-    grid-column: span 12;
+    /* grid-column: span 12; */
   }
 
-  @media(--m) {
+  @media(--l) {
+    order: 1;
     grid-column: span 4;
+    grid-row: span 2;
   }
 }
 

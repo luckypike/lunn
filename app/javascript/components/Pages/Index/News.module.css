@@ -3,11 +3,12 @@
   position: relative;
 
   @media(--s) {
-    grid-column: span 12;
+    /* grid-column: span 12; */
     /* margin-bottom: calc(var(--yr) * calc(var(--s4) * 2)); */
   }
 
-  @media (--m) {
+  @media (--l) {
+    order: 2;
     grid-column: span 8;
   }
 }
@@ -36,7 +37,7 @@
   &::before {
     display: block;
     content: '';
-    padding-top: calc(2 / 3 * 100%);
+    padding-top: calc(1 / 2 * 100%);
   }
 
   & img {
@@ -70,7 +71,7 @@
     & .image {
       &::before {
         @media (--s) {
-          padding-top: calc(1 / 2 * 100%);
+          /* padding-top: calc(1 / 2 * 100%); */
         }
       }
     }
@@ -99,7 +100,7 @@
 }
 
 .first {
-  grid-column: span 2;
+  /* grid-column: span 2; */
 }
 
 .desc {

@@ -61,7 +61,7 @@ export default function Sliders ({ sliders }) {
                   </div>
                 }
 
-                <div className={classNames(styles.title, fonts.h1)}>
+                <div className={styles.title}>
                   {slider.title}
                 </div>
               </div>

@@ -66,22 +66,22 @@ export default function Index ({ navs, locale }) {
 
       <div className={pages.container}>
         <div className={styles.root}>
-          {news &&
-            <News news={news} I18n={I18n} />
-          }
-
           {!news &&
             <div className={styles.placeholder} />
-          }
-
-          {events &&
-            <Events events={events} />
           }
 
           {sliders &&
             <div className={styles.slider}>
               <Sliders sliders={sliders} />
             </div>
+          }
+
+          {news &&
+            <News news={news} I18n={I18n} />
+          }
+
+          {events &&
+            <Events events={events} />
           }
 
           <div className={styles.education}>

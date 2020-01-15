@@ -1,14 +1,16 @@
 .root {
   display: block;
 
-  @media(--s) {
+  @media(--l) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    /* grid-template-rows: repeat(12, 1fr); */
     grid-column-gap: calc(var(--xr) * 2);
   }
 }
 
 .placeholder {
+  grid-column: 12;
   min-height: 130vh;
 }
 
@@ -85,10 +87,11 @@
 }
 
 .slider {
-  grid-column: span 12;
+  grid-column: span 8;
   overflow: hidden;
 }
 
 .education {
+  order: 3;
   grid-column: span 12;
 }

@@ -3,13 +3,13 @@
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media(--s) {
-    margin-bottom: 128px;
+    /* margin-bottom: 128px; */
   }
 }
 
 .images {
-  height: 465px;
-  border-radius: var(--yr);
+  /* height: 465px; */
+  /* border-radius: var(--yr); */
   position: relative;
 }
 
@@ -22,7 +22,12 @@
   &::before {
     display: block;
     content: '';
-    padding-top: 465px;
+    padding-top: calc(5 / 4 * 100%);
+
+    @media (--s) {
+      padding-top: calc(1 / 2 * 100%);
+    }
+    /* padding-top: 465px; */
   }
 
   &::after {
@@ -46,6 +51,7 @@
   z-index: 2;
   color: #fff;
   text-align: center;
+  width: 80%;
 }
 
 .dates {
@@ -62,7 +68,7 @@
 }
 
 .title {
-
+  composes: h2 from '../../Fonts.module.css';
 }
 
 .prev {
@@ -86,6 +92,7 @@
 }
 
 .prev, .next {
+  display: none;
   position: absolute;
   width: 48px;
   height: 48px;
@@ -96,7 +103,11 @@
   top: 50%;
   transform: translateY(-50%);
 
-    & svg {
+  @media (--l) {
+    display: block;
+  }
+
+  & svg {
     position: absolute;
     top: 50%;
     left: 50%;
