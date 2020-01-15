@@ -20,7 +20,7 @@
   overflow: scroll;
   margin-bottom: calc(var(--yr) * 7);
 
-  @media (--m) {
+  @media (--l) {
     overflow: hidden;
   }
 }
@@ -37,7 +37,7 @@
   transition: background .2s,color .2s;
 
   @media (--s) {
-    padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 2);
+    padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 1.4);
   }
 }
 

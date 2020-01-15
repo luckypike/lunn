@@ -19,6 +19,10 @@
   }
 
   @media (--l) {
+    padding: 0 calc(var(--yr) * 24);
+  }
+
+  @media (--xl) {
     padding: 0 calc(var(--yr) * 40);
   }
 }
