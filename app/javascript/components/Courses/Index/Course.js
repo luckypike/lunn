@@ -16,56 +16,62 @@ export default function Course ({ course }) {
     3: 'Заочная'
   }
 
-  const skills = {
-    1: 'Бакалавр'
+  const levels = {
+    ba: 'Бакалавриат',
+    sp: 'Специалитет',
+    ma: 'Магистратура'
   }
 
   return (
     <div className={styles.root}>
-      {[...Array(3)].filter((_, i) => course[`time_${i + 1}`] !== null && course[`places_${i + 1}`] !== null).map((_, i) =>
-        <div key={i} className={styles.course}>
-          <div className={styles.item}>
-            <div className={styles.info}>
-              {Math.round(course[`time_${i + 1}`])} года
-            </div>
+      {[...Array(3)].map((_, i) =>
+        <>
+          {course[`places_${i + 1}`] !== null && course[`time_${i + 1}`] !== null && course[`price_${i + 1}`] !== null &&
+            <div key={i} className={styles.course}>
+              <div className={styles.item}>
+                <div className={styles.info}>
+                  {Math.round(course[`time_${i + 1}`])} года
+                </div>
 
-            <p>Срок обучения</p>
-          </div>
-
-          <div className={styles.item}>
-            <div className={styles.info}>
-              {forms[i + 1]}
-            </div>
-
-            <p>Форма обучения</p>
-          </div>
-
-          <div className={styles.item}>
-            <div className={styles.info}>
-              {skills[1]}
-            </div>
-
-            <p>Присваиваемая квалификация</p>
-          </div>
-
-          <div className={styles.item}>
-            <div className={styles.info}>
-              {course[`places_${i + 1}`] > 0 ? course[`places_${i + 1}`] : 0 }
-            </div>
-
-            <p>Количество бюджетных мест в 2020-2021 уч.г.</p>
-          </div>
-
-          <div className={styles.item}>
-            {course[`price_${i + 1}`] !== null &&
-              <div className={styles.info}>
-                {course[`price_${i + 1}`]} ₽
+                <p>Срок обучения</p>
               </div>
-            }
 
-            <p>Стоимость обучения в 2019-2020 уч.году</p>
-          </div>
-        </div>
+              <div className={styles.item}>
+                <div className={styles.info}>
+                  {forms[i + 1]}
+                </div>
+
+                <p>Форма обучения</p>
+              </div>
+
+              <div className={styles.item}>
+                <div className={styles.info}>
+                  {levels[course.level]}
+                </div>
+
+                <p>Присваиваемая квалификация</p>
+              </div>
+
+              <div className={styles.item}>
+                <div className={styles.info}>
+                  {course[`places_${i + 1}`] > 0 ? course[`places_${i + 1}`] : 0 }
+                </div>
+
+                <p>Количество бюджетных мест в 2020-2021 уч.г.</p>
+              </div>
+
+              <div className={styles.item}>
+                {course[`price_${i + 1}`] !== null &&
+                  <div className={styles.info}>
+                    {course[`price_${i + 1}`]} ₽
+                  </div>
+                }
+
+                <p>Стоимость обучения в 2019-2020 уч.году</p>
+              </div>
+            </div>
+          }
+        </>
       )}
 
       {course.youtube &&
