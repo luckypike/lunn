@@ -13,10 +13,11 @@ Show.propTypes = {
   node: PropTypes.object,
   courses: PropTypes.array,
   loaf: PropTypes.array,
-  docs: PropTypes.array
+  docs: PropTypes.array,
+  locale: PropTypes.string
 }
 
-export default function Show ({ node, courses, docs, loaf }) {
+export default function Show ({ node, courses, docs, loaf, locale }) {
   return (
     <div className={pages.container}>
       <Title
@@ -30,6 +31,7 @@ export default function Show ({ node, courses, docs, loaf }) {
             <Courses
               path="/programs"
               courses={courses}
+              locale={locale}
             />
           </Router>
         </div>

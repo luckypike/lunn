@@ -69,10 +69,25 @@
 
 .level {
   margin-top: calc(var(--yr) * var(--s2));
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
+.meta {
+  display: flex;
+  white-space: nowrap;
+}
+
+.form {
+  min-width: 8rem;
+}
+
+.time {
+  color: var(--gr_color);
+  composes: at from '../../Fonts.module.css';
 }
 
 .ege {
-  margin-top: calc(var(--yr) * var(--s4));
+  margin-top: calc(var(--yr) * var(--s3));
 }
 
 .eget {

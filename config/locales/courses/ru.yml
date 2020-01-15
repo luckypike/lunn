@@ -1,0 +1,12 @@
+ru:
+  courses:
+    forms:
+      form_1: Очная
+      form_2: Очно-заочная
+      form_3: Заочная
+
+    times:
+      one: "%{count} год"
+      few: "%{count} года"
+      many: "%{count} лет"
+      other: "%{count} года"

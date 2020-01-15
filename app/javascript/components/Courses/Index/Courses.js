@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import { useI18n } from '../../I18n'
+
 import Filters from './Filters'
 
 import styles from './Courses.module.css'
 
 Courses.propTypes = {
   courses: PropTypes.array,
-  location: PropTypes.object
+  location: PropTypes.object,
+  locale: PropTypes.string
 }
 
-export default function Courses ({ location, courses }) {
+export default function Courses ({ location, courses, locale }) {
   const query = new URLSearchParams(location.search)
 
+  const I18n = useI18n(locale)
   const [filters, setFilters] = useState()
 
   useEffect(() => {
@@ -85,27 +89,27 @@ export default function Courses ({ location, courses }) {
               {levels[course.level]}
             </div>
 
-            {/* {[...Array(3)].filter((_, i) => course[`time_${i + 1}`] !== null && course[`places_${i + 1}`] !== null).map((_, i) =>
+            {[1, 2, 3].filter(i => course[`time_${i}`] !== null && course[`places_${i}`] !== null).map(i =>
               <div key={i} className={styles.meta}>
-                <div>
-                  {forms[i + 1]}
+                <div className={styles.form}>
+                  {I18n.t(`courses.forms.form_${i}`)}
                 </div>
 
-                <div>
+                {/* <div>
                   {course[`places_${i + 1}`] > 0 ? course[`places_${i + 1}`] : 'нет'} бюджетных мест
+                </div> */}
+
+                <div className={styles.time}>
+                  {I18n.t('courses.times', { count: I18n.toNumber(course[`time_${i}`], { separator: ',', precision: 1, strip_insignificant_zeros: true }) })}
                 </div>
 
-                <div>
-                  {course[`time_${i + 1}`]} года срок обучения
-                </div>
-
-                {course[`price_${i + 1}`] !== null &&
+                {/* {course[`price_${i + 1}`] !== null &&
                   <div>
                     {course[`price_${i + 1}`]} руб. в года стоимость обучения
                   </div>
-                }
+                } */}
               </div>
-            )} */}
+            )}
 
             <div className={styles.ege}>
               <p className={styles.eget}>
