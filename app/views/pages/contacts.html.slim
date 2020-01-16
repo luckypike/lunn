@@ -1,0 +1,6 @@
+- set_meta_tags \
+  title: 'Контакты'
+
+= react_component 'Pages/Contacts', { \
+  contacts: Variable.find_by(name: 'lunn_contacts:phonebook').value.lines.map { |line| line.strip.split('|').map(&:strip) }.reject(&:empty?) \
+}

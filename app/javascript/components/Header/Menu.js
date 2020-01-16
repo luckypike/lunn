@@ -12,7 +12,7 @@ export default function Menu ({ navs }) {
     <nav className={styles.root}>
       <div className={styles.container}>
         <ul className={styles.nav}>
-          {navs.filter(item => item.depth === 1).map(n1l =>
+          {navs.filter(item => item.depth === 1 && navs.filter(i => i.depth === 2 && i.plid === item.mlid).length > 0).map(n1l =>
             <li className={styles.main} key={n1l.mlid}>
               <a href={n1l.path} className={styles.first}>
                 {n1l.title}

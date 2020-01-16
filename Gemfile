@@ -13,8 +13,10 @@ gem 'webpacker'
 
 gem 'slim-rails'
 
-gem 'jbuilder'
 gem 'i18n-js'
+gem 'jbuilder'
+
+gem 'php-serialize'
 
 gem 'bootsnap', require: false
 

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  before_action :set_url_alias, except: :index
-  before_action :set_node, except: :index
+  before_action :set_url_alias, except: %i[index contacts]
+  before_action :set_node, except: %i[index contacts]
 
   def index
     @news = Node.news.lang.includes(:images)
@@ -29,4 +29,6 @@ class PagesController < ApplicationController
 
     respond_to :html, :json
   end
+
+  def contacts; end
 end

@@ -1,3 +1,6 @@
+- set_meta_tags \
+  title: @node.title
+
 = react_component 'Pages/History', { \
   node: @node.as_json(only: :title, methods: :text),
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]) \

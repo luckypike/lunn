@@ -46,7 +46,7 @@ export default function Footer ({ navs, footer }) {
           </div>
 
           <ul className={styles.navs}>
-            {navs.filter(item => item.depth === 1).map((n1l, i) =>
+            {navs.filter(item => item.depth === 1 && item.mlid !== 4708).map((n1l, i) =>
               <Main key={i} n1l={n1l} navs={navs} />
             )}
 

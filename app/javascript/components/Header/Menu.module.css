@@ -35,7 +35,7 @@
   composes: at from '../Fonts.module.css';
 
   & li {
-    margin-bottom: calc(var(--yr) * 2);
+    margin-bottom: calc(var(--yr) * var(--s2));
   }
 }
 
