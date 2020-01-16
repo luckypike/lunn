@@ -1,0 +1,82 @@
+.root {
+  display: none;
+  margin-bottom: calc(var(--yr) * calc(var(--s5)));
+
+  @media(--m) {
+    display: block;
+  }
+}
+
+.level {
+  composes: h4 from '../../Fonts.module.css';
+  text-align: center;
+  margin-bottom: calc(var(--yr) * calc(var(--s4)));
+}
+
+.course {
+  background-color: #ECEFF1;
+  border-radius: calc(var(--yr) * 2);
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: calc(var(--yr) * 2);
+  margin-bottom: calc(var(--yr) * 2);
+}
+
+.item {
+  color: #727272;
+  width: max-content;
+}
+
+.small {
+  composes: at from '../../Fonts.module.css';
+  color: #727272;
+}
+
+.form_1 {
+  margin: 28px 0;
+  padding: 0 24px;
+  border-right: 1px solid #C4C4C4;
+}
+
+.form_2 {
+  margin: 28px 0;
+  padding: 0 24px;
+
+  @media(--l) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ball {
+  margin-bottom: calc(var(--yr) * 2);
+  color: #727272;
+}
+
+.sub {
+  margin-bottom: calc(var(--yr) * 2);
+}
+
+.button {
+  color: #fff;
+  background-color: var(--hl_color);
+  border-radius: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 2) calc(var(--yr) * 6);
+  text-align: center;
+  height: max-content;
+  /* white-space: nowrap; */
+  width: max-content;
+
+  @media(--l) {
+    margin: auto;
+  }
+}
+
+.grey {
+  color: #727272;
+}
