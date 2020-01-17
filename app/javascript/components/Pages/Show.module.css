@@ -3,10 +3,15 @@
 }
 
 .text {
+  composes: bt from '../Fonts.module.css';
   hyphens: auto;
 
   @media (--s) {
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+
+  @media (--xl) {
+    /* margin: 0 calc(2 / 8 * 100%) calc(var(--yr) * var(--s4)); */
   }
 }
 
@@ -15,5 +20,9 @@
 
   @media (--s) {
     margin: calc(var(--yr) * var(--s3)) calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+
+  @media (--xl) {
+    margin: calc(var(--yr) * var(--s3)) calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 }

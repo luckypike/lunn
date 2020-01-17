@@ -14,10 +14,11 @@ Show.propTypes = {
   node: PropTypes.object,
   navs: PropTypes.array,
   loaf: PropTypes.array,
-  docs: PropTypes.array
+  docs: PropTypes.array,
+  locale: PropTypes.string
 }
 
-export default function Show ({ node, navs, docs, loaf }) {
+export default function Show ({ node, navs, docs, loaf, locale }) {
   return (
     <div className={classNames(styles.root, pages.container)}>
       <Title
@@ -37,7 +38,7 @@ export default function Show ({ node, navs, docs, loaf }) {
 
       {docs &&
         <div className={styles.docs}>
-          <Docs docs={docs} />
+          <Docs docs={docs} locale={locale} />
         </div>
       }
     </div>

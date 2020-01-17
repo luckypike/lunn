@@ -11,4 +11,12 @@ class Node::Doc < ApplicationRecord
   def title
     field_attachment_description
   end
+
+  def size
+    attachment.filesize
+  end
+
+  def mime
+    attachment.filemime
+  end
 end

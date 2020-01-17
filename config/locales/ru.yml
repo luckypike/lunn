@@ -1,0 +1,10 @@
+ru:
+  number:
+    human:
+      storage_units:
+        units:
+          byte: B
+          kb: KB
+          mb: MB
+          gb: GB
+          tb: TB

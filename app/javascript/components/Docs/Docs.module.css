@@ -16,14 +16,20 @@
   & svg {
     margin-bottom: calc(var(--yr) * var(--s1));
     display: block;
-    width: 1rem;
+    width: 2rem;
   }
 }
 
 .title {
-  display: box;
+  /* display: box; */
   /* max-height: 3rem; */
-  line-clamp: 3;
-  overflow: hidden;
+  /* line-clamp: 3; */
+  /* overflow: hidden; */
   /* text-overflow: ellipsis; */
+}
+
+
+.meta {
+  color: var(--gr_color);
+  composes: mt from '../Fonts.module.css';
 }

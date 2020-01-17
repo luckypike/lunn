@@ -1,13 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { useI18n } from '../I18n'
+
 import styles from './Docs.module.css'
 
 Docs.propTypes = {
-  docs: PropTypes.array
+  docs: PropTypes.array,
+  locale: PropTypes.string
 }
 
-export default function Docs ({ docs }) {
+export default function Docs ({ docs, locale }) {
+  const I18n = useI18n(locale)
+
   if (docs.length === 0) return null
 
   return (
@@ -22,6 +27,10 @@ export default function Docs ({ docs }) {
 
               <div className={styles.title}>
                 {doc.title}
+              </div>
+
+              <div className={styles.meta}>
+                ({I18n.t(`docs.mimes.${doc.mime}`)}, {I18n.toHumanSize(doc.size, { precision: 1, format: '%n %u', strip_insignificant_zeros: true })})
               </div>
             </a>
           </li>

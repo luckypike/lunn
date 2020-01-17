@@ -102,6 +102,38 @@ const options = {
         )
       }
 
+      if (name === 'u' || name === 'font') {
+        return (
+          <>
+            {domToReact(children, options)}
+          </>
+        )
+      }
+
+      if (name === 'span') {
+        if (parent && parent.type === 'tag' && !attribs.itemprop) {
+          return (
+            <>
+              {domToReact(children, options)}
+            </>
+          )
+        }
+
+        return (
+          <span itemProp={attribs.itemprop}>
+            {domToReact(children, options)}
+          </span>
+        )
+      }
+
+      if (name === 'a') {
+        return (
+          <a className={styles.a} href={attribs.href}>
+            {domToReact(children, options)}
+          </a>
+        )
+      }
+
       if (name === 'ol') {
         return (
           <ol className={styles.ol}>
