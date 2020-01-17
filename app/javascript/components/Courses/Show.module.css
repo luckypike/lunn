@@ -81,6 +81,10 @@
 
 .sub {
   display: flex;
+
+  @media(--l) {
+    margin-bottom: var(--yr);
+  }
 }
 
 .subject {
@@ -95,13 +99,36 @@
   }
 }
 
+.form {
+  display: block;
+  margin-right: var(--yr);
+
+  @media(--m) {
+    display: none;
+  }
+}
+
+.item {
+  display: flex;
+
+  @media(--l) {
+    margin-bottom: var(--yr);
+  }
+}
+
 .button {
-  color: #fff;
+  cursor: pointer;
   background-color: var(--hl_color);
   border-radius: calc(var(--yr) * 2);
   padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
   margin: 0 auto;
   text-align: center;
+  width: max-content;
+  height: max-content;
+
+  & a {
+    color: #fff;
+  }
 
   @media(--s) {
     grid-column: span 2;

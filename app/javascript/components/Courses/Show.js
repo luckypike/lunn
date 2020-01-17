@@ -50,7 +50,7 @@ export default function Show ({ node, loaf, course, locale }) {
             </div>
 
             {[1, 2, 3].filter(i => course[`time_${i}`] !== null && course[`places_${i}`] !== null).map(i =>
-              <div key={i}>
+              <div key={i} className={styles.item}>
                 {I18n.t(`courses.forms.form_${i}`)}: {I18n.t('courses.times', { count: I18n.toNumber(course[`time_${i}`], { separator: ',', precision: 1, strip_insignificant_zeros: true }) })}
               </div>
             )}
@@ -62,8 +62,9 @@ export default function Show ({ node, loaf, course, locale }) {
             </div>
 
             {[1, 2, 3].filter(i => course[`time_${i}`] !== null && course[`places_${i}`] !== null).map(i =>
-              <div key={i}>
-                {I18n.t(`courses.forms.form_${i}`)}: {course[`places_${i}`] > 0 ? course[`places_${i}`] : 'нет' }
+              <div key={i} className={styles.item}>
+                <div className={styles.form}>{I18n.t(`courses.forms.form_${i}`)}:</div>
+                <div>{course[`places_${i}`] > 0 ? course[`places_${i}`] : 'нет' }</div>
               </div>
             )}
           </div>
@@ -74,8 +75,9 @@ export default function Show ({ node, loaf, course, locale }) {
             </div>
 
             {[1, 2, 3].filter(i => course[`time_${i}`] !== null && course[`places_${i}`] !== null).map(i =>
-              <div key={i}>
-                {I18n.t(`courses.forms.form_${i}`)}: {course[`price_${i}`]} ₽
+              <div key={i} className={styles.item}>
+                <div className={styles.form}>{I18n.t(`courses.forms.form_${i}`)}:</div>
+                <div>{course[`price_${i}`]} ₽</div>
               </div>
             )}
           </div>
@@ -105,7 +107,9 @@ export default function Show ({ node, loaf, course, locale }) {
           </div>
 
           <div className={styles.button}>
-            Приёмная комиссия
+            <a href="http://www.lunn.ru/page/priemnaya-kampaniya-2020-goda-bakalavriat-specialitet-magistratura" target="_blank" rel="noopener noreferrer">
+              Приёмная комиссия
+            </a>
           </div>
         </div>
 
