@@ -111,19 +111,21 @@ export default function Courses ({ location, courses, locale }) {
               </div>
             )}
 
-            <div className={styles.ege}>
-              <p className={styles.eget}>
-                Предметы ЕГЭ
-              </p>
+            {course.level !== 'ma' &&
+              <div className={styles.ege}>
+                <p className={styles.eget}>
+                  Предметы ЕГЭ
+                </p>
 
-              <ul className={styles.es}>
-                {course.ege.map(e =>
-                  <li key={e} className={styles.e}>
-                    <Ege label={e} />
-                  </li>
-                )}
-              </ul>
-            </div>
+                <ul className={styles.es}>
+                  {course.ege.map(e =>
+                    <li key={e} className={styles.e}>
+                      <Ege label={e} />
+                    </li>
+                  )}
+                </ul>
+              </div>
+            }
           </a>
         )}
       </div>
