@@ -14,6 +14,8 @@ class Nav < ApplicationRecord
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
   scope :depth, ->(depth) { where(depth: depth) }
 
+  scope :loaf, -> { unscope(:order).order(has_children: :desc, menu_name: :asc) }
+
   def path
     if mlid == 4708
       'en/page/study-russian-lunn'

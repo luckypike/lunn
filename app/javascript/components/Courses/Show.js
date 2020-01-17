@@ -18,8 +18,7 @@ export default function Show ({ node, loaf, course, locale }) {
   return (
     <div className={pages.container}>
       <Title
-        h1={course.spec}
-        h2={node.title}
+        h1={course.spec || course.title}
         loaf={[
           ...loaf,
           {

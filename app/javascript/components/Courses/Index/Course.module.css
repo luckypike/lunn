@@ -7,7 +7,7 @@
   text-align: center;
   margin-bottom: calc(var(--yr) * calc(var(--s4)));
   display: block;
-  
+
   @media(--m) {
     display: none;
   }
@@ -128,5 +128,9 @@
 
   @media (--s) {
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+
+  @media (--xl) {
+    margin: 0 calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 }

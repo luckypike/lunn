@@ -56,13 +56,16 @@ h2 {
   }
 }
 
-.h3 {
+.h3, h3 {
   font-size: calc(var(--yr) * 5);
   line-height: calc(var(--yr) * 6);
+  font-weight: normal;
+  margin: 0 0 calc(var(--yr) * 3);
 
   @media (--s) {
     font-size: calc(var(--yr) * 8);
     line-height: calc(var(--yr) * 9);
+    margin: 0 0 calc(var(--yr) * 4);
   }
 }
 

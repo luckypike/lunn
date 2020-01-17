@@ -107,13 +107,12 @@ class Node < ApplicationRecord
   end
 
   def navs
-    mlid = Nav.main_or_sec.unscope(:order).order(has_children: :desc).find_by(link_path: "node/#{id}")&.mlid
+    mlid = Nav.main_or_sec.loaf.find_by(link_path: "node/#{id}")&.mlid
     Nav.lang.where(plid: mlid)
   end
 
   def loaf
-    mlids = Nav.main_or_sec.unscope(:order).order(has_children: :desc)
-      .find_by(link_path: "node/#{id}")
+    mlids = Nav.main_or_sec.loaf.find_by(link_path: "node/#{id}")
       &.slice(:p1, :p2, :p3, :p4, :p5, :p6, :p7, :p8, :p9)&.values
 
     Nav.main_or_sec.where(mlid: mlids).unscope(:order).order(depth: :asc)
