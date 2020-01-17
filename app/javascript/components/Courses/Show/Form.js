@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import classNames from 'classnames'
 
 import { useI18n } from '../../I18n'
 
@@ -14,27 +13,13 @@ Form.propTypes = {
 export default function Form ({ course, locale }) {
   const I18n = useI18n(locale)
 
-  const levels = {
-    ba: 'Бакалавриат',
-    sp: 'Специалитет',
-    ma: 'Магистратура'
-  }
-
   return (
     <div className={styles.root}>
-      <div className={styles.level}>
-        {levels[course.level]}
-      </div>
-
       <div className={styles.course}>
         <div className={styles.form_1}>
           <div className={styles.items}>
             <div className={styles.item}>
               Форма обучения
-            </div>
-
-            <div className={styles.item}>
-              Срок обучения
             </div>
 
             <div className={styles.item}>
@@ -54,11 +39,7 @@ export default function Form ({ course, locale }) {
                 <>
                   <div className={styles.items}>
                     <div>
-                      {I18n.t(`courses.forms.form_${i + 1}`)}
-                    </div>
-
-                    <div>
-                      {I18n.t('courses.times', { count: I18n.toNumber(course[`time_${i + 1}`], { separator: ',', precision: 1, strip_insignificant_zeros: true }) })}
+                      {I18n.t(`courses.forms.form_${i + 1}`)}: {I18n.t('courses.times', { count: I18n.toNumber(course[`time_${i + 1}`], { separator: ',', precision: 1, strip_insignificant_zeros: true }) })}
                     </div>
 
                     <div>

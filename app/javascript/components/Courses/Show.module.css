@@ -1,0 +1,154 @@
+.root {
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.level {
+  composes: h4 from '../Fonts.module.css';
+  text-align: center;
+  margin-bottom: calc(var(--yr) * calc(var(--s4)));
+}
+
+.course {
+  display: block;
+  background-color: #ECEFF1;
+  border-radius: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 7) calc(var(--yr) * 7.5) calc(var(--yr) * 10.5);
+  margin-bottom: calc(var(--yr) * calc(var(--s2) * 3));
+
+  @media(--s) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: calc(var(--yr) * 2);
+  }
+
+  @media(--m) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.title {
+  composes: at from '../Fonts.module.css';
+  margin-bottom: var(--yr);
+  color: #727272;
+
+  @media(--m) {
+    height: calc(var(--yr) * 10);
+    max-width: 160px;
+    margin-bottom: calc(var(--yr) * 3.5);
+  }
+}
+
+.forms, .places {
+  margin-bottom: calc(var(--yr) * 3.5);
+
+  @media(--m) {
+    margin-right: calc(var(--yr) * 7.5);
+    margin-bottom: 0;
+  }
+}
+
+.prices {
+  margin-bottom: calc(var(--yr) * 7);
+
+  @media(--m) {
+    margin-right: calc(var(--yr) * var(--s4));
+    margin-bottom: calc(var(--yr) * 6);
+  }
+
+  @media(--l) {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+.exams {
+  margin-bottom: calc(var(--yr) * 7);
+  white-space: nowrap;
+
+  @media(--m) {
+    margin-bottom: 0;
+  }
+
+  @media(--l) {
+    margin: 0 calc(var(--yr) * 7.5) 0 auto;
+  }
+}
+
+.grey {
+  color: #727272;
+}
+
+.sub {
+  display: flex;
+}
+
+.subject {
+  margin-right: var(--yr);
+}
+
+.ball {
+  display: none;
+
+  @media(--m) {
+    display: block;
+  }
+}
+
+.button {
+  color: #fff;
+  background-color: var(--hl_color);
+  border-radius: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  margin: 0 auto;
+  text-align: center;
+
+  @media(--s) {
+    grid-column: span 2;
+  }
+
+  @media(--l) {
+    margin: auto 0;
+  }
+}
+
+.youtube {
+  position: relative;
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 2));
+  background-color: #f1f1f1;
+  background-position: center;
+  background-size: cover;
+
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    position: relative;
+    padding-top: calc(9 / 16 * 100%);
+    z-index: -1;
+  }
+
+  & iframe {
+    border-radius: calc(var(--yr) * 2);
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.text {
+  hyphens: auto;
+
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+
+  @media (--xl) {
+    margin: 0 calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+}
