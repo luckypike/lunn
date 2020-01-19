@@ -1,0 +1,47 @@
+.root {
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--m) {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: calc(var(--xr) * 2);
+
+    & .photo {
+      grid-column: span 3;
+    }
+
+    & .desc {
+      grid-column: span 5;
+    }
+
+    & .text {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.image {
+  position: relative;
+  margin-bottom: calc(var(--yr) * var(--s2));
+  background-color: color-mod(#000 a(0.6));
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    content: '';
+    padding-top: calc(5 / 4 * 100%);
+  }
+
+  & img {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    display: block;
+    width: 100%;
+    transform: translate(-50%, -50%);
+
+    @media (--s) {
+      /* border-radius: var(--yr); */
+    }
+  }
+}
