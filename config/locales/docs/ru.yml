@@ -1,6 +1,2 @@
 ru:
   docs:
-    mimes:
-      application/pdf: PDF
-      application/msword: DOC
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document': DOC

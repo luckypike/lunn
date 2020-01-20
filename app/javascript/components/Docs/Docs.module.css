@@ -30,6 +30,7 @@
 
 
 .meta {
+  text-transform: uppercase;
   color: var(--gr_color);
   composes: mt from '../Fonts.module.css';
 }

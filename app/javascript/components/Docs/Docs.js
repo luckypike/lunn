@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import mime from 'mime-types'
 
 import { useI18n } from '../I18n'
 
@@ -30,7 +31,7 @@ export default function Docs ({ docs, locale }) {
               </div>
 
               <div className={styles.meta}>
-                ({I18n.t(`docs.mimes.${doc.mime}`)}, {I18n.toHumanSize(doc.size, { precision: 1, format: '%n %u', strip_insignificant_zeros: true })})
+                ({mime.extension(doc.mime)}, {I18n.toHumanSize(doc.size, { precision: 1, format: '%n %u', strip_insignificant_zeros: true })})
               </div>
             </a>
           </li>
