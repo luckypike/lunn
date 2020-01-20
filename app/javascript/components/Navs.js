@@ -9,6 +9,8 @@ Navs.propTypes = {
 }
 
 export default function Navs ({ navs }) {
+  if (!navs || navs.length === 0) return null
+
   return (
     <div className={styles.items}>
       {navs.map((nav, i) =>

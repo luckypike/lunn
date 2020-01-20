@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   get '*path', to: 'courses#show', constraints: { path: %r{programs/.*} }
 
   get '*path', to: 'pages#history', constraints: { path: 'about/history' }
-  #
+
   get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
   get '*path', to: 'tutors#show', constraints: { path: %r{tutors/.*} }
+
+  get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }
 
   scope '(:locale)', locale: /en/ do
     get '', to: 'pages#index'
