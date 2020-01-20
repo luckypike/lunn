@@ -73,6 +73,7 @@ h2 {
       margin: 0 auto calc(var(--yr) * var(--s1));
       width: 5rem;
       height: 5rem;
+      object-fit: cover;
     }
   }
 }
