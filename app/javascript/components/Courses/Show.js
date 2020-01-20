@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import { Title } from '../Pages'
 import { useI18n } from '../I18n'
@@ -63,8 +64,13 @@ export default function Show ({ node, loaf, course, locale }) {
 
             {[1, 2, 3].filter(i => course[`time_${i}`] !== null && course[`places_${i}`] !== null).map(i =>
               <div key={i} className={styles.item}>
-                <div className={styles.form}>{I18n.t(`courses.forms.form_${i}`)}:</div>
-                <div>{course[`places_${i}`] > 0 ? course[`places_${i}`] : 'нет' }</div>
+                <div className={styles.form}>
+                  {I18n.t(`courses.forms.form_${i}`)}:
+                </div>
+
+                <div>
+                  {course[`places_${i}`] > 0 ? course[`places_${i}`] : 'нет' }
+                </div>
               </div>
             )}
           </div>
@@ -76,38 +82,47 @@ export default function Show ({ node, loaf, course, locale }) {
 
             {[1, 2, 3].filter(i => course[`time_${i}`] !== null && course[`places_${i}`] !== null).map(i =>
               <div key={i} className={styles.item}>
-                <div className={styles.form}>{I18n.t(`courses.forms.form_${i}`)}:</div>
-                <div>{course[`price_${i}`]} ₽</div>
+                <div className={styles.form}>
+                  {I18n.t(`courses.forms.form_${i}`)}:
+                </div>
+
+                {course[`price_${i}`] !== null &&
+                  <div>
+                    {course[`price_${i}`]} ₽
+                  </div>
+                }
               </div>
             )}
           </div>
 
-          <div className={styles.exams}>
-            <div className={styles.title}>
-              <div>Вступительные испытания</div>
-              <div className={styles.ball}>минимальный балл</div>
+          {course.level !== 'ma' &&
+            <div className={styles.exams}>
+              <div className={styles.title}>
+                <div>Вступительные испытания</div>
+                <div className={styles.ball}>минимальный балл</div>
+              </div>
+
+              <div className={styles.subs}>
+                <div className={styles.sub}>
+                  <div className={styles.subject}>Русский язык</div>
+                  <div className={styles.grey}>60 баллов</div>
+                </div>
+
+                <div className={styles.sub}>
+                  <div className={styles.subject}>Литература</div>
+                  <div className={styles.grey}>60 баллов</div>
+                </div>
+
+                <div className={styles.sub}>
+                  <div className={styles.subject}>Иностранный язык</div>
+                  <div className={styles.grey}>60 баллов</div>
+                </div>
+              </div>
             </div>
+          }
 
-            <div className={styles.subs}>
-              <div className={styles.sub}>
-                <div className={styles.subject}>Русский язык</div>
-                <div className={styles.grey}>60 баллов</div>
-              </div>
-
-              <div className={styles.sub}>
-                <div className={styles.subject}>Литература</div>
-                <div className={styles.grey}>60 баллов</div>
-              </div>
-
-              <div className={styles.sub}>
-                <div className={styles.subject}>Иностранный язык</div>
-                <div className={styles.grey}>60 баллов</div>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.button}>
-            <a href="http://www.lunn.ru/page/priemnaya-kampaniya-2020-goda-bakalavriat-specialitet-magistratura" target="_blank" rel="noopener noreferrer">
+          <div className={classNames(styles.button, { [styles.ma]: course.level === 'ma' })}>
+            <a href="/page/priemnaya-kampaniya-2020-goda-bakalavriat-specialitet-magistratura" target="_blank" rel="noopener noreferrer">
               Приёмная комиссия
             </a>
           </div>

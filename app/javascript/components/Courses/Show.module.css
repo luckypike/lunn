@@ -137,6 +137,10 @@
   @media(--l) {
     margin: auto 0;
   }
+
+  &.ma {
+    margin-left: auto;
+  }
 }
 
 .youtube {
