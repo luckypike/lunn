@@ -1,7 +1,57 @@
 .root {
   border-bottom: 1px solid var(--sp_color);
+  margin-bottom: calc(var(--yr) * 4);
 }
 
 .ul {
   composes: ul from '../../Draft.module.css';
+}
+
+h3 {
+  position: relative;
+}
+
+.more {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+
+  &::before {
+    position: absolute;
+    top: 17px;
+    left: 5px;
+    content: '';
+    height: 2px;
+    width: 8px;
+    background-color: #1c1d1e;
+    transform: rotate(-45deg);
+    transition: .2s transform ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 17px;
+    left: 10px;
+    z-index: 2;
+    height: 2px;
+    width: 8px;
+    background-color: #1c1d1e;
+    transform: rotate(45deg);
+    transition: .2s transform ease-in-out;
+  }
+
+  &.opened {
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
 }

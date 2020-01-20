@@ -1,3 +1,19 @@
 ru:
   tutor:
+    position: Должность
     tutor_edu: Уровень образования
+    tutor_qual: Квалификация
+    tutor_adegree: Ученая степень
+    tutor_atitle: Ученое звание
+    tutor_school: Образование (вуз)
+    tutor_direction: Образование (направление)
+    tutor_time: Общий стаж работы
+    tutor_stime: Научно-педагогический стаж
+    tutor_phone: Телефон
+    tutor_email: Почта
+    tutor_works: Публикации
+    tutor_conferences: Участие в конференциях
+    tutor_directions: Преподаваемые дисциплины
+    tutor_retraining: Повышение квалификации
+    tutor_special: Особые достижения
+    tutor_consult: Время консультаций

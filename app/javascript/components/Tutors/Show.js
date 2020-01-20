@@ -32,8 +32,26 @@ export default function Show ({ id, locale }) {
   }, [])
 
   const desc = [
+    'position',
     'tutor_edu',
-    'tutor_qual'
+    'tutor_qual',
+    'tutor_adegree',
+    'tutor_atitle',
+    'tutor_school',
+    'tutor_direction',
+    'tutor_time',
+    'tutor_stime',
+    'tutor_phone',
+    'tutor_email'
+  ]
+
+  const text = [
+    'tutor_works',
+    'tutor_conferences',
+    'tutor_directions',
+    'tutor_retraining',
+    'tutor_special',
+    'tutor_consult'
   ]
 
   return (
@@ -67,8 +85,8 @@ export default function Show ({ id, locale }) {
             </div>
 
             <div className={styles.text}>
-              {['tutor_works'].filter(e => node[e]).map(e =>
-                <Exp key={e} e={e} items={node[e]} />
+              {text.filter(e => node[e]).map(e =>
+                <Exp key={e} e={e} items={node[e]} locale={locale} />
               )}
             </div>
           </div>
