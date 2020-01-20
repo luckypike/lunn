@@ -1,0 +1,7 @@
+.root {
+  border-bottom: 1px solid var(--sp_color);
+}
+
+.ul {
+  composes: ul from '../../Draft.module.css';
+}

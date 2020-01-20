@@ -1,6 +1,10 @@
 .root {
   margin-bottom: calc(var(--yr) * var(--s4));
 
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+
   @media (--m) {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -18,6 +22,12 @@
       grid-column: 1 / -1;
     }
   }
+}
+
+.text {
+  hyphens: auto;
+
+
 }
 
 .image {

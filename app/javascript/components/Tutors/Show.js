@@ -3,17 +3,22 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 // import { Link } from '@reach/router'
 
+import { useI18n } from '../I18n'
+
 import { Title } from '../Pages'
-import Renderer from '../Draft'
+// import Renderer from '../Draft'
+import Exp from './Show/Exp'
 
 import styles from './Show.module.css'
 import pages from '../Pages.module.css'
 
 Show.propTypes = {
-  id: PropTypes.string
+  id: PropTypes.string,
+  locale: PropTypes.string
 }
 
-export default function Show ({ id }) {
+export default function Show ({ id, locale }) {
+  const I18n = useI18n(locale)
   const [node, setNode] = useState()
 
   useEffect(() => {
@@ -25,6 +30,11 @@ export default function Show ({ id }) {
 
     _fetch()
   }, [])
+
+  const desc = [
+    'tutor_edu',
+    'tutor_qual'
+  ]
 
   return (
     <div className={pages.container}>
@@ -43,17 +53,24 @@ export default function Show ({ id }) {
               </div>
             </div>
 
-            {node.desc &&
-              <div className={styles.desc}>
-                <Renderer source={node.desc} />
-              </div>
-            }
+            <div className={styles.desc}>
+              {desc.filter(e => node[e]).map(e =>
+                <React.Fragment key={e}>
+                  <h4>
+                    {I18n.t(`tutor.${e}`)}
+                  </h4>
+                  <p>
+                    {node[e]}
+                  </p>
+                </React.Fragment>
+              )}
+            </div>
 
-            {node.text &&
-              <div className={styles.text}>
-                <Renderer source={node.text} />
-              </div>
-            }
+            <div className={styles.text}>
+              {['tutor_works'].filter(e => node[e]).map(e =>
+                <Exp key={e} e={e} items={node[e]} />
+              )}
+            </div>
           </div>
         </>
       }
