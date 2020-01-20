@@ -149,6 +149,16 @@ const options = {
           </li>
         )
       }
+
+      if (name === 'table') {
+        return (
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              {domToReact(children, options)}
+            </table>
+          </div>
+        )
+      }
     }
 
     //
