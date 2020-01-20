@@ -45,8 +45,14 @@
   max-width: 270px;
   color: #777;
 
+
   & a {
     color: #777;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--hl_color);
+    }
   }
 }
 

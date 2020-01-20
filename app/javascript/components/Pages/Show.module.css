@@ -23,6 +23,6 @@
   }
 
   @media (--xl) {
-    margin: calc(var(--yr) * var(--s3)) calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
+    /* margin: calc(var(--yr) * var(--s3)) calc(2 / 8 * 100%) calc(var(--yr) * var(--s4)); */
   }
 }
