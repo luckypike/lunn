@@ -33,15 +33,15 @@ export default function Show ({ id, locale }) {
 
   const desc = [
     'position',
-    'tutor_edu',
+    // 'tutor_edu',
     'tutor_qual',
     'tutor_adegree',
     'tutor_atitle',
-    'tutor_school',
-    'tutor_direction',
-    'tutor_time',
-    'tutor_stime',
-    'tutor_phone',
+    // 'tutor_school',
+    // 'tutor_direction',
+    // 'tutor_time',
+    // 'tutor_stime',
+    // 'tutor_phone',
     'tutor_email'
   ]
 
@@ -50,8 +50,8 @@ export default function Show ({ id, locale }) {
     'tutor_conferences',
     'tutor_directions',
     'tutor_retraining',
-    'tutor_special',
-    'tutor_consult'
+    'tutor_special'
+    // 'tutor_consult'
   ]
 
   return (
@@ -74,9 +74,9 @@ export default function Show ({ id, locale }) {
             <div className={styles.desc}>
               {desc.filter(e => node[e]).map(e =>
                 <React.Fragment key={e}>
-                  <h4>
+                  <h5>
                     {I18n.t(`tutor.${e}`)}
-                  </h4>
+                  </h5>
                   <p>
                     {node[e]}
                   </p>

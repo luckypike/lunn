@@ -23,10 +23,10 @@ export default function Exp ({ e, items, locale }) {
 
   return (
     <div className={styles.root}>
-      <h3>
+      <h4 onClick={handleClick}>
         {I18n.t(`tutor.${e}`)}
-        <div className={classNames(styles.more, { [styles.opened]: height === 'auto' })} onClick={handleClick} />
-      </h3>
+        <div className={classNames(styles.more, { [styles.opened]: height === 'auto' })} />
+      </h4>
 
       <div>
         <AnimateHeight height={height} duration={300}>

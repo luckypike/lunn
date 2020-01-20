@@ -1,15 +1,19 @@
 .root {
   border-bottom: 1px solid var(--sp_color);
-  margin-bottom: calc(var(--yr) * 4);
+  padding: calc(var(--yr) * var(--s3)) 0;
+
+  & h4 {
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+  }
 }
 
 .ul {
   composes: ul from '../../Draft.module.css';
+  margin-top: calc(var(--yr) * var(--s2));
 }
 
-h3 {
-  position: relative;
-}
 
 .more {
   position: absolute;
@@ -28,8 +32,8 @@ h3 {
     height: 2px;
     width: 8px;
     background-color: #1c1d1e;
-    transform: rotate(-45deg);
-    transition: .2s transform ease-in-out;
+    transform: rotate(45deg);
+    transition: 0.2s transform ease-in-out;
   }
 
   &::after {
@@ -41,8 +45,8 @@ h3 {
     height: 2px;
     width: 8px;
     background-color: #1c1d1e;
-    transform: rotate(45deg);
-    transition: .2s transform ease-in-out;
+    transform: rotate(-45deg);
+    transition: 0.2s transform ease-in-out;
   }
 
   &.opened {

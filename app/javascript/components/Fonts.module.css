@@ -94,13 +94,17 @@ h4,
   }
 }
 
+h5,
 .h5 {
   font-size: calc(var(--yr) * 4);
   line-height: calc(var(--yr) * 5);
+  font-weight: normal;
+  margin: 0 0 calc(var(--yr) * 3);
 
-  @media(--s) {
+  @media (--s) {
     font-size: calc(var(--yr) * 5);
     line-height: calc(var(--yr) * 6);
+    margin: 0 0 calc(var(--yr) * 4);
   }
 }
 
