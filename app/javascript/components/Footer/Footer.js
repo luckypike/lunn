@@ -17,7 +17,7 @@ export default function Footer ({ navs, footer }) {
         <div className={styles.wrapper}>
           <div className={styles.info}>
             <div className={styles.title}>
-              © 2007-2019 Нижегородский государственный лингвистический университет имени Н.А. Добролюбова
+              © 2007–{new Date().getFullYear()} Нижегородский государственный лингвистический университет имени Н.А. Добролюбова
             </div>
 
             <div className={styles.links}>
