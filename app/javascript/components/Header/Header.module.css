@@ -90,7 +90,6 @@
   background: #fff;
   opacity: 0;
   visibility: hidden;
-  border-top: 2px solid #eee;
   z-index: 3;
   transform: translateY(calc(var(--yr) * -34));
   transition: visibility 0s, opacity 0.3s, transform 0.3s;
