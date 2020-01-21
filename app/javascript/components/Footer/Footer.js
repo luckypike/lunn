@@ -9,7 +9,7 @@ import styles from './Footer.module.css'
 Footer.propTypes = {
   navs: PropTypes.array,
   footer: PropTypes.array,
-  partners: PropTypes.string
+  partners: PropTypes.object
 }
 
 export default function Footer ({ navs, footer, partners }) {
