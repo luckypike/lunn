@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import redraft from 'redraft'
 import classNames from 'classnames'
 import parse, { domToReact } from 'html-react-parser'
-
-import { ContentState, convertFromHTML, convertToRaw } from 'draft-js'
 
 import styles from './Draft.module.css'
 
@@ -20,13 +17,6 @@ export default function Renderer ({ source }) {
 
 const options = {
   replace: ({ type, name, attribs, children, data, parent }) => {
-    // console.log(type)
-    // console.log(name)
-    // console.log(children)
-    // console.log(data)
-
-    // if (!attribs) return
-
     if (type === 'tag') {
       if (name === 'p') {
         if (children.length === 1 && children[0].data && children[0].data.replace(/\s/g, '') === '') {

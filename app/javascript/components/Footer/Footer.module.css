@@ -36,6 +36,51 @@
   }
 }
 
+.partners {
+  padding-top: calc(var(--yr) * var(--s3));
+  border-top: 2px solid var(--sp_color);
+
+  & ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (--s) {
+      justify-content: center;
+    }
+  }
+
+  & li {
+    margin-bottom: calc(var(--yr) * var(--s3));
+    /* min-width: 120px; */
+    width: 50%;
+    /* display: flex; */
+
+    @media (--s) {
+      width: auto;
+      min-width: 180px;
+    }
+  }
+
+  & img {
+    display: block;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+  }
+
+  & a {
+    width: 120px;
+    margin: 0 auto;
+    display: block;
+
+    &:hover {
+      & img {
+        opacity: 1;
+        filter: none;
+      }
+    }
+  }
+}
 
 .navs {
   display: grid;

@@ -17,5 +17,6 @@ html lang=I18n.locale
 
     = react_component 'Footer/Footer', { \
       navs: Nav.active.main_or_sec.lang.unscope(:order).order(menu_name: :desc, weight: :asc).as_json(methods: %i[path title]),
+      partners: ActiveRecord::Base.connection.exec_query('SELECT body FROM block_custom WHERE bid = 8').first,
       footer: Nav.active.footer.lang.unscope(:order).order(menu_name: :desc, weight: :asc).as_json(methods: %i[path title]) \
     }

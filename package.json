@@ -12,7 +12,6 @@
     "charming": "^3.0.1",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.17",
-    "draft-js": "^0.11.3",
     "html-react-parser": "^0.10.0",
     "i18n-js": "^3.5.1",
     "mime-types": "^2.1.26",
@@ -24,7 +23,6 @@
     "react-dom": "^16.12.0",
     "react-yandex-maps": "^4.2.0",
     "react_ujs": "^2.6.0",
-    "redraft": "^0.10.2",
     "siema": "^1.5.1",
     "svg-react-loader": "^0.4.6",
     "webpack": "^4.0.0"
