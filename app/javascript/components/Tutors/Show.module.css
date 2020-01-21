@@ -28,10 +28,18 @@
   }
 }
 
+.desc {
+  & p {
+    margin-bottom: calc(var(--yr) * var(--s3));
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .text {
   hyphens: auto;
-
-
 }
 
 .image {

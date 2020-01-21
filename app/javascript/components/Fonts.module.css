@@ -85,12 +85,12 @@ h4,
   font-size: calc(var(--yr) * 4.5);
   line-height: calc(var(--yr) * 5.5);
   font-weight: normal;
-  margin: 0 0 calc(var(--yr) * 3);
+  margin: 0 0 calc(var(--yr) * 2);
 
   @media (--s) {
     font-size: calc(var(--yr) * 6);
     line-height: calc(var(--yr) * 7);
-    margin: 0 0 calc(var(--yr) * 4);
+    margin: 0 0 calc(var(--yr) * 3);
   }
 }
 
@@ -99,12 +99,12 @@ h5,
   font-size: calc(var(--yr) * 4);
   line-height: calc(var(--yr) * 5);
   font-weight: normal;
-  margin: 0 0 calc(var(--yr) * 3);
+  margin: 0 0 calc(var(--yr) * 1);
 
   @media (--s) {
     font-size: calc(var(--yr) * 5);
     line-height: calc(var(--yr) * 6);
-    margin: 0 0 calc(var(--yr) * 4);
+    margin: 0 0 calc(var(--yr) * 2);
   }
 }
 
