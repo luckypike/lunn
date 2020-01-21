@@ -43,9 +43,9 @@
   max-width: 100%;
   overflow: hidden;
 
-  &:not(:last-child) {
+  /* &:not(:last-child) {
     margin-bottom: calc(var(--yr) * var(--s4));
-  }
+  } */
 }
 
 .nav {

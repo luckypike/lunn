@@ -45,6 +45,10 @@
 
 .nav {
   margin-right: calc(var(--xr) * 2);
+
+  & a {
+    display: block;
+  }
 }
 
 .more {

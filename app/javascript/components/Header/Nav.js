@@ -24,7 +24,7 @@ export default function Nav ({ navs, onToggle, index, menuActive }) {
 
       <ul className={styles.navs}>
         {navs.filter(n => n.depth === 1).map(nav =>
-          <li key={nav.mlid} className={styles.nav}>
+          <li key={nav.mlid} className={styles.nav} onMouseEnter={onToggle} onMouseLeave={onToggle}>
             <a href={nav.path}>
               {nav.title}
             </a>
