@@ -1,8 +1,11 @@
 :root {
   --pr_color: #333333;
-  --hl_color: #2F53EB;
-  --gr_color: #777777;
+  --hl_color: #2e4de6;
+  --gr_color: #727272;
   --sp_color: #ECEFF1;
+
+  --hl_h_color: #3355FF;
+  --hl_d_color: #2A46D1;
 
   --yr: 0.25rem;
   --xr: 1rem;

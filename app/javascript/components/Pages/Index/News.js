@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Renderer from '../../Draft'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 
 import styles from './News.module.css'
+import buttons from '../../Buttons.module.css'
 
 News.propTypes = {
   news: PropTypes.array,
@@ -39,7 +39,7 @@ export default function News ({ news, I18n }) {
         )}
       </div>
 
-      <a className={styles.more} href="/news?page=1">
+      <a className={buttons.sec} href="/news">
         Все новости
       </a>
     </div>

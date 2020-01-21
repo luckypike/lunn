@@ -27,6 +27,11 @@ body {
 a {
   color: #000;
   text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--hl_color);
+  }
 }
 
 ul,

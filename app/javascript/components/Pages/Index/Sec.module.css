@@ -26,24 +26,38 @@
 }
 
 .tab {
+  composes: bt from '../../Fonts.module.css';
   cursor: pointer;
   background-color: #fff;
   border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * var(--s2)) var(--xr);
-  color: #777;
+  padding: calc(var(--yr) * 3) var(--xr);
+  color: var(--gr_color);
   text-align: center;
   white-space: nowrap;
   display: block;
   transition: background .2s,color .2s;
 
-  @media (--s) {
-    padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 1.4);
+  &:hover {
+    color: var(--hl_color);
+  }
+
+  @media (--l) {
+    padding: calc(var(--yr) * 3) calc(var(--xr) * 1.2);
+  }
+
+  @media (--xl) {
+    padding: calc(var(--yr) * 3) calc(var(--xr) * 1.8);
   }
 }
 
 .active {
   background-color: var(--hl_color);
   color: #fff;
+
+  &:hover {
+    background-color: var(--hl_h_color);
+    color: #fff;
+  }
 }
 
 .tabs {

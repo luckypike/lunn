@@ -6,6 +6,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 
 import styles from './Events.module.css'
+import buttons from '../../Buttons.module.css'
 
 Events.propTypes = {
   events: PropTypes.array
@@ -16,7 +17,7 @@ export default function Events ({ events }) {
 
   const openTab = e => setActive(+e.target.dataset.index)
 
-  const buttons = {
+  const tabs = {
     tab: [
       { title: 'Анонсы' },
       { title: 'Календарь' }
@@ -30,7 +31,7 @@ export default function Events ({ events }) {
       </div>
 
       <div className={styles.buttons}>
-        {buttons.tab.map((button, i) =>
+        {tabs.tab.map((button, i) =>
           <div key={i} className={classNames(styles.tab, { [styles.active]: i === active })} onClick={openTab} data-index={i}>
             {button.title}
           </div>
@@ -70,7 +71,7 @@ export default function Events ({ events }) {
         </div>
       }
 
-      <a href="/events" className={styles.more}>
+      <a href="/events" className={buttons.sec}>
         Все анонсы
       </a>
     </div>
