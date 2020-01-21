@@ -18,7 +18,7 @@ module Tutor
     has_many :field_tutor_special, -> { where(entity_type: :node) }, class_name: 'Field::TutorSpecial', foreign_key: :entity_id
     has_one :field_tutor_phone, -> { where(entity_type: :node) }, class_name: 'Field::TutorPhone', foreign_key: :entity_id
     has_one :field_tutor_email, -> { where(entity_type: :node) }, class_name: 'Field::TutorEmail', foreign_key: :entity_id
-    has_many :field_tutor_consult, -> { where(entity_type: :node) }, class_name: 'Field::TutorConsult', foreign_key: :entity_id
+    has_one :field_tutor_consult, -> { where(entity_type: :node) }, class_name: 'Field::TutorConsult', foreign_key: :entity_id
   end
 
   def position
@@ -86,7 +86,7 @@ module Tutor
   end
 
   def tutor_consult
-    field_tutor_consult.map(&:value)
+    field_tutor_consult&.value
   end
 
   class_methods do

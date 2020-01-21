@@ -84,28 +84,32 @@ export default function Show ({ id, locale }) {
                 </React.Fragment>
               )}
 
-              <h5>
-                Контакты и время приёма
-              </h5>
+              {(node.tutor_consult || node.tutor_email) &&
+                <>
+                  <h5>
+                    Контакты и время приёма
+                  </h5>
 
-              <p>
-                {node.tutor_consult &&
-                  <>
-                    {node.tutor_consult}
-                  </>
-                }
+                  <p>
+                    {node.tutor_consult &&
+                      <>
+                        {node.tutor_consult}
+                      </>
+                    }
 
-                {node.tutor_email &&
-                  <>
-                    <br />
-                    {node.tutor_email}
-                  </>
-                }
-              </p>
+                    {node.tutor_email &&
+                      <>
+                        <br />
+                        {node.tutor_email}
+                      </>
+                    }
+                  </p>
+                </>
+              }
             </div>
 
             <div className={styles.text}>
-              {text.filter(e => node[e]).map(e =>
+              {text.filter(e => node[e] && node[e].length > 0).map(e =>
                 <React.Fragment key={e}>
                   {Array.isArray(node[e]) &&
                     <Exp e={e} items={node[e]} locale={locale} />
