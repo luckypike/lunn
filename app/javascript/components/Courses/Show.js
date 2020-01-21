@@ -103,20 +103,13 @@ export default function Show ({ node, loaf, course, locale }) {
               </div>
 
               <div className={styles.subs}>
-                <div className={styles.sub}>
-                  <div className={styles.subject}>Русский язык</div>
-                  <div className={styles.grey}>60 баллов</div>
-                </div>
+                {course.ege.map(e =>
+                  <li key={e} className={styles.sub}>
+                    <Ege label={e} />
 
-                <div className={styles.sub}>
-                  <div className={styles.subject}>Литература</div>
-                  <div className={styles.grey}>60 баллов</div>
-                </div>
-
-                <div className={styles.sub}>
-                  <div className={styles.subject}>Иностранный язык</div>
-                  <div className={styles.grey}>60 баллов</div>
-                </div>
+                    <div className={styles.grey}>60 баллов</div>
+                  </li>
+                )}
               </div>
             </div>
           }
@@ -142,4 +135,17 @@ export default function Show ({ node, loaf, course, locale }) {
       </div>
     </div>
   )
+}
+
+function Ege ({ label }) {
+  const labels = {
+    foreign: 'Иностранный язык',
+    russian: 'Русский язык',
+    lit: 'Литература',
+    math: 'Математика',
+    history: 'История',
+    social: 'Обществознание'
+  }
+
+  return labels[label] || label
 }

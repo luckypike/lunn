@@ -77,6 +77,7 @@
 
 .grey {
   color: #727272;
+  margin-left: var(--yr);
 }
 
 .sub {
@@ -85,10 +86,6 @@
   @media(--l) {
     margin-bottom: var(--yr);
   }
-}
-
-.subject {
-  margin-right: var(--yr);
 }
 
 .ball {
