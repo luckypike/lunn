@@ -50,7 +50,7 @@ export default function Header ({ navs, index, locale }) {
         </div>
       </header>
 
-      <div className={classNames(styles.menu, { [styles.active]: menuActive })} onMouseLeave={() => setMenuActive(false)} onMouseEnter={() => setMenuActive(true)}>
+      <div className={classNames(styles.menu, { [styles.active]: menuActive })} onMouseEnter={() => setMenuActive(true)}>
         <Menu navs={navs} />
       </div>
 
