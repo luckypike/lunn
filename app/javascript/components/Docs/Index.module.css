@@ -39,8 +39,8 @@
 
 .doc {
   display: flex;
-  margin-bottom: calc(var(--yr) * var(--s3));
-  max-width: 38rem;
+  padding: calc(var(--yr) * var(--s3)) 0;
+  border-bottom: 1px solid var(--sp_color);
   composes: bt from '../Fonts.module.css';
 
   & svg {
@@ -55,6 +55,7 @@
 
 .title {
   margin-bottom: calc(var(--yr));
+  max-width: 38rem;
 }
 
 .meta {
