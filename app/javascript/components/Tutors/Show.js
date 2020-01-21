@@ -36,16 +36,17 @@ export default function Show ({ id, locale }) {
     // 'tutor_edu',
     'tutor_qual',
     'tutor_adegree',
-    'tutor_atitle',
+    'tutor_atitle'
     // 'tutor_school',
     // 'tutor_direction',
     // 'tutor_time',
     // 'tutor_stime',
     // 'tutor_phone',
-    'tutor_email'
+    // 'tutor_email'
   ]
 
   const text = [
+    'tutor_school',
     'tutor_works',
     'tutor_conferences',
     'tutor_directions',
@@ -82,15 +83,46 @@ export default function Show ({ id, locale }) {
                   </p>
                 </React.Fragment>
               )}
+
+              <h5>
+                Контакты и время приёма
+              </h5>
+
+              <p>
+                {node.tutor_consult &&
+                  <>
+                    {node.tutor_consult}
+                  </>
+                }
+
+                {node.tutor_email &&
+                  <>
+                    <br />
+                    {node.tutor_email}
+                  </>
+                }
+              </p>
             </div>
 
             <div className={styles.text}>
               {text.filter(e => node[e]).map(e =>
-                <Exp key={e} e={e} items={node[e]} locale={locale} />
+                <React.Fragment key={e}>
+                  {Array.isArray(node[e]) &&
+                    <Exp e={e} items={node[e]} locale={locale} />
+                  }
+
+                  {!Array.isArray(node[e]) &&
+                    <Exp e={e} item={node[e]} locale={locale} node={node} />
+                  }
+                </React.Fragment>
               )}
             </div>
           </div>
         </>
+      }
+
+      {!node &&
+        <div className={styles.placeholder} />
       }
     </div>
   )

@@ -1,17 +1,17 @@
 .root {
   border-bottom: 1px solid var(--sp_color);
-  padding: calc(var(--yr) * var(--s3)) 0;
 
   & h4 {
     position: relative;
     margin: 0;
+    padding: calc(var(--yr) * var(--s3)) 0;
     cursor: pointer;
   }
 }
 
 .ul {
   composes: ul from '../../Draft.module.css';
-  margin-top: calc(var(--yr) * var(--s2));
+  margin-bottom: calc(var(--yr) * var(--s3));
 }
 
 

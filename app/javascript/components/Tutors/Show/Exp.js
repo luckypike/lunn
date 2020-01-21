@@ -9,11 +9,13 @@ import styles from './Exp.module.css'
 
 Exp.propTypes = {
   e: PropTypes.string,
+  node: PropTypes.object,
+  item: PropTypes.string,
   items: PropTypes.array,
   locale: PropTypes.string
 }
 
-export default function Exp ({ e, items, locale }) {
+export default function Exp ({ e, node, item, items, locale }) {
   const [height, setHeight] = useState(0)
   const I18n = useI18n(locale)
 
@@ -30,13 +32,30 @@ export default function Exp ({ e, items, locale }) {
 
       <div>
         <AnimateHeight height={height} duration={300}>
-          <ul className={styles.ul}>
-            {items.map((item, i) =>
-              <li key={i}>
+          <>
+            {item &&
+              <p>
                 {item}
-              </li>
-            )}
-          </ul>
+                {e === 'tutor_school' &&
+                  <>
+                    <br />
+                    {node.tutor_direction}
+                  </>
+                }
+              </p>
+            }
+
+            {items &&
+              <ul className={styles.ul}>
+                {items.map((item, i) =>
+                  <li key={i}>
+                    {item}
+                  </li>
+                )}
+              </ul>
+            }
+          </>
+
         </AnimateHeight>
       </div>
     </div>

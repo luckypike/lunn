@@ -1,6 +1,9 @@
+.placeholder {
+  min-height: 120vh;
+}
+
 .root {
   margin-bottom: calc(var(--yr) * var(--s4));
-  min-height: 120vh;
 
   @media (--s) {
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
