@@ -6,6 +6,7 @@ import { Title } from '../Pages'
 import Docs from '../Docs/Docs'
 import Renderer from '../Draft'
 import Navs from '../Navs'
+import Tutors from './Show/Tutors'
 
 import styles from './Show.module.css'
 import pages from '../Pages.module.css'
@@ -14,11 +15,12 @@ Show.propTypes = {
   node: PropTypes.object,
   navs: PropTypes.array,
   loaf: PropTypes.array,
+  tutors: PropTypes.array,
   docs: PropTypes.array,
   locale: PropTypes.string
 }
 
-export default function Show ({ node, navs, docs, loaf, locale }) {
+export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
   return (
     <div className={classNames(styles.root, pages.container)}>
       <Title
@@ -33,6 +35,16 @@ export default function Show ({ node, navs, docs, loaf, locale }) {
       {node.text &&
         <div className={styles.text}>
           <Renderer source={node.text} />
+        </div>
+      }
+
+      {tutors && tutors.length > 0 &&
+        <div className={styles.tutors}>
+          <h2>
+            Состав кафедры
+          </h2>
+
+          <Tutors tutors={tutors} />
         </div>
       }
 

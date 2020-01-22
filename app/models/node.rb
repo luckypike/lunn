@@ -15,6 +15,9 @@ class Node < ApplicationRecord
   has_one :image, -> { includes(:attachment).where(entity_type: :node) }, class_name: 'SingleImage', dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
   has_many :docs, -> { includes(:attachment).where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
 
+  has_many :departments, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_department_target_id, inverse_of: :node
+  has_many :tutors, through: :departments, class_name: 'Node'
+
   has_one :field_price_1, -> { where(entity_type: :node) }, class_name: 'Field::Price1', foreign_key: :entity_id
   has_one :field_price_2, -> { where(entity_type: :node) }, class_name: 'Field::Price2', foreign_key: :entity_id
   has_one :field_price_3, -> { where(entity_type: :node) }, class_name: 'Field::Price3', foreign_key: :entity_id
@@ -106,6 +109,11 @@ class Node < ApplicationRecord
 
   def ege
     field_ege.map(&:value)
+  end
+
+  def dep?
+    l = loaf
+    (l[3].present? && l[2].plid == 4687)
   end
 
   def navs

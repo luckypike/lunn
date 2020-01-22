@@ -1,10 +1,11 @@
 .root {
-
+  margin-bottom: calc(var(--yr) * var(--s4) * 2);
 }
 
 .text {
   composes: bt from '../Fonts.module.css';
   hyphens: auto;
+  margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--s) {
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
@@ -16,10 +17,26 @@
 }
 
 .docs {
-  margin: calc(var(--yr) * var(--s3)) 0;
+  margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--s) {
-    margin: calc(var(--yr) * var(--s3)) calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+
+  @media (--xl) {
+    /* margin: calc(var(--yr) * var(--s3)) calc(2 / 8 * 100%) calc(var(--yr) * var(--s4)); */
+  }
+}
+
+.tutors {
+  margin-bottom: calc(var(--yr) * calc(var(--s4) - var(--s2)));
+
+  @media (--s) {
+    & h2 {
+      margin-left: calc(1 / 8 * 100%);
+      margin-right: calc(1 / 8 * 100%);
+    }
+    /* margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * calc(var(--s4) - var(--s2))); */
   }
 
   @media (--xl) {
