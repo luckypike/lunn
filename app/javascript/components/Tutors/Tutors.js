@@ -8,15 +8,16 @@ import Index from './Index'
 import Show from './Show'
 
 Tutors.propTypes = {
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  loaf: PropTypes.array
 }
 
-export default function Tutors ({ locale }) {
+export default function Tutors ({ locale, loaf }) {
   return (
     <Router>
       <ScrollToTop path="/">
-        <Index path="tutors" />
-        <Show path="tutors/:id" locale={locale} />
+        <Index path="tutors" loaf={loaf} />
+        <Show path="tutors/:id" locale={locale} loaf={loaf} />
       </ScrollToTop>
     </Router>
   )

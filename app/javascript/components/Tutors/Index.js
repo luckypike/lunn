@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Link } from '@reach/router'
 
@@ -9,7 +9,11 @@ import Filters from './Index/Filters'
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
 
-export default function Index () {
+Index.propTypes = {
+  loaf: PropTypes.array
+}
+
+export default function Index ({ loaf }) {
   const [node, setNode] = useState()
   const [tutors, setTutors] = useState()
 
@@ -29,6 +33,7 @@ export default function Index () {
       {node &&
         <Title
           h1={node.title}
+          loaf={loaf}
         />
       }
 

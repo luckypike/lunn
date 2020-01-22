@@ -14,10 +14,11 @@ import pages from '../Pages.module.css'
 
 Show.propTypes = {
   id: PropTypes.string,
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  loaf: PropTypes.array
 }
 
-export default function Show ({ id, locale }) {
+export default function Show ({ id, locale, loaf }) {
   const I18n = useI18n(locale)
   const [node, setNode] = useState()
 
@@ -61,6 +62,14 @@ export default function Show ({ id, locale }) {
         <>
           <Title
             h1={node.title}
+            loaf={[
+              ...loaf,
+              {
+                mlid: 999,
+                path: node.path,
+                title: node.title
+              }
+            ]}
           />
 
           <div className={styles.root}>

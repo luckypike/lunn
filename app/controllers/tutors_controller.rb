@@ -13,10 +13,10 @@ class TutorsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json do
-      end
-    end
+    @loaf = Node.find(
+      UrlAlias.find_by(alias: :tutors).source.split('/').last
+    ).loaf
+
+    respond_to :html, :json
   end
 end
