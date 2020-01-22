@@ -14,10 +14,16 @@
 
 .image {
   position: relative;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #666;
+
+  & img {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 
   &::before {
     display: block;

@@ -61,8 +61,8 @@ export default function Sliders ({ images }) {
 
       <div ref={mount} className={styles.images}>
         {images.map((image, i) =>
-          <div key={i}>
-            <div className={styles.image} style={{ backgroundImage: `url(${image.path})` }} />
+          <div key={i} className={styles.image}>
+            <img src={image.path} />
           </div>
         )}
       </div>

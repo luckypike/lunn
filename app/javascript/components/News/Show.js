@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
@@ -35,6 +36,12 @@ export default function Show ({ slug }) {
             h2={node.title}
             date={node.created}
           />
+
+          <HelmetProvider>
+            <Helmet>
+              <title>{node.title}</title>
+            </Helmet>
+          </HelmetProvider>
 
           {node.images &&
             <Sliders images={node.images} />

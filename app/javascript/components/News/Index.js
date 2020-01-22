@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
+
 import List from './Index/List'
 
 import { Link } from '@reach/router'
@@ -48,6 +50,12 @@ export default function Index ({ location }) {
       <div className={styles.intro}>
         Новости
       </div>
+
+      <HelmetProvider>
+        <Helmet>
+          <title>Новости</title>
+        </Helmet>
+      </HelmetProvider>
 
       <div className={pages.container}>
         <List news={news} />
