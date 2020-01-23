@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
@@ -33,6 +34,12 @@ export default function Show ({ slug }) {
           <Title
             h2={event.title}
           />
+
+          <HelmetProvider>
+            <Helmet>
+              <title>{event.title}</title>
+            </Helmet>
+          </HelmetProvider>
 
           {event.text &&
             <div className={styles.text}>

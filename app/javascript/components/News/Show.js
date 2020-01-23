@@ -35,6 +35,18 @@ export default function Show ({ slug }) {
           <Title
             h2={node.title}
             date={node.created}
+            loaf={[
+              {
+                mlid: 999,
+                path: '/news',
+                title: 'Новости'
+              },
+              {
+                mlid: 9999,
+                path: slug,
+                title: node.title
+              }
+            ]}
           />
 
           <HelmetProvider>

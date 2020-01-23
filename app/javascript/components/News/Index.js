@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 
+import { Title } from '../Pages'
 import List from './Index/List'
 
 import { Link } from '@reach/router'
@@ -47,9 +48,16 @@ export default function Index ({ location }) {
 
   return (
     <div className={pages.root}>
-      <div className={styles.intro}>
-        Новости
-      </div>
+      <Title
+        h1='Новости'
+        loaf={[
+          {
+            mlid: 999,
+            path: '/news',
+            title: 'Новости'
+          }
+        ]}
+      />
 
       <HelmetProvider>
         <Helmet>

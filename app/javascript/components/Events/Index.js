@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import axios from 'axios'
 
 import Calendar from './Index/Calendar'
@@ -24,6 +25,12 @@ export default function Index () {
       <div className={styles.intro}>
         Мероприятия
       </div>
+
+      <HelmetProvider>
+        <Helmet>
+          <title>Мероприятия</title>
+        </Helmet>
+      </HelmetProvider>
 
       <Calendar events={events} />
     </div>
