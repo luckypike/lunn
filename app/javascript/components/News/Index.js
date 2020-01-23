@@ -53,7 +53,7 @@ export default function Index ({ location }) {
         loaf={[
           {
             mlid: 999,
-            path: '/news',
+            path: location.pathname,
             title: 'Новости'
           }
         ]}

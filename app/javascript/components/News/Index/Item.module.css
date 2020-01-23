@@ -1,4 +1,4 @@
-.news_item {
+/* .news_item {
   text-decoration: none;
   display: block;
 
@@ -26,7 +26,7 @@
 }
 
 .image {
-  grid-column: span 4;
+  grid-column: 5 / span 4;
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2));
 
@@ -42,9 +42,17 @@
     position: absolute;
     display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 
     @media(--s) {
       border-radius: var(--yr);
+    }
+  }
+
+  @media(--s) {
+    &::before {
+      padding-top: calc(1 / 2 * 100%);
     }
   }
 }
@@ -53,15 +61,133 @@
   grid-column: span 8;
 }
 
-.info {
-  grid-column: 5 / 9;
+.content {
+  grid-column: span 4;
 
   & .date, & .title {
     margin-bottom: 16px;
   }
+
+  @media(--s) {
+    order: -1;
+  }
+} */
+
+.title {
+  composes: h4 from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * 4);
+
+  @media(--m) {
+    margin-bottom: calc(var(--yr) * 8);
+  }
 }
 
-.date {
-  color: var(--hl_color);
-  text-transform: capitalize;
+.news_item {
+  position: relative;
+  display: block;
+  min-height: 200px;
+  margin-bottom: calc(var(--yr) * var(--s3));
+
+  @media(--m) {
+    padding: 60px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #d8d8d8;
+    }
+  }
+}
+
+.row {
+  display: block;
+
+  @media(--m) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-left: -15px;
+    margin-right: -15px;
+    flex-direction: row;
+  }
+}
+
+.content {
+  width: 100%;
+
+  & .desc {
+    color: #000;
+  }
+
+  & .date {
+    color: var(--gr_color);
+    text-transform: capitalize;
+  }
+
+  @media(--m) {
+    order: -1;
+    flex: none;
+    align-self: stretch;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 58.33333%;
+    margin-right: 8.33333%;
+  }
+}
+
+.col {
+  width: 100%;
+  margin-bottom: calc(var(--yr) * 4);
+
+  @media(--m) {
+    margin-bottom: 0;
+    display: block;
+    flex: none;
+    align-self: stretch;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 33.33333%;
+  }
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-bottom: 58.53659%;
+  }
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.inner {
+  position: relative;
+  z-index: 0;
+  min-height: 100%;
+  overflow: hidden;
+
+  & img {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
 }
