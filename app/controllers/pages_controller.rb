@@ -26,6 +26,7 @@ class PagesController < ApplicationController
     @sliders = Node.sliders.lang.published
       .includes(:image, :dates)
       .order(created: :desc)
+      .limit(4)
 
     respond_to :html, :json
   end
