@@ -42,7 +42,7 @@ export default function Header ({ navs, index, locale }) {
         </div>
 
         <div className={styles.nav} onMouseLeave={() => setMenuActive(false)}>
-          <Nav index={index} navs={navs} menuActive={menuActive} onToggle={() => setMenuActive(true)} />
+          <Nav index={index} navs={navs} menuActive={menuActive} menuOpen={() => setMenuActive(true)} onToggle={() => setMenuActive(!menuActive)} />
         </div>
 
         <div className={styles.service}>

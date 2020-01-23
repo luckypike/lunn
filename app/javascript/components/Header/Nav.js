@@ -8,10 +8,11 @@ Nav.propTypes = {
   navs: PropTypes.array,
   onToggle: PropTypes.func,
   index: PropTypes.bool,
-  menuActive: PropTypes.bool
+  menuActive: PropTypes.bool,
+  menuOpen: PropTypes.bool
 }
 
-export default function Nav ({ navs, onToggle, index, menuActive }) {
+export default function Nav ({ navs, onToggle, index, menuActive, menuOpen }) {
   return (
     <div className={classNames(styles.root, { [styles.white]: index, [styles.black]: menuActive })}>
       <div className={styles.toggle} onClick={onToggle}>
@@ -24,7 +25,7 @@ export default function Nav ({ navs, onToggle, index, menuActive }) {
 
       <ul className={styles.navs}>
         {navs.filter(n => n.depth === 1).map(nav =>
-          <li key={nav.mlid} className={styles.nav} onMouseEnter={onToggle} onMouseLeave={onToggle}>
+          <li key={nav.mlid} className={styles.nav} onMouseEnter={menuOpen} onMouseLeave={menuOpen}>
             <a href={nav.path}>
               {nav.title}
             </a>
