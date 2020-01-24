@@ -25,6 +25,7 @@
     "react-yandex-maps": "^4.2.0",
     "react_ujs": "^2.6.0",
     "siema": "^1.5.1",
+    "stylelint-config-standard": "^19.0.0",
     "svg-react-loader": "^0.4.6",
     "webpack": "^4.0.0"
   },
