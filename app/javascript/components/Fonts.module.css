@@ -24,7 +24,7 @@
 
   @media (--s) {
     font-size: calc(var(--yr) * 4.5);
-    line-height: calc(var(--yr) * 7);
+    line-height: calc(var(--yr) * 7.5);
   }
 }
 
@@ -62,7 +62,6 @@ h2 {
   @media (--s) {
     font-size: calc(var(--yr) * 10);
     line-height: calc(var(--yr) * 11);
-    /* margin: 0 0 calc(var(--yr) * 4); */
   }
 }
 

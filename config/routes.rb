@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
     resources :events, only: %i[index show]
 
+    get 'send-mail', to: 'feedback#index'
+    post 'send-mail', to: 'feedback#create'
+
     get :contacts, to: 'pages#contacts'
 
     get '*path', to: 'pages#show', constraints: ->(request) { UrlAlias.where(alias: request[:path]).any? }

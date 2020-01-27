@@ -1,0 +1,35 @@
+.root {
+  margin-bottom: calc(var(--yr) * var(--s4) * 2);
+
+  @media (--s) {
+    margin: 0 0 calc(var(--yr) * var(--s4));
+  }
+}
+
+.form {
+  background-color: var(--sp_color);
+  position: relative;
+  padding: calc(var(--yr) * var(--s3) * 2) var(--xr);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.els {
+  @media (--s) {
+    margin: 0 calc(1 / 10 * 100%);
+  }
+
+  @media (--m) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+
+    & .message {
+      grid-column: 1 / -1;
+    }
+
+    & .submit {
+      grid-column: 1 / -1;
+    }
+  }
+}

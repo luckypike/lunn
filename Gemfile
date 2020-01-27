@@ -15,6 +15,7 @@ gem 'slim-rails'
 
 gem 'i18n-js'
 gem 'jbuilder'
+gem 'rails-i18n'
 
 gem 'php-serialize'
 

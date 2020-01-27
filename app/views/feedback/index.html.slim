@@ -1,0 +1,7 @@
+- set_meta_tags \
+  title: "Письмо руководству"
+
+= react_component 'Feedback/Index', { \
+  departments: ActiveRecord::Base.connection.exec_query("SELECT id, title FROM lunn_send_mail_departments WHERE language = '#{I18n.locale}'"),
+  destinations: ActiveRecord::Base.connection.exec_query('SELECT id, title, department_id FROM lunn_send_mail_destinations') \
+}

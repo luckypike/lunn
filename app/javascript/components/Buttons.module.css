@@ -1,5 +1,47 @@
 .main {
+  background-color: var(--hl_color);
+  color: #fff;
+  composes: bt from './Fonts.module.css';
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  transition: background 0.2s, color 0.2s;
+  outline: none;
 
+  &:disabled {
+    background: #b8bfe6;
+  }
+
+  &.pending {
+    /* background: linear-gradient(90deg, color-mod(var(--f_color) tint(85%)), color-mod(var(--f_color) tint(50%)), color-mod(var(--f_color) tint(85%)));
+    background-size: 600% 600%;
+    animation: loading 5s ease infinite;
+    color: var(--pr_color); */
+  }
+
+  &:not(:last-child) {
+    margin-right: var(--xr);
+  }
+
+  &:active {
+    background: #2a46d1;
+  }
+
+  &:hover {
+    &:not(:disabled) {
+      &:not(.pending) {
+        background: #35f;
+      }
+    }
+  }
+}
+
+.big {
+  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
+  min-width: 10rem;
 }
 
 .sec {
@@ -8,6 +50,7 @@
   composes: bt from './Fonts.module.css';
   display: inline-block;
   cursor: pointer;
+
   /* position: static; */
   text-align: center;
   border-radius: calc(var(--yr) * 2);
