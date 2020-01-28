@@ -1,3 +1,4 @@
+import '@glidejs/glide/dist/css/glide.core'
 require('normalize.css/normalize.css')
 require('@rails/ujs').start()
 
