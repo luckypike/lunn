@@ -12,12 +12,12 @@ class PagesController < ApplicationController
         Time.current.beginning_of_day
       )
       .order('field_data_field_date_begin.field_date_begin_value': :asc)
-      .limit(6)
+      .limit(3)
 
-    if @events.size < 6
+    if @events.size < 3
       @events = Node.events.joins(:date).lang
         .order('field_data_field_date_begin.field_date_begin_value': :asc)
-        .last(6)
+        .last(3)
     end
 
     # TODO: убрать эту загрузку, выяснить почему includes не сработал

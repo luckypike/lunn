@@ -21,7 +21,7 @@ export default function News ({ news, I18n }) {
 
       <div className={styles.news_items}>
         {news.map((item, i) =>
-          <div key={item.nid} className={classNames(styles.news_item, { [styles.first]: i === 0 })}>
+          <div key={item.nid} className={styles.news_item}>
             <a href={item.path}>
               <div className={styles.image}>
                 <img src={item.images[0].path} />
@@ -39,7 +39,7 @@ export default function News ({ news, I18n }) {
         )}
       </div>
 
-      <a className={buttons.sec} href="/news">
+      <a href="/news" className={classNames(buttons.sec, styles.button)}>
         Все новости
       </a>
     </div>

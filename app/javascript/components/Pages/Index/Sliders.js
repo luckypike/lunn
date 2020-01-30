@@ -16,7 +16,7 @@ export default function Sliders ({ sliders }) {
   useEffect(() => {
     const glide = new Glide(mount.current, {
       type: 'carousel',
-      autoplay: 5000,
+      // autoplay: 5000,
       hoverpause: true
     })
 

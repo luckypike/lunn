@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import axios from 'axios'
 
 import { useI18n } from '../I18n'
@@ -11,7 +12,9 @@ import Education from './Index/Education'
 import News from './Index/News'
 import Events from './Index/Events'
 import Introduction from './Index/Introduction'
+import Youtube from './Index/Youtube'
 
+import buttons from '../Buttons.module.css'
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
 
@@ -70,19 +73,31 @@ export default function Index ({ navs, locale }) {
             <div className={styles.placeholder} />
           }
 
-          {sliders &&
-            <div className={styles.slider}>
-              <Sliders sliders={sliders} />
-            </div>
-          }
-
-          {news &&
-            <News news={news} I18n={I18n} />
-          }
-
           {events &&
             <Events events={events} />
           }
+
+          {sliders && news &&
+            <div className={styles.news}>
+              <div className={styles.label}>
+                <h2>{I18n.t('news.title')}</h2>
+
+                <a href="/news" className={classNames(buttons.sec, styles.more)}>
+                  Все новости
+                </a>
+              </div>
+
+              <div className={styles.slider}>
+                <Sliders sliders={sliders} />
+              </div>
+
+              <News news={news} I18n={I18n} />
+            </div>
+          }
+
+          <div className={styles.youtube}>
+            <Youtube />
+          </div>
 
           <div className={styles.education}>
             <Education />

@@ -1,0 +1,49 @@
+.root {
+  display: block;
+  margin-bottom: calc(var(--yr) * var(--s5));
+
+  @media(--m) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 1.875);
+  }
+}
+
+.video {
+  margin-bottom: calc(var(--yr) * 7);
+}
+
+.youtube {
+  position: relative;
+  margin-bottom: calc(var(--yr) * 4);
+
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: calc(9 / 16 * 100%);
+  }
+
+  & iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media(--m) {
+    margin-bottom: calc(var(--yr) * 7);
+  }
+}
+
+.title {
+  composes: h4 from '../../Fonts.module.css';
+}
+
+.date {
+  composes: at from '../../Fonts.module.css';
+  color: var(--gr_color);
+}
