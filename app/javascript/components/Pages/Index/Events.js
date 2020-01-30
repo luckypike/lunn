@@ -22,7 +22,7 @@ export default function Events ({ events }) {
         {events.map(event =>
           <a href={event.path} key={event.nid} className={classNames(styles.event, { [styles.pass]: dayjs(event.date) < dayjs() })}>
             <div className={styles.date}>
-              {dayjs(event.date).locale('ru').format('DD MMMM')}
+              {dayjs(event.date).locale('ru').format('D MMMM')}
             </div>
 
             <div className={styles.title}>
