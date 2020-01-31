@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Link } from '@reach/router'
+// import { Link } from '@reach/router'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import isBetween from 'dayjs/plugin/isBetween'
 
-import pages from '../../Pages.module.css'
+// import fonts from '../../Fonts.module.css'
 import styles from './Calendar.module.css'
 
 dayjs.extend(isBetween)
@@ -24,51 +24,48 @@ export default function Calendar ({ events }) {
   const weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
   if (!events) return null
-
   return (
-    <div className={pages.container}>
-      <div className={styles.root}>
-        <div className={styles.months}>
-          <div className={classNames(styles.item, styles.prev)} onClick={() => setCurrent(current.subtract(1, 'month'))}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M15.41,7.41,14,6,8,12l6,6,1.41-1.41L10.83,12Z" fill="#777"/>
-              <path d="M0,0H24V24H0Z" fill="none"/>
-            </svg>
-          </div>
-
-          <div className={classNames(styles.current)}>
-            {current.format('MMMM YYYY')}
-          </div>
-
-          <div className={classNames(styles.item, styles.next)} onClick={() => setCurrent(current.add(1, 'month'))}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <g transform="translate(24 24) rotate(180)">
-                <path d="M15.41,7.41,14,6,8,12l6,6,1.41-1.41L10.83,12Z" fill="#777"/>
-                <path d="M0,0H24V24H0Z" fill="none"/>
-              </g>
-            </svg>
-          </div>
-        </div>
-
-        <div className={styles.weekdays}>
-          {weekdays.map((weekday, i) =>
-            <div key={i} className={styles.weekday}>
-              {weekday}
-            </div>
-          )}
+    <div className={styles.root}>
+      <div className={styles.current}>
+        <div className={classNames(styles.item, styles.prev)} onClick={() => setCurrent(current.subtract(1, 'month'))}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M15.41,7.41,14,6,8,12l6,6,1.41-1.41L10.83,12Z" fill="#777"/>
+            <path d="M0,0H24V24H0Z" fill="none"/>
+          </svg>
         </div>
 
         <div className={styles.month}>
-          {Array.from({ length: endOfMonth.diff(startOfMonth, 'days') + 1 }, (v, k) => startOfMonth.clone().add(k, 'day')).map((day, _) =>
-            <Day
-              key={day.year() + '_' + day.month() + '_' + day.date()}
-              startOfMonth={current.startOf('month').subtract(1, 'day')}
-              endOfMonth={current.endOf('month')}
-              events={events.filter(event => (dayjs(event.date).locale('ru').format('D MM YY') === day.format('D MM YY')))}
-              day={day}
-            />
-          )}
+          {current.format('MMMM YYYY')}
         </div>
+
+        <div className={classNames(styles.item, styles.next)} onClick={() => setCurrent(current.add(1, 'month'))}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <g transform="translate(24 24) rotate(180)">
+              <path d="M15.41,7.41,14,6,8,12l6,6,1.41-1.41L10.83,12Z" fill="#777"/>
+              <path d="M0,0H24V24H0Z" fill="none"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div className={styles.weekdays}>
+        {weekdays.map((weekday, i) =>
+          <div key={i} className={styles.weekday}>
+            {weekday}
+          </div>
+        )}
+      </div>
+
+      <div className={styles.months}>
+        {Array.from({ length: endOfMonth.diff(startOfMonth, 'days') + 1 }, (v, k) => startOfMonth.clone().add(k, 'day')).map((day, _) =>
+          <Day
+            key={day.year() + '_' + day.month() + '_' + day.date()}
+            startOfMonth={current.startOf('month').subtract(1, 'day')}
+            endOfMonth={current.endOf('month')}
+            events={events.filter(event => (dayjs(event.date).locale('ru').format('D M YYYY') === day.format('D M YYYY')))}
+            day={day}
+          />
+        )}
       </div>
     </div>
   )
@@ -94,39 +91,15 @@ function Day ({ startOfMonth, endOfMonth, events, day }) {
     <div className={classNames(styles.date, { [styles.today]: isToday() })}>
       {!isOutOfMonth() &&
         <>
-          {events &&
-            <div className={styles.events}>
-              {events.filter(i => i.path.startsWith('/events/')).map((event, i) =>
-                <Link to={event.path} key={i}>
-                  <div className={styles.event}>
-                    <div className={classNames(styles.blue, { [styles.white]: isToday() })}>
-                      {day.format('D')}
-                    </div>
+          <div className={styles.in}>
+            {day.format('D')}
 
-                    <div>event</div>
-                  </div>
-                </Link>
-              )}
-
-              {events.filter(i => i.path.startsWith('/news/')).map((event, i) =>
-                <a href={event.path} key={i}>
-                  <div className={styles.event}>
-                    <div className={classNames(styles.blue, { [styles.white]: isToday() })}>
-                      {day.format('D')}
-                    </div>
-
-                    <div>event</div>
-                  </div>
-                </a>
-              )}
-            </div>
-          }
-
-          {events.length < 1 &&
-            <div className={styles.in}>
-              {day.format('D')}
-            </div>
-          }
+            {events.length > 0 &&
+              <>
+                <div className={styles.event} />
+              </>
+            }
+          </div>
         </>
       }
 

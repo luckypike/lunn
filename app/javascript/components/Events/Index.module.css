@@ -4,11 +4,10 @@
   margin-bottom: calc(var(--yr) * calc(var(--s3) * 4));
 }
 
-.event {
-  padding: 10px;
-}
-
-.events {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+.root {
+  @media (--m) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: calc(var(--xr) * 1.875);
+  }
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import axios from 'axios'
 
+import Feed from './Index/Feed'
 import Calendar from './Index/Calendar'
 
 import styles from './Index.module.css'
@@ -32,7 +33,15 @@ export default function Index () {
         </Helmet>
       </HelmetProvider>
 
-      <Calendar events={events} />
+      <div className={pages.container}>
+        {events &&
+          <div className={styles.root}>
+            <Feed events={events} />
+
+            <Calendar events={events} />
+          </div>
+        }
+      </div>
     </div>
   )
 }
