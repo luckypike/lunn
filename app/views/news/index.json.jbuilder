@@ -6,7 +6,8 @@ json.news @news do |node|
 
   json.images node.images do |image|
     json.partial! image
-    json.path "#{image.attachment.host}styles/news_on_front/public/#{image.attachment.path}"
+    # json.path "#{image.attachment.host}/900x600,sc#{image.attachment.path}"
+    json.path image.attachment.path
   end
 end
 

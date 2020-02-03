@@ -62,7 +62,7 @@ export default function Sliders ({ images }) {
       <div ref={mount} className={styles.images}>
         {images.map((image, i) =>
           <div key={i} className={styles.image}>
-            <img src={image.path} />
+            <img src={`https://beta.lunn.ru/images/1600x800,sc${image.path}`} />
           </div>
         )}
       </div>

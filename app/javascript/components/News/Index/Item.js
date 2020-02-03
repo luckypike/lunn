@@ -14,14 +14,14 @@ Item.propTypes = {
 
 export default function Item ({ item }) {
   return (
-    <Link item={item} to={item.path} className={styles.news_item}>
+    <Link to={item.path} className={styles.news_item}>
       <div className={styles.row}>
         <div className={styles.col}>
           <div className={styles.wrapper}>
             {item.images.length > 0 &&
               <div className={styles.image}>
                 <div className={styles.inner}>
-                  <img src={item.images[0].path} />
+                  <img src={`https://beta.lunn.ru/images/900x600,sc${item.images[0].path}`} />
                 </div>
               </div>
             }

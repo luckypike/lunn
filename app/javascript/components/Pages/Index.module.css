@@ -1,12 +1,5 @@
 .root {
   display: block;
-
-  @media(--l) {
-    /* display: grid; */
-    /* grid-template-columns: repeat(12, 1fr); */
-    /* grid-template-rows: repeat(12, 1fr); */
-    /* grid-column-gap: calc(var(--xr) * 2); */
-  }
 }
 
 .placeholder {
@@ -34,7 +27,6 @@
   &::before {
     content: '';
     display: block;
-    /* background-color: #666; */
     padding-top: calc(5 / 4 * 100%);
 
     @media (--s) {
@@ -50,7 +42,7 @@
     }
   }
 
-  @media(--s) {
+  @media (--s) {
     margin-bottom: calc(var(--yr) * var(--s4) * 2);
   }
 
@@ -74,7 +66,7 @@
 .news {
   display: block;
 
-  @media(--m) {
+  @media (--m) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: calc(var(--xr) * 1.875);
@@ -99,8 +91,8 @@
 
 .slider {
   grid-column: span 2;
-  /* grid-row: span 2; */
   overflow: hidden;
+  position: relative;
 }
 
 .education {
@@ -111,7 +103,7 @@
 .label {
   display: none;
 
-  @media(--m) {
+  @media (--m) {
     grid-column: -1 / 1;
     display: flex;
 

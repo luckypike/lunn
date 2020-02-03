@@ -33,7 +33,12 @@ export default function Sliders ({ sliders }) {
         <div className="glide__track" data-glide-el="track">
           <div className={classNames('glide__slides')}>
             {sliders.map((slider, i) =>
-              <div key={slider.nid} className={classNames('glide__slide', styles.image, { [styles.first]: i === 0 })} style={{ backgroundImage: `url(${slider.image.path})` }}>
+              <div
+                key={slider.nid}
+                className={classNames('glide__slide', styles.image, { [styles.first]: i === 0 })}
+                style={{ backgroundImage: `url(https://beta.lunn.ru/images/800x1000${slider.image.path})` }
+                }
+              >
                 <div className={styles.content}>
                   {slider.dates &&
                     <div className={styles.dates}>

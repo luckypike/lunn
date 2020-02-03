@@ -2,7 +2,7 @@
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s4));
 
-  @media(--m) {
+  @media (--m) {
     margin-bottom: 0;
   }
 }
@@ -20,10 +20,11 @@
   &::before {
     display: block;
     content: '';
-    padding-top: calc(4 / 5 * 100%);
+    padding-top: calc(5 / 4 * 100%);
 
     @media (--m) {
-      padding-top: calc(5 / 4 * 100%);
+      /* padding-top: 0; */
+      /* padding-top: calc(5 / 4 * 100%); */
     }
   }
 
