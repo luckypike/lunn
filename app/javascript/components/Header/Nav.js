@@ -9,7 +9,7 @@ Nav.propTypes = {
   onToggle: PropTypes.func,
   index: PropTypes.bool,
   menuActive: PropTypes.bool,
-  menuOpen: PropTypes.bool
+  menuOpen: PropTypes.func
 }
 
 export default function Nav ({ navs, onToggle, index, menuActive, menuOpen }) {
