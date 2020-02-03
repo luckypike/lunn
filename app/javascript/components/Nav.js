@@ -14,8 +14,10 @@ export default function Nav ({ navs }) {
     <div className={styles.items}>
       {navs.map((nav, i) =>
         <a href={nav.path} key={nav.mlid} className={styles.item}>
-          <div className={styles.title}>
-            {nav.title}
+          <div className={styles.wrapper}>
+            <div className={styles.title}>
+              {nav.title}
+            </div>
           </div>
         </a>
       )}

@@ -1,6 +1,5 @@
 .items {
   display: grid;
-  grid-row-gap: var(--xr);
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--s) {
@@ -10,14 +9,15 @@
 
   @media (--m) {
     grid-column-gap: calc(var(--xr) * 2);
+    grid-row-gap: 0;
   }
 }
 
 .item {
-  padding: 18px 0;
-  border-bottom: 1px solid #DBDDDE;
   display: block;
-  align-self: flex-end;
+  border-bottom: 1px solid #DBDDDE;
+  overflow: hidden;
+  padding: 16px 0;
 
   @media (--m) {
     margin-bottom: 0;
@@ -26,4 +26,9 @@
   &:hover {
     border-bottom: 1px solid var(--hl_color);
   }
+}
+
+.wrapper {
+  max-height: 56px;
+  align-self: flex-start;
 }
