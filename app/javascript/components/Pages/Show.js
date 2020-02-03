@@ -6,6 +6,7 @@ import { Title } from '../Pages'
 import Docs from '../Docs/Docs'
 import Renderer from '../Draft'
 import Navs from '../Navs'
+import Nav from '../Nav'
 import Tutors from './Show/Tutors'
 
 import styles from './Show.module.css'
@@ -21,6 +22,8 @@ Show.propTypes = {
 }
 
 export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
+  const arr = [5260, 480, 475, 490, 493, 491, 492, 498, 494, 495, 476]
+
   return (
     <div className={classNames(styles.root, pages.container)}>
       <Title
@@ -28,7 +31,11 @@ export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
         loaf={loaf}
       />
 
-      {navs &&
+      {navs && !arr.includes(node.nid) &&
+        <Nav navs={navs} />
+      }
+
+      {navs && arr.includes(node.nid) &&
         <Navs navs={navs} />
       }
 

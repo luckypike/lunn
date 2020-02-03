@@ -1,0 +1,29 @@
+.items {
+  display: grid;
+  grid-row-gap: var(--xr);
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--s) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: var(--xr);
+  }
+
+  @media (--m) {
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+}
+
+.item {
+  padding: 18px 0;
+  border-bottom: 1px solid #DBDDDE;
+  display: block;
+  align-self: flex-end;
+
+  @media (--m) {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    border-bottom: 1px solid var(--hl_color);
+  }
+}
