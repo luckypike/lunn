@@ -40,7 +40,7 @@ export default function Item ({ item }) {
           }
 
           <div className={styles.date}>
-            {dayjs.unix(item.date).locale('ru').format('DD MMMM YYYY')}
+            {dayjs.unix(item.date).locale('ru').format('D MMMM YYYY')}
           </div>
         </div>
       </div>

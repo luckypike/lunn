@@ -32,7 +32,6 @@
   display: block;
   border: 1px solid #DBDDDE;
   border-radius: calc(var(--yr) * 2);
-  padding: 16px 30px 28px;
   margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
 
   &:last-child {
@@ -50,8 +49,20 @@
 }
 
 .date {
-  margin-bottom: calc(var(--yr) * 4);
+  padding: 16px 30px;
+  position: relative;
   composes: h3 from '../../Fonts.module.css';
+  margin: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #DBDDDE;
+  }
 }
 
 .day {
@@ -116,4 +127,8 @@
     color: #000;
     opacity: .5;
   }
+}
+
+.wrapper {
+  padding: 16px 30px 28px;
 }

@@ -86,7 +86,6 @@
   position: relative;
   display: block;
   min-height: 200px;
-  margin-bottom: calc(var(--yr) * var(--s3));
 
   @media(--m) {
     padding: 60px 0;
@@ -120,7 +119,6 @@
 
   & .date {
     color: var(--gr_color);
-    text-transform: capitalize;
   }
 
   @media(--m) {

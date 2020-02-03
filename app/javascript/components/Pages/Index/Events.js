@@ -25,15 +25,17 @@ export default function Events ({ events }) {
               {dayjs(event.date).locale('ru').format('D MMMM')}
             </div>
 
-            <div className={styles.title}>
-              {event.title}
-            </div>
-
-            {dayjs(event.date) < dayjs() &&
-              <div className={styles.passed}>
-                Событие состоялось
+            <div className={styles.wrapper}>
+              <div className={styles.title}>
+                {event.title}
               </div>
-            }
+
+              {dayjs(event.date) < dayjs() &&
+                <div className={styles.passed}>
+                  Событие состоялось
+                </div>
+              }
+            </div>
           </a>
         )}
       </div>
