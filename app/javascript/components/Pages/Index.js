@@ -73,7 +73,7 @@ export default function Index ({ navs, locale }) {
             <div className={styles.placeholder} />
           }
 
-          {events &&
+          {events && events.length > 0 &&
             <Events events={events} />
           }
 
