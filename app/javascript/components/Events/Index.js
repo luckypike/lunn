@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import axios from 'axios'
+
+import { Title } from '../Pages'
 
 import Feed from './Index/Feed'
 import Calendar from './Index/Calendar'
@@ -8,7 +11,11 @@ import Calendar from './Index/Calendar'
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
 
-export default function Index () {
+Index.propTypes = {
+  location: PropTypes.object
+}
+
+export default function Index ({ location }) {
   const [events, setEvents] = useState()
 
   useEffect(() => {
@@ -23,9 +30,16 @@ export default function Index () {
 
   return (
     <div className={pages.root}>
-      <div className={styles.intro}>
-        Мероприятия
-      </div>
+      <Title
+        h1='Мероприятия'
+        loaf={[
+          {
+            mlid: 999,
+            path: location.pathname,
+            title: 'Мероприятия'
+          }
+        ]}
+      />
 
       <HelmetProvider>
         <Helmet>
