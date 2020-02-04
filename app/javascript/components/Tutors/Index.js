@@ -45,7 +45,7 @@ export default function Index ({ loaf }) {
             <Link to={`/tutors/${tutor.id}`} key={tutor.nid} className={styles.tutor}>
               <div className={styles.image}>
                 {tutor.image &&
-                  <img src={tutor.image.path} />
+                  <img src={`https://beta.lunn.ru/images/480x600,sc${tutor.image.path}`} />
                 }
               </div>
 
