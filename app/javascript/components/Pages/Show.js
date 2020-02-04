@@ -22,7 +22,7 @@ Show.propTypes = {
 }
 
 export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
-  const arr = [5260, 480, 475, 490, 493, 491, 492, 498, 494, 495, 476]
+  const arr = [5260, 480, 475, 490, 493, 491, 492, 498, 494, 495, 476, 3516, 323, 324, 325, 1384, 4512, 5224]
 
   return (
     <div className={classNames(styles.root, pages.container)}>
