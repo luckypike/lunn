@@ -26,9 +26,9 @@
 
 .event {
   display: block;
-  border: 1px solid #dbddde;
-  border-radius: calc(var(--yr) * 2);
   margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+  box-shadow: 0 0 0 1px #dbddde;
+  border-radius: calc(var(--yr) * 2);
 
   &:last-child {
     margin-bottom: 0;
@@ -45,10 +45,14 @@
 }
 
 .date {
+  color: #fff;
+  border-top-left-radius: calc(var(--yr) * 2);
+  border-top-right-radius: calc(var(--yr) * 2);
+  box-shadow: 0 0 0 1px var(--hl_color);
+  background-color: var(--hl_color);
   padding: calc(var(--yr) * var(--s2)) calc(var(--yr) * 7.5);
   composes: h3 from '../../Fonts.module.css';
   margin: 0;
-  border-bottom: 1px solid #dbddde;
 }
 
 .day {
@@ -105,8 +109,9 @@
 
 .pass {
   & .date {
-    color: #000;
-    opacity: 0.5;
+    box-shadow: 0 0 0 1px #b8bfe6;
+    background-color: #b8bfe6;
+    color: #fff;
   }
 
   & .title {
