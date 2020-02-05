@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '*path', to: 'pages#history', constraints: { path: 'about/history' }
 
   get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
-  get '*path', to: 'tutors#show', constraints: { path: %r{tutors/.*} }
+  get 'tutors/:id', to: 'tutors#show'
+  # get '*path', to: 'tutors#show', constraints: { path: %r{tutors/.*} }
 
   get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }
 

@@ -1,6 +1,7 @@
 class TutorsController < ApplicationController
-  before_action :set_url_alias
-  before_action :set_node
+  before_action :set_url_alias, only: :index
+  before_action :set_node, only: :index
+  before_action :set_tutor, only: :show
 
   def index
     respond_to do |format|
@@ -18,5 +19,11 @@ class TutorsController < ApplicationController
     ).loaf
 
     respond_to :html, :json
+  end
+
+  private
+
+  def set_tutor
+    @node = Node.find(params[:id])
   end
 end

@@ -1,9 +1,10 @@
 json.event do
-  json.partial! @event
-  json.text @event.text
+  json.partial! @node
+  json.text @node.text
 
-  json.images @event.images do |image|
+  json.images @node.images do |image|
     json.partial! image
-    json.path "#{image.attachment.host}styles/embedded_main/public/#{image.attachment.path}"
+    # json.path "#{image.attachment.host}styles/embedded_main/public/#{image.attachment.path}"
+    json.path image.attachment.path
   end
 end

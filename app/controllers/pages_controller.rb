@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :set_node, except: %i[index contacts]
 
   def index
-    @news = Node.news.lang.includes(:images)
+    @news = Node.news.lang.includes(:images, :summary)
       .order(created: :desc).limit(4)
 
     @events = Node.events.joins(:date).lang
