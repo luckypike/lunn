@@ -32,6 +32,8 @@ export default function Contacts ({ contacts }) {
 
       <div className={styles.root}>
         <div className={styles.map}>
+          <div className={styles.placeholder} />
+
           <YMaps>
             <Map
               className={styles.ymap}
