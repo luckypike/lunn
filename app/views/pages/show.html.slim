@@ -6,5 +6,5 @@
   docs: @node.docs.as_json(only: [], methods: %i[fid path title wrapper size mime]),
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
   tutors: @node.dep? ? @node.tutors.includes(:image).as_json(only: %i[nid], methods: %i[title path], include: { image: { only: [], methods: %i[id path] } }) : nil,
-  navs: @node.navs.as_json(only: %i[mlid], methods: %i[title path]) \
+  navs: @node.navs.as_json(only: %i[mlid depth], methods: %i[title path]) \
 }
