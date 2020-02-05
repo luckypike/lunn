@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
+  %w[404 422 500].each do |code|
+    get code, to: 'errors#show', code: code
+  end
+
   get '*path', to: 'courses#index', constraints: { path: 'programs' }
   get '*path', to: 'courses#show', constraints: { path: %r{programs/.*} }
 
