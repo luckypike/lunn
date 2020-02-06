@@ -1,0 +1,41 @@
+.heading {
+  composes: h2 from '../../Fonts.module.css';
+}
+
+.external {
+  position: absolute;
+  right: 28px;
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wrapper {
+  display: block;
+
+  @media (--s) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--yr) * 2);
+  }
+}
+
+.item {
+  display: block;
+  position: relative;
+  background-color: #fff;
+  margin-bottom: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * var(--s2));
+
+  @media (--m) {
+    padding: calc(var(--yr) * var(--s2)) calc(var(--yr) * 7.5);
+  }
+}
+
+.title {
+  composes: h4 from '../../Fonts.module.css';
+  max-width: 80%;
+  margin: 0;
+}

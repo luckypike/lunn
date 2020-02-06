@@ -13,6 +13,7 @@ import News from './Index/News'
 import Events from './Index/Events'
 import Introduction from './Index/Introduction'
 import Youtube from './Index/Youtube'
+import Schedule from './Index/Schedule'
 
 import buttons from '../Buttons.module.css'
 import styles from './Index.module.css'
@@ -97,6 +98,10 @@ export default function Index ({ navs, locale }) {
 
           <div className={styles.youtube}>
             <Youtube />
+          </div>
+
+          <div className={styles.schedule}>
+            <Schedule navs={navs} />
           </div>
 
           <div className={styles.education}>
