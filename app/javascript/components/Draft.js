@@ -38,7 +38,7 @@ export default function Renderer ({ source, images }) {
             children[0] &&
             (
               children[0].data === '[galleria_embedded_tokens:galleria_embedded]' ||
-              (children[0].children[0] && children[0].children[0].data === '[galleria_embedded_tokens:galleria_embedded]')
+              (children[0].children && children[0].children[0] && children[0].children[0].data === '[galleria_embedded_tokens:galleria_embedded]')
             )
           ) {
             return (
