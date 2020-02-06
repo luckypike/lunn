@@ -11,7 +11,7 @@ html lang=I18n.locale
     = javascript_pack_tag 'app'
 
   body
-    = react_component 'Header/Header', { navs: @header_navs, index: current_page?(root_url) || current_page?('/en') }
+    = react_component 'Header/Header', { navs: @header_navs, index: current_page?(root_url) || current_page?('/en') }, { prerender: Rails.env.production? }
 
     = yield
 
@@ -19,4 +19,4 @@ html lang=I18n.locale
       navs: @footer_navs,
       partners: @partners,
       footer: @footer \
-    }
+    }, { prerender: Rails.env.production? }

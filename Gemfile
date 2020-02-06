@@ -21,6 +21,8 @@ gem 'php-serialize'
 
 gem 'bootsnap', require: false
 
+gem 'mini_racer'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end

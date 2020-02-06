@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+// import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import AnimateHeight from 'react-animate-height'
-import parse, { domToReact } from 'html-react-parser'
+// import AnimateHeight from 'react-animate-height'
+import parse from 'html-react-parser'
 
 import styles from './Footer.module.css'
 
@@ -28,16 +29,16 @@ export default function Footer ({ navs, footer, partners }) {
               </div>
 
               <div className={styles.links}>
-                <a className={styles.link} href="#">Обращения граждан</a>
-                <a className={styles.link} href="#">Приемная ректора</a>
+                <a className={styles.link} href="/send-mail">Обращения граждан</a>
+                <a className={styles.link} href="/send-mail">Интернет-приемная ректора</a>
               </div>
 
-              <div className={styles.adress}>
+              <div className={styles.address}>
                 <div className={styles.text}>603155, Россия, Нижний Новгород, ул. Минина 31а</div>
                 <a className={styles.button} href="#">Адрес на карте</a>
               </div>
 
-              <div className={styles.media}>
+              <div className={styles.contacts}>
                 <div>
                   <a href="tel:+78314361575">+7 (831) 436-15-75</a>
                 </div>
@@ -90,26 +91,26 @@ Main.propTypes = {
 }
 
 function Main ({ navs, n1l }) {
-  const [height, setHeight] = useState(0)
-
-  function handleClick () {
-    setHeight(height === 0 ? 'auto' : 0)
-  }
-
-  useEffect(() => {
-    const _onResize = e => {
-      if (window.innerWidth > 767) {
-        setHeight('auto')
-      } else {
-        setHeight(0)
-      }
-    }
-
-    if (window) {
-      window.addEventListener('resize', _onResize)
-      _onResize()
-    }
-  }, [])
+  // const [height, setHeight] = useState(0)
+  //
+  // function handleClick () {
+  //   setHeight(height === 0 ? 'auto' : 0)
+  // }
+  //
+  // useEffect(() => {
+  //   const _onResize = e => {
+  //     if (window.innerWidth > 767) {
+  //       setHeight('auto')
+  //     } else {
+  //       setHeight(0)
+  //     }
+  //   }
+  //
+  //   if (window) {
+  //     window.addEventListener('resize', _onResize)
+  //     _onResize()
+  //   }
+  // }, [])
 
   return (
     <li className={styles.nav} key={n1l.mlid}>
@@ -118,20 +119,18 @@ function Main ({ navs, n1l }) {
           {n1l.title}
         </a>
 
-        <div className={classNames(styles.more, { [styles.opened]: height === 'auto' })} onClick={handleClick} />
+        {/* <div className={classNames(styles.more, { [styles.opened]: height === 'auto' })} onClick={handleClick} /> */}
       </div>
 
-      <AnimateHeight height={height} duration={300}>
-        <ul className={styles.sec}>
-          {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>
-            <li key={n2l.mlid}>
-              <a href={n2l.path} className={styles.second}>
-                {n2l.title}
-              </a>
-            </li>
-          )}
-        </ul>
-      </AnimateHeight>
+      <ul className={styles.sec}>
+        {navs.filter(i => i.depth === 2 && i.plid === n1l.mlid).map(n2l =>
+          <li key={n2l.mlid}>
+            <a href={n2l.path} className={styles.second}>
+              {n2l.title}
+            </a>
+          </li>
+        )}
+      </ul>
     </li>
   )
 }
