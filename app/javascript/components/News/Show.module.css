@@ -1,7 +1,33 @@
 .intro {
+  margin-bottom: calc(var(--yr) * var(--s4));
+  position: relative;
 
+  @media (--s) {
+    margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
+  }
+
+  & img {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &::before {
+    display: block;
+    content: '';
+    padding-top: calc(1 / 1 * 100%);
+  }
+
+  @media (--s) {
+    &::before {
+      padding-top: calc(1 / 2 * 100%);
+    }
+  }
 }
-
 
 .text {
   hyphens: auto;

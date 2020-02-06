@@ -27,6 +27,8 @@ export default function Show ({ slug }) {
     _fetch()
   }, [])
 
+  const mainImage = node && node.images && node.images.find(image => image.width > image.height * 1.2)
+
   return (
     <div className={pages.container}>
 
@@ -55,13 +57,15 @@ export default function Show ({ slug }) {
             </Helmet>
           </HelmetProvider>
 
-          {node.images &&
-            <Sliders images={node.images} />
+          {mainImage &&
+            <div className={styles.intro}>
+              <img src={`https://beta.lunn.ru/images/1600x800,sc${mainImage.path}`} />
+            </div>
           }
 
           {node.text &&
             <div className={styles.text}>
-              <Renderer source={node.text} />
+              <Renderer source={node.text} images={node.images} />
             </div>
           }
         </>

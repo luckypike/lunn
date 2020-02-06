@@ -4,7 +4,8 @@ json.node do
 
   json.images @node.images do |image|
     json.partial! image
-    # json.path "#{image.attachment.host}styles/embedded_main/public/#{image.attachment.path}"
+    json.width image.field_multiple_image_width
+    json.height image.field_multiple_image_height
     json.path image.attachment.path
   end
 end
