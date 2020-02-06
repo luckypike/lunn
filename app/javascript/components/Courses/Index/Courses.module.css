@@ -94,23 +94,28 @@
 .eget {
   composes: at from '../../Fonts.module.css';
   color: var(--gr_color);
-  margin-bottom: calc(var(--yr) * calc(var(--s1) - 1));
+  margin-bottom: calc(var(--yr) * calc(var(--s1) - 2));
 }
 
 .es {
   display: flex;
   flex-wrap: wrap;
+  composes: at from '../../Fonts.module.css';
 }
 
 .e {
-  /* margin-bottom: var(--yr); */
+  background-color: var(--sp_color);
+  border-radius: var(--yr);
+  line-height: calc(var(--yr) * 7);
+  padding: 0 calc(var(--yr) * 2);
+  margin-top: var(--yr);
 
   &:not(:last-child) {
     margin-right: var(--yr);
 
-    &::after {
+    /* &::after {
       margin-left: var(--yr);
       content: '\2022';
-    }
+    } */
   }
 }

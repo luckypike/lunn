@@ -18,6 +18,7 @@ export default function Courses ({ location, courses, locale }) {
 
   const I18n = useI18n(locale)
   const [filters, setFilters] = useState()
+  const [data, setData] = useState(courses)
 
   useEffect(() => {
     // const newFilters = new Map(filters)
@@ -51,7 +52,7 @@ export default function Courses ({ location, courses, locale }) {
           'ege',
           new Map([
             ['foreign', query.getAll('ege').includes('foreign')],
-            ['russian', query.getAll('ege').includes('russian')],
+            ['russian', true],
             ['lit', query.getAll('ege').includes('lit')],
             ['math', query.getAll('ege').includes('math')],
             ['history', query.getAll('ege').includes('history')],
@@ -61,6 +62,27 @@ export default function Courses ({ location, courses, locale }) {
       ])
     )
   }, [location.search])
+
+
+  useEffect(() => {
+    if (filters) {
+      let newData = courses
+      if (filters.get('ege') && [...filters.get('ege')].filter(([key, value]) => value === true).map(e => e[0]).length > 0) {
+        const ege = [...filters.get('ege')].filter(([key, value]) => value === true).map(e => e[0])
+        newData = newData.filter(course => course.ege.some(v => ege.indexOf(v) !== -1 ))
+      }
+      if (filters.get('level') && [...filters.get('level')].filter(([key, value]) => value === true).map(e => e[0]).length > 0) {
+        const level = [...filters.get('level')].filter(([key, value]) => value === true).map(e => e[0])
+        newData = newData.filter(course => level.includes(course.level))
+      }
+      if (filters.get('time') && [...filters.get('time')].filter(([key, value]) => value === true).map(e => e[0]).length > 0) {
+        const time = [...filters.get('time')].filter(([key, value]) => value === true).map(e => e[0])
+        newData = newData.filter(course => time.some(time => course[`time_${time}`] != null))
+      }
+
+      setData(newData)
+    }
+  }, [filters])
 
   if (!filters) return null
 
@@ -72,10 +94,10 @@ export default function Courses ({ location, courses, locale }) {
 
   return (
     <>
-      <Filters filters={filters} query={query} />
+      <Filters filters={filters} query={query} locale={locale}/>
 
       <div className={styles.courses}>
-        {courses.map(course =>
+        {data.map(course =>
           <a key={course.nid} href={course.path} className={styles.course}>
             <div className={styles.direction}>
               {course.title}

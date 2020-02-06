@@ -15,3 +15,25 @@ ru:
       few: "%{count} года"
       many: "%{count} лет"
       other: "%{count} года"
+
+    filters:
+      ba: Бакалавриат
+      sp: Специалитет
+      ma: Магистратура
+
+      foreign: Иностранный язык
+      russian: Русский язык
+      lit: Литература
+      math: Математика
+      history: История
+      social: Обществознание
+
+      1: Очная
+      2: Очно-заочная
+      3: Заочная
+
+      times:
+        one: "%{count} год"
+        few: "%{count} года"
+        many: "%{count} лет"
+        other: "%{count} года"
