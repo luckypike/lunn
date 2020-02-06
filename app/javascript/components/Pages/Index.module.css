@@ -96,6 +96,7 @@
 }
 
 .education {
+  padding-top: calc(var(--yr) * var(--s4) * 2);
   order: 3;
   grid-column: span 12;
 }
@@ -116,5 +117,5 @@
 
 .schedule {
   background-color: #eceff1;
-  padding: 56px 0 72px;
+  padding: calc(var(--yr) * var(--s4) * 2) 0;
 }
