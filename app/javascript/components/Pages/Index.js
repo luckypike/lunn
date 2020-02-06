@@ -99,14 +99,16 @@ export default function Index ({ navs, locale }) {
           <div className={styles.youtube}>
             <Youtube />
           </div>
+        </div>
+      </div>
 
-          <div className={styles.schedule}>
-            <Schedule navs={navs} />
-          </div>
+      <div className={styles.schedule}>
+        <Schedule navs={navs} />
+      </div>
 
-          <div className={styles.education}>
-            <Education />
-          </div>
+      <div className={pages.container}>
+        <div className={styles.education}>
+          <Education />
         </div>
       </div>
     </div>

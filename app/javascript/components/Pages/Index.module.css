@@ -117,21 +117,4 @@
 .schedule {
   background-color: #eceff1;
   padding: 56px 0 72px;
-  margin: 0 calc(var(--yr) * -4) calc(var(--yr) * var(--s5));
-
-  @media (--s) {
-    margin: 0 calc(var(--yr) * -8) calc(var(--yr) * var(--s5));
-  }
-
-  @media (--m) {
-    margin: 0 calc(var(--yr) * -12) calc(var(--yr) * var(--s5));
-  }
-
-  @media (--l) {
-    margin: 0 calc(var(--yr) * -24) calc(var(--yr) * var(--s5));
-  }
-
-  @media (--xl) {
-    margin: 0 calc(var(--yr) * -120) calc(var(--yr) * var(--s5));
-  }
 }

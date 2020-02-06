@@ -16,8 +16,8 @@ export default function Schedule () {
             <a href="http://rasp.lunn.ru/raspisanie/faya/">
               <div className={styles.title}>
                 Факультет английского языка
+                <Arrow />
               </div>
-              <Arrow />
             </a>
           </div>
 
@@ -25,28 +25,28 @@ export default function Schedule () {
             <a href="http://rasp.lunn.ru/raspisanie/frgya/">
               <div className={styles.title}>
                 Факультет романо-германских языков
+                <Arrow />
               </div>
             </a>
-            <Arrow />
           </div>
 
           <div className={styles.item}>
             <a href="http://rasp.lunn.ru/raspisanie/oozo/">
               <div className={styles.title}>
                 Отделение очно-заочного обучения
+                <Arrow />
               </div>
-              <Arrow />
             </a>
           </div>
 
-          <div className={styles.item}>
+          {/* <div className={styles.item}>
             <a href="#">
               <div className={styles.title}>
                 Курсы
               </div>
               <Arrow />
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className={styles.items}>
@@ -54,8 +54,8 @@ export default function Schedule () {
             <a href="http://rasp.lunn.ru/raspisanie/fmoeu/">
               <div className={styles.title}>
                 Факультет международных отношений, экономики и управления
+                <Arrow />
               </div>
-              <Arrow />
             </a>
           </div>
 
@@ -63,8 +63,8 @@ export default function Schedule () {
             <a href="http://rasp.lunn.ru/raspisanie/pf/">
               <div className={styles.title}>
                 Переводческий факультет
+                <Arrow />
               </div>
-              <Arrow />
             </a>
           </div>
 
@@ -72,8 +72,8 @@ export default function Schedule () {
             <a href="http://rasp.lunn.ru/raspisanie/ozo/">
               <div className={styles.title}>
                 Отделение заочного обучения
+                <Arrow />
               </div>
-              <Arrow />
             </a>
           </div>
         </div>

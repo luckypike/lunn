@@ -3,13 +3,13 @@
 }
 
 .external {
-  position: absolute;
-  right: 28px;
   height: 1.5rem;
   width: 1.5rem;
-  z-index: 1;
+  position: absolute;
+  display: block;
+  right: -20%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(20%);
 }
 
 .wrapper {
@@ -23,6 +23,7 @@
 }
 
 .item {
+  min-height: 88px;
   display: block;
   position: relative;
   background-color: #fff;
@@ -38,4 +39,5 @@
   composes: h4 from '../../Fonts.module.css';
   max-width: 80%;
   margin: 0;
+  position: relative;
 }
