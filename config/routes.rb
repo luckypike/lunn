@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
+  %w[404 422 500].each do |code|
+    get code, to: 'errors#show', code: code
+  end
+
   get '*path', to: 'courses#index', constraints: { path: 'programs' }
   get '*path', to: 'courses#show', constraints: { path: %r{programs/.*} }
 
   get '*path', to: 'pages#history', constraints: { path: 'about/history' }
 
   get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
-  get '*path', to: 'tutors#show', constraints: { path: %r{tutors/.*} }
+  get 'tutors/:id', to: 'tutors#show'
+  # get '*path', to: 'tutors#show', constraints: { path: %r{tutors/.*} }
 
   get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }
 

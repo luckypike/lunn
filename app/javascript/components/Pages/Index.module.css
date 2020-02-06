@@ -96,6 +96,7 @@
 }
 
 .education {
+  padding-top: calc(var(--yr) * var(--s4) * 2);
   order: 3;
   grid-column: span 12;
 }
@@ -112,4 +113,9 @@
       height: fit-content;
     }
   }
+}
+
+.schedule {
+  background-color: #eceff1;
+  padding: calc(var(--yr) * var(--s4) * 2) 0;
 }

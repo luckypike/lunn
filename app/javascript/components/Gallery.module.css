@@ -1,0 +1,20 @@
+.images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image {
+  & img {
+    margin-right: calc(var(--yr) * 2);
+    margin-bottom: calc(var(--yr) * 2);
+    display: block;
+    max-height: 256px;
+    max-width: 100%;
+
+    @media (--s) {
+      margin-right: var(--xr);
+      margin-bottom: var(--xr);
+      max-height: 512px;
+    }
+  }
+}

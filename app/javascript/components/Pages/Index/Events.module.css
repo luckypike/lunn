@@ -3,14 +3,10 @@
   margin-bottom: calc(var(--yr) * var(--s5));
   position: relative;
 
-  @media(--l) {
+  @media (--l) {
     grid-column: -1 / 1;
     grid-row: span 2;
   }
-}
-
-.label {
-  /* margin-bottom: calc(var(--yr) * var(--s3)); */
 }
 
 .events {
@@ -21,7 +17,7 @@
     margin-bottom: calc(var(--yr) * var(--s4));
   }
 
-  @media(--m) {
+  @media (--m) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: calc(var(--xr) * 2);
@@ -30,39 +26,35 @@
 
 .event {
   display: block;
-  border: 1px solid #DBDDDE;
-  border-radius: calc(var(--yr) * 2);
   margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+  border-radius: calc(var(--yr) * 2);
+  /* padding: 0 calc(var(--yr) * 7.5) calc(var(--yr) * 7); */
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  @media(--m) {
+  @media (--m) {
     margin-bottom: 0;
   }
 }
 
 .title {
   composes: h4 from '../../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+  padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 2));
+  margin: 0;
+
+  @media (--s) {
+    padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 3.5));
+  }
 }
 
 .date {
-  padding: 16px 30px;
-  position: relative;
+  color: var(--hl_color);
   composes: h3 from '../../Fonts.module.css';
   margin: 0;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    border-bottom: 1px solid #DBDDDE;
-  }
+  border-bottom: 1px solid var(--hl_color);
+  padding: calc(var(--yr) * var(--s2)) 0;
 }
 
 .day {
@@ -72,13 +64,13 @@
 
 .buttons {
   display: flex;
-  margin-bottom: 28px;
+  margin-bottom: calc(var(--yr) * 7);
 }
 
 .tab {
   align-self: center;
   color: var(--gr_color);
-  padding: 8px 30px;
+  padding: calc(var(--yr) * 2) calc(var(--yr) * 7.5);
   cursor: pointer;
 }
 
@@ -92,9 +84,9 @@
   composes: at from '../../Fonts.module.css';
   color: var(--hl_color);
   position: relative;
-  padding-left: 12px;
+  padding-left: calc(var(--yr) * 3);
 
-  &:before {
+  &::before {
     position: absolute;
     content: '';
     width: calc(var(--yr) * 2);
@@ -110,7 +102,7 @@
 .more {
   position: static;
 
-  @media(--m) {
+  @media (--m) {
     position: absolute;
     right: 0;
     top: 0;
@@ -119,16 +111,11 @@
 
 .pass {
   & .date {
-    color: #000;
-    opacity: .5;
+    opacity: 0.5;
   }
 
   & .title {
     color: #000;
-    opacity: .5;
+    opacity: 0.5;
   }
-}
-
-.wrapper {
-  padding: 16px 30px 28px;
 }

@@ -5,6 +5,10 @@ import styles from './Youtube.module.css'
 export default function Youtube () {
   return (
     <div className={styles.root}>
+      <div className={styles.heading}>
+        Видеоновости
+      </div>
+
       <div className={styles.video}>
         <div className={styles.youtube}>
           <iframe src='https://www.youtube.com/embed/DIY2Uz4GvY8' frameBorder="0" allowFullScreen={true} />

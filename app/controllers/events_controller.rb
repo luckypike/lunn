@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :set_node, only: :show
+
   def index
     respond_to do |format|
       format.html
@@ -23,13 +25,13 @@ class EventsController < ApplicationController
   def show
     respond_to do |format|
       format.html { render :index }
-      format.json do
-        @url_alias = UrlAlias.find_by(alias: "events/#{params[:id]}")
-        if @url_alias.source.start_with?('node/')
-          @event = Node.events.includes(:images, :body)
-            .find(@url_alias.source.split('/').last)
-        end
-      end
+      format.json
     end
+  end
+
+  private
+
+  def set_node
+    @node = Node.events.find(params[:id])
   end
 end

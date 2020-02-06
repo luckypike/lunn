@@ -1,6 +1,9 @@
-import React from 'react'
+import { useEffect } from 'react'
 
 export default function ScrollToTop ({ children, location }) {
-  React.useEffect(() => window.scrollTo(0, 0), [location.pathname])
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [location.pathname, location.search])
+
   return children
 }

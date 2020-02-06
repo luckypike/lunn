@@ -36,5 +36,7 @@ module Lunn
     config.generators.helper = nil
     config.generators.test_framework = nil
     config.generators.jbuilder = nil
+
+    config.exceptions_app = routes
   end
 end

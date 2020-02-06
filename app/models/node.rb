@@ -48,7 +48,13 @@ class Node < ApplicationRecord
   scope :with_places, -> { includes(:field_places_1, :field_places_2, :field_places_3) }
 
   def path
-    UrlAlias.alias_path "node/#{nid}"
+    if type == 'event'
+      "/events/#{nid}"
+    elsif type == 'news'
+      "/news/#{nid}"
+    else
+      "/#{UrlAlias.alias_path("node/#{nid}")}"
+    end
   end
 
   def text

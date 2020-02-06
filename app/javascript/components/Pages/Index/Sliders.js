@@ -30,8 +30,8 @@ export default function Sliders ({ sliders }) {
   return (
     <div className={styles.slider}>
       <div className={classNames('glide', styles.images)} ref={mount}>
-        <div className="glide__track" data-glide-el="track">
-          <div className={classNames('glide__slides')}>
+        <div className={classNames('glide__track', styles.track)} data-glide-el="track">
+          <div className={classNames('glide__slides', styles.slides)}>
             {sliders.map((slider, i) =>
               <div
                 key={slider.nid}

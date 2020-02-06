@@ -11,12 +11,12 @@ html lang=I18n.locale
     = javascript_pack_tag 'app'
 
   body
-    = react_component 'Header/Header', { navs: Nav.active.main.lang.as_json(methods: %i[path title]), index: current_page?(root_url) || current_page?('/en') }
+    = react_component 'Header/Header', { navs: @header_navs, index: current_page?(root_url) || current_page?('/en') }
 
     = yield
 
     = react_component 'Footer/Footer', { \
-      navs: Nav.active.main_or_sec.lang.unscope(:order).order(menu_name: :desc, weight: :asc).as_json(methods: %i[path title]),
-      partners: ActiveRecord::Base.connection.exec_query('SELECT body FROM block_custom WHERE bid = 8').first,
-      footer: Nav.active.footer.lang.unscope(:order).order(menu_name: :desc, weight: :asc).as_json(methods: %i[path title]) \
+      navs: @footer_navs,
+      partners: @partners,
+      footer: @footer \
     }

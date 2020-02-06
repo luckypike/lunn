@@ -22,7 +22,7 @@ Show.propTypes = {
 }
 
 export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
-  const arr = [5260, 480, 475, 490, 493, 491, 492, 498, 494, 495, 476, 3516, 323, 324, 325, 1384, 4512, 5224]
+  const nid = [475, 476, 490, 491, 492, 493, 494, 495, 498]
 
   return (
     <div className={classNames(styles.root, pages.container)}>
@@ -31,12 +31,12 @@ export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
         loaf={loaf}
       />
 
-      {navs && !arr.includes(node.nid) &&
-        <Nav navs={navs} />
+      {navs &&
+        <Nav navs={navs.filter(nav => nav.depth > 2 && !nid.includes(node.nid))} />
       }
 
-      {navs && arr.includes(node.nid) &&
-        <Navs navs={navs} />
+      {navs &&
+        <Navs navs={navs.filter(nav => nav.depth <= 2 || nid.includes(node.nid))} />
       }
 
       {node.text &&

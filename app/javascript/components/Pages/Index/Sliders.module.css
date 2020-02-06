@@ -1,5 +1,6 @@
 .slider {
   position: relative;
+  height: 100%;
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--m) {
@@ -9,6 +10,7 @@
 
 .images {
   position: relative;
+  height: 100%;
 }
 
 .image {
@@ -21,11 +23,6 @@
     display: block;
     content: '';
     padding-top: calc(5 / 4 * 100%);
-
-    @media (--m) {
-      /* padding-top: 0; */
-      /* padding-top: calc(5 / 4 * 100%); */
-    }
   }
 
   &::after {
@@ -39,6 +36,17 @@
     opacity: 0.5;
     z-index: 0;
   }
+
+  @media (--l) {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.slides,
+.track {
+  height: 100%;
 }
 
 .content {
@@ -51,7 +59,7 @@
   text-align: center;
   width: 80%;
 
-  @media(--m) {
+  @media (--s) {
     bottom: calc(var(--yr) * 28);
   }
 }
@@ -64,7 +72,7 @@
   padding: calc(var(--yr) * 2) calc(var(--yr) * var(--s2));
   margin-bottom: calc(var(--yr) * var(--s2));
 
-  @media(--s) {
+  @media (--s) {
     margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.5));
   }
 }
@@ -72,7 +80,7 @@
 .title {
   composes: h3 from '../../Fonts.module.css';
 
-  @media(--s) {
+  @media (--s) {
     margin: 0;
   }
 }
@@ -85,7 +93,7 @@
   transform: translateX(-50%);
   display: flex;
 
-  @media(--s) {
+  @media (--s) {
     bottom: calc(var(--yr) * 13.5);
   }
 }

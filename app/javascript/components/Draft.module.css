@@ -127,7 +127,6 @@ h2 {
 
 .tableWrapper {
   max-width: 100%;
-  /* overflow: hidden; */
   overflow-x: scroll;
   overflow-y: hidden;
 }
@@ -140,10 +139,6 @@ h2 {
   & td {
     padding: var(--yr);
     padding-left: 0;
-
-    @media (--s) {
-
-    }
   }
 
   & tr {
@@ -154,5 +149,14 @@ h2 {
         margin-bottom: 0;
       }
     }
+  }
+}
+
+.gallery {
+  margin: calc(var(--yr) * var(--s4)) 0;
+  position: relative;
+
+  @media (--s) {
+    margin: calc(var(--yr) * calc(var(--s4) * 2)) calc(-1 / 6 * 100%);
   }
 }

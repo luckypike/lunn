@@ -1,0 +1,3 @@
+.root {
+  padding: calc(var(--yr) * var(--s4) * 2) 0;
+}
