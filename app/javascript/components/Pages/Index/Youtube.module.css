@@ -2,7 +2,7 @@
   display: block;
   margin-bottom: calc(var(--yr) * var(--s5));
 
-  @media(--m) {
+  @media (--m) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: calc(var(--xr) * 1.875);
@@ -34,7 +34,7 @@
     bottom: 0;
   }
 
-  @media(--m) {
+  @media (--m) {
     margin-bottom: calc(var(--yr) * 7);
   }
 }
@@ -46,4 +46,10 @@
 .date {
   composes: at from '../../Fonts.module.css';
   color: var(--gr_color);
+}
+
+.heading {
+  grid-column: -1 / 1;
+  composes: h3 from '../../Fonts.module.css';
+  margin: 0 0 calc(var(--yr) * var(--s3));
 }
