@@ -27,8 +27,8 @@
 .event {
   display: block;
   margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
-  box-shadow: 0 0 0 1px #dbddde;
   border-radius: calc(var(--yr) * 2);
+  /* padding: 0 calc(var(--yr) * 7.5) calc(var(--yr) * 7); */
 
   &:last-child {
     margin-bottom: 0;
@@ -41,18 +41,20 @@
 
 .title {
   composes: h4 from '../../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
+  padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 2));
+  margin: 0;
+
+  @media (--s) {
+    padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 3.5));
+  }
 }
 
 .date {
-  color: #fff;
-  border-top-left-radius: calc(var(--yr) * 2);
-  border-top-right-radius: calc(var(--yr) * 2);
-  box-shadow: 0 0 0 1px var(--hl_color);
-  background-color: var(--hl_color);
-  padding: calc(var(--yr) * var(--s2)) calc(var(--yr) * 7.5);
+  color: var(--hl_color);
   composes: h3 from '../../Fonts.module.css';
   margin: 0;
+  border-bottom: 1px solid var(--hl_color);
+  padding: calc(var(--yr) * var(--s2)) 0;
 }
 
 .day {
@@ -109,17 +111,11 @@
 
 .pass {
   & .date {
-    box-shadow: 0 0 0 1px #b8bfe6;
-    background-color: #b8bfe6;
-    color: #fff;
+    opacity: 0.5;
   }
 
   & .title {
     color: #000;
     opacity: 0.5;
   }
-}
-
-.wrapper {
-  padding: calc(var(--yr) * var(--s2)) calc(var(--yr) * 7.5) calc(var(--yr) * 7);
 }
