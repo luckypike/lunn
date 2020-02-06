@@ -12,70 +12,73 @@ export default function Schedule () {
 
       <div className={styles.wrapper}>
         <div className={styles.items}>
-          <div className={styles.item}>
-            <a href="http://rasp.lunn.ru/raspisanie/faya/">
-              <div className={styles.title}>
+          <a
+            href="http://rasp.lunn.ru/raspisanie/faya/"
+            className={styles.item}
+            target="_blank"
+            rel="noopener noreferrer">
+            <div className={styles.title}>
                 Факультет английского языка
-                <Arrow />
-              </div>
-            </a>
-          </div>
-
-          <div className={styles.item}>
-            <a href="http://rasp.lunn.ru/raspisanie/frgya/">
-              <div className={styles.title}>
-                Факультет романо-германских языков
-                <Arrow />
-              </div>
-            </a>
-          </div>
-
-          <div className={styles.item}>
-            <a href="http://rasp.lunn.ru/raspisanie/oozo/">
-              <div className={styles.title}>
-                Отделение очно-заочного обучения
-                <Arrow />
-              </div>
-            </a>
-          </div>
-
-          {/* <div className={styles.item}>
-            <a href="#">
-              <div className={styles.title}>
-                Курсы
-              </div>
               <Arrow />
-            </a>
-          </div> */}
+            </div>
+          </a>
+
+          <a
+            href="http://rasp.lunn.ru/raspisanie/frgya/"
+            className={styles.item}
+            target="_blank"
+            rel="noopener noreferrer">
+            <div className={styles.title}>
+              Факультет романо-германских языков
+              <Arrow />
+            </div>
+          </a>
+
+          <a
+            href="http://rasp.lunn.ru/raspisanie/oozo/"
+            className={styles.item}
+            target="_blank"
+            rel="noopener noreferrer">
+            <div className={styles.title}>
+              Отделение очно-заочного обучения
+              <Arrow />
+            </div>
+          </a>
         </div>
 
         <div className={styles.items}>
-          <div className={styles.item}>
-            <a href="http://rasp.lunn.ru/raspisanie/fmoeu/">
-              <div className={styles.title}>
-                Факультет международных отношений, экономики и управления
-                <Arrow />
-              </div>
-            </a>
-          </div>
+          <a
+            href="http://rasp.lunn.ru/raspisanie/fmoeu/"
+            className={styles.item}
+            target="_blank"
+            rel="noopener noreferrer">
+            <div className={styles.title}>
+              Факультет международных отношений, экономики и управления
+              <Arrow />
+            </div>
+          </a>
 
-          <div className={styles.item}>
-            <a href="http://rasp.lunn.ru/raspisanie/pf/">
-              <div className={styles.title}>
-                Переводческий факультет
-                <Arrow />
-              </div>
-            </a>
-          </div>
+          <a
+            href="http://rasp.lunn.ru/raspisanie/pf/"
+            className={styles.item}
+            target="_blank"
+            rel="noopener noreferrer">
+            <div className={styles.title}>
+              Переводческий факультет
+              <Arrow />
+            </div>
+          </a>
 
-          <div className={styles.item}>
-            <a href="http://rasp.lunn.ru/raspisanie/ozo/">
-              <div className={styles.title}>
-                Отделение заочного обучения
-                <Arrow />
-              </div>
-            </a>
-          </div>
+          <a
+            href="http://rasp.lunn.ru/raspisanie/ozo/"
+            className={styles.item}
+            target="_blank"
+            rel="noopener noreferrer">
+            <div className={styles.title}>
+              Отделение заочного обучения
+              <Arrow />
+            </div>
+          </a>
         </div>
       </div>
     </div>
