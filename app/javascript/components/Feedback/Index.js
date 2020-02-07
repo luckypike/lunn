@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import classNames from 'classnames'
@@ -19,6 +19,7 @@ Index.propTypes = {
 export default function Index ({ departments, destinations }) {
   const {
     values,
+    setValues,
     handleInputChange,
     errors,
     pending,
@@ -39,6 +40,22 @@ export default function Index ({ departments, destinations }) {
     })
   }
 
+  useEffect(() => {
+    const data = values
+
+    if (data.department_id) {
+      data.destination_id = ''
+    }
+
+    const des = destinations.filter(i => parseInt(i.department_id) === parseInt(values.department_id))
+
+    if (des.length === 1) {
+      data.destination_id = des[0].id
+    }
+
+    setValues(data)
+  }, [values.department_id])
+
   return (
     <div className={pages.container}>
       <Title
@@ -49,6 +66,10 @@ export default function Index ({ departments, destinations }) {
         <div className={styles.form}>
           <form className={classNames(form.root, styles.els)} onSubmit={onSubmit(handleSubmit)}>
             <div className={classNames(form.el, styles.department)}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 4">
+                <path fill="#C4C4C4" d="M0 0h10L5 4 0 0z"/>
+              </svg>
+
               <div className={form.input}>
                 <select name="department_id" onChange={handleInputChange}>
                   <option value="">Направить письмо в...</option>
@@ -63,9 +84,13 @@ export default function Index ({ departments, destinations }) {
               {/* <Errors errors={errors.department} /> */}
             </div>
 
-            <div className={classNames(form.el, styles.destination)}>
+            <div className={classNames(form.el, styles.destination, { [styles.disabled]: values.department_id === '' })}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 4">
+                <path fill="#C4C4C4" d="M0 0h10L5 4 0 0z"/>
+              </svg>
+
               <div className={form.input}>
-                <select name="destination_id" onChange={handleInputChange}>
+                <select disabled={values.department_id === ''} name="destination_id" onChange={handleInputChange}>
                   {destinations.filter(i => parseInt(i.department_id) === parseInt(values.department_id)).length !== 1 &&
                     <option value="">Выберите адресата...</option>
                   }

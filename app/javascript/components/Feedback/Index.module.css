@@ -33,3 +33,26 @@
     }
   }
 }
+
+select {
+  appearance: none;
+}
+
+.destination,
+.department {
+  position: relative;
+
+  & svg {
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 4px;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+}
