@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // import parse, { domToReact } from 'html-react-parser'
-import htmlparser2 from 'htmlparser2'
+import { parseDOM } from 'htmlparser2'
 import domToReact from 'html-react-parser/lib/dom-to-react'
 
 import Gallery from './Gallery'
@@ -172,7 +172,7 @@ export default function Renderer ({ source, images }) {
     }
   }
 
-  const content = domToReact(htmlparser2.parseDOM(source, {
+  const content = domToReact(parseDOM(source, {
     decodeEntities: true,
     lowerCaseAttributeNames: false
   }), options)
