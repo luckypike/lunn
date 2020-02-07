@@ -98,7 +98,7 @@ export default function Schedule () {
 function Arrow () {
   return (
     <svg className={styles.external} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 29 29">
-      <path stroke="#2E4DE6" strokeLinecap="round" strokeLinejoinn="round" d="M7 22l10-11m-7-3l12-1-1 12"/>
+      <path stroke="#2E4DE6" strokeLinecap="round" strokeLinejoin="round" d="M7 22l10-11m-7-3l12-1-1 12"/>
     </svg>
   )
 }
