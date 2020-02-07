@@ -51,7 +51,7 @@ export default function Renderer ({ source, images }) {
           }
 
           return (
-            <div className={styles[attribs.class]}>
+            <div className={styles[attribs.class]} itemProp={attribs.itemprop}>
               {domToReact(children, options)}
             </div>
           )
