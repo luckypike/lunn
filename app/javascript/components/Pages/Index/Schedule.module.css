@@ -1,5 +1,44 @@
-.heading {
+.header {
   composes: h2 from '../../Fonts.module.css';
+  margin-bottom: 0;
+}
+
+.button {
+  margin-left: auto;
+  background-color: var(--hl_color);
+  color: #fff;
+  composes: bt from '../../Fonts.module.css';
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: calc(var(--yr) * var(--s3)) 0;
+  user-select: none;
+
+  &:hover {
+    & .button {
+      background: #35f;
+    }
+  }
+}
+
+.hint {
+  display: none;
+  margin-left: 0.4em;
+
+  @media (--s) {
+    display: inline;
+  }
 }
 
 .external {
@@ -9,7 +48,6 @@
   display: block;
   right: 0;
   top: 0;
-  /* transform: translateY(-50%) translateX(20%); */
 }
 
 .wrapper {
@@ -25,6 +63,7 @@
 .items {
   display: grid;
   grid-gap: calc(var(--yr) * 2);
+  padding-bottom: calc(var(--yr) * var(--s4));
 
   @media (--m) {
     grid-template-columns: 1fr 1fr;
@@ -36,7 +75,6 @@
   display: block;
   position: relative;
   background-color: #fff;
-  /* margin-bottom: calc(var(--yr) * 2); */
   padding: calc(var(--yr) * var(--s2)) var(--xr);
 
   @media (--m) {

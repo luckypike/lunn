@@ -3,17 +3,17 @@
   grid-row-gap: var(--xr);
   margin-bottom: calc(var(--yr) * var(--s4));
 
-  @media(--s) {
+  @media (--s) {
     grid-template-columns: 1fr 1fr;
     grid-gap: var(--xr);
   }
 
   @media (--m) {
     grid-column-gap: calc(var(--xr) * 2);
-    /* grid-template-columns: 1fr 1fr 1fr; */
   }
 
   @media (--l) {
+    grid-template-columns: 1fr 1fr 1fr;
     /* grid-template-columns: 1fr 1fr 1fr 1fr; */
   }
 }

@@ -68,6 +68,10 @@ export default function Index ({ navs, locale }) {
         </div>
       </div>
 
+      <div className={styles.schedule}>
+        <Schedule navs={navs} />
+      </div>
+
       <div className={pages.container}>
         <div className={styles.root}>
           {!news &&
@@ -100,13 +104,7 @@ export default function Index ({ navs, locale }) {
             <Youtube />
           </div>
         </div>
-      </div>
 
-      <div className={styles.schedule}>
-        <Schedule navs={navs} />
-      </div>
-
-      <div className={pages.container}>
         <div className={styles.education}>
           <Education />
         </div>
