@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 
 import { Link } from '@reach/router'
-import Renderer from '../../Draft'
+import Renderer from '../../Renderer'
 
 import styles from './Item.module.css'
 

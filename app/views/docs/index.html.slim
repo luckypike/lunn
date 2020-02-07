@@ -5,4 +5,4 @@
   node: @node.as_json(only: :title, methods: :text),
   docs: @node.docs.as_json(only: [], methods: %i[fid path title wrapper size mime]),
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]) \
-}
+}, { prerender: Rails.env.production? }

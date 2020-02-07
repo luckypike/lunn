@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { Title } from '../Pages'
 import { useI18n } from '../I18n'
 
-import Renderer from '../Draft'
+import Renderer from '../Renderer'
 
 import pages from '../Pages.module.css'
 import styles from './Show.module.css'

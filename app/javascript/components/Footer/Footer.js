@@ -3,7 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // import AnimateHeight from 'react-animate-height'
-import parse from 'html-react-parser'
+import htmlparser2 from 'htmlparser2'
+import domToReact from 'html-react-parser/lib/dom-to-react'
 
 import styles from './Footer.module.css'
 
@@ -17,7 +18,7 @@ export default function Footer ({ navs, footer, partners }) {
   return (
     <>
       <div className={styles.partners}>
-        {parse(partners.body)}
+        {domToReact(htmlparser2.parseDOM(partners.body))}
       </div>
 
       <div className={styles.root}>

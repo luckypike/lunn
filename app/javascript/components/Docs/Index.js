@@ -5,7 +5,7 @@ import mime from 'mime-types'
 
 import { useI18n } from '../I18n'
 import { Title } from '../Pages'
-import Renderer from '../Draft'
+import Renderer from '../Renderer'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'

@@ -6,7 +6,6 @@ import axios from 'axios'
 import { useI18n } from '../I18n'
 
 import { Title } from '../Pages'
-// import Renderer from '../Draft'
 import Exp from './Show/Exp'
 
 import styles from './Show.module.css'

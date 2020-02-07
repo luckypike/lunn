@@ -10,6 +10,8 @@ Gallery.propTypes = {
 }
 
 export default function Gallery ({ images }) {
+  if (!images || images.length < 2) return null
+
   const mount = useRef()
 
   const slides = () => {
@@ -34,8 +36,6 @@ export default function Gallery ({ images }) {
       glide.mount()
     }
   }, [])
-
-  if (images.length === 1) return null
 
   return (
     <div className={classNames('glide', styles.images)} ref={mount}>

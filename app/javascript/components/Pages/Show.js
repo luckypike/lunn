@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import { Title } from '../Pages'
 import Docs from '../Docs/Docs'
-import Renderer from '../Draft'
+import Renderer from '../Renderer'
 import Navs from '../Navs'
 import Nav from '../Nav'
 import Tutors from './Show/Tutors'

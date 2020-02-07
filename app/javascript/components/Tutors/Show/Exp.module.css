@@ -10,7 +10,7 @@
 }
 
 .ul {
-  composes: ul from '../../Draft.module.css';
+  composes: ul from '../../Renderer.module.css';
   margin-bottom: calc(var(--yr) * var(--s3));
 }
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 
 import { Title } from '../Pages'
-import Renderer from '../Draft'
+import Renderer from '../Renderer'
 
 import pages from '../Pages.module.css'
 import styles from './Show.module.css'
