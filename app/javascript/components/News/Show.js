@@ -58,7 +58,7 @@ export default function Show ({ slug }) {
 
           {mainImage &&
             <div className={styles.intro}>
-              <img src={`https://beta.lunn.ru/images/1600x800,sc${mainImage.path}`} />
+              <img src={`https://assets.lunn.ru/images/1600x800,sc/legacy${mainImage.path}`} />
             </div>
           }
 

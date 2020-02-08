@@ -9,7 +9,7 @@ class Attachment < ApplicationRecord
   end
 
   def host
-    'https://beta.lunn.ru/images'
+    'https://assets.lunn.ru'
   end
 
   def wrapper
