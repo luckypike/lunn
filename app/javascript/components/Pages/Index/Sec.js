@@ -42,7 +42,14 @@ function Items ({ items }) {
   return (
     <>
       {items.map((item, i) =>
-        <a href={item.path} key={i} className={classNames(styles.item, styles[`image_${Math.floor(Math.random() * 6) + 1}`])}>
+        <a
+          href={item.path}
+          key={i}
+          className={styles.item}
+          style={{
+            backgroundImage: item.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${item.image})` : 'none'
+          }}
+        >
           <div className={styles.title}>{item.title}</div>
 
           {item.external === 1 &&

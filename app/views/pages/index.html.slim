@@ -1,4 +1,6 @@
 - set_meta_tags \
   title: 'Нижегородский государственный лингвистический университет имени Н.А. Добролюбова'
 
-= react_component 'Pages/Index', { navs: Nav.active.sec.lang.as_json(methods: %i[path title]) }, { prerender: Rails.env.production? }
+= react_component 'Pages/Index', { \
+  navs: @navs.as_json(only: %i[mlid depth plid], methods: %i[title path image]) \
+}, { prerender: Rails.env.production? }
