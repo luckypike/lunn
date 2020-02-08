@@ -14,7 +14,7 @@ gem 'webpacker'
 gem 'slim-rails'
 
 gem 'i18n-js'
-gem 'jbuilder'
+gem 'jbuilder', github: 'rails/jbuilder'
 gem 'rails-i18n'
 
 gem 'php-serialize'

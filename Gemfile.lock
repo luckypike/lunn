@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/rails/jbuilder.git
+  revision: bec0d6c840c3486ee589d5de0ba9c348ccbc27ee
+  specs:
+    jbuilder (2.9.1)
+      activesupport (>= 5.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -94,8 +101,6 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n-js (3.5.1)
       i18n (>= 0.6.6)
-    jbuilder (2.9.1)
-      activesupport (>= 4.2.0)
     libv8 (7.3.492.27.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -225,7 +230,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv
   i18n-js
-  jbuilder
+  jbuilder!
   listen (>= 3.0.5, < 3.2)
   meta-tags
   mini_racer
