@@ -28,6 +28,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--gr_color);
+  background-position: center;
 
   &::before {
     content: '';

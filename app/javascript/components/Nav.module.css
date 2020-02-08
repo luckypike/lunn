@@ -15,7 +15,7 @@
 
 .item {
   display: block;
-  border-bottom: 1px solid #DBDDDE;
+  border-bottom: 1px solid #dbddde;
   overflow: hidden;
   padding: 16px 0;
   transition: border-bottom 0.3s, color 0.3s;

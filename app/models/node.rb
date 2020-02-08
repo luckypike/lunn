@@ -124,7 +124,21 @@ class Node < ApplicationRecord
 
   def navs
     mlid = Nav.main_or_sec.loaf.find_by(link_path: "node/#{id}")&.mlid
-    Nav.lang.where(plid: mlid)
+    temp = Nav.lang.where(plid: mlid).map
+
+    navs_images = Node::SingleImage
+      .where(
+        entity_type: :node,
+        entity_id: temp.map(&:link_nid).reject(&:zero?)
+      ).includes(:attachment)
+
+    temp.map do |nav|
+      nav.image = navs_images.detect do |ni|
+        ni.entity_id == nav.link_nid
+      end&.attachment&.path
+    end
+
+    temp
   end
 
   def loaf

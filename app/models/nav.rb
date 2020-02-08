@@ -2,6 +2,8 @@ class Nav < ApplicationRecord
   self.table_name = 'menu_links'
   self.inheritance_column = :_type_disabled
 
+  attr_accessor :image
+
   # scope :main, -> { where(menu_name: 'menu-front-top-menu') }
 
   default_scope { order(weight: :asc) }
@@ -27,5 +29,9 @@ class Nav < ApplicationRecord
 
   def title
     link_title
+  end
+
+  def link_nid
+    link_path.sub('node/', '').to_i
   end
 end

@@ -14,7 +14,14 @@ export default function Navs ({ navs }) {
   return (
     <div className={styles.items}>
       {navs.map((nav, i) =>
-        <a href={nav.path} key={nav.mlid} className={classNames(styles.item, styles[`image_${Math.floor(Math.random() * 6) + 1}`])}>
+        <a
+          href={nav.path}
+          key={nav.mlid}
+          className={styles.item}
+          style={{
+            backgroundImage: nav.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${nav.image})` : 'none'
+          }}
+        >
           <div className={styles.title}>
             {nav.title}
           </div>
