@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_url_aliases
-    Current.url_aliases = UrlAlias.lang
+    Current.url_aliases = UrlAlias.lang.map { |ua| [ua.source, ua.alias] }.to_h
   end
 
   def set_url_alias

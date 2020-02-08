@@ -5,9 +5,9 @@ class UrlAlias < ApplicationRecord
 
   class << self
     def alias_path(source)
-      url_alias = Current.url_aliases.detect { |ua| ua.source == source }
+      url_alias = Current.url_aliases[source]
 
-      url_alias ? "/#{url_alias.alias}" : source
+      url_alias ? "/#{url_alias}" : source
     end
   end
 end
