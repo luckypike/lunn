@@ -69,7 +69,7 @@ export default function Courses ({ location, courses, locale }) {
       if (filters.get('ege') && [...filters.get('ege')].filter(([key, value]) => value === true).map(e => e[0]).length > 0) {
         const ege = [...filters.get('ege')].filter(([key, value]) => value === true).map(e => e[0]).filter(e => e !== 'russian')
         if (ege.length > 0) {
-          newData = newData.filter(course => course.ege.some(v => ege.indexOf(v) !== -1))
+          newData = newData.filter(course => ege.every(v => course.ege.indexOf(v) !== -1))
         }
       }
       if (filters.get('level') && [...filters.get('level')].filter(([key, value]) => value === true).map(e => e[0]).length > 0) {

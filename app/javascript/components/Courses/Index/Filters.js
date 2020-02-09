@@ -49,6 +49,7 @@ Filter.propTypes = {
 
 function Filter ({ locale, id, title, filters }) {
   const I18n = useI18n(locale)
+  const selectedFilters = [...filters.get(id)].filter(([key, value]) => value === true && key != 'russian')
 
   const handleClick = (id, value) => {
     const query = querystring.stringify(Object.assign({}, ...[...filters.entries()].map(([k, v]) => ({ [k]: [...v].filter(ev => (ev[1] && ev[0] !== id) || (ev[0] === id && !value)).map(ev => ev[0]) }))))
@@ -58,12 +59,12 @@ function Filter ({ locale, id, title, filters }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.filter, { [styles.active]: [...filters.get(id)].filter(([key, value]) => value === true).length > 0 })}>
+      <div className={classNames(styles.filter, { [styles.active]: selectedFilters.length > 0 })}>
         <div className={styles.title}>
           {title}
-          {[...filters.get(id)].filter(([key, value]) => value === true).length > 0 &&
+          {selectedFilters.length > 0 &&
             <div className={styles.checked}>
-              {[...filters.get(id)].filter(([key, value]) => value === true).length}
+              {selectedFilters.length}
             </div>
           }
         </div>
@@ -82,10 +83,11 @@ function Filter ({ locale, id, title, filters }) {
               </label>
             </div>
           }
-          {[...filters.get(id)].filter(([key, value]) => key !== 'russian').map(e =>
-            <div key={e[0]} className={classNames(styles.item, { [styles.selected]: e[1] })}>
+          {[...filters.get(id)].filter(([key, value]) => key != 'russian').map(e =>
+            <div key={e[0]} className={classNames(styles.item, { [styles.selected]: e[1] }, { [styles.disabled]: id === 'ege' && !e[1] && selectedFilters.length >= 2 })}>
               <label>
                 <input
+                  disabled={selectedFilters.length >= 2 && !e[1] && id === 'ege' ? true : false}
                   checked={e[1]}
                   type="checkbox"
                   value={e[1]}

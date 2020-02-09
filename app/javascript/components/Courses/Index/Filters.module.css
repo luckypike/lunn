@@ -3,7 +3,7 @@
   position: relative;
   z-index: 1;
   /* flex-wrap: wrap; */
-  margin-bottom: calc(var(--yr) * var(--s2));
+  margin-bottom: calc(var(--yr) * var(--s1));
 
   &.active {
     display: block;
@@ -29,7 +29,7 @@
   background-color: var(--sp_color);
   padding: calc(var(--yr) * 1.5) calc(var(--yr) * 7.5);
   border-radius: calc(var(--yr) * 2);
-  margin-bottom: calc(var(--yr) * var(--s1));
+  margin-bottom: calc(var(--yr) * var(--s2));
   cursor: pointer;
   position: relative;
 
