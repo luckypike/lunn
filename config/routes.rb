@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }
 
+  get :announces, to: 'pages#announces'
+
   scope '(:locale)', locale: /en/ do
     get '', to: 'pages#index'
 
