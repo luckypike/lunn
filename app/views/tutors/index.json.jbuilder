@@ -1,4 +1,4 @@
-json.tutors @tutors do |tutor|
+json.tutors @tutors.sort_by(&:title) do |tutor|
   json.extract! tutor, :id, :title
 
   if tutor.image
