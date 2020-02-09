@@ -37,7 +37,7 @@ export default function Index ({ loaf }) {
         />
       }
 
-      <Filters />
+      {/* <Filters /> */}
 
       {tutors &&
         <div className={styles.tutors}>
