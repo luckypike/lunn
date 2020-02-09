@@ -177,3 +177,16 @@
     }
   }
 }
+
+.legacy {
+  position: relative;
+  z-index: 5;
+
+  & a {
+    background-color: var(--hl_color);
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: calc(var(--yr) * var(--s1));
+  }
+}

@@ -32,6 +32,12 @@ export default function Header ({ navs, index, locale }) {
 
   return (
     <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive })}>
+      <div className={styles.legacy}>
+        <a href="http://legacy.lunn.ru" target="_blank" rel="noopener noreferrer">
+          Предыдущая версия сайта 👀
+        </a>
+      </div>
+
       <div className={classNames(styles.overlay, { [styles.active]: menuActive })} onClick={() => setMenuActive(!menuActive)} onMouseEnter={() => setMenuActive(!menuActive)} />
 
       <header className={styles.root}>
