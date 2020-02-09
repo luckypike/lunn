@@ -11,29 +11,29 @@ export default function Youtube () {
 
       <div className={styles.video}>
         <div className={styles.youtube}>
-          <iframe src='https://www.youtube.com/embed/DIY2Uz4GvY8' frameBorder="0" allowFullScreen={true} />
+          <iframe src='https://www.youtube.com/embed/gr9xa9pdpDk' frameBorder="0" allowFullScreen={true} />
         </div>
 
         <div className={styles.title}>
-          Бесплатные курсы иностранного языка в НГЛУ, направление «Экономика»
+          Ректор НГЛУ Жанна Никонова поздравляет коллег с Днем российской науки
         </div>
 
         <div className={styles.date}>
-          19 декабря 2019
+          7 февраля 2020
         </div>
       </div>
 
       <div className={styles.video}>
         <div className={styles.youtube}>
-          <iframe src='https://www.youtube.com/embed/_HBlLzCvHTk' frameBorder="0" allowFullScreen={true} />
+          <iframe src='https://www.youtube.com/embed/CDYozEbzF0s' frameBorder="0" allowFullScreen={true} />
         </div>
 
         <div className={styles.title}>
-          Интервью Ж.В. Никоновой каналу «Россия 1»
+          Ученые НГЛУ поздравляют коллег с Днем российской науки
         </div>
 
         <div className={styles.date}>
-          25 июля 2019
+          7 февраля 2020
         </div>
       </div>
     </div>
