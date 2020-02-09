@@ -5,6 +5,7 @@ import classNames from 'classnames'
 // import AnimateHeight from 'react-animate-height'
 import { parseDOM } from 'htmlparser2'
 import domToReact from 'html-react-parser/lib/dom-to-react'
+import { YMInitializer } from 'react-yandex-metrika';
 
 import styles from './Footer.module.css'
 
@@ -82,6 +83,14 @@ export default function Footer ({ navs, footer, partners }) {
           </div>
         </div>
       </div>
+
+      <YMInitializer
+        accounts={[32824002]}
+        options={{
+          webvisor: true
+        }}
+        version="2"
+      />
     </>
   )
 }
