@@ -37,7 +37,7 @@ export default function Footer ({ navs, footer, partners }) {
 
               <div className={styles.address}>
                 <div className={styles.text}>603155, Россия, Нижний Новгород, ул. Минина 31а</div>
-                <a className={styles.button} href="#">Адрес на карте</a>
+                <a className={styles.button} href="/contacts">Адрес на карте</a>
               </div>
 
               <div className={styles.contacts}>
