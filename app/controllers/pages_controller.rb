@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @events = Node.events.joins(:date).lang
       .where(
         'field_data_field_date_begin.field_date_begin_value > ?',
-        Time.current.beginning_of_day
+        Time.current.end_of_day
       )
       .order('field_data_field_date_begin.field_date_begin_value': :asc)
       .limit(3)
