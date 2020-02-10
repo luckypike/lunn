@@ -50,7 +50,7 @@ export default function Index ({ departments, destinations }) {
     const des = destinations.filter(i => parseInt(i.department_id) === parseInt(values.department_id))
 
     if (des.length === 1) {
-      data.destination_id = des[0].id
+      data.destination_id = `${des[0].id}`
     }
 
     setValues(data)
@@ -72,7 +72,7 @@ export default function Index ({ departments, destinations }) {
 
               <div className={form.input}>
                 <select name="department_id" onChange={handleInputChange}>
-                  <option value="">Направить письмо в...</option>
+                  <option value="">Направить письмо в</option>
                   {departments.map(department =>
                     <option value={department.id} key={department.id}>
                       {department.title}
@@ -92,7 +92,7 @@ export default function Index ({ departments, destinations }) {
               <div className={form.input}>
                 <select disabled={values.department_id === ''} name="destination_id" onChange={handleInputChange}>
                   {destinations.filter(i => parseInt(i.department_id) === parseInt(values.department_id)).length !== 1 &&
-                    <option value="">Выберите адресата...</option>
+                    <option value="">Выберите адресата</option>
                   }
 
                   {destinations.filter(i => parseInt(i.department_id) === parseInt(values.department_id)).map(destination =>
@@ -113,7 +113,7 @@ export default function Index ({ departments, destinations }) {
                   value={values.name}
                   name="name"
                   onChange={handleInputChange}
-                  placeholder="* Ваше имя..."
+                  placeholder="Имя*"
                 />
               </div>
 
@@ -121,13 +121,14 @@ export default function Index ({ departments, destinations }) {
             </div>
 
             <div className={classNames(form.el, styles.email)}>
+              <div className={styles.placeholder}>Email</div>
+
               <div className={form.input}>
                 <input
                   type="text"
                   value={values.email}
                   name="email"
                   onChange={handleInputChange}
-                  placeholder="* Ваша почта..."
                 />
               </div>
 
@@ -140,7 +141,7 @@ export default function Index ({ departments, destinations }) {
                   value={values.message}
                   name="message"
                   onChange={handleInputChange}
-                  placeholder="* Сообщение..."
+                  placeholder="Сообщение*"
                 />
               </div>
 
@@ -148,7 +149,7 @@ export default function Index ({ departments, destinations }) {
             </div>
 
             <div className={classNames(form.submit, styles.submit)}>
-              <input type="submit" value={pending ? 'Отправляем...' : 'Отправить'} className={classNames(buttons.main, buttons.big, { [buttons.pending]: pending })} disabledd={pending || (values.name === '' || values.email === '' || values.message === '')} />
+              <input type="submit" value={pending ? 'Отправляем...' : 'Отправить'} className={classNames(buttons.main, buttons.big, { [buttons.pending]: pending })} disabled={pending || (values.name === '' || values.email === '' || values.message === '')} />
             </div>
           </form>
         </div>

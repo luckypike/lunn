@@ -56,3 +56,20 @@ select {
 .disabled {
   opacity: 0.5;
 }
+
+.email {
+  position: relative;
+
+  & input {
+    padding: calc(var(--yr) * 6) calc(var(--yr) * 4) calc(var(--yr) * 3);
+  }
+}
+
+.placeholder {
+  composes: mt from '../Fonts.module.css';
+  position: absolute;
+  display: block;
+  color: var(--gr_color);
+  top: calc(var(--yr) * 2);
+  left: calc(var(--yr) * 4);
+}
