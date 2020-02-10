@@ -36,7 +36,7 @@
   display: none;
   margin-left: 0.4em;
 
-  @media (--s) {
+  @media (--m) {
     display: inline;
   }
 }
@@ -80,6 +80,10 @@
   @media (--m) {
     padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 2);
   }
+}
+
+.reex {
+  grid-column: 1 / -1;
 }
 
 .title {

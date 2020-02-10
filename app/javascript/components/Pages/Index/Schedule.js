@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AnimateHeight from 'react-animate-height'
+import classNames from 'classnames'
 
 import styles from './Schedule.module.css'
 import pages from '../../Pages.module.css'
@@ -13,7 +14,7 @@ export default function Schedule () {
         <div className={styles.header}>
           Расписание
           <span className={styles.hint}>
-            занятий
+            занятий и задолженностей
           </span>
         </div>
 
@@ -24,6 +25,15 @@ export default function Schedule () {
 
       <AnimateHeight height={height}>
         <div className={styles.items}>
+          <a
+            href="/schedule/reex"
+            className={classNames(styles.item, styles.reex)}
+          >
+            <div className={styles.title}>
+              Ликвидация академических задолженностей
+            </div>
+          </a>
+
           <a
             href="http://rasp.lunn.ru/raspisanie/faya/"
             className={styles.item}
