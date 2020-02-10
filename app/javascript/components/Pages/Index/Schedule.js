@@ -14,7 +14,7 @@ export default function Schedule () {
         <div className={styles.header}>
           Расписание
           <span className={styles.hint}>
-            занятий и задолженностей
+            занятий и ликвидации задолженностей
           </span>
         </div>
 

@@ -1,6 +1,7 @@
 .header {
-  composes: h2 from '../../Fonts.module.css';
+  composes: h3 from '../../Fonts.module.css';
   margin-bottom: 0;
+  padding-right: 1em;
 }
 
 .button {
