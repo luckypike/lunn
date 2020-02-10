@@ -115,7 +115,7 @@ export default function Show ({ node, loaf, course, locale }) {
           }
 
           <div className={classNames(styles.button, { [styles.ma]: course.level === 'ma' })}>
-            <a href="/page/priemnaya-kampaniya-2020-goda-bakalavriat-specialitet-magistratura" target="_blank" rel="noopener noreferrer">
+            <a href="/abitur/2020" target="_blank" rel="noopener noreferrer">
               Приёмная комиссия
             </a>
           </div>
