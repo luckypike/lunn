@@ -24,8 +24,9 @@ json.sliders @sliders do |slider|
 end
 
 json.events @events do |event|
-  json.cache! [event.nid], expires_in: 30.minutes do
-    json.partial! event
-    json.date event.date.value if event.date
-  end
+  json.partial! event
+  json.date event.date.value if event.date
+
+  # json.cache! [event.nid], expires_in: 30.minutes do
+  # end
 end
