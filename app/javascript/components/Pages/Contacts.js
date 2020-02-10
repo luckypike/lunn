@@ -42,6 +42,36 @@ export default function Contacts ({ contacts }) {
           </YMaps>
         </div>
 
+        <div className={styles.items}>
+          <div className={styles.item}>
+            <span className={styles.text}>Адрес:</span>
+            <div className={styles.address}>
+              603155, Россия, Нижний Новгород, ул. Минина 31а
+            </div>
+          </div>
+
+          <div className={styles.item}>
+            <span className={styles.text}>Телефон:</span>
+            <a href="tel:+78314361575" className={styles.tel}>
+              +7 (831) 436-15-75
+            </a>
+          </div>
+
+          <div className={styles.item}>
+            <span className={styles.text}>Факс:</span>
+            <a href="tel:+78314166131" className={styles.tel}>
+              +7 (831) 416-61-31
+            </a>
+          </div>
+
+          <div className={styles.item}>
+            <span className={styles.text}>Эл. почта:</span>
+            <a href="mailto:admdep@lunn.ru" className={styles.button}>
+              admdep@lunn.ru
+            </a>
+          </div>
+        </div>
+
         <div className={styles.phones}>
           <h2>
             Краткий телефонный справочник
