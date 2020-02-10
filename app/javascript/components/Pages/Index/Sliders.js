@@ -35,7 +35,7 @@ export default function Sliders ({ sliders }) {
             {sliders.map((slider, i) =>
               <div
                 key={slider.nid}
-                className={classNames('glide__slide', styles.image, { [styles.first]: i === 0 })}
+                className={classNames('glide__slide', styles.image)}
                 style={{ backgroundImage: `url(https://assets.lunn.ru/images/800x1000/legacy${slider.image.path})` }
                 }
               >
