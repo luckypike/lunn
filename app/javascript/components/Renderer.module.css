@@ -160,3 +160,7 @@ h2 {
     margin: calc(var(--yr) * calc(var(--s4) * 2)) calc(-1 / 6 * 100%);
   }
 }
+
+.element-invisible {
+  display: none;
+}
