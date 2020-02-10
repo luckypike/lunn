@@ -24,7 +24,7 @@ class PagesController < ApplicationController
     ActiveRecord::Associations::Preloader.new.preload(@events, :date)
 
     @sliders = Node.sliders.lang.published
-      .includes(:image, :dates)
+      .includes(:image, :dates, :link)
       .order(created: :desc)
       .limit(4)
 

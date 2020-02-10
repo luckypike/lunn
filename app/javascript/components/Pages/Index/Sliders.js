@@ -33,7 +33,8 @@ export default function Sliders ({ sliders }) {
         <div className={classNames('glide__track', styles.track)} data-glide-el="track">
           <div className={classNames('glide__slides', styles.slides)}>
             {sliders.map((slider, i) =>
-              <div
+              <a
+                href={slider.link}
                 key={slider.nid}
                 className={classNames('glide__slide', styles.image)}
                 style={{ backgroundImage: `url(https://assets.lunn.ru/images/800x1000/legacy${slider.image.path})` }
@@ -50,7 +51,7 @@ export default function Sliders ({ sliders }) {
                     {slider.title}
                   </div>
                 </div>
-              </div>
+              </a>
             )}
           </div>
         </div>

@@ -14,6 +14,7 @@ json.sliders @sliders do |slider|
   json.cache! [slider.nid], expires_in: 30.minutes do
 
     json.partial! slider
+    json.link slider.link.value if slider.link
     json.dates slider.dates.value if slider.dates
 
     json.image do
