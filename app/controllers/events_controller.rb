@@ -10,7 +10,7 @@ class EventsController < ApplicationController
           'field_data_field_date_begin.field_date_begin_value > ?',
           Time.current.beginning_of_day
         )
-        .order('field_data_field_date_begin.field_date_begin_value': :desc)
+        .order('field_data_field_date_begin.field_date_begin_value': :asc)
 
         if @events.size < 3
           @events = Node.events.joins(:date).lang
