@@ -15,7 +15,7 @@ export default function Feed ({ events }) {
       {events &&
         <div className={styles.events}>
           {events.map((event, i) =>
-            <div key={i} className={styles.event}>
+            <a href={event.path} key={i} className={styles.event}>
               <div className={styles.date}>
                 {dayjs(event.date).locale('ru').format('D MMMM')}
               </div>
@@ -23,7 +23,7 @@ export default function Feed ({ events }) {
               <div className={styles.title}>
                 {event.title}
               </div>
-            </div>
+            </a>
           )}
         </div>
       }
