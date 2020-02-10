@@ -1,9 +1,10 @@
 .root {
-  margin-bottom: 28px;
+  order: -1;
   max-width: 22rem;
 
   @media (--m) {
     grid-column: 4;
+    order: 2;
   }
 }
 

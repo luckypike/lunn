@@ -4,35 +4,25 @@
   }
 }
 
-.event {
-  border: 1px solid #ECEFF1;
-  border-radius: calc(var(--yr) * 2);
-  align-items: center;
+.title {
+  composes: h4 from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * 4);
 
   @media (--m) {
-    display: grid;
-    grid-template-columns: 25% 75%;
-    margin-bottom: calc(var(--yr) * var(--s3));
+    margin-bottom: calc(var(--yr) * 8);
   }
 }
 
 .date {
-  composes: h5 from '../../Fonts.module.css';
-  margin: 0;
-
-  @media (--m) {
-    color: #fff;
-    background-color: var(--hl_color);
-    padding: calc(var(--yr) * var(--s4));
-    text-align: center;
-    border-top-left-radius: calc(var(--yr) * 2);
-    border-bottom-left-radius: calc(var(--yr) * 2);
-  }
+  color: var(--gr_color);
 }
 
-.title {
-  margin: 0;
-  composes: h5 from '../../Fonts.module.css';
-  text-align: center;
-  padding: 0 calc(var(--xr) * 2);
+.event {
+  position: relative;
+  display: block;
+  padding: calc(var(--yr) * var(--s3) * 2) 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #d8d8d8;
+  }
 }

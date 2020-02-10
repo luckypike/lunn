@@ -5,8 +5,9 @@
 }
 
 .root {
+  display: grid;
+
   @media (--m) {
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: calc(var(--xr) * 1.875);
   }
