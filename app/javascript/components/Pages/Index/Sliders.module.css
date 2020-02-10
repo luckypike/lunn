@@ -78,6 +78,7 @@
 }
 
 .title {
+  display: none;
   composes: h3 from '../../Fonts.module.css';
 
   @media (--s) {
