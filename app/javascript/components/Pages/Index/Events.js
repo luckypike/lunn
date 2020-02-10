@@ -12,6 +12,9 @@ Events.propTypes = {
 }
 
 export default function Events ({ events }) {
+  var today = new Date()
+  today.setHours(0, 0, 0, 0)
+
   return (
     <div className={styles.root}>
       <div className={styles.label}>
@@ -20,7 +23,7 @@ export default function Events ({ events }) {
 
       <div className={styles.events}>
         {events.map(event =>
-          <a href={event.path} key={event.nid} className={classNames(styles.event, { [styles.pass]: dayjs(event.date) < dayjs() })}>
+          <a href={event.path} key={event.nid} className={classNames(styles.event, { [styles.pass]: dayjs(event.date) < today })}>
             <div className={styles.date}>
               {dayjs(event.date).locale('ru').format('D MMMM')}
             </div>
@@ -29,7 +32,7 @@ export default function Events ({ events }) {
               {event.title}
             </div>
 
-            {dayjs(event.date) < dayjs() &&
+            {dayjs(event.date) < today &&
               <div className={styles.passed}>
                 Событие состоялось
               </div>
