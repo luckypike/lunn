@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get :announces, to: 'pages#announces'
 
+  get :search, to: 'search#index'
+
   scope '(:locale)', locale: /en/ do
     get '', to: 'pages#index'
 
