@@ -12,3 +12,38 @@
     grid-column-gap: calc(var(--xr) * 1.875);
   }
 }
+
+.events {
+  grid-column: span 1;
+
+  @media (--m) {
+    grid-column: span 3;
+  }
+}
+
+.title {
+  composes: h4 from '../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * 4);
+
+  @media (--m) {
+    margin-bottom: calc(var(--yr) * 8);
+  }
+}
+
+.date {
+  color: var(--gr_color);
+}
+
+.event {
+  position: relative;
+  display: block;
+  padding: calc(var(--yr) * var(--s3) * 2) 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #d8d8d8;
+  }
+
+  @media (--m) {
+    padding: 0 0 calc(var(--yr) * var(--s3) * 2);
+  }
+}

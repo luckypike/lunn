@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import axios from 'axios'
+import dayjs from 'dayjs'
 
 import { Title } from '../Pages'
 
@@ -16,17 +17,25 @@ Index.propTypes = {
 }
 
 export default function Index ({ location }) {
+  const query = new URLSearchParams(location.search)
+
+  const date = query.get('date') || 1
+
   const [events, setEvents] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
-      const { data } = await axios.get('/events.json')
+      const { data } = await axios.get('/events.json', {
+        params: {
+          date: date
+        }
+      })
 
       setEvents(data.events)
     }
 
     _fetch()
-  }, [])
+  }, [date])
 
   return (
     <div className={pages.root}>
@@ -50,12 +59,44 @@ export default function Index ({ location }) {
       <div className={pages.container}>
         {events &&
           <div className={styles.root}>
-            <Feed events={events} />
+            {date === 1 &&
+              <Feed events={events} />
+            }
 
-            <Calendar events={events} />
+            {date !== 1 &&
+              <Event events={events.filter(event => dayjs(event.date).format('YYYY-MM-DD') === dayjs(date).format('YYYY-MM-DD'))} />
+            }
+
+            <Calendar events={events} date={date} />
           </div>
         }
       </div>
+    </div>
+  )
+}
+
+Event.propTypes = {
+  events: PropTypes.array
+}
+
+function Event ({ events }) {
+  return (
+    <div className={styles.events}>
+      {events &&
+        <div className={styles.events}>
+          {events.map((event, i) =>
+            <a href={event.path} key={i} className={styles.event}>
+              <div className={styles.title}>
+                {event.title}
+              </div>
+
+              <div className={styles.date}>
+                {dayjs(event.date).locale('ru').format('D MMMM YYYY')}
+              </div>
+            </a>
+          )}
+        </div>
+      }
     </div>
   )
 }

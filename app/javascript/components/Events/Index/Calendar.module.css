@@ -59,7 +59,6 @@
   text-align: center;
   color: #777777;
   line-height: calc(var(--yr) * 12);
-  /* padding: 0 16px 16px; */
 }
 
 .months {
@@ -69,9 +68,12 @@
 
 .date {
   position: relative;
-  /* padding: 12px 15px; */
   line-height: calc(var(--yr) * 12);
   text-align: center;
+
+  & a {
+    display: block;
+  }
 }
 
 .in {
@@ -94,6 +96,18 @@
 .active {
   background-color: var(--hl_color);
   border-radius: calc(var(--yr) * 2);
+  color: #000;
+  transition: color 0.3s, background-color 0.3s;
+
+  & a {
+    color: #fff;
+
+    & .in {
+      & .event {
+        background-color: #fff;
+      }
+    }
+  }
 }
 
 .white {

@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-// import { Link } from '@reach/router'
+import { Link } from '@reach/router'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import isBetween from 'dayjs/plugin/isBetween'
 
-// import fonts from '../../Fonts.module.css'
 import styles from './Calendar.module.css'
 
 dayjs.extend(isBetween)
 
 Calendar.propTypes = {
-  events: PropTypes.array
+  events: PropTypes.array,
+  date: PropTypes.string
 }
 
-export default function Calendar ({ events }) {
+export default function Calendar ({ events, date }) {
   const [current, setCurrent] = useState(dayjs().locale('ru'))
 
   const startOfMonth = current.startOf('month').startOf('week')
@@ -64,6 +64,8 @@ export default function Calendar ({ events }) {
             endOfMonth={current.endOf('month')}
             events={events.filter(event => (dayjs(event.date).locale('ru').format('D M YYYY') === day.format('D M YYYY')))}
             day={day}
+            date={date}
+            active={date}
           />
         )}
       </div>
@@ -75,10 +77,12 @@ Day.propTypes = {
   startOfMonth: PropTypes.object,
   endOfMonth: PropTypes.object,
   events: PropTypes.array,
-  day: PropTypes.object
+  day: PropTypes.object,
+  date: PropTypes.string,
+  active: PropTypes.string
 }
 
-function Day ({ startOfMonth, endOfMonth, events, day }) {
+function Day ({ startOfMonth, endOfMonth, events, day, date, active }) {
   const isToday = () => {
     return day.isSame(dayjs(), 'day')
   }
@@ -87,19 +91,28 @@ function Day ({ startOfMonth, endOfMonth, events, day }) {
     return !day.isBetween(startOfMonth, endOfMonth)
   }
 
+  const isActive = () => {
+    return day.isSame(active, 'day')
+  }
+
   return (
-    <div className={classNames(styles.date, { [styles.today]: isToday() })}>
+    <div className={classNames(styles.date, { [styles.today]: isToday(), [styles.active]: isActive() })}>
       {!isOutOfMonth() &&
         <>
-          <div className={styles.in}>
-            {day.format('D')}
-
-            {events.length > 0 &&
-              <>
+          {events.length > 0 &&
+            <Link to={`/events?date=${day.format('YYYY-MM-DD')}`}>
+              <div className={styles.in}>
                 <div className={styles.event} />
-              </>
-            }
-          </div>
+              </div>
+              {day.format('D')}
+            </Link>
+          }
+
+          {events.length < 1 &&
+            <>
+              {day.format('D')}
+            </>
+          }
         </>
       }
 
