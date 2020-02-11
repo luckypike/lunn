@@ -33,6 +33,18 @@ export default function Show ({ slug }) {
         <>
           <Title
             h2={event.title}
+            loaf={[
+              {
+                mlid: 999,
+                path: '/events',
+                title: 'Мероприятия'
+              },
+              {
+                mlid: 9999,
+                path: slug,
+                title: event.title
+              }
+            ]}
           />
 
           <HelmetProvider>
