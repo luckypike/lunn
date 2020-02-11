@@ -30,6 +30,11 @@ export default function Header ({ navs, index, locale }) {
     }
   }, [])
 
+  const handleClick = () => {
+    setMenuActive(false)
+    setSearchActive(false)
+  }
+
   return (
     <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive })}>
       <div className={styles.legacy}>
@@ -38,7 +43,7 @@ export default function Header ({ navs, index, locale }) {
         </a>
       </div>
 
-      <div className={classNames(styles.overlay, { [styles.active]: menuActive })} onClick={() => setMenuActive(!menuActive)} onMouseEnter={() => setMenuActive(!menuActive)} />
+      <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} onClick={() => handleClick()} onMouseEnter={() => setMenuActive(false)} />
 
       <header className={styles.root}>
         <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
