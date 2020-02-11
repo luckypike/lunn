@@ -1,7 +1,6 @@
 .root {
   display: flex;
   justify-content: flex-end;
-  visibility: hidden;
 
   @media (--l) {
     justify-content: flex-start;
@@ -29,6 +28,7 @@
   height: calc(var(--yr) * 12);
   line-height: calc(var(--yr) * 12);
   text-align: center;
+  visibility: hidden;
 }
 
 .white {

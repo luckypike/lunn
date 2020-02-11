@@ -1,11 +1,14 @@
 .root {
   position: relative;
   background: #fff;
+  padding: calc(var(--yr) * 9.5) 0;
+
+  @media (--s) {
+    padding: calc(var(--yr) * 6) 0;
+  }
 }
 
 .input {
-  font-size: 1rem;
-  line-height: calc(var(--yr) * 16);
   outline: none;
   padding: 0;
   margin: 0;
@@ -13,11 +16,12 @@
   border: 0;
   padding-right: calc(var(--yr) * 14);
   padding-left: calc(var(--yr) * 14);
+  composes: h3 from '../Fonts.module.css';
 
   @media (--s) {
     line-height: calc(var(--yr) * 32);
-    padding-right: calc(var(--xr) * 6);
-    padding-left: calc(var(--xr) * 4);
+    padding-right: calc(var(--xr) * 7);
+    padding-left: calc(var(--xr) * 5);
   }
 }
 

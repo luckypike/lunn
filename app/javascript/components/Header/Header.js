@@ -61,7 +61,7 @@ export default function Header ({ navs, index, locale }) {
       </div>
 
       <div className={classNames(styles.search, { [styles.active]: searchActive })}>
-        <Search onSearchToggle={() => setSearchActive(false)} />
+        <Search onSearchToggle={() => setSearchActive(false)} searchActive={searchActive} />
       </div>
     </div>
   )
