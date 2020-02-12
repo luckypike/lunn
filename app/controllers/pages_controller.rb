@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     @sliders = Node.sliders.lang.published
       .includes(:image, :dates, :link)
       .order(created: :desc)
-      .limit(4)
+      .limit(5)
 
 
     @navs = Nav.active.sec.lang
