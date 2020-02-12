@@ -1,3 +1,3 @@
-json.result @results do |result|
-  json.partial! result.node
+json.result @nodes do |node|
+  json.partial! node
 end

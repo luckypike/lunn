@@ -1,7 +1,6 @@
 .root {
   display: flex;
   justify-content: flex-end;
-  visibility: hidden;
 
   @media (--l) {
     justify-content: flex-start;

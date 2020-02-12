@@ -1,5 +1,7 @@
 class Node < ApplicationRecord
   include Tutor
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   self.table_name = 'node'
   self.inheritance_column = :_type_disabled
@@ -47,6 +49,24 @@ class Node < ApplicationRecord
   scope :with_prices, -> { includes(:field_price_1, :field_price_2, :field_price_3) }
   scope :with_times, -> { includes(:field_time_1, :field_time_2, :field_time_3) }
   scope :with_places, -> { includes(:field_places_1, :field_places_2, :field_places_3) }
+
+  document_type 'node'
+
+  settings do
+    mappings dynamic: false do
+      indexes :title, fields: {
+        ru: { analyzer: :russian, type: :text },
+        en: { analyzer: :english, type: :text }
+      }
+
+      indexes :body, type: :object do
+        indexes :field_body_value, fields: {
+          ru: { analyzer: :russian, type: :text },
+          en: { analyzer: :english, type: :text }
+        }
+      end
+    end
+  end
 
   def path
     if type == 'event'
@@ -147,5 +167,11 @@ class Node < ApplicationRecord
       &.slice(:p1, :p2, :p3, :p4, :p5, :p6, :p7, :p8, :p9)&.values
 
     Nav.main_or_sec.where(mlid: mlids).unscope(:order).order(depth: :asc)
+  end
+
+  def as_indexed_json(_options = {})
+    as_json(
+      include: { body: { only: :field_body_value } }
+    )
   end
 end

@@ -3,12 +3,9 @@ class SearchController < ApplicationController
     respond_to do |format|
       format.html { render :index }
       format.json do
-        words = params[:q].split(' ').reject(&:blank?)
-        @results = SearchApi.where(word: words.map(&:downcase))
-          .includes(:node).joins(:node)
-          .group(:item_id).having('count(*) >= ?', words.size)
-          .order('sum(score) DESC')
+        @nodes = Node.includes(:node).joins(:node)
           .where(node: { language: I18n.locale })
+          .search(params[:q]).records
       end
     end
   end

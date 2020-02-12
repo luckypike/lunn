@@ -19,6 +19,10 @@ gem 'rails-i18n'
 
 gem 'php-serialize'
 
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-ruby'
+
 gem 'bootsnap', require: false
 
 gem 'mini_racer'
