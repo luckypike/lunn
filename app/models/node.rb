@@ -50,8 +50,6 @@ class Node < ApplicationRecord
   scope :with_times, -> { includes(:field_time_1, :field_time_2, :field_time_3) }
   scope :with_places, -> { includes(:field_places_1, :field_places_2, :field_places_3) }
 
-  document_type 'node'
-
   settings do
     mappings dynamic: false do
       indexes :title, fields: {
