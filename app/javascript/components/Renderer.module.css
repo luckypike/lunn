@@ -18,9 +18,15 @@
   }
 }
 
-.p + .h2,
-.p + .h3 {
-  margin-top: calc(var(--yr) * var(--s3));
+.p,
+.ul,
+.ol {
+  & + {
+    & .h2,
+    & .h3 {
+      margin-top: calc(var(--yr) * var(--s3));
+    }
+  }
 }
 
 .ul {
