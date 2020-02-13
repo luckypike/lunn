@@ -52,6 +52,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.yandex.ru',
+    port: 587,
+    user_name: Rails.application.credentials.dig(:mail, :username),
+    password: Rails.application.credentials.dig(:mail, :password),
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -95,4 +105,13 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.middleware.use(
+    ExceptionNotification::Rack,
+    email: {
+      email_prefix: '[lunn] [ERROR] ',
+      sender_address: %("Luckybot" <#{Rails.application.credentials.dig(:mail, :username)}>),
+      exception_recipients: %w[log+lunn@luckypike.com]
+    }
+  )
 end

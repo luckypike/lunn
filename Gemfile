@@ -23,6 +23,8 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-ruby'
 
+gem 'exception_notification'
+
 gem 'bootsnap', require: false
 
 gem 'mini_racer'
