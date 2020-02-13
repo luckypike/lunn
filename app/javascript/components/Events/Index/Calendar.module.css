@@ -5,6 +5,7 @@
   @media (--m) {
     grid-column: 4;
     order: 2;
+    min-width: 22rem;
   }
 }
 

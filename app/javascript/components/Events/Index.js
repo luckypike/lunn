@@ -82,21 +82,17 @@ Event.propTypes = {
 function Event ({ events }) {
   return (
     <div className={styles.events}>
-      {events &&
-        <div className={styles.events}>
-          {events.map((event, i) =>
-            <a href={event.path} key={i} className={styles.event}>
-              <div className={styles.title}>
-                {event.title}
-              </div>
+      {events.map((event, i) =>
+        <a href={event.path} key={i} className={styles.event}>
+          <div className={styles.title}>
+            {event.title}
+          </div>
 
-              <div className={styles.date}>
-                {dayjs(event.date).locale('ru').format('D MMMM YYYY')}
-              </div>
-            </a>
-          )}
-        </div>
-      }
+          <div className={styles.date}>
+            {dayjs(event.date).locale('ru').format('D MMMM YYYY')}
+          </div>
+        </a>
+      )}
     </div>
   )
 }

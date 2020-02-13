@@ -17,6 +17,7 @@
   grid-column: span 1;
 
   @media (--m) {
+    margin-top: calc(var(--yr) * var(--s3) * -2);
     grid-column: span 3;
   }
 }
@@ -41,9 +42,5 @@
 
   &:not(:last-child) {
     border-bottom: 1px solid #d8d8d8;
-  }
-
-  @media (--m) {
-    padding: 0 0 calc(var(--yr) * var(--s3) * 2);
   }
 }
