@@ -107,7 +107,9 @@ export default function Show ({ node, loaf, course, locale }) {
                   <li key={e} className={styles.sub}>
                     <Ege label={e} />
 
-                    <div className={styles.grey}>60 баллов</div>
+                    <div className={styles.grey}>
+                      <Marks point={e} />
+                    </div>
                   </li>
                 )}
               </div>
@@ -148,4 +150,17 @@ function Ege ({ label }) {
   }
 
   return labels[label] || label
+}
+
+function Marks ({ point }) {
+  const points = {
+    foreign: '40 баллов',
+    russian: '40 баллов',
+    lit: '40 баллов',
+    math: '39 баллов',
+    history: '40 баллов',
+    social: '44 балла'
+  }
+
+  return points[point] || point
 }

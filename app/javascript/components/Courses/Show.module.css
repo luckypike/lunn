@@ -10,18 +10,18 @@
 
 .course {
   display: block;
-  background-color: #ECEFF1;
+  background-color: #eceff1;
   border-radius: calc(var(--yr) * 2);
   padding: calc(var(--yr) * 7) calc(var(--yr) * 7.5) calc(var(--yr) * 10.5);
   margin-bottom: calc(var(--yr) * calc(var(--s2) * 3));
 
-  @media(--s) {
+  @media (--s) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: calc(var(--yr) * 2);
   }
 
-  @media(--m) {
+  @media (--m) {
     display: flex;
     flex-wrap: wrap;
   }
@@ -32,17 +32,18 @@
   margin-bottom: var(--yr);
   color: #727272;
 
-  @media(--m) {
+  @media (--m) {
     height: calc(var(--yr) * 10);
     max-width: 160px;
     margin-bottom: calc(var(--yr) * 3.5);
   }
 }
 
-.forms, .places {
+.forms,
+.places {
   margin-bottom: calc(var(--yr) * 3.5);
 
-  @media(--m) {
+  @media (--m) {
     margin-right: calc(var(--yr) * 7.5);
     margin-bottom: 0;
   }
@@ -51,12 +52,12 @@
 .prices {
   margin-bottom: calc(var(--yr) * 7);
 
-  @media(--m) {
+  @media (--m) {
     margin-right: calc(var(--yr) * var(--s4));
     margin-bottom: calc(var(--yr) * 6);
   }
 
-  @media(--l) {
+  @media (--l) {
     margin-right: 0;
     margin-bottom: 0;
   }
@@ -66,11 +67,11 @@
   margin-bottom: calc(var(--yr) * 7);
   white-space: nowrap;
 
-  @media(--m) {
+  @media (--m) {
     margin-bottom: 0;
   }
 
-  @media(--l) {
+  @media (--l) {
     margin: 0 calc(var(--yr) * 7.5) 0 auto;
   }
 }
@@ -83,7 +84,7 @@
 .sub {
   display: flex;
 
-  @media(--l) {
+  @media (--l) {
     margin-bottom: var(--yr);
   }
 }
@@ -91,7 +92,7 @@
 .ball {
   display: none;
 
-  @media(--m) {
+  @media (--m) {
     display: block;
   }
 }
@@ -100,7 +101,7 @@
   display: block;
   margin-right: var(--yr);
 
-  @media(--m) {
+  @media (--m) {
     display: none;
   }
 }
@@ -108,7 +109,7 @@
 .item {
   display: flex;
 
-  @media(--l) {
+  @media (--l) {
     margin-bottom: var(--yr);
   }
 }
@@ -127,11 +128,11 @@
     color: #fff;
   }
 
-  @media(--s) {
+  @media (--s) {
     grid-column: span 2;
   }
 
-  @media(--l) {
+  @media (--l) {
     margin: auto 0;
   }
 
