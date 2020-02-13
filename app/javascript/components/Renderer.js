@@ -83,6 +83,14 @@ export default function Renderer ({ source, images }) {
           )
         }
 
+        if (name === 'h3') {
+          return (
+            <h3 className={styles.h3}>
+              {domToReact(children, options)}
+            </h3>
+          )
+        }
+
         if (name === 'strong') {
           if (parent && parent.type === 'tag' && (parent.name === 'h2' || parent.name === 'strong')) {
             return (

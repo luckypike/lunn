@@ -6,14 +6,21 @@
   }
 }
 
-h2 {
-  &:not(:first-child) {
-    margin-top: calc(var(--yr) * var(--s3));
-  }
-
+.h2 {
   & strong {
     font-weight: normal;
   }
+}
+
+.h3 {
+  & strong {
+    font-weight: normal;
+  }
+}
+
+.p + .h2,
+.p + .h3 {
+  margin-top: calc(var(--yr) * var(--s3));
 }
 
 .ul {
@@ -46,7 +53,7 @@ h2 {
       text-align: center;
       display: inline-block;
       width: 1.5rem;
-      content: counter(li)'.';
+      content: counter(li) '.';
       margin-left: -1.5rem;
     }
   }
@@ -83,7 +90,6 @@ h2 {
   display: grid;
   grid-template-columns: calc(2 / 6 * 100%) 1fr;
   grid-column-gap: calc(var(--xr) * 2);
-
 
   @media (--s) {
     margin: 0 0 calc(var(--yr) * var(--s4));
