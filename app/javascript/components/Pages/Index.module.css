@@ -1,5 +1,5 @@
 .root {
-  display: block;
+  /* display: block; */
 }
 
 .placeholder {
@@ -117,4 +117,43 @@
 .schedule {
   background-color: #eceff1;
   margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.events {
+  position: relative;
+}
+
+.calendar {
+  display: none;
+
+  @media (--l) {
+    position: absolute;
+    right: 0;
+    background-color: var(--hl_color);
+    height: 100%;
+    top: 0;
+    display: block;
+    width: 70px;
+    cursor: pointer;
+
+    & svg {
+      display: block;
+      width: 2.5rem;
+      height: 2rem;
+      position: absolute;
+      left: 50%;
+      top: calc(var(--yr) * 5);
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.title {
+  composes: h5 from '../Fonts.module.css';
+  color: white;
+  position: absolute;
+  bottom: 20%;
+  left: -23.5%;
+  transform: rotate(-90deg);
+  margin: 0;
 }

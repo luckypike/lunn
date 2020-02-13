@@ -72,38 +72,48 @@ export default function Index ({ navs, locale }) {
         <Schedule navs={navs} />
       </div>
 
-      <div className={pages.container}>
-        <div className={styles.root}>
-          {!news &&
-            <div className={styles.placeholder} />
-          }
-
+      <div className={styles.events}>
+        <div className={pages.container}>
           {events && events.length > 0 &&
             <Events events={events} />
           }
-
-          {sliders && news &&
-            <div className={styles.news}>
-              <div className={styles.label}>
-                <h2>{I18n.t('news.title')}</h2>
-
-                <a href="/news" className={classNames(buttons.sec, styles.more)}>
-                  Все новости
-                </a>
-              </div>
-
-              <div className={styles.slider}>
-                <Sliders sliders={sliders} />
-              </div>
-
-              <News news={news} I18n={I18n} />
-            </div>
-          }
-
-          <div className={styles.youtube}>
-            <Youtube />
-          </div>
         </div>
+
+        <a href="/events" className={styles.calendar}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 37 34">
+            <path stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M1 13h36M8 4H1v29h36V4h-8M25 4H12M10 1v6M27 1v6"/>
+          </svg>
+
+          <div className={styles.title}>
+            Календарь
+          </div>
+        </a>
+      </div>
+
+      <div className={pages.container}>
+        {!news &&
+          <div className={styles.placeholder} />
+        }
+
+        {sliders && news &&
+          <div className={styles.news}>
+            <div className={styles.label}>
+              <h2>{I18n.t('news.title')}</h2>
+
+              <a href="/news" className={classNames(buttons.sec, styles.more)}>
+                Все новости
+              </a>
+            </div>
+
+            <div className={styles.slider}>
+              <Sliders sliders={sliders} />
+            </div>
+
+            <News news={news} I18n={I18n} />
+          </div>
+        }
+
+        <Youtube />
 
         <div className={styles.education}>
           <Education />
