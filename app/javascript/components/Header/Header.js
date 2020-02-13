@@ -56,9 +56,11 @@ export default function Header ({ navs, index, locale }) {
           <Nav index={index} navs={navs} menuActive={menuActive} menuOpen={() => setMenuActive(true)} onToggle={() => setMenuActive(!menuActive)} />
         </div>
 
-        <div className={styles.service}>
-          <Service index={index} menuActive={menuActive} onSearchToggle={() => setSearchActive(true)} locale={locale} />
-        </div>
+        {!menuActive &&
+          <div className={styles.service}>
+            <Service index={index} menuActive={menuActive} onSearchToggle={() => setSearchActive(true)} locale={locale} />
+          </div>
+        }
       </header>
 
       <div className={classNames(styles.menu, { [styles.active]: menuActive })} onMouseEnter={() => setMenuActive(true)}>
