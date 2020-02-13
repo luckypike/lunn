@@ -23,7 +23,6 @@
   @media (--s) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     grid-column-gap: calc(var(--xr) * 1.875);
     grid-row-gap: calc(var(--yr) * 7);
   }

@@ -16,7 +16,7 @@ export default function Sliders ({ sliders }) {
   useEffect(() => {
     const glide = new Glide(mount.current, {
       type: 'carousel',
-      // autoplay: 5000,
+      autoplay: 3000,
       hoverpause: true
     })
 
@@ -39,19 +39,7 @@ export default function Sliders ({ sliders }) {
                 className={classNames('glide__slide', styles.image)}
                 style={{ backgroundImage: `url(https://assets.lunn.ru/images/800x1000/legacy${slider.image.path})` }
                 }
-              >
-                <div className={styles.content}>
-                  {slider.dates &&
-                    <div className={styles.dates}>
-                      {slider.dates}
-                    </div>
-                  }
-
-                  <div className={styles.title}>
-                    {slider.title}
-                  </div>
-                </div>
-              </a>
+              />
             )}
           </div>
         </div>

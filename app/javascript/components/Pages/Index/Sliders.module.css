@@ -1,6 +1,5 @@
 .slider {
   position: relative;
-  height: 100%;
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--m) {
@@ -10,7 +9,6 @@
 
 .images {
   position: relative;
-  height: 100%;
 }
 
 .image {
@@ -18,6 +16,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: black;
 
   &::before {
     display: block;
@@ -35,54 +34,6 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
     opacity: 0.5;
     z-index: 0;
-  }
-
-  @media (--l) {
-    &::before {
-      display: none;
-    }
-  }
-}
-
-.slides,
-.track {
-  height: 100%;
-}
-
-.content {
-  position: absolute;
-  bottom: calc(var(--yr) * 13.5);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  color: #fff;
-  text-align: center;
-  width: 80%;
-
-  @media (--s) {
-    bottom: calc(var(--yr) * 28);
-  }
-}
-
-.dates {
-  background-color: var(--hl_color);
-  width: max-content;
-  margin: 0 auto;
-  border-radius: calc(var(--yr) * var(--s2));
-  padding: calc(var(--yr) * 2) calc(var(--yr) * var(--s2));
-  margin-bottom: calc(var(--yr) * var(--s2));
-
-  @media (--s) {
-    margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.5));
-  }
-}
-
-.title {
-  display: none;
-  composes: h3 from '../../Fonts.module.css';
-
-  @media (--s) {
-    margin: 0;
   }
 }
 
@@ -113,15 +64,28 @@
   background: rgba(255, 255, 255, 0.3);
   height: 2px;
   width: 50px;
+
+  &:not(:last-child) {
+    margin-right: calc(var(--yr) * 3.75);
+  }
 }
 
 .active {
-  background-color: #fff;
+  &::before {
+    background-color: #fff;
+    content: '';
+    display: block;
+    height: 2px;
+    animation: right 3s ease-in-out forwards;
+  }
 }
 
-.first {
-  background-image: url('./Images/slide.jpg') !important;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 60% 20%;
+@keyframes right {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
