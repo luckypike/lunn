@@ -18,6 +18,8 @@ export default function Renderer ({ source, images }) {
   const options = {
     replace: ({ type, name, attribs, children, data, parent }) => {
       if (type === 'tag') {
+        attribs.style = null
+
         if (name === 'p') {
           if (children.length === 1 && children[0].data && children[0].data.replace(/\s/g, '') === '') {
             return <></>
