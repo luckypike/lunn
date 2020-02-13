@@ -32,7 +32,7 @@ export default function News ({ news, I18n }) {
               </div>
 
               <div className={styles.date}>
-                {dayjs.unix(item.created).locale('ru').format('DD MMMM YYYY')}
+                {dayjs.unix(item.created).locale('ru').format('D MMMM YYYY')}
               </div>
             </a>
           </div>
