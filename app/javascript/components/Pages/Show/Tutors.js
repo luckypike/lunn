@@ -14,7 +14,7 @@ export default function Tutors ({ tutors }) {
         <a href={tutor.path} key={tutor.nid} className={styles.tutor}>
           <div className={styles.image}>
             {tutor.image &&
-              <img src={tutor.image.path} />
+              <img src={`https://assets.lunn.ru/images/480x600,sc/legacy${tutor.image.path}`} />
             }
           </div>
 
