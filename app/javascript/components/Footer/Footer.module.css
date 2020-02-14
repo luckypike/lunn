@@ -154,6 +154,7 @@
 .second {
   composes: at from '../Fonts.module.css';
   color: var(--gr_color);
+  display: block;
 
   &:hover {
     color: #fff;
@@ -165,6 +166,12 @@
 
   &.footer {
     display: block;
+  }
+
+  & li {
+    &:not(:last-child) {
+      margin-bottom: calc(var(--yr) * 2);
+    }
   }
 
   @media (--s) {
