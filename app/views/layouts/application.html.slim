@@ -8,7 +8,6 @@ html lang=I18n.locale
     = tag('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' })
 
     = stylesheet_pack_tag 'app'
-    = javascript_pack_tag 'app'
 
   body
     = react_component 'Header/Header', { navs: @header_navs, index: current_page?(root_url) || current_page?('/en') }, { prerender: Rails.env.production? }
@@ -21,3 +20,5 @@ html lang=I18n.locale
       env: Rails.env,
       footer: @footer \
     }, { prerender: Rails.env.production? }
+
+    = javascript_pack_tag 'app', async: true
