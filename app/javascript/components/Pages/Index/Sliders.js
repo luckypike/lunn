@@ -38,7 +38,7 @@ export default function Sliders ({ sliders }) {
                 href={slider.link}
                 key={slider.nid}
                 className={classNames('glide__slide', styles.image)}
-                style={{ backgroundImage: `url(https://assets.lunn.ru/images/800x1000/legacy${slider.image.path})` }
+                style={{ backgroundImage: `url(https://assets.lunn.ru/images/1200x1500,q80/legacy${slider.image.path})` }
                 }
               />
             )}
