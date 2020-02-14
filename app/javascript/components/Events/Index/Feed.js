@@ -6,15 +6,15 @@ import 'dayjs/locale/ru'
 import styles from './Feed.module.css'
 
 Feed.propTypes = {
-  events: PropTypes.array
+  feed: PropTypes.array
 }
 
-export default function Feed ({ events }) {
+export default function Feed ({ feed }) {
   return (
     <div className={styles.root}>
-      {events &&
+      {feed &&
         <div className={styles.events}>
-          {events.map((event, i) =>
+          {feed.map((event, i) =>
             <a href={event.path} key={i} className={styles.event}>
               <div className={styles.title}>
                 {event.title}

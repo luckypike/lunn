@@ -11,6 +11,7 @@
 
 .item {
   position: relative;
+  cursor: pointer;
   width: calc(var(--yr) * 6);
   height: calc(var(--yr) * 6);
 }
@@ -31,7 +32,7 @@
 
 .year {
   margin-right: calc(var(--yr) * 2);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .arrow {
@@ -52,13 +53,13 @@
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  border-bottom: 1px solid #DBDDDE;
+  border-bottom: 1px solid #dbddde;
   margin-bottom: 16px;
 }
 
 .weekday {
   text-align: center;
-  color: #777777;
+  color: #777;
   line-height: calc(var(--yr) * 12);
 }
 
@@ -94,6 +95,17 @@
   color: var(--hl_color);
 }
 
+.event {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  right: 9px;
+  top: 9px;
+  transform: translate(3px 6px);
+  background-color: var(--hl_color);
+  border-radius: 50%;
+}
+
 .active {
   background-color: var(--hl_color);
   border-radius: calc(var(--yr) * 2);
@@ -113,15 +125,4 @@
 
 .white {
   color: #fff;
-}
-
-.event {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  right: 9px;
-  top: 9px;
-  transform: translate(3px 6px);
-  background-color: var(--hl_color);
-  border-radius: 50%;
 }

@@ -6,18 +6,24 @@ class EventsController < ApplicationController
       format.html
       format.json do
         @events = Node.events.joins(:date).lang
-        .where(
-          'field_data_field_date_begin.field_date_begin_value > ?',
-          Time.current.beginning_of_day
+        .order(
+          'field_data_field_date_begin.field_date_begin_value': :asc
         )
-        .order('field_data_field_date_begin.field_date_begin_value': :asc)
 
-        if @events.size < 3
-          @events = Node.events.joins(:date).lang
-            .order('field_data_field_date_begin.field_date_begin_value': :desc)
-            .first(3)
-        end
+        @feed = Node.events.joins(:date).lang
+          .where(
+            'field_data_field_date_begin.field_date_begin_value > ?',
+            Time.current.beginning_of_day
+          )
+          .order('field_data_field_date_begin.field_date_begin_value': :asc)
 
+          if @feed.size < 3
+            @feed = Node.events.joins(:date).lang
+              .order('field_data_field_date_begin.field_date_begin_value': :desc)
+              .first(3)
+          end
+
+        ActiveRecord::Associations::Preloader.new.preload(@feed, :date)
         ActiveRecord::Associations::Preloader.new.preload(@events, :date)
       end
     end

@@ -96,7 +96,7 @@ function Day ({ startOfMonth, endOfMonth, events, day, date, active }) {
   }
 
   return (
-    <div className={classNames(styles.date, { [styles.today]: isToday(), [styles.active]: isActive() })}>
+    <div className={classNames(styles.date, { [styles.today]: isToday(), [styles.active]: isActive() && !isOutOfMonth() })}>
       {!isOutOfMonth() &&
         <>
           {events.length > 0 &&

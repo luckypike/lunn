@@ -22,6 +22,7 @@ export default function Index ({ location }) {
   const date = query.get('date') || 1
 
   const [events, setEvents] = useState()
+  const [feed, setFeed] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
@@ -31,6 +32,7 @@ export default function Index ({ location }) {
         }
       })
 
+      setFeed(data.feed)
       setEvents(data.events)
     }
 
@@ -60,7 +62,7 @@ export default function Index ({ location }) {
         {events &&
           <div className={styles.root}>
             {date === 1 &&
-              <Feed events={events} />
+              <Feed feed={feed} />
             }
 
             {date !== 1 &&
