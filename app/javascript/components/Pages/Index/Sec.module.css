@@ -74,6 +74,10 @@
 
 .item {
   composes: item from '../../Navs.module.css';
+
+  &.ege {
+    background-image: url('./Images/ege.jpg');
+  }
 }
 
 .external {

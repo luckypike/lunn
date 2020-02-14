@@ -45,7 +45,7 @@ function Items ({ items }) {
         <a
           href={item.path}
           key={i}
-          className={styles.item}
+          className={classNames(styles.item, { [styles.ege]: item.mlid === 4594 })}
           style={{
             backgroundImage: item.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${item.image})` : 'none'
           }}
