@@ -59,23 +59,23 @@ export default function Index ({ loaf }) {
                 }
               </div>
 
-              <div>
+              <div itemProp="fio">
                 {tutor.title}
               </div>
 
               <div className={styles.data}>
-                <div className={styles.position}>
+                <div className={styles.position} itemProp="post">
                   {tutor.position}
                 </div>
 
                 {tutor.tutor_email &&
-                  <div className={styles.email}>
+                  <div className={styles.email} itemProp="email">
                     {tutor.tutor_email}
                   </div>
                 }
 
                 {tutor.tutor_phone &&
-                  <div className={styles.phone}>
+                  <div className={styles.phone} itemProp="telephone">
                     {tutor.tutor_phone}
                   </div>
                 }
