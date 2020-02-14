@@ -16,8 +16,9 @@ export default function Sliders ({ sliders }) {
   useEffect(() => {
     const glide = new Glide(mount.current, {
       type: 'carousel',
-      autoplay: 3000,
-      hoverpause: true
+      autoplay: 6000,
+      hoverpause: true,
+      gap: 0
     })
 
     glide.on(['mount.after', 'run'], () => {
