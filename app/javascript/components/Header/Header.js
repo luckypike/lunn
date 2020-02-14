@@ -39,7 +39,7 @@ export default function Header ({ navs, index, locale }) {
     <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive })}>
       <div className={styles.legacy}>
         <a href="http://legacy.lunn.ru" target="_blank" rel="noopener noreferrer">
-          Предыдущая версия сайта 👀
+          Предыдущая версия сайта
         </a>
       </div>
 

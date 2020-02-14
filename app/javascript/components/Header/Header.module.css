@@ -185,14 +185,15 @@
 }
 
 .legacy {
+  composes: at from '../Fonts.module.css';
   position: relative;
   z-index: 5;
 
   & a {
-    background-color: var(--hl_color);
+    background-color: color-mod(var(--sp_color) a(0.8));
     display: block;
-    color: #fff;
+    /* color: #fff; */
     text-align: center;
-    padding: calc(var(--yr) * var(--s1));
+    padding: calc(var(--yr) * 2);
   }
 }

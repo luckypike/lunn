@@ -1,10 +1,10 @@
 .root {
   position: relative;
   background: #fff;
-  padding: calc(var(--yr) * 9.5) 0;
+  padding: calc(var(--yr) * 9) 0;
 
   @media (--s) {
-    padding: calc(var(--yr) * 6) 0;
+    padding: calc(var(--yr) * 4.5) 0;
   }
 }
 
