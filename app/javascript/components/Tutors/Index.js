@@ -28,6 +28,16 @@ export default function Index ({ loaf }) {
     _fetch()
   }, [])
 
+  const itemProp = types => {
+    if (types.includes(9)) {
+      return 'rucovodstvo'
+    } else if (types.includes(1)) {
+      return 'rucovodstvoZam'
+    } else {
+      return 'teachingStaff'
+    }
+  }
+
   return (
     <div className={pages.container}>
       {node &&
@@ -42,7 +52,7 @@ export default function Index ({ loaf }) {
       {tutors &&
         <div className={styles.tutors}>
           {tutors.map(tutor =>
-            <Link to={`/tutors/${tutor.id}`} key={tutor.nid} className={styles.tutor}>
+            <Link to={`/tutors/${tutor.id}`} key={tutor.id} className={styles.tutor} itemProp={itemProp(tutor.tutor_types)}>
               <div className={styles.image}>
                 {tutor.image &&
                   <img src={`https://assets.lunn.ru/images/480x600,sc/legacy${tutor.image.path}`} />
@@ -51,6 +61,24 @@ export default function Index ({ loaf }) {
 
               <div>
                 {tutor.title}
+              </div>
+
+              <div className={styles.data}>
+                <div className={styles.position}>
+                  {tutor.position}
+                </div>
+
+                {tutor.tutor_email &&
+                  <div className={styles.email}>
+                    {tutor.tutor_email}
+                  </div>
+                }
+
+                {tutor.tutor_phone &&
+                  <div className={styles.phone}>
+                    {tutor.tutor_phone}
+                  </div>
+                }
               </div>
             </Link>
           )}

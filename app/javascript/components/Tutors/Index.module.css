@@ -25,6 +25,7 @@
 
 .tutor {
   margin-bottom: calc(var(--yr) * var(--s3));
+  overflow: hidden;
 }
 
 .image {
@@ -47,8 +48,12 @@
     width: 100%;
     transform: translate(-50%, -50%);
 
-    @media(--s) {
+    @media (--s) {
       /* border-radius: var(--yr); */
     }
   }
+}
+
+.data {
+  display: none;
 }

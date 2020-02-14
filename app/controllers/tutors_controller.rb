@@ -8,7 +8,10 @@ class TutorsController < ApplicationController
       format.html
       format.json do
         @tutors = Node.employees.lang
-          .includes(:image)
+          .includes(
+            :image, :field_tutor_types, :field_position,
+            :field_tutor_email, :field_tutor_phone
+          )
       end
     end
   end

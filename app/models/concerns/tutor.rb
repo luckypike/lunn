@@ -2,6 +2,7 @@ module Tutor
   extend ActiveSupport::Concern
 
   included do
+    has_many :field_tutor_types, -> { where(entity_type: :node) }, class_name: 'Field::TutorType', foreign_key: :entity_id
     has_one :field_position, -> { where(entity_type: :node) }, class_name: 'Field::Position', foreign_key: :entity_id
     has_one :field_tutor_edu, -> { where(entity_type: :node) }, class_name: 'Field::TutorEdu', foreign_key: :entity_id
     has_one :field_tutor_qual, -> { where(entity_type: :node) }, class_name: 'Field::TutorQual', foreign_key: :entity_id
@@ -69,6 +70,10 @@ module Tutor
     field_tutor_directions.map(&:value)
   end
 
+  def tutor_types
+    field_tutor_types.map(&:value)
+  end
+
   def tutor_retraining
     field_tutor_retraining.map(&:value)
   end
@@ -87,6 +92,10 @@ module Tutor
 
   def tutor_consult
     field_tutor_consult&.value
+  end
+
+  def chief?
+    tutor_types.to_set.intersect?([1, 9].to_set)
   end
 
   class_methods do

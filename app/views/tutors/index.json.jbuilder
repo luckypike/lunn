@@ -1,5 +1,7 @@
 json.tutors @tutors.sort_by(&:title) do |tutor|
-  json.extract! tutor, :id, :title
+  json.extract! tutor, :id, :title, :position, :tutor_types
+
+  json.extract! tutor, :id, :tutor_phone, :tutor_email if tutor.chief?
 
   if tutor.image
     json.image do
