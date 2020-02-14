@@ -43,5 +43,8 @@
 
 .title {
   composes: h4 from '../Fonts.module.css';
-  margin-bottom: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

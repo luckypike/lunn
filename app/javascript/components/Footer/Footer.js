@@ -12,10 +12,11 @@ import styles from './Footer.module.css'
 Footer.propTypes = {
   navs: PropTypes.array,
   footer: PropTypes.array,
-  partners: PropTypes.object
+  partners: PropTypes.object,
+  env: PropTypes.string
 }
 
-export default function Footer ({ navs, footer, partners }) {
+export default function Footer ({ navs, footer, partners, env }) {
   return (
     <>
       <div className={styles.partners}>
@@ -84,13 +85,15 @@ export default function Footer ({ navs, footer, partners }) {
         </div>
       </div>
 
-      <YMInitializer
-        accounts={[32824002]}
-        options={{
-          webvisor: true
-        }}
-        version="2"
-      />
+      {env === 'production' &&
+        <YMInitializer
+          accounts={[32824002]}
+          options={{
+            webvisor: true
+          }}
+          version="2"
+        />
+      }
     </>
   )
 }

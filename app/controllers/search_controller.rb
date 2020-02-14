@@ -3,9 +3,28 @@ class SearchController < ApplicationController
     respond_to do |format|
       format.html { render :index }
       format.json do
-        @nodes = Node.includes(:node).joins(:node)
+        @records = Node.includes(:node).joins(:node)
           .where(node: { language: I18n.locale })
-          .search(params[:q]).records
+          .search(
+            query: {
+              bool: {
+                must: {
+                  multi_match: {
+                    query: params[:q]
+                  }
+                }
+              }
+            },
+            highlight: {
+              fields: {
+                'body.sanitized': {
+                  number_of_fragments: 1,
+                  pre_tags: ['<strong>'],
+                  post_tags: ['</strong>']
+                }
+              }
+            }
+          ).records
       end
     end
   end

@@ -4,6 +4,7 @@ import axios from 'axios'
 import debounce from 'lodash.debounce'
 import { navigate } from '@reach/router'
 
+import Renderer from '../Renderer'
 import { Title } from '../Pages'
 import { useI18n } from '../I18n'
 
@@ -29,7 +30,7 @@ export default function Index ({ location, locale }) {
 
   const handleChange = ({ target: { value } }) => {
     setQ(value)
-    navigate(`/search${value.length > 0 ? `?q=${value}` : ''}`)
+    navigate(`/search${value.length > 0 ? `?q=${value}` : ''}`, { replace: true })
   }
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function Index ({ location, locale }) {
   const _fetch = async query => {
     const { data } = await axios.get('/search.json', { params: { q: query } })
 
-    setResults(data.result)
+    setResults(data.results)
   }
 
   return (
@@ -69,6 +70,12 @@ export default function Index ({ location, locale }) {
                 <div className={styles.title}>
                   {result.title}
                 </div>
+
+                {result.highlight &&
+                  <div className={styles.highlight}>
+                    <Renderer source={result.highlight} />
+                  </div>
+                }
               </a>
             )}
           </div>

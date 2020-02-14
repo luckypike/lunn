@@ -58,7 +58,7 @@ class Node < ApplicationRecord
       }
 
       indexes :body, type: :object do
-        indexes :field_body_value, fields: {
+        indexes :sanitized, fields: {
           ru: { analyzer: :russian, type: :text },
           en: { analyzer: :english, type: :text }
         }
@@ -169,7 +169,7 @@ class Node < ApplicationRecord
 
   def as_indexed_json(_options = {})
     as_json(
-      include: { body: { only: :field_body_value } }
+      include: { body: { only: :field_body_value, methods: :sanitized } }
     )
   end
 end

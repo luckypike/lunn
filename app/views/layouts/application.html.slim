@@ -18,5 +18,6 @@ html lang=I18n.locale
     = react_component 'Footer/Footer', { \
       navs: @footer_navs,
       partners: @partners,
+      env: Rails.env,
       footer: @footer \
     }, { prerender: Rails.env.production? }
