@@ -43,9 +43,9 @@ export default function Index ({ departments, destinations }) {
   }
 
   useEffect(() => {
-    const data = values
+    const data = Object.assign({}, values)
 
-    if (data.department_id) {
+    if (data.department_id || data.department_id === '') {
       data.destination_id = ''
     }
 
@@ -65,12 +65,6 @@ export default function Index ({ departments, destinations }) {
       />
 
       <div className={styles.root}>
-        <div>
-          department_id: {values.department_id}
-          <br />
-          destination_id: {values.destination_id}
-        </div>
-
         <div className={styles.form}>
           {saved &&
             <div className={styles.saved}>
