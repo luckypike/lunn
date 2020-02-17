@@ -6,7 +6,7 @@ class FeedbackController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
 
-    sleep 3
+    sleep 2
 
     if @feedback.save
       head :created
@@ -18,6 +18,6 @@ class FeedbackController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:name, :email, :message)
+    params.require(:feedback).permit(:name, :email, :message, :destination_id, :department_id)
   end
 end

@@ -35,3 +35,9 @@
     line-height: calc(var(--yr) * 6);
   }
 }
+
+.error {
+  composes: at from './Fonts.module.css';
+  margin-top: calc(var(--yr) * var(--s1));
+  color: #f00;
+}
