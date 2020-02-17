@@ -120,15 +120,14 @@ export default function Index ({ departments, destinations }) {
               <Errors errors={errors.name} />
             </div>
 
-            <div className={classNames(form.el, styles.email)}>
-              <div className={styles.placeholder}>Email</div>
-
+            <div className={form.el}>
               <div className={form.input}>
                 <input
                   type="text"
                   value={values.email}
                   name="email"
                   onChange={handleInputChange}
+                  placeholder="Почта*"
                 />
               </div>
 
