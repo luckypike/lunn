@@ -46,6 +46,8 @@ class Node < ApplicationRecord
   scope :sliders, -> { where(type: :slider_item) }
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
 
+  scope :active, -> { where(status: 1) }
+
   scope :with_prices, -> { includes(:field_price_1, :field_price_2, :field_price_3) }
   scope :with_times, -> { includes(:field_time_1, :field_time_2, :field_time_3) }
   scope :with_places, -> { includes(:field_places_1, :field_places_2, :field_places_3) }

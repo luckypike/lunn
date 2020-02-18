@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_node
-    @node = Node.find(@url_alias.source.split('/').last) if @url_alias.source.start_with?('node/')
+    @node = Node.active.find(@url_alias.source.split('/').last) if @url_alias.source.start_with?('node/')
   end
 
   def set_global_navs
