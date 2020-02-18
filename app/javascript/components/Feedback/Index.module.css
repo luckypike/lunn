@@ -50,6 +50,7 @@ select {
     top: 50%;
     right: 1rem;
     transform: translateY(-50%);
+    z-index: 1;
   }
 }
 
@@ -62,4 +63,11 @@ select {
   max-width: 80%;
   margin: 0 auto;
   text-align: center;
+}
+
+.email,
+.name {
+  & input {
+    padding: calc(var(--yr) * 6) calc(var(--yr) * 4) calc(var(--yr) * 3);
+  }
 }

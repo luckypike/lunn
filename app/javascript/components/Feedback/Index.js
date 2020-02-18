@@ -114,28 +114,35 @@ export default function Index ({ departments, destinations }) {
               </div>
 
               <div className={classNames(form.el, styles.name)}>
-                <div className={form.input}>
+                <div className={classNames(form.input, styles.name)}>
                   <input
                     type="text"
                     value={values.name}
                     name="name"
                     onChange={handleInputChange}
-                    placeholder="Имя *"
+                    required
                   />
+                  <div className={form.label}>
+                    Имя *
+                  </div>
                 </div>
 
                 <Errors errors={errors.name} />
               </div>
 
               <div className={form.el}>
-                <div className={form.input}>
+                <div className={classNames(form.input, styles.email)}>
                   <input
                     type="text"
                     value={values.email}
                     name="email"
                     onChange={handleInputChange}
-                    placeholder="Почта *"
+                    required
                   />
+
+                  <div className={form.label}>
+                    Почта *
+                  </div>
                 </div>
 
                 <Errors errors={errors.email} />
