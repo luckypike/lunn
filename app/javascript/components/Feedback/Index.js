@@ -68,7 +68,7 @@ export default function Index ({ departments, destinations }) {
         <div className={styles.form}>
           {saved &&
             <div className={styles.saved}>
-              Ваше обращение отправлено и будут обработано в ближайшее время. Мы свяжемся с вами по указанной электронной почте.
+              Обращение отправлено и будет обработано в ближайшее время. Мы свяжемся с вами по указанной электронной почте.
             </div>
           }
 
@@ -81,7 +81,7 @@ export default function Index ({ departments, destinations }) {
 
                 <div className={form.input}>
                   <select name="department_id" onChange={handleInputChange}>
-                    <option value="">Направить письмо в</option>
+                    <option value="">Направить письмо в...</option>
                     {departments.map(department =>
                       <option value={department.id} key={department.id}>
                         {department.title}
@@ -99,7 +99,7 @@ export default function Index ({ departments, destinations }) {
                 <div className={form.input}>
                   <select disabled={values.department_id === ''} name="destination_id" onChange={handleInputChange}>
                     {destinations.filter(i => parseInt(i.department_id) === parseInt(values.department_id)).length !== 1 &&
-                      <option value="">Выберите адресата</option>
+                      <option value="">Выберите адресата...</option>
                     }
 
                     {destinations.filter(i => parseInt(i.department_id) === parseInt(values.department_id)).map(destination =>
@@ -120,7 +120,7 @@ export default function Index ({ departments, destinations }) {
                     value={values.name}
                     name="name"
                     onChange={handleInputChange}
-                    placeholder="Имя*"
+                    placeholder="Имя *"
                   />
                 </div>
 
@@ -134,7 +134,7 @@ export default function Index ({ departments, destinations }) {
                     value={values.email}
                     name="email"
                     onChange={handleInputChange}
-                    placeholder="Почта*"
+                    placeholder="Почта *"
                   />
                 </div>
 
@@ -147,7 +147,7 @@ export default function Index ({ departments, destinations }) {
                     value={values.message}
                     name="message"
                     onChange={handleInputChange}
-                    placeholder="Сообщение*"
+                    placeholder="Сообщение *"
                   />
                 </div>
 

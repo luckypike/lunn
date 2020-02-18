@@ -56,3 +56,10 @@ select {
 .disabled {
   opacity: 0.5;
 }
+
+.saved {
+  composes: h4 from '../Fonts.module.css';
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
