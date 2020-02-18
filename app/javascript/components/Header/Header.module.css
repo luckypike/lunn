@@ -39,8 +39,10 @@
 .nav {
   width: max-content;
   order: 1;
+  grid-column: 3;
 
   @media (--l) {
+    grid-column: auto;
     order: 0;
   }
 }
