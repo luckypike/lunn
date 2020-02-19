@@ -73,6 +73,8 @@ class Node < ApplicationRecord
       "/events/#{nid}"
     elsif type == 'news'
       "/news/#{nid}"
+    elsif type == 'employee'
+      "/tutors/#{nid}"
     else
       UrlAlias.alias_path("node/#{nid}")
     end
