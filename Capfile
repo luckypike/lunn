@@ -8,6 +8,8 @@ require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rbenv'
 
+require 'whenever/capistrano'
+
 set :rbenv_type, :user
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

@@ -29,6 +29,8 @@ gem 'bootsnap', require: false
 
 gem 'mini_racer'
 
+gem 'whenever', require: false
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end

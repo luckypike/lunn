@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: "Лингвистический университет <#{Rails.application.credentials.dig(:mail, :username)}>"
   layout 'mailer'
 end

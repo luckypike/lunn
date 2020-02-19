@@ -54,8 +54,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.yandex.ru',
-    port: 587,
+    address: Rails.application.credentials.dig(:mail, :address),
+    port: Rails.application.credentials.dig(:mail, :port),
     user_name: Rails.application.credentials.dig(:mail, :username),
     password: Rails.application.credentials.dig(:mail, :password),
     authentication: 'plain',

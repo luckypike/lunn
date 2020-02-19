@@ -10,6 +10,16 @@ class Feedback < ApplicationRecord
   validates :address, :destination, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
+  scope :pending, -> { where(status: :pending) }
+
+  def notify
+    if FeedbackMailer.with(feedback: self).notify.deliver_now
+      update(status: :submitted)
+    else
+      update(status: :error)
+    end
+  end
+
   private
 
   def set_destination_and_address
