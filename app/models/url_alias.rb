@@ -7,7 +7,7 @@ class UrlAlias < ApplicationRecord
     def alias_path(source)
       url_alias = Current.url_aliases[source]
 
-      url_alias ? "/#{url_alias}" : source
+      "/#{url_alias.presence || source}"
     end
   end
 end
