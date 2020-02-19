@@ -2,21 +2,17 @@
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s4));
 
-  & a {
-    /* color: white; */
-  }
-
-  @media(--s) {
+  @media (--s) {
     margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
   }
 }
 
 .groups {
   display: block;
-  /* padding: calc(var(--yr) * var(--s4)) 0; */
 }
 
 .tabs {
+  display: flex;
   overflow: scroll;
   margin-bottom: calc(var(--yr) * 7);
 
@@ -35,7 +31,7 @@
   text-align: center;
   white-space: nowrap;
   display: block;
-  transition: background .2s,color .2s;
+  transition: background 0.2s, color 0.2s;
 
   &:hover {
     color: var(--hl_color);
@@ -60,10 +56,6 @@
   }
 }
 
-.tabs {
-  display: flex;
-}
-
 .items {
   composes: items from '../../Navs.module.css';
 }
@@ -76,7 +68,7 @@
   composes: item from '../../Navs.module.css';
 
   &.ege {
-    background-image: url('./Images/ege.jpg');
+    background-image: url('./Images/ege.jpg') !important;
   }
 }
 
