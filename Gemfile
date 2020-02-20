@@ -23,6 +23,8 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'elasticsearch-ruby'
 
+gem 'devise'
+
 gem 'exception_notification'
 
 gem 'bootsnap', require: false
@@ -38,6 +40,8 @@ end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
+
+  gem 'letter_opener'
 
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
+  # protect_from_forgery with: :exception
+
   around_action :switch_locale
+
+  before_action :set_current_user
   before_action :set_url_aliases
   before_action :set_global_navs
   before_action :set_partners
@@ -9,6 +13,10 @@ class ApplicationController < ActionController::Base
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
     I18n.with_locale(locale, &action)
+  end
+
+  def set_current_user
+    Current.user = current_user
   end
 
   def set_url_aliases

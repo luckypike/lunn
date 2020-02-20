@@ -1,0 +1,7 @@
+.root {
+  composes: root from '../Pages/Show.module.css';
+}
+
+.text {
+  composes: text from '../Pages/Show.module.css';
+}

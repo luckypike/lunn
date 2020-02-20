@@ -40,3 +40,5 @@ module Lunn
     config.exceptions_app = routes
   end
 end
+
+ActiveRecord::SchemaDumper.ignore_tables = [/^(?!.*(_users|admissions)).*/]

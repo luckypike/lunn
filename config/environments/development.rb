@@ -33,15 +33,20 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.default_url_options = { host: :localhost, port: 3000 }
+
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
   # config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: Rails.application.credentials.dig(:mail, :address),
-    port: Rails.application.credentials.dig(:mail, :port),
-    user_name: Rails.application.credentials.dig(:mail, :username),
-    password: Rails.application.credentials.dig(:mail, :password),
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
+  # config.action_mailer.smtp_settings = {
+  #   address: Rails.application.credentials.dig(:mail, :address),
+  #   port: Rails.application.credentials.dig(:mail, :port),
+  #   user_name: Rails.application.credentials.dig(:mail, :username),
+  #   password: Rails.application.credentials.dig(:mail, :password),
+  #   authentication: 'plain',
+  #   enable_starttls_auto: true
+  # }
 
   config.action_mailer.perform_caching = false
 
