@@ -55,10 +55,6 @@ export default function Show ({ node, docs, loaf, locale }) {
               {docs.filter(d => d.title.toLowerCase().includes(search.toLowerCase())).map(doc =>
                 <li key={doc.fid}>
                   <a href={doc.path} className={styles.doc} itemProp={doc.wrapper}>
-                    <svg viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M20 0H4A3.995 3.995 0 00.02 4L0 36a3.994 3.994 0 003.98 4H28a4.011 4.011 0 004-4V12L20 0zM4 36V4h14v10h10v22H4z" fill="#2F53EB"/>
-                    </svg>
-
                     <div className={styles.data}>
                       <div className={styles.title}>
                         {doc.title}

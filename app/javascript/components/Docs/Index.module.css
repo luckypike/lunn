@@ -39,23 +39,14 @@
 
 .doc {
   display: flex;
-  padding: calc(var(--yr) * var(--s3)) 0;
+  padding: calc(var(--yr) * var(--s1)) 0;
   border-bottom: 1px solid var(--sp_color);
-  composes: bt from '../Fonts.module.css';
-
-  & svg {
-    align-self: flex-start;
-    flex-shrink: 0;
-    /* margin-bottom: calc(var(--yr) * var(--s1)); */
-    display: block;
-    width: 2rem;
-    margin-right: var(--xr);
-  }
+  /* composes: bt from '../Fonts.module.css'; */
 }
 
 .title {
   margin-bottom: calc(var(--yr));
-  max-width: 38rem;
+  max-width: 58rem;
 }
 
 .meta {
