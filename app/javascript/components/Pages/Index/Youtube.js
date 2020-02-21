@@ -17,15 +17,15 @@ export default function Youtube () {
       </div>
 
       <Frame
-        src="https://www.youtube.com/embed/gr9xa9pdpDk"
-        title="Ректор НГЛУ Жанна Никонова поздравляет коллег с Днем российской науки"
-        desc="7 февраля 2020"
+        src="https://www.youtube.com/embed/PKEUmkXjEYk"
+        title="Чаепитие с победителями олимпиады по французскому языку"
+        desc="19 февраля 2020"
       />
 
       <Frame
-        src="https://www.youtube.com/embed/CDYozEbzF0s"
-        title="Ученые НГЛУ поздравляют коллег с Днем российской науки"
-        desc="7 февраля 2020"
+        src="https://www.youtube.com/embed/XUkJUeL4wFQ"
+        title="Отзыв об НГЛУ Константин Кириченко"
+        desc="19 февраля 2020"
       />
     </div>
   )
