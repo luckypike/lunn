@@ -27,7 +27,7 @@ export default function Docs ({ docs, locale }) {
               </svg>
 
               <div className={styles.title}>
-                {doc.title}
+                {doc.title ? doc.title : doc.filename}
               </div>
 
               <div className={styles.meta}>

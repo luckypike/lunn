@@ -5,15 +5,17 @@ import axios from 'axios'
 
 import { Title } from '../Pages'
 import Renderer from '../Renderer'
+import Docs from '../Docs/Docs'
 
 import pages from '../Pages.module.css'
 import styles from './Show.module.css'
 
 Show.propTypes = {
-  slug: PropTypes.string
+  slug: PropTypes.string,
+  locale: PropTypes.string
 }
 
-export default function Show ({ slug }) {
+export default function Show ({ slug, locale }) {
   const [node, setNode] = useState()
 
   useEffect(() => {
@@ -30,7 +32,6 @@ export default function Show ({ slug }) {
 
   return (
     <div className={pages.container}>
-
       {node &&
         <>
           <Title
@@ -65,6 +66,12 @@ export default function Show ({ slug }) {
           {node.text &&
             <div className={styles.text}>
               <Renderer source={node.text} images={node.images} />
+            </div>
+          }
+
+          {node.docs &&
+            <div className={styles.docs}>
+              <Docs docs={node.docs} locale={locale} />
             </div>
           }
         </>

@@ -41,3 +41,11 @@
   color: var(--hl_color);
   text-align: center;
 }
+
+.docs {
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+}
