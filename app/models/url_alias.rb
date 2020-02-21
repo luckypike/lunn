@@ -5,6 +5,8 @@ class UrlAlias < ApplicationRecord
 
   class << self
     def alias_path(source)
+      return source if source.start_with?('http')
+
       url_alias = Current.url_aliases[source]
 
       "/#{url_alias.presence || source}"
