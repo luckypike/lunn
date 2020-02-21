@@ -1,0 +1,30 @@
+.tutor {
+  margin-bottom: calc(var(--yr) * var(--s3));
+  overflow: hidden;
+}
+
+.image {
+  position: relative;
+  margin-bottom: calc(var(--yr) * var(--s2));
+  background-color: color-mod(#000 a(0.6));
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    content: '';
+    padding-top: calc(5 / 4 * 100%);
+  }
+
+  & img {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    display: block;
+    width: 100%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.data {
+  display: none;
+}

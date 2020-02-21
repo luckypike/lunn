@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { Link } from '@reach/router'
 
 import { Title } from '../Pages'
-import Filters from './Index/Filters'
+// import Filters from './Index/Filters'
+import Tutor from './Index/Tutor'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
@@ -49,40 +49,24 @@ export default function Index ({ loaf }) {
 
       {/* <Filters /> */}
 
+      <div className={styles.executives}>
+        Руководители
+      </div>
+
       {tutors &&
-        <div className={styles.tutors}>
-          {tutors.map(tutor =>
-            <Link to={`/tutors/${tutor.id}`} key={tutor.id} className={styles.tutor} itemProp={itemProp(tutor.tutor_types)}>
-              <div className={styles.image}>
-                {tutor.image &&
-                  <img src={`https://assets.lunn.ru/images/480x600,sc/legacy${tutor.image.path}`} />
-                }
-              </div>
+        <>
+          <div className={styles.leaders}>
+            {tutors.filter(t => t.tutor_types.includes(9) || t.tutor_types.includes(1)).map(tutor =>
+              <Tutor key={tutor.id} tutor={tutor} itemProp={itemProp(tutor.tutor_types)}/>
+            )}
+          </div>
 
-              <div itemProp="fio">
-                {tutor.title}
-              </div>
-
-              <div className={styles.data}>
-                <div className={styles.position} itemProp="post">
-                  {tutor.position}
-                </div>
-
-                {tutor.tutor_email &&
-                  <div className={styles.email} itemProp="email">
-                    {tutor.tutor_email}
-                  </div>
-                }
-
-                {tutor.tutor_phone &&
-                  <div className={styles.phone} itemProp="telephone">
-                    {tutor.tutor_phone}
-                  </div>
-                }
-              </div>
-            </Link>
-          )}
-        </div>
+          <div className={styles.tutors}>
+            {tutors.filter(t => !t.tutor_types.includes(9) && !t.tutor_types.includes(1)).map(tutor =>
+              <Tutor key={tutor.id} tutor={tutor} itemProp={itemProp(tutor.tutor_types)} />
+            )}
+          </div>
+        </>
       }
     </div>
   )
