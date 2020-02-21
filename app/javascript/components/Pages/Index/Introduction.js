@@ -8,11 +8,21 @@ import styles from './Introduction.module.css'
 export default function Introduction () {
   const titles = [
     'Привет',
-    'Hello',
+    'Нello',
     'Salut',
     'Hallo',
-    'Ciao',
-    'Hola'
+    'مرحبًا',
+    'Helló',
+    'Сiao',
+    'Нola',
+    '嗨。',
+    'Cześć',
+    'Bună',
+    'Здраво',
+    'สวัสดี',
+    'Selam',
+    'Nazdar',
+    'やっほー。'
   ]
 
   const [active, setActive] = useState(0)
