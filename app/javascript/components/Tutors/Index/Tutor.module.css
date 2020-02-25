@@ -28,3 +28,7 @@
 .data {
   display: none;
 }
+
+.executives {
+  display: block;
+}

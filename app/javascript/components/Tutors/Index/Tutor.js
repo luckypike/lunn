@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import { Link } from '@reach/router'
 
@@ -24,7 +25,7 @@ export default function Tutor ({ tutor, itemProp }) {
           {tutor.title}
         </div>
 
-        <div className={styles.data}>
+        <div className={classNames(styles.data, { [styles.executives]: tutor.tutor_types.includes(9) || tutor.tutor_types.includes(1) })}>
           <div className={styles.position} itemProp="post">
             {tutor.position}
           </div>
