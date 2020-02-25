@@ -8,6 +8,7 @@
 }
 
 .title {
+  visibility: hidden;
   font-size: 5rem;
   font-weight: medium;
   line-height: 8rem;
@@ -23,6 +24,8 @@
 }
 
 .active {
+  visibility: visible;
+
   & .letter {
     opacity: 1;
   }
