@@ -56,7 +56,11 @@ export default function Index ({ loaf }) {
       {tutors &&
         <>
           <div className={styles.leaders}>
-            {tutors.filter(t => t.tutor_types.includes(9) || t.tutor_types.includes(1)).map(tutor =>
+            {tutors.filter(t => t.tutor_types.includes(9)).map(tutor =>
+              <Tutor key={tutor.id} tutor={tutor} itemProp={itemProp(tutor.tutor_types)}/>
+            )}
+
+            {tutors.filter(t => t.tutor_types.includes(1)).map(tutor =>
               <Tutor key={tutor.id} tutor={tutor} itemProp={itemProp(tutor.tutor_types)}/>
             )}
           </div>
