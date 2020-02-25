@@ -9,7 +9,7 @@ json.node do
     json.wrapper doc.wrapper
     json.size doc.size
     json.mime doc.mime
-    json.filename doc.filename.truncate(30)
+    json.filename doc.filename
   end
 
   json.images @node.images do |image|

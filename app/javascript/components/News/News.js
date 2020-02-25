@@ -8,7 +8,7 @@ import Index from './Index'
 import Show from './Show'
 
 News.propTypes = {
-  locale: PropTypes.object
+  locale: PropTypes.string
 }
 
 export default function News ({ locale }) {
