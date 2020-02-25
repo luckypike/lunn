@@ -25,7 +25,9 @@
   }
 }
 
-.data {
+.email,
+.phone,
+.position {
   display: none;
 }
 

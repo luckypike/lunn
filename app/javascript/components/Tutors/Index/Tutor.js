@@ -25,8 +25,8 @@ export default function Tutor ({ tutor, itemProp }) {
           {tutor.title}
         </div>
 
-        <div className={classNames(styles.data, { [styles.executives]: tutor.tutor_types.includes(9) || tutor.tutor_types.includes(1) })}>
-          <div className={styles.position} itemProp="post">
+        <div className={styles.data}>
+          <div className={classNames(styles.position, { [styles.executives]: tutor.tutor_types.includes(9) || tutor.tutor_types.includes(1) })} itemProp="post">
             {tutor.position}
           </div>
 
