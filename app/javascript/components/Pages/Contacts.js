@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { YMaps, Map } from 'react-yandex-maps'
+import { YMaps, Map, Placemark } from 'react-yandex-maps'
+
+import Ballon from '../Pages/Index/Images/ballon.png'
 
 import { Title } from '../Pages'
 
@@ -35,10 +37,17 @@ export default function Contacts ({ contacts }) {
           <div className={styles.placeholder} />
 
           <YMaps>
-            <Map
-              className={styles.ymap}
-              defaultState={{ center: [56.324878, 44.028165], zoom: 16 }}
-            />
+            <Map className={styles.ymap} defaultState={{ center: [56.325030, 44.031256], zoom: 16 }}>
+              <Placemark
+                defaultGeometry={[56.32462542625421, 44.029508920558776]}
+                options = {{
+                  iconLayout: 'default#image',
+                  iconImageHref: Ballon,
+                  iconImageSize: [45, 50],
+                  iconImageOffset: [-20, -50]
+                }}
+              />
+            </Map>
           </YMaps>
         </div>
 
