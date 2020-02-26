@@ -181,3 +181,14 @@
     margin: 0 calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 }
+
+.teachers {
+  margin-bottom: calc(var(--yr) * calc(var(--s4) - var(--s2)));
+
+  @media (--s) {
+    & h2 {
+      margin-left: calc(1 / 8 * 100%);
+      margin-right: calc(1 / 8 * 100%);
+    }
+  }
+}

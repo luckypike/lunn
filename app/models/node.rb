@@ -19,7 +19,9 @@ class Node < ApplicationRecord
   has_many :docs, -> { includes(:attachment).where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
 
   has_many :departments, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_department_target_id, inverse_of: :node
+  has_many :courses, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_courses_target_id, inverse_of: :node
   has_many :tutors, through: :departments, class_name: 'Node'
+  has_many :teachers, through: :courses, class_name: 'Node'
 
   has_one :field_price_1, -> { where(entity_type: :node) }, class_name: 'Field::Price1', foreign_key: :entity_id
   has_one :field_price_2, -> { where(entity_type: :node) }, class_name: 'Field::Price2', foreign_key: :entity_id
