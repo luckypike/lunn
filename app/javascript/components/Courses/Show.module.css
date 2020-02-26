@@ -191,4 +191,10 @@
       margin-right: calc(1 / 8 * 100%);
     }
   }
+
+  @media (--xl) {
+    & h2 {
+      margin: 0 25% calc(var(--yr) * var(--s4));
+    }
+  }
 }
