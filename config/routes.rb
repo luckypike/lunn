@@ -34,6 +34,6 @@ Rails.application.routes.draw do
 
     get :contacts, to: 'pages#contacts'
 
-    get '*path', to: 'pages#show', constraints: ->(request) { UrlAlias.where(alias: request[:path]).any? }
+    get '*path', to: 'pages#show', constraints: ->(request) { UrlAlias.lang.where(alias: request[:path]).any? }
   end
 end
