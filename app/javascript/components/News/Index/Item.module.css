@@ -102,6 +102,7 @@
 }
 
 .content {
+  hyphens: auto;
   width: 100%;
 
   & .desc {

@@ -43,6 +43,7 @@
   composes: h4 from '../../Fonts.module.css';
   padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 2));
   margin: 0;
+  hyphens: auto;
 
   @media (--s) {
     padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 3.5));
