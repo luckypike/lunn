@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for(
     :users,
     only: %i[sessions confirmations],
+    controllers: {:confirmations => "confirmations"},
     path: '',
     path_names: {
       sign_in: :login,
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
     post :join, to: 'devise/registrations#create', as: :user_registration
     get :recovery, to: 'devise/passwords#new', as: :new_user_password
     post :recovery, to: 'devise/passwords#create', as: :user_password
+    put :recovery, to: 'devise/passwords#update', as: :user_password_update
+    get :change, to: 'devise/passwords#edit', as: :edit_user_password
   end
 
   get '*path', to: 'courses#index', constraints: { path: 'programs' }
@@ -43,7 +46,7 @@ Rails.application.routes.draw do
 
     get 'index', to: 'pages#index', constraints: ->(req) { req.format == :json }, format: :json
 
-    resources :admissions, only: %i[index new create]
+    resources :admissions, only: %i[index new create show]
 
     resources :news, only: %i[index show]
 
