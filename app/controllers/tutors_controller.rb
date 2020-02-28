@@ -10,7 +10,7 @@ class TutorsController < ApplicationController
         @tutors = Node.employees.lang
           .includes(
             :image, :field_tutor_types, :field_position,
-            :field_tutor_email, :field_tutor_phone
+            :field_tutor_email, :field_tutor_phone, :field_department
           )
       end
     end
