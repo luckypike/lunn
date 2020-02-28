@@ -137,11 +137,23 @@ export default function Show ({ node, loaf, course, locale, teachers }) {
           </div>
         }
 
+        {['features', 'disciplines', 'competencies', 'prospects'].filter(s => course[`course_${s}`]).map(section =>
+          <div key={section} className={classNames(styles[section], styles.section)}>
+            <h3>
+              {I18n.t(`courses.sections.${section}`)}
+            </h3>
+
+            <div>
+              <Renderer source={course[`course_${section}`]} />
+            </div>
+          </div>
+        )}
+
         {teachers && teachers.length > 0 &&
           <div className={styles.teachers}>
-            <h2>
+            <h3>
               Преподаватели программы
-            </h2>
+            </h3>
 
             <Tutors tutors={teachers} />
           </div>

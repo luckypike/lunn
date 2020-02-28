@@ -1,5 +1,6 @@
 class Node < ApplicationRecord
   include Tutor
+  include Coursable
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
