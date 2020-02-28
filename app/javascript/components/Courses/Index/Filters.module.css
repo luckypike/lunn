@@ -170,6 +170,7 @@
 
 .toggle {
   composes: h4 from '../../Fonts.module.css';
+  user-select: none;
   margin: 0;
 }
 

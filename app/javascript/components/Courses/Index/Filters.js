@@ -36,7 +36,7 @@ export default function Filters ({ filters, query, locale }) {
     <>
       <div className={styles.handler}>
         <div className={styles.toggle} onClick={() => setActive(!active)}>
-          Показать все фильтры
+          {active ? 'Скрыть фильтры' : 'Показать фильтры'}
         </div>
 
         <div className={styles.resetAll} onClick={() => navigate('/programs')}>
