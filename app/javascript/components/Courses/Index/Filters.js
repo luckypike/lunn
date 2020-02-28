@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { navigate } from '@reach/router'
@@ -17,11 +17,26 @@ Filters.propTypes = {
 export default function Filters ({ filters, query, locale }) {
   const [active, setActive] = useState(true)
 
+  useEffect(() => {
+    const _onResize = e => {
+      if (window.innerWidth > 767) {
+        setActive(true)
+      } else {
+        setActive(false)
+      }
+    }
+
+    if (window) {
+      window.addEventListener('resize', _onResize)
+      _onResize()
+    }
+  }, [])
+
   return (
     <>
       <div className={styles.handler}>
         <div className={styles.toggle} onClick={() => setActive(!active)}>
-          Фильтры
+          Показать все фильтры
         </div>
 
         <div className={styles.resetAll} onClick={() => navigate('/programs')}>
@@ -62,16 +77,16 @@ function Filter ({ locale, id, title, filters }) {
       <div className={classNames(styles.filter, { [styles.active]: selectedFilters.length > 0 })}>
         <div className={styles.title}>
           {title}
-          {selectedFilters.length > 0 &&
+          {/* {selectedFilters.length > 0 &&
             <div className={styles.checked}>
               {selectedFilters.length}
             </div>
-          }
+          } */}
         </div>
 
         <div className={styles.items}>
           { id && id === 'ege' &&
-            <div key="ege" className={classNames(styles.item, styles.selected, styles.disabled)}>
+            <div key="ege" className={classNames(styles.item, styles.selected, styles.russian)}>
               <label>
                 <input
                   disabled
