@@ -2,29 +2,16 @@
   display: none;
   position: relative;
   z-index: 1;
-  /* flex-wrap: wrap; */
-
   margin-bottom: calc(var(--yr) * calc(var(--s2) * 2.75));
 
-  &.active {
-    display: block;
-  }
-
   @media (--m) {
-    /* display: flex; */
-
-    &.active {
-      /* display: flex; */
-    }
+    display: block;
   }
 }
 
-/* .wrapper:hover {
-  & .items {
-    visibility: visible;
-    opacity: 1;
-  }
-} */
+.active {
+  display: block;
+}
 
 .wrapper {
   &:last-child {
@@ -35,28 +22,19 @@
 }
 
 .filter {
-  /* background-color: var(--sp_color); */
-  /* padding: calc(var(--yr) * 1.5) calc(var(--yr) * 7.5); */
   border-radius: calc(var(--yr) * 2);
   margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.75));
   cursor: pointer;
   position: relative;
 
-  @media (--m) {
-    /* margin-right: calc(var(--yr) * 2); */
-    /* padding: calc(var(--yr) * 1.5) calc(var(--yr) * 13); */
-    /* margin-bottom: 0; */
-  }
-
   & .item {
-    padding: 7px 15px;
-    background-color: #ECEFF1;
+    padding: calc(var(--yr) * 1.75) calc(var(--yr) * 3.75);
+    background-color: var(--sp_color);
     border-radius: calc(var(--yr) * 2);
     margin-right: calc(var(--yr) * 2);
     margin-bottom: calc(var(--yr) * 2);
 
-
-    @media(--m) {
+    @media (--m) {
       margin-bottom: 0;
 
       &:not(:last-child) {
@@ -66,7 +44,6 @@
 
     & label {
       display: block;
-      /* padding-left: calc(var(--yr) * 6); */
       position: relative;
       user-select: none;
       cursor: pointer;
@@ -74,11 +51,10 @@
       & input {
         display: none;
         appearance: none;
-        background: #FFFFFF;
-        border: 1px solid #DBDDDE;
+        background: var(--wh_color);
+        border: 1px solid #dbddde;
         box-sizing: border-box;
         border-radius: 4px;
-        /* display: block; */
         height: 1rem;
         font-size: inherit;
         position: absolute;
@@ -172,6 +148,15 @@
   composes: h4 from '../../Fonts.module.css';
   user-select: none;
   margin: 0;
+  display: flex;
+  align-items: center;
+
+  & svg {
+    display: block;
+    width: calc(var(--yr) * var(--s2));
+    height: calc(var(--yr) * 3.5);
+    margin-right: calc(var(--yr) * 2.5);
+  }
 }
 
 .resetAll {

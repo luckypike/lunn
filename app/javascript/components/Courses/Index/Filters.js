@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { navigate } from '@reach/router'
@@ -15,27 +15,17 @@ Filters.propTypes = {
 }
 
 export default function Filters ({ filters, query, locale }) {
-  const [active, setActive] = useState(true)
-
-  useEffect(() => {
-    const _onResize = e => {
-      if (window.innerWidth > 767) {
-        setActive(true)
-      } else {
-        setActive(false)
-      }
-    }
-
-    if (window) {
-      window.addEventListener('resize', _onResize)
-      _onResize()
-    }
-  }, [])
+  const [active, setActive] = useState(false)
 
   return (
     <>
       <div className={styles.handler}>
         <div className={styles.toggle} onClick={() => setActive(!active)}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 14">
+            <path stroke="#141414" strokeWidth="2" d="M7 2h9M8 7h8M12 12h4"/>
+            <path fill="#141414" d="M4 5h2v4H4V5zM6 0h2v4H6zM8 10h2v4H8zM0 11h8v2H0zM0 1h4v2H0zM0 6h4v2H0z"/>
+          </svg>
+
           {active ? 'Скрыть фильтры' : 'Показать фильтры'}
         </div>
 
