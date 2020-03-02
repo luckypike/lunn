@@ -173,25 +173,35 @@
 .text {
   hyphens: auto;
 
+/*
   @media (--s) {
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 
   @media (--xl) {
     margin: 0 calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
-  }
+  } */
 }
 
-.section {
-  hyphens: auto;
+.desc {
+  grid-column: 1 / 8;
+}
 
+
+.section {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  position: relative;
+  hyphens: auto;
+  grid-column: 1 / span 8;
+/*
   @media (--s) {
     margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
   }
 
   @media (--xl) {
     margin: 0 calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
-  }
+  } */
 }
 
 .teachers {
@@ -209,4 +219,27 @@
       margin: 0 25% calc(var(--yr) * var(--s4));
     }
   }
+}
+
+.image {
+  grid-column: 9 / 13;
+  grid-row: 1 / span 2;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.features {
+  background-image: url('./Show/Images/features.svg');
+}
+
+.disciplines {
+  background-image: url('./Show/Images/disciplines.svg');
+}
+
+.competencies {
+  background-image: url('./Show/Images/competencies.svg');
+}
+
+.prospects {
+  background-image: url('./Show/Images/prospects.svg');
 }
