@@ -63,7 +63,7 @@ function Qq ({ title, active }) {
   }, [])
 
   return (
-    <div ref={titleRef} className={classNames(styles.title, { [styles.active]: active })}>
+    <div ref={titleRef} className={classNames(styles.title, { [styles.active]: active, [styles.japanese]: title === 'やっほー。' })}>
       {title}
     </div>
   )

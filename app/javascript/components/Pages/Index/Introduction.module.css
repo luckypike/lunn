@@ -1,4 +1,5 @@
 .root {
+  overflow: hidden;
   position: relative;
   height: 8rem;
 
@@ -20,6 +21,15 @@
   @media (--s) {
     font-size: 10rem;
     line-height: 12rem;
+  }
+
+  &.japanese {
+    font-size: 3rem;
+    width: 100%;
+
+    @media (--s) {
+      font-size: 5rem;
+    }
   }
 }
 
