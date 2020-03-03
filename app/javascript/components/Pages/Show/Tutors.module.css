@@ -1,9 +1,10 @@
 .tutors {
-  composes: tutors from '../../Tutors/Index.module.css'
+  composes: tutors from '../../Tutors/Index.module.css';
 }
 
 .tutor {
-  composes: tutor from '../../Tutors/Index.module.css'
+  composes: tutor from '../../Tutors/Index.module.css';
+  margin-bottom: calc(var(--yr) * var(--s3));
 }
 
 .image {
