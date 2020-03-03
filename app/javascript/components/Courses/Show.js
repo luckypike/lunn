@@ -153,9 +153,9 @@ export default function Show ({ node, loaf, course, locale, teachers }) {
 
         {teachers && teachers.length > 0 &&
           <div className={styles.teachers}>
-            <h3>
+            <h2>
               Преподаватели программы
-            </h3>
+            </h2>
 
             <Tutors tutors={teachers} />
           </div>

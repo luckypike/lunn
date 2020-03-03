@@ -184,10 +184,6 @@
 }
 
 .desc {
-  & h3 {
-    margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.75));
-  }
-
   & ul {
     padding-left: 0;
   }
@@ -224,12 +220,6 @@
 
 .teachers {
   margin-bottom: calc(var(--yr) * calc(var(--s4) - var(--s2)));
-
-  @media (--s) {
-    & h3 {
-      margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.75));
-    }
-  }
 }
 
 .image {
