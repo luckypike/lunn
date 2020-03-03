@@ -199,6 +199,10 @@
   @media (--m) {
     grid-column: 1 / 9;
   }
+
+  @media (--l) {
+    grid-column: 1 / 7;
+  }
 }
 
 .section {
@@ -252,6 +256,10 @@
 
   @media (--m) {
     grid-column: 9 / 13;
+  }
+
+  @media (--l) {
+    grid-column: 8 / span 4;
   }
 }
 
