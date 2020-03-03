@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 
 import { Title } from '../Pages'
-// import Filters from './Index/Filters'
 import Tutor from './Index/Tutor'
 
 import styles from './Index.module.css'
@@ -16,6 +15,7 @@ Index.propTypes = {
 export default function Index ({ loaf }) {
   const [node, setNode] = useState()
   const [tutors, setTutors] = useState()
+  const [search, setSearch] = useState('')
 
   const _fetch = async () => {
     const { data } = await axios.get('/tutors.json')
@@ -27,6 +27,10 @@ export default function Index ({ loaf }) {
   useEffect(() => {
     _fetch()
   }, [])
+
+  const handleChange = (e) => {
+    setSearch(e.target.value)
+  }
 
   const itemProp = types => {
     if (types.includes(9)) {
@@ -81,14 +85,31 @@ export default function Index ({ loaf }) {
         />
       }
 
-      {/* <Filters /> */}
-
-      <div className={styles.executives}>
-        Руководители
+      <div className={styles.input}>
+        <input
+          type="text"
+          placeholder="Введите текст для поиска..."
+          value={search}
+          onChange={handleChange}
+        />
       </div>
 
-      {tutors &&
+      {search &&
+        <ul className={styles.search}>
+          {tutors.filter(d => d.title.toLowerCase().includes(search.toLowerCase())).map(tutor =>
+            <li key={tutor.fid}>
+              <Tutor tutor={tutor} itemProp={itemProp(tutor.tutor_types)} />
+            </li>
+          )}
+        </ul>
+      }
+
+      {tutors && !search &&
         <>
+          <div className={styles.executives}>
+            Руководители
+          </div>
+
           <div className={styles.leaders}>
             {tutors.filter(t => t.tutor_types.includes(9)).map(tutor =>
               <Tutor key={tutor.id} tutor={tutor} itemProp={itemProp(tutor.tutor_types)}/>
