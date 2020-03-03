@@ -1,5 +1,6 @@
 .tutors,
-.leaders {
+.leaders,
+.search {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: var(--xr);
@@ -30,4 +31,13 @@
 
 .leaders {
   margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
+}
+
+.faculty {
+  display: block;
+}
+
+.input {
+  margin: calc(var(--yr) * var(--s3)) 0;
+  composes: input from '../Docs/Index.module.css';
 }

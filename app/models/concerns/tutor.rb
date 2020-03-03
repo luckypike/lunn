@@ -20,6 +20,11 @@ module Tutor
     has_one :field_tutor_phone, -> { where(entity_type: :node) }, class_name: 'Field::TutorPhone', foreign_key: :entity_id
     has_one :field_tutor_email, -> { where(entity_type: :node) }, class_name: 'Field::TutorEmail', foreign_key: :entity_id
     has_one :field_tutor_consult, -> { where(entity_type: :node) }, class_name: 'Field::TutorConsult', foreign_key: :entity_id
+    has_one :field_department, -> { where(entity_type: :node) }, class_name: 'Field::Department', foreign_key: :entity_id
+  end
+
+  def department
+    field_department&.value
   end
 
   def position
