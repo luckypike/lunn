@@ -3,10 +3,6 @@
   position: relative;
   z-index: 1;
   margin-bottom: calc(var(--yr) * calc(var(--s2) * 2.75));
-
-  @media (--m) {
-    display: block;
-  }
 }
 
 .active {

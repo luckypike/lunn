@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { navigate } from '@reach/router'
@@ -16,6 +16,16 @@ Filters.propTypes = {
 
 export default function Filters ({ filters, query, locale }) {
   const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    if (window) {
+      const width = window.innerWidth
+
+      if (width >= 960) {
+        setActive(true)
+      }
+    }
+  }, [])
 
   return (
     <>
