@@ -5,7 +5,9 @@ import classNames from 'classnames'
 // import AnimateHeight from 'react-animate-height'
 import { parseDOM } from 'htmlparser2'
 import domToReact from 'html-react-parser/lib/dom-to-react'
-import { YMInitializer } from 'react-yandex-metrika';
+import { YMInitializer } from 'react-yandex-metrika'
+
+import { useI18n } from '../I18n'
 
 import styles from './Footer.module.css'
 
@@ -13,32 +15,49 @@ Footer.propTypes = {
   navs: PropTypes.array,
   footer: PropTypes.array,
   partners: PropTypes.object,
-  env: PropTypes.string
+  env: PropTypes.string,
+  locale: PropTypes.string
 }
 
-export default function Footer ({ navs, footer, partners, env }) {
+export default function Footer ({ navs, footer, partners, env, locale }) {
+  const I18n = useI18n(locale)
+
   return (
     <>
-      <div className={styles.partners}>
-        {domToReact(parseDOM(partners.body))}
-      </div>
+      {I18n.locale === 'ru' &&
+        <div className={styles.partners}>
+          {domToReact(parseDOM(partners.body))}
+        </div>
+      }
 
       <div className={styles.root}>
         <div className={styles.container}>
           <div className={styles.wrapper}>
             <div className={styles.info}>
               <div className={styles.title}>
-                © 2007–{new Date().getFullYear()} Нижегородский государственный лингвистический университет имени Н.А. Добролюбова
+                {`© 2007–${new Date().getFullYear()} ${I18n.t('university.title')}`}
               </div>
 
               <div className={styles.links}>
-                <a className={styles.link} href="/send-mail">Обращения граждан</a>
-                <a className={styles.link} href="/send-mail">Интернет-приемная ректора</a>
+                <a className={styles.link} href={`${I18n.locale === 'ru' ? '' : `/${I18n.locale}`}/send-mail`}>
+                  {I18n.t('contact_us')}
+                </a>
+
+                {I18n.locale === 'ru' &&
+                  <a className={styles.link} href={`${I18n.locale === 'ru' ? '' : `/${I18n.locale}`}/send-mail`}>
+                    Интернет-приемная ректора
+                  </a>
+                }
               </div>
 
               <div className={styles.address}>
-                <div className={styles.text}>603155, Россия, Нижний Новгород, ул. Минина 31а</div>
-                <a className={styles.button} href="/contacts">Адрес на карте</a>
+                <div className={styles.text}>
+                  {I18n.t('university.address')}
+                </div>
+
+                <a className={styles.button} href={`${I18n.locale === 'ru' ? '' : `/${I18n.locale}`}/contacts`}>
+                  {I18n.t('university.address_on_map')}
+                </a>
               </div>
 
               <div className={styles.contacts}>

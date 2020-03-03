@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /en/ do
     get '', to: 'pages#index'
 
-    get 'index', to: 'pages#index', constraints: ->(req) { req.format == :json }, format: :json
+    get 'index', to: 'pages#index', constraints: lambda { |request|
+      request.format == :json
+    }, format: :json
 
     resources :news, only: %i[index show]
 
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
 
     get :contacts, to: 'pages#contacts'
 
-    get '*path', to: 'pages#show', constraints: ->(request) { UrlAlias.lang.where(alias: request[:path]).any? }
+    get '*path', to: 'pages#show', constraints: lambda { |params, _request|
+      UrlAlias.lang(params[:locale]).where(alias: params[:path]).any?
+    }
   end
 end
