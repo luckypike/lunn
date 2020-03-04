@@ -9,24 +9,26 @@ import styles from './Index.module.css'
 import pages from '../Pages.module.css'
 
 Index.propTypes = {
-  loaf: PropTypes.array
+  loaf: PropTypes.array,
+  tutors: PropTypes.array,
+  node: PropTypes.object
 }
 
-export default function Index ({ loaf }) {
-  const [node, setNode] = useState()
-  const [tutors, setTutors] = useState()
+export default function Index ({ loaf, tutors, node }) {
+  // const [node, setNode] = useState()
+  // const [tutors, setTutors] = useState()
   const [search, setSearch] = useState('')
 
-  const _fetch = async () => {
-    const { data } = await axios.get('/tutors.json')
-
-    setNode(data.node)
-    setTutors(data.tutors)
-  }
-
-  useEffect(() => {
-    _fetch()
-  }, [])
+  // useEffect(() => {
+  //   const _fetch = async () => {
+  //     const { data } = await axios.get('/tutors.json')
+  //
+  //     setNode(data.node)
+  //     setTutors(data.tutors)
+  //   }
+  //
+  //   _fetch()
+  // }, [])
 
   const handleChange = (e) => {
     setSearch(e.target.value)
@@ -97,7 +99,7 @@ export default function Index ({ loaf }) {
       {search &&
         <ul className={styles.search}>
           {tutors.filter(d => d.title.toLowerCase().includes(search.toLowerCase())).map(tutor =>
-            <li key={tutor.fid}>
+            <li key={tutor.id}>
               <Tutor tutor={tutor} itemProp={itemProp(tutor.tutor_types)} />
             </li>
           )}

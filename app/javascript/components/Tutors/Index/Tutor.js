@@ -30,15 +30,15 @@ export default function Tutor ({ tutor, itemProp }) {
             {tutor.position}
           </div>
 
-          {tutor.tutor_email &&
+          {tutor.tutor_email_public &&
             <div className={styles.email} itemProp="email">
-              {tutor.tutor_email}
+              {tutor.tutor_email_public}
             </div>
           }
 
-          {tutor.tutor_phone &&
+          {tutor.tutor_phone_public &&
             <div className={styles.phone} itemProp="telephone">
-              {tutor.tutor_phone}
+              {tutor.tutor_phone_public}
             </div>
           }
         </div>

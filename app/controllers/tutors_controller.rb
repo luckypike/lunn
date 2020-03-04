@@ -4,16 +4,13 @@ class TutorsController < ApplicationController
   before_action :set_tutor, only: :show
 
   def index
-    respond_to do |format|
-      format.html
-      format.json do
-        @tutors = Node.employees.lang
-          .includes(
-            :image, :field_tutor_types, :field_position,
-            :field_tutor_email, :field_tutor_phone, :field_department
-          )
-      end
-    end
+    @tutors = Node.employees.lang
+      .includes(
+        :image, :field_tutor_types, :field_position,
+        :field_tutor_email, :field_tutor_phone, :field_department
+      )
+
+    # respond_to :html, :json
   end
 
   def show

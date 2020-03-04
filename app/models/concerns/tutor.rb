@@ -103,6 +103,14 @@ module Tutor
     tutor_types.to_set.intersect?([1, 9].to_set)
   end
 
+  def tutor_phone_public
+    tutor_phone if chief?
+  end
+
+  def tutor_email_public
+    tutor_email if chief?
+  end
+
   class_methods do
     def with_tutor_fields
       includes(
