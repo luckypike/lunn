@@ -12,16 +12,9 @@
   display: flex;
 }
 
-.font {
+.fonts {
   display: flex;
   margin-right: var(--xr);
-
-  & > div {
-    height: calc(var(--yr) * 8);
-    width: calc(var(--yr) * 8);
-    overflow: hidden;
-    cursor: pointer;
-  }
 }
 
 .spacing {
@@ -32,5 +25,16 @@
     width: calc(var(--yr) * 8);
     overflow: hidden;
     cursor: pointer;
+  }
+}
+
+.font {
+  height: calc(var(--yr) * 8);
+  width: calc(var(--yr) * 8);
+  overflow: hidden;
+  cursor: pointer;
+
+  &.active {
+    border: 1px solid black;
   }
 }

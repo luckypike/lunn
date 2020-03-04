@@ -8,6 +8,7 @@ import styles from './Special.module.css'
 Special.propTypes = {
   active: PropTypes.bool
 }
+
 export default function Special ({ active }) {
   const cookies = new Cookies()
 
@@ -35,14 +36,14 @@ export default function Special ({ active }) {
 
   return (
     <div className={classNames(styles.root, { [styles.active]: active })}>
-      <div className={styles.font}>
-        <div onClick={() => setFont('1')}>
+      <div className={styles.fonts}>
+        <div className={classNames(styles.font, { [styles.active]: font === '1' })} onClick={() => setFont('1')}>
           A
         </div>
-        <div onClick={() => setFont('2')}>
+        <div className={classNames(styles.font, { [styles.active]: font === '2' })} onClick={() => setFont('2')}>
           AA
         </div>
-        <div onClick={() => setFont('3')}>
+        <div className={classNames(styles.font, { [styles.active]: font === '3' })} onClick={() => setFont('3')}>
           AAA
         </div>
       </div>

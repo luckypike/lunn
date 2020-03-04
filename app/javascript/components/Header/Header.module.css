@@ -185,3 +185,7 @@
     }
   }
 }
+
+.special {
+  margin-top: calc(var(--yr) * 12);
+}

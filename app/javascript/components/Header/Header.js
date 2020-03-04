@@ -41,7 +41,7 @@ export default function Header ({ navs, index, locale }) {
     <>
       <Special active={specialActive} />
 
-      <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive })}>
+      <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive, [styles.special]: specialActive })}>
         <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} onClick={() => handleClick()} onMouseEnter={() => setMenuActive(false)} />
 
         <header className={styles.root}>
