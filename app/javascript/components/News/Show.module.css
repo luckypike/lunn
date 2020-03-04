@@ -19,13 +19,7 @@
   &::before {
     display: block;
     content: '';
-    padding-top: calc(1 / 1 * 100%);
-  }
-
-  @media (--s) {
-    &::before {
-      padding-top: calc(1 / 2 * 100%);
-    }
+    padding-top: calc(9 / 16 * 100%);
   }
 }
 
