@@ -41,3 +41,7 @@
   margin: calc(var(--yr) * var(--s3)) 0;
   composes: input from '../Docs/Index.module.css';
 }
+
+.fil {
+  display: none;
+}

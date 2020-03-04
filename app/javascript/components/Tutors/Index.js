@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+// import axios from 'axios'
 
 import { Title } from '../Pages'
 import Tutor from './Index/Tutor'
@@ -147,6 +147,10 @@ export default function Index ({ loaf, tutors, node }) {
           )}
         </>
       }
+
+      <div className={styles.fil} itemProp="rucovodstvoFil">
+        Филиалов нет
+      </div>
     </div>
   )
 }
