@@ -1,0 +1,36 @@
+.root {
+  display: none;
+  height: calc(var(--yr) * 12);
+  background-color: #fff;
+  position: relative;
+  padding: calc(var(--yr) * 2);
+  z-index: 7;
+  user-select: none;
+}
+
+.active {
+  display: flex;
+}
+
+.font {
+  display: flex;
+  margin-right: var(--xr);
+
+  & > div {
+    height: calc(var(--yr) * 8);
+    width: calc(var(--yr) * 8);
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
+
+.spacing {
+  display: flex;
+
+  & > div {
+    height: calc(var(--yr) * 8);
+    width: calc(var(--yr) * 8);
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
