@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import { Link } from '@reach/router'
+// import { Link } from '@reach/router'
 
 import styles from './Tutor.module.css'
 
@@ -14,7 +14,7 @@ Tutor.propTypes = {
 export default function Tutor ({ tutor, itemProp }) {
   return (
     <div className={styles.tutor}>
-      <Link to={`/tutors/${tutor.id}`} className={styles.tutor} itemProp={itemProp}>
+      <a href={`/tutors/${tutor.id}`} className={styles.tutor} itemProp={itemProp}>
         <div className={styles.image}>
           {tutor.image &&
             <img src={`https://assets.lunn.ru/images/480x600,sc/legacy${tutor.image.path}`} />
@@ -42,7 +42,7 @@ export default function Tutor ({ tutor, itemProp }) {
             </div>
           }
         </div>
-      </Link>
+      </a>
     </div>
   )
 }
