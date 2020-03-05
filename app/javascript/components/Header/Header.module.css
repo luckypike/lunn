@@ -29,6 +29,14 @@
     top: 0;
     left: 0;
     width: 100%;
+
+    &.special {
+      top: 48px;
+
+      @media (--s) {
+        top: 64px;
+      }
+    }
   }
 
   &.active {
@@ -184,8 +192,4 @@
       }
     }
   }
-}
-
-.special {
-  margin-top: calc(var(--yr) * 12);
 }

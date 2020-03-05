@@ -23,7 +23,7 @@ Header.propTypes = {
 export default function Header ({ navs, index, locale }) {
   const [menuActive, setMenuActive] = useState(false)
   const [searchActive, setSearchActive] = useState(false)
-  const [specialActive, setSpecialActive] = useState(false)
+  const [specialActive, setSpecialActive] = useState(true)
   const [white, setWhite] = useState(false)
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function Header ({ navs, index, locale }) {
     <>
       <Special active={specialActive} />
 
-      <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive, [styles.special]: specialActive && index })}>
+      <div className={classNames(styles.container, { [styles.index]: index, [styles.active]: menuActive, [styles.special]: specialActive })}>
         <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} onClick={() => handleClick()} onMouseEnter={() => setMenuActive(false)} />
 
         <header className={styles.root}>
@@ -66,6 +66,7 @@ export default function Header ({ navs, index, locale }) {
               <Service
                 index={index}
                 menuActive={menuActive}
+                specialActive={specialActive}
                 onSearchToggle={() => setSearchActive(true)}
                 onSpecialToggle={() => setSpecialActive(!specialActive)}
                 locale={locale}

@@ -79,6 +79,14 @@
   }
 }
 
+.active {
+  & svg {
+    & path {
+      fill: var(--hl_color);
+    }
+  }
+}
+
 /* .login {
   margin-left: var(--xr);
 
