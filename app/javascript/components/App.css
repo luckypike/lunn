@@ -40,14 +40,3 @@ ol {
   padding: 0;
   margin: 0;
 }
-
-.font_1 {
-}
-
-.font_2 {
-  font-size: calc(var(--yr) * 4.5);
-}
-
-.font_3 {
-  font-size: calc(var(--yr) * 5);
-}
