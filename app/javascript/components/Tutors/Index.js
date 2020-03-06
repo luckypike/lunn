@@ -149,7 +149,10 @@ export default function Index ({ loaf, tutors, node }) {
       }
 
       <div className={styles.fil} itemProp="rucovodstvoFil">
-        Филиалов нет
+        <div itemProp="fio">Филиалов нет</div>
+        <div itemProp="post">Филиалов нет</div>
+        <div itemProp="telephone">Филиалов нет</div>
+        <div itemProp="email">Филиалов нет</div>
       </div>
     </div>
   )
