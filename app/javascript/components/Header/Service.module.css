@@ -23,6 +23,14 @@
   }
 }
 
+:global .schema_2 {
+  & :local .search {
+    & svg {
+      fill: #fff;
+    }
+  }
+}
+
 .special {
   width: calc(var(--yr) * 12);
   height: calc(var(--yr) * 12);
@@ -36,6 +44,14 @@
     display: block;
     width: calc(var(--yr) * 8);
     height: calc(var(--yr) * 8);
+  }
+}
+
+:global .schema_2 {
+  & :local .special {
+    & svg {
+      fill: #fff;
+    }
   }
 }
 

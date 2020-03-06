@@ -65,3 +65,14 @@
     background-color: #d4d7d9;
   }
 }
+
+:global .schema_2 {
+  & :local .sec {
+    background-color: #161a1d;
+    color: #fff;
+
+    &:hover {
+      background-color: var(--hl_color);
+    }
+  }
+}

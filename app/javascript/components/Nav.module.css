@@ -14,6 +14,18 @@
   }
 }
 
+:global .schema_2 {
+  & :local .items {
+    & a {
+      color: #fff;
+
+      &:hover {
+        color: var(--hl_color);
+      }
+    }
+  }
+}
+
 .item {
   display: block;
   border-bottom: 1px solid #dbddde;

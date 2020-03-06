@@ -102,6 +102,23 @@
   }
 }
 
+:global .schema_2 {
+  & :local .filter {
+    & .item {
+      background-color: #161a1d;
+    }
+
+    & .russian {
+      background-color: var(--hl_color);
+      color: #fff;
+    }
+
+    & .selected {
+      background-color: var(--hl_color);
+    }
+  }
+}
+
 .checked {
   display: none;
 
@@ -152,6 +169,18 @@
     width: calc(var(--yr) * var(--s2));
     height: calc(var(--yr) * 3.5);
     margin-right: calc(var(--yr) * 2.5);
+  }
+}
+
+:global .schema_2 {
+  & :local .toggle {
+    & svg {
+      stroke: #fff;
+
+      & path {
+        stroke: #fff;
+      }
+    }
   }
 }
 

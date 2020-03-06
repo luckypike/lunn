@@ -46,6 +46,17 @@
   }
 }
 
+:global .schema_2 {
+  & :local .tab {
+    background: none;
+    color: #fff;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .active {
   background-color: var(--hl_color);
   color: #fff;
@@ -53,6 +64,18 @@
   &:hover {
     background-color: var(--hl_h_color);
     color: #fff;
+  }
+}
+
+:global .schema_2 {
+  & :local .active {
+    background-color: var(--hl_color);
+    color: #fff;
+
+    &:hover {
+      background-color: var(--hl_h_color);
+      color: #fff;
+    }
   }
 }
 

@@ -137,6 +137,17 @@
   }
 }
 
+:global .schema_2 {
+  & :local .a {
+    color: #fff;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .tableWrapper {
   max-width: 100%;
   overflow-x: scroll;

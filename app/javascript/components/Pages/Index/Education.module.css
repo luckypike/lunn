@@ -71,6 +71,14 @@
   }
 }
 
+:global .schema_2 {
+  & :local .image {
+    & svg > path {
+      fill: #000;
+    }
+  }
+}
+
 .ellipse {
   display: none;
 
@@ -82,6 +90,12 @@
     border-radius: 50%;
     background-color: #EEF1FE;
     margin: 0 auto;
+  }
+}
+
+:global .schema_2 {
+  & :local .ellipse {
+    background-color: #161a1d;
   }
 }
 

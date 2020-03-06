@@ -27,6 +27,12 @@
   }
 }
 
+:global .schema_2 {
+  & :local .course {
+    background-color: #161a1d;
+  }
+}
+
 .title {
   composes: at from '../Fonts.module.css';
   margin-bottom: var(--yr);
@@ -167,6 +173,12 @@
     left: 0;
     right: 0;
     bottom: 0;
+  }
+}
+
+:global .schema_2 {
+  & :local .youtube {
+    background: none;
   }
 }
 

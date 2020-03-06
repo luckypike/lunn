@@ -21,6 +21,14 @@
   }
 }
 
+:global .schema_2 {
+  & :local .courses {
+    & a {
+      color: #fff;
+    }
+  }
+}
+
 .course {
   display: block;
   border-radius: calc(var(--yr) * 2);
@@ -76,6 +84,7 @@
 .meta {
   display: flex;
   white-space: nowrap;
+  align-items: center;
 }
 
 .form {
@@ -117,5 +126,11 @@
       margin-left: var(--yr);
       content: '\2022';
     } */
+  }
+}
+
+:global .schema_2 {
+  & :local .e {
+    background-color: #161a1d;
   }
 }

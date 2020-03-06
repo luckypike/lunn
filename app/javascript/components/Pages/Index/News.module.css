@@ -65,6 +65,18 @@
   }
 }
 
+:global .schema_2 {
+  & :local .news_item {
+    & a {
+      color: #fff;
+
+      &:hover {
+        color: var(--hl_color);
+      }
+    }
+  }
+}
+
 .title {
   composes: bt from '../../Fonts.module.css';
   margin-bottom: calc(var(--yr) * var(--s1));

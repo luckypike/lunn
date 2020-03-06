@@ -3,6 +3,18 @@
   overflow: hidden;
 }
 
+:global .schema_2 {
+  & :local .tutor {
+    & a {
+      color: #fff;
+
+      &:hover {
+        color: var(--hl_color);
+      }
+    }
+  }
+}
+
 .image {
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2));
@@ -22,6 +34,12 @@
     display: block;
     width: 100%;
     transform: translate(-50%, -50%);
+  }
+}
+
+:global .schema_2 {
+  & :local .image {
+    background-color: #161a1d;
   }
 }
 

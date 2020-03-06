@@ -119,6 +119,12 @@
   margin-bottom: calc(var(--yr) * var(--s4));
 }
 
+:global .schema_2 {
+  & :local .schedule {
+    background-color: #161a1d;
+  }
+}
+
 .events {
   position: relative;
 }
