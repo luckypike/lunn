@@ -23,7 +23,7 @@ Header.propTypes = {
 export default function Header ({ navs, index, locale }) {
   const [menuActive, setMenuActive] = useState(false)
   const [searchActive, setSearchActive] = useState(false)
-  const [specialActive, setSpecialActive] = useState(true)
+  const [specialActive, setSpecialActive] = useState(false)
   const [white, setWhite] = useState(false)
 
   useEffect(() => {
