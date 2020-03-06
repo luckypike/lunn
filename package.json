@@ -29,6 +29,7 @@
     "react-yandex-metrika": "^2.6.0",
     "react_ujs": "^2.6.0",
     "svg-react-loader": "^0.4.6",
+    "universal-cookie": "^4.0.3",
     "webpack": "^4.0.0"
   },
   "version": "0.1.0",
