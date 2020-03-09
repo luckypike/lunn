@@ -35,6 +35,7 @@ export default function Show ({ slug, locale }) {
         <>
           <Title
             h2={event.title}
+            date={event.date}
             loaf={[
               {
                 mlid: 999,
