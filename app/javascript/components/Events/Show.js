@@ -5,15 +5,17 @@ import axios from 'axios'
 
 import { Title } from '../Pages'
 import Renderer from '../Renderer'
-import pages from '../Pages.module.css'
+import Docs from '../Docs/Docs'
 
+import pages from '../Pages.module.css'
 import styles from './Show.module.css'
 
 Show.propTypes = {
-  slug: PropTypes.string
+  slug: PropTypes.string,
+  locale: PropTypes.string
 }
 
-export default function Show ({ slug }) {
+export default function Show ({ slug, locale }) {
   const [event, setEvent] = useState()
 
   useEffect(() => {
@@ -56,6 +58,12 @@ export default function Show ({ slug }) {
           {event.text &&
             <div className={styles.text}>
               <Renderer source={event.text} />
+            </div>
+          }
+
+          {event.docs &&
+            <div className={styles.docs}>
+              <Docs docs={event.docs} locale={locale} />
             </div>
           }
         </>

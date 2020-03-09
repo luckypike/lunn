@@ -3,13 +3,7 @@ json.node do
   json.text @node.text
 
   json.docs @node.docs do |doc|
-    json.fid doc.fid
-    json.path doc.path
-    json.title doc.title
-    json.wrapper doc.wrapper
-    json.size doc.size
-    json.mime doc.mime
-    json.filename doc.filename
+    json.partial! doc
   end
 
   json.images @node.images do |image|
