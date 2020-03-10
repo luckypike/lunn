@@ -73,6 +73,16 @@
   }
 }
 
+:global .schema_3 {
+  & :local .item {
+    &:hover {
+      & .title {
+        color: #9fd2fd;
+      }
+    }
+  }
+}
+
 .external {
   position: absolute;
   bottom: calc(var(--yr) * 5);
@@ -91,6 +101,7 @@
 }
 
 .title {
+  transition: color 0.3s;
   composes: h4 from './Fonts.module.css';
   position: absolute;
   top: calc(var(--yr) * 5);
@@ -102,6 +113,12 @@
   @media(--m) {
     top: calc(var(--yr) * 7);
     left: calc(var(--xr) * 2);
+  }
+}
+
+:global .schema_3 {
+  & :local .title {
+    color: #9fd2fd;
   }
 }
 

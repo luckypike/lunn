@@ -7,6 +7,12 @@
   margin-bottom: calc(var(--yr) * var(--s3));
 }
 
+:global .schema_3 {
+  & :local .tutor {
+    color: #339;
+  }
+}
+
 .image {
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2));

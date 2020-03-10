@@ -126,6 +126,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .menu {
+    background: #9fd2fd;
+  }
+}
+
 .overlay {
   visibility: hidden;
   background: #000;

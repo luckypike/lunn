@@ -85,6 +85,12 @@
   text-align: center;
 }
 
+:global .schema_3 {
+  & :local .intro {
+    color: #9fd2fd;
+  }
+}
+
 .sec {
   /* background-color: var(--hl_color); */
 }
@@ -125,6 +131,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .schedule {
+    background-color: #7fc5f5;
+  }
+}
+
 .events {
   position: relative;
 }
@@ -150,6 +162,20 @@
       left: 50%;
       top: calc(var(--yr) * 5);
       transform: translateX(-50%);
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .calendar {
+    & .title {
+      color: #7fc5f5;
+    }
+
+    & svg {
+      & path {
+        stroke: #7fc5f5;
+      }
     }
   }
 }

@@ -52,6 +52,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .line {
+    border-top: 2px dashed #7fc5f5;
+  }
+}
+
 .container {
   display: none;
 
@@ -79,6 +85,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .image {
+    & svg > path {
+      fill: #9fd2fd;
+    }
+  }
+}
+
 .ellipse {
   display: none;
 
@@ -96,6 +110,12 @@
 :global .schema_2 {
   & :local .ellipse {
     background-color: #161a1d;
+  }
+}
+
+:global .schema_3 {
+  & :local .ellipse {
+    background-color: #7fc5f5;
   }
 }
 

@@ -29,6 +29,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .root {
+    & a {
+      color: #339;
+    }
+  }
+}
+
 .container {
   padding: calc(var(--yr) * 16) calc(var(--yr) * 4) 0;
   max-width: 120rem;

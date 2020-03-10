@@ -57,6 +57,17 @@
   }
 }
 
+:global .schema_3 {
+  & :local .tab {
+    background: none;
+    color: #339;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .active {
   background-color: var(--hl_color);
   color: #fff;
@@ -79,6 +90,17 @@
   }
 }
 
+:global .schema_3 {
+  & :local .active {
+    background-color: #7fc5f5;
+    color: var(--hl_color);
+
+    &:hover {
+      color: #339;
+    }
+  }
+}
+
 .items {
   composes: items from '../../Navs.module.css';
 }
@@ -92,6 +114,12 @@
 
   &.ege {
     background-image: url('./Images/ege.jpg') !important;
+  }
+}
+
+:global .schema_3 {
+  & :local .item {
+    color: #9fd2fd;
   }
 }
 

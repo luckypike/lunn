@@ -31,6 +31,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .search {
+    & svg {
+      fill: #339;
+    }
+  }
+}
+
 .special {
   width: calc(var(--yr) * 12);
   height: calc(var(--yr) * 12);
@@ -51,6 +59,14 @@
   & :local .special {
     & svg {
       fill: #fff;
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .special {
+    & svg {
+      fill: #339;
     }
   }
 }
@@ -79,6 +95,17 @@
   }
 }
 
+
+:global .schema_3 {
+  & :local .white {
+    & svg {
+      & path {
+        fill: #9fd2fd;
+      }
+    }
+  }
+}
+
 .black {
   color: #000;
 
@@ -99,6 +126,16 @@
   & svg {
     & path {
       fill: var(--hl_color);
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .active {
+    & svg {
+      & path {
+        fill: var(--hl_color);
+      }
     }
   }
 }

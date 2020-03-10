@@ -119,6 +119,24 @@
   }
 }
 
+:global .schema_3 {
+  & :local .filter {
+    & .item {
+      background-color: #7fc5f5;
+      color: #339;
+    }
+
+    & .russian {
+      background-color: var(--hl_color);
+    }
+
+    & .selected {
+      background-color: var(--hl_color);
+      color: #7fc5f5;
+    }
+  }
+}
+
 .checked {
   display: none;
 

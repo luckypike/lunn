@@ -59,6 +59,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .nav {
+    & a {
+      color: #339;
+    }
+  }
+}
+
 .more {
   cursor: pointer;
 }
@@ -73,6 +81,14 @@
   & .toggle {
     & svg {
       fill: #fff;
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .white {
+    & a {
+      color: #9fd2fd;
     }
   }
 }
@@ -95,6 +111,14 @@
   & :local .black {
     & a {
       color: #fff;
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .black {
+    & a {
+      color: #339;
     }
   }
 }

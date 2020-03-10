@@ -20,10 +20,30 @@
   }
 }
 
+:global .schema_3 {
+  & :local .docs {
+    & li {
+      & a {
+        color: #339;
+
+        &:hover {
+          color: var(--hl_color);
+        }
+      }
+    }
+  }
+}
+
 .doc {
   display: flex;
   padding: calc(var(--yr) * var(--s1)) 0;
   border-bottom: 1px solid var(--sp_color);
+}
+
+:global .schema_3 {
+  & :local .doc {
+    border-bottom: 1px solid var(--hl_color);
+  }
 }
 
 .title {

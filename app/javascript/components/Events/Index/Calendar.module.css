@@ -57,6 +57,12 @@
   margin-bottom: 16px;
 }
 
+:global .schema_3 {
+  & :local .weekdays {
+    border-bottom: 1px solid #7fc5f5;
+  }
+}
+
 .weekday {
   text-align: center;
   color: #777;

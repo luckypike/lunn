@@ -86,6 +86,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .partners {
+    border-top: 2px solid #7fc5f5;
+  }
+}
+
 .navs {
   display: grid;
 
@@ -106,6 +112,12 @@
 
   &:hover {
     color: var(--gr_color);
+  }
+}
+
+:global .schema_3 {
+  & :local .first {
+    color: #9fd2fd;
   }
 }
 
@@ -195,6 +207,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #9fd2fd;
+  }
+}
+
 .index {
   margin-bottom: calc(var(--yr) * 2);
 }
@@ -255,6 +273,16 @@
   }
 }
 
+:global .schema_3 {
+  & :local .links {
+    color: #9fd2fd;
+
+    & a {
+      color: #9fd2fd;
+    }
+  }
+}
+
 .link {
   padding: 8px 0;
   width: 100%;
@@ -276,6 +304,26 @@
 
   @media (--s) {
     margin-bottom: 0;
+  }
+}
+
+:global .schema_3 {
+  & :local .address {
+    color: #9fd2fd;
+
+    & a {
+      color: #9fd2fd;
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .contacts {
+    color: #9fd2fd;
+
+    & a {
+      color: #9fd2fd;
+    }
   }
 }
 

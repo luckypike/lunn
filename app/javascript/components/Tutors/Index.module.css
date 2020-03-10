@@ -42,6 +42,16 @@
   composes: input from '../Docs/Index.module.css';
 }
 
+:global .schema_3 {
+  & :local .input {
+    & input {
+      background-color: #7fc5f5;
+      color: #339;
+      box-shadow: none;
+    }
+  }
+}
+
 .fil {
   display: none;
 }

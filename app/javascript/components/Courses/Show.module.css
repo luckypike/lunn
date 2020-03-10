@@ -33,6 +33,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .course {
+    background-color: #7fc5f5;
+  }
+}
+
 .title {
   composes: at from '../Fonts.module.css';
   margin-bottom: var(--yr);
@@ -147,6 +153,16 @@
   }
 }
 
+:global .schema_3 {
+  & :local .button {
+    background-color: #9fd2fd;
+
+    & a {
+      color: #339;
+    }
+  }
+}
+
 .youtube {
   position: relative;
   margin-bottom: calc(var(--yr) * calc(var(--s3) * 2));
@@ -177,6 +193,12 @@
 }
 
 :global .schema_2 {
+  & :local .youtube {
+    background: none;
+  }
+}
+
+:global .schema_3 {
   & :local .youtube {
     background: none;
   }

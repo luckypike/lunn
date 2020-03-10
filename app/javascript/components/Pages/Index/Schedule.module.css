@@ -19,6 +19,13 @@
   outline: none;
 }
 
+:global .schema_3 {
+  & :local .button {
+    background: #9fd2fd;
+    color: #339;
+  }
+}
+
 .toggle {
   display: flex;
   align-items: center;
@@ -29,6 +36,17 @@
   &:hover {
     & .button {
       background: #35f;
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .toggle {
+    &:hover {
+      & .button {
+        background: #9fd2fd;
+        color: var(--hl_color);
+      }
     }
   }
 }
@@ -87,6 +105,13 @@
   & :local .item {
     background: #000;
     color: #fff;
+  }
+}
+
+:global .schema_3 {
+  & :local .item {
+    background: #9fd2fd;
+    color: #339;
   }
 }
 

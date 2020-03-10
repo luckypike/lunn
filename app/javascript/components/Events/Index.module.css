@@ -31,6 +31,16 @@
   }
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #339;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .date {
   color: var(--gr_color);
 }
@@ -42,5 +52,13 @@
 
   &:not(:last-child) {
     border-bottom: 1px solid #d8d8d8;
+  }
+}
+
+:global .schema_3 {
+  & :local .event {
+    &:not(:last-child) {
+      border-bottom: 1px solid #7fc5f5;
+    }
   }
 }

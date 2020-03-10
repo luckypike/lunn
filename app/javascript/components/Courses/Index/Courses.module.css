@@ -29,6 +29,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .courses {
+    & a {
+      color: #339;
+    }
+  }
+}
+
 .course {
   display: block;
   border-radius: calc(var(--yr) * 2);
@@ -49,6 +57,16 @@
   &:hover {
     box-shadow: inset 0 0 0 2px var(--hl_color);
     color: var(--pr_color);
+  }
+}
+
+:global .schema_3 {
+  & :local .course {
+    box-shadow: inset 0 0 0 1px #339;
+
+    &:hover {
+      box-shadow: inset 0 0 0 2px var(--hl_color);
+    }
   }
 }
 
@@ -132,5 +150,11 @@
 :global .schema_2 {
   & :local .e {
     background-color: #161a1d;
+  }
+}
+
+:global .schema_3 {
+  & :local .e {
+    background-color: #7fc5f5;
   }
 }

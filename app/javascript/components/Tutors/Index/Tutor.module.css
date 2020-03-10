@@ -15,6 +15,18 @@
   }
 }
 
+:global .schema_3 {
+  & :local .tutor {
+    & a {
+      color: #339;
+
+      &:hover {
+        color: var(--hl_color);
+      }
+    }
+  }
+}
+
 .image {
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2));
