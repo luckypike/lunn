@@ -82,6 +82,16 @@
   }
 }
 
+:global .schema_2 {
+  & :local .title {
+    color: #fff;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 :global .schema_3 {
   & :local .title {
     color: #339;
@@ -136,6 +146,14 @@
     flex: none;
     width: calc(3 / 4 * 100%);
     padding-right: 15%;
+  }
+}
+
+:global .schema_2 {
+  & :local .content {
+    & .desc {
+      color: #fff;
+    }
   }
 }
 

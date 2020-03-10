@@ -84,6 +84,14 @@
   }
 }
 
+:global .schema_2 {
+  & :local .date {
+    & a {
+      color: #fff;
+    }
+  }
+}
+
 .in {
   cursor: pointer;
   position: relative;
