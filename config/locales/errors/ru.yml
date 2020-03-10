@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        email: Электронная почта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+  errors:
+    messages:
+      not_saved: Исправьте ошибки

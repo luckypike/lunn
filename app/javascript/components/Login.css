@@ -1,0 +1,225 @@
+.root {
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--s) {
+    grid-column: span 12;
+    margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
+  }
+}
+
+.container {
+  padding: 0 calc(var(--yr) * 4);
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @media (--s) {
+    padding: 0 calc(var(--yr) * 8);
+  }
+
+  @media (--m) {
+    padding: 0 calc(var(--yr) * 12);
+  }
+
+  @media (--l) {
+    padding: 0 calc(var(--yr) * 24);
+  }
+
+  @media (--xl) {
+    padding: 0 calc(var(--yr) * 40);
+  }
+}
+
+.h2 {
+  text-align: center;
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
+}
+
+.h0 {
+  font-size: calc(var(--yr) * 10);
+  line-height: calc(var(--yr) * 11);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 16);
+    line-height: calc(var(--yr) * 18);
+  }
+}
+
+.h1 {
+  composes: h0 from './Fonts.module.css';
+  text-align: center;
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--s) {
+    margin: 0 calc(1 / 12 * 100%) calc(var(--yr) * var(--s4));
+  }
+}
+
+.root {
+  margin-bottom: calc(var(--yr) * var(--s4) * 2);
+
+  @media (--s) {
+    margin: 0 0 calc(var(--yr) * var(--s4));
+  }
+}
+
+.form {
+  background-color: var(--sp_color);
+  position: relative;
+  padding: calc(var(--yr) * var(--s3) * 2) var(--xr);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.els {
+  @media (--s) {
+    margin: 0 calc(1 / 10 * 100%);
+  }
+
+  @media (--m) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+
+    & .message {
+      grid-column: 1 / -1;
+    }
+
+    & .submit {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.el {
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
+.label {
+  position: absolute;
+  pointer-events: none;
+  left: var(--xr);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.3s;
+  color: var(--gr_color);
+}
+
+.input {
+  position: relative;
+
+  & select,
+  & textarea,
+  & input {
+    font-size: calc(var(--yr) * 4);
+    line-height: calc(var(--yr) * 4);
+    height: calc(var(--yr) * 12);
+    display: block;
+    width: 100%;
+    border: 0;
+    box-shadow: inset 0 0 0 1px color-mod(var(--sp_color) shade(7%));
+    border-radius: calc(var(--yr) * 2);
+    outline: none;
+    background: #fff;
+    padding: calc(var(--yr) * 4) calc(var(--yr) * 4);
+    transition: 0.3s box-shadow;
+
+    @media (--s) {
+      line-height: calc(var(--yr) * 6);
+      height: calc(var(--yr) * 14);
+    }
+
+    &:focus {
+      box-shadow: inset 0 0 0 1px var(--hl_color);
+    }
+
+    &:focus ~ .label,
+    &:not(:focus):valid ~ .label {
+      top: 20%;
+      transform: translateY(-20%);
+      font-size: calc(var(--yr) * 3);
+      line-height: calc(var(--yr) * 4);
+    }
+  }
+
+  & textarea {
+    resize: vertical;
+    height: auto;
+    line-height: calc(var(--yr) * 6);
+  }
+}
+
+.error {
+  composes: at from './Fonts.module.css';
+  margin-top: calc(var(--yr) * var(--s1));
+  color: #f00;
+}
+
+.fonts-bt {
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 4.5);
+    line-height: calc(var(--yr) * 7);
+  }
+}
+
+.btn-main {
+  background-color: var(--hl_color);
+  color: #fff;
+  composes: bt from './Fonts.module.css';
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+
+  &:disabled {
+    background: #b8bfe6;
+  }
+
+  &.pending {
+    /* background: linear-gradient(90deg, color-mod(var(--f_color) tint(85%)), color-mod(var(--f_color) tint(50%)), color-mod(var(--f_color) tint(85%)));
+    background-size: 600% 600%;
+    animation: loading 5s ease infinite;
+    color: var(--pr_color); */
+  }
+
+  &:not(:last-child) {
+    margin-right: var(--xr);
+  }
+
+  &:active {
+    background: #2a46d1;
+  }
+
+  &:hover {
+    &:not(:disabled) {
+      &:not(.pending) {
+        background: #35f;
+      }
+    }
+  }
+}
+
+.btn-big {
+  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
+  min-width: 10rem;
+}
+
+.links {
+  margin-top: calc(var(--yr) * var(--s3));
+}
+
+.errors {
+  @media (--s) {
+    margin: 0 calc(1 / 10 * 100%) calc(var(--yr) * var(--s3));
+  }
+}

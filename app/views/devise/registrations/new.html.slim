@@ -1,0 +1,28 @@
+.container
+  .root
+    h1.h1.h0 Регистрация
+
+    .form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+
+        .errors
+          = render "devise/shared/error_messages", resource: resource
+
+        .els
+          .el
+            .input
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Электронная почта"
+
+          .el
+            .input
+              = f.password_field :password, autocomplete: "new-password", placeholder: "Пароль"
+
+          .el
+            .input
+              = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Подтверждение пароля"
+
+          .submit
+            = f.submit "Регистрация", class: "fonts-bt btn-main btn-big"
+
+          .links
+            = render "devise/shared/links"

@@ -1,0 +1,20 @@
+.container
+  .root
+    h1.h1.h0 Войти
+
+    .form
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .els
+          .el
+            .input
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Электронная почта"
+
+          .el
+            .input
+              = f.password_field :password, autocomplete: "current-password", placeholder: "Пароль"
+
+          .submit
+            = f.submit "Войти", class: "fonts-bt btn-main btn-big"
+
+          .links
+            = render "devise/shared/links"
