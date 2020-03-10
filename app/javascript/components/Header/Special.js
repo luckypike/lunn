@@ -135,7 +135,7 @@ export default function Special ({ active }) {
           </div>
         </div>
 
-        <div className={classNames(styles.group, styles.inactive)}>
+        <div className={styles.group}>
           <div className={styles.label}>
             Цветовая схема
           </div>
