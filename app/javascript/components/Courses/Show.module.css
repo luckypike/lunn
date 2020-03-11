@@ -172,12 +172,99 @@
 
 .text {
   hyphens: auto;
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 1.75));
+
+  & p {
+    margin: 0;
+  }
 
   @media (--s) {
-    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+    width: calc(8 / 12 * 100%);
+  }
+}
+
+.desc {
+  & ul {
+    padding-left: 0;
   }
 
-  @media (--xl) {
-    margin: 0 calc(2 / 8 * 100%) calc(var(--yr) * var(--s4));
+  @media (--s) {
+    grid-column: 1 / 6;
   }
+
+  @media (--m) {
+    grid-column: 1 / 9;
+  }
+
+  @media (--l) {
+    grid-column: 1 / 7;
+  }
+}
+
+.section {
+  display: block;
+  position: relative;
+  hyphens: auto;
+  margin-bottom: calc(var(--yr) * calc(var(--s3) * 1.75));
+
+  @media (--s) {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: calc(var(--yr) * 7.5);
+  }
+
+  @media (--m) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.teachers {
+  margin-bottom: calc(var(--yr) * calc(var(--s4) - var(--s2)));
+}
+
+.image {
+  display: block;
+  background-repeat: no-repeat;
+  margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.75));
+  max-height: 195px;
+
+  &::before {
+    display: block;
+    content: '';
+    padding-top: calc(1 / 1.75 * 100%);
+  }
+
+  @media (--s) {
+    margin: 0;
+    grid-column: 6 / 9;
+    grid-row: 1 / span 2;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  @media (--m) {
+    grid-column: 9 / 13;
+  }
+
+  @media (--l) {
+    grid-column: 8 / span 4;
+  }
+}
+
+.features {
+  background-image: url('./Show/Images/features.svg');
+}
+
+.disciplines {
+  background-image: url('./Show/Images/disciplines.svg');
+}
+
+.competencies {
+  background-image: url('./Show/Images/competencies.svg');
+}
+
+.prospects {
+  background-image: url('./Show/Images/prospects.svg');
 }

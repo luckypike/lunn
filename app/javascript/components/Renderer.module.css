@@ -40,7 +40,7 @@
       text-align: center;
       display: inline-block;
       width: 1.5rem;
-      content: '\2022';
+      content: '\2013';
       margin-left: -1.5rem;
     }
   }

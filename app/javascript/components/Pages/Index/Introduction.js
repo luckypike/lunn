@@ -8,11 +8,21 @@ import styles from './Introduction.module.css'
 export default function Introduction () {
   const titles = [
     'Привет',
-    'Hello',
+    'Нello',
     'Salut',
     'Hallo',
-    'Ciao',
-    'Hola'
+    'مرحبًا',
+    'Helló',
+    'Сiao',
+    'Нola',
+    '嗨。',
+    'Cześć',
+    'Bună',
+    'Здраво',
+    'สวัสดี',
+    'Selam',
+    'Nazdar',
+    'やっほー。'
   ]
 
   const [active, setActive] = useState(0)
@@ -53,7 +63,7 @@ function Qq ({ title, active }) {
   }, [])
 
   return (
-    <div ref={titleRef} className={classNames(styles.title, { [styles.active]: active })}>
+    <div ref={titleRef} className={classNames(styles.title, { [styles.active]: active, [styles.japanese]: title === 'やっほー。' })}>
       {title}
     </div>
   )

@@ -19,13 +19,7 @@
   &::before {
     display: block;
     content: '';
-    padding-top: calc(1 / 1 * 100%);
-  }
-
-  @media (--s) {
-    &::before {
-      padding-top: calc(1 / 2 * 100%);
-    }
+    padding-top: calc(9 / 16 * 100%);
   }
 }
 
@@ -40,4 +34,12 @@
 .date {
   color: var(--hl_color);
   text-align: center;
+}
+
+.docs {
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--s) {
+    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+  }
 }

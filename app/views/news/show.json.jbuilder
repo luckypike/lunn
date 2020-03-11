@@ -2,6 +2,10 @@ json.node do
   json.partial! @node
   json.text @node.text
 
+  json.docs @node.docs do |doc|
+    json.partial! doc
+  end
+
   json.images @node.images do |image|
     json.partial! image
     json.width image.field_multiple_image_width

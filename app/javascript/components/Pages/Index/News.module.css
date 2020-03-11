@@ -36,7 +36,7 @@
   &::before {
     display: block;
     content: '';
-    padding-top: calc(2 / 3 * 100%);
+    padding-top: calc(9 / 16 * 100%);
   }
 
   & img {
@@ -68,6 +68,7 @@
 .title {
   composes: bt from '../../Fonts.module.css';
   margin-bottom: calc(var(--yr) * var(--s1));
+  hyphens: auto;
 }
 
 .more {

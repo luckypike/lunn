@@ -1,4 +1,5 @@
 .root {
+  overflow: hidden;
   position: relative;
   height: 8rem;
 
@@ -8,6 +9,7 @@
 }
 
 .title {
+  visibility: hidden;
   font-size: 5rem;
   font-weight: medium;
   line-height: 8rem;
@@ -20,9 +22,20 @@
     font-size: 10rem;
     line-height: 12rem;
   }
+
+  &.japanese {
+    font-size: 3rem;
+    width: 100%;
+
+    @media (--s) {
+      font-size: 5rem;
+    }
+  }
 }
 
 .active {
+  visibility: visible;
+
   & .letter {
     opacity: 1;
   }

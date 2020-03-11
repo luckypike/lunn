@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { Title } from '../Pages'
 import { useI18n } from '../I18n'
 
+import Tutors from '../Pages/Show/Tutors'
 import Renderer from '../Renderer'
 
 import pages from '../Pages.module.css'
@@ -14,10 +15,11 @@ Show.propTypes = {
   node: PropTypes.object,
   loaf: PropTypes.array,
   course: PropTypes.object,
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  teachers: PropTypes.array
 }
 
-export default function Show ({ node, loaf, course, locale }) {
+export default function Show ({ node, loaf, course, locale, teachers }) {
   const I18n = useI18n(locale)
 
   return (
@@ -132,6 +134,30 @@ export default function Show ({ node, loaf, course, locale }) {
         {course.text &&
           <div className={styles.text}>
             <Renderer source={course.text} />
+          </div>
+        }
+
+        {['features', 'disciplines', 'competencies', 'prospects'].filter(s => course[`course_${s}`]).map(section =>
+          <div key={section} className={classNames(styles.section)}>
+            <div className={classNames(styles.image, styles[section])} />
+
+            <div className={styles.desc}>
+              <h2>
+                {I18n.t(`courses.sections.${section}`)}
+              </h2>
+
+              <Renderer source={course[`course_${section}`]} />
+            </div>
+          </div>
+        )}
+
+        {teachers && teachers.length > 0 &&
+          <div className={styles.teachers}>
+            <h2>
+              Преподаватели программы
+            </h2>
+
+            <Tutors tutors={teachers} />
           </div>
         }
       </div>

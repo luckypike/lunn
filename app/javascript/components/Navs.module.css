@@ -1,4 +1,5 @@
 .items {
+  hyphens: auto;
   display: grid;
   grid-row-gap: var(--xr);
   margin-bottom: calc(var(--yr) * var(--s4));

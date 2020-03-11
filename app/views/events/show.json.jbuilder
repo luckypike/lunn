@@ -1,6 +1,11 @@
 json.event do
   json.partial! @node
   json.text @node.text
+  json.date @node.date.value.to_i if @node.date
+
+  json.docs @node.docs do |doc|
+    json.partial! doc
+  end
 
   json.images @node.images do |image|
     json.partial! image

@@ -1,0 +1,144 @@
+.root {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  display: none;
+  height: 48px;
+  background-color: #fff;
+  position: relative;
+  z-index: 7;
+  user-select: none;
+  margin: 0 auto;
+
+  @media (--s) {
+    height: 64px;
+  }
+
+  &.active {
+    display: block;
+  }
+}
+
+.groups {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 20rem;
+  padding: 12px;
+
+  @media (--s) {
+    max-width: 768px;
+    padding: 16px 32px;
+    margin-left: auto;
+  }
+
+  @media (--m) {
+    /* padding: 16px calc(var(--yr) * 12); */
+  }
+}
+
+.items {
+  display: flex;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    /* margin-right: var(--xr); */
+
+    @media (--s) {
+      /* margin-right: var(--xr); */
+    }
+  }
+}
+
+.item {
+  width: 24px;
+  height: 24px;
+  box-shadow: inset 0 0 0 1px var(--sp_color);
+  border-radius: 2px;
+  cursor: pointer;
+  background-size: 100%;
+  overflow: hidden;
+
+  &:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  &.active {
+    box-shadow: inset 0 0 0 2px var(--hl_color);
+  }
+
+  @media (--s) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.label {
+  display: none;
+  margin-right: 8px;
+
+  @media (--s) {
+    display: block;
+  }
+}
+
+.font {
+  &.normal {
+    background-image: url('./Images/Text_normal.svg');
+  }
+
+  &.big {
+    background-image: url('./Images/Text_big.svg');
+  }
+
+  &.bigger {
+    background-image: url('./Images/Text_bigger.svg');
+  }
+}
+
+.spacing {
+  &.normal {
+    background-image: url('./Images/Kerning_normal.svg');
+  }
+
+  &.big {
+    background-image: url('./Images/Kerning_big.svg');
+  }
+
+  &.bigger {
+    background-image: url('./Images/Kerning_bigger.svg');
+  }
+}
+
+.schema {
+  box-shadow: none;
+
+  &.white {
+    background-image: url('./Images/Schema_normal.svg');
+
+    &:not(.active) {
+      box-shadow: inset 0 0 0 1px var(--sp_color);
+    }
+  }
+
+  &.black {
+    background-image: url('./Images/Schema_black.svg');
+  }
+
+  &.blue {
+    background-image: url('./Images/Schema_blue.svg');
+  }
+}
+
+.inactive {
+  opacity: 0.4;
+  cursor: not-allowed;
+
+  & .item {
+    cursor: not-allowed;
+  }
+}

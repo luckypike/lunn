@@ -20,6 +20,11 @@ module Tutor
     has_one :field_tutor_phone, -> { where(entity_type: :node) }, class_name: 'Field::TutorPhone', foreign_key: :entity_id
     has_one :field_tutor_email, -> { where(entity_type: :node) }, class_name: 'Field::TutorEmail', foreign_key: :entity_id
     has_one :field_tutor_consult, -> { where(entity_type: :node) }, class_name: 'Field::TutorConsult', foreign_key: :entity_id
+    has_one :field_department, -> { where(entity_type: :node) }, class_name: 'Field::Department', foreign_key: :entity_id
+  end
+
+  def department
+    field_department&.value
   end
 
   def position
@@ -96,6 +101,14 @@ module Tutor
 
   def chief?
     tutor_types.to_set.intersect?([1, 9].to_set)
+  end
+
+  def tutor_phone_public
+    tutor_phone if chief?
+  end
+
+  def tutor_email_public
+    tutor_email if chief?
   end
 
   class_methods do

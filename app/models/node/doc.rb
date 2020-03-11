@@ -8,6 +8,7 @@ class Node::Doc < ApplicationRecord
   delegate :path, to: :attachment
   delegate :fid, to: :attachment
   delegate :wrapper, to: :attachment
+  delegate :filename, to: :attachment
 
   def title
     field_attachment_description

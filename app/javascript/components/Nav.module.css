@@ -1,5 +1,6 @@
 .items {
   display: grid;
+  hyphens: auto;
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--s) {

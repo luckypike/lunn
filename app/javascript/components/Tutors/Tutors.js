@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Router } from '@reach/router'
 
-import ScrollToTop from '../ScrollToTop'
+// import ScrollToTop from '../ScrollToTop'
 
-import Index from './Index'
+// import Index from './Index'
 import Show from './Show'
 
 Tutors.propTypes = {
@@ -15,10 +15,10 @@ Tutors.propTypes = {
 export default function Tutors ({ locale, loaf }) {
   return (
     <Router>
-      <ScrollToTop path="/">
+      <Show path="tutors/:id" locale={locale} loaf={loaf} />
+      {/* <ScrollToTop path="/">
         <Index path="tutors" loaf={loaf} />
-        <Show path="tutors/:id" locale={locale} loaf={loaf} />
-      </ScrollToTop>
+      </ScrollToTop> */}
     </Router>
   )
 }

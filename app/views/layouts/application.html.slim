@@ -1,5 +1,5 @@
 doctype html
-html lang=I18n.locale
+html[class=special_cookie_classes lang=I18n.locale]
   head
     = display_meta_tags reverse: true, separator: '—', og: { title: :title, description: :description, site_name: 'НГЛУ' }
     / = csrf_meta_tags

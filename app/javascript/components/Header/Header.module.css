@@ -17,7 +17,7 @@
   }
 
   @media (--l) {
-    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 36);
+    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 48);
   }
 }
 
@@ -29,6 +29,14 @@
     top: 0;
     left: 0;
     width: 100%;
+
+    &.special {
+      top: 48px;
+
+      @media (--s) {
+        top: 64px;
+      }
+    }
   }
 
   &.active {
@@ -183,19 +191,5 @@
         fill: #fff;
       }
     }
-  }
-}
-
-.legacy {
-  composes: at from '../Fonts.module.css';
-  position: relative;
-  z-index: 5;
-
-  & a {
-    background-color: color-mod(var(--sp_color) a(0.8));
-    display: block;
-    /* color: #fff; */
-    text-align: center;
-    padding: calc(var(--yr) * 2);
   }
 }

@@ -1,4 +1,6 @@
-.tutors {
+.tutors,
+.leaders,
+.search {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: var(--xr);
@@ -23,37 +25,23 @@
   }
 }
 
-.tutor {
-  margin-bottom: calc(var(--yr) * var(--s3));
-  overflow: hidden;
+.executives {
+  composes: h3 from '../Fonts.module.css';
 }
 
-.image {
-  position: relative;
-  margin-bottom: calc(var(--yr) * var(--s2));
-  background-color: color-mod(#000 a(0.6));
-  overflow: hidden;
-
-  &::before {
-    display: block;
-    content: '';
-    padding-top: calc(5 / 4 * 100%);
-  }
-
-  & img {
-    left: 50%;
-    top: 50%;
-    position: absolute;
-    display: block;
-    width: 100%;
-    transform: translate(-50%, -50%);
-
-    @media (--s) {
-      /* border-radius: var(--yr); */
-    }
-  }
+.leaders {
+  margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
 }
 
-.data {
+.faculty {
+  display: block;
+}
+
+.input {
+  margin: calc(var(--yr) * var(--s3)) 0;
+  composes: input from '../Docs/Index.module.css';
+}
+
+.fil {
   display: none;
 }
