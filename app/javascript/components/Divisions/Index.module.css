@@ -1,0 +1,80 @@
+.intro {
+  composes: h0 from '../Fonts.module.css';
+  text-align: center;
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.root {
+  display: grid;
+
+  @media (--m) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: calc(var(--xr) * 1.875);
+  }
+}
+
+.division {
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--m) {
+    margin-bottom: calc(var(--yr) * 21);
+  }
+}
+
+.image {
+  position: relative;
+  background-color: color-mod(#000 a(0.6));
+  border-radius: calc(var(--yr) * 2)  calc(var(--yr) * 2) 0 0;
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    content: '';
+    padding-top: calc(1.5 / 2 * 100%);
+
+    @media (--s) {
+      padding-top: calc(1.5 / 4 * 100%);
+    }
+  }
+
+  & img {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    display: block;
+    width: 100%;
+    transform: translate(-50%, -50%);
+
+    @media (--s) {
+      /* border-radius: var(--yr); */
+    }
+  }
+}
+
+.title {
+  composes: h2 from '../Fonts.module.css';
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.intro {
+  display: grid;
+  background: var(--hl_color);
+  border-radius: 0 0 calc(var(--yr) * 2)  calc(var(--yr) * 2);
+  color: var(--wh_color);
+  padding: calc(var(--yr) * var(--s4)) calc(var(--yr) * 7.5) calc(var(--yr) * 12);
+
+  & .desc {
+    display: none;
+  }
+
+  @media (--s) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: calc(var(--xr) * 1.875);
+    padding: calc(var(--yr) * 14) calc(var(--yr) * 14) calc(var(--yr) * var(--s5));
+
+    & .desc {
+      display: block;
+    }
+  }
+}

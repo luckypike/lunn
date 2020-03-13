@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'tutors/:id', to: 'tutors#show'
   get 'sveden/employees', to: redirect('/tutors')
 
+  get 'abitur/programs', to: 'divisions#index'
+
   get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }
 
   get :announces, to: 'pages#announces'
