@@ -7,6 +7,6 @@
   courses: @courses.sort_by{ |c| [c.title, c.spec.presence || ''] } \
     .as_json( \
       only: %i[title nid],
-      methods: %i[path spec level youtube ege price_1 price_2 price_3 time_1 time_2 time_3 places_1 places_2 places_3] \
+      methods: %i[desc path spec level youtube ege price_1 price_2 price_3 time_1 time_2 time_3 places_1 places_2 places_3] \
     ) \
 }

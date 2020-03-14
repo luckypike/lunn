@@ -93,12 +93,25 @@ export default function Courses ({ location, courses, locale }) {
     ma: 'Магистратура'
   }
 
+  const sortCourses = (a, b) => {
+    if (a.level === b.level) {
+      if (a.title.localeCompare(b.title) !== 0) {
+        return a.title.localeCompare(b.title)
+      } else {
+        return (a.spec || a.title).localeCompare((b.spec || b.title))
+      }
+    } else {
+      if (a.level === 'ba' || b.level === 'ma') return -1
+      if (b.level === 'ba' || a.level === 'ma') return 1
+    }
+  }
+
   return (
     <>
       <Filters filters={filters} query={query} locale={locale}/>
 
       <div className={styles.courses}>
-        {data.map(course =>
+        {data.sort(sortCourses).map(course =>
           <a key={course.nid} href={course.path} className={styles.course}>
             <div className={styles.direction}>
               {course.title}
@@ -107,6 +120,12 @@ export default function Courses ({ location, courses, locale }) {
             <div className={styles.title}>
               {course.spec || course.title}
             </div>
+
+            {course.desc &&
+              <div className={styles.desc}>
+                {course.desc}
+              </div>
+            }
 
             <div className={styles.level}>
               {levels[course.level]}

@@ -1,0 +1,19 @@
+- set_meta_tags \
+  title: @node.title
+
+= react_component 'Courses/Divisions', { \
+  node: @node.as_json(only: :title),
+  divisions: @divisions.as_json( \
+    include: { \
+      image: { \
+        only: [],
+        methods: :path \
+      }, \
+      division_courses: { \
+        only: %i[title nid],
+        methods: %i[desc path spec level youtube ege price_1 price_2 price_3 time_1 time_2 time_3 places_1 places_2 places_3]} \
+      }, \
+    methods: %i[desc],
+    only: %i[title nid] \
+  ),
+}, { prerender: Rails.env.production? }

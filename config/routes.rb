@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   end
 
   get '*path', to: 'courses#index', constraints: { path: 'programs' }
+  get '*path', to: 'courses#divisions', constraints: { path: 'abitur/programs' }
+  get '*path', to: 'courses#ugsn', constraints: { path: 'programs/ugsn' }
   get '*path', to: 'courses#show', constraints: { path: %r{programs/.*} }
 
   get '*path', to: 'pages#history', constraints: { path: 'about/history' }
@@ -34,8 +36,6 @@ Rails.application.routes.draw do
   get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
   get 'tutors/:id', to: 'tutors#show'
   get 'sveden/employees', to: redirect('/tutors')
-
-  get 'abitur/programs', to: 'divisions#index'
 
   get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }
 

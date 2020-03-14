@@ -27,6 +27,10 @@ class Node < ApplicationRecord
   has_many :node_divisions, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_division_target_id, inverse_of: :node
   has_many :division_courses, -> { where(field_data_field_division: { bundle: :course }) }, through: :node_divisions, class_name: 'Node'
 
+  has_many :node_ugsns, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_ugsn_target_id, inverse_of: :node
+  has_many :ugsn_courses, -> { where(field_data_field_ugsn: { bundle: :course }) }, through: :node_ugsns, class_name: 'Node'
+
+
   has_one :field_price_1, -> { where(entity_type: :node) }, class_name: 'Field::Price1', foreign_key: :entity_id
   has_one :field_price_2, -> { where(entity_type: :node) }, class_name: 'Field::Price2', foreign_key: :entity_id
   has_one :field_price_3, -> { where(entity_type: :node) }, class_name: 'Field::Price3', foreign_key: :entity_id
@@ -51,6 +55,7 @@ class Node < ApplicationRecord
   scope :events, -> { where(type: %i[news event]) }
   scope :sliders, -> { where(type: :slider_item) }
   scope :divisions, -> { where(type: :division) }
+  scope :ugsns, -> { where(type: :ugsn) }
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
 
   scope :active, -> { where(status: 1) }
