@@ -72,15 +72,15 @@
 .intro {
   display: grid;
   background: var(--hl_color);
-  border-radius: calc(var(--yr) * 2);
+  border-radius: 0 0 calc(var(--yr) * 2);
   color: var(--wh_color);
-  padding: calc(var(--yr) * var(--s4)) var(--xr) calc(var(--yr) * var(--s5));
+  padding: calc(var(--yr) * var(--s4)) var(--xr);
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--s) {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: calc(var(--xr) * 2);
-    padding: calc(var(--yr) * var(--s4)) 0 calc(var(--yr) * var(--s5));
+    padding: calc(var(--yr) * var(--s4)) 0;
   }
 }
 
@@ -107,6 +107,7 @@
     margin-right: calc(var(--yr) * 2);
     margin-bottom: calc(var(--yr) * 2);
     position: relative;
+    user-select: none;
 
     @media (--m) {
       margin-bottom: 0;
@@ -117,7 +118,7 @@
     }
 
     &.selected {
-      background-color: var(--pr_color);
+      background-color: var(--hl_o_color);
       color: var(--wh_color);
     }
   }

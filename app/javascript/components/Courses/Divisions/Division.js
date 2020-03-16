@@ -44,6 +44,13 @@ export default function Division ({ division, locale }) {
 
   return (
     <div className={styles.division}>
+      <div
+        className={styles.image}
+        style={{
+          backgroundImage: division.image ? `url(https://assets.lunn.ru/images/1600x600,q65/legacy${division.image.path})` : 'none'
+        }}
+      />
+
       <div className={styles.intro}>
         <div className={styles.title}>
           {division.title}
