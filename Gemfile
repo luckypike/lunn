@@ -46,6 +46,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  gem 'rubocop-rails', require: false
+
   gem 'capistrano', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', require: false
