@@ -96,6 +96,10 @@ class Node < ApplicationRecord
     body&.field_body_value
   end
 
+  def levels
+    division_courses.map(&:level).uniq
+  end
+
   def desc
     summary&.field_summary_value
   end

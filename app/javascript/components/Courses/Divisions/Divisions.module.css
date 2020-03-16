@@ -48,7 +48,7 @@
 }
 
 .title {
-  composes: h2 from '../Fonts.module.css';
+  composes: h2 from '../../Fonts.module.css';
 
   @media (--s) {
     padding-left: calc(1 / 6 * 100%);
@@ -72,14 +72,53 @@
 .intro {
   display: grid;
   background: var(--hl_color);
-  border-radius: 0 0 calc(var(--yr) * 2)  calc(var(--yr) * 2);
+  border-radius: calc(var(--yr) * 2);
   color: var(--wh_color);
   padding: calc(var(--yr) * var(--s4)) var(--xr) calc(var(--yr) * var(--s5));
   margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--s) {
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: calc(var(--xr) * 2);
+    grid-gap: calc(var(--xr) * 2);
     padding: calc(var(--yr) * var(--s4)) 0 calc(var(--yr) * var(--s5));
+  }
+}
+
+.filter {
+  border-radius: calc(var(--yr) * 2);
+  cursor: pointer;
+  position: relative;
+  grid-column: span 2;
+
+  @media (--s) {
+    padding-left: calc(1 / 12 * 100%);
+  }
+
+  & .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  & .item {
+    color: var(--pr_color);
+    padding: calc(var(--yr) * 1.75) calc(var(--yr) * 3.75);
+    background-color: var(--sp_color);
+    border-radius: calc(var(--yr) * 2);
+    margin-right: calc(var(--yr) * 2);
+    margin-bottom: calc(var(--yr) * 2);
+    position: relative;
+
+    @media (--m) {
+      margin-bottom: 0;
+
+      &:not(:last-child) {
+        margin-right: calc(var(--yr) * 2);
+      }
+    }
+
+    &.selected {
+      background-color: var(--pr_color);
+      color: var(--wh_color);
+    }
   }
 }
