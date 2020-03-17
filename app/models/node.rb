@@ -163,7 +163,7 @@ class Node < ApplicationRecord
 
   def navs
     mlid = Nav.main_or_sec.loaf.find_by(link_path: "node/#{id}")&.mlid
-    temp = Nav.lang.where(plid: mlid).map
+    temp = Nav.active.lang.where(plid: mlid).map
 
     navs_images = Node::SingleImage
       .where(
