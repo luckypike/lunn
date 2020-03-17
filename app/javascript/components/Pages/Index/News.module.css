@@ -32,6 +32,7 @@
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2));
   overflow: hidden;
+  background-color: var(--sp_color);
 
   &::before {
     display: block;

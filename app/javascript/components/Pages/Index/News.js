@@ -24,7 +24,9 @@ export default function News ({ news, I18n }) {
           <div key={item.nid} className={styles.news_item}>
             <a href={item.path}>
               <div className={styles.image}>
-                <img src={`https://assets.lunn.ru/images/900x600,sc,jpeg,q70/legacy${item.images[0].path}`} />
+                {item.images && item.images.length > 0 &&
+                  <img src={`https://assets.lunn.ru/images/900x600,sc,jpeg,q70/legacy${item.images[0].path}`} />
+                }
               </div>
 
               <div className={styles.title}>
