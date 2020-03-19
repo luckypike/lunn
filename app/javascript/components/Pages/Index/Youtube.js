@@ -17,9 +17,9 @@ export default function Youtube () {
       </div>
 
       <Frame
-        src="https://www.youtube.com/embed/PKEUmkXjEYk"
-        title="Чаепитие с победителями олимпиады по французскому языку"
-        desc="19 февраля 2020"
+        src="https://www.youtube.com/embed/DFlMGZbmYaI"
+        title="Видеообращение ректора НГЛУ им. Н.А.Добролюбова Жанны Никоновой"
+        desc="18 марта 2020"
       />
 
       <Frame
