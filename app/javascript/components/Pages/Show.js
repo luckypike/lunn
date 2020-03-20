@@ -22,7 +22,7 @@ Show.propTypes = {
 }
 
 export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
-  const nid = [475, 476, 490, 491, 492, 493, 494, 495, 498, 6066]
+  const nid = [475, 476, 490, 491, 492, 493, 494, 495, 498, 6066, 6083]
 
   return (
     <div className={classNames(styles.root, pages.container)}>
