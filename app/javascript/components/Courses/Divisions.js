@@ -33,7 +33,7 @@ export default function Divisions ({ node, loaf, level, divisions, locale }) {
           <ul>
             <li>
               <a href="/programs/ba" className={classNames(styles.tab, { [styles.active]: level === 'ba' })}>
-                Бакалавиат
+                Бакалавриат
               </a>
             </li>
 
