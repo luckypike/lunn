@@ -1,0 +1,16 @@
+.today {
+  margin: calc(var(--yr) * var(--s6)) 0;
+}
+
+.admission {
+  background-color: var(--sp_color);
+  padding: calc(var(--yr) * var(--s6)) 0;
+}
+
+.courses {
+  margin: calc(var(--yr) * var(--s6)) 0;
+}
+
+.foreigners {
+  margin-bottom: calc(var(--yr) * var(--s6));
+}

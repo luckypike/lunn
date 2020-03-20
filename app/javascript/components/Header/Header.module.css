@@ -1,6 +1,6 @@
 .root {
   display: grid;
-  grid-template-columns: calc(var(--yr) * 16) 1fr calc(var(--yr) * 12);
+  grid-template-columns: calc(var(--yr) * 20) 1fr calc(var(--yr) * 14);
   position: relative;
   height: calc(var(--yr) * 16);
   max-width: 120rem;
@@ -9,7 +9,6 @@
 
   @media (--s) {
     grid-template-columns: calc(var(--yr) * 28) 1fr calc(var(--yr) * 18);
-    height: calc(var(--yr) * 32);
   }
 
   @media (--m) {
@@ -22,20 +21,20 @@
 }
 
 .container {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 
-  &.index {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  @media (--s) {
+    top: calc(var(--s5) * var(--yr));
+  }
 
-    &.special {
-      top: 48px;
+  &.special {
+    top: 48px;
 
-      @media (--s) {
-        top: 64px;
-      }
+    @media (--s) {
+      top: calc(var(--s5) * var(--yr) + 64px);
     }
   }
 
@@ -69,7 +68,7 @@
     display: block;
 
     @media (--s) {
-      padding: calc(var(--yr) * 8) 0;
+      padding: 0;
     }
   }
 
@@ -157,6 +156,11 @@
   z-index: 9;
   transform: translateY(calc(var(--yr) * -2));
   transition: visibility 0s ease 0.2s, opacity 0.2s, transform 0.2s;
+
+  @media (--s) {
+    top: calc(var(--yr) * var(--s5) * -1);
+    height: calc(var(--yr) * 16 + calc(var(--yr) * var(--s5) * 2));
+  }
 
   &.active {
     opacity: 1;

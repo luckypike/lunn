@@ -1,0 +1,95 @@
+h2 {
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.courses {
+  display: grid;
+  grid-gap: calc(var(--yr) * var(--s3));
+
+  @media (--s) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: calc(var(--yr) * var(--s4)) calc(var(--xr) * 2);
+  }
+
+  @media (--l) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.course {
+  padding: calc(var(--yr) * var(--s3)) calc(var(--xr) * 2) calc(var(--yr) * var(--s4));
+  background: var(--sp_color);
+  display: flex;
+  flex-direction: column;
+  min-height: calc(var(--yr) * 50);
+
+  @media (--s) {
+    min-height: calc(var(--yr) * 100);
+  }
+
+  &.ba {
+    background-color: #fef374;
+  }
+
+  &.sp {
+    background-color: #71d1fa;
+  }
+
+  &.ma {
+    background-color: #eceff1;
+  }
+
+  &.as {
+    background-color: #5ed1d2;
+  }
+}
+
+.title {
+  composes: h4 from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s2));
+}
+
+.count {
+  composes: bt from '../../Fonts.module.css';
+}
+
+.more {
+  line-height: calc(var(--yr) * 9);
+  margin-top: auto;
+  position: relative;
+  transition: color 0.3s;
+
+  & svg {
+    position: absolute;
+    height: calc(var(--yr) * 9);
+    right: 0;
+    top: 0;
+
+    & path {
+      transition: 0.5s stroke;
+    }
+
+    & circle {
+      transition: 0.1s stroke, 0.5s fill;
+    }
+  }
+}
+
+.course:hover {
+  color: inherit;
+
+  & .more {
+    color: var(--hl_color);
+
+    & svg {
+      & path {
+        stroke: #fff;
+      }
+
+      & circle {
+        stroke: var(--hl_color);
+        fill: var(--hl_color);
+      }
+    }
+  }
+}

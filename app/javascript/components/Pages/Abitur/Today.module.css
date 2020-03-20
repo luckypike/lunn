@@ -1,0 +1,69 @@
+.facts {
+  hyphens: auto;
+  margin-bottom: calc(var(--yr) * var(--s5));
+  margin-top: calc(var(--yr) * var(--s4));
+
+  & ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: calc(var(--yr) * var(--s4)) calc(var(--xr) * 2);
+
+    @media (--m) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  & li {
+    border-top: 1px solid #dbddde;
+    padding-top: calc(var(--yr) * var(--s2));
+  }
+}
+
+.digits {
+  composes: h0 from '../../Fonts.module.css';
+  color: var(--hl_color);
+  margin-bottom: calc(var(--yr) * var(--s2));
+}
+
+.p80 {
+  composes: at from '../../Fonts.module.css';
+  color: var(--gr_color);
+  margin-top: calc(var(--yr) * var(--s2));
+}
+
+.fact {
+  composes: h4 from '../../Fonts.module.css';
+  margin-bottom: 0;
+}
+
+.features {
+  composes: h4 from '../../Fonts.module.css';
+
+  & li {
+    background: url(../../../images/check.svg) no-repeat left top;
+    background-size: auto calc(var(--yr) * 5.5);
+    padding-left: 2.5em;
+
+    &:not(:last-child) {
+      margin-bottom: calc(var(--yr) * var(--s3));
+    }
+
+    @media (--s) {
+      background-size: auto calc(var(--yr) * 7);
+    }
+  }
+}
+
+.desc {
+  composes: bt from '../../Fonts.module.css';
+}
+
+.grid {
+  display: grid;
+  grid-row-gap: calc(var(--yr) * var(--s5));
+
+  @media (--l) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: calc(var(--xr) * 2);
+  }
+}

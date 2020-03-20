@@ -18,19 +18,20 @@ export default function Docs ({ docs, locale }) {
 
   return (
     <div>
+      <h2>
+        Документы
+      </h2>
+
       <ul className={styles.docs}>
         {docs.map(doc =>
           <li key={doc.fid}>
             <a href={doc.path} className={styles.doc} itemProp={doc.wrapper}>
-              <div className={styles.data}>
-                <div className={styles.title}>
-                  {doc.title ? doc.title : doc.filename}
-                </div>
+              <div className={styles.title}>
+                {doc.title ? doc.title : doc.filename}
+              </div>
 
-                <div className={styles.meta}>
-                  ({mime.extension(doc.mime)}, {I18n.toHumanSize(doc.size, { precision: 1, format: '%n %u', strip_insignificant_zeros: true })})
-                </div>
-
+              <div className={styles.meta}>
+                ({mime.extension(doc.mime)}, {I18n.toHumanSize(doc.size, { precision: 1, format: '%n %u', strip_insignificant_zeros: true })})
               </div>
             </a>
           </li>

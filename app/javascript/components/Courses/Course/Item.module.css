@@ -1,0 +1,142 @@
+.root {
+  padding: calc(var(--yr) * var(--s3)) calc(var(--xr) * 1);
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    color: var(--pr_color);
+
+    & .more {
+      color: var(--hl_color);
+
+      & svg {
+        stroke: #fff;
+
+        & circle {
+          fill: var(--hl_color);
+          stroke: var(--hl_color);
+        }
+      }
+    }
+  }
+
+  @media (--s) {
+    padding: calc(var(--yr) * var(--s3)) calc(var(--xr) * 2);
+  }
+}
+
+.direction {
+  composes: h5 from '../../Fonts.module.css';
+  color: var(--hl_color);
+  margin-bottom: calc(var(--yr) * var(--s2));
+}
+
+.title {
+  composes: h4 from '../../Fonts.module.css';
+}
+
+.desc {
+  margin-bottom: calc(var(--yr) * var(--s2));
+}
+
+.levels {
+  margin-top: auto;
+}
+
+.check {
+  height: calc(var(--yr) * 5);
+  margin-right: var(--xr);
+
+  @media (--s) {
+    line-height: calc(var(--yr) * 6);
+  }
+}
+
+.level {
+  composes: h5 from '../../Fonts.module.css';
+  display: flex;
+
+  &:first-child {
+    margin-top: calc(var(--yr) * var(--s3));
+  }
+
+  &:not(:last-child) {
+    margin-bottom: calc(var(--yr) * var(--s1));
+  }
+
+  & .check {
+    & .nope {
+      opacity: 0;
+    }
+  }
+
+  &.inactive {
+    color: #dbddde;
+
+    & .check {
+      & .nope {
+        opacity: 1;
+      }
+
+      & .ok {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.form {
+  width: 8em;
+}
+
+.time {
+  color: var(--gr_color);
+}
+
+.ege {
+  margin-top: calc(var(--yr) * var(--s3));
+}
+
+.eget {
+  composes: at from '../../Fonts.module.css';
+  color: var(--gr_color);
+  margin-bottom: calc(var(--yr) * calc(var(--s1) - 2));
+}
+
+.es {
+  display: flex;
+  flex-wrap: wrap;
+  composes: at from '../../Fonts.module.css';
+}
+
+.e {
+  background-color: var(--sp_color);
+  border-radius: var(--yr);
+  line-height: calc(var(--yr) * 7);
+  padding: 0 calc(var(--yr) * 2);
+  margin-top: var(--yr);
+
+  &:not(:last-child) {
+    margin-right: var(--yr);
+  }
+}
+
+.more {
+  margin-top: calc(var(--yr) * var(--s4));
+  padding: calc(var(--yr) * 1.5);
+  position: relative;
+
+  & svg {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: calc(var(--yr) * 8);
+    stroke-width: 2;
+
+    @media (--s) {
+      height: calc(var(--yr) * 9);
+    }
+  }
+}

@@ -25,13 +25,17 @@ Rails.application.routes.draw do
     get :change, to: 'devise/passwords#edit', as: :edit_user_password
   end
 
-  get '*path', to: 'courses#index', constraints: { path: 'programs' }
-  get '*path', to: 'courses#divisions', constraints: { path: 'abitur/programs' }
+  # get '*path', to: 'courses#index', constraints: { path: 'programs' }
+  get 'programs', to: redirect('/programs/ba')
+  get '*path/:level', to: 'courses#divisions', constraints: { path: 'programs', level: %w[ba sp ma as] }
   get '*path', to: 'courses#ugsn', constraints: { path: 'programs/ugsn' }
   get '*path', to: 'courses#show', constraints: { path: %r{programs/.*} }
 
   get '*path', to: 'pages#history', constraints: { path: 'about/history' }
   get '*path', to: 'admissions#page', constraints: { path: 'abitur/online' }
+
+  # Abiturs
+  get '*path', to: 'pages#abitur', constraints: { path: 'abitur/2020' }
 
   get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
   get 'tutors/:id', to: 'tutors#show'

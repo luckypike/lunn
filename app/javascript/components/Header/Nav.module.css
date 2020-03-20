@@ -3,7 +3,7 @@
   user-select: none;
 
   @media (--s) {
-    padding: calc(var(--yr) * 10) 0;
+    /* padding: calc(var(--yr) * 10) 0; */
   }
 }
 

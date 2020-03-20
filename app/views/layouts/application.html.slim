@@ -10,7 +10,7 @@ html[class=special_cookie_classes lang=I18n.locale]
     = stylesheet_pack_tag 'app'
 
   body
-    = react_component 'Header/Header', { navs: @header_navs, index: current_page?(root_url) || current_page?('/en') }, { prerender: Rails.env.production? }
+    = react_component 'Header/Header', { navs: @header_navs, index: index?(@node) || current_page?('/en') }, { prerender: Rails.env.production? }
 
     = yield
 

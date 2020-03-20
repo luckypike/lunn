@@ -44,7 +44,7 @@ export default function Index ({ navs, locale }) {
   }, [])
 
   return (
-    <div className={pages.root}>
+    <div className={styles.root}>
       <div className={styles.video}>
         <video playsInline autoPlay loop muted>
           <source src={Intro} type="video/mp4" />

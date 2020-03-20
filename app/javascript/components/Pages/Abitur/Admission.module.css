@@ -1,0 +1,30 @@
+.root {
+  @media (--l) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: calc(var(--xr) * 2);
+  }
+}
+
+.desc {
+  composes: bt from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
+.address {
+  position: relative;
+  min-height: calc(var(--yr) * 5 * 2);
+  padding-left: 5em;
+  margin-bottom: 0;
+
+  @media (--s) {
+    min-height: calc(var(--yr) * 6 * 2);
+  }
+
+  & svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+}

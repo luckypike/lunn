@@ -1,0 +1,36 @@
+.root {
+  display: block;
+  background-color: #282a31;
+  position: relative;
+  padding: calc(var(--yr) * var(--s4));
+  min-height: calc(var(--yr) * 50);
+
+  @media (--s) {
+    min-height: calc(var(--yr) * 70);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: calc(var(--xr) * 2);
+  }
+
+  & h2 {
+    color: #fafafa;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.image {
+  background: url('./Foreigners.jpg') no-repeat center 15%;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.3;
+
+  @media (--s) {
+    left: 50%;
+    opacity: 1;
+  }
+}

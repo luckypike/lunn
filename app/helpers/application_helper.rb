@@ -13,4 +13,8 @@ module ApplicationHelper
 
     classes
   end
+
+  def index?(node)
+    current_page?(root_url) || (node && [4734].include?(node.nid))
+  end
 end

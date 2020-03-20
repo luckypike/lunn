@@ -1,0 +1,36 @@
+.root {
+  margin-bottom: calc(var(--yr) * var(--s6));
+}
+
+.division {
+  padding: calc(var(--yr) * var(--s5)) 0 calc(var(--yr) * var(--s6));
+}
+
+.color-5997 {
+  background-color: #71d1fa;
+}
+
+.color-5998 {
+  background-color: #5ed1d2;
+}
+
+.color-5999 {
+  background-color: #7d93fa;
+}
+
+.color-6000 {
+  background-color: #fef375;
+}
+
+.color-6001 {
+  background-color: #fa899c;
+}
+
+.title {
+  composes: h2 from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--m) {
+    padding-right: 50%;
+  }
+}

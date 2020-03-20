@@ -1,8 +1,10 @@
 - set_meta_tags \
   title: @node.title
 
-= react_component 'Courses/Divisions/Divisions', { \
+= react_component 'Courses/Divisions', { \
   node: @node.as_json(only: :title),
+  loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
+  level: params[:level],
   divisions: @divisions.as_json( \
     include: { \
       image: { \

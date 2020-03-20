@@ -4,7 +4,7 @@
   padding: calc(var(--yr) * 5) 0;
 
   @media (--s) {
-    padding: calc(var(--yr) * 4.5) 0;
+    padding: calc(var(--yr) * 6) 0;
   }
 }
 

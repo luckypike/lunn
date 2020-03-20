@@ -1,0 +1,99 @@
+.root {
+  background-color: var(--sp_color);
+  padding-top: calc(var(--yr) * var(--s5) + calc(var(--yr) * 16));
+  padding-bottom: calc(var(--yr) * var(--s6));
+
+  @media (--s) {
+    padding-top: calc(var(--yr) * var(--s5) * 2 + calc(var(--yr) * 16));
+  }
+}
+
+.withi {
+  color: #fafafa;
+  position: relative;
+  background: none;
+  min-height: calc(var(--yr) * 140);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000;
+    z-index: -1;
+    opacity: 0.4;
+  }
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  z-index: -2;
+}
+
+.h1 {
+  composes: h0 from './Fonts.module.css';
+  margin-bottom: 0;
+
+  @media (--m) {
+    padding-right: calc(3 / 12 * 100%);
+  }
+}
+
+.loafs {
+  display: none;
+  margin-bottom: calc(var(--yr) * var(--s3));
+
+  @media (--s) {
+    padding: 0;
+    display: flex;
+  }
+}
+
+.loaf {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 270px;
+  color: #777;
+
+  & a {
+    color: #777;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  margin-right: var(--yr);
+  white-space: nowrap;
+
+  &::after {
+    content: "–";
+    color: #777;
+    margin-left: var(--yr);
+  }
+
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.desc {
+  composes: h4 from './Fonts.module.css';
+  margin-top: calc(var(--yr) * var(--s3));
+  margin-bottom: 0;
+}
