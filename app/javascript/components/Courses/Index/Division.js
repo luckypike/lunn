@@ -14,7 +14,7 @@ Division.propTypes = {
 }
 
 export default function Division ({ level, division, locale }) {
-  const courses = division.division_courses.filter(c => c.level === level)
+  const courses = division.courses.filter(c => c.level === level)
 
   if (courses.length < 1) return null
 

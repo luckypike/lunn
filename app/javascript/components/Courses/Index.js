@@ -1,40 +1,70 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Router } from '@reach/router'
-// import classNames from 'classnames'
+import classNames from 'classnames'
+import { deserialize } from 'jsonapi-deserializer'
 
-import { Title } from '../Pages'
-import Courses from './Index/Courses'
+import Title from '../Title'
+
+import Division from './Index/Division'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
 
-Show.propTypes = {
+Index.propTypes = {
   node: PropTypes.object,
-  courses: PropTypes.array,
+  level: PropTypes.string,
+  divisions: PropTypes.object,
   loaf: PropTypes.array,
-  docs: PropTypes.array,
   locale: PropTypes.string
 }
 
-export default function Show ({ node, courses, docs, loaf, locale }) {
-  return (
-    <div className={pages.container}>
-      <Title
-        h1={node.title}
-        loaf={loaf}
-      />
+export default function Index ({ node, loaf, level, divisions: data, locale }) {
+  const divisions = deserialize(data)
 
-      {courses.length > 0 &&
-        <div className={styles.courses}>
-          <Router>
-            <Courses
-              path="/programs"
-              courses={courses}
-              locale={locale}
-            />
-          </Router>
+  return (
+    <div className={pages.beta}>
+      {node &&
+        <Title
+          beta
+          h1={node.title}
+          loaf={loaf}
+        />
+      }
+
+      <div className={pages.container}>
+        <div className={styles.tabs}>
+          <ul>
+            <li>
+              <a href="/programs/ba" className={classNames(styles.tab, { [styles.active]: level === 'ba' })}>
+                Бакалавриат
+              </a>
+            </li>
+
+            <li>
+              <a href="/programs/sp" className={classNames(styles.tab, { [styles.active]: level === 'sp' })}>
+                Специалитет
+              </a>
+            </li>
+
+            <li>
+              <a href="/programs/ma" className={classNames(styles.tab, { [styles.active]: level === 'ma' })}>
+                Магистратура
+              </a>
+            </li>
+
+            <li>
+              <a href="/programs/as" className={classNames(styles.tab, { [styles.active]: level === 'as' })}>
+                Аспирантура
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
+
+      {divisions &&
+        divisions.filter(d => d.courses.length > 0).map(division =>
+          <Division key={division.nid} level={level} division={division} locale={locale} />
+        )
       }
     </div>
   )

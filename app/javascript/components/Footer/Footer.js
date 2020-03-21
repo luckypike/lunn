@@ -6,21 +6,24 @@ import classNames from 'classnames'
 import { parseDOM } from 'htmlparser2'
 import domToReact from 'html-react-parser/lib/dom-to-react'
 import { YMInitializer } from 'react-yandex-metrika'
+import { deserialize } from 'jsonapi-deserializer'
 
 import { useI18n } from '../I18n'
 
 import styles from './Footer.module.css'
 
 Footer.propTypes = {
-  navs: PropTypes.array,
-  footer: PropTypes.array,
+  navs: PropTypes.object,
+  footer: PropTypes.object,
   partners: PropTypes.object,
   env: PropTypes.string,
   locale: PropTypes.string
 }
 
-export default function Footer ({ navs, footer, partners, env, locale }) {
+export default function Footer ({ navs: data, footer: footerData, partners, env, locale }) {
   const I18n = useI18n(locale)
+  const navs = deserialize(data)
+  const footer = deserialize(footerData)
 
   return (
     <>

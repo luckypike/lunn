@@ -27,6 +27,10 @@ class Nav < ApplicationRecord
     end
   end
 
+  def url
+    path
+  end
+
   def title
     link_title
   end

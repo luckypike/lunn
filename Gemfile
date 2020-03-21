@@ -30,6 +30,7 @@ gem 'exception_notification'
 gem 'bootsnap', require: false
 
 gem 'mini_racer'
+gem 'fast_jsonapi'
 
 gem 'whenever', require: false
 

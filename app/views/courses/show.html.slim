@@ -2,12 +2,7 @@
   title: @node.title
 
 = react_component 'Courses/Show', { \
-  loaf: @loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
+  loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
   node: @node.as_json(only: :title, methods: :path),
-  teachers: @node.teachers.includes(:image).as_json(only: %i[nid], methods: %i[title path], include: { image: { only: [], methods: %i[id path] } }),
-  course: @course \
-    .as_json( \
-      only: %i[title nid],
-      methods: %i[path spec level text youtube ege price_1 price_2 price_3 time_1 time_2 time_3 places_1 places_2 places_3 course_competencies course_disciplines course_features course_prospects] \
-    ) \
+  course: CourseSerializer.new(@course, { include: %i[tutors tutors.image], params: { full: true } }).serializable_hash \
 }

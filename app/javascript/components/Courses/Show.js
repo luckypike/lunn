@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { deserialize } from 'jsonapi-deserializer'
 
 import { Title } from '../Pages'
 import { useI18n } from '../I18n'
@@ -15,35 +16,23 @@ Show.propTypes = {
   node: PropTypes.object,
   loaf: PropTypes.array,
   course: PropTypes.object,
-  locale: PropTypes.string,
-  teachers: PropTypes.array
+  locale: PropTypes.string
 }
 
-export default function Show ({ node, loaf, course, locale, teachers }) {
+export default function Show ({ node, loaf, course: data, locale }) {
   const I18n = useI18n(locale)
+  const course = deserialize(data)
 
   return (
     <div className={pages.container}>
       <Title
         h1={course.spec || course.title}
-        loaf={[
-          ...loaf,
-          {
-            mlid: 999,
-            path: node.path,
-            title: node.title
-          }
-        ]}
+        loaf={loaf}
       />
 
       <div className={styles.level}>
         {I18n.t(`courses.levels.${course.level}`)}
       </div>
-
-      {/* <Form
-        course={course}
-        locale={locale}
-      /> */}
 
       <div className={styles.root}>
         <div className={styles.course}>
@@ -151,13 +140,13 @@ export default function Show ({ node, loaf, course, locale, teachers }) {
           </div>
         )}
 
-        {teachers && teachers.length > 0 &&
+        {course.tutors && course.tutors.length > 0 &&
           <div className={styles.teachers}>
             <h2>
               Преподаватели программы
             </h2>
 
-            <Tutors tutors={teachers} />
+            <Tutors tutors={course.tutors} />
           </div>
         }
       </div>

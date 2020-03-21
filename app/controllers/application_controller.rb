@@ -32,13 +32,13 @@ class ApplicationController < ActionController::Base
   end
 
   def set_global_navs
-    @header_navs = Nav.active.main.lang.as_json(methods: %i[path title])
+    @header_navs = Nav.active.main.lang
 
     @footer_navs = Nav.active.main_or_sec.lang.unscope(:order)
-      .order(menu_name: :desc, weight: :asc).as_json(methods: %i[path title])
+      .order(menu_name: :desc, weight: :asc)
 
     @footer = Nav.active.footer.lang.unscope(:order)
-      .order(menu_name: :desc, weight: :asc).as_json(methods: %i[path title])
+      .order(menu_name: :desc, weight: :asc)
   end
 
   def set_partners

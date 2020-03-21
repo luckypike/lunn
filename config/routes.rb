@@ -27,9 +27,9 @@ Rails.application.routes.draw do
 
   # get '*path', to: 'courses#index', constraints: { path: 'programs' }
   get 'programs', to: redirect('/programs/ba')
-  get '*path/:level', to: 'courses#divisions', constraints: { path: 'programs', level: %w[ba sp ma as] }
+  get '*path/:level', to: 'courses#index', constraints: { path: 'programs', level: %w[ba sp ma as] }
+  get '*path/:id', to: 'courses#show', constraints: { path: 'programs', id: /\d.+/ }
   get '*path', to: 'courses#ugsn', constraints: { path: 'programs/ugsn' }
-  get '*path', to: 'courses#show', constraints: { path: %r{programs/.*} }
 
   get '*path', to: 'pages#history', constraints: { path: 'about/history' }
   get '*path', to: 'admissions#page', constraints: { path: 'abitur/online' }
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get '*path', to: 'pages#abitur', constraints: { path: 'abitur/2020' }
 
   get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
-  get 'tutors/:id', to: 'tutors#show'
+  get '*path/:id', to: 'tutors#show', constraints: { path: 'tutors', id: /\d.+/ }
   get 'sveden/employees', to: redirect('/tutors')
 
   get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }

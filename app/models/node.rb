@@ -1,6 +1,4 @@
 class Node < ApplicationRecord
-  include Tutor
-  include Coursable
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
@@ -20,42 +18,15 @@ class Node < ApplicationRecord
   has_many :docs, -> { includes(:attachment).where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
 
   has_many :departments, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_department_target_id, inverse_of: :node
-  has_many :courses, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_courses_target_id, inverse_of: :node
-  has_many :tutors, through: :departments, class_name: 'Node'
-  has_many :teachers, through: :courses, class_name: 'Node'
-
-  has_many :node_divisions, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_division_target_id, inverse_of: :node
-  has_many :division_courses, -> { where(field_data_field_division: { bundle: :course }) }, through: :node_divisions, class_name: 'Node'
-
-  has_many :node_ugsns, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_ugsn_target_id, inverse_of: :node
-  has_many :ugsn_courses, -> { where(field_data_field_ugsn: { bundle: :course }) }, through: :node_ugsns, class_name: 'Node'
-
-
-  has_one :field_price_1, -> { where(entity_type: :node) }, class_name: 'Field::Price1', foreign_key: :entity_id
-  has_one :field_price_2, -> { where(entity_type: :node) }, class_name: 'Field::Price2', foreign_key: :entity_id
-  has_one :field_price_3, -> { where(entity_type: :node) }, class_name: 'Field::Price3', foreign_key: :entity_id
-
-  has_one :field_time_1, -> { where(entity_type: :node) }, class_name: 'Field::Time1', foreign_key: :entity_id
-  has_one :field_time_2, -> { where(entity_type: :node) }, class_name: 'Field::Time2', foreign_key: :entity_id
-  has_one :field_time_3, -> { where(entity_type: :node) }, class_name: 'Field::Time3', foreign_key: :entity_id
-
-  has_one :field_places_1, -> { where(entity_type: :node) }, class_name: 'Field::Places1', foreign_key: :entity_id
-  has_one :field_places_2, -> { where(entity_type: :node) }, class_name: 'Field::Places2', foreign_key: :entity_id
-  has_one :field_places_3, -> { where(entity_type: :node) }, class_name: 'Field::Places3', foreign_key: :entity_id
-
-  has_one :field_spec, -> { where(entity_type: :node) }, class_name: 'Field::Spec', foreign_key: :entity_id
-  has_one :field_level, -> { where(entity_type: :node) }, class_name: 'Field::Level', foreign_key: :entity_id
-  has_one :field_youtube, -> { where(entity_type: :node) }, class_name: 'Field::Youtube', foreign_key: :entity_id
-
-  has_many :field_ege, -> { where(entity_type: :node) }, class_name: 'Field::Ege', foreign_key: :entity_id
+  has_many :tutors, through: :departments
 
   scope :news, -> { where(type: :news) }
-  scope :employees, -> { where(type: :employee) }
-  scope :courses, -> { where(type: :course) }
+  # scope :employees, -> { where(type: :employee) }
+  # scope :courses, -> { where(type: :course) }
   scope :events, -> { where(type: %i[news event]) }
   scope :sliders, -> { where(type: :slider_item) }
-  scope :divisions, -> { where(type: :division) }
-  scope :ugsns, -> { where(type: :ugsn) }
+  # scope :divisions, -> { where(type: :division) }
+  # scope :ugsns, -> { where(type: :ugsn) }
   scope :lang, ->(locale = nil) { where(language: locale || I18n.locale) }
 
   scope :active, -> { where(status: 1) }
@@ -96,64 +67,8 @@ class Node < ApplicationRecord
     body&.field_body_value
   end
 
-  def levels
-    division_courses.map(&:level).uniq
-  end
-
   def desc
     summary&.field_summary_value
-  end
-
-  def price_1
-    field_price_1&.value
-  end
-
-  def price_2
-    field_price_2&.value
-  end
-
-  def price_3
-    field_price_3&.value
-  end
-
-  def spec
-    field_spec&.value
-  end
-
-  def level
-    field_level&.value
-  end
-
-  def time_1
-    field_time_1&.value
-  end
-
-  def time_2
-    field_time_2&.value
-  end
-
-  def time_3
-    field_time_3&.value
-  end
-
-  def places_1
-    field_places_1&.value
-  end
-
-  def places_2
-    field_places_2&.value
-  end
-
-  def places_3
-    field_places_3&.value
-  end
-
-  def youtube
-    field_youtube&.value
-  end
-
-  def ege
-    field_ege.map(&:value)
   end
 
   def dep?

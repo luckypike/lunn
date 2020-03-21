@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { deserialize } from 'jsonapi-deserializer'
 
 // import { path } from '../Routes'
 
@@ -15,12 +16,14 @@ import Logo from '!svg-react-loader?!./Images/Logo.svg'
 import styles from './Header.module.css'
 
 Header.propTypes = {
-  navs: PropTypes.array,
+  navs: PropTypes.object,
   index: PropTypes.bool,
   locale: PropTypes.string
 }
 
-export default function Header ({ navs, index, locale }) {
+export default function Header ({ navs: data, index, locale }) {
+  const navs = deserialize(data)
+
   const [menuActive, setMenuActive] = useState(false)
   const [searchActive, setSearchActive] = useState(false)
   const [specialActive, setSpecialActive] = useState(false)

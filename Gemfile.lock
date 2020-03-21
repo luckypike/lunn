@@ -119,6 +119,8 @@ GEM
     execjs (2.7.0)
     faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -297,6 +299,7 @@ DEPENDENCIES
   elasticsearch-rails
   elasticsearch-ruby
   exception_notification
+  fast_jsonapi
   i18n-js
   jbuilder
   letter_opener

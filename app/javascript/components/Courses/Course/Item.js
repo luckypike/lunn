@@ -15,7 +15,7 @@ export default function Item ({ course, locale }) {
   const I18n = useI18n(locale)
 
   return (
-    <a key={course.nid} href={course.path} className={styles.root}>
+    <a key={course.nid} href={course.url} className={styles.root}>
       <div className={styles.direction}>
         {course.title}
       </div>

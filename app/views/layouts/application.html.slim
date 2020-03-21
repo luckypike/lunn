@@ -10,15 +10,15 @@ html[class=special_cookie_classes lang=I18n.locale]
     = stylesheet_pack_tag 'app'
 
   body
-    = react_component 'Header/Header', { navs: @header_navs, index: index?(@node) || current_page?('/en') }, { prerender: Rails.env.production? }
+    = react_component 'Header/Header', { navs: NavSerializer.new(@header_navs).serializable_hash, index: index?(@node) || current_page?('/en') }, { prerender: Rails.env.production? }
 
     = yield
 
     = react_component 'Footer/Footer', { \
-      navs: @footer_navs,
+      navs: NavSerializer.new(@footer_navs).serializable_hash,
       partners: @partners,
       env: Rails.env,
-      footer: @footer \
+      footer: NavSerializer.new(@footer).serializable_hash \
     }, { prerender: Rails.env.production? }
 
     = javascript_pack_tag 'app', async: true

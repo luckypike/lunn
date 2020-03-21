@@ -16,6 +16,7 @@
     "html-react-parser": "^0.10.0",
     "htmlparser2": "^4.0.0",
     "i18n-js": "^3.5.1",
+    "jsonapi-deserializer": "^0.1.1",
     "lodash.debounce": "^4.0.8",
     "mime-types": "^2.1.26",
     "normalize.css": "^8.0.1",

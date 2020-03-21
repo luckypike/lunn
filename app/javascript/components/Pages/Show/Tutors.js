@@ -11,7 +11,7 @@ export default function Tutors ({ tutors }) {
   return (
     <div className={styles.tutors}>
       {tutors.map(tutor =>
-        <a href={tutor.path} key={tutor.nid} className={styles.tutor}>
+        <a href={tutor.url || tutor.path} key={tutor.nid} className={styles.tutor}>
           <div className={styles.image}>
             {tutor.image &&
               <img src={`https://assets.lunn.ru/images/480x600,sc/legacy${tutor.image.path}`} />
