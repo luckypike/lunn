@@ -69,3 +69,25 @@
   composes: h3 from '../Fonts.module.css';
   margin-bottom: calc(var(--yr) * var(--s3));
 }
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  right: calc(var(--yr) * var(--s2));
+  top: calc(8 * var(--yr));
+  transform: translateY(-50%);
+  padding: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 6) 0;
+  z-index: 9;
+
+  & svg {
+    display: block;
+    width: calc(var(--yr) * 8);
+    height: calc(var(--yr) * 8);
+  }
+
+  @media (--s) {
+    top: calc(24 * var(--yr));
+    right: calc(var(--yr) * 6);
+  }
+}

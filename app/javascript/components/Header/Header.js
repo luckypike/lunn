@@ -35,11 +35,6 @@ export default function Header ({ navs: data, index, locale }) {
     }
   }, [])
 
-  const handleClick = () => {
-    setMenuActive(false)
-    setSearchActive(false)
-  }
-
   return (
     <>
       <Special active={specialActive} />
@@ -53,7 +48,7 @@ export default function Header ({ navs: data, index, locale }) {
           }
         )}
       >
-        <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} onClick={() => handleClick()} onMouseEnter={() => setMenuActive(false)} />
+        <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} />
 
         <header className={styles.root}>
           <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
@@ -62,12 +57,11 @@ export default function Header ({ navs: data, index, locale }) {
             </a>
           </div>
 
-          <div className={styles.nav} onMouseLeave={() => setMenuActive(false)}>
+          <div className={styles.nav}>
             <Nav
               index={index}
               navs={navs}
               menuActive={menuActive}
-              menuOpen={() => setMenuActive(true)}
               onToggle={() => setMenuActive(!menuActive)}
             />
           </div>
@@ -86,8 +80,11 @@ export default function Header ({ navs: data, index, locale }) {
           }
         </header>
 
-        <div className={classNames(styles.menu, { [styles.active]: menuActive })} onMouseEnter={() => setMenuActive(true)}>
-          <Menu navs={navs} />
+        <div className={classNames(styles.menu, { [styles.active]: menuActive })}>
+          <Menu
+            navs={navs}
+            onToggle={() => setMenuActive(!menuActive)}
+          />
         </div>
 
         <div className={classNames(styles.search, { [styles.active]: searchActive })}>

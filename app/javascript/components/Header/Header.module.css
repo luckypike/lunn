@@ -5,7 +5,6 @@
   height: calc(var(--yr) * 16);
   max-width: 120rem;
   margin: 0 auto;
-  z-index: 8;
 
   @media (--s) {
     grid-template-columns: calc(var(--yr) * 28) 1fr calc(var(--yr) * 18);
@@ -47,6 +46,7 @@
   width: max-content;
   order: 1;
   grid-column: 3;
+  z-index: 8;
 
   @media (--l) {
     grid-column: auto;
@@ -63,6 +63,8 @@
 }
 
 .logo {
+  z-index: 8;
+  
   & a {
     padding: calc(var(--yr) * 3) 0;
     display: block;
@@ -101,13 +103,12 @@
   visibility: hidden;
   z-index: 3;
   transform: translateY(calc(var(--yr) * -34));
-  transition: visibility 0s, opacity 0.3s, transform 0.3s;
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
 
   &.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(calc(var(--yr) * -16));
-    transition: visibility 0s, opacity 0.3s, transform 0.3s;
 
     @media (--s) {
       transform: translateY(calc(var(--yr) * -32));
