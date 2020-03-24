@@ -68,19 +68,19 @@
 }
 
 .white {
-  color: #fff;
+  color: var(--wh_color);
 
   & .more {
     &:hover {
-      color: var(--hl_o_color)
+      color: var(--wh_color)
     }
   }
 
   & a {
-    color: #fff;
+    color: var(--wh_color);
 
     &:hover {
-      color: var(--hl_o_color)
+      color: var(--wh_color);
     }
   }
 
