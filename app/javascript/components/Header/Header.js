@@ -21,20 +21,6 @@ Header.propTypes = {
   locale: PropTypes.string
 }
 
-function useKeyboardEvent (key, callback) {
-  useEffect(() => {
-    const handler = function (event) {
-      if (event.key === key) {
-        callback()
-      }
-    }
-    window.addEventListener('keydown', handler)
-    return () => {
-      window.removeEventListener('keydown', handler)
-    }
-  }, [])
-}
-
 export default function Header ({ navs: data, index, locale }) {
   const navs = deserialize(data)
 
@@ -47,11 +33,20 @@ export default function Header ({ navs: data, index, locale }) {
     if (index) {
       setWhite(true)
     }
+
+    window.addEventListener('keydown', onEscapeDown)
+
+    return () => {
+      window.removeEventListener('keydown', onEscapeDown)
+    }
   }, [])
 
-  useKeyboardEvent('Escape', () => {
-    setMenuActive(false)
-  })
+  const onEscapeDown = event => {
+    if (event.key === 'Escape') {
+      setMenuActive(false)
+      setSearchActive(false)
+    }
+  }
 
   return (
     <>
