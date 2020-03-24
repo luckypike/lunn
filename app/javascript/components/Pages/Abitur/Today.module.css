@@ -1,12 +1,15 @@
 .facts {
   hyphens: auto;
   margin-bottom: calc(var(--yr) * var(--s5));
-  margin-top: calc(var(--yr) * var(--s4));
 
   & ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: calc(var(--yr) * var(--s4)) calc(var(--xr) * 2);
+    grid-gap: calc(var(--yr) * var(--s4)) var(--xr);
+
+    @media (--s) {
+      grid-gap: calc(var(--yr) * var(--s4)) calc(var(--xr) * 2);
+    }
 
     @media (--m) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -14,7 +17,6 @@
   }
 
   & li {
-    border-top: 1px solid #dbddde;
     padding-top: calc(var(--yr) * var(--s2));
   }
 }
@@ -23,46 +25,70 @@
   composes: h0 from '../../Fonts.module.css';
   color: var(--hl_color);
   margin-bottom: calc(var(--yr) * var(--s2));
-}
-
-.p80 {
-  composes: at from '../../Fonts.module.css';
-  color: var(--gr_color);
-  margin-top: calc(var(--yr) * var(--s2));
+  padding-bottom: calc(var(--yr) * var(--s2));
+  border-bottom: 1px solid #dbddde;
 }
 
 .fact {
-  composes: h4 from '../../Fonts.module.css';
+  /* composes: h4 from '../../Fonts.module.css'; */
   margin-bottom: 0;
 }
 
 .features {
-  composes: h4 from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s6));
+  /* composes: h4 from '../../Fonts.module.css'; */
 
-  & li {
-    background: url(../../../images/check.svg) no-repeat left top;
-    background-size: auto calc(var(--yr) * 5.5);
-    padding-left: 2.5em;
+  display: grid;
+  grid-gap: calc(var(--yr) * var(--s4)) var(--xr);
 
-    &:not(:last-child) {
-      margin-bottom: calc(var(--yr) * var(--s3));
-    }
+  @media (--s) {
+    grid-gap: calc(var(--yr) * var(--s4)) calc(var(--xr) * 2);
+    grid-template-columns: 1fr 1fr;
 
-    @media (--s) {
-      background-size: auto calc(var(--yr) * 7);
+    & .years100,
+    & .w {
+      grid-column: 1 / -1;
     }
   }
+
+  @media (--l) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+
+    & .years100 {
+      grid-column: span 2;
+      grid-row: span 3;
+      padding-right: 10%;
+    }
+
+    & .w {
+      grid-column: span 2;
+    }
+  }
+}
+
+.h0 {
+  composes: h0 from '../../Fonts.module.css';
+  color: var(--hl_color);
+}
+
+.pm {
+  margin-bottom: 0;
+  composes: h4 from '../../Fonts.module.css';
+}
+
+.p8 {
+  margin-top: calc(var(--yr) * var(--s2));
+  margin-bottom: 0;
 }
 
 .desc {
   composes: bt from '../../Fonts.module.css';
 }
 
-.grid {
-  display: grid;
-  grid-row-gap: calc(var(--yr) * var(--s5));
-
+.text {
   @media (--l) {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: calc(var(--xr) * 2);
   }
