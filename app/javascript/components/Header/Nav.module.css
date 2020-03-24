@@ -52,18 +52,36 @@
 
   & a {
     display: block;
+
+    &:hover {
+      color: var(--hl_color)
+    }
   }
 }
 
 .more {
   cursor: pointer;
+
+  &:hover {
+    color: var(--hl_color)
+  }
 }
 
 .white {
   color: #fff;
 
+  & .more {
+    &:hover {
+      color: var(--hl_o_color)
+    }
+  }
+
   & a {
     color: #fff;
+
+    &:hover {
+      color: var(--hl_o_color)
+    }
   }
 
   & .toggle {
@@ -78,6 +96,16 @@
 
   & a {
     color: #000;
+
+    &:hover {
+      color: var(--hl_color)
+    }
+  }
+
+  & .more {
+    &:hover {
+      color: var(--hl_color)
+    }
   }
 
   & .toggle {

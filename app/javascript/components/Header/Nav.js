@@ -32,7 +32,7 @@ export default function Nav ({ navs, onToggle, index, menuActive, menuOpen }) {
           </li>
         )}
         <li className={styles.more} onClick={() => onToggle()}>
-          Еще
+          Еще...
         </li>
       </ul>
     </div>

@@ -18,6 +18,10 @@
 
   & a {
     color: #000;
+
+    &:hover {
+      color: var(--hl_color)
+    }
   }
 }
 
@@ -56,7 +60,7 @@
   }
 
   @media (--l) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -88,6 +92,6 @@
 
   @media (--s) {
     top: calc(24 * var(--yr));
-    right: calc(var(--yr) * 6);
+    right: calc(var(--yr) * 7);
   }
 }

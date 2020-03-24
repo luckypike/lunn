@@ -21,6 +21,20 @@ Header.propTypes = {
   locale: PropTypes.string
 }
 
+function useKeyboardEvent (key, callback) {
+  useEffect(() => {
+    const handler = function (event) {
+      if (event.key === key) {
+        callback()
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => {
+      window.removeEventListener('keydown', handler)
+    }
+  }, [])
+}
+
 export default function Header ({ navs: data, index, locale }) {
   const navs = deserialize(data)
 
@@ -35,6 +49,10 @@ export default function Header ({ navs: data, index, locale }) {
     }
   }, [])
 
+  useKeyboardEvent('Escape', () => {
+    setMenuActive(false)
+  })
+
   return (
     <>
       <Special active={specialActive} />
@@ -48,7 +66,7 @@ export default function Header ({ navs: data, index, locale }) {
           }
         )}
       >
-        <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} />
+        <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} onClick={() => setMenuActive(!menuActive)}/>
 
         <header className={styles.root}>
           <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
