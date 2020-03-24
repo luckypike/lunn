@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import classNames from 'classnames'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './Sec.module.css'
@@ -9,57 +8,36 @@ Sec.propTypes = {
 }
 
 export default function Sec ({ navs }) {
-  const [active, setActive] = useState(0)
-
-  const openTab = e => setActive(+e.target.dataset.index)
-
   return (
     <div className={styles.root}>
-      <div className={styles.tabs}>
-        {navs.filter(n => n.depth === 1).map((n1l, i) =>
-          <div key={n1l.mlid} className={classNames(styles.tab, { [styles.active]: i === active })} onClick={openTab} data-index={i}>
-            {n1l.title}
-          </div>
+      <div className={styles.items}>
+        {navs.filter(n => n.depth === 1).map(item =>
+          <a
+            href={item.path}
+            key={item.mlid}
+            className={styles.item}
+            style={{
+              backgroundImage: item.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${item.image})` : null
+            }}
+          >
+            <div className={styles.title}>
+              {item.title}
+
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 20">
+                <path
+                  fill="none"
+                  stroke="#fff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeMiterlimit="10"
+                  d="M.7.7l9.4 9.3-9.4 9.3"
+                />
+              </svg>
+            </div>
+          </a>
         )}
       </div>
-
-      <>
-        {navs.filter(n => n.depth === 1).map((n1l, i) =>
-          <div key={i} className={classNames(styles.items, { [styles.inactive]: i !== active })}>
-            <Items items={navs.filter(n => n.depth === 2 && n.plid === n1l.mlid)} />
-          </div>
-        )}
-      </>
     </div>
-  )
-}
-
-Items.propTypes = {
-  items: PropTypes.array
-}
-
-function Items ({ items }) {
-  return (
-    <>
-      {items.map((item, i) =>
-        <a
-          href={item.path}
-          key={i}
-          className={classNames(styles.item, { [styles.ege]: item.mlid === 4594 })}
-          style={{
-            backgroundImage: item.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${item.image})` : 'none'
-          }}
-        >
-          <div className={styles.title}>{item.title}</div>
-
-          {item.external === 1 &&
-            <svg className={styles.external} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 21L20.9998 1.00027" strokeWidth="1.5"></path>
-              <path d="M6 1L20.9998 1V15.9998" strokeWidth="1.5"></path>
-            </svg>
-          }
-        </a>
-      )}
-    </>
   )
 }

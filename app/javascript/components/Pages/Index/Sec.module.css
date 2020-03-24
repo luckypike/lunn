@@ -1,49 +1,5 @@
 .root {
   position: relative;
-  margin-bottom: calc(var(--yr) * var(--s4));
-
-  @media (--s) {
-    margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
-  }
-}
-
-.groups {
-  display: block;
-}
-
-.tabs {
-  display: flex;
-  overflow: scroll;
-  margin-bottom: calc(var(--yr) * 7);
-
-  @media (--l) {
-    overflow: hidden;
-  }
-}
-
-.tab {
-  composes: bt from '../../Fonts.module.css';
-  cursor: pointer;
-  background-color: #fff;
-  border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 3) var(--xr);
-  color: var(--gr_color);
-  text-align: center;
-  white-space: nowrap;
-  display: block;
-  transition: background 0.2s, color 0.2s;
-
-  &:hover {
-    color: var(--hl_color);
-  }
-
-  @media (--l) {
-    padding: calc(var(--yr) * 3) calc(var(--xr) * 1.2);
-  }
-
-  @media (--xl) {
-    padding: calc(var(--yr) * 3) calc(var(--xr) * 1.8);
-  }
 }
 
 .active {
@@ -57,49 +13,83 @@
 }
 
 .items {
-  composes: items from '../../Navs.module.css';
-}
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: calc(var(--yr) * 2);
 
-.inactive {
-  display: none;
-}
+  @media (--s) {
+    grid-gap: calc(var(--xr) * 2);
+  }
 
-.item {
-  composes: item from '../../Navs.module.css';
-
-  &.ege {
-    background-image: url('./Images/ege.jpg') !important;
+  @media (--m) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-.external {
-  composes: external from '../../Navs.module.css';
+.item {
+  position: relative;
+  color: #fff;
+  min-height: calc(var(--yr) * 28);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--gr_color);
+  background-position: center;
+
+  @media (--s) {
+    min-height: calc(var(--yr) * 46);
+  }
+
+  @media (--xl) {
+    min-height: calc(var(--yr) * 60);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+    transition: background 0.3s, opacity 0.3s;
+  }
+
+  &:hover {
+    color: #fff;
+
+    &::after {
+      background: var(--hl_color);
+      opacity: 0.75;
+    }
+  }
 }
 
 .title {
-  composes: title from '../../Navs.module.css';
-}
+  composes: h4 from '../../Fonts.module.css';
+  position: absolute;
+  z-index: 1;
+  left: var(--xr);
+  right: var(--xr);
+  bottom: calc(var(--yr) * var(--s4));
+  margin-bottom: 0;
 
-.image_1 {
-  background-image: url('./Images/1.jpg');
-}
+  & svg {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: var(--yr);
+    height: calc(var(--yr) * 4);
 
-.image_2 {
-  background-image: url('./Images/2.jpg');
-}
+    @media (--s) {
+      display: block;
+      height: calc(var(--yr) * 5);
+      bottom: calc(var(--yr));
+    }
+  }
 
-.image_3 {
-  background-image: url('./Images/3.jpg');
-}
-
-.image_4 {
-  background-image: url('./Images/4.jpg');
-}
-
-.image_5 {
-  background-image: url('./Images/5.jpg');
-}
-
-.image_6 {
-  background-image: url('./Images/6.jpg');
+  @media (--s) {
+    left: calc(var(--xr) * 2);
+    right: calc(var(--xr) * 2);
+  }
 }
