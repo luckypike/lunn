@@ -19,7 +19,7 @@ export default function Menu ({ onToggle, navs }) {
 
       <div className={styles.container}>
         <ul className={styles.nav}>
-          {navs.filter(item => item.depth === 1 && navs.filter(i => i.depth === 2 && i.plid === item.mlid).length > 0).map(n1l =>
+          {navs.filter(item => item.depth === 1 && navs.filter(i => i.depth === 2 && i.plid === item.mlid).length > 0 && item.mlid !== 5123).map(n1l =>
             <li className={styles.main} key={n1l.mlid}>
               <a href={n1l.path} className={styles.first}>
                 {n1l.title}

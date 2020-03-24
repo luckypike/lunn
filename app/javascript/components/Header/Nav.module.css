@@ -43,6 +43,10 @@
   }
 }
 
+.red {
+  color: #e63246 !important;
+}
+
 .nav {
   margin-right: calc(var(--xr) * 2);
 
