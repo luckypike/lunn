@@ -43,8 +43,13 @@
   }
 }
 
-.red {
-  color: #e63246 !important;
+.covid {
+  background-color: #e63246;
+  line-height: calc(var(--yr) * 10);
+  padding: 0 calc(var(--yr) * 4);
+  color: #fff !important;
+  margin-top: calc(var(--yr) * 1);
+  border-radius: calc(var(--yr) * 2);
 }
 
 .nav {
