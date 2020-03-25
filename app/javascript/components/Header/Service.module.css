@@ -87,6 +87,22 @@
   }
 }
 
+.covid {
+  composes: covid from './Nav.module.css';
+  height: calc(var(--yr) * 8);
+  padding: 0 calc(var(--yr) * 2);
+  margin-top: calc(var(--yr) * 2);
+  line-height: calc(var(--yr) * 8);
+
+  & a {
+    color: var(--wh_color);
+  }
+
+  @media (--l) {
+    display: none;
+  }
+}
+
 /* .login {
   margin-left: var(--xr);
 

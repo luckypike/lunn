@@ -61,7 +61,11 @@ export default function Header ({ navs: data, index, locale }) {
           }
         )}
       >
-        <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} onClick={() => setMenuActive(false)}/>
+        <div className={classNames(styles.overlay, { [styles.active]: menuActive, [styles.search_active]: searchActive })} onClick={() => {
+          setMenuActive(false)
+          setSearchActive(false)
+        }
+        }/>
 
         <header className={styles.root}>
           <div className={classNames(styles.logo, { [styles.blue]: menuActive, [styles.white]: white })}>
