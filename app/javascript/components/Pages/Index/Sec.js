@@ -21,7 +21,7 @@ export default function Sec ({ navs }) {
             }}
           >
             <div className={styles.title}>
-              {item.title}
+              {item.title.replace(/\(([^)]+)\)/g, '')}
 
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 20">
                 <path
