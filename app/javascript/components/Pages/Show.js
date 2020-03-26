@@ -32,11 +32,11 @@ export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
       />
 
       {navs &&
-        <Nav navs={navs.filter(nav => nav.depth > 2 && !nid.includes(node.nid))} />
+        <Nav navs={navs.filter(nav => nav.depth > 2 && !nid.includes(node.nid) && node['menu_open?'] !== 1)} />
       }
 
       {navs &&
-        <Navs navs={navs.filter(nav => nav.depth <= 2 || nid.includes(node.nid))} />
+        <Navs navs={navs.filter(nav => nav.depth <= 2 || nid.includes(node.nid) || node['menu_open?'] === 1)} />
       }
 
       {node.text &&
