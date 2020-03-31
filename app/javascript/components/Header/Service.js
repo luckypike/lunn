@@ -7,6 +7,7 @@ import styles from './Service.module.css'
 Service.propTypes = {
   onSearchToggle: PropTypes.func,
   onSpecialToggle: PropTypes.func,
+  onToggle: PropTypes.func,
   index: PropTypes.bool,
   menuActive: PropTypes.bool,
   specialActive: PropTypes.bool,
@@ -16,6 +17,7 @@ Service.propTypes = {
 export default function Service ({
   onSearchToggle,
   onSpecialToggle,
+  onToggle,
   index,
   menuActive,
   specialActive,
@@ -48,6 +50,14 @@ export default function Service ({
       <div className={styles.search} onClick={onSearchToggle}>
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M20.607 18.856h-.922l-.327-.315a7.595 7.595 0 10-.817.817l.315.327v.922l5.835 5.816 1.733-1.733-5.817-5.834zm-7 0a5.25 5.25 0 114.853-3.24 5.243 5.243 0 01-4.853 3.24z" />
+        </svg>
+      </div>
+
+      <div className={styles.toggle} onClick={onToggle}>
+        <svg viewBox="0 0 20 14">
+          <rect height="2" width="20" x="0" y="0" />
+          <rect height="2" width="20" x="0" y="6" />
+          <rect height="2" width="20" x="0" y="12" />
         </svg>
       </div>
     </div>

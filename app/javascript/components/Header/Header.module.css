@@ -1,21 +1,15 @@
 .root {
+  composes: container from '../Pages.module.css';
+
   display: grid;
-  grid-template-columns: calc(var(--yr) * 20) 1fr calc(var(--yr) * 14);
+  grid-template-columns: 1fr 11fr;
   position: relative;
   height: calc(var(--yr) * 16);
   max-width: 120rem;
   margin: 0 auto;
 
-  @media (--s) {
-    grid-template-columns: calc(var(--yr) * 28) 1fr calc(var(--yr) * 18);
-  }
-
-  @media (--m) {
-    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 18);
-  }
-
   @media (--l) {
-    grid-template-columns: calc(var(--yr) * 40) 1fr calc(var(--yr) * 48);
+    grid-template-columns: 1fr 9fr 2fr;
   }
 }
 
@@ -76,7 +70,6 @@
   }
 
   & svg {
-    margin: 0 auto;
     display: block;
     height: calc(var(--yr) * 10);
 

@@ -10,6 +10,12 @@
   & ul {
     margin: 0;
     padding: 0;
+
+    &.nav {
+      @media (--l) {
+        margin-left: calc(1 / 12 * 100%);
+      }
+    }
   }
 
   & li {
@@ -26,12 +32,25 @@
 }
 
 .container {
-  padding: calc(var(--yr) * 16) calc(var(--yr) * 4) 0;
+  padding: calc(var(--yr) * 16) calc(var(--yr) * 6) 0;
   max-width: 120rem;
   margin: 0 auto;
+  position: relative;
 
   @media (--s) {
+    padding: calc(var(--yr) * 32) calc(var(--yr) * 8) 0;
+  }
+
+  @media (--m) {
     padding: calc(var(--yr) * 32) calc(var(--yr) * 12) 0;
+  }
+
+  @media (--l) {
+    padding: calc(var(--yr) * 32) calc(var(--yr) * 24) 0;
+  }
+
+  @media (--xl) {
+    padding: calc(var(--yr) * 32) calc(var(--yr) * 40) 0;
   }
 }
 
@@ -39,7 +58,11 @@
   composes: at from '../Fonts.module.css';
 
   & li {
-    margin-bottom: calc(var(--yr) * var(--s2));
+    margin-bottom: calc(var(--yr) * var(--s1));
+  }
+
+  & a {
+    color: var(--gr_color);
   }
 }
 
@@ -60,7 +83,7 @@
   }
 
   @media (--l) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 3fr 2fr 3fr 3fr;
   }
 }
 
@@ -70,18 +93,17 @@
   /* text-overflow: ellipsis; */
   /* overflow: hidden; */
   /* white-space: nowrap; */
-  composes: h3 from '../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * var(--s3));
+  composes: h4 from '../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s2));
 }
 
 .close {
+  display: flex;
   cursor: pointer;
   position: absolute;
-  right: calc(var(--yr) * var(--s2));
-  top: calc(8 * var(--yr));
+  right: calc(var(--yr) * 8);
+  top: calc(2 * var(--yr));
   transform: translateY(-50%);
-  padding: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 6) 0;
   z-index: 9;
 
   & svg {
@@ -91,11 +113,19 @@
   }
 
   @media (--s) {
-    top: calc(24 * var(--yr));
+    top: calc(var(--yr) * 17);
     right: calc(var(--yr) * 8);
   }
 
-  @media (--l) {
+  @media (--m) {
     right: calc(var(--yr) * 14);
+  }
+
+  @media (--l) {
+    right: calc(var(--yr) * 26);
+  }
+
+  @media (--xl) {
+    right: calc(var(--yr) * 42);
   }
 }

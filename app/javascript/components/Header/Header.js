@@ -91,6 +91,7 @@ export default function Header ({ navs: data, index, locale }) {
                 specialActive={specialActive}
                 onSearchToggle={() => setSearchActive(true)}
                 onSpecialToggle={() => setSpecialActive(!specialActive)}
+                onToggle={() => setMenuActive(!menuActive)}
                 locale={locale}
               />
             </div>

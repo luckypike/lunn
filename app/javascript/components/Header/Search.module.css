@@ -8,6 +8,14 @@
   }
 }
 
+.container {
+  composes: container from '../Pages.module.css';
+}
+
+.form {
+  position: relative;
+}
+
 .input {
   outline: none;
   padding: 0;
@@ -43,7 +51,7 @@
 .close {
   cursor: pointer;
   position: absolute;
-  right: calc(var(--yr) * 1.5);
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   padding: calc(var(--yr) * 2);
@@ -52,17 +60,5 @@
     display: block;
     width: calc(var(--yr) * 8);
     height: calc(var(--yr) * 8);
-  }
-
-  @media (--s) {
-    right: calc(var(--yr) * 6);
-  }
-
-  @media (--m) {
-    right: calc(var(--xr) * 1.5);
-  }
-
-  @media (--l) {
-    right: calc(var(--xr) * 3);
   }
 }

@@ -88,12 +88,6 @@
       color: var(--wh_color);
     }
   }
-
-  & .toggle {
-    & svg {
-      fill: #fff;
-    }
-  }
 }
 
 .black {
@@ -110,13 +104,6 @@
   & .more {
     &:hover {
       color: var(--hl_color)
-    }
-  }
-
-  & .toggle {
-    display: none;
-    & svg {
-      fill: #000;
     }
   }
 }
