@@ -17,9 +17,9 @@ export default function Youtube () {
       </div>
 
       <Frame
-        src="https://www.youtube.com/embed/DFlMGZbmYaI"
+        src="https://www.youtube.com/embed/lLZ6hGXlsEM"
         title="Видеообращение ректора НГЛУ им. Н.А.Добролюбова Жанны Никоновой"
-        desc="18 марта 2020"
+        desc="6 апреля 2020"
       />
 
       <Frame
