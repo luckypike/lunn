@@ -41,7 +41,7 @@ export default function Show ({ node, navs, docs, loaf, tutors, locale }) {
 
       {node.text &&
         <div className={styles.text}>
-          <Renderer source={node.text} />
+          <Renderer source={node.text} images={node.images} />
         </div>
       }
 
