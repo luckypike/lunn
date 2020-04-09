@@ -12,15 +12,12 @@ List.propTypes = {
 
 export default function List ({ courses, locale }) {
   const sortCourses = (a, b) => {
-    if (a.level === b.level) {
-      if (a.title.localeCompare(b.title) !== 0) {
-        return a.title.localeCompare(b.title)
-      } else {
-        return (a.spec || a.title).localeCompare((b.spec || b.title))
-      }
+    const c = a.title.trim().localeCompare(b.title.trim(), 'ru', { sensitivity: 'base' })
+
+    if (c !== 0) {
+      return c
     } else {
-      if (a.level === 'ba' || b.level === 'ma') return -1
-      if (b.level === 'ba' || a.level === 'ma') return 1
+      return (a.spec || a.title).trim().localeCompare((b.spec || b.title).trim(), 'ru', { sensitivity: 'base' })
     }
   }
 
