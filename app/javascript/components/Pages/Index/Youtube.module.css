@@ -16,6 +16,35 @@
 .youtube {
   position: relative;
   margin-bottom: calc(var(--yr) * 4);
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #000;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: transform 0.5s;
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: url('./Images/Play.svg') center no-repeat;
+    background-size: 85px;
+    transition: background 0.3s;
+  }
 
   &::before {
     display: block;
@@ -32,6 +61,22 @@
     left: 0;
     right: 0;
     bottom: 0;
+  }
+
+  &:hover {
+    & img {
+      transform: scale(1.03);
+    }
+
+    &::after {
+      background-color: color-mod(#000 a(0.2));
+    }
+  }
+
+  &.active {
+    &::after {
+      display: none;
+    }
   }
 
   @media (--m) {
