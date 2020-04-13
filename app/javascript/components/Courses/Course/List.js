@@ -11,19 +11,9 @@ List.propTypes = {
 }
 
 export default function List ({ courses, locale }) {
-  const sortCourses = (a, b) => {
-    const c = a.title.trim().localeCompare(b.title.trim(), 'ru', { sensitivity: 'base' })
-
-    if (c !== 0) {
-      return c
-    } else {
-      return (a.spec || a.title).trim().localeCompare((b.spec || b.title).trim(), 'ru', { sensitivity: 'base' })
-    }
-  }
-
   return (
     <div className={styles.root}>
-      {courses.sort(sortCourses).map(course =>
+      {courses.map(course =>
         <Item key={course.nid} course={course} locale={locale} />
       )}
     </div>

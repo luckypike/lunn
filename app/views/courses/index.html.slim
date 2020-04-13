@@ -6,4 +6,4 @@
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
   level: params[:level],
   divisions: DivisionSerializer.new(@divisions, { include: %i[courses] }).serializable_hash,
-}, { prerender: Rails.env.production? && false }
+}, { prerender: Rails.env.production? }
