@@ -9,6 +9,10 @@ export default function Today () {
       <div className={styles.facts}>
         <ul>
           <li>
+            <div className={styles.gt}>
+              Более
+            </div>
+
             <div className={styles.digits}>
               3000
             </div>
@@ -19,6 +23,10 @@ export default function Today () {
           </li>
 
           <li>
+            <div className={styles.gt}>
+              Более
+            </div>
+
             <div className={styles.digits}>
               80%
             </div>

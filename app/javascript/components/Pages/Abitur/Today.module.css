@@ -18,7 +18,15 @@
 
   & li {
     padding-top: calc(var(--yr) * var(--s2));
+    position: relative;
   }
+}
+
+.gt {
+  color: var(--gr_color);
+  composes: at from '../../Fonts.module.css';
+  position: absolute;
+  top: 0;
 }
 
 .digits {
