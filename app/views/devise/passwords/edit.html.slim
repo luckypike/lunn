@@ -4,27 +4,20 @@
       .join__container
         .join__title
           h1
-            = title t('join.title')
+            = title t('recovery.change.title')
 
-        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
           .form
             = render 'devise/shared/error_messages', resource: resource
+            = f.hidden_field :reset_password_token
 
             .form__item
               label
                 .form__label
-                  | Электронная почта
+                  | Новый пароль
 
                 .form__input
-                  = f.email_field :email, autofocus: true, autocomplete: "email"
-
-            .form__item
-              label
-                .form__label
-                  | Пароль
-
-                .form__input
-                  = f.password_field :password, autocomplete: "new-password"
+                  = f.password_field :password, autofocus: true, autocomplete: "new-password"
 
             .form__item
               label
@@ -35,8 +28,7 @@
                   = f.password_field :password_confirmation, autocomplete: "new-password"
 
             .form__submit
-              = f.submit t('join.submit'), class: %i[button button--big]
+              = f.submit t('recovery.change.submit'), class: %i[button button--big]
 
-
-        .join__links
+        / .join__links
           = render 'devise/shared/links'

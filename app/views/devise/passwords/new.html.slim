@@ -1,20 +1,25 @@
-.container
-  .root
-    h1.h1.h0 Забыли пароль?
+.page__container
+  .page__root
+    .page__join
+      .join__container
+        .join__title
+          h1
+            = title t('recovery.title')
 
-    .form
-      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          .form
+            = render 'devise/shared/error_messages', resource: resource
 
-        .errors
-          = render "devise/shared/error_messages", resource: resource
+            .form__item
+              label
+                .form__label
+                  | Электронная почта
 
-        .els
-          .el
-            .input
-              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Электронная почта"
+                .form__input
+                  = f.email_field :email, autofocus: true, autocomplete: "email"
 
-          .submit
-            = f.submit "Выслать инструкции по сбросу", class: "fonts-bt btn-main btn-big"
+            .form__submit
+              = f.submit t('recovery.submit'), class: %i[button button--big]
 
-          .links
-            = render "devise/shared/links"
+        .join__links
+          = render 'devise/shared/links'

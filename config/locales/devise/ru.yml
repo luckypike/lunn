@@ -5,6 +5,23 @@ ru:
         not_found_in_database: Неверные данные для входа
         invalid: Неверный пароль
 
+    passwords:
+      user:
+        send_instructions: Инструкция для восстановления пароля была выслана вам на почту
+
+    mailer:
+      confirmation_instructions:
+        subject: Подтвердите свою почту
+
+      reset_password_instructions:
+        subject: Восстановление пароля
+
+      email_changed:
+        subject: "Email Changed"
+
+      password_change:
+        subject: "Password Changed"
+
   login:
     title: Аккаунт
     submit: Войти
@@ -12,3 +29,11 @@ ru:
   join:
     title: Регистрация
     submit: Зарегистрироваться
+
+  recovery:
+    title: Восстановление пароля
+    submit: Восстановить
+
+    change:
+      title: Новый пароль
+      submit: Сохранить новый пароль

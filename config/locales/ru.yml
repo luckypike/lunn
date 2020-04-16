@@ -7,6 +7,9 @@ ru:
 
   contact_us: Обращения граждан
 
+  mailers:
+    from: Лингвистический университет
+
   number:
     human:
       storage_units:
@@ -20,5 +23,11 @@ ru:
 
   activerecord:
     errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: не найдена
+
       messages:
         confirmation: не совпадает с паролем
