@@ -1,0 +1,81 @@
+.h0 {
+  font-size: calc(var(--yr) * 10);
+  line-height: calc(var(--yr) * 11);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 16);
+    line-height: calc(var(--yr) * 18);
+  }
+}
+
+.h1,
+h1 {
+  font-size: calc(var(--yr) * 8);
+  line-height: calc(var(--yr) * 9);
+  font-weight: normal;
+  margin: 0 0 calc(var(--yr) * 3);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 12);
+    line-height: calc(var(--yr) * 14);
+    margin: 0 0 calc(var(--yr) * 4);
+  }
+}
+
+.h2,
+h2 {
+  font-size: calc(var(--yr) * 6);
+  line-height: calc(var(--yr) * 7);
+  font-weight: normal;
+  margin: 0 0 calc(var(--yr) * var(--s3));
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 10);
+    line-height: calc(var(--yr) * 11);
+  }
+}
+
+.button {
+  background-color: var(--hl_color);
+  color: #fff;
+  font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 6);
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: calc(var(--yr) * 2);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 4.5);
+    line-height: calc(var(--yr) * 8);
+  }
+
+  &:disabled {
+    background: #b8bfe6;
+  }
+
+  &:not(:last-child) {
+    margin-right: var(--xr);
+  }
+
+  &:active {
+    background: #2a46d1;
+  }
+
+  &:hover {
+    &:not(:disabled) {
+      &:not(.pending) {
+        background: #35f;
+      }
+    }
+  }
+}
+
+.button--big {
+  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
+  min-width: 10rem;
+}

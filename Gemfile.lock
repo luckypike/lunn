@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/fast-jsonapi/fast_jsonapi.git
+  revision: 0edebd99e663832bf4d279376d54b18bc34e0c4f
+  specs:
+    fast_jsonapi (1.6.0)
+      activesupport (>= 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -119,8 +126,6 @@ GEM
     execjs (2.7.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
-    fast_jsonapi (1.5)
-      activesupport (>= 4.2)
     ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -175,6 +180,8 @@ GEM
     public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
       rack
@@ -302,7 +309,7 @@ DEPENDENCIES
   elasticsearch-rails
   elasticsearch-ruby
   exception_notification
-  fast_jsonapi
+  fast_jsonapi!
   i18n-js
   jbuilder
   letter_opener
@@ -312,6 +319,7 @@ DEPENDENCIES
   mysql2
   php-serialize
   puma
+  pundit
   rails (~> 6.0.2)
   rails-i18n
   react-rails

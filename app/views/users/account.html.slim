@@ -1,0 +1,6 @@
+- set_meta_tags \
+  title: t('users.account.title')
+
+= react_component 'Users/Account', { \
+  user: UserSerializer.new(@user).serializable_hash, \
+}, { prerender: Rails.env.production? }

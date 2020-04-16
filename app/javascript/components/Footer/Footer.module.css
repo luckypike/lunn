@@ -92,10 +92,10 @@
 }
 
 .first {
-  width: max-content;
   position: relative;
-  display: flex;
+  display: block;
   color: #fff;
+  width: 100%;
   margin-bottom: calc(var(--yr) * var(--s1));
 
   &:hover {

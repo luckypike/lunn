@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   devise_for(
     :users,
     only: %i[sessions confirmations],
-    controllers: {:confirmations => "confirmations"},
     path: '',
     path_names: {
       sign_in: :login,
@@ -64,6 +63,10 @@ Rails.application.routes.draw do
     post 'send-mail', to: 'feedback#create'
 
     get :contacts, to: 'pages#contacts'
+
+    get :account, to: 'users#account', as: :user_root
+
+    # resources :users
 
     get '*path', to: 'pages#show', constraints: lambda { |params, _request|
       UrlAlias.lang(params[:locale]).where(alias: params[:path]).any?

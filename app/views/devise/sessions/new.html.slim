@@ -1,20 +1,37 @@
-.container
-  .root
-    h1.h1.h0 Войти
+.page__container
+  .page__root
+    .page__join
+      .join__container
+        .join__title
+          h1
+            = title t('login.title')
 
-    .form
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .els
-          .el
-            .input
-              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Электронная почта"
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form
+            - if flash
+              .form__errors
+                ul
+                  - flash.each do |name, msg|
+                    li = msg
 
-          .el
-            .input
-              = f.password_field :password, autocomplete: "current-password", placeholder: "Пароль"
+            .form__item
+              label
+                .form__label
+                  | Электронная почта
 
-          .submit
-            = f.submit "Войти", class: "fonts-bt btn-main btn-big"
+                .form__input
+                  = f.email_field :email, autofocus: true, autocomplete: "email"
 
-          .links
-            = render "devise/shared/links"
+            .form__item
+              label
+                .form__label
+                  | Пароль
+
+                .form__input
+                  = f.password_field :password, autocomplete: "current-password"
+
+            .form__submit
+              = f.submit t('login.submit'), class: %i[button button--big]
+
+        .join__links
+          = render 'devise/shared/links'

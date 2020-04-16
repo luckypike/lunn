@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   # protect_from_forgery with: :exception
 
   around_action :switch_locale
@@ -7,6 +9,8 @@ class ApplicationController < ActionController::Base
   before_action :set_url_aliases
   before_action :set_global_navs
   before_action :set_partners
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
@@ -43,5 +47,9 @@ class ApplicationController < ActionController::Base
 
   def set_partners
     @partners = ActiveRecord::Base.connection.exec_query('SELECT body FROM block_custom WHERE bid = 8').first
+  end
+
+  def user_not_authorized
+    render :user_not_authorized
   end
 end

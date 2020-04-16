@@ -1,0 +1,14 @@
+ru:
+  devise:
+    failure:
+      user:
+        not_found_in_database: Неверные данные для входа
+        invalid: Неверный пароль
+
+  login:
+    title: Аккаунт
+    submit: Войти
+
+  join:
+    title: Регистрация
+    submit: Зарегистрироваться

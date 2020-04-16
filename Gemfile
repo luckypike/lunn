@@ -24,13 +24,14 @@ gem 'elasticsearch-rails'
 gem 'elasticsearch-ruby'
 
 gem 'devise'
+gem 'pundit'
 
 gem 'exception_notification'
 
 gem 'bootsnap', require: false
 
+gem 'fast_jsonapi', github: 'fast-jsonapi/fast_jsonapi'
 gem 'mini_racer'
-gem 'fast_jsonapi'
 
 gem 'whenever', require: false
 

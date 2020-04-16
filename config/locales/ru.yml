@@ -1,6 +1,7 @@
 ru:
   university:
     title: Нижегородский государственный лингвистический университет имени Н.А. Добролюбова
+    title_short: Лингвистический университет
     address: 603155, Россия, Нижний Новгород, ул. Минина 31а
     address_on_map: Адрес на карте
 
@@ -15,3 +16,9 @@ ru:
           mb: MB
           gb: GB
           tb: TB
+
+
+  activerecord:
+    errors:
+      messages:
+        confirmation: не совпадает с паролем
