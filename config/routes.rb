@@ -56,6 +56,8 @@ Rails.application.routes.draw do
 
     resources :admissions, only: %i[index new create show]
 
+    resources :invoices, only: %i[index create]
+
     resources :news, only: %i[index show]
 
     resources :events, only: %i[index show]
