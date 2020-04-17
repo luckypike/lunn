@@ -1,0 +1,3 @@
+= react_component 'Invoices/Invoices', { \
+  invoices: @invoices.as_json(only: %i[id first_name last_name middle_name contract state]),
+}, { prerender: Rails.env.production? }
