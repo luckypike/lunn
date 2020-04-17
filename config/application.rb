@@ -41,4 +41,4 @@ module Lunn
   end
 end
 
-ActiveRecord::SchemaDumper.ignore_tables = [/^(?!.*(_users|admissions)).*/]
+ActiveRecord::SchemaDumper.ignore_tables = [/^(?!.*(_users|admissions|invoices)).*/]
