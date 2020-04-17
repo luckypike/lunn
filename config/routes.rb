@@ -56,9 +56,14 @@ Rails.application.routes.draw do
 
     resources :admissions, only: %i[index new create show]
 
-    resources :invoices, only: %i[index create] do
-      member do
+    resources :invoices, only: %i[create] do
+      collection do
         post :pay
+        get :payed
+      end
+
+      member do
+        post :approve
       end
     end
 

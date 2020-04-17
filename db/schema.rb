@@ -43,13 +43,17 @@ ActiveRecord::Schema.define(version: 2020_04_15_131704) do
     t.string "last_name"
     t.string "first_name"
     t.string "middle_name"
+    t.string "amount"
+    t.string "number"
     t.string "contract"
     t.string "payment_id"
     t.decimal "payment_amount", precision: 10
     t.timestamp "payed_at"
-    t.integer "state"
+    t.timestamp "approved_at"
+    t.integer "state", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["number", "contract"], name: "index_invoices_on_number_and_contract", unique: true
   end
 
   add_foreign_key "admissions", "_users", column: "user_id"

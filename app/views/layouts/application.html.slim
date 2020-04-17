@@ -2,7 +2,7 @@ doctype html
 html[class=special_cookie_classes lang=I18n.locale]
   head
     = display_meta_tags reverse: true, separator: '—', og: { title: :title, description: :description, site_name: 'НГЛУ' }
-    = csrf_meta_tags
+    / = csrf_meta_tags
     = favicon_link_tag '/favicon.ico'
     = favicon_link_tag '/apple-touch-icon.png', rel: 'apple-touch-icon'
     = tag('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' })

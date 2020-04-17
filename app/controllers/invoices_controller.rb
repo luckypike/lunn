@@ -1,16 +1,18 @@
 class InvoicesController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: %i[create pay approve]
 
-  before_action :set_invoice, only: [:pay]
-  before_action :verify_authenticity_token, only: [:create], unless: :secure?
+  before_action :verify_api_key, only: %i[create approve payed]
 
-  def index
-    @invoices = Invoice.all
+  # def index
+  #   @invoices = Invoice.all
+  # end
+
+  def payed
+    @invoices = Invoice.payed
   end
 
   def create
     @invoice = Invoice.new(invoice_params)
-    @invoice.state = :active
 
     if @invoice.save
       head :created, location: invoices_path
@@ -20,29 +22,39 @@ class InvoicesController < ApplicationController
   end
 
   def pay
-    @invoice.payed!
-    head :ok
+    @invoice = Invoice.find(params[:orderid])
+
+    if @invoice.can_pay?
+      @invoice.pay
+      @invoice.update(payment_id: 999, payment_amount: 999)
+      head :ok
+    else
+      head :unprocessable_entity
+    end
   end
 
   def approve
-    @invoice.approve
-    head :ok
+    @invoice = Invoice.find(params[:id])
+
+    if @invoice.can_approve?
+      @invoice.approve
+      head :ok
+    else
+      head :unprocessable_entity
+    end
   end
 
   def invoice_params
-    permitted =
-      %i[last_name first_name middle_name contract]
+    permitted = %i[last_name first_name middle_name contract number]
 
     params.require(:invoice).permit(*permitted)
   end
 
-  def set_invoice
-    @invoice = Invoice.find(params[:id])
-  end
+  private
 
-  protected
+  def verify_api_key
+    return if Rails.application.credentials.dig(:api, :key) == request.headers['HTTP_X_LUNN_KEY']
 
-  def secure?
-    params[:security]
+    head :unauthorized
   end
 end

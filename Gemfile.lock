@@ -260,6 +260,7 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    stateful_enum (0.6.0)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -319,6 +320,7 @@ DEPENDENCIES
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
+  stateful_enum
   web-console (>= 3.3.0)
   webpacker
   whenever
