@@ -1,11 +1,11 @@
 class InvoicesController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: %i[create pay approve]
+  skip_before_action :verify_authenticity_token
 
   before_action :verify_api_key, only: %i[create approve payed]
 
-  # def index
-  #   @invoices = Invoice.all
-  # end
+  def index
+    @invoices = Invoice.all
+  end
 
   def payed
     @invoices = Invoice.payed
@@ -34,7 +34,7 @@ class InvoicesController < ApplicationController
   end
 
   def approve
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.find_by!(number: params[:id])
 
     if @invoice.can_approve?
       @invoice.approve
@@ -44,17 +44,17 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def invoice_params
-    permitted = %i[last_name first_name middle_name contract number]
-
-    params.require(:invoice).permit(*permitted)
-  end
-
   private
 
   def verify_api_key
     return if Rails.application.credentials.dig(:api, :key) == request.headers['HTTP_X_LUNN_KEY']
 
     head :unauthorized
+  end
+
+  def invoice_params
+    permitted = %i[last_name first_name middle_name contract number]
+
+    params.require(:invoice).permit(*permitted)
   end
 end

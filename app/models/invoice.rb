@@ -25,5 +25,8 @@ class Invoice < ApplicationRecord
   def remove_whitespaces
     contract.squish!
     number.squish!
+    first_name.squish!
+    last_name.squish!
+    middle_name.squish!
   end
 end

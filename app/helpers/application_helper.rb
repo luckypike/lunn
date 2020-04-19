@@ -17,4 +17,8 @@ module ApplicationHelper
   def index?(node)
     current_page?(root_url) || (node && [4734].include?(node.nid))
   end
+
+  def load_partners
+    ActiveRecord::Base.connection.exec_query('SELECT body FROM block_custom WHERE bid = 8').first
+  end
 end
