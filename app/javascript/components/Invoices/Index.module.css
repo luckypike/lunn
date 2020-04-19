@@ -1,0 +1,13 @@
+.invoice {
+  display: flex;
+  border-top: 2px solid var(--sp_color);
+  line-height: calc(var(--yr) * 10);
+
+  &:first-child {
+    border-top: none;
+  }
+
+  & > div {
+    margin-right: calc(var(--yr) * 2);
+  }
+}

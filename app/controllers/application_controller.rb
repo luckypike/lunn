@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
   before_action :set_url_aliases
   before_action :set_global_navs
-  before_action :set_partners
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -43,10 +42,6 @@ class ApplicationController < ActionController::Base
 
     @footer = Nav.active.footer.lang.unscope(:order)
       .order(menu_name: :desc, weight: :asc)
-  end
-
-  def set_partners
-    @partners = ActiveRecord::Base.connection.exec_query('SELECT body FROM block_custom WHERE bid = 8').first
   end
 
   def user_not_authorized

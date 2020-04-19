@@ -16,7 +16,7 @@ html[class=special_cookie_classes lang=I18n.locale]
 
     = react_component 'Footer/Footer', { \
       navs: NavSerializer.new(@footer_navs).serializable_hash,
-      partners: @partners,
+      partners: load_partners,
       env: Rails.env,
       footer: NavSerializer.new(@footer).serializable_hash \
     }, { prerender: Rails.env.production? }
