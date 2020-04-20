@@ -1,6 +1,6 @@
 class InvoiceSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :number, :contract, :state,
+  attributes :id, :number, :contract, :state, :amount,
     :first_name, :last_name, :middle_name
 end

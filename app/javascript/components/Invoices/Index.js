@@ -20,6 +20,7 @@ export default function Index ({ invoices: data }) {
             <div key={invoice.id} className={styles.invoice}>
               <div className={styles.last_name}>{invoice.last_name}</div>
               <div className={styles.first_name}>{invoice.first_name}</div>
+              <div className={styles.contract}>{invoice.amount} ₽</div>
               <div className={styles.contract}>{invoice.number}</div>
               <div className={styles.contract}>{invoice.contract}</div>
               <div className={styles.state}>{invoice.state}</div>

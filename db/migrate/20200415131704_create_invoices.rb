@@ -17,5 +17,7 @@ class CreateInvoices < ActiveRecord::Migration[6.0]
     end
 
     add_index :invoices, %i[number contract], unique: true
+    add_index :invoices, %i[last_name contract]
+    add_index :invoices, :number
   end
 end

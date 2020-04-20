@@ -1,13 +1,8 @@
 class User < ApplicationRecord
-  self.table_name = :_users
-  has_one :admission
+  connects_to database: { writing: :primary, reading: :primary }
+
+  has_one :admission, dependent: :nullify
 
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :validatable
-
-  # private
-  #
-  # def confirmation_required?
-  #   false
-  # end
+    :recoverable, :rememberable, :validatable
 end

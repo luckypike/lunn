@@ -53,7 +53,7 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    permitted = %i[last_name first_name middle_name contract number]
+    permitted = %i[last_name first_name middle_name contract number amount]
 
     params.require(:invoice).permit(*permitted)
   end
