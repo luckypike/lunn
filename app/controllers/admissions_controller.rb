@@ -8,6 +8,10 @@ class AdmissionsController < ApplicationController
     respond_to :html, :json
   end
 
+  def sync
+    @admissions = Admission.all
+  end
+
   def new
     respond_to do |format|
       format.html { render :index }
