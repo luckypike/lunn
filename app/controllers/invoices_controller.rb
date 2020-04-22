@@ -12,9 +12,10 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @invoice = Invoice.active.where(uuid: invoice_params[:uuid])
+      .first_or_initialize
 
-    if @invoice.save
+    if @invoice.update(invoice_params)
       head :created, location: invoices_path
     else
       render json: @invoice.errors, status: :unprocessable_entity
@@ -22,9 +23,9 @@ class InvoicesController < ApplicationController
   end
 
   def pay
-    @invoice = Invoice.find(params[:orderid])
+    @invoice = Invoice.active.find_by!(uuid: params[:orderid])
 
-    if @invoice.can_pay?
+    if @invoice&.can_pay?
       @invoice.pay
       @invoice.update(payment_id: 999, payment_amount: 999)
       head :ok
@@ -34,9 +35,9 @@ class InvoicesController < ApplicationController
   end
 
   def approve
-    @invoice = Invoice.find_by!(number: params[:id])
+    @invoice = Invoice.payed.find_by!(uuid: params[:id])
 
-    if @invoice.can_approve?
+    if @invoice&.can_approve?
       @invoice.approve
       head :ok
     else
@@ -53,7 +54,7 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    permitted = %i[last_name first_name middle_name contract number amount]
+    permitted = %i[last_name first_name middle_name contract number amount uuid email]
 
     params.require(:invoice).permit(*permitted)
   end

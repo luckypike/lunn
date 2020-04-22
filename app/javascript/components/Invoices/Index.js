@@ -18,6 +18,7 @@ export default function Index ({ invoices: data }) {
         {invoices &&
           invoices.map(invoice =>
             <div key={invoice.id} className={styles.invoice}>
+              <div className={styles.last_name}>{invoice.uuid}</div>
               <div className={styles.last_name}>{invoice.last_name}</div>
               <div className={styles.first_name}>{invoice.first_name}</div>
               <div className={styles.contract}>{invoice.amount} ₽</div>
