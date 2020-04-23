@@ -2,6 +2,9 @@ class Node::Course < Node
   has_many :node_courses, foreign_key: :field_courses_target_id, dependent: :destroy
   has_many :tutors, through: :node_courses
 
+  has_one :field_body, -> { where(entity_type: :node) },
+    class_name: 'Field::Body', foreign_key: :entity_id
+
   has_one :field_price_1, -> { where(entity_type: :node) },
     class_name: 'Field::Price1', foreign_key: :entity_id
 
@@ -87,6 +90,10 @@ class Node::Course < Node
 
   def ege
     field_ege.map(&:value)
+  end
+
+  def body
+    field_body&.value
   end
 
   def course_competencies

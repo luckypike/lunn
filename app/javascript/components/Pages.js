@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
+import classNames from 'classnames'
 
 import styles from './Pages.module.css'
 
@@ -10,12 +11,13 @@ Title.propTypes = {
   h1: PropTypes.string,
   h2: PropTypes.string,
   desc: PropTypes.string,
-  date: PropTypes.number
+  date: PropTypes.number,
+  align: PropTypes.string
 }
 
-export function Title ({ h1, h2, loaf, desc, date }) {
+export function Title ({ h1, h2, loaf, desc, date, align }) {
   return (
-    <div className={styles.root}>
+    <div className={classNames(styles.root, { [styles.left]: align === 'left', [styles.right]: align === 'right'} ) }>
       {loaf && loaf.length > 0 &&
         <ul className={styles.loafs}>
           <li className={styles.wrapper}>
