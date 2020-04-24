@@ -54,10 +54,8 @@ export default function Service ({
       </div>
 
       <div className={styles.toggle} onClick={onToggle}>
-        <svg viewBox="0 0 20 14">
-          <rect height="2" width="20" x="0" y="0" />
-          <rect height="2" width="20" x="0" y="6" />
-          <rect height="2" width="20" x="0" y="12" />
+        <svg viewBox="0 0 24 24">
+          <path d="M3,18h18v-2H3V18z M3,13h18v-2H3V13z M3,6v2h18V6H3z" />
         </svg>
       </div>
     </div>

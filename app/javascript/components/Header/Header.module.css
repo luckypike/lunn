@@ -96,8 +96,12 @@
   opacity: 0;
   visibility: hidden;
   z-index: 3;
-  transform: translateY(calc(var(--yr) * -34));
+  transform: translateY(calc(var(--yr) * -12));
   transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
+
+  @media (--s) {
+    transform: translateY(calc(var(--yr) * -28));
+  }
 
   &.active {
     opacity: 1;
@@ -109,7 +113,7 @@
     }
 
     @media (--l) {
-      transform: translateY(calc(var(--yr) * -32));
+      /* transform: translateY(calc(var(--yr) * -32)); */
     }
   }
 }

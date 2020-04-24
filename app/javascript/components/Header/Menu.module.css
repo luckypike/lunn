@@ -101,31 +101,34 @@
   display: flex;
   cursor: pointer;
   position: absolute;
-  right: calc(var(--yr) * 8);
+  right: 5px;
   top: calc(2 * var(--yr));
   transform: translateY(-50%);
   z-index: 9;
+  width: calc(var(--yr) * 12);
+  height: calc(var(--yr) * 12);
+  padding: calc(var(--yr) * 3);
 
   & svg {
     display: block;
-    width: calc(var(--yr) * 8);
-    height: calc(var(--yr) * 8);
+    width: calc(var(--yr) * 6);
+    height: calc(var(--yr) * 6);
   }
 
   @media (--s) {
     top: calc(var(--yr) * 17);
-    right: calc(var(--yr) * 8);
+    right: calc(var(--yr) * 3 + 5px);
   }
 
   @media (--m) {
-    right: calc(var(--yr) * 14);
+    right: calc(var(--yr) * 7 + 5px);
   }
 
   @media (--l) {
-    right: calc(var(--yr) * 26);
+    right: calc(var(--yr) * 26 - 3px);
   }
 
   @media (--xl) {
-    right: calc(var(--yr) * 42);
+    right: calc(var(--yr) * 42 - 3px);
   }
 }
