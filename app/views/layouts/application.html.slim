@@ -21,5 +21,5 @@ html[class=special_cookie_classes lang=I18n.locale]
       footer: NavSerializer.new(@footer).serializable_hash \
     }, { prerender: Rails.env.production? }
 
-    = javascript_pack_tag 'app', async: true
-    = javascript_include_tag '//code.jivosite.com/widget/KRILDMyFTI', async: true
+    = javascript_pack_tag 'app'
+    = javascript_include_tag '//code.jivosite.com/widget/KRILDMyFTI', async: true if Rails.env.production?

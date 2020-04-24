@@ -1,0 +1,7 @@
+.root {
+  margin-top: calc(var(--yr) * var(--s6));
+}
+
+.search {
+  margin-top: calc(var(--yr) * var(--s5));
+}

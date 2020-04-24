@@ -1,0 +1,15 @@
+.root {
+  max-width: 30rem;
+}
+
+.no {
+  margin-top: calc(var(--yr) * var(--s4));
+}
+
+.invoices {
+  margin-top: calc(var(--yr) * var(--s4));
+}
+
+.invoice {
+  margin-top: calc(var(--yr) * var(--s2));
+}

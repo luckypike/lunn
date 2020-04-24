@@ -45,6 +45,27 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def search
+    sleep 1
+
+    # TODO: перепроверить все условия поиска
+    @invoices = Invoice
+      .where(
+        'LOWER(contract) LIKE ?',
+        "%#{params[:contract]&.downcase&.squish!}%"
+      )
+      # .where(
+      #   'LOWER(last_name) LIKE ?',
+      #   "%#{params[:last_name]&.downcase&.squish!}%"
+      # )
+
+    respond_to :json
+  end
+
+  def show
+    @invoice = Invoice.find_by!(uuid: params[:id])
+  end
+
   private
 
   def verify_api_key
