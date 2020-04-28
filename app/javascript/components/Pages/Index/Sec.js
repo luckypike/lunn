@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
 import styles from './Sec.module.css'
 
@@ -15,7 +16,7 @@ export default function Sec ({ navs }) {
           <a
             href={item.path}
             key={item.mlid}
-            className={styles.item}
+            className={classNames(styles.item, styles[`item--${item.mlid}`])}
             style={{
               backgroundImage: item.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${item.image})` : null
             }}
