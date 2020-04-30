@@ -11,5 +11,26 @@
 }
 
 .invoice {
-  margin-top: calc(var(--yr) * var(--s2));
+  display: block;
+  padding: calc(var(--yr) * var(--s3)) 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--sp_color);
+    /* margin-bottom: calc(var(--yr) * var(--s3)); */
+  }
+}
+
+.title {
+  composes: h3 from '../../Fonts.module.css';
+}
+
+.number {
+  font-weight: bold;
+  /* composes: h3 from '../../Fonts.module.css'; */
+}
+
+.desc {
+  margin-top: calc(var(--yr) * var(--s1));
+  /* composes: at from '../../Fonts.module.css'; */
+  color: var(--gr_color);
 }

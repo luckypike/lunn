@@ -1,0 +1,4 @@
+.pay {
+  margin-top: calc(var(--yr) * var(--s2));
+  composes: sec from '../Buttons.module.css';
+}

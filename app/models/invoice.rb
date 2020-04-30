@@ -6,13 +6,13 @@ class Invoice < ApplicationRecord
   validates :last_name, :contract, :uuid, :number, :amount, presence: true
   validates :uuid, uniqueness: true
 
-  enum state: { active: 1, payed: 2, approved: 3 } do
+  enum state: { active: 1, paid: 2, approved: 3 } do
     event :pay do
       before do
-        self.payed_at = Time.zone.now
+        self.paid_on = Time.zone.now
       end
 
-      transition active: :payed
+      transition active: :paid
     end
 
     event :approve do
@@ -20,7 +20,7 @@ class Invoice < ApplicationRecord
         self.approved_at = Time.zone.now
       end
 
-      transition payed: :approved
+      transition paid: :approved
     end
   end
 
@@ -30,5 +30,9 @@ class Invoice < ApplicationRecord
     first_name&.squish!
     last_name&.squish!
     middle_name&.squish!
+  end
+
+  def name
+    [last_name, first_name, middle_name].join(' ')
   end
 end

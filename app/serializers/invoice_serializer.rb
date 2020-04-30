@@ -3,5 +3,5 @@ class InvoiceSerializer
 
   attributes :id, :uuid, :number, :contract, :state, :amount,
     :first_name, :last_name, :middle_name,
-    :payment_amount, :payed_at
+    :payment_amount, :paid_on
 end

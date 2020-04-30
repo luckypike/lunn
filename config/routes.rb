@@ -65,7 +65,7 @@ Rails.application.routes.draw do
       collection do
         get :search
         post :pay
-        get :payed
+        get :paid
       end
 
       member do

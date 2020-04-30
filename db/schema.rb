@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_131704) do
+ActiveRecord::Schema.define(version: 2020_04_30_170005) do
 
   create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -34,11 +34,13 @@ ActiveRecord::Schema.define(version: 2020_04_15_131704) do
     t.string "contract"
     t.string "payment_id"
     t.float "payment_amount"
-    t.timestamp "payed_at"
+    t.timestamp "paid_on"
     t.timestamp "approved_at"
     t.integer "state", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "desc"
+    t.string "payment_card"
     t.index ["last_name", "contract"], name: "index_invoices_on_last_name_and_contract"
     t.index ["number"], name: "index_invoices_on_number"
     t.index ["uuid"], name: "index_invoices_on_uuid", unique: true

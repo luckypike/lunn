@@ -22,7 +22,7 @@ export default function Show ({ locale, invoice: data }) {
       <Title
         beta
         h1={I18n.t('pay.index.title')}
-        desc={invoice.contract}
+        // desc={`Договор № ${invoice.contract}`}
       />
 
       <div className={pages.container}>
@@ -32,6 +32,8 @@ export default function Show ({ locale, invoice: data }) {
           </h2>
 
           <p>
+            Сумма платежа {invoice.amount} ₽
+            <br />
             {invoice.first_name} {invoice.middle_name} {invoice.last_name[0]}.
           </p>
         </div>

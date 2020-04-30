@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import classNames from 'classnames'
 
+import Pay from '../Pay'
+
 import { Errors, useForm } from '../../Form'
 
 import styles from './Search.module.css'
@@ -48,7 +50,7 @@ export default function Search () {
       </h2>
 
       <p>
-        Укажите ваш номер договора и фамилию чтобы найти ваши счета
+        Укажите ваши номер договора и фамилию чтобы найти ваши счета
       </p>
 
       {/* <p>
@@ -72,7 +74,7 @@ export default function Search () {
           </div>
         </div>
 
-        {/* <div className={form.item}>
+        <div className={form.item}>
           <div className={form.input}>
             <label>
               <div className={form.label}>
@@ -86,7 +88,7 @@ export default function Search () {
               />
             </label>
           </div>
-        </div> */}
+        </div>
 
         <div className={form.submit}>
           {/* <input type="submit" value={pending ? 'Ищем...' : 'Найти'} className={buttons.main} /> */}
@@ -94,7 +96,7 @@ export default function Search () {
             type="submit"
             value={pending ? 'Ищем...' : 'Найти'}
             className={classNames(buttons.main, buttons.big, { [buttons.pending]: pending })}
-            disabled={pending || (/* values.last_name === '' || */ values.contract === '')}
+            disabled={pending || (values.last_name === '' || values.contract === '')}
           />
         </div>
       </form>
@@ -109,12 +111,24 @@ export default function Search () {
 
           {invoices.length > 0 &&
             <div className={styles.invoices}>
+              <div className={styles.title}>
+                Неоплаченные счета
+              </div>
               {invoices.map(invoice =>
-                <a className={styles.invoice} key={invoice.id} href={`/invoices/${invoice.uuid}`}>
-                  <div>
+                <div className={styles.invoice} key={invoice.id}>
+                  {/* href={`/invoices/${invoice.uuid}`} */}
+                  <div className={styles.number}>
                     {invoice.number}
                   </div>
-                </a>
+
+                  {invoice.desc &&
+                    <div className={styles.desc}>
+                      {invoice.desc}
+                    </div>
+                  }
+
+                  <Pay invoice={invoice} />
+                </div>
               )}
             </div>
           }
