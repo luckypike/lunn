@@ -19,12 +19,8 @@ class Nav < ApplicationRecord
   scope :loaf, -> { unscope(:order).order(has_children: :desc, menu_name: :asc) }
 
   def path
-    if mlid == 4708
-      '/en/page/study-russian-lunn'
-    else
-      (I18n.locale != I18n.default_locale ? I18n.locale : nil).to_s +
-        UrlAlias.alias_path(link_path)
-    end
+    (I18n.locale != I18n.default_locale ? I18n.locale : nil).to_s +
+      UrlAlias.alias_path(link_path)
   end
 
   def url
