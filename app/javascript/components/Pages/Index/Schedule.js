@@ -13,9 +13,9 @@ export default function Schedule () {
       <div className={styles.toggle} onClick={() => setHeight(height === 0 ? 'auto' : 0)}>
         <div className={styles.header}>
           Расписание
-          <span className={styles.hint}>
+          {/* <span className={styles.hint}>
             занятий и ликвидации задолженностей
-          </span>
+          </span> */}
         </div>
 
         <div className={styles.button}>
@@ -30,7 +30,7 @@ export default function Schedule () {
             className={classNames(styles.item, styles.reex)}
           >
             <div className={styles.title}>
-              Ликвидация академических задолженностей
+              Летняя экзаменационная сессия и ГИА
             </div>
           </a>
 
