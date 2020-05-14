@@ -21,7 +21,6 @@ export default function StepOne ({ values, errors, onChange }) {
             value={values.last_name || ''}
             name="last_name"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Фамилия *
@@ -38,7 +37,6 @@ export default function StepOne ({ values, errors, onChange }) {
             value={values.first_name || ''}
             name="first_name"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Имя *
@@ -55,7 +53,6 @@ export default function StepOne ({ values, errors, onChange }) {
             value={values.middle_name || ''}
             name="middle_name"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Отчество *

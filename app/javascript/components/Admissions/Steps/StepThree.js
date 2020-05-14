@@ -21,7 +21,6 @@ export default function StepThree ({ values, errors, onChange }) {
             value={values.relation_degree || ''}
             name="nationality"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Степень родства *
@@ -38,7 +37,6 @@ export default function StepThree ({ values, errors, onChange }) {
             value={values.parents || ''}
             name="series"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Ф.И.О. родителей (полностью) *
@@ -55,7 +53,6 @@ export default function StepThree ({ values, errors, onChange }) {
             value={values.parents_phone || ''}
             name="number"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Телефон родителей *

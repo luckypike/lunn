@@ -21,7 +21,6 @@ export default function StepTwo ({ values, errors, onChange }) {
             value={values.nationality || ''}
             name="nationality"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Гражданство *
@@ -38,7 +37,6 @@ export default function StepTwo ({ values, errors, onChange }) {
             value={values.series || ''}
             name="series"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Серия *
@@ -55,7 +53,6 @@ export default function StepTwo ({ values, errors, onChange }) {
             value={values.number || ''}
             name="number"
             onChange={onChange}
-            required
           />
           <div className={form.label}>
             Номер *

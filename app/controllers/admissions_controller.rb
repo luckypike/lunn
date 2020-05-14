@@ -29,8 +29,6 @@ class AdmissionsController < ApplicationController
   end
 
   def edit
-    @admission = Admission.find(params[:id])
-
     respond_to do |format|
       format.html { render :index }
       format.json { render json: { values: @admission } }
@@ -38,13 +36,12 @@ class AdmissionsController < ApplicationController
   end
 
   def update
-    @admission = Admission.find(params[:id])
     @admission.state = Admission.states.keys[Admission.states.keys.index(@admission.state) + 1] unless @admission.state == :done
 
-    if @admission.update!(admission_params)
+    if @admission.update(admission_params)
       render json: { values: @admission }
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @admission.errors, status: :unprocessable_entity
     end
   end
 
@@ -56,7 +53,7 @@ class AdmissionsController < ApplicationController
 
   def admission_params
     params.require(:admission).permit(
-      :step, :first_name, :last_name, :middle_name, :sex, :birth_date, :birth_place,
+      :first_name, :last_name, :middle_name, :sex, :birth_date, :birth_place,
       :nationality, :document, :series, :number, :issued_by,
       :relation_degree, :parents, :parents_phone
     )
