@@ -1,8 +1,7 @@
 class AdmissionsController < ApplicationController
-  before_action :set_url_alias, only: :page
-  before_action :set_node, only: :page
+  skip_before_action :verify_authenticity_token
 
-  def page; end
+  before_action :set_admission, only: %i[edit update]
 
   def index
     respond_to :html, :json
@@ -17,5 +16,49 @@ class AdmissionsController < ApplicationController
       format.html { render :index }
       format.json
     end
+  end
+
+  def create
+    @admission = Admission.new(admission_params)
+
+    if @admission.save
+      head :created, location: account_event_path(id: @event.id)
+    else
+      render json: @admission.errors, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @admission = Admission.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: { values: @admission } }
+    end
+  end
+
+  def update
+    @admission = Admission.find(params[:id])
+    @admission.state = Admission.states.keys[Admission.states.keys.index(@admission.state) + 1] unless @admission.state == :done
+
+    if @admission.update!(admission_params)
+      render json: { values: @admission }
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def set_admission
+    @admission = Admission.find(params[:id])
+  end
+
+  def admission_params
+    params.require(:admission).permit(
+      :step, :first_name, :last_name, :middle_name, :sex, :birth_date, :birth_place,
+      :nationality, :document, :series, :number, :issued_by,
+      :relation_degree, :parents, :parents_phone
+    )
   end
 end

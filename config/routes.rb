@@ -53,7 +53,7 @@ Rails.application.routes.draw do
       request.format == :json
     }, format: :json
 
-    resources :admissions, only: %i[index new create show] do
+    resources :admissions, only: %i[index new create show edit update] do
       collection do
         get :sync
       end

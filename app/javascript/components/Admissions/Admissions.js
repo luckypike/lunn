@@ -14,6 +14,7 @@ export default function Admissions () {
         <Index path="admissions" />
         <Show path="admissions/:slug" />
         <Form path="admissions/new" />
+        <Form path="admissions/:id/edit" />
       </ScrollToTop>
     </Router>
   )
