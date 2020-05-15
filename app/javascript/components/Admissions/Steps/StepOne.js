@@ -18,8 +18,8 @@ export default function StepOne ({ values, errors, onChange }) {
         <div className={form.input}>
           <input
             type="text"
-            value={values.last_name || ''}
-            name="last_name"
+            value={values.identity_last_name}
+            name="identity_last_name"
             onChange={onChange}
           />
           <div className={form.label}>
@@ -27,15 +27,15 @@ export default function StepOne ({ values, errors, onChange }) {
           </div>
         </div>
 
-        <Errors errors={errors.second_name} />
+        <Errors errors={errors.identity_last_name} />
       </div>
 
       <div className={form.el}>
         <div className={form.input}>
           <input
             type="text"
-            value={values.first_name || ''}
-            name="first_name"
+            value={values.identity_first_name}
+            name="identity_first_name"
             onChange={onChange}
           />
           <div className={form.label}>
@@ -43,15 +43,15 @@ export default function StepOne ({ values, errors, onChange }) {
           </div>
         </div>
 
-        <Errors errors={errors.first_name} />
+        <Errors errors={errors.identity_first_name} />
       </div>
 
       <div className={form.el}>
         <div className={form.input}>
           <input
             type="text"
-            value={values.middle_name || ''}
-            name="middle_name"
+            value={values.identity_middle_name}
+            name="identity_middle_name"
             onChange={onChange}
           />
           <div className={form.label}>
@@ -59,7 +59,7 @@ export default function StepOne ({ values, errors, onChange }) {
           </div>
         </div>
 
-        <Errors errors={errors.middle_name} />
+        <Errors errors={errors.identity_middle_name} />
       </div>
     </>
   )

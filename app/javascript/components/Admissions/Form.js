@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import classNames from 'classnames'
@@ -32,31 +32,26 @@ export default function Form ({ id }) {
   } = useForm({
   })
 
+  const [admission, setAdmission] = useState()
+
+  const _fetch = async () => {
+    const { data } = await axios.get(`/admissions/${id}/edit.json`)
+
+    setAdmission(data.admission)
+    setValues(data.values)
+  }
+
   useEffect(() => {
-    const _fetch = async () => {
-      const {
-        data: {
-          values
-        }
-      } = await axios.get(`/admissions/${id}/edit.json`)
-
-      console.log(values)
-
-      setValues(values)
-    }
-
     _fetch()
   }, [id])
 
   const handleSubmit = async e => {
     await axios.patch(
-      `/admissions/${id}`,
+      `/admissions/${id}.json`,
       { admission: values },
       { cancelToken: cancelToken.current.token }
     ).then(res => {
-      console.log('ok')
-      console.log(res.data)
-      setValues(res.data.values)
+      _fetch()
     }).catch(error => {
       setErrors(error.response.data)
     })
@@ -70,18 +65,18 @@ export default function Form ({ id }) {
 
       <div className={styles.root}>
         <div className={styles.form}>
-          {values &&
+          {values && admission &&
             <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
-              {values.state === 'one' &&
+              {admission.state === 'one' &&
                 <StepOne onChange={handleInputChange} values={values} errors={errors}/>
               }
-              {values.state === 'two' &&
+              {admission.state === 'two' &&
                 <StepTwo onChange={handleInputChange} values={values} errors={errors}/>
               }
-              {values.state === 'three' &&
+              {admission.state === 'three' &&
                 <StepThree onChange={handleInputChange} values={values} errors={errors}/>
               }
-              {values.state === 'done' &&
+              {admission.state === 'done' &&
                 <div>Done</div>
               }
 

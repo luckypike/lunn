@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  # protect_from_forgery with: :exception
+  protect_from_forgery unless: -> { request.format.json? }
 
   around_action :switch_locale
 

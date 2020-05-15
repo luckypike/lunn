@@ -39,9 +39,9 @@ export default function Account ({ user: data, locale }) {
         }
 
         <div className={styles.root}>
-          <div className={styles.item}>
+          <a href="/admissions/new" className={styles.item}>
             <div className={styles.title}>
-              Подача документов
+              Подача документов на поступление в электронном виде
             </div>
 
             <div className={styles.desc}>
@@ -49,9 +49,9 @@ export default function Account ({ user: data, locale }) {
             </div>
 
             <div className={styles.more}>
-              Временно недоступно
+              Подать документы
             </div>
-          </div>
+          </a>
 
           <div className={styles.item}>
             <div className={styles.title}>

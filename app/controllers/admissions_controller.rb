@@ -1,7 +1,14 @@
 class AdmissionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
+  before_action :set_url_alias, only: :page
+  before_action :set_node, only: :page
   before_action :set_admission, only: %i[edit update]
+  before_action :authorize_admission
+
+  after_action :verify_authorized
+
+  def page
+    # DO NOT REMOVE! @brg
+  end
 
   def index
     respond_to :html, :json
@@ -14,32 +21,33 @@ class AdmissionsController < ApplicationController
   def new
     respond_to do |format|
       format.html { render :index }
-      format.json
     end
   end
 
   def create
     @admission = Admission.new(admission_params)
 
-    if @admission.save
-      head :created, location: account_event_path(id: @event.id)
-    else
-      render json: @admission.errors, status: :unprocessable_entity
+    respond_to do |format|
+      format.json do
+        if @admission.save
+          render json: { id: @admission.id }, status: :created
+        else
+          render json: @admission.errors, status: :unprocessable_entity
+        end
+      end
     end
   end
 
   def edit
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: { values: @admission } }
+      format.json
     end
   end
 
   def update
-    @admission.state = Admission.states.keys[Admission.states.keys.index(@admission.state) + 1] unless @admission.state == :done
-
     if @admission.update(admission_params)
-      render json: { values: @admission }
+      head :ok
     else
       render json: @admission.errors, status: :unprocessable_entity
     end
@@ -51,11 +59,11 @@ class AdmissionsController < ApplicationController
     @admission = Admission.find(params[:id])
   end
 
+  def authorize_admission
+    authorize @admission || Admission
+  end
+
   def admission_params
-    params.require(:admission).permit(
-      :first_name, :last_name, :middle_name, :sex, :birth_date, :birth_place,
-      :nationality, :document, :series, :number, :issued_by,
-      :relation_degree, :parents, :parents_phone
-    )
+    params.require(:admission).permit(Admission.allowed_params)
   end
 end
