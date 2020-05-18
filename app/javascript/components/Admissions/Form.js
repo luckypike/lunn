@@ -9,6 +9,8 @@ import { useForm } from '../Form'
 import StepOne from './Steps/StepOne'
 import StepTwo from './Steps/StepTwo'
 import StepThree from './Steps/StepThree'
+import StepFour from './Steps/StepFour'
+import StepFive from './Steps/StepFive'
 
 import styles from './Admissions.module.css'
 import pages from '../Pages.module.css'
@@ -75,6 +77,12 @@ export default function Form ({ id }) {
               }
               {admission.state === 'three' &&
                 <StepThree onChange={handleInputChange} values={values} errors={errors}/>
+              }
+              {admission.state === 'four' &&
+                <StepFour onChange={handleInputChange} values={values} errors={errors}/>
+              }
+              {admission.state === 'five' &&
+                <StepFive onChange={handleInputChange} values={values} errors={errors}/>
               }
               {admission.state === 'done' &&
                 <div>Done</div>
