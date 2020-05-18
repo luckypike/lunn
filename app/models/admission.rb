@@ -6,12 +6,12 @@ class Admission < ApplicationRecord
   belongs_to :user, default: -> { Current.user }
 
   store :identity, accessors: %i[
-    first_name last_name middle_name
+    first_name last_name middle_name sex birth_date birth_place
   ], coder: JSON, prefix: true
 
   validates :state, presence: true
 
-  validates :identity_first_name, :identity_last_name, :identity_middle_name, presence: true, unless: :one?
+  validates :identity_first_name, :identity_last_name, :identity_middle_name, :identity_sex, :identity_birth_date, :identity_birth_place, presence: true, unless: :one?
   # validates :nationality, :series, :number, presence: true, if: -> { three? || done? }
   # validates :relation_degree, :parents, :parents_phone, presence: true, if: -> { done? }
 

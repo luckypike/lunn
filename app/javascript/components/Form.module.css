@@ -15,6 +15,12 @@
 .input {
   position: relative;
 
+  & textarea {
+    resize: vertical;
+    height: auto;
+    line-height: calc(var(--yr) * 6);
+  }
+
   & select,
   & textarea,
   & input {
@@ -42,17 +48,11 @@
 
     &:focus ~ .label,
     &:not(:focus):valid ~ .label {
-      top: 20%;
+      top: calc(var(--yr) * 2.5);
       transform: translateY(-20%);
       font-size: calc(var(--yr) * 3);
       line-height: calc(var(--yr) * 4);
     }
-  }
-
-  & textarea {
-    resize: vertical;
-    height: auto;
-    line-height: calc(var(--yr) * 6);
   }
 }
 
