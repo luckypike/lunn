@@ -1,7 +1,7 @@
 class Admission < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
-  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, done: 99 }
+  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, done: 99 }
 
   belongs_to :user, default: -> { Current.user }
 
@@ -22,6 +22,12 @@ class Admission < ApplicationRecord
     index street house building apartment email mobile phone
   ], coder: JSON, prefix: true
 
+  store :school, accessors: %i[
+    type name graduation address
+    education document_type document_number document_id document_date diploma_type
+    merit language
+  ], coder: JSON, prefix: true
+
   validates :state, presence: true
 
   validates :identity_first_name, :identity_last_name, :identity_middle_name,
@@ -38,6 +44,13 @@ class Admission < ApplicationRecord
   validates :address_index, :address_street, :address_house, :address_mobile,
     presence: true, unless: :five?
 
+  validates :school_type, :school_name, :school_graduation, :school_address,
+    presence: true, unless: :six?
+
+  validates :school_type, :school_education, :school_document_type,
+    :school_document_number, :school_document_id, :school_document_date,
+    presence: true, unless: :seven?
+
   after_initialize do
     self.state ||= :one
   end
@@ -48,6 +61,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:document].map { |key| "document_#{key}" } +
         Admission.stored_attributes[:parents].map { |key| "parents_#{key}" } +
         Admission.stored_attributes[:address].map { |key| "address_#{key}" } +
+        Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         %i[state]
     end
   end

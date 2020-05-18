@@ -11,6 +11,9 @@ import StepTwo from './Steps/StepTwo'
 import StepThree from './Steps/StepThree'
 import StepFour from './Steps/StepFour'
 import StepFive from './Steps/StepFive'
+import StepSix from './Steps/StepSix'
+import StepSeven from './Steps/StepSeven'
+import StepEight from './Steps/StepEight'
 
 import styles from './Admissions.module.css'
 import pages from '../Pages.module.css'
@@ -83,6 +86,15 @@ export default function Form ({ id }) {
               }
               {admission.state === 'five' &&
                 <StepFive onChange={handleInputChange} values={values} errors={errors}/>
+              }
+              {admission.state === 'six' &&
+                <StepSix onChange={handleInputChange} values={values} errors={errors}/>
+              }
+              {admission.state === 'seven' &&
+                <StepSeven onChange={handleInputChange} values={values} errors={errors}/>
+              }
+              {admission.state === 'eight' &&
+                <StepEight onChange={handleInputChange} values={values} errors={errors}/>
               }
               {admission.state === 'done' &&
                 <div>Done</div>
