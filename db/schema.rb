@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_164751) do
+ActiveRecord::Schema.define(version: 2020_05_18_153907) do
 
   create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -20,19 +20,13 @@ ActiveRecord::Schema.define(version: 2020_05_15_164751) do
     t.integer "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "sex"
-    t.timestamp "birth_date"
-    t.text "birth_place"
-    t.string "nationality"
-    t.integer "document"
-    t.string "series"
-    t.string "number"
-    t.text "issued_by"
-    t.string "relation_degree"
-    t.text "parents"
-    t.string "parents_phone"
     t.json "identity"
     t.json "school"
+    t.json "document"
+    t.json "parents"
+    t.json "address"
+    t.json "score"
+    t.json "course"
     t.index ["user_id"], name: "index_admissions_on_user_id"
   end
 
