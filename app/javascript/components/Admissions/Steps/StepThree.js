@@ -18,8 +18,8 @@ export default function StepThree ({ values, errors, onChange }) {
         <div className={form.input}>
           <input
             type="text"
-            value={values.relation_degree || ''}
-            name="nationality"
+            value={values.parents_relation_degree || ''}
+            name="parents_relation_degree"
             onChange={onChange}
           />
           <div className={form.label}>
@@ -27,15 +27,15 @@ export default function StepThree ({ values, errors, onChange }) {
           </div>
         </div>
 
-        <Errors errors={errors.relation_degree} />
+        <Errors errors={errors.parents_relation_degree} />
       </div>
 
       <div className={form.el}>
         <div className={form.input}>
           <input
             type="text"
-            value={values.parents || ''}
-            name="series"
+            value={values.parents_name || ''}
+            name="parents_name"
             onChange={onChange}
           />
           <div className={form.label}>
@@ -43,7 +43,7 @@ export default function StepThree ({ values, errors, onChange }) {
           </div>
         </div>
 
-        <Errors errors={errors.parents} />
+        <Errors errors={errors.parents_name} />
       </div>
 
       <div className={form.el}>
@@ -51,7 +51,7 @@ export default function StepThree ({ values, errors, onChange }) {
           <input
             type="text"
             value={values.parents_phone || ''}
-            name="number"
+            name="parents_phone"
             onChange={onChange}
           />
           <div className={form.label}>
