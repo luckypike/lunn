@@ -5,6 +5,7 @@ import classNames from 'classnames'
 
 import { Title } from '../Pages'
 import { useForm } from '../Form'
+import { useI18n } from '../I18n'
 
 import StepOne from './Steps/StepOne'
 import StepTwo from './Steps/StepTwo'
@@ -23,10 +24,13 @@ import form from '../Form.module.css'
 import buttons from '../Buttons.module.css'
 
 Form.propTypes = {
-  id: PropTypes.string
+  id: PropTypes.string,
+  locale: PropTypes.string
 }
 
-export default function Form ({ id }) {
+export default function Form ({ id, locale }) {
+  const I18n = useI18n(locale)
+
   const {
     values,
     setValues,
@@ -73,45 +77,55 @@ export default function Form ({ id }) {
       <div className={styles.root}>
         <div className={styles.form}>
           {values && admission &&
-            <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
-              {admission.state === 'one' &&
-                <StepOne onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'two' &&
-                <StepTwo onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'three' &&
-                <StepThree onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'four' &&
-                <StepFour onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'five' &&
-                <StepFive onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'six' &&
-                <StepSix onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'seven' &&
-                <StepSeven onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'eight' &&
-                <StepEight onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'nine' &&
-                <StepNine onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'ten' &&
-                <StepTen onChange={handleInputChange} values={values} errors={errors}/>
-              }
-              {admission.state === 'done' &&
-                <div>Done</div>
-              }
-
-              <div className={classNames(form.submit, styles.submit)}>
-                <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main, buttons.big, { [buttons.pending]: pending })} disabled={pending} />
+            <>
+              <div className={styles.step}>
+                <h2>{I18n.t(`admissions.steps.${admission.state}`)}</h2>
               </div>
-            </form>
+
+              <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
+                {admission.state === 'one' &&
+                  <StepOne onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'two' &&
+                  <StepTwo onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'three' &&
+                  <StepThree onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'four' &&
+                  <StepFour onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'five' &&
+                  <StepFive onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'six' &&
+                  <StepSix onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'seven' &&
+                  <StepSeven onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'eight' &&
+                  <StepEight onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'nine' &&
+                  <StepNine onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'ten' &&
+                  <StepTen onChange={handleInputChange} values={values} errors={errors}/>
+                }
+                {admission.state === 'done' &&
+                  <div>
+                    <p>Спасибо за заполнение, ваша заявка принята и будет обработана в ближайшее время.</p>
+                  </div>
+                }
+
+                {admission.state !== 'done' &&
+                  <div className={classNames(form.submit, styles.submit)}>
+                    <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main, buttons.big, { [buttons.pending]: pending })} disabled={pending} />
+                  </div>
+                }
+              </form>
+            </>
           }
         </div>
       </div>
