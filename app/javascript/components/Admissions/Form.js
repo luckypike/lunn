@@ -14,6 +14,7 @@ import StepFive from './Steps/StepFive'
 import StepSix from './Steps/StepSix'
 import StepSeven from './Steps/StepSeven'
 import StepEight from './Steps/StepEight'
+import StepNine from './Steps/StepNine'
 
 import styles from './Admissions.module.css'
 import pages from '../Pages.module.css'
@@ -95,6 +96,9 @@ export default function Form ({ id }) {
               }
               {admission.state === 'eight' &&
                 <StepEight onChange={handleInputChange} values={values} errors={errors}/>
+              }
+              {admission.state === 'nine' &&
+                <StepNine onChange={handleInputChange} values={values} errors={errors}/>
               }
               {admission.state === 'done' &&
                 <div>Done</div>
