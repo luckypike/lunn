@@ -1,7 +1,7 @@
 class Admission < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
-  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, done: 99 }
+  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, done: 99 }
 
   belongs_to :user, default: -> { Current.user }
 
@@ -32,6 +32,10 @@ class Admission < ApplicationRecord
     subject ege grade year achievements
   ], coder: JSON, prefix: true
 
+  store :course, accessors: %i[
+    form basis program contract status olympiad date
+  ], coder: JSON, prefix: true
+
   validates :state, presence: true
 
   validates :identity_first_name, :identity_last_name, :identity_middle_name,
@@ -58,6 +62,10 @@ class Admission < ApplicationRecord
   validates :score_subject, :score_ege, :score_grade, :score_year,
     presence: true, unless: :nine?
 
+  validates :course_form, :course_basis, :course_program,
+    :course_contract, :course_status, :course_date,
+    presence: true, unless: :ten?
+
   after_initialize do
     self.state ||= :one
   end
@@ -70,6 +78,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:address].map { |key| "address_#{key}" } +
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
+        Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
         %i[state]
     end
   end

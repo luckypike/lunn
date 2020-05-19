@@ -11,4 +11,6 @@ json.extract! admission, :state,
   :school_education, :school_document_type, :school_document_number,
   :school_document_id, :school_document_date, :school_diploma_type,
   :school_merit, :school_language,
-  :score_subject, :score_ege, :score_grade, :score_year, :score_achievements
+  :score_subject, :score_ege, :score_grade, :score_year, :score_achievements,
+  :course_form, :course_basis, :course_program,
+  :course_contract, :course_status, :course_olympiad, :course_date
