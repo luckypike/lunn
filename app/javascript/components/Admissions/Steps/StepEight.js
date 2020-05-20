@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Errors } from '../../Form'
 
-import form from '../../Form.module.css'
+import form from '../../FormStatic.module.css'
 
 StepEight.propTypes = {
   values: PropTypes.object,
@@ -14,8 +14,12 @@ StepEight.propTypes = {
 export default function StepEight ({ values, errors, onChange }) {
   return (
     <>
-      <div className={form.el}>
+      <div className={form.item}>
         <div className={form.input}>
+          <div className={form.label}>
+            Награда
+          </div>
+
           <select name="school_merit" onChange={onChange} value={values.school_merit}>
             <option value=""></option>
             <option value="1">Аттестат с отличием</option>
@@ -23,17 +27,17 @@ export default function StepEight ({ values, errors, onChange }) {
             <option value="3">Золотая медаль</option>
             <option value="4">Серебряная медаль</option>
           </select>
-
-          <div className={form.label}>
-            Награда
-          </div>
         </div>
 
         <Errors errors={errors.school_merit} />
       </div>
 
-      <div className={form.el}>
+      <div className={form.item}>
         <div className={form.input}>
+          <div className={form.label}>
+            Изучаемый ранее иностранный язык
+          </div>
+
           <select name="school_language" onChange={onChange} value={values.school_language}>
             <option value=""></option>
             <option value="1">Английский</option>
@@ -45,10 +49,6 @@ export default function StepEight ({ values, errors, onChange }) {
             <option value="7">Японский</option>
             <option value="8">Другой</option>
           </select>
-
-          <div className={form.label}>
-            Изучаемый ранее иностранный язык
-          </div>
         </div>
 
         <Errors errors={errors.school_language} />
