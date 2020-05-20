@@ -45,6 +45,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    render :user_not_authorized
+    render :user_not_authorized, status: :unauthorized
   end
 end

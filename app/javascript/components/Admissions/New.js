@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { navigate } from '@reach/router'
+import { deserialize } from 'jsonapi-deserializer'
 
 import Title from '../Title'
 import { useI18n } from '../I18n'
@@ -14,13 +15,18 @@ New.propTypes = {
   locale: PropTypes.string
 }
 
-export default function New ({ locale }) {
+export default function New ({ locale, user: userJSON }) {
   const I18n = useI18n(locale)
+  const user = deserialize(userJSON)
+
+  console.log(user)
 
   const handleCreate = async () => {
-    const { data } = await axios.post('/admissions.json', { admission: { q: '' } })
-
-    navigate(`/admissions/${data.id}/edit`)
+    await axios.post('/admissions.json', { admission: { q: '' } })
+      .then(({ data }) => {
+        navigate(`/admissions/${data.id}/edit`)
+      }).catch(_error => {
+      })
   }
 
   return (
@@ -32,9 +38,17 @@ export default function New ({ locale }) {
 
       <div className={pages.container}>
         <div className={styles.root}>
-          <button onClick={handleCreate}>
-            Начать заполнение
-          </button>
+          {user.confirmed &&
+            <button onClick={handleCreate}>
+              Начать заполнение
+            </button>
+          }
+
+          {!user.confirmed &&
+            <p>
+              Подтвердите вашу почту чтобы подать документы на поступление
+            </p>
+          }
         </div>
       </div>
     </div>

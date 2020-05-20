@@ -110,7 +110,7 @@ export default function StepTwo ({ values, errors, onChange }) {
           />
 
           <div className={form.label}>
-            Дата рождения *
+            Дата выдачи
           </div>
         </div>
 

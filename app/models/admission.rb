@@ -39,35 +39,42 @@ class Admission < ApplicationRecord
   validates :state, presence: true
 
   validates :identity_first_name, :identity_last_name, :identity_middle_name,
-    :identity_sex, :identity_birth_date, :identity_birth_place, presence: true, unless: :one?
+    :identity_sex, :identity_birth_date, :identity_birth_place,
+    presence: true, if: -> { step_after?(1) }
 
   validates :document_nationality, :document_type, :document_series, :document_number,
-    :document_issued_by, :document_issue_date, presence: true, unless: :two?
+    :document_issued_by, :document_issue_date,
+    presence: true, if: -> { step_after?(2) }
 
-  validates :parents_relation_degree, :parents_name, :parents_phone, presence: true, unless: :three?
+  validates :parents_relation_degree, :parents_name, :parents_phone,
+    presence: true, if: -> { step_after?(3) }
 
   validates :address_country, :address_region, :address_district, :address_city,
-    presence: true, unless: :four?
+    presence: true, if: -> { step_after?(4) }
 
   validates :address_index, :address_street, :address_house, :address_mobile,
-    presence: true, unless: :five?
+    presence: true, if: -> { step_after?(5) }
 
   validates :school_type, :school_name, :school_graduation, :school_address,
-    presence: true, unless: :six?
+    presence: true, if: -> { step_after?(6) }
 
   validates :school_type, :school_education, :school_document_type,
     :school_document_number, :school_document_id, :school_document_date,
-    presence: true, unless: :seven?
+    presence: true, if: -> { step_after?(7) }
 
   validates :score_subject, :score_ege, :score_grade, :score_year,
-    presence: true, unless: :nine?
+    presence: true, if: -> { step_after?(9) }
 
   validates :course_form, :course_basis, :course_program,
-    :course_contract, :course_status, :course_date,
-    presence: true, unless: :ten?
+    :course_contract, :course_date,
+    presence: true, if: -> { step_after?(10) }
 
   after_initialize do
     self.state ||= :one
+  end
+
+  def step_after?(step)
+    Admission.states[state] > step
   end
 
   class << self

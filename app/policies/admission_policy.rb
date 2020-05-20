@@ -4,7 +4,7 @@ class AdmissionPolicy < ApplicationPolicy
   end
 
   def create?
-    user
+    user&.confirmed?
   end
 
   def show?

@@ -40,8 +40,7 @@ export default function Form ({ id, locale }) {
     setErrors,
     onSubmit,
     cancelToken
-  } = useForm({
-  })
+  } = useForm()
 
   const [admission, setAdmission] = useState()
 
