@@ -77,6 +77,22 @@ class Admission < ApplicationRecord
     Admission.states[state] > step
   end
 
+  def self.to_csv
+    attributes = %i[id] + allowed_params + %i[created_at]
+
+    options = %i[identity_sex document_type school_type school_education school_document_type
+      school_diploma_type school_merit school_language course_form course_basis course_status
+      course_olympiad]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |admission|
+        csv << attributes.map{ |attr| options.include?(attr.to_sym) ? (admission.send(attr.to_sym).present? ? I18n.t("admissions.options.#{attr.to_sym}.#{admission.send(attr.to_sym)}") : '') : admission.send(attr) }
+      end
+    end
+  end
+
   class << self
     def allowed_params
       Admission.stored_attributes[:identity].map { |key| "identity_#{key}" } +

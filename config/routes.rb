@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :admissions, only: %i[index new create show edit update] do
       collection do
         get :sync
+        get :export
       end
     end
 

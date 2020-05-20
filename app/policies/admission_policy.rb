@@ -18,4 +18,8 @@ class AdmissionPolicy < ApplicationPolicy
   def update?
     user && record.user == user
   end
+
+  def export?
+    true
+  end
 end
