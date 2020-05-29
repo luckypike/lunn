@@ -43,17 +43,23 @@ export default function Form ({ id, locale }) {
   } = useForm()
 
   const [admission, setAdmission] = useState()
+  const [dictionaries, setDictionaries] = useState()
 
   const _fetch = async () => {
     const { data } = await axios.get(`/admissions/${id}/edit.json`)
 
     setAdmission(data.admission)
     setValues(data.values)
+    setDictionaries(data.dictionaries)
   }
 
   useEffect(() => {
     _fetch()
   }, [id])
+
+  const handleSelectChange = (name, value) => {
+    setValues({ ...values, [name]: value })
+  }
 
   const handleSubmit = async e => {
     await axios.patch(
@@ -86,7 +92,7 @@ export default function Form ({ id, locale }) {
                   <StepOne onChange={handleInputChange} values={values} errors={errors}/>
                 }
                 {admission.state === 'two' &&
-                  <StepTwo onChange={handleInputChange} values={values} errors={errors}/>
+                  <StepTwo onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
                 }
                 {admission.state === 'three' &&
                   <StepThree onChange={handleInputChange} values={values} errors={errors}/>

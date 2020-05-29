@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Select from 'react-select'
 
 import { Errors } from '../../Form'
 
@@ -7,24 +8,31 @@ import form from '../../FormStatic.module.css'
 
 StepTwo.propTypes = {
   values: PropTypes.object,
+  dictionaries: PropTypes.object,
   errors: PropTypes.object,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onSelectChange: PropTypes.func
 }
 
-export default function StepTwo ({ values, errors, onChange }) {
+export default function StepTwo ({ values, dictionaries, errors, onChange, onSelectChange }) {
+  if (!dictionaries) return null
+
   return (
     <>
       <div className={form.item}>
-        <div className={form.input}>
+        <div className={form.select}>
           <div className={form.label}>
             Гражданство *
           </div>
 
-          <input
-            type="text"
-            value={values.document_nationality}
-            name="document_nationality"
-            onChange={onChange}
+          <Select
+            classNamePrefix="react-select"
+            value={dictionaries.citizenships.find(c => c.id === values.document_nationality)}
+            getOptionValue={option => option.id}
+            noOptionsMessage={() => 'Ничего не найдено'}
+            options={dictionaries.citizenships}
+            placeholder="Выберите граданство.."
+            onChange={value => onSelectChange('document_nationality', value.id)}
           />
         </div>
 

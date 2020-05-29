@@ -11,3 +11,5 @@ json.values do
 
   json.state Admission.states.keys[Admission.states.keys.index(@admission.state) + 1]
 end
+
+json.partial! 'dictionaries'
