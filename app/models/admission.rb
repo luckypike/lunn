@@ -73,7 +73,7 @@ class Admission < ApplicationRecord
   validates :school_language,
     presence: true, if: -> { step_after?(8) }
 
-  validates :score_subject, :score_ege, :score_grade, :score_year,
+  validates :score_subject, :score_ege, :score_year,
     presence: true, if: -> { step_after?(9) }
 
   validates :course_form, :course_basis, :course_program,

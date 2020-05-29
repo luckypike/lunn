@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Select from 'react-select'
 
 import { Errors } from '../../Form'
 
@@ -7,24 +8,31 @@ import form from '../../FormStatic.module.css'
 
 StepNine.propTypes = {
   values: PropTypes.object,
+  dictionaries: PropTypes.object,
   errors: PropTypes.object,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onSelectChange: PropTypes.func
 }
 
-export default function StepNine ({ values, errors, onChange }) {
+export default function StepNine ({ values, dictionaries, errors, onChange, onSelectChange }) {
+  if (!dictionaries) return null
+
   return (
     <>
       <div className={form.item}>
-        <div className={form.input}>
+        <div className={form.select}>
           <div className={form.label}>
             Предмет *
           </div>
 
-          <input
-            type="text"
-            value={values.score_subject}
-            name="score_subject"
-            onChange={onChange}
+          <Select
+            classNamePrefix="react-select"
+            value={dictionaries.subjects.find(s => s.id === values.score_subject)}
+            getOptionValue={option => option.id}
+            noOptionsMessage={() => 'Ничего не найдено'}
+            options={dictionaries.subjects}
+            placeholder="Выберите предмет.."
+            onChange={value => onSelectChange('score_subject', value.id)}
           />
         </div>
 
@@ -51,7 +59,7 @@ export default function StepNine ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Оценка из аттестата *
+            Оценка из аттестата
           </div>
 
           <input
@@ -72,7 +80,7 @@ export default function StepNine ({ values, errors, onChange }) {
           </div>
 
           <input
-            type="date"
+            type="text"
             value={values.score_year}
             name="score_year"
             onChange={onChange}
@@ -83,15 +91,19 @@ export default function StepNine ({ values, errors, onChange }) {
       </div>
 
       <div className={form.item}>
-        <div className={form.input}>
+        <div className={form.select}>
           <div className={form.label}>
             Индивидуальные достижения
           </div>
 
-          <textarea
-            value={values.score_achievements}
-            name="score_achievements"
-            onChange={onChange}
+          <Select
+            classNamePrefix="react-select"
+            value={dictionaries.achievements.find(a => a.id === values.score_achievements)}
+            getOptionValue={option => option.id}
+            noOptionsMessage={() => 'Ничего не найдено'}
+            options={dictionaries.achievements}
+            placeholder="Выберите достижение.."
+            onChange={value => onSelectChange('score_achievements', value.id)}
           />
         </div>
 
