@@ -17,18 +17,103 @@ export default function StepFive ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
+            Страна *
+          </div>
+
+          <input
+            type="text"
+            value={values.residence_country}
+            name="residence_country"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.residence_country} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Регион (автономная область, автономный округ, город ф.з., край, область, республика) *
+          </div>
+
+          <input
+            type="text"
+            value={values.residence_region}
+            name="residence_region"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.residence_region} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Район
+          </div>
+
+          <input
+            type="text"
+            value={values.residence_district}
+            name="residence_district"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.residence_district} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Город *
+          </div>
+
+          <input
+            type="text"
+            value={values.residence_city}
+            name="residence_city"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.residence_city} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Поселок, село, деревня, хутор...
+          </div>
+
+          <input
+            type="text"
+            value={values.residence_locality}
+            name="residence_locality"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.residence_locality} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
             Индекс *
           </div>
 
           <input
             type="text"
-            value={values.address_index}
-            name="address_index"
+            value={values.residence_index}
+            name="residence_index"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_index} />
+        <Errors errors={errors.residence_index} />
       </div>
 
       <div className={form.item}>
@@ -39,13 +124,13 @@ export default function StepFive ({ values, errors, onChange }) {
 
           <input
             type="text"
-            value={values.address_street}
-            name="address_street"
+            value={values.residence_street}
+            name="residence_street"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_street} />
+        <Errors errors={errors.residence_street} />
       </div>
 
       <div className={form.item}>
@@ -56,13 +141,13 @@ export default function StepFive ({ values, errors, onChange }) {
 
           <input
             type="text"
-            value={values.address_house}
-            name="address_house"
+            value={values.residence_house}
+            name="residence_house"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_house} />
+        <Errors errors={errors.residence_house} />
       </div>
 
       <div className={form.item}>
@@ -73,13 +158,13 @@ export default function StepFive ({ values, errors, onChange }) {
 
           <input
             type="text"
-            value={values.address_building}
-            name="address_building"
+            value={values.residence_building}
+            name="residence_building"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_building} />
+        <Errors errors={errors.residence_building} />
       </div>
 
       <div className={form.item}>
@@ -90,13 +175,13 @@ export default function StepFive ({ values, errors, onChange }) {
 
           <input
             type="text"
-            value={values.address_apartment}
-            name="address_apartment"
+            value={values.residence_apartment}
+            name="residence_apartment"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_apartment} />
+        <Errors errors={errors.residence_apartment} />
       </div>
 
       <div className={form.item}>
@@ -107,13 +192,13 @@ export default function StepFive ({ values, errors, onChange }) {
 
           <input
             type="text"
-            value={values.address_email}
-            name="address_email"
+            value={values.residence_email}
+            name="residence_email"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_email} />
+        <Errors errors={errors.residence_email} />
       </div>
 
       <div className={form.item}>
@@ -124,13 +209,13 @@ export default function StepFive ({ values, errors, onChange }) {
 
           <input
             type="text"
-            value={values.address_mobile}
-            name="address_mobile"
+            value={values.residence_mobile}
+            name="residence_mobile"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_mobile} />
+        <Errors errors={errors.residence_mobile} />
       </div>
 
       <div className={form.item}>
@@ -141,13 +226,13 @@ export default function StepFive ({ values, errors, onChange }) {
 
           <input
             type="text"
-            value={values.address_phone}
-            name="address_phone"
+            value={values.residence_phone}
+            name="residence_phone"
             onChange={onChange}
           />
         </div>
 
-        <Errors errors={errors.address_phone} />
+        <Errors errors={errors.residence_phone} />
       </div>
     </>
   )

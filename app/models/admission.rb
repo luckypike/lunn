@@ -20,6 +20,11 @@ class Admission < ApplicationRecord
 
   store :address, accessors: %i[
     country region district city locality
+    index street house building apartment
+  ], coder: JSON, prefix: true
+
+  store :residence, accessors: %i[
+    country region district city locality
     index street house building apartment email mobile phone
   ], coder: JSON, prefix: true
 
@@ -50,10 +55,12 @@ class Admission < ApplicationRecord
   validates :parents_relation_degree_first, :parents_name_first, :parents_phone_first,
     presence: true, if: -> { step_after?(3) }
 
-  validates :address_country, :address_region, :address_district, :address_city,
+  validates :address_country, :address_region, :address_city,
+    :address_index, :address_street, :address_house,
     presence: true, if: -> { step_after?(4) }
 
-  validates :address_index, :address_street, :address_house, :address_mobile,
+  validates :residence_country, :residence_region, :residence_city,
+    :residence_index, :residence_street, :residence_house, :residence_email, :residence_mobile,
     presence: true, if: -> { step_after?(5) }
 
   validates :school_type, :school_name, :school_graduation, :school_address,
@@ -64,11 +71,11 @@ class Admission < ApplicationRecord
     presence: true, if: -> { step_after?(7) }
 
   validates :score_subject, :score_ege, :score_grade, :score_year,
-    presence: true, if: -> { step_after?(9) }
+    presence: true, if: -> { step_after?(8) }
 
   validates :course_form, :course_basis, :course_program,
     :course_contract,
-    presence: true, if: -> { step_after?(10) }
+    presence: true, if: -> { step_after?(9) }
 
   after_initialize do
     self.state ||= :one
@@ -100,6 +107,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:document].map { |key| "document_#{key}" } +
         Admission.stored_attributes[:parents].map { |key| "parents_#{key}" } +
         Admission.stored_attributes[:address].map { |key| "address_#{key}" } +
+        Admission.stored_attributes[:residence].map { |key| "residence_#{key}" } +
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
