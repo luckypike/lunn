@@ -30,7 +30,7 @@ class Admission < ApplicationRecord
 
   store :school, accessors: %i[
     type name graduation address
-    education document_type document_number document_id document_date diploma_type
+    education document_type document_number document_date diploma_type
     merit language
   ], coder: JSON, prefix: true
 
@@ -67,15 +67,18 @@ class Admission < ApplicationRecord
     presence: true, if: -> { step_after?(6) }
 
   validates :school_type, :school_education, :school_document_type,
-    :school_document_number, :school_document_id, :school_document_date,
+    :school_document_number, :school_document_date,
     presence: true, if: -> { step_after?(7) }
 
-  validates :score_subject, :score_ege, :score_grade, :score_year,
+  validates :school_language,
     presence: true, if: -> { step_after?(8) }
+
+  validates :score_subject, :score_ege, :score_grade, :score_year,
+    presence: true, if: -> { step_after?(9) }
 
   validates :course_form, :course_basis, :course_program,
     :course_contract,
-    presence: true, if: -> { step_after?(9) }
+    presence: true, if: -> { step_after?(10) }
 
   after_initialize do
     self.state ||= :one

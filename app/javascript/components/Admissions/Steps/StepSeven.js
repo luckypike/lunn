@@ -73,23 +73,6 @@ export default function StepSeven ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Регистрационный номер документа
-          </div>
-
-          <input
-            type="text"
-            value={values.school_document_id}
-            name="school_document_id"
-            onChange={onChange}
-          />
-        </div>
-
-        <Errors errors={errors.school_document_id} />
-      </div>
-
-      <div className={form.item}>
-        <div className={form.input}>
-          <div className={form.label}>
             Дата выдачи *
           </div>
 
