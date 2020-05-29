@@ -14,7 +14,8 @@ class Admission < ApplicationRecord
   ], coder: JSON, prefix: true
 
   store :parents, accessors: %i[
-    relation_degree name phone
+    relation_degree_first name_first phone_first
+    relation_degree_second name_second phone_second
   ], coder: JSON, prefix: true
 
   store :address, accessors: %i[
@@ -46,7 +47,7 @@ class Admission < ApplicationRecord
     :document_issued_by, :document_issue_date,
     presence: true, if: -> { step_after?(2) }
 
-  validates :parents_relation_degree, :parents_name, :parents_phone,
+  validates :parents_relation_degree_first, :parents_name_first, :parents_phone_first,
     presence: true, if: -> { step_after?(3) }
 
   validates :address_country, :address_region, :address_district, :address_city,
