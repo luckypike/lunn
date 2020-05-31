@@ -116,7 +116,7 @@ export default function Form ({ id, locale }) {
                   <StepNine onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
                 }
                 {admission.state === 'ten' &&
-                  <StepTen onChange={handleInputChange} values={values} errors={errors}/>
+                  <StepTen onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
                 }
                 {admission.state === 'done' &&
                   <div>

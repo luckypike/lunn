@@ -39,7 +39,7 @@ class Admission < ApplicationRecord
   ], coder: JSON, prefix: true
 
   store :course, accessors: %i[
-    form basis program contract status olympiad
+    form basis program contract status olympiad military study
   ], coder: JSON, prefix: true
 
   validates :state, presence: true
@@ -77,7 +77,6 @@ class Admission < ApplicationRecord
     presence: true, if: -> { step_after?(9) }
 
   validates :course_form, :course_basis, :course_program,
-    :course_contract,
     presence: true, if: -> { step_after?(10) }
 
   after_initialize do

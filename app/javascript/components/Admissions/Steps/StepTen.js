@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Select from 'react-select'
 
 import { Errors } from '../../Form'
 
@@ -7,11 +8,15 @@ import form from '../../FormStatic.module.css'
 
 StepTen.propTypes = {
   values: PropTypes.object,
+  dictionaries: PropTypes.object,
   errors: PropTypes.object,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onSelectChange: PropTypes.func
 }
 
-export default function StepTen ({ values, errors, onChange }) {
+export default function StepTen ({ values, dictionaries, errors, onChange, onSelectChange }) {
+  if (!dictionaries) return null
+
   return (
     <>
       <div className={form.item}>
@@ -48,26 +53,29 @@ export default function StepTen ({ values, errors, onChange }) {
       </div>
 
       <div className={form.item}>
-        <div className={form.input}>
+        <div className={form.select}>
           <div className={form.label}>
             Направление/профиль *
           </div>
 
-          <input
-            type="text"
-            value={values.course_program}
-            name="course_program"
-            onChange={onChange}
+          <Select
+            classNamePrefix="react-select"
+            value={dictionaries.directions.find(d => d.id === values.course_program)}
+            getOptionValue={option => option.id}
+            noOptionsMessage={() => 'Ничего не найдено'}
+            options={dictionaries.directions}
+            placeholder="Выберите достижение.."
+            onChange={value => onSelectChange('course_program', value.id)}
           />
         </div>
 
-        <Errors errors={errors.course_program} />
+        <Errors errors={errors.score_achievements} />
       </div>
 
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Целевой договор *
+            Целевой договор
           </div>
 
           <input
@@ -84,7 +92,7 @@ export default function StepTen ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Социальное положение  *
+            Социальное положение
           </div>
 
           <select name="course_status" onChange={onChange} value={values.course_status}>
@@ -114,6 +122,36 @@ export default function StepTen ({ values, errors, onChange }) {
         </div>
 
         <Errors errors={errors.course_olympiad} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Военнообязанный
+          </div>
+
+          <select name="course_military" onChange={onChange} value={values.course_military}>
+            <option value="1">Нет</option>
+            <option value="2">Да</option>
+          </select>
+        </div>
+
+        <Errors errors={errors.course_military} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Пройдено обучение на курсах НГЛУ
+          </div>
+
+          <select name="course_study" onChange={onChange} value={values.course_study}>
+            <option value="1">Нет</option>
+            <option value="2">Да</option>
+          </select>
+        </div>
+
+        <Errors errors={errors.course_study} />
       </div>
     </>
   )
