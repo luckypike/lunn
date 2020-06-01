@@ -52,8 +52,12 @@ class AdmissionsController < ApplicationController
   end
 
   def update
+    current_state = @admission.state
+
     if @admission.update(admission_params)
-      @admission.update_attribute(:state, Admission.states.keys[Admission.states.keys.index(@admission.state) + 1]) unless @admission.state == :done
+      if @admission.state == 'nine' && current_state == 'nine'
+        @admission.update_attribute(:state, Admission.states.keys[Admission.states.keys.index(@admission.state) + 1])
+      end
       head :ok
     else
       render json: @admission.errors, status: :unprocessable_entity

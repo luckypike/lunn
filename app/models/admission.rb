@@ -87,7 +87,7 @@ class Admission < ApplicationRecord
   end
 
   def step_after?(step)
-    Admission.states[state] + 1 > step
+    Admission.states[state] > step
   end
 
   def self.to_csv
@@ -116,7 +116,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
-        [subjects_attributes: %i[id subject_id ege grade]]
+        %i[state] + [subjects_attributes: %i[id subject_id ege grade]]
     end
   end
 end

@@ -9,7 +9,7 @@ json.values do
     end
   end
 
-  json.state Admission.states.keys[Admission.states.keys.index(@admission.state) + 1]
+  json.state Admission.states.keys[Admission.states.keys.index(@admission.state) + 1] unless @admission.state == 'nine'
 
   json.subjects_attributes @admission.subjects.each do |subject|
     json.id subject.id
