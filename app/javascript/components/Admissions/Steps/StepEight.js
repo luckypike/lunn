@@ -35,7 +35,7 @@ export default function StepEight ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Изучаемый ранее иностранный язык
+            Изучаемый ранее иностранный язык *
           </div>
 
           <select name="school_language" onChange={onChange} value={values.school_language}>

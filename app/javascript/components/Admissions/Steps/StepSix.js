@@ -73,7 +73,7 @@ export default function StepSix ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Адрес учебного заведения
+            Адрес учебного заведения *
           </div>
 
           <textarea

@@ -1,21 +1,113 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import Select from 'react-select'
 
 import { Errors } from '../../Form'
 
 import form from '../../FormStatic.module.css'
+import buttons from '../../Buttons.module.css'
 
 StepNine.propTypes = {
   values: PropTypes.object,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   onChange: PropTypes.func,
-  onSelectChange: PropTypes.func
+  onSelectChange: PropTypes.func,
+  onSubjectsChange: PropTypes.func
 }
 
-export default function StepNine ({ values, dictionaries, errors, onChange, onSelectChange }) {
+export default function StepNine ({ values, dictionaries, errors, onChange, onSelectChange, onSubjectsChange }) {
   if (!dictionaries) return null
+
+  const [subjects, setSubjects] = useState(new Map())
+
+  useEffect(() => {
+    onSubjectsChange && onSubjectsChange(subjects)
+  }, [subjects])
+
+  const handleSubjectAdd = (e) => {
+    const newSubjects = new Map(subjects)
+    newSubjects.set(`n-${subjects.size}`, { subject_id: '', ege: '', grade: '' })
+
+    setSubjects(newSubjects)
+
+    e.preventDefault()
+  }
+
+  const handleSubjectChange = (subject, subjectKey) => {
+    const newSubjects = new Map(subjects)
+    newSubjects.set(subjectKey, subject)
+
+    setSubjects(newSubjects)
+  }
+
+  useEffect(() => {
+    if (values.subjects_attributes.length > 0) {
+      const newSubjects = new Map(subjects)
+      values.subjects_attributes.forEach(item => {
+        if (item.id) {
+          newSubjects.set(item.id, item)
+        }
+      })
+
+      setSubjects(newSubjects)
+    } else if (subjects.size !== 1) {
+      const newSubjects = new Map(subjects)
+      newSubjects.set(`n-${subjects.size}`, { subject_id: '', ege: '', grade: '' })
+
+      setSubjects(newSubjects)
+    }
+  }, [dictionaries])
+
+  return (
+    <>
+      {subjects.size > 0 &&
+        <>
+          {[...subjects.keys()].map(key =>
+            <Subject
+              key={key}
+              subjectKey={key}
+              subject={subjects.get(key)}
+              dictionaries={dictionaries}
+              errors={errors}
+              onSubjectChange={handleSubjectChange}
+            />
+          )}
+        </>
+      }
+
+      <div className={form.item}>
+        <button className={classNames(buttons.main, buttons.big)} onClick={handleSubjectAdd}>
+          Добавить предмет
+        </button>
+      </div>
+    </>
+  )
+}
+
+Subject.propTypes = {
+  subject: PropTypes.object,
+  subjectKey: PropTypes.string,
+  dictionaries: PropTypes.object,
+  errors: PropTypes.object,
+  onSubjectChange: PropTypes.func
+}
+
+function Subject ({ subject, subjectKey, dictionaries, errors, onSubjectChange }) {
+  const [item, setItem] = useState(subject)
+
+  useEffect(() => {
+    onSubjectChange && onSubjectChange(item, subjectKey)
+  }, [item])
+
+  const handleInputChange = ({ target: { name, value } }) => {
+    setItem({ ...item, [name]: value })
+  }
+
+  const handleSelectChange = (name, value) => {
+    setItem({ ...item, [name]: value })
+  }
 
   return (
     <>
@@ -27,16 +119,16 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
 
           <Select
             classNamePrefix="react-select"
-            value={dictionaries.subjects.find(s => s.id === values.score_subject)}
+            value={dictionaries.subjects.find(s => s.id === item.subject_id)}
             getOptionValue={option => option.id}
             noOptionsMessage={() => 'Ничего не найдено'}
             options={dictionaries.subjects}
             placeholder="Выберите предмет.."
-            onChange={value => onSelectChange('score_subject', value.id)}
+            onChange={value => handleSelectChange('subject_id', value.id)}
           />
         </div>
 
-        <Errors errors={errors.score_subject} />
+        <Errors errors={errors['subjects.subject']} />
       </div>
 
       <div className={form.item}>
@@ -47,13 +139,13 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
 
           <input
             type="text"
-            value={values.score_ege}
-            name="score_ege"
-            onChange={onChange}
+            value={item.ege}
+            name="ege"
+            onChange={handleInputChange}
           />
         </div>
 
-        <Errors errors={errors.score_ege} />
+        <Errors errors={errors['subjects.ege']} />
       </div>
 
       <div className={form.item}>
@@ -64,51 +156,14 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
 
           <input
             type="text"
-            value={values.score_grade}
-            name="score_grade"
-            onChange={onChange}
+            value={item.grade}
+            name="grade"
+            onChange={handleInputChange}
           />
         </div>
-
-        <Errors errors={errors.score_grade} />
       </div>
 
-      <div className={form.item}>
-        <div className={form.input}>
-          <div className={form.label}>
-            Год сдачи ЕГЭ *
-          </div>
-
-          <input
-            type="text"
-            value={values.score_year}
-            name="score_year"
-            onChange={onChange}
-          />
-        </div>
-
-        <Errors errors={errors.score_year} />
-      </div>
-
-      <div className={form.item}>
-        <div className={form.select}>
-          <div className={form.label}>
-            Индивидуальные достижения
-          </div>
-
-          <Select
-            classNamePrefix="react-select"
-            value={dictionaries.achievements.find(a => a.id === values.score_achievements)}
-            getOptionValue={option => option.id}
-            noOptionsMessage={() => 'Ничего не найдено'}
-            options={dictionaries.achievements}
-            placeholder="Выберите достижение.."
-            onChange={value => onSelectChange('score_achievements', value.id)}
-          />
-        </div>
-
-        <Errors errors={errors.score_achievements} />
-      </div>
+      <br />
     </>
   )
 }

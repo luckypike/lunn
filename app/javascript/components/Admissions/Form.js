@@ -17,6 +17,7 @@ import StepSeven from './Steps/StepSeven'
 import StepEight from './Steps/StepEight'
 import StepNine from './Steps/StepNine'
 import StepTen from './Steps/StepTen'
+import StepEleven from './Steps/StepEleven'
 
 import styles from './Admissions.module.css'
 import pages from '../Pages.module.css'
@@ -59,6 +60,12 @@ export default function Form ({ id, locale }) {
 
   const handleSelectChange = (name, value) => {
     setValues({ ...values, [name]: value })
+  }
+
+  const handleSubjectsChange = (subjects) => {
+    setValues({
+      ...values, subjects_attributes: [...subjects.values()].map(subject => (subject))
+    })
   }
 
   const handleSubmit = async e => {
@@ -113,10 +120,19 @@ export default function Form ({ id, locale }) {
                   <StepEight onChange={handleInputChange} values={values} errors={errors}/>
                 }
                 {admission.state === 'nine' &&
-                  <StepNine onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
+                  <StepNine
+                    onChange={handleInputChange}
+                    onSubjectsChange={handleSubjectsChange}
+                    onSelectChange={handleSelectChange}
+                    values={values}
+                    dictionaries={dictionaries}
+                    errors={errors}/>
                 }
                 {admission.state === 'ten' &&
                   <StepTen onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
+                }
+                {admission.state === 'eleven' &&
+                  <StepEleven onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
                 }
                 {admission.state === 'done' &&
                   <div>

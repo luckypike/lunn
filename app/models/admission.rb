@@ -1,9 +1,12 @@
 class Admission < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
-  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, done: 99 }
+  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, done: 99 }
 
   belongs_to :user, default: -> { Current.user }
+
+  has_many :subjects, class_name: 'AdmissionSubject', dependent: :delete_all
+  accepts_nested_attributes_for :subjects
 
   store :identity, accessors: %i[
     first_name last_name middle_name sex birth_date birth_place
@@ -35,7 +38,7 @@ class Admission < ApplicationRecord
   ], coder: JSON, prefix: true
 
   store :score, accessors: %i[
-    subject ege grade year achievements
+    year achievements
   ], coder: JSON, prefix: true
 
   store :course, accessors: %i[
@@ -73,18 +76,18 @@ class Admission < ApplicationRecord
   validates :school_language,
     presence: true, if: -> { step_after?(8) }
 
-  validates :score_subject, :score_ege, :score_year,
-    presence: true, if: -> { step_after?(9) }
+  validates :score_year,
+    presence: true, if: -> { step_after?(10) }
 
   validates :course_form, :course_basis, :course_program,
-    presence: true, if: -> { step_after?(10) }
+    presence: true, if: -> { step_after?(11) }
 
   after_initialize do
     self.state ||= :one
   end
 
   def step_after?(step)
-    Admission.states[state] > step
+    Admission.states[state] + 1 > step
   end
 
   def self.to_csv
@@ -113,7 +116,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
-        %i[state]
+        [subjects_attributes: %i[id subject_id ege grade]]
     end
   end
 end

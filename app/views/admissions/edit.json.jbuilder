@@ -10,6 +10,13 @@ json.values do
   end
 
   json.state Admission.states.keys[Admission.states.keys.index(@admission.state) + 1]
+
+  json.subjects_attributes @admission.subjects.each do |subject|
+    json.id subject.id
+    json.subject_id subject.subject_id
+    json.ege subject.ege
+    json.grade subject.grade
+  end
 end
 
 json.partial! 'dictionaries'

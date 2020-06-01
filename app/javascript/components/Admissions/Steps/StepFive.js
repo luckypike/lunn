@@ -187,7 +187,7 @@ export default function StepFive ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            E-mail
+            E-mail *
           </div>
 
           <input
