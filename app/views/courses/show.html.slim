@@ -1,5 +1,5 @@
 - set_meta_tags \
-  title: @course.title
+  title: @course.spec.presence || @course.title
 
 = react_component 'Courses/Show', { \
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
