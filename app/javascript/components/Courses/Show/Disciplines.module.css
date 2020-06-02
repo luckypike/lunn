@@ -1,0 +1,88 @@
+.desc {
+  max-width: 60rem;
+
+  & ul {
+    padding-left: 0;
+    display: grid;
+    grid-row-gap: calc(var(--yr) * var(--s2));
+
+    &:not(:last-child) {
+      margin-bottom: calc(var(--yr) * var(--s3));
+    }
+
+    @media (--s) {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: start;
+      grid-column-gap: var(--xr);
+    }
+  }
+
+  & li {
+    margin-bottom: 0;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      display: block;
+      content: '';
+      margin-left: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: none;
+      height: calc(var(--yr) * 10);
+      width: calc(var(--yr) * 10);
+      margin-right: var(--xr);
+      flex-shrink: 0;
+      align-self: flex-start;
+
+      @media (--s) {
+        /* height: calc(var(--yr) * 11); */
+
+        /* width: calc(var(--yr) * 11); */
+      }
+    }
+
+    &:nth-child(1) {
+      &::before {
+        background-image: url('./Images/disciplines/1.svg');
+      }
+    }
+
+    &:nth-child(2) {
+      &::before {
+        background-image: url('./Images/disciplines/2.svg');
+      }
+    }
+
+    &:nth-child(3) {
+      &::before {
+        background-image: url('./Images/disciplines/3.svg');
+      }
+    }
+
+    &:nth-child(4) {
+      &::before {
+        background-image: url('./Images/disciplines/4.svg');
+      }
+    }
+
+    &:nth-child(5) {
+      &::before {
+        background-image: url('./Images/disciplines/5.svg');
+      }
+    }
+
+    &:nth-child(6) {
+      &::before {
+        background-image: url('./Images/disciplines/6.svg');
+      }
+    }
+
+    &:nth-child(7) {
+      &::before {
+        background-image: url('./Images/disciplines/7.svg');
+      }
+    }
+  }
+}

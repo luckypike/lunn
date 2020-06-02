@@ -1,8 +1,8 @@
 - set_meta_tags \
-  title: @node.title
+  title: @course.title
 
 = react_component 'Courses/Show', { \
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
   node: @node.as_json(only: :title, methods: :path),
-  course: CourseSerializer.new(@course, { include: %i[tutors tutors.image], params: { full: true } }).serializable_hash \
+  course: CourseSerializer.new(@course, { include: %i[tutors tutors.image division], params: { full: true, with_tutors: true, with_division: true } }).serializable_hash \
 }

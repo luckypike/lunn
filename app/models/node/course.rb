@@ -37,6 +37,15 @@ class Node::Course < Node
   has_one :field_course_prospects, -> { where(entity_type: :node) },
     class_name: 'Field::CourseProspects', foreign_key: :entity_id
 
+  has_one :field_course_summary, -> { where(entity_type: :node) },
+    class_name: 'Field::CourseSummary', foreign_key: :entity_id
+
+  has_one :field_course_code, -> { where(entity_type: :node) },
+    class_name: 'Field::CourseCode', foreign_key: :entity_id
+
+  has_one :node_division, -> { where(entity_type: :node) }, foreign_key: :entity_id
+  has_one :division, source: :node, class_name: 'Node::Division', through: :node_division
+
   def price_1
     field_price_1&.value
   end
@@ -103,6 +112,14 @@ class Node::Course < Node
 
   def course_prospects
     field_course_prospects&.value
+  end
+
+  def course_summary
+    field_course_summary&.value
+  end
+
+  def course_code
+    field_course_code&.value
   end
 
   def url

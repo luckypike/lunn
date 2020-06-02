@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_04_15_131704) do
 
-  create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.integer "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_admissions_on_user_id"
-  end
-
   create_table "file_managed", primary_key: "fid", id: :integer, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "Stores information for uploaded files.", force: :cascade do |t|
     t.integer "uid", default: 0, null: false, comment: "The users.uid of the user who is associated with the file.", unsigned: true
     t.string "filename", default: "", null: false, comment: "Name of the file with no path components. This may differ from the basename of the URI if the file is renamed to avoid overwriting an existing file."
@@ -135,5 +124,4 @@ ActiveRecord::Schema.define(version: 2020_04_15_131704) do
     t.index ["picture"], name: "picture"
   end
 
-  add_foreign_key "admissions", "_users", column: "user_id"
 end
