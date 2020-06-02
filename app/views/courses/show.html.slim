@@ -5,4 +5,4 @@
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]),
   node: @node.as_json(only: :title, methods: :path),
   course: CourseSerializer.new(@course, { include: %i[tutors tutors.image division], params: { full: true, with_tutors: true, with_division: true } }).serializable_hash \
-}
+}, { prerender: Rails.env.production? }
