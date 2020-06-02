@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_05_31_124736) do
 
-  create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "admissions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "first_name"
     t.string "middle_name"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_05_31_124736) do
     t.index ["user_id"], name: "index_admissions_on_user_id"
   end
 
-  create_table "invoices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "invoices", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
     t.string "middle_name"
@@ -42,20 +45,20 @@ ActiveRecord::Schema.define(version: 2020_05_31_124736) do
     t.string "contract"
     t.string "payment_id"
     t.float "payment_amount"
-    t.timestamp "payed_at"
-    t.timestamp "approved_at"
+    t.datetime "payed_at"
+    t.datetime "approved_at"
     t.integer "state", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "desc"
-    t.timestamp "paid_on"
+    t.datetime "paid_on"
     t.string "payment_card"
     t.index ["last_name", "contract"], name: "index_invoices_on_last_name_and_contract"
     t.index ["number"], name: "index_invoices_on_number"
     t.index ["uuid"], name: "index_invoices_on_uuid", unique: true
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

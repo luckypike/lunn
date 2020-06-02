@@ -39,19 +39,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_131704) do
     t.index ["uri"], name: "uri", unique: true
   end
 
-  create_table "invoices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "last_name"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "contract"
-    t.string "payment_id"
-    t.decimal "payment_amount", precision: 10
-    t.timestamp "payed_at"
-    t.integer "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "menu_links", primary_key: "mlid", id: :integer, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "Contains the individual links within a menu.", force: :cascade do |t|
     t.string "menu_name", limit: 32, default: "", null: false, comment: "The menu name. All links with the same menu name (such as ’navigation’) are part of the same menu."
     t.integer "plid", default: 0, null: false, comment: "The parent link ID (plid) is the mlid of the link above in the hierarchy, or zero if the link is at the top level in its menu.", unsigned: true
