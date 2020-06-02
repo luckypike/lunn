@@ -13,7 +13,7 @@
     @media (--s) {
       grid-template-columns: repeat(2, 1fr);
       align-items: start;
-      grid-column-gap: var(--xr);
+      grid-column-gap: calc(var(--xr) * 2);
     }
   }
 
@@ -22,6 +22,7 @@
     padding-left: 0;
     display: flex;
     align-items: center;
+    max-width: 30rem;
 
     &::before {
       display: block;
