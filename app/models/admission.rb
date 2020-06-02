@@ -1,7 +1,7 @@
 class Admission < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
-  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, done: 99 }
+  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, done: 99 }
 
   belongs_to :user, default: -> { Current.user }
 
@@ -77,10 +77,10 @@ class Admission < ApplicationRecord
     presence: true, if: -> { step_after?(8) }
 
   validates :score_year,
-    presence: true, if: -> { step_after?(10) }
+    presence: true, if: -> { step_after?(9) }
 
   validates :course_form, :course_basis, :course_program,
-    presence: true, if: -> { step_after?(11) }
+    presence: true, if: -> { step_after?(10) }
 
   after_initialize do
     self.state ||= :one

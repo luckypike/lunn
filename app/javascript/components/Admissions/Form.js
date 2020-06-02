@@ -17,7 +17,6 @@ import StepSeven from './Steps/StepSeven'
 import StepEight from './Steps/StepEight'
 import StepNine from './Steps/StepNine'
 import StepTen from './Steps/StepTen'
-import StepEleven from './Steps/StepEleven'
 
 import styles from './Admissions.module.css'
 import pages from '../Pages.module.css'
@@ -130,9 +129,6 @@ export default function Form ({ id, locale }) {
                 }
                 {admission.state === 'ten' &&
                   <StepTen onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
-                }
-                {admission.state === 'eleven' &&
-                  <StepEleven onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
                 }
                 {admission.state === 'done' &&
                   <div>

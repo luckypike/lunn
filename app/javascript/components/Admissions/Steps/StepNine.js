@@ -82,6 +82,43 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
           Добавить предмет
         </button>
       </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Год сдачи ЕГЭ *
+          </div>
+
+          <input
+            type="text"
+            value={values.score_year}
+            name="score_year"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.score_year} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.select}>
+          <div className={form.label}>
+            Индивидуальные достижения
+          </div>
+
+          <Select
+            classNamePrefix="react-select"
+            value={dictionaries.achievements.find(a => a.id === values.score_achievements)}
+            getOptionValue={option => option.id}
+            noOptionsMessage={() => 'Ничего не найдено'}
+            options={dictionaries.achievements}
+            placeholder="Выберите достижение.."
+            onChange={value => onSelectChange('score_achievements', value.id)}
+          />
+        </div>
+
+        <Errors errors={errors.score_achievements} />
+      </div>
     </>
   )
 }
