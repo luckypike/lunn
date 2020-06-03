@@ -12,7 +12,7 @@ json.values do
   json.state Admission.states.keys[Admission.states.keys.index(@admission.state) + 1]
 
   json.subjects_attributes @admission.subjects.each do |subject|
-    json.extract! subject, :id, :subject_id, :ege, :grade
+    json.extract! subject, :id, :admission_subject_id, :ege, :grade
   end
 
   json.documents_attributes @admission.documents do |document|

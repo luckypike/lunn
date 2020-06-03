@@ -1,4 +1,4 @@
-class Document < ApplicationRecord
+class AdmissionDocument < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
   mount_uploader :file, DocumentUploader

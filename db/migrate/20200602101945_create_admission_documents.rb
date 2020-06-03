@@ -1,6 +1,6 @@
-class CreateDocuments < ActiveRecord::Migration[6.0]
+class CreateAdmissionDocuments < ActiveRecord::Migration[6.0]
   def change
-    create_table :documents do |t|
+    create_table :admission_documents do |t|
       t.string :title
       t.string :section
       t.string :file

@@ -28,7 +28,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
 
   const handleSubjectAdd = (e) => {
     const newSubjects = new Map(subjects)
-    newSubjects.set(`n-${subjects.size}`, { subject_id: '', ege: '', grade: '' })
+    newSubjects.set(`n-${subjects.size}`, { admission_subject_id: '', ege: '', grade: '' })
 
     setSubjects(newSubjects)
 
@@ -54,7 +54,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
       setSubjects(newSubjects)
     } else if (subjects.size !== 1) {
       const newSubjects = new Map(subjects)
-      newSubjects.set(`n-${subjects.size}`, { subject_id: '', ege: '', grade: '' })
+      newSubjects.set(`n-${subjects.size}`, { admission_subject_id: '', ege: '', grade: '' })
 
       setSubjects(newSubjects)
     }
@@ -156,12 +156,12 @@ function Subject ({ subject, subjectKey, dictionaries, errors, onSubjectChange }
 
           <Select
             classNamePrefix="react-select"
-            value={dictionaries.subjects.find(s => s.id === item.subject_id)}
+            value={dictionaries.subjects.find(s => s.id === item.admission_subject_id)}
             getOptionValue={option => option.id}
             noOptionsMessage={() => 'Ничего не найдено'}
             options={dictionaries.subjects}
             placeholder="Выберите предмет.."
-            onChange={value => handleSelectChange('subject_id', value.id)}
+            onChange={value => handleSelectChange('admission_subject_id', value.id)}
           />
         </div>
 

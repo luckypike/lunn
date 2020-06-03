@@ -60,7 +60,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :documents
+    resources :admission_documents
 
     get :pay, to: 'pay#index'
 

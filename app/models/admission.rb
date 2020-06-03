@@ -5,10 +5,10 @@ class Admission < ApplicationRecord
 
   belongs_to :user, default: -> { Current.user }
 
-  has_many :subjects, class_name: 'AdmissionSubject', dependent: :delete_all
+  has_many :subjects, class_name: 'AdmissionAdmissionSubject', dependent: :delete_all
   accepts_nested_attributes_for :subjects
 
-  has_many :documents, as: :assignable, dependent: :delete_all
+  has_many :documents, class_name: 'AdmissionDocument', as: :assignable, dependent: :delete_all
   accepts_nested_attributes_for :documents
 
   store :identity, accessors: %i[
@@ -121,7 +121,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
-        %i[state] + [subjects_attributes: %i[id subject_id ege grade]] +
+        %i[state] + [subjects_attributes: %i[id admission_subject_id ege grade]] +
         [document_ids: []] + [documents_attributes: %i[id title]]
     end
   end

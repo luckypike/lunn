@@ -1,6 +1,6 @@
 json.dictionaries do
-  json.citizenships Citizenship.all, :id, :label
-  json.subjects Subject.all, :id, :label
-  json.achievements Achievement.all, :id, :label
-  json.directions Direction.all, :id, :label
+  json.citizenships AdmissionCitizenship.all, :id, :label
+  json.subjects AdmissionSubject.all, :id, :label
+  json.achievements AdmissionAchievement.all, :id, :label
+  json.directions AdmissionDirection.all, :id, :label
 end

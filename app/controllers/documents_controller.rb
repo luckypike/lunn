@@ -1,12 +1,12 @@
-class DocumentsController < ApplicationController
+class AdmissionDocumentsController < ApplicationController
   before_action :set_document, only: %i[destroy]
   before_action :authorize_document
 
   after_action :verify_authorized
 
   def create
-    authorize Document
-    @document = Document.new(document_params)
+    authorize AdmissionDocument
+    @document = AdmissionDocument.new(document_params)
 
     if @document.save
       render json: @document
@@ -16,7 +16,7 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    authorize Document
+    authorize AdmissionDocument
 
     @document.destroy
     head :ok
@@ -25,11 +25,11 @@ class DocumentsController < ApplicationController
   private
 
   def set_document
-    @document = Document.find(params[:id])
+    @document = AdmissionDocument.find(params[:id])
   end
 
   def authorize_document
-    authorize @document || Document
+    authorize @document || AdmissionDocument
   end
 
   def document_params

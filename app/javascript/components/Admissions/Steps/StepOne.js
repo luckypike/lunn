@@ -18,7 +18,7 @@ export default function StepOne ({ values, errors, onChange }) {
         <div className={form.input}>
           <label>
             <div className={form.label}>
-              Фамилия
+              Фамилия *
             </div>
 
             <input
@@ -36,7 +36,7 @@ export default function StepOne ({ values, errors, onChange }) {
         <div className={form.input}>
           <label>
             <div className={form.label}>
-              Имя
+              Имя *
             </div>
 
             <input
@@ -54,7 +54,7 @@ export default function StepOne ({ values, errors, onChange }) {
         <div className={form.input}>
           <label>
             <div className={form.label}>
-              Отчество
+              Отчество *
             </div>
 
             <input
@@ -72,7 +72,7 @@ export default function StepOne ({ values, errors, onChange }) {
         <div className={form.input}>
           <label>
             <div className={form.label}>
-              Пол
+              Пол *
             </div>
 
             <select name="identity_sex" onChange={onChange} value={values.identity_sex}>
@@ -90,7 +90,7 @@ export default function StepOne ({ values, errors, onChange }) {
         <div className={form.input}>
           <label>
             <div className={form.label}>
-              Дата рождения
+              Дата рождения *
             </div>
 
             <input
@@ -109,7 +109,7 @@ export default function StepOne ({ values, errors, onChange }) {
         <div className={form.input}>
           <label>
             <div className={form.label}>
-              Место рождения
+              Место рождения *
             </div>
 
             <input
