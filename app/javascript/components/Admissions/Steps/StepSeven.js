@@ -1,17 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Documents from '../../Documents/Documents'
+
 import { Errors } from '../../Form'
 
 import form from '../../FormStatic.module.css'
 
 StepSeven.propTypes = {
   values: PropTypes.object,
+  documents: PropTypes.array,
   errors: PropTypes.object,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onDocumentsChanged: PropTypes.func
 }
 
-export default function StepSeven ({ values, errors, onChange }) {
+export default function StepSeven ({ values, documents, errors, onChange, onDocumentsChanged }) {
   return (
     <>
       <div className={form.item}>
@@ -68,6 +72,22 @@ export default function StepSeven ({ values, errors, onChange }) {
         </div>
 
         <Errors errors={errors.school_document_number} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Документ об образовании
+          </div>
+
+          <Errors errors={errors.documents} />
+
+          <Documents
+            files={documents}
+            section='school'
+            onDocumentsChanged={onDocumentsChanged}
+          />
+        </div>
       </div>
 
       <div className={form.item}>

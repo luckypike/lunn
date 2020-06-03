@@ -12,10 +12,11 @@ json.values do
   json.state Admission.states.keys[Admission.states.keys.index(@admission.state) + 1]
 
   json.subjects_attributes @admission.subjects.each do |subject|
-    json.id subject.id
-    json.subject_id subject.subject_id
-    json.ege subject.ege
-    json.grade subject.grade
+    json.extract! subject, :id, :subject_id, :ege, :grade
+  end
+
+  json.documents_attributes @admission.documents do |document|
+    json.extract! document, :id, :title, :uuid, :section
   end
 end
 

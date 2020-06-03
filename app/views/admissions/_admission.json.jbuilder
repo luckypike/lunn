@@ -5,3 +5,7 @@ json.extract! admission, :state
     json.set! "#{section}_#{key}", @admission.send("#{section}_#{key}").presence || ''
   end
 end
+
+json.documents @admission.documents do |document|
+  json.extract! document, :id, :title, :uuid, :section
+end

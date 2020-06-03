@@ -52,8 +52,6 @@ class AdmissionsController < ApplicationController
   end
 
   def update
-    current_state = @admission.state
-
     if @admission.update(admission_params)
       head :ok
     else

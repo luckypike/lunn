@@ -12,6 +12,8 @@ gem 'meta-tags'
 gem 'react-rails'
 gem 'webpacker'
 
+gem 'carrierwave'
+
 gem 'slim-rails'
 
 gem 'i18n-js'

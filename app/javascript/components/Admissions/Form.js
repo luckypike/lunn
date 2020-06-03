@@ -67,6 +67,14 @@ export default function Form ({ id, locale }) {
     })
   }
 
+  const handleDocumentsChanged = (documents) => {
+    setValues({
+      ...values,
+      document_ids: [...documents.values()].map(document => document.id),
+      documents_attributes: [...documents.values()].map(document => ({ id: document.id, title: document.title }))
+    })
+  }
+
   const handleSubmit = async e => {
     await axios.patch(
       `/admissions/${id}.json`,
@@ -98,7 +106,16 @@ export default function Form ({ id, locale }) {
                   <StepOne onChange={handleInputChange} values={values} errors={errors}/>
                 }
                 {admission.state === 'two' &&
-                  <StepTwo onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
+                  <StepTwo
+                    onChange={handleInputChange}
+                    onSelectChange={handleSelectChange}
+                    onDocumentsChanged={handleDocumentsChanged}
+                    values={values}
+                    documents={admission.documents}
+                    dictionaries={dictionaries}
+                    errors={errors}
+                    cancelToken={cancelToken}
+                  />
                 }
                 {admission.state === 'three' &&
                   <StepThree onChange={handleInputChange} values={values} errors={errors}/>
@@ -113,7 +130,12 @@ export default function Form ({ id, locale }) {
                   <StepSix onChange={handleInputChange} values={values} errors={errors}/>
                 }
                 {admission.state === 'seven' &&
-                  <StepSeven onChange={handleInputChange} values={values} errors={errors}/>
+                  <StepSeven
+                    onChange={handleInputChange}
+                    onDocumentsChanged={handleDocumentsChanged}
+                    values={values}
+                    documents={admission.documents}
+                    errors={errors}/>
                 }
                 {admission.state === 'eight' &&
                   <StepEight onChange={handleInputChange} values={values} errors={errors}/>

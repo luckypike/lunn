@@ -8,6 +8,9 @@ class Admission < ApplicationRecord
   has_many :subjects, class_name: 'AdmissionSubject', dependent: :delete_all
   accepts_nested_attributes_for :subjects
 
+  has_many :documents, as: :assignable, dependent: :delete_all
+  accepts_nested_attributes_for :documents
+
   store :identity, accessors: %i[
     first_name last_name middle_name sex birth_date birth_place
   ], coder: JSON, prefix: true
@@ -46,6 +49,8 @@ class Admission < ApplicationRecord
   ], coder: JSON, prefix: true
 
   validates :state, presence: true
+
+  validate :document_presence
 
   validates :identity_first_name, :identity_last_name, :identity_middle_name,
     :identity_sex, :identity_birth_date, :identity_birth_place,
@@ -116,7 +121,20 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
-        %i[state] + [subjects_attributes: %i[id subject_id ege grade]]
+        %i[state] + [subjects_attributes: %i[id subject_id ege grade]] +
+        [document_ids: []] + [documents_attributes: %i[id title]]
+    end
+  end
+
+  private
+
+  def document_presence
+    if state == 'three'
+      errors.add(:documents, :empty) if documents.none? { |d| d.section == 'document' }
+    end
+
+    if state == 'eight'
+      errors.add(:documents, :empty) if documents.none? { |d| d.section == 'school' }
     end
   end
 end

@@ -60,6 +60,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :documents
+
     get :pay, to: 'pay#index'
 
     resources :invoices, only: %i[index create show] do

@@ -2,19 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 
+import Documents from '../../Documents/Documents'
+
 import { Errors } from '../../Form'
 
 import form from '../../FormStatic.module.css'
 
 StepTwo.propTypes = {
   values: PropTypes.object,
+  documents: PropTypes.array,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   onChange: PropTypes.func,
-  onSelectChange: PropTypes.func
+  onSelectChange: PropTypes.func,
+  onDocumentsChanged: PropTypes.func
 }
 
-export default function StepTwo ({ values, dictionaries, errors, onChange, onSelectChange }) {
+export default function StepTwo ({ values, documents, dictionaries, errors, onChange, onSelectChange, onDocumentsChanged }) {
   if (!dictionaries) return null
 
   return (
@@ -127,6 +131,22 @@ export default function StepTwo ({ values, dictionaries, errors, onChange, onSel
         </div>
 
         <Errors errors={errors.document_issue_date} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Паспорт
+          </div>
+
+          <Errors errors={errors.documents} />
+
+          <Documents
+            files={documents}
+            section='document'
+            onDocumentsChanged={onDocumentsChanged}
+          />
+        </div>
       </div>
     </>
   )
