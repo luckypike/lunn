@@ -13,19 +13,21 @@ StepNine.propTypes = {
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   onChange: PropTypes.func,
-  onSelectChange: PropTypes.func,
-  onSubjectsChange: PropTypes.func,
-  onCheckboxChange: PropTypes.func
+  setValues: PropTypes.func
 }
 
-export default function StepNine ({ values, dictionaries, errors, onChange, onSelectChange, onSubjectsChange, onCheckboxChange }) {
+export default function StepNine ({ values, dictionaries, errors, onChange, setValues }) {
   if (!dictionaries) return null
 
   const [subjects, setSubjects] = useState(new Map())
 
   useEffect(() => {
     if (subjects.size > 0) {
-      onSubjectsChange && onSubjectsChange(subjects)
+      setValues({
+        ...values,
+        subject_ids: [...subjects.values()].map(subject => subject.id),
+        subjects_attributes: [...subjects.values()].map(subject => (subject))
+      })
     }
   }, [subjects])
 
@@ -54,9 +56,9 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
 
   const handleAchievementsChange = (item) => {
     if (values.score_achievements.includes(item)) {
-      onCheckboxChange('score_achievements', [...values.score_achievements.filter(id => id !== item)])
+      setValues({ ...values, score_achievements: [...values.score_achievements.filter(id => id !== item)] })
     } else {
-      onCheckboxChange('score_achievements', [...values.score_achievements, item])
+      setValues({ ...values, score_achievements: [...values.score_achievements, item] })
     }
   }
 
@@ -148,26 +150,6 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
         {errors.audiences &&
           <Errors errors={errors.audiences}/>
         }
-      </div>
-
-      <div className={form.item}>
-        <div className={form.select}>
-          <div className={form.label}>
-            Индивидуальные достижения
-          </div>
-
-          <Select
-            classNamePrefix="react-select"
-            value={dictionaries.achievements.find(a => a.id === values.score_achievements)}
-            getOptionValue={option => option.id}
-            noOptionsMessage={() => 'Ничего не найдено'}
-            options={dictionaries.achievements}
-            placeholder="Выберите достижение.."
-            onChange={value => onSelectChange('score_achievements', value.id)}
-          />
-        </div>
-
-        <Errors errors={errors.score_achievements} />
       </div>
     </>
   )

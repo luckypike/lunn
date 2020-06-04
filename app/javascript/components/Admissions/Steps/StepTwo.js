@@ -10,15 +10,14 @@ import form from '../../FormStatic.module.css'
 
 StepTwo.propTypes = {
   values: PropTypes.object,
+  setValues: PropTypes.func,
   documents: PropTypes.array,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
-  onChange: PropTypes.func,
-  onSelectChange: PropTypes.func,
-  onDocumentsChanged: PropTypes.func
+  onChange: PropTypes.func
 }
 
-export default function StepTwo ({ values, documents, dictionaries, errors, onChange, onSelectChange, onDocumentsChanged }) {
+export default function StepTwo ({ values, documents, dictionaries, errors, onChange, setValues }) {
   if (!dictionaries) return null
 
   return (
@@ -36,7 +35,7 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
             noOptionsMessage={() => 'Ничего не найдено'}
             options={dictionaries.citizenships}
             placeholder="Выберите граданство.."
-            onChange={value => onSelectChange('document_nationality', value.id)}
+            onChange={value => setValues({ ...values, document_nationality: value.id })}
           />
         </div>
 
@@ -144,7 +143,8 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
           <Documents
             files={documents}
             section='document'
-            onDocumentsChanged={onDocumentsChanged}
+            values={values}
+            setValues={setValues}
           />
         </div>
       </div>

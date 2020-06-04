@@ -10,21 +10,25 @@ import buttons from '../../Buttons.module.css'
 
 StepTen.propTypes = {
   values: PropTypes.object,
+  setValues: PropTypes.func,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   onChange: PropTypes.func,
-  onSelectChange: PropTypes.func,
-  onDirectinosChange: PropTypes.func
+  onSelectChange: PropTypes.func
 }
 
-export default function StepTen ({ values, dictionaries, errors, onChange, onSelectChange, onDirectinosChange }) {
+export default function StepTen ({ values, setValues, dictionaries, errors, onChange, onSelectChange }) {
   if (!dictionaries) return null
 
   const [directions, setDirections] = useState(new Map())
 
   useEffect(() => {
     if (directions.size > 0) {
-      onDirectinosChange && onDirectinosChange(directions)
+      setValues({
+        ...values,
+        direction_ids: [...directions.values()].map(direction => direction.id),
+        directions_attributes: [...directions.values()].map(direction => (direction))
+      })
     }
   }, [directions])
 

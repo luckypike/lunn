@@ -13,11 +13,12 @@ import form from '../Form.module.css'
 Documents.propTypes = {
   files: PropTypes.array,
   section: PropTypes.string,
-  onDocumentsChanged: PropTypes.func
+  values: PropTypes.object,
+  setValues: PropTypes.func
 }
 
 export default function Documents (props) {
-  const { onDocumentsChanged } = props
+  const { setValues } = props
   const [files, setFiles] = useState(new Map())
 
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function Documents (props) {
     newFiles.delete(attachment.uuid)
 
     await axios.delete(
-      `/admission_documents/${attachment.id}`
+      `/admission_documents/${attachment.id}.json`
     ).then(() => {
       setFiles(newFiles)
     }).catch(_error => {
@@ -71,7 +72,11 @@ export default function Documents (props) {
 
   useEffect(() => {
     if (files.size > 0) {
-      onDocumentsChanged && onDocumentsChanged(files)
+      setValues({
+        ...props.values,
+        document_ids: [...files.values()].map(document => document.id),
+        documents_attributes: [...files.values()].map(document => ({ id: document.id, title: document.title }))
+      })
     }
   }, [files])
 
@@ -182,9 +187,9 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
             />
           </div>
 
-          <div className={styles.delete} onClick={() => onFileDeleted(file)}>
+          <a className={styles.delete} onClick={() => onFileDeleted(file)}>
             удалить
-          </div>
+          </a>
         </div>
       }
 

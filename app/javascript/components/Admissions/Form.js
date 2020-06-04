@@ -49,46 +49,14 @@ export default function Form ({ id, locale }) {
   const _fetch = async () => {
     const { data } = await axios.get(`/admissions/${id}/edit.json`)
 
-    setAdmission(data.admission)
     setValues(data.values)
+    setAdmission(data.admission)
     setDictionaries(data.dictionaries)
   }
 
   useEffect(() => {
     _fetch()
   }, [id])
-
-  const handleSelectChange = (name, value) => {
-    setValues({ ...values, [name]: value })
-  }
-
-  const handleCheckboxChange = (name, value) => {
-    setValues({ ...values, [name]: value })
-  }
-
-  const handleSubjectsChange = (subjects) => {
-    setValues({
-      ...values,
-      subject_ids: [...subjects.values()].map(subject => subject.id),
-      subjects_attributes: [...subjects.values()].map(subject => (subject))
-    })
-  }
-
-  const handleDirectionsChange = (directions) => {
-    setValues({
-      ...values,
-      direction_ids: [...directions.values()].map(direction => direction.id),
-      directions_attributes: [...directions.values()].map(direction => (direction))
-    })
-  }
-
-  const handleDocumentsChanged = (documents) => {
-    setValues({
-      ...values,
-      document_ids: [...documents.values()].map(document => document.id),
-      documents_attributes: [...documents.values()].map(document => ({ id: document.id, title: document.title }))
-    })
-  }
 
   const handleSubmit = async e => {
     await axios.patch(
@@ -132,13 +100,11 @@ export default function Form ({ id, locale }) {
                 {admission.state === 'two' &&
                   <StepTwo
                     onChange={handleInputChange}
-                    onSelectChange={handleSelectChange}
-                    onDocumentsChanged={handleDocumentsChanged}
                     values={values}
+                    setValues={setValues}
                     documents={admission.documents}
                     dictionaries={dictionaries}
                     errors={errors}
-                    cancelToken={cancelToken}
                   />
                 }
                 {admission.state === 'three' &&
@@ -156,8 +122,8 @@ export default function Form ({ id, locale }) {
                 {admission.state === 'seven' &&
                   <StepSeven
                     onChange={handleInputChange}
-                    onDocumentsChanged={handleDocumentsChanged}
                     values={values}
+                    setValues={setValues}
                     documents={admission.documents}
                     errors={errors}/>
                 }
@@ -167,21 +133,19 @@ export default function Form ({ id, locale }) {
                 {admission.state === 'nine' &&
                   <StepNine
                     onChange={handleInputChange}
-                    onSubjectsChange={handleSubjectsChange}
-                    onCheckboxChange={handleCheckboxChange}
-                    onSelectChange={handleSelectChange}
                     values={values}
+                    setValues={setValues}
                     dictionaries={dictionaries}
                     errors={errors}/>
                 }
                 {admission.state === 'ten' &&
                   <StepTen
                     onChange={handleInputChange}
-                    onDirectinosChange={handleDirectionsChange}
-                    onSelectChange={handleSelectChange}
                     values={values}
+                    setValues={setValues}
                     dictionaries={dictionaries}
-                    errors={errors}/>
+                    errors={errors}
+                  />
                 }
                 {admission.state === 'done' &&
                   <div>

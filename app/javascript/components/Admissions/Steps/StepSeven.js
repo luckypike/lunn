@@ -12,10 +12,10 @@ StepSeven.propTypes = {
   documents: PropTypes.array,
   errors: PropTypes.object,
   onChange: PropTypes.func,
-  onDocumentsChanged: PropTypes.func
+  setValues: PropTypes.func
 }
 
-export default function StepSeven ({ values, documents, errors, onChange, onDocumentsChanged }) {
+export default function StepSeven ({ values, documents, errors, onChange, setValues }) {
   return (
     <>
       <div className={form.item}>
@@ -85,7 +85,8 @@ export default function StepSeven ({ values, documents, errors, onChange, onDocu
           <Documents
             files={documents}
             section='school'
-            onDocumentsChanged={onDocumentsChanged}
+            values={values}
+            setValues={setValues}
           />
         </div>
       </div>

@@ -66,7 +66,14 @@
 }
 
 .delete {
-  composes: main from '../Buttons.module.css';
-  align-self: end;
-  padding: calc(var(--yr) * 1.5) var(--xr);
+  cursor: pointer;
+  display: inline-block;
+  padding: calc(var(--yr) * 4) 0;
+  line-height: calc(var(--yr) * 3);
+  height: calc(var(--yr) * 12);
+
+  @media (--s) {
+    line-height: calc(var(--yr) * 5);
+    height: calc(var(--yr) * 14);
+  }
 }
