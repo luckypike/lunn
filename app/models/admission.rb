@@ -8,6 +8,9 @@ class Admission < ApplicationRecord
   has_many :subjects, class_name: 'AdmissionAdmissionSubject', dependent: :delete_all
   accepts_nested_attributes_for :subjects
 
+  has_many :directions, class_name: 'AdmissionAdmissionDirection', dependent: :delete_all
+  accepts_nested_attributes_for :directions
+
   has_many :documents, class_name: 'AdmissionDocument', as: :assignable, dependent: :delete_all
   accepts_nested_attributes_for :documents
 
@@ -122,8 +125,9 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         [score_achievements: []] +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
-        %i[state] + [subjects_attributes: %i[id admission_subject_id ege grade]] +
-        [document_ids: []] + [documents_attributes: %i[id title]]
+        %i[state] + [subject_ids: []] + [subjects_attributes: %i[id admission_subject_id ege grade]] +
+        [document_ids: []] + [documents_attributes: %i[id title]] +
+        [direction_ids: []] + [directions_attributes: %i[id admission_direction_id form basis]]
     end
   end
 

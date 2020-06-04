@@ -11,6 +11,7 @@
     right: 0;
     font-size: calc(var(--yr) * 3);
     line-height: calc(var(--yr) * 4);
+    z-index: 1;
 
     @media (--s) {
       font-size: calc(var(--yr) * 3.5);

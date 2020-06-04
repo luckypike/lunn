@@ -18,6 +18,10 @@ json.values do
   json.documents_attributes @admission.documents do |document|
     json.extract! document, :id, :title, :uuid, :section
   end
+
+  json.directions_attributes @admission.directions do |direction|
+    json.extract! direction, :id, :admission_direction_id, :form, :basis
+  end
 end
 
 json.partial! 'dictionaries'

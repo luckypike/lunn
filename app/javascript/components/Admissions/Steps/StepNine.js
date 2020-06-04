@@ -50,7 +50,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
     setSubjects(newSubjects)
   }
 
-  const handleAudienceChange = (item) => {
+  const handleAchievementsChange = (item) => {
     if (values.score_achievements.includes(item)) {
       onCheckboxChange('score_achievements', [...values.score_achievements.filter(id => id !== item)])
     } else {
@@ -134,7 +134,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
                       name={achievement.id}
                       disabled={values.score_achievements.length > 5 && !values.score_achievements.includes(achievement.id)}
                       checked={values.score_achievements.includes(achievement.id)}
-                      onChange={() => handleAudienceChange(parseInt(achievement.id))} />
+                      onChange={() => handleAchievementsChange(parseInt(achievement.id))} />
                     {achievement.label}
                   </label>
                 </div>

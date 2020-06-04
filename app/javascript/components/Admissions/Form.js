@@ -67,7 +67,17 @@ export default function Form ({ id, locale }) {
 
   const handleSubjectsChange = (subjects) => {
     setValues({
-      ...values, subjects_attributes: [...subjects.values()].map(subject => (subject))
+      ...values,
+      subject_ids: [...subjects.values()].map(subject => subject.id),
+      subjects_attributes: [...subjects.values()].map(subject => (subject))
+    })
+  }
+
+  const handleDirectionsChange = (directions) => {
+    setValues({
+      ...values,
+      direction_ids: [...directions.values()].map(direction => direction.id),
+      directions_attributes: [...directions.values()].map(direction => (direction))
     })
   }
 
@@ -155,7 +165,13 @@ export default function Form ({ id, locale }) {
                     errors={errors}/>
                 }
                 {admission.state === 'ten' &&
-                  <StepTen onChange={handleInputChange} onSelectChange={handleSelectChange} values={values} dictionaries={dictionaries} errors={errors}/>
+                  <StepTen
+                    onChange={handleInputChange}
+                    onDirectinosChange={handleDirectionsChange}
+                    onSelectChange={handleSelectChange}
+                    values={values}
+                    dictionaries={dictionaries}
+                    errors={errors}/>
                 }
                 {admission.state === 'done' &&
                   <div>
