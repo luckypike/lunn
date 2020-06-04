@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
-  has_one :admission, dependent: :nullify
+  has_many :admissions, dependent: :nullify
 
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :validatable

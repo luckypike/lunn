@@ -27,11 +27,14 @@ class AdmissionsController < ApplicationController
   def new
     respond_to do |format|
       format.html { render :index }
+      format.json do
+        @admissions = Admission.not_done.where(user: current_user)
+      end
     end
   end
 
   def create
-    @admission = Admission.new(admission_params)
+    @admission = Admission.where(user: current_user).not_done.first_or_initialize
 
     respond_to do |format|
       format.json do
@@ -53,10 +56,9 @@ class AdmissionsController < ApplicationController
   end
 
   def continue
-    redirect_to edit_admission_path(
-      id: Admission.where(user: current_user).where.not(state: :done).first_or_create.id,
-      locale: nil
-    )
+    admission = Admission.where(user: current_user).not_done.first_or_create
+
+    redirect_to edit_admission_path(id: admission, locale: nil)
   end
 
   def update

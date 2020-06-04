@@ -41,15 +41,31 @@ export default function Account ({ user: data, locale }) {
         <div className={styles.root}>
           <a href="/admissions/new" className={styles.item}>
             <div className={styles.title}>
-              Подача документов на поступление в электронном виде
+              Поступай легко — поступай онлайн
             </div>
 
             <div className={styles.desc}>
-              Вы сможете подать документы на поступление через сайт
+              Подать документы в приёмную комиссию через сайт
             </div>
 
             <div className={styles.more}>
               Подать документы
+
+              <svg viewBox="0 0 36 36" fill="none" stroke="black">
+                <circle cx="18" cy="18" r="17" />
+
+                <path
+                  d="M21 12L27 18L21 24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                <path
+                  d="M9 18H27"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
           </a>
 

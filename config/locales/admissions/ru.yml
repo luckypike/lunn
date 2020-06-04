@@ -1,7 +1,7 @@
 ru:
   admissions:
     new:
-      title: Новое заявление
+      title: Новая анкета
 
     edit:
       title: Анкета № %{number}

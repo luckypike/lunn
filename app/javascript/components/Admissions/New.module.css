@@ -1,5 +1,6 @@
 .root {
   margin: calc(var(--yr) * var(--s6)) 0;
+  max-width: 60rem;
 }
 
 /* .auth {
@@ -8,7 +9,27 @@
 } */
 
 .start {
-  margin-bottom: calc(var(--yr) * var(--s3));
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.admissions {
+  margin-bottom: calc(var(--yr) * var(--s4));
+  /* max-width: 60rem; */
+}
+
+.admission {
+  display: block;
+  padding: calc(var(--yr) * var(--s3)) 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.title {
+  composes: h4 from '../Fonts.module.css';
+}
+
+.date {
+  composes: at from '../Fonts.module.css';
+  color: var(--gr_color);
 }
 
 .button_main {
@@ -28,5 +49,5 @@
 }
 
 .text {
-  max-width: 60rem;
+  /* max-width: 60rem; */
 }
