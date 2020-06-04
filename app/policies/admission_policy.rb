@@ -22,4 +22,8 @@ class AdmissionPolicy < ApplicationPolicy
   def export?
     true
   end
+
+  def page?
+    new?
+  end
 end

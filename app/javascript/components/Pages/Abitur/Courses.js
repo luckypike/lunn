@@ -7,7 +7,7 @@ import Arrow from '!svg-react-loader?!../../../images/arrow.svg'
 
 export default function Courses () {
   return (
-    <div>
+    <div className={styles.root}>
       <h2>Направления подготовки и специальности</h2>
 
       <div className={styles.courses}>

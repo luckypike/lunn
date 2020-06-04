@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
+// import classNames from 'classnames'
 
-import { Title } from '../Pages'
+// import { Title } from '../Pages'
+import Title from '../Title'
 import Renderer from '../Renderer'
 
 import styles from './Page.module.css'
@@ -17,17 +18,20 @@ Page.propTypes = {
 
 export default function Page ({ node, user, loaf, locale }) {
   return (
-    <div className={classNames(styles.root, pages.container)}>
+    <div className={pages.beta}>
       <Title
         h1={node.title}
         loaf={loaf}
+        desc="Как поступить в НГЛУ?"
       />
 
-      {node.text &&
-        <div className={styles.text}>
-          <Renderer source={node.text} />
-        </div>
-      }
+      <div className={pages.container}>
+        {node.text &&
+          <div className={styles.text}>
+            <Renderer source={node.text} />
+          </div>
+        }
+      </div>
 
       {!user &&
         <div>

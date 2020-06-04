@@ -147,7 +147,7 @@ export default function Renderer ({ source, images }) {
 
         if (name === 'a') {
           return (
-            <a className={styles.a} href={attribs.href}>
+            <a className={classNames(styles.a, styles[attribs.class])} href={attribs.href}>
               {domToReact(children, options)}
             </a>
           )

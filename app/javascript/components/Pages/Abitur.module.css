@@ -12,5 +12,5 @@
 }
 
 .foreigners {
-  margin-bottom: calc(var(--yr) * var(--s6));
+  margin: calc(var(--yr) * var(--s6)) 0;
 }

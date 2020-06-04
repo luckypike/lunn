@@ -28,3 +28,7 @@
     height: 100%;
   }
 }
+
+.button {
+  composes: button--main from '../../Renderer.module.css';
+}

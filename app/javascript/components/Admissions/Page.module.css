@@ -1,7 +1,4 @@
-.root {
-  composes: root from '../Pages/Show.module.css';
-}
-
 .text {
-  composes: text from '../Pages/Show.module.css';
+  margin: calc(var(--yr) * var(--s6)) 0;
+  max-width: 60rem;
 }

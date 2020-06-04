@@ -1,5 +1,7 @@
-h2 {
-  margin-bottom: calc(var(--yr) * var(--s4));
+.root {
+  & h2 {
+    margin-bottom: calc(var(--yr) * var(--s4));
+  }
 }
 
 .courses {

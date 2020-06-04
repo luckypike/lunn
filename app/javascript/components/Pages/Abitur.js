@@ -47,15 +47,15 @@ export default function Divisions ({ node, loaf, docs, locale }) {
         </div>
       </div>
 
-      <div className={styles.courses}>
-        <div className={pages.container}>
-          <Courses />
-        </div>
-      </div>
-
       <div className={styles.foreigners}>
         <div className={pages.container}>
           <Foreigners />
+        </div>
+      </div>
+
+      <div className={styles.courses}>
+        <div className={pages.container}>
+          <Courses />
         </div>
       </div>
 
