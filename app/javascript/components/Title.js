@@ -14,12 +14,13 @@ Title.propTypes = {
   desc: PropTypes.string,
   date: PropTypes.number,
   image: PropTypes.string,
+  className: PropTypes.string,
   beta: PropTypes.bool
 }
 
-export default function Title ({ h1, h2, loaf, desc, date, beta, image }) {
+export default function Title ({ h1, h2, loaf, desc, date, beta, image, className }) {
   return (
-    <div className={classNames(styles.root, styles.beta, { [styles.withi]: image })}>
+    <div className={classNames(styles.root, styles.beta, { [styles.withi]: image }, className)}>
       {image &&
         <div className={styles.image} style={{ backgroundImage: `url(${image})` }} />
       }

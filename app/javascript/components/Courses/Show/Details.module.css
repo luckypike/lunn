@@ -1,0 +1,63 @@
+.root {
+  display: grid;
+  grid-row-gap: calc(var(--yr) * var(--s4));
+  padding: calc(var(--yr) * var(--s5)) 0;
+
+  @media (--m) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: calc(var(--xr) * 2);
+
+    & .forms {
+      grid-column: 1 / span 2;
+    }
+
+    & .places {
+      grid-column: span 2;
+    }
+
+    & .prices {
+      grid-column: span 4;
+    }
+
+    & .exams {
+      grid-column: span 4;
+    }
+  }
+}
+
+.form {
+  display: block;
+  margin-right: var(--yr);
+
+  @media (--m) {
+    display: none;
+  }
+}
+
+.title {
+  margin-bottom: calc(var(--yr) * var(--s2));
+  composes: at from '../../Fonts.module.css';
+}
+
+.item {
+  display: flex;
+  composes: bt from '../../Fonts.module.css';
+
+  &:not(:last-child) {
+    margin-bottom: calc(var(--yr) * var(--s1));
+  }
+}
+
+.sub {
+  display: flex;
+  composes: bt from '../../Fonts.module.css';
+
+  @media (--l) {
+    margin-bottom: var(--yr);
+  }
+}
+
+.grey {
+  color: #727272;
+  margin-left: var(--yr);
+}

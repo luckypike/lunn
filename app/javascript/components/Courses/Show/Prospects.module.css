@@ -1,0 +1,31 @@
+.root {
+  display: grid;
+  align-items: start;
+  grid-row-gap: calc(var(--yr) * var(--s4));
+
+  @media (--m) {
+    grid-template-columns: repeat(12, 1fr);
+
+    & .image {
+      grid-column: span 6;
+    }
+
+    & .desc {
+      grid-column: span 6;
+    }
+  }
+}
+
+.image {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url('./Images/prospects.svg');
+
+  &::before {
+    display: block;
+    content: '';
+    padding-top: calc(1 / 1.75 * 100%);
+  }
+}

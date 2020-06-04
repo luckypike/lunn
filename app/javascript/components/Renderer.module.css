@@ -38,6 +38,8 @@
       text-align: center;
       display: inline-block;
       width: 1.5rem;
+
+      /* content: '\2022'; */
       content: '\2013';
       margin-left: -1.5rem;
     }
@@ -106,14 +108,7 @@
   & .figure {
     grid-column: 1 / span 1;
     grid-row: 1 / 9999;
-
-    & img {
-    }
   }
-}
-
-.figure {
-
 }
 
 .figcaption {
