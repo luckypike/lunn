@@ -1,4 +1,4 @@
-class DocumentPolicy < ApplicationPolicy
+class AdmissionDocumentPolicy < ApplicationPolicy
   def create?
     # user
     true

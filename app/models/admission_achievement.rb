@@ -1,4 +1,4 @@
-class Citizenship < ApplicationRecord
+class AdmissionAchievement < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
   def label

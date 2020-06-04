@@ -59,7 +59,7 @@ export default function Documents (props) {
     newFiles.delete(attachment.uuid)
 
     await axios.delete(
-      `/documents/${attachment.id}`
+      `/admission_documents/${attachment.id}`
     ).then(() => {
       setFiles(newFiles)
     }).catch(_error => {
@@ -145,7 +145,7 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
       formData.append('document[size]', file.size)
 
       await axios.post(
-        '/documents',
+        '/admission_documents',
         formData,
         { cancelToken: cancelToken.current.token },
         {

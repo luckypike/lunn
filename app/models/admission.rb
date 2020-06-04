@@ -5,10 +5,10 @@ class Admission < ApplicationRecord
 
   belongs_to :user, default: -> { Current.user }
 
-  has_many :subjects, class_name: 'AdmissionSubject', dependent: :delete_all
+  has_many :subjects, class_name: 'AdmissionAdmissionSubject', dependent: :delete_all
   accepts_nested_attributes_for :subjects
 
-  has_many :documents, as: :assignable, dependent: :delete_all
+  has_many :documents, class_name: 'AdmissionDocument', as: :assignable, dependent: :delete_all
   accepts_nested_attributes_for :documents
 
   store :identity, accessors: %i[
@@ -63,11 +63,11 @@ class Admission < ApplicationRecord
   validates :parents_relation_degree_first, :parents_name_first, :parents_phone_first,
     presence: true, if: -> { step_after?(3) }
 
-  validates :address_country, :address_region, :address_city,
+  validates :address_country, :address_region,
     :address_index, :address_street, :address_house,
     presence: true, if: -> { step_after?(4) }
 
-  validates :residence_country, :residence_region, :residence_city,
+  validates :residence_country, :residence_region,
     :residence_index, :residence_street, :residence_house, :residence_email, :residence_mobile,
     presence: true, if: -> { step_after?(5) }
 
@@ -120,8 +120,9 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:residence].map { |key| "residence_#{key}" } +
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
+        [score_achievements: []] +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
-        %i[state] + [subjects_attributes: %i[id subject_id ege grade]] +
+        %i[state] + [subjects_attributes: %i[id admission_subject_id ege grade]] +
         [document_ids: []] + [documents_attributes: %i[id title]]
     end
   end
