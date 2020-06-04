@@ -98,6 +98,11 @@ class Admission < ApplicationRecord
     Admission.states[state] > step
   end
 
+  def number
+    id
+  end
+
+  # Убрать отсюда если есть class << self
   def self.to_csv
     attributes = %i[id] + allowed_params + %i[created_at]
 

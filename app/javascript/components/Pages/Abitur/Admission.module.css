@@ -31,4 +31,8 @@
 
 .button {
   composes: button--main from '../../Renderer.module.css';
+
+  &:not(:last-child) {
+    margin-right: var(--xr);
+  }
 }

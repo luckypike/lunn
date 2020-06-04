@@ -18,6 +18,10 @@ export default function Admission () {
           <a className={styles.button} href="/abitur/online">
             Как поступить в НГЛУ?
           </a>
+
+          <a className={styles.button} href="/admissions/new">
+            Подать документы
+          </a>
         </p>
       </div>
     </div>

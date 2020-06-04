@@ -148,7 +148,7 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
       formData.append('document[size]', file.size)
 
       await axios.post(
-        '/admission_documents',
+        '/admission_documents.json',
         formData,
         { cancelToken: cancelToken.current.token },
         {

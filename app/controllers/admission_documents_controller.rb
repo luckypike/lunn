@@ -5,7 +5,6 @@ class AdmissionDocumentsController < ApplicationController
   after_action :verify_authorized
 
   def create
-    authorize AdmissionDocument
     @document = AdmissionDocument.new(document_params)
 
     if @document.save
@@ -16,9 +15,8 @@ class AdmissionDocumentsController < ApplicationController
   end
 
   def destroy
-    authorize AdmissionDocument
-
     @document.destroy
+
     head :ok
   end
 

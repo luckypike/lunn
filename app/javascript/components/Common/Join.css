@@ -27,6 +27,17 @@
 }
 
 .join__links__item {
+  & a {
+    text-decoration: underline;
+    text-decoration-color: color-mod(var(--pr_color) a(0.4));
+    transition: text-decoration 0.3s, color 0.3s;
+
+    &:hover {
+      text-decoration-color: var(--hl_color);
+      color: var(--hl_color);
+    }
+  }
+
   &:not(:last-child) {
     margin-bottom: calc(var(--yr) * var(--s2));
   }

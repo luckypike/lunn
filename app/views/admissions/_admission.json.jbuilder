@@ -1,4 +1,4 @@
-json.extract! admission, :state
+json.extract! admission, :state, :number
 
 %i[identity document parents address residence school score course].each do |section|
   Admission.stored_attributes[section].each do |key|

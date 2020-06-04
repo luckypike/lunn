@@ -1,0 +1,19 @@
+.root {
+  margin: calc(var(--yr) * var(--s6)) 0;
+}
+
+.form {
+  background-color: var(--sp_color);
+  position: relative;
+  padding: calc(var(--yr) * var(--s3) * 2) var(--xr);
+  max-width: 60rem;
+  margin: 0 auto;
+
+  @media (--s) {
+    padding: calc(var(--yr) * var(--s3) * 2) calc(var(--xr) * 2);
+  }
+
+  @media (--m) {
+    padding: calc(var(--yr) * var(--s3) * 2) 8%;
+  }
+}

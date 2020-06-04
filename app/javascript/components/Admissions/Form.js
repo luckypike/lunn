@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import classNames from 'classnames'
 
-import { Title } from '../Pages'
+import Title from '../Title'
 import { useForm } from '../Form'
 import { useI18n } from '../I18n'
 
@@ -18,7 +18,7 @@ import StepEight from './Steps/StepEight'
 import StepNine from './Steps/StepNine'
 import StepTen from './Steps/StepTen'
 
-import styles from './Admissions.module.css'
+import styles from './Form.module.css'
 import pages from '../Pages.module.css'
 import form from '../Form.module.css'
 import buttons from '../Buttons.module.css'
@@ -102,9 +102,10 @@ export default function Form ({ id, locale }) {
   }
 
   return (
-    <div className={pages.container}>
+    <div className={pages.beta}>
       <Title
-        h1="Электронная заявка"
+        beta
+        h1={admission && I18n.t('admissions.edit.title', { number: admission.number })}
       />
 
       <div className={styles.root}>

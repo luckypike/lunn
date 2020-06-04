@@ -38,6 +38,7 @@ class AdmissionsController < ApplicationController
         if @admission.save
           render json: { id: @admission.id }, status: :created
         else
+          store_location_for(:user, continue_admissions_path)
           render json: @admission.errors, status: :unprocessable_entity
         end
       end
@@ -49,6 +50,13 @@ class AdmissionsController < ApplicationController
       format.html { render :index }
       format.json
     end
+  end
+
+  def continue
+    redirect_to edit_admission_path(
+      id: Admission.where(user: current_user).where.not(state: :done).first_or_create.id,
+      locale: nil
+    )
   end
 
   def update

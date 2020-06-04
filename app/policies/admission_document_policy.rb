@@ -1,11 +1,9 @@
 class AdmissionDocumentPolicy < ApplicationPolicy
   def create?
-    # user
-    true
+    user
   end
 
   def destroy?
-    # user
-    true
+    user
   end
 end

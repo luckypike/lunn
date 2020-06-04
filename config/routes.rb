@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       collection do
         get :sync
         get :export
+        get :continue
       end
     end
 

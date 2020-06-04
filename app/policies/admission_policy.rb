@@ -1,10 +1,10 @@
 class AdmissionPolicy < ApplicationPolicy
   def new?
-    true
+    create?
   end
 
   def create?
-    user&.confirmed?
+    true
   end
 
   def show?
@@ -25,5 +25,9 @@ class AdmissionPolicy < ApplicationPolicy
 
   def page?
     new?
+  end
+
+  def continue?
+    user
   end
 end

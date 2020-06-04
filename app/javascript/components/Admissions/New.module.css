@@ -1,3 +1,32 @@
 .root {
   margin: calc(var(--yr) * var(--s6)) 0;
 }
+
+/* .auth {
+  margin: calc(var(--yr) * var(--s6)) 0;
+  max-width: 40rem;
+} */
+
+.start {
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
+.button_main {
+  composes: button--main from '../Renderer.module.css';
+
+  &:not(:last-child) {
+    margin-right: var(--xr);
+  }
+}
+
+.button_sec {
+  composes: button--sec from '../Renderer.module.css';
+}
+
+.ul {
+  composes: ul from '../Renderer.module.css';
+}
+
+.text {
+  max-width: 60rem;
+}

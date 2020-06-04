@@ -5,11 +5,3 @@
     margin: 0 0 calc(var(--yr) * var(--s4));
   }
 }
-
-.form {
-  background-color: var(--sp_color);
-  position: relative;
-  padding: calc(var(--yr) * var(--s3) * 2) var(--xr);
-  max-width: 60rem;
-  margin: 0 auto;
-}
