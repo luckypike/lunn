@@ -4,6 +4,27 @@
   & label {
     display: block;
   }
+
+  & .delete {
+    padding: var(--yr) calc(var(--yr) * 8) var(--yr) calc(var(--yr) * 2);
+    position: absolute;
+    right: 0;
+    font-size: calc(var(--yr) * 3);
+    line-height: calc(var(--yr) * 4);
+
+    @media (--s) {
+      font-size: calc(var(--yr) * 3.5);
+      line-height: calc(var(--yr) * 5);
+    }
+
+    &::after {
+      border-left: 1px solid #fff;
+      padding: 0 var(--yr);
+      position: absolute;
+      content: '✕';
+      right: var(--yr);
+    }
+  }
 }
 
 .label {

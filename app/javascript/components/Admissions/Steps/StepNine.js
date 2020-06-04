@@ -36,6 +36,13 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
     e.preventDefault()
   }
 
+  const handleSubjectDelete = (key) => {
+    const newSubjects = new Map(subjects)
+    newSubjects.delete(key)
+
+    setSubjects(newSubjects)
+  }
+
   const handleSubjectChange = (subject, subjectKey) => {
     const newSubjects = new Map(subjects)
     newSubjects.set(subjectKey, subject)
@@ -61,12 +68,13 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
       })
 
       setSubjects(newSubjects)
-    } else if (subjects.size !== 1) {
-      const newSubjects = new Map(subjects)
-      newSubjects.set(`n-${subjects.size}`, { admission_subject_id: '', ege: '', grade: '' })
-
-      setSubjects(newSubjects)
     }
+    // } else if (subjects.size !== 1) {
+    //   const newSubjects = new Map(subjects)
+    //   newSubjects.set(`n-${subjects.size}`, { admission_subject_id: '', ege: '', grade: '' })
+    //
+    //   setSubjects(newSubjects)
+    // }
   }, [dictionaries])
 
   return (
@@ -81,6 +89,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
               dictionaries={dictionaries}
               errors={errors}
               onSubjectChange={handleSubjectChange}
+              onSubjectDelete={handleSubjectDelete}
             />
           )}
         </>
@@ -167,10 +176,11 @@ Subject.propTypes = {
   subjectKey: PropTypes.string,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
-  onSubjectChange: PropTypes.func
+  onSubjectChange: PropTypes.func,
+  onSubjectDelete: PropTypes.func
 }
 
-function Subject ({ subject, subjectKey, dictionaries, errors, onSubjectChange }) {
+function Subject ({ subject, subjectKey, dictionaries, errors, onSubjectChange, onSubjectDelete }) {
   const [item, setItem] = useState(subject)
 
   useEffect(() => {
@@ -188,6 +198,10 @@ function Subject ({ subject, subjectKey, dictionaries, errors, onSubjectChange }
   return (
     <>
       <div className={form.item}>
+        <button className={classNames(buttons.main, form.delete)} onClick={() => onSubjectDelete(subjectKey)}>
+          Удалить
+        </button>
+
         <div className={form.select}>
           <div className={form.label}>
             Предмет *
@@ -210,7 +224,7 @@ function Subject ({ subject, subjectKey, dictionaries, errors, onSubjectChange }
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Балл ЕГЭ *
+            Балл ЕГЭ
           </div>
 
           <input
