@@ -15,6 +15,8 @@ json.values do
     json.extract! subject, :id, :admission_subject_id, :ege, :grade
   end
 
+  json.document_ids @admission.documents.pluck(:id)
+
   json.documents_attributes @admission.documents do |document|
     json.extract! document, :id, :title, :uuid, :section
   end

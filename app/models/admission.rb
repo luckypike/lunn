@@ -48,7 +48,7 @@ class Admission < ApplicationRecord
   ], coder: JSON, prefix: true
 
   store :course, accessors: %i[
-    form basis program contract status olympiad military study
+    contract status olympiad military study
   ], coder: JSON, prefix: true
 
   validates :state, presence: true
@@ -84,10 +84,10 @@ class Admission < ApplicationRecord
   validates :school_language,
     presence: true, if: -> { step_after?(8) }
 
-  validates :score_year,
+  validates :subjects, :score_year,
     presence: true, if: -> { step_after?(9) }
 
-  validates :course_form, :course_basis, :course_program,
+  validates :directions,
     presence: true, if: -> { step_after?(10) }
 
   after_initialize do
@@ -126,7 +126,7 @@ class Admission < ApplicationRecord
         [score_achievements: []] +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
         %i[state] + [subject_ids: []] + [subjects_attributes: %i[id admission_subject_id ege grade]] +
-        [document_ids: []] + [documents_attributes: %i[id title]] +
+        [document_ids: []] + [documents_attributes: %i[id title uuid section]] +
         [direction_ids: []] + [directions_attributes: %i[id admission_direction_id form basis]]
     end
   end

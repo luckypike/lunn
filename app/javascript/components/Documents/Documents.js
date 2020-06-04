@@ -24,7 +24,7 @@ export default function Documents (props) {
     if (props.files) {
       const newFiles = new Map(files)
 
-      props.files.filter(f => props.section === f.section).forEach(file => {
+      props.files.forEach(file => {
         if (!files.has(file.uuid)) {
           newFiles.set(file.uuid, file)
         }
@@ -70,7 +70,9 @@ export default function Documents (props) {
   }
 
   useEffect(() => {
-    onDocumentsChanged && onDocumentsChanged(files)
+    if (files.size > 0) {
+      onDocumentsChanged && onDocumentsChanged(files)
+    }
   }, [files])
 
   return (
@@ -87,14 +89,15 @@ export default function Documents (props) {
       {files.size > 0 &&
         <div className={styles.files}>
           {[...files.keys()].map(uuid =>
-            <File
-              section={props.section}
-              key={uuid}
-              onFileChanged={handleFileChanged}
-              onFileDeleted={handleFileDeleted}
-              initFile={files.get(uuid)}
-              uuid={uuid}
-            />
+            (files.get(uuid).section === props.section || files.get(uuid).section === undefined) &&
+              <File
+                section={props.section}
+                key={uuid}
+                onFileChanged={handleFileChanged}
+                onFileDeleted={handleFileDeleted}
+                initFile={files.get(uuid)}
+                uuid={uuid}
+              />
           )}
         </div>
       }

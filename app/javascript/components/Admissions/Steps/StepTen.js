@@ -23,7 +23,9 @@ export default function StepTen ({ values, dictionaries, errors, onChange, onSel
   const [directions, setDirections] = useState(new Map())
 
   useEffect(() => {
-    onDirectinosChange && onDirectinosChange(directions)
+    if (directions.size > 0) {
+      onDirectinosChange && onDirectinosChange(directions)
+    }
   }, [directions])
 
   useEffect(() => {

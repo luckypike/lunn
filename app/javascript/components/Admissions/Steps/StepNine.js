@@ -24,7 +24,9 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
   const [subjects, setSubjects] = useState(new Map())
 
   useEffect(() => {
-    onSubjectsChange && onSubjectsChange(subjects)
+    if (subjects.size > 0) {
+      onSubjectsChange && onSubjectsChange(subjects)
+    }
   }, [subjects])
 
   const handleSubjectAdd = (e) => {
