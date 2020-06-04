@@ -22,6 +22,12 @@ class AddStepFieldsToAdmissions < ActiveRecord::Migration[6.0]
   end
 
   def down
+    remove_column :admissions, :document
+    remove_column :admissions, :parents
+    remove_column :admissions, :address
+    remove_column :admissions, :score
+    remove_column :admissions, :course
+
     add_column :admissions, :sex, :integer
     add_column :admissions, :birth_date, :timestamp
     add_column :admissions, :birth_place, :text
@@ -35,11 +41,5 @@ class AddStepFieldsToAdmissions < ActiveRecord::Migration[6.0]
     add_column :admissions, :relation_degree, :string
     add_column :admissions, :parents, :text
     add_column :admissions, :parents_phone, :string
-
-    remove_column :admissions, :document
-    remove_column :admissions, :parents
-    remove_column :admissions, :address
-    remove_column :admissions, :score
-    remove_column :admissions, :course
   end
 end
