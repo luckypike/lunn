@@ -80,7 +80,7 @@ export default function Form ({ id, locale }) {
       {admission &&
         <div className={styles.steps}>
           <div className={pages.container}>
-            <Steps admission={admission} />
+            <Steps admission={admission} locale={locale}/>
           </div>
         </div>
       }

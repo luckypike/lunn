@@ -9,3 +9,5 @@ end
 json.documents admission.documents do |document|
   json.extract! document, :id, :title, :uuid, :section
 end
+
+json.states Admission::states
