@@ -17,3 +17,8 @@
     padding: calc(var(--yr) * var(--s3) * 2) 8%;
   }
 }
+
+.steps {
+  padding: calc(var(--yr) * var(--s3)) 0;
+  /* background-color: var(--sp_color); */
+}

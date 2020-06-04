@@ -1,20 +1,22 @@
 .dropzone {
   composes: at from '../Fonts.module.css';
   cursor: pointer;
-  background-color: color-mod(var(--hl_color) a(0.4));
+  background-color: color-mod(var(--hl_color) a(0.3));
   border-radius: var(--yr);
   text-align: center;
   margin-bottom: calc(var(--yr) * var(--s3));
-  padding: calc(var(--yr) * var(--s-m));
+  padding: calc(var(--yr) * var(--s5)) var(--xr);
   transition: 0.3s background;
 
   &:hover {
     background-color: var(--hl_color);
+    color: #fff;
   }
 
   &.active {
     background-color: var(--pr_color);
     color: var(--lg_color);
+    color: #fff;
   }
 }
 

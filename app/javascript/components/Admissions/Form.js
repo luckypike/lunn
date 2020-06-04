@@ -4,6 +4,7 @@ import axios from 'axios'
 import classNames from 'classnames'
 
 import Title from '../Title'
+import Steps from './Form/Steps'
 import { useForm } from '../Form'
 import { useI18n } from '../I18n'
 
@@ -107,6 +108,14 @@ export default function Form ({ id, locale }) {
         beta
         h1={admission && I18n.t('admissions.edit.title', { number: admission.number })}
       />
+
+      {admission &&
+        <div className={styles.steps}>
+          <div className={pages.container}>
+            <Steps admission={admission} />
+          </div>
+        </div>
+      }
 
       <div className={styles.root}>
         <div className={styles.form}>

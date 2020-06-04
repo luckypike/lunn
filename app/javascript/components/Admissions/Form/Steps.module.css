@@ -1,0 +1,79 @@
+.root {
+  /* overflow-x: scroll; */
+}
+
+.steps {
+  display: flex;
+  justify-content: flex-start;
+  /* grid-template-columns: min-content; */
+  /* grid-column-gap: var(--xr); */
+}
+
+.sp {
+  width: calc(var(--xr) * 2);
+  position: relative;
+  margin: 0 var(--xr);
+
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -1px;
+    height: 2px;
+    background-color: color-mod(var(--sp_color) shade(10%));
+  }
+}
+
+.digit {
+  flex-shrink: 0;
+  line-height: calc(var(--yr) * 12);
+  height: calc(var(--yr) * 12);
+  width: calc(var(--yr) * 12);
+  text-align: center;
+  border-radius: 50%;
+  color: var(--sp_color);
+  background: none;
+  box-shadow: inset 0 0 0 2px var(--sp_color);
+}
+
+.title {
+  composes: mt from '../../Fonts.module.css';
+  padding-left: var(--xr);
+  overflow: hidden;
+  max-height: calc(var(--yr) * 12);
+  display: none;
+  max-width: 7rem;
+}
+
+.step {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  /* flex-grow: 0; */
+  /* margin-bottom: calc(var(--yr) * var(--s2)); */
+
+  &.inactive {
+    /* opacity: 0.3; */
+  }
+
+  &.current {
+    & .digit {
+      box-shadow: inset 0 0 0 2px var(--hl_color);
+      background-color: var(--hl_color);
+      color: #fff;
+    }
+
+    & .title {
+      display: block;
+    }
+  }
+
+  &.complete {
+    & .digit {
+      color: var(--pr_color);
+      box-shadow: inset 0 0 0 2px var(--hl_color);
+    }
+  }
+}
