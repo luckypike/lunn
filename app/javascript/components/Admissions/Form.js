@@ -61,6 +61,10 @@ export default function Form ({ id, locale }) {
     setValues({ ...values, [name]: value })
   }
 
+  const handleCheckboxChange = (name, value) => {
+    setValues({ ...values, [name]: value })
+  }
+
   const handleSubjectsChange = (subjects) => {
     setValues({
       ...values, subjects_attributes: [...subjects.values()].map(subject => (subject))
@@ -144,6 +148,7 @@ export default function Form ({ id, locale }) {
                   <StepNine
                     onChange={handleInputChange}
                     onSubjectsChange={handleSubjectsChange}
+                    onCheckboxChange={handleCheckboxChange}
                     onSelectChange={handleSelectChange}
                     values={values}
                     dictionaries={dictionaries}

@@ -68,7 +68,7 @@ export default function StepFive ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Город *
+            Город
           </div>
 
           <input

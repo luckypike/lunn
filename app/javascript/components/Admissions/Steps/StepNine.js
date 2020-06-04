@@ -14,10 +14,11 @@ StepNine.propTypes = {
   errors: PropTypes.object,
   onChange: PropTypes.func,
   onSelectChange: PropTypes.func,
-  onSubjectsChange: PropTypes.func
+  onSubjectsChange: PropTypes.func,
+  onCheckboxChange: PropTypes.func
 }
 
-export default function StepNine ({ values, dictionaries, errors, onChange, onSelectChange, onSubjectsChange }) {
+export default function StepNine ({ values, dictionaries, errors, onChange, onSelectChange, onSubjectsChange, onCheckboxChange }) {
   if (!dictionaries) return null
 
   const [subjects, setSubjects] = useState(new Map())
@@ -40,6 +41,14 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
     newSubjects.set(subjectKey, subject)
 
     setSubjects(newSubjects)
+  }
+
+  const handleAudienceChange = (item) => {
+    if (values.score_achievements.includes(item)) {
+      onCheckboxChange('score_achievements', [...values.score_achievements.filter(id => id !== item)])
+    } else {
+      onCheckboxChange('score_achievements', [...values.score_achievements, item])
+    }
   }
 
   useEffect(() => {
@@ -98,6 +107,36 @@ export default function StepNine ({ values, dictionaries, errors, onChange, onSe
         </div>
 
         <Errors errors={errors.score_year} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.checkbox}>
+          <div className={form.label}>
+            Индивидуальные достижения
+          </div>
+
+          {dictionaries.achievements &&
+            <div className={form.input}>
+              {dictionaries.achievements.map(achievement =>
+                <div key={achievement.id} className={form.checkbox}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name={achievement.id}
+                      disabled={values.score_achievements.length > 5 && !values.score_achievements.includes(achievement.id)}
+                      checked={values.score_achievements.includes(achievement.id)}
+                      onChange={() => handleAudienceChange(parseInt(achievement.id))} />
+                    {achievement.label}
+                  </label>
+                </div>
+              )}
+            </div>
+          }
+        </div>
+
+        {errors.audiences &&
+          <Errors errors={errors.audiences}/>
+        }
       </div>
 
       <div className={form.item}>
