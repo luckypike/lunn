@@ -21,6 +21,18 @@ export default function Intro ({ course }) {
         <a href="/abitur/2020" className={buttons.main}>
           Приёмная комиссия
         </a>
+
+        <br />
+
+        <a href="/abitur/online" className={buttons.sec}>
+          Как поступить?
+        </a>
+
+        <br />
+
+        <a href="/admissions/new" className={buttons.sec}>
+          Подать документы
+        </a>
       </div>
 
       {course.youtube &&
