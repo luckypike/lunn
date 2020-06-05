@@ -1,6 +1,5 @@
 .root {
   padding: 0;
-  margin-bottom: calc(var(--yr) * var(--s5));
   position: relative;
 
   @media (--l) {
@@ -13,11 +12,8 @@
   display: block;
   margin-bottom: calc(var(--yr) * var(--s3));
 
-  @media (--s) {
-    margin-bottom: calc(var(--yr) * var(--s4));
-  }
-
   @media (--m) {
+    margin-bottom: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: calc(var(--xr) * 2);
@@ -26,9 +22,7 @@
 
 .event {
   display: block;
-  margin-bottom: calc(var(--yr) * calc(var(--s1) * 2));
-  border-radius: calc(var(--yr) * 2);
-  /* padding: 0 calc(var(--yr) * 7.5) calc(var(--yr) * 7); */
+  margin-bottom: calc(var(--yr) * var(--s4));
 
   &:last-child {
     margin-bottom: 0;
@@ -39,33 +33,28 @@
   }
 }
 
+.label {
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
 .title {
   composes: h4 from '../../Fonts.module.css';
-  padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 2));
+  padding-top: calc(var(--yr) * var(--s2));
   margin: 0;
   hyphens: auto;
-
-  @media (--s) {
-    padding: calc(var(--yr) * var(--s2)) 0 calc(var(--yr) * calc(var(--s2) * 3.5));
-  }
 }
 
 .date {
   color: var(--hl_color);
   composes: h3 from '../../Fonts.module.css';
   margin: 0;
-  border-bottom: 1px solid var(--hl_color);
-  padding: calc(var(--yr) * var(--s2)) 0;
+  border-bottom: 2px solid var(--hl_color);
+  padding-bottom: calc(var(--yr) * var(--s2));
 }
 
 .day {
   color: #141414;
   opacity: 0.5;
-}
-
-.buttons {
-  display: flex;
-  margin-bottom: calc(var(--yr) * 7);
 }
 
 .tab {
@@ -86,6 +75,7 @@
   color: var(--hl_color);
   position: relative;
   padding-left: calc(var(--yr) * 3);
+  margin-top: calc(var(--yr) * var(--s2));
 
   &::before {
     position: absolute;

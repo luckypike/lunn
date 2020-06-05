@@ -3,8 +3,8 @@ class PagesController < ApplicationController
   before_action :set_node, except: %i[index contacts announces]
 
   def index
-    @news = Node.news.lang.includes(:images, :summary)
-      .order(created: :desc).limit(4)
+    @news = Node.news.lang.includes(:summary)
+      .order(created: :desc).limit(8)
 
     @events = Node.events.joins(:date).lang
       .where(

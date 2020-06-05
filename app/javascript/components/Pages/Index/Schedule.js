@@ -8,9 +8,11 @@ import pages from '../../Pages.module.css'
 export default function Schedule () {
   const [height, setHeight] = useState(0)
 
+  const active = () => height !== 0
+
   return (
-    <div className={pages.container}>
-      <div className={styles.toggle} onClick={() => setHeight(height === 0 ? 'auto' : 0)}>
+    <div className={classNames(pages.container, styles.root)}>
+      <div className={classNames(styles.toggle, { [styles.active]: active() })} onClick={() => setHeight(height === 0 ? 'auto' : 0)}>
         <div className={styles.header}>
           Расписание
           {/* <span className={styles.hint}>
@@ -19,7 +21,7 @@ export default function Schedule () {
         </div>
 
         <div className={styles.button}>
-          Смотреть
+          {active() ? 'Смотреть' : 'Свернуть'}
         </div>
       </div>
 

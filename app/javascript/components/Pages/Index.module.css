@@ -57,12 +57,12 @@
 
 .news {
   display: block;
+  margin-bottom: calc(var(--yr) * var(--s6));
 
   @media (--m) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: calc(var(--xr) * 1.875);
-    margin-bottom: calc(var(--yr) * var(--s5));
   }
 }
 
@@ -95,6 +95,10 @@
 .label {
   display: none;
 
+  & h2 {
+    margin-bottom: calc(var(--yr) * var(--s4));
+  }
+
   @media (--m) {
     grid-column: -1 / 1;
     display: flex;
@@ -108,11 +112,12 @@
 
 .schedule {
   background-color: #eceff1;
-  margin-bottom: calc(var(--yr) * var(--s4));
+  margin-bottom: calc(var(--yr) * var(--s6));
 }
 
 .events {
   position: relative;
+  margin-bottom: calc(var(--yr) * var(--s6));
 }
 
 .calendar {

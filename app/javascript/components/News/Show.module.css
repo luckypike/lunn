@@ -2,9 +2,9 @@
   margin-bottom: calc(var(--yr) * var(--s4));
   position: relative;
 
-  @media (--s) {
+  /* @media (--s) {
     margin-bottom: calc(var(--yr) * calc(var(--s4) * 2));
-  }
+  } */
 
   & img {
     position: absolute;
@@ -25,9 +25,11 @@
 
 .text {
   hyphens: auto;
+  margin-top: calc(var(--yr) * var(--s6));
+  max-width: 60rem;
 
   @media (--s) {
-    margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4));
+    /* margin: 0 calc(1 / 8 * 100%) calc(var(--yr) * var(--s4)); */
   }
 }
 

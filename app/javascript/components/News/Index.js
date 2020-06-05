@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 
-import { Title } from '../Pages'
+import Title from '../Title'
 import List from './Index/List'
 
 import { Link } from '@reach/router'
@@ -47,7 +47,7 @@ export default function Index ({ location }) {
   if (total) pagination = Math.ceil(total / perPage)
 
   return (
-    <div className={pages.root}>
+    <div className={pages.beta}>
       <Title
         h1='Новости'
         loaf={[

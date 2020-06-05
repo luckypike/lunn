@@ -4,7 +4,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 import axios from 'axios'
 import dayjs from 'dayjs'
 
-import { Title } from '../Pages'
+import Title from '../Title'
 
 import Feed from './Index/Feed'
 import Calendar from './Index/Calendar'
@@ -40,7 +40,7 @@ export default function Index ({ location }) {
   }, [date])
 
   return (
-    <div className={pages.root}>
+    <div className={pages.beta}>
       <Title
         h1='Мероприятия'
         loaf={[

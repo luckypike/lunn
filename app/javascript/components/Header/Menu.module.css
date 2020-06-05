@@ -32,25 +32,25 @@
 }
 
 .container {
-  padding: calc(var(--yr) * 16) calc(var(--yr) * 6) 0;
+  padding: calc(var(--yr) * var(--s6)) calc(var(--yr) * 6);
   max-width: 120rem;
   margin: 0 auto;
   position: relative;
 
   @media (--s) {
-    padding: calc(var(--yr) * 32) calc(var(--yr) * 8) 0;
+    padding: calc(var(--yr) * 32) calc(var(--yr) * 8);
   }
 
   @media (--m) {
-    padding: calc(var(--yr) * 32) calc(var(--yr) * 12) 0;
+    padding: calc(var(--yr) * 32) calc(var(--yr) * 12);
   }
 
   @media (--l) {
-    padding: calc(var(--yr) * 32) calc(var(--yr) * 24) 0;
+    padding: calc(var(--yr) * 32) calc(var(--yr) * 24);
   }
 
   @media (--xl) {
-    padding: calc(var(--yr) * 32) calc(var(--yr) * 40) 0;
+    padding: calc(var(--yr) * 32) calc(var(--yr) * 40);
   }
 }
 
@@ -90,11 +90,9 @@
 .first {
   display: block;
   hyphens: auto;
-  /* text-overflow: ellipsis; */
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
-  composes: h4 from '../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * var(--s2));
+  composes: bt from '../Fonts.module.css';
+  padding: calc(var(--yr) * var(--s2)) 0;
+  border-bottom: 1px solid var(--sp_color);
 }
 
 .close {

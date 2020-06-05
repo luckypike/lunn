@@ -1,7 +1,12 @@
 .header {
-  composes: h3 from '../../Fonts.module.css';
+  composes: h2 from '../../Fonts.module.css';
   margin-bottom: 0;
   padding-right: 1em;
+}
+
+.root {
+  padding-top: calc(var(--yr) * calc(var(--s6) - var(--s3)));
+  padding-bottom: calc(var(--yr) * calc(var(--s6) - var(--s3)));
 }
 
 .button {
@@ -13,7 +18,6 @@
   cursor: pointer;
   text-align: center;
   border: none;
-  border-radius: calc(var(--yr) * 2);
   padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
   transition: background 0.2s, color 0.2s;
   outline: none;
@@ -30,6 +34,10 @@
     & .button {
       background: #35f;
     }
+  }
+
+  &.active {
+    /* padding: calc(var(--yr) * var(--s6)) 0 calc(var(--yr) * var(--s3)); */
   }
 }
 
@@ -64,7 +72,7 @@
 .items {
   display: grid;
   grid-gap: calc(var(--yr) * 2);
-  padding-bottom: calc(var(--yr) * var(--s4));
+  padding-bottom: calc(var(--yr) * calc(var(--s6) - var(--s3)));
 
   @media (--m) {
     grid-template-columns: 1fr 1fr;

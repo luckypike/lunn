@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
-import { Title } from '../Pages'
+import Title from '../Title'
 import Renderer from '../Renderer'
 import Docs from '../Docs/Docs'
 
@@ -31,7 +31,7 @@ export default function Show ({ slug, locale }) {
   const mainImage = node && node.images && node.images.find(image => image.width > image.height * 1.2)
 
   return (
-    <div className={pages.container}>
+    <div className={pages.beta}>
       {node &&
         <>
           <Title
@@ -42,11 +42,6 @@ export default function Show ({ slug, locale }) {
                 mlid: 999,
                 path: '/news',
                 title: 'Новости'
-              },
-              {
-                mlid: 9999,
-                path: slug,
-                title: node.title
               }
             ]}
           />
@@ -57,23 +52,26 @@ export default function Show ({ slug, locale }) {
             </Helmet>
           </HelmetProvider>
 
-          {mainImage &&
-            <div className={styles.intro}>
-              <img src={`https://assets.lunn.ru/images/1600x800,sc/legacy${mainImage.path}`} />
-            </div>
-          }
+          <div className={pages.container}>
 
-          {node.text &&
             <div className={styles.text}>
-              <Renderer source={node.text} images={node.images} />
-            </div>
-          }
+              {mainImage &&
+                <div className={styles.intro}>
+                  <img src={`https://assets.lunn.ru/images/1600x800,sc/legacy${mainImage.path}`} />
+                </div>
+              }
 
-          {node.docs &&
-            <div className={styles.docs}>
-              <Docs docs={node.docs} locale={locale} />
+              {node.text &&
+                <Renderer source={node.text} images={node.images} />
+              }
             </div>
-          }
+
+            {node.docs &&
+              <div className={styles.docs}>
+                <Docs docs={node.docs} locale={locale} />
+              </div>
+            }
+          </div>
         </>
       }
     </div>

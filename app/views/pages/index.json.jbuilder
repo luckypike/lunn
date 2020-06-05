@@ -1,12 +1,6 @@
 json.news @news do |node|
   json.cache! [node.nid], expires_in: 30.minutes do
     json.partial! node
-    json.desc node.desc if node.desc
-
-    json.images node.images do |image|
-      json.partial! image
-      json.path image.attachment.path
-    end
   end
 end
 

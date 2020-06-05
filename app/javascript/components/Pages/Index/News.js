@@ -19,25 +19,17 @@ export default function News ({ news, I18n }) {
         <h2>{I18n.t('news.title')}</h2>
       </div>
 
-      <div className={styles.news_items}>
+      <div className={styles.items}>
         {news.map((item, i) =>
-          <div key={item.nid} className={styles.news_item}>
-            <a href={item.path}>
-              <div className={styles.image}>
-                {item.images && item.images.length > 0 &&
-                  <img src={`https://assets.lunn.ru/images/900x600,sc,jpeg,q70/legacy${item.images[0].path}`} />
-                }
-              </div>
+          <a href={item.path} key={item.nid} className={styles.item}>
+            <div className={styles.title}>
+              {item.title}
+            </div>
 
-              <div className={styles.title}>
-                {item.title}
-              </div>
-
-              <div className={styles.date}>
-                {dayjs.unix(item.created).locale('ru').format('D MMMM YYYY')}
-              </div>
-            </a>
-          </div>
+            <div className={styles.date}>
+              {dayjs.unix(item.created).locale('ru').format('D MMMM YYYY')}
+            </div>
+          </a>
         )}
       </div>
 

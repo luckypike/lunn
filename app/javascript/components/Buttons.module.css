@@ -6,7 +6,6 @@
   cursor: pointer;
   text-align: center;
   border: none;
-  border-radius: calc(var(--yr) * 2);
   padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
   transition: background 0.2s, color 0.2s;
   outline: none;
@@ -55,9 +54,10 @@
   /* position: static; */
   border: none;
   text-align: center;
-  border-radius: calc(var(--yr) * 2);
+  /* border-radius: calc(var(--yr) * 2); */
   padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
   transition: background 0.2s, color 0.2s;
+  outline: none;
 
   &:hover {
     color: var(--hl_color);

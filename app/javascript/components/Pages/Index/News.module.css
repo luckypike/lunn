@@ -1,15 +1,13 @@
 .news {
   position: relative;
-  margin-bottom: calc(var(--yr) * var(--s4));
 
   @media (--m) {
-    margin-bottom: 0;
     grid-column: span 2;
   }
 }
 
 .label {
-  margin-bottom: calc(var(--yr) * var(--s3));
+  margin-bottom: calc(var(--yr) * var(--s4));
   display: block;
 
   @media (--m) {
@@ -17,14 +15,14 @@
   }
 }
 
-.news_items {
+.items {
   display: block;
 
   @media (--s) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: calc(var(--xr) * 1.875);
-    grid-row-gap: calc(var(--yr) * 7);
+    grid-column-gap: calc(var(--xr) * 2);
+    /* grid-row-gap: calc(var(--yr) * 7); */
   }
 }
 
@@ -57,18 +55,27 @@
   color: #777;
 }
 
-.news_item {
+.item {
+  display: block;
   cursor: pointer;
-  margin-bottom: calc(var(--yr) * var(--s3));
+  border-top: 1px solid var(--sp_color);
+  padding: calc(var(--yr) * var(--s3)) 0 calc(var(--yr) * var(--s4));
+  /* margin-bottom: calc(var(--yr) * var(--s3)); */
 
   @media (--s) {
-    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+
+    & .date {
+      margin-top: auto;
+    }
+    /* margin-bottom: 0; */
   }
 }
 
 .title {
   composes: bt from '../../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * var(--s1));
+  margin-bottom: calc(var(--yr) * var(--s2));
   hyphens: auto;
 }
 
