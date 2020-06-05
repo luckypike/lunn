@@ -3,6 +3,16 @@ class Admission < ApplicationRecord
 
   enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, done: 99 }
 
+  enum status: { filling: 1, processing: 2, accepted: 4 } do
+    event :confirm do
+      transition filling: :processing
+    end
+
+    event :accept do
+      transition processing: :accepted
+    end
+  end
+
   belongs_to :user, default: -> { Current.user }
 
   has_many :subjects, class_name: 'AdmissionAdmissionSubject', dependent: :delete_all
@@ -92,6 +102,7 @@ class Admission < ApplicationRecord
 
   after_initialize do
     self.state ||= :one
+    self.status ||= :processing
   end
 
   def step_after?(step)

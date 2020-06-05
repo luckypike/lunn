@@ -1,7 +1,7 @@
 class AdmissionsController < ApplicationController
   before_action :set_url_alias, only: :page
   before_action :set_node, only: :page
-  before_action :set_admission, only: %i[edit update]
+  before_action :set_admission, only: %i[edit update show confirm accept]
   before_action :authorize_admission
 
   after_action :verify_authorized
@@ -22,6 +22,21 @@ class AdmissionsController < ApplicationController
     respond_to do |format|
       format.csv { send_data Admission.done.to_csv, filename: "export.csv" }
     end
+  end
+
+  def show
+    respond_to do |format|
+      format.html { render :index }
+      format.json
+    end
+  end
+
+  def confirm
+    @admission.confirm
+  end
+
+  def accept
+    @admission.accept
   end
 
   def new

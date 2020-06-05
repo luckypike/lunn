@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import { navigate } from '@reach/router'
 import classNames from 'classnames'
 
 import Title from '../Title'
@@ -57,6 +58,14 @@ export default function Form ({ id, locale }) {
   useEffect(() => {
     _fetch()
   }, [id])
+
+  useEffect(() => {
+    if (admission && admission.state === 'done') {
+      navigate(`/admissions/${id}`)
+    }
+  }, [admission])
+
+
 
   const handleSubmit = async e => {
     await axios.patch(

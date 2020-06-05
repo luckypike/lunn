@@ -18,8 +18,8 @@ export default function Admissions ({ locale, user }) {
   return (
     <Router>
       <ScrollToTop path="/">
-        <Index path="admissions" />
-        <Show path="admissions/:id" />
+        <Index path="admissions"/>
+        <Show path="admissions/:id" locale={locale} user={user}/>
         <New path="admissions/new" locale={locale} user={user} />
         <Form path="admissions/:id/edit" locale={locale} />
       </ScrollToTop>

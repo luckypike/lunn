@@ -59,6 +59,11 @@ Rails.application.routes.draw do
         get :export
         get :continue
       end
+
+      member do
+        post :confirm
+        post :accept
+      end
     end
 
     resources :admission_documents

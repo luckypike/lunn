@@ -15,6 +15,14 @@ class AdmissionPolicy < ApplicationPolicy
     update?
   end
 
+  def confirm?
+    update?
+  end
+
+  def accept?
+    update?
+  end
+
   def update?
     user && record.user == user
   end
