@@ -44,7 +44,7 @@ class Admission < ApplicationRecord
 
   store :residence, accessors: %i[
     country region district city locality
-    index street house building apartment email mobile phone
+    index street house building apartment mobile phone
   ], coder: JSON, prefix: true
 
   store :school, accessors: %i[
@@ -81,7 +81,7 @@ class Admission < ApplicationRecord
     presence: true, if: -> { step_after?(4) }
 
   validates :residence_country, :residence_region,
-    :residence_index, :residence_street, :residence_house, :residence_email, :residence_mobile,
+    :residence_index, :residence_street, :residence_house, :residence_mobile,
     presence: true, if: -> { step_after?(5) }
 
   validates :school_type, :school_name, :school_graduation, :school_address,

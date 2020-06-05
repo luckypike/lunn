@@ -30,7 +30,66 @@ ru:
       eight: Личные достижения
       nine: Баллы
       ten: Форма обучения
-      done: Заявка принята
+      done: Анкета
+
+    labels:
+      identity_first_name: Фамилия
+      identity_last_name: Имя
+      identity_middle_name: Отчество
+      identity_sex: Пол
+      identity_birth_date: Дата рождения
+      identity_birth_place: Место рождения
+
+      document_nationality: Гражданство
+      document_type: Документ, удостоверяющий личность
+      document_series: Серия
+      document_number: Номер
+      document_issued_by: Кем выдан
+      document_issue_date: Дата выдачи
+
+      parents_relation_degree: Степень родства
+      parents_name: Ф.И.О.
+      parents_phone: Телефон
+
+      address_country: Страна
+      address_region: Регион (автономная область, автономный округ, город ф.з., край, область, республика)
+      address_district: Район
+      address_city: Город
+      address_locality: Поселок, село, деревня, хутор...
+      address_index: Индекс
+      address_street: Улица
+      address_house: Дом
+      address_building: Корпус
+      address_apartment: Квартира
+      address_mobile: Мобильный телефон
+      address_phone: Домашний телефон
+
+      school_type: Туп учебного заведения
+      school_name: Название учебного заведения
+      school_graduation: Год окончания
+      school_address: Адрес учебного заведения
+      school_education: Образование
+      school_document_type: Вид документа об образовании
+      school_document_number: Номер документа об образовании
+      school_document_date: Дата выдачи
+      school_diploma_type: Вид диплома
+      school_merit: Награда
+      school_language: Изучаемый ранее иностранный язык
+
+      score_subject: Предмет
+      score_ege: Балл ЕГЭ
+      score_grade: Оценка из аттестата
+      score_year: Год сдачи ЕГЭ
+      score_achievements: Индивидуальные достижения
+
+      course_form: Форма обучения
+      course_basis: Финансовая основа
+      course_direction: Направление/профиль
+      course_contract: Целевой договор
+      course_status: Социальное положение
+      course_olympiad: Олимпиады
+      course_military: Военнообязанный
+      course_study: Пройдено обучение на курсах НГЛУ
 
     options:
       identity_sex:
@@ -46,6 +105,17 @@ ru:
         6: Удостоверение личности
         7: Иностранный паспорт
         8: Вид на жительство
+
+      parents_relation_degree:
+        1: Отец
+        2: Мать
+        3: Опекун
+        4: Дедушка
+        5: Бабушка
+        6: Муж
+        7: Жена
+        8: Дядя
+        9: Тётя
 
       school_type:
         1: Школа
@@ -97,6 +167,10 @@ ru:
         2: Очно-заочная
         3: Заочная
 
+      course_contract:
+        1: Да
+        2: Нет
+
       course_basis:
         1: Бюджет
         2: Фин. договор
@@ -111,3 +185,11 @@ ru:
         2: Призер Всероссийской олимпиады
         3: Победитель олимпиады школьников
         4: Призер олимпиады школьников
+
+      course_military:
+        1: Да
+        2: Нет
+
+      course_study:
+        1: Да
+        2: Нет

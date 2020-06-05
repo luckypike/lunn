@@ -187,23 +187,6 @@ export default function StepFive ({ values, errors, onChange }) {
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            E-mail *
-          </div>
-
-          <input
-            type="text"
-            value={values.residence_email}
-            name="residence_email"
-            onChange={onChange}
-          />
-        </div>
-
-        <Errors errors={errors.residence_email} />
-      </div>
-
-      <div className={form.item}>
-        <div className={form.input}>
-          <div className={form.label}>
             Мобильный телефон *
           </div>
 

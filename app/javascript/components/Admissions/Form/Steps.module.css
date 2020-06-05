@@ -58,6 +58,13 @@
     /* opacity: 0.3; */
   }
 
+  &.complete {
+    & .digit {
+      color: var(--pr_color);
+      box-shadow: inset 0 0 0 2px var(--hl_color);
+    }
+  }
+
   &.current {
     & .digit {
       box-shadow: inset 0 0 0 2px var(--hl_color);
@@ -67,13 +74,6 @@
 
     & .title {
       display: block;
-    }
-  }
-
-  &.complete {
-    & .digit {
-      color: var(--pr_color);
-      box-shadow: inset 0 0 0 2px var(--hl_color);
     }
   }
 }

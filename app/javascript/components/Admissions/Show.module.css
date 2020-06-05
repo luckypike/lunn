@@ -1,19 +1,20 @@
 .root {
-  margin: calc(var(--yr) * var(--s6)) 0;
+  composes: root from './Form.module.css';
 }
 
 .form {
-  background-color: var(--sp_color);
-  position: relative;
-  padding: calc(var(--yr) * var(--s3) * 2) var(--xr);
-  max-width: 60rem;
-  margin: 0 auto;
+  composes: form from './Form.module.css';
+}
 
-  @media (--s) {
-    padding: calc(var(--yr) * var(--s3) * 2) calc(var(--xr) * 2);
-  }
+.steps {
+  composes: steps from './Form.module.css';
+}
 
-  @media (--m) {
-    padding: calc(var(--yr) * var(--s3) * 2) 8%;
-  }
+
+.hint {
+  padding-bottom: calc(var(--yr) * 4);
+}
+
+.step {
+  padding-bottom: calc(var(--yr) * 4);
 }
