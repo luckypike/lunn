@@ -32,20 +32,6 @@ export default function Page ({ node, user, loaf, locale }) {
           </div>
         }
       </div>
-
-      {!user &&
-        <div>
-
-        </div>
-      }
-
-      {user &&
-        <div>
-          <a href="/admissions/new">
-            Подать документы
-          </a>
-        </div>
-      }
     </div>
   )
 }

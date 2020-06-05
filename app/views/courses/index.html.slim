@@ -1,5 +1,5 @@
 - set_meta_tags \
-  title: @node.title
+  title: [@node.title, t("courses.levels.#{params[:level]}")]
 
 = react_component 'Courses/Index', { \
   node: @node.as_json(only: :title),
