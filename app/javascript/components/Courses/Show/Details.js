@@ -64,10 +64,10 @@ export default function Details ({ course }) {
         )}
       </div>
 
-      {course.level !== 'ma' &&
+      {(course.level === 'ba' || course.level === 'sp') &&
         <div className={styles.exams}>
           <div className={styles.title}>
-            Вступительные испытания минимальный балл
+            Вступительные испытания
           </div>
 
           <div className={styles.subs}>
@@ -78,6 +78,22 @@ export default function Details ({ course }) {
                 <div className={styles.grey}>
                   <Marks point={e} />
                 </div>
+              </li>
+            )}
+          </div>
+        </div>
+      }
+
+      {course.level === 'as' &&
+        <div className={styles.exams}>
+          <div className={styles.title}>
+            Вступительные испытания
+          </div>
+
+          <div className={styles.subs}>
+            {course.course_exams.map(e =>
+              <li key={e} className={styles.sub}>
+                {I18n.t(`courses.exams.${e}`) || e}
               </li>
             )}
           </div>

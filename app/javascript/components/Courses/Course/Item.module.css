@@ -105,6 +105,7 @@
 }
 
 .es {
+  margin-top: calc(var(--yr) * var(--s1));
   display: flex;
   flex-wrap: wrap;
   composes: at from '../../Fonts.module.css';
@@ -119,6 +120,29 @@
 
   &:not(:last-child) {
     margin-right: var(--yr);
+  }
+}
+
+.exams {
+  margin-top: calc(var(--yr) * var(--s3));
+  composes: at from '../../Fonts.module.css';
+
+  & .items {
+    margin-top: calc(var(--yr) * var(--s1));
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  & .item {
+    background-color: var(--sp_color);
+    border-radius: var(--yr);
+    line-height: calc(var(--yr) * 7);
+    padding: 0 calc(var(--yr) * 2);
+    margin-top: var(--yr);
+
+    &:not(:last-child) {
+      margin-right: var(--yr);
+    }
   }
 }
 

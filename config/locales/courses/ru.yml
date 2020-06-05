@@ -17,6 +17,19 @@ ru:
       competencies: Ключевые компетенции выпускника (знает, умеет, владеет)
       prospects: Перспективы трудоустройства
 
+    ege:
+      foreign: Иностранный язык
+      russian: Русский язык
+      lit: Литература
+      math: Математика
+      history: История
+      social: Обществознание
+
+    exams:
+      foreign: Иностранный язык
+      philosophy: Философия
+      spec: Специальность
+
     times:
       one: "%{count} год"
       few: "%{count} года"

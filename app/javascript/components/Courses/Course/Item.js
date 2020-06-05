@@ -44,7 +44,22 @@ export default function Item ({ course, locale }) {
           <ul className={styles.es}>
             {course.ege.map(e =>
               <li key={e} className={styles.e}>
-                {I18n.t(`courses.filters.${e}`) || e}
+                {I18n.t(`courses.ege.${e}`) || e}
+              </li>
+            )}
+          </ul>
+        </div>
+      }
+
+      {course.course_exams.length > 0 &&
+        <div className={styles.exams}>
+          <p className={styles.eget}>
+            Вступительные испытания
+          </p>
+          <ul className={styles.items}>
+            {course.course_exams.map(e =>
+              <li key={e} className={styles.item}>
+                {I18n.t(`courses.exams.${e}`) || e}
               </li>
             )}
           </ul>

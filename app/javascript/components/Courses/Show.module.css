@@ -38,3 +38,7 @@
 .color-6001 {
   composes: color-6001 from './Index/Division.module.css';
 }
+
+.color-6518 {
+  composes: color-6518 from './Index/Division.module.css';
+}

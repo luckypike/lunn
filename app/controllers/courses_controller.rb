@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
         :summary, :image,
         courses: %i[
           summary field_spec field_youtube field_ege field_level
+          field_course_exams field_course_code
           field_price_1 field_price_2 field_price_3
           field_time_1 field_time_2 field_time_3
           field_places_1 field_places_2 field_places_3

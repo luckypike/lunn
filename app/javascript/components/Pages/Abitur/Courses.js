@@ -17,7 +17,7 @@ export default function Courses () {
           </div>
 
           <div className={styles.count}>
-            33 программы
+            37 программ по 12 направлениям
           </div>
 
           <div className={styles.more}>
@@ -33,7 +33,7 @@ export default function Courses () {
           </div>
 
           <div className={styles.count}>
-            3 программы
+            3 программы по 1 направлению
           </div>
 
           <div className={styles.more}>
@@ -49,7 +49,7 @@ export default function Courses () {
           </div>
 
           <div className={styles.count}>
-            31 программа
+            33 программы по 10 направлениям
           </div>
 
           <div className={styles.more}>
@@ -65,7 +65,7 @@ export default function Courses () {
           </div>
 
           <div className={styles.count}>
-            программы заполняются
+            17 программ по 7 направлениям
           </div>
 
           <div className={styles.more}>

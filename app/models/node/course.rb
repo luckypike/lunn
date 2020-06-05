@@ -24,6 +24,7 @@ class Node::Course < Node
   has_one :field_youtube, -> { where(entity_type: :node) }, class_name: 'Field::Youtube', foreign_key: :entity_id
 
   has_many :field_ege, -> { where(entity_type: :node) }, class_name: 'Field::Ege', foreign_key: :entity_id
+  has_many :field_course_exams, -> { where(entity_type: :node) }, class_name: 'Field::CourseExams', foreign_key: :entity_id
 
   has_one :field_course_competencies, -> { where(entity_type: :node) },
     class_name: 'Field::CourseCompetencies', foreign_key: :entity_id
@@ -96,6 +97,10 @@ class Node::Course < Node
 
   def ege
     field_ege.map(&:value)
+  end
+
+  def course_exams
+    field_course_exams.map(&:value)
   end
 
   def course_competencies
