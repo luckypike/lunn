@@ -53,7 +53,8 @@
 }
 
 .betaText {
-  max-width: 45rem;
+  max-width: 55rem;
+  composes: bt from '../Fonts.module.css';
 
   & a {
     color: #fff;
