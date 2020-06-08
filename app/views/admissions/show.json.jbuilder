@@ -6,7 +6,7 @@ json.admission do
   end
 
   json.directions @admission.directions.each do |subject|
-    json.extract! subject, :admission_direction_id, :basis, :form
+    json.extract! subject, :course_id, :basis, :form
   end
 end
 

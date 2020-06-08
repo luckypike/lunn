@@ -207,9 +207,18 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
 
             <select name="admission_subject_id" onChange={handleInputChange} value={values.admission_subject_id}>
               <option value=""></option>
-              {dictionaries.subjects.map(subject =>
-                <option key={subject.id} value={subject.id}>{subject.label}</option>
-              )}
+              <option value="1">Математика</option>
+              <option value="2">Русский язык</option>
+              <option value="3">Иностранный язык (английский)</option>
+              <option value="4">Иностранный язык (немецкий)</option>
+              <option value="5">Иностранный язык (французский)</option>
+              <option value="6">Иностранный язык (итальянский)</option>
+              <option value="7">Иностранный язык (испанский)</option>
+              <option value="8">Иностранный язык (китайский)</option>
+              <option value="9">Иностранный язык (японский)</option>
+              <option value="10">История</option>
+              <option value="11">Обществознание</option>
+              <option value="12">Литература</option>
             </select>
           </label>
         </div>

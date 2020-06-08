@@ -252,8 +252,8 @@ export default function Show ({ id, locale }) {
               </div>
 
               <div className={styles.stepInfo}>
-                {admission.subjects && admission.subjects.map(subject =>
-                  <>
+                {admission.subjects && admission.subjects.map((subject, _) =>
+                  <React.Fragment key={_}>
                     <div>{I18n.t('admissions.labels.score_subject')}: {dictionaries.subjects.find(s => s.id === subject.admission_subject_id).label}</div>
                     {subject.ege !== '' &&
                       <div>{I18n.t('admissions.labels.score_ege')}: {subject.ege}</div>
@@ -262,7 +262,7 @@ export default function Show ({ id, locale }) {
                       <div>{I18n.t('admissions.labels.score_grade')}: {subject.grade}</div>
                     }
                     <br />
-                  </>
+                  </React.Fragment>
                 )}
                 <div>{I18n.t('admissions.labels.score_year')}: {admission.score_year}</div>
                 <div>{I18n.t('admissions.labels.score_achievements')}: {dictionaries.achievements.filter(a => admission.score_achievements.includes(a.id)).map(a => a.label).join(', ')}</div>
@@ -275,13 +275,13 @@ export default function Show ({ id, locale }) {
               </div>
 
               <div className={styles.stepInfo}>
-                {admission.subjects && admission.directions.map(direction =>
-                  <>
+                {admission.subjects && admission.directions.map((direction, _) =>
+                  <React.Fragment key={_}>
+                    <div>{I18n.t('admissions.labels.course_direction')}: {dictionaries.directions.find(d => d.id === direction.course_id).label}</div>
                     <div>{I18n.t('admissions.labels.course_form')}: {I18n.t(`admissions.options.course_form.${direction.form}`)}</div>
                     <div>{I18n.t('admissions.labels.course_basis')}: {I18n.t(`admissions.options.course_basis.${direction.basis}`)}</div>
-                    <div>{I18n.t('admissions.labels.course_direction')}: {dictionaries.directions.find(d => d.id === direction.admission_direction_id).label}</div>
                     <br />
-                  </>
+                  </React.Fragment>
                 )}
                 {admission.course_contract !== '' &&
                   <div>{I18n.t('admissions.labels.course_contract')}: {I18n.t(`admissions.options.course_contract.${admission.course_contract}`)}</div>

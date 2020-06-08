@@ -30,7 +30,7 @@ json.values do
   end
 
   json.directions_attributes @admission.directions do |direction|
-    json.extract! direction, :id, :admission_direction_id, :form, :basis
+    json.extract! direction, :id, :course_id, :form, :basis
   end
 end
 

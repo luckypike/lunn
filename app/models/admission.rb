@@ -153,7 +153,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
         %i[state] + [subject_ids: []] + [subjects_attributes: %i[id admission_subject_id ege grade]] +
         [document_ids: []] + [documents_attributes: %i[id title uuid section]] +
-        [direction_ids: []] + [directions_attributes: %i[id admission_direction_id form basis]]
+        [direction_ids: []] + [directions_attributes: %i[id course_id form basis]]
     end
   end
 

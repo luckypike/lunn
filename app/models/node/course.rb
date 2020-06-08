@@ -2,6 +2,8 @@ class Node::Course < Node
   has_many :node_courses, foreign_key: :field_courses_target_id, dependent: :destroy
   has_many :tutors, through: :node_courses
 
+  has_many :admission_courses, class_name: 'AdmissionAdmissionDirection', inverse_of: :course
+
   has_one :field_price_1, -> { where(entity_type: :node) },
     class_name: 'Field::Price1', foreign_key: :entity_id
 
@@ -125,6 +127,10 @@ class Node::Course < Node
 
   def course_code
     field_course_code&.value
+  end
+
+  def label
+    "#{title}#{spec.present? ? " - #{spec}" : ""}"
   end
 
   def url

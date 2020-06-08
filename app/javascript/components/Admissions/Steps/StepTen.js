@@ -45,7 +45,7 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
     const j = newDirections.size
     if (j < 1) {
       newDirections.set(0, {
-        admission_direction_id: '', form: '', basis: ''
+        course_id: '', form: '', basis: ''
       })
     }
 
@@ -54,7 +54,7 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
 
   const handleDirectionAdd = (e) => {
     const newDirections = new Map(directions)
-    newDirections.set(directions.size + 1, { admission_direction_id: '', form: '', basis: '' })
+    newDirections.set(directions.size + 1, { course_id: '', form: '', basis: '' })
 
     setDirections(newDirections)
 
@@ -235,12 +235,12 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
 
             <Select
               classNamePrefix="react-select"
-              value={dictionaries.directions.find(d => d.id === item.admission_direction_id)}
+              value={dictionaries.directions.find(d => d.id === item.course_id)}
               getOptionValue={option => option.id}
               noOptionsMessage={() => 'Ничего не найдено'}
               options={dictionaries.directions}
               placeholder="Выберите достижение.."
-              onChange={value => handleSelectChange('admission_direction_id', value.id)}
+              onChange={value => handleSelectChange('course_id', value.id)}
             />
           </label>
         </div>
