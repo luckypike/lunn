@@ -69,6 +69,11 @@ export default function Form ({ id, locale }) {
     if (admission && admission.state === 'done') {
       navigate(`/admissions/${id}`)
     }
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }, [admission])
 
   const handleSubmit = async e => {
