@@ -21,7 +21,7 @@ export default function Schedule () {
         </div>
 
         <div className={styles.button}>
-          {active() ? 'Смотреть' : 'Свернуть'}
+          {active() ? 'Свернуть' : 'Смотреть'}
         </div>
       </div>
 
