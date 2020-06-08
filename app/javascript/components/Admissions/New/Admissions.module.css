@@ -1,0 +1,9 @@
+.title {
+  composes: h4 from '../../Fonts.module.css';
+}
+
+.admission {
+  display: block;
+  padding: calc(var(--yr) * var(--s2)) 0;
+  border-bottom: 1px solid var(--sp_color);
+}

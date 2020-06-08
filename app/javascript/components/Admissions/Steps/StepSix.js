@@ -16,21 +16,23 @@ export default function StepSix ({ values, errors, onChange }) {
     <>
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Туп учебного заведения *
-          </div>
+          <label>
+            <div className={form.label}>
+              Туп учебного заведения *
+            </div>
 
-          <select name="school_type" onChange={onChange} value={values.school_type}>
-            <option value=""></option>
-            <option value="1">Школа</option>
-            <option value="2">Лицей</option>
-            <option value="3">Техникум</option>
-            <option value="4">Колледж</option>
-            <option value="5">Гимназия</option>
-            <option value="6">Училище</option>
-            <option value="7">ВУЗ</option>
-            <option value="8">Лицей-интернат</option>
-          </select>
+            <select name="school_type" onChange={onChange} value={values.school_type}>
+              <option value=""></option>
+              <option value="1">Школа</option>
+              <option value="2">Лицей</option>
+              <option value="3">Техникум</option>
+              <option value="4">Колледж</option>
+              <option value="5">Гимназия</option>
+              <option value="6">Училище</option>
+              <option value="7">ВУЗ</option>
+              <option value="8">Лицей-интернат</option>
+            </select>
+          </label>
         </div>
 
         <Errors errors={errors.school_type} />

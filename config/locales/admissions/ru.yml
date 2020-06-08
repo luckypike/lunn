@@ -1,10 +1,10 @@
 ru:
   admissions:
     new:
-      title: Новая анкета
+      title: Онлайн подача документов
 
     edit:
-      title: Анкета № %{number}
+      title: Заявление № %{number}
 
     steps:
       one: Личные данные

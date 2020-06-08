@@ -5,6 +5,7 @@ import Select from 'react-select'
 
 import { Errors } from '../../Form'
 
+import styles from './StepNine.module.css'
 import form from '../../FormStatic.module.css'
 import buttons from '../../Buttons.module.css'
 
@@ -31,13 +32,16 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
     }
   }, [subjects])
 
-  const handleSubjectAdd = (e) => {
+  const handleSubjectAdd = e => {
+    e.preventDefault()
+
     const newSubjects = new Map(subjects)
-    newSubjects.set(`n-${subjects.size}`, { admission_subject_id: '', ege: '', grade: '' })
+
+    newSubjects.set(subjects.size + 1, {
+      admission_subject_id: '', ege: '', grade: ''
+    })
 
     setSubjects(newSubjects)
-
-    e.preventDefault()
   }
 
   const handleSubjectDelete = (key) => {
@@ -47,9 +51,9 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
     setSubjects(newSubjects)
   }
 
-  const handleSubjectChange = (subject, subjectKey) => {
+  const handleSubjectChange = (i, subject) => {
     const newSubjects = new Map(subjects)
-    newSubjects.set(subjectKey, subject)
+    newSubjects.set(i, subject)
 
     setSubjects(newSubjects)
   }
@@ -63,47 +67,35 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
   }
 
   useEffect(() => {
-    if (values.subjects_attributes.length > 0) {
-      const newSubjects = new Map(subjects)
-      values.subjects_attributes.forEach(item => {
-        if (item.id) {
-          newSubjects.set(item.id, item)
-        }
-      })
+    const newSubjects = new Map(subjects)
 
-      setSubjects(newSubjects)
+    if (values.subjects_attributes.length > 0) {
+      values.subjects_attributes.forEach((subject, i) => {
+        newSubjects.set(i, subject)
+      })
     }
-    // } else if (subjects.size !== 1) {
-    //   const newSubjects = new Map(subjects)
-    //   newSubjects.set(`n-${subjects.size}`, { admission_subject_id: '', ege: '', grade: '' })
-    //
-    //   setSubjects(newSubjects)
-    // }
-  }, [dictionaries])
+
+    const j = newSubjects.size
+    if (j < 3) {
+      Array.from(Array(3 - j)).forEach((_, i) => {
+        newSubjects.set(j + i, {
+          admission_subject_id: '', ege: '', grade: ''
+        })
+      })
+    }
+
+    setSubjects(newSubjects)
+  }, [])
 
   return (
     <>
-      {subjects.size > 0 &&
-        <>
-          {[...subjects.keys()].map(key =>
-            <Subject
-              key={key}
-              subjectKey={key}
-              subject={subjects.get(key)}
-              dictionaries={dictionaries}
-              errors={errors}
-              onSubjectChange={handleSubjectChange}
-              onSubjectDelete={handleSubjectDelete}
-            />
-          )}
-        </>
-      }
+      <p>
+        {JSON.stringify(values.subjects_attributes)}
+      </p>
 
-      <div className={form.item}>
-        <button className={classNames(buttons.main, buttons.big)} onClick={handleSubjectAdd}>
-          Добавить предмет
-        </button>
-      </div>
+      <p>
+        {JSON.stringify(values.subject_ids)}
+      </p>
 
       <div className={form.item}>
         <div className={form.input}>
@@ -120,6 +112,34 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
         </div>
 
         <Errors errors={errors.score_year} />
+      </div>
+
+      <div className={styles.subjects}>
+        <h4>
+          Экзамены и баллы
+        </h4>
+
+        <p>
+          Необходимо указать минимум 3 предмета и их баллы ЕГЭ, максимум можно указать до 6 предметов
+        </p>
+
+        {[...subjects.keys()].map(i =>
+          <div key={i} className={styles.subject}>
+            <Subject
+              key={i}
+              i={i}
+              subject={subjects.get(i)}
+              dictionaries={dictionaries}
+              errors={errors}
+              onSubjectChange={handleSubjectChange}
+              onSubjectDelete={handleSubjectDelete}
+            />
+          </div>
+        )}
+
+        <div className={styles.new} onClick={handleSubjectAdd}>
+          Добавить предмет
+        </div>
       </div>
 
       <div className={form.item}>
@@ -157,87 +177,91 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
 
 Subject.propTypes = {
   subject: PropTypes.object,
-  subjectKey: PropTypes.string,
+  onSubjectChange: PropTypes.func,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
-  onSubjectChange: PropTypes.func,
-  onSubjectDelete: PropTypes.func
+  i: PropTypes.number
 }
 
-function Subject ({ subject, subjectKey, dictionaries, errors, onSubjectChange, onSubjectDelete }) {
-  const [item, setItem] = useState(subject)
+function Subject ({ subject, onSubjectChange, dictionaries, errors, i }) {
+  const [values, setValues] = useState({ ...subject })
 
   useEffect(() => {
-    onSubjectChange && onSubjectChange(item, subjectKey)
-  }, [item])
+    onSubjectChange && onSubjectChange(i, values)
+  }, [values])
 
   const handleInputChange = ({ target: { name, value } }) => {
-    setItem({ ...item, [name]: value })
-  }
-
-  const handleSelectChange = (name, value) => {
-    setItem({ ...item, [name]: value })
+    setValues({ ...values, [name]: value })
   }
 
   return (
     <>
+      {/* <h4>
+        Предмет № {i + 1}
+      </h4> */}
+
       <div className={form.item}>
-        <button className={classNames(buttons.main, form.delete)} onClick={() => onSubjectDelete(subjectKey)}>
+        {/* <button className={classNames(buttons.main, form.delete)} onClick={() => onSubjectDelete(subjectKey)}>
           Удалить
-        </button>
+        </button> */}
 
-        <div className={form.select}>
-          <div className={form.label}>
-            Предмет *
-          </div>
-
-          <Select
-            classNamePrefix="react-select"
-            value={dictionaries.subjects.find(s => s.id === item.admission_subject_id)}
-            getOptionValue={option => option.id}
-            noOptionsMessage={() => 'Ничего не найдено'}
-            options={dictionaries.subjects}
-            placeholder="Выберите предмет.."
-            onChange={value => handleSelectChange('admission_subject_id', value.id)}
-          />
-        </div>
-
-        <Errors errors={errors['subjects.subject']} />
-      </div>
-
-      <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Балл ЕГЭ
-          </div>
+          <label>
+            <div className={form.label}>
+              Название предмета *
+            </div>
 
-          <input
-            type="text"
-            value={item.ege}
-            name="ege"
-            onChange={handleInputChange}
-          />
+            <select name="admission_subject_id" onChange={handleInputChange} value={values.admission_subject_id}>
+              <option value=""></option>
+              {dictionaries.subjects.map(subject =>
+                <option key={subject.id} value={subject.id}>{subject.label}</option>
+              )}
+            </select>
+          </label>
         </div>
 
-        <Errors errors={errors['subjects.ege']} />
+        <Errors errors={errors[`subjects[${i}].admission_subject`]} />
       </div>
 
-      <div className={form.item}>
-        <div className={form.input}>
-          <div className={form.label}>
-            Оценка из аттестата
+      <div className={styles.row}>
+        <div className={form.item}>
+          <div className={form.input}>
+            <label>
+              <div className={form.label}>
+                Балл ЕГЭ *
+              </div>
+
+              <input
+                type="text"
+                value={values.ege}
+                name="ege"
+                onChange={handleInputChange}
+              />
+            </label>
           </div>
 
-          <input
-            type="text"
-            value={item.grade}
-            name="grade"
-            onChange={handleInputChange}
-          />
+          <Errors errors={errors[`subjects[${i}].ege`]} />
+        </div>
+
+        <div className={form.item}>
+          <div className={form.input}>
+            <label>
+              <div className={form.label}>
+                Оценка из аттестата *
+              </div>
+
+              <input
+                type="text"
+                value={values.grade}
+                name="grade"
+                onChange={handleInputChange}
+              />
+            </label>
+          </div>
+
+          <Errors errors={errors[`subjects[${i}].grade`]} />
         </div>
       </div>
-
-      <br />
     </>
   )
 }

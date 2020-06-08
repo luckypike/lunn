@@ -29,14 +29,15 @@
 }
 
 .label {
+  composes: bt from './Fonts.module.css';
   margin-bottom: calc(var(--yr) * var(--s1));
-  font-size: calc(var(--yr) * 4);
-  line-height: calc(var(--yr) * 5);
+  /* font-size: calc(var(--yr) * 4);
+  line-height: calc(var(--yr) * 5); */
 
-  @media (--s) {
+  /* @media (--s) {
     font-size: calc(var(--yr) * 5);
     line-height: calc(var(--yr) * 6);
-  }
+  } */
 }
 
 .input {
@@ -53,7 +54,7 @@
     border: 0;
     appearance: none;
     box-shadow: inset 0 0 0 1px color-mod(var(--sp_color) shade(7%));
-    border-radius: calc(var(--yr) * 2);
+    /* border-radius: calc(var(--yr) * 2); */
     outline: none;
     background: #fff;
     padding: calc(var(--yr) * 4) calc(var(--yr) * 4);
@@ -65,7 +66,7 @@
     }
 
     &:focus {
-      box-shadow: inset 0 0 0 1px var(--hl_color);
+      box-shadow: inset 0 0 0 2px var(--hl_color);
     }
   }
 
@@ -73,6 +74,15 @@
     resize: vertical;
     height: auto;
     line-height: calc(var(--yr) * 6);
+  }
+
+  & select {
+    /* background-color: red; */
+    background: no-repeat #fff url('../images/dropdown.svg') right var(--xr) center;
+    background-size: calc(var(--yr) * 6);
+
+    /* width: 10px; */
+    /* height: 10px; */
   }
 }
 

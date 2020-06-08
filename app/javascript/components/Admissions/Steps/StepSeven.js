@@ -77,7 +77,7 @@ export default function StepSeven ({ values, documents, errors, onChange, setVal
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Документ об образовании
+            Документ об образовании *
           </div>
 
           <Errors errors={errors.documents} />

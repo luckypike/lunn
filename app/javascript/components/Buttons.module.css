@@ -38,9 +38,9 @@
   }
 }
 
-.big {
-  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
-  min-width: 10rem;
+.main_big {
+  composes: main;
+  padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 2);
 }
 
 .sec {

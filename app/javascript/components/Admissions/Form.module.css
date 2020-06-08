@@ -18,7 +18,15 @@
   }
 }
 
+.step {
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
 .steps {
+  display: none;
   padding: calc(var(--yr) * var(--s3)) 0;
-  /* background-color: var(--sp_color); */
+
+  @media (--m) {
+    display: block;
+  }
 }

@@ -1,13 +1,13 @@
 :root {
-  --pr_color: #333333;
+  --pr_color: #333;
   --hl_color: #2e4de6;
   --gr_color: #727272;
-  --sp_color: #ECEFF1;
-  --wh_color: #FFFFFF;
+  --sp_color: #eceff1;
+  --wh_color: #fff;
 
-  --hl_h_color: #3355FF;
-  --hl_o_color: #EE6F47;
-  --hl_d_color: #2A46D1;
+  --hl_h_color: #35f;
+  --hl_o_color: #ee6f47;
+  --hl_d_color: #2a46d1;
 
   --yr: 0.25rem;
   --xr: 1rem;

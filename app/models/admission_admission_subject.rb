@@ -3,4 +3,6 @@ class AdmissionAdmissionSubject < ApplicationRecord
 
   belongs_to :admission
   belongs_to :admission_subject
+
+  validates :ege, :grade, presence: true
 end

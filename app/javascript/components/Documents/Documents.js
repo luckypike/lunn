@@ -85,9 +85,13 @@ export default function Documents (props) {
       <div {...getRootProps()} className={classNames(styles.dropzone, { [styles.active]: isDragActive })}>
         <input {...getInputProps()} />
         <div className={styles.label}>
-          Прикрепите файлы перетащив их в эту область или нажмите для выбора.
-          <br />
-          Название файла может содержать не более 50 символов.
+          Прикрепите файлы перетащив их в эту область или нажмите кнопку «Загрузить файлы»
+        </div>
+
+        <div className={styles.buttons}>
+          <span className={styles.button}>
+            Загрузить файлы
+          </span>
         </div>
       </div>
 

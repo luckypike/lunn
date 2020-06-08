@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_105334) do
     t.json "score"
     t.json "course"
     t.json "residence"
-    t.integer "status"
+    t.integer "status", default: 1
     t.index ["user_id"], name: "index_admissions_on_user_id"
   end
 

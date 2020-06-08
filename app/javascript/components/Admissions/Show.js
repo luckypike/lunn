@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import classNames from 'classnames'
+import { Helmet } from 'react-helmet'
 
 import Title from '../Title'
 import Steps from './Form/Steps'
@@ -50,11 +51,17 @@ export default function Show ({ id, locale }) {
       />
 
       {admission &&
-        <div className={styles.steps}>
-          <div className={pages.container}>
-            <Steps admission={admission} locale={locale}/>
+        <>
+          <Helmet>
+            <title>{I18n.t('admissions.edit.title', { number: admission.number })}</title>
+          </Helmet>
+
+          <div className={styles.steps}>
+            <div className={pages.container}>
+              <Steps admission={admission} locale={locale}/>
+            </div>
           </div>
-        </div>
+        </>
       }
 
       <div className={pages.container}>

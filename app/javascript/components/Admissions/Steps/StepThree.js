@@ -14,6 +14,10 @@ StepThree.propTypes = {
 export default function StepThree ({ values, errors, onChange }) {
   return (
     <>
+      <h4>
+        Родитель 1
+      </h4>
+
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
@@ -70,6 +74,10 @@ export default function StepThree ({ values, errors, onChange }) {
 
         <Errors errors={errors.parents_phone_first} />
       </div>
+
+      <h4>
+        Родитель 2
+      </h4>
 
       <div className={form.item}>
         <div className={form.input}>

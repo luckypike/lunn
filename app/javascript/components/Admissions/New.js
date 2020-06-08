@@ -5,6 +5,7 @@ import { navigate, Link } from '@reach/router'
 // import { deserialize } from 'jsonapi-deserializer'
 
 import Title from '../Title'
+import Admissions from './New/Admissions'
 import { useI18n } from '../I18n'
 
 import styles from './New.module.css'
@@ -20,12 +21,14 @@ export default function New ({ locale, user: userJSON }) {
   // const user = deserialize(userJSON)
 
   const [admissions, setAdmissions] = useState()
+  const [notFillingAdmissions, setNotFillingAdmissions] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
       const { data } = await axios.get('/admissions/new.json')
 
       setAdmissions(data.admissions)
+      setNotFillingAdmissions(data.not_filling)
     }
 
     _fetch()
@@ -51,12 +54,32 @@ export default function New ({ locale, user: userJSON }) {
 
       <div className={pages.container}>
         <div className={styles.root}>
+          {notFillingAdmissions && notFillingAdmissions.length > 0 &&
+            <div className={styles.admissions}>
+              <Admissions admissions={notFillingAdmissions} />
+            </div>
+          }
+
           {admissions &&
             <div className={styles.start}>
               {isContinue() &&
-                <Link className={styles.button_main} to={`/admissions/${admissions[0].id}/edit`}>
-                  Продолжить заполнение (шаг 3 из 10)
-                </Link>
+                <div>
+                  <h4>
+                    Вы уже начинали заполнять заявление (№ {admissions[0].id})
+                  </h4>
+
+                  <p>
+                    Вы заполнили его на {(admissions[0].state_key - 1) * 10}%.
+                    Одновременно можно заполнять не более одного заявления.
+                    Закончите заполенение текущего заявления и потом вы сможете подать еще одго при необходимости.
+                  </p>
+
+                  <p>
+                    <Link className={styles.button_main} to={`/admissions/${admissions[0].id}/edit`}>
+                      Продолжить заполнение
+                    </Link>
+                  </p>
+                </div>
               }
 
               {!isContinue() &&

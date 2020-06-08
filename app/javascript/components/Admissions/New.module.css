@@ -3,18 +3,12 @@
   max-width: 60rem;
 }
 
-/* .auth {
-  margin: calc(var(--yr) * var(--s6)) 0;
-  max-width: 40rem;
-} */
-
 .start {
   margin-bottom: calc(var(--yr) * var(--s4));
 }
 
 .admissions {
-  margin-bottom: calc(var(--yr) * var(--s4));
-  /* max-width: 60rem; */
+  margin-bottom: calc(var(--yr) * var(--s5));
 }
 
 .admission {

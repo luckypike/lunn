@@ -38,6 +38,8 @@ module Lunn
     config.generators.test_framework = nil
     config.generators.jbuilder = nil
 
+    config.active_record.index_nested_attribute_errors = true
+
     config.exceptions_app = routes
   end
 end

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { navigate } from '@reach/router'
 import classNames from 'classnames'
+import { Helmet } from 'react-helmet'
 
 import Title from '../Title'
 import Steps from './Form/Steps'
@@ -65,8 +66,6 @@ export default function Form ({ id, locale }) {
     }
   }, [admission])
 
-
-
   const handleSubmit = async e => {
     await axios.patch(
       `/admissions/${id}.json`,
@@ -87,11 +86,17 @@ export default function Form ({ id, locale }) {
       />
 
       {admission &&
-        <div className={styles.steps}>
-          <div className={pages.container}>
-            <Steps admission={admission} locale={locale}/>
+        <>
+          <Helmet>
+            <title>{I18n.t('admissions.edit.title', { number: admission.number })}</title>
+          </Helmet>
+
+          <div className={styles.steps}>
+            <div className={pages.container}>
+              <Steps admission={admission} locale={locale}/>
+            </div>
           </div>
-        </div>
+        </>
       }
 
       <div className={styles.root}>
@@ -99,7 +104,11 @@ export default function Form ({ id, locale }) {
           {values && admission &&
             <>
               <div className={styles.step}>
-                <h2>{I18n.t(`admissions.steps.${admission.state}`)}</h2>
+                <p>
+                  Шаг {admission.state_key} из 11
+                </p>
+
+                <h3>{I18n.t(`admissions.steps.${admission.state}`)}</h3>
               </div>
 
               <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
@@ -164,7 +173,7 @@ export default function Form ({ id, locale }) {
 
                 {admission.state !== 'done' &&
                   <div className={classNames(form.submit, styles.submit)}>
-                    <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main, buttons.big, { [buttons.pending]: pending })} disabled={pending} />
+                    <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main_big, { [buttons.pending]: pending })} disabled={pending} />
                   </div>
                 }
               </form>
