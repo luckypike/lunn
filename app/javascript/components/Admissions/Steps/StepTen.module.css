@@ -1,0 +1,15 @@
+.directions {
+  composes: subjects from './StepNine.module.css';
+}
+
+.direction {
+  composes: subject from './StepNine.module.css';
+}
+
+.row {
+  composes: row from './StepNine.module.css';
+}
+
+.new {
+  composes: new from './StepNine.module.css';
+}

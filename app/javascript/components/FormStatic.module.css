@@ -101,13 +101,16 @@
   }
 }
 
+.select {
+  position: relative;
+}
+
 .checkbox2 {
   & .label {
     display: flex;
     font-size: calc(var(--yr) * 4);
     line-height: calc(var(--yr) * 6);
     cursor: pointer;
-
 
     & input[type=checkbox] {
       flex-shrink: 0;
@@ -218,6 +221,12 @@
       }
     }
   }
+}
+
+.hint {
+  composes: mt from './Fonts.module.css';
+  color: var(--gr_color);
+  padding-top: var(--yr);
 }
 
 .submit {

@@ -5,6 +5,7 @@ import Select from 'react-select'
 
 import { Errors } from '../../Form'
 
+import styles from './StepTen.module.css'
 import form from '../../FormStatic.module.css'
 import buttons from '../../Buttons.module.css'
 
@@ -33,21 +34,27 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
   }, [directions])
 
   useEffect(() => {
-    if (values.directions_attributes.length > 0) {
-      const newDirections = new Map(directions)
-      values.directions_attributes.forEach(item => {
-        if (item.id) {
-          newDirections.set(item.id, item)
-        }
-      })
+    const newDirections = new Map(directions)
 
-      setDirections(newDirections)
+    if (values.subjects_attributes.length > 0) {
+      values.directions_attributes.forEach((direction, i) => {
+        newDirections.set(i, direction)
+      })
     }
-  }, [dictionaries])
+
+    const j = newDirections.size
+    if (j < 1) {
+      newDirections.set(0, {
+        admission_direction_id: '', form: '', basis: ''
+      })
+    }
+
+    setDirections(newDirections)
+  }, [])
 
   const handleDirectionAdd = (e) => {
     const newDirections = new Map(directions)
-    newDirections.set(`n-${directions.size}`, { admission_direction_id: '', form: '', basis: '' })
+    newDirections.set(directions.size + 1, { admission_direction_id: '', form: '', basis: '' })
 
     setDirections(newDirections)
 
@@ -70,26 +77,38 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
 
   return (
     <>
-      {directions.size > 0 &&
-        <>
-          {[...directions.keys()].map(key =>
-            <Direction
-              key={key}
-              directionKey={key}
-              direction={directions.get(key)}
-              dictionaries={dictionaries}
-              errors={errors}
-              onDirectionChange={handleDirectionChange}
-              onDirectionDelete={handleDirectionDelete}
-            />
-          )}
-        </>
-      }
+      <div className={styles.directions}>
+        <h4>
+          Направления
+        </h4>
 
-      <div className={form.item}>
-        <button className={classNames(buttons.main, buttons.big)} onClick={handleDirectionAdd}>
-          Добавить направление
-        </button>
+        <p>
+          Можно указать до 3-ех направлений для поступления.
+        </p>
+
+        {directions.size > 0 &&
+          <>
+            {[...directions.keys()].map(key =>
+              <div key={key} className={styles.direction}>
+                <Direction
+                  key={key}
+                  directionKey={key}
+                  direction={directions.get(key)}
+                  dictionaries={dictionaries}
+                  errors={errors}
+                  onDirectionChange={handleDirectionChange}
+                  onDirectionDelete={handleDirectionDelete}
+                />
+              </div>
+            )}
+          </>
+        }
+
+        {directions.size < 3 &&
+          <div className={styles.new} onClick={handleDirectionAdd}>
+            Добавить направление
+          </div>
+        }
       </div>
 
       <div className={form.item}>
@@ -177,7 +196,7 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
 
 Direction.propTypes = {
   direction: PropTypes.object,
-  directionKey: PropTypes.string,
+  directionKey: PropTypes.number,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   onDirectionChange: PropTypes.func,
@@ -202,61 +221,69 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
   return (
     <>
       <div className={form.item}>
-        <button className={classNames(buttons.main, form.delete)} onClick={() => onDirectionDelete(directionKey)}>
-          Удалить
-        </button>
-
-        <div className={form.input}>
-          <div className={form.label}>
-            Форма обучения *
-          </div>
-
-          <select name="form" onChange={handleInputChange} value={item.form}>
-            <option value=""></option>
-            <option value="1">Очная</option>
-            <option value="2">Очно-заочная</option>
-            <option value="3">Заочная</option>
-          </select>
-        </div>
-
-        <Errors errors={errors['directions.form']} />
-      </div>
-
-      <div className={form.item}>
-        <div className={form.input}>
-          <div className={form.label}>
-            Финансовая основа *
-          </div>
-
-          <select name="basis" onChange={handleInputChange} value={item.basis}>
-            <option value=""></option>
-            <option value="1">Бюджет</option>
-            <option value="2">Фин. договор</option>
-          </select>
-        </div>
-
-        <Errors errors={errors['directions.basis']} />
-      </div>
-
-      <div className={form.item}>
         <div className={form.select}>
-          <div className={form.label}>
-            Направление/профиль *
-          </div>
+          { directionKey > 1 &&
+            <button className={classNames(buttons.main, form.delete)} onClick={() => onDirectionDelete(directionKey)}>
+              Удалить
+            </button>
+          }
 
-          <Select
-            classNamePrefix="react-select"
-            value={dictionaries.directions.find(d => d.id === item.admission_direction_id)}
-            getOptionValue={option => option.id}
-            noOptionsMessage={() => 'Ничего не найдено'}
-            options={dictionaries.directions}
-            placeholder="Выберите достижение.."
-            onChange={value => handleSelectChange('admission_direction_id', value.id)}
-          />
+          <label>
+            <div className={form.label}>
+              Направление/профиль *
+            </div>
+
+            <Select
+              classNamePrefix="react-select"
+              value={dictionaries.directions.find(d => d.id === item.admission_direction_id)}
+              getOptionValue={option => option.id}
+              noOptionsMessage={() => 'Ничего не найдено'}
+              options={dictionaries.directions}
+              placeholder="Выберите достижение.."
+              onChange={value => handleSelectChange('admission_direction_id', value.id)}
+            />
+          </label>
         </div>
 
-        <Errors errors={errors['directions.admission_direction']} />
+        <Errors errors={errors[`directions[${directionKey}].admission_direction`]} />
       </div>
+
+      <div className={styles.row}>
+        <div className={form.item}>
+
+          <div className={form.input}>
+            <div className={form.label}>
+              Форма обучения *
+            </div>
+
+            <select name="form" onChange={handleInputChange} value={item.form}>
+              <option value=""></option>
+              <option value="1">Очная</option>
+              <option value="2">Очно-заочная</option>
+              <option value="3">Заочная</option>
+            </select>
+          </div>
+
+          <Errors errors={errors[`directions[${directionKey}].form`]} />
+        </div>
+
+        <div className={form.item}>
+          <div className={form.input}>
+            <div className={form.label}>
+              Финансовая основа *
+            </div>
+
+            <select name="basis" onChange={handleInputChange} value={item.basis}>
+              <option value=""></option>
+              <option value="1">Бюджет</option>
+              <option value="2">Фин. договор</option>
+            </select>
+          </div>
+
+          <Errors errors={errors[`directions[${directionKey}].basis`]} />
+        </div>
+      </div>
+
       <br />
     </>
   )

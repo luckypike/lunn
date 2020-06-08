@@ -191,10 +191,6 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
 
   return (
     <>
-      {/* <h4>
-        Предмет № {i + 1}
-      </h4> */}
-
       <div className={form.item}>
 
         <div className={form.input}>
@@ -238,6 +234,8 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
             </label>
           </div>
 
+          <div className={form.hint}>Поле может содержать значение от 0 до 100</div>
+
           <Errors errors={errors[`subjects[${i}].ege`]} />
         </div>
 
@@ -256,6 +254,8 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
               />
             </label>
           </div>
+
+          <div className={form.hint}>Поле может содержать значение от 3 до 5</div>
 
           <Errors errors={errors[`subjects[${i}].grade`]} />
         </div>
