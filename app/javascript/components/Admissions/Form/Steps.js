@@ -22,8 +22,8 @@ export default function Steps ({ admission, locale }) {
     <div className={styles.root}>
       <div className={styles.steps}>
         {[...steps.keys()].map((key, _) =>
-          <>
-            <div key={_} className={classNames(styles.step, { [styles.complete]: _ + 1 < steps.get(admission.state), [styles.current]: key === admission.state })}>
+          <React.Fragment key={_}>
+            <div className={classNames(styles.step, { [styles.complete]: _ + 1 < steps.get(admission.state), [styles.current]: (key === admission.state && admission.status !== 'processing') })}>
               <div className={styles.digit}>{_ + 1}</div>
               <div className={styles.title}>{I18n.t(`admissions.steps_short.${key}`)}</div>
             </div>
@@ -31,7 +31,7 @@ export default function Steps ({ admission, locale }) {
             { _ + 1 < steps.size &&
               <div className={styles.sp} />
             }
-          </>
+          </React.Fragment>
         )}
       </div>
     </div>

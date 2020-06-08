@@ -67,21 +67,31 @@ export default function Show ({ id, locale }) {
       <div className={pages.container}>
         <div className={styles.root}>
           <div className={styles.form}>
-            { admission.status === 'filling' &&
+            {admission.status === 'filling' &&
               <>
-                <h2>Проверка данных</h2>
-                <div className={styles.hint}>Проверьте результат заполнения анкеты и подтвердите отправление.</div>
+                <div className={styles.header}>
+                  <p>
+                    Шаг 11 из 11
+                  </p>
+
+                  <h3>Проверка данных</h3>
+                </div>
+
+                <div className={styles.hint}>
+                  Уже почти всё, остался последний шаг. Пожалуйста, проверьте результат заполнения заявления и отправьте на приёмную комиссию на рассмотрение.
+                </div>
               </>
             }
+
             { admission.status === 'processing' &&
               <>
                 <h2>Анкета отправлена</h2>
-                <div className={styles.hint}>Анкета сформирована и отправлена на обработку.</div>
+                <div className={styles.hint}>Анкета сформирована и отправлена на рассмотрение</div>
               </>
             }
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.one')}</h3>
+                <h4>{I18n.t('admissions.steps.one')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -96,7 +106,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.two')}</h3>
+                <h4>{I18n.t('admissions.steps.two')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -113,7 +123,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.three')}</h3>
+                <h4>{I18n.t('admissions.steps.three')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -132,7 +142,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.four')}</h3>
+                <h4>{I18n.t('admissions.steps.four')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -161,7 +171,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.five')}</h3>
+                <h4>{I18n.t('admissions.steps.five')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -194,7 +204,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.six')}</h3>
+                <h4>{I18n.t('admissions.steps.six')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -207,7 +217,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.seven')}</h3>
+                <h4>{I18n.t('admissions.steps.seven')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -225,7 +235,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.eight')}</h3>
+                <h4>{I18n.t('admissions.steps.eight')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -238,7 +248,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.nine')}</h3>
+                <h4>{I18n.t('admissions.steps.nine')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -261,7 +271,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h3>{I18n.t('admissions.steps.ten')}</h3>
+                <h4>{I18n.t('admissions.steps.ten')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -292,7 +302,7 @@ export default function Show ({ id, locale }) {
             </div>
 
             {admission.state === 'done' && admission.status === 'filling' &&
-              <button className={classNames(buttons.main, buttons.big)} onClick={() => handleAdmissionConfirm()}>Отправить анкету</button>
+              <button className={classNames(buttons.main, buttons.big)} onClick={() => handleAdmissionConfirm()}>Отправить заявление</button>
             }
           </div>
         </div>

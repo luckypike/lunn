@@ -11,9 +11,15 @@
 }
 
 .hint {
-  padding-bottom: calc(var(--yr) * 4);
+  composes: bt from '../Fonts.module.css';
+  padding-bottom: calc(var(--yr) * var(--s4));
 }
 
 .step {
-  padding-bottom: calc(var(--yr) * 4);
+  padding-bottom: calc(var(--yr) * var(--s4));
+}
+
+.hint {
+  border-bottom: 1px solid color-mod(var(--sp_color) shade(7%));
+  margin-bottom: calc(var(--yr) * var(--s4));
 }
