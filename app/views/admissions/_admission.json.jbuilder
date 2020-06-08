@@ -7,7 +7,7 @@ json.extract! admission, :id, :state, :number, :status
 end
 
 json.documents admission.documents do |document|
-  json.extract! document, :id, :title, :uuid, :section
+  json.extract! document, :id, :title, :uuid, :section, :file_url
 end
 
 json.states Admission::states

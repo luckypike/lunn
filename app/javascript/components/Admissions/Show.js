@@ -99,6 +99,8 @@ export default function Show ({ id, locale }) {
                 <div>{I18n.t('admissions.labels.document_number')}: {admission.document_number}</div>
                 <div>{I18n.t('admissions.labels.document_issued_by')}: {admission.document_issued_by}</div>
                 <div>{I18n.t('admissions.labels.document_issue_date')}: {admission.document_issue_date}</div>
+
+                <Documents documents={admission.documents.filter(d => d.section === 'document')} locale={locale}/>
               </div>
             </div>
 
@@ -209,6 +211,8 @@ export default function Show ({ id, locale }) {
                 {admission.school_diploma_type &&
                   <div>{I18n.t('admissions.labels.school_diploma_type')}: {I18n.t(`admissions.options.school_diploma_type.${admission.school_diploma_type}`)}</div>
                 }
+
+                <Documents documents={admission.documents.filter(d => d.section === 'school')} locale={locale}/>
               </div>
             </div>
 
@@ -286,6 +290,27 @@ export default function Show ({ id, locale }) {
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+Documents.propTypes = {
+  documents: PropTypes.array,
+  locale: PropTypes.string
+}
+
+function Documents ({ documents, locale }) {
+  const I18n = useI18n(locale)
+
+  if (!documents) return null
+
+  return (
+    <div className={styles.documents}>
+      {documents.map( document =>
+        <div key={document.id} className={styles.document}>
+          <div className={styles.section}>{I18n.t(`admissions.documents.section.${document.section}`)}: <a href={document.file_url}> {document.title}</a></div>
+        </div>
+      )}
     </div>
   )
 }

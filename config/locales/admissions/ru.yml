@@ -193,3 +193,8 @@ ru:
       course_study:
         1: Да
         2: Нет
+
+    documents:
+      section:
+        document: Паспорт
+        school: Документ об образовании

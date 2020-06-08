@@ -10,7 +10,6 @@
   composes: steps from './Form.module.css';
 }
 
-
 .hint {
   padding-bottom: calc(var(--yr) * 4);
 }
