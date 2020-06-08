@@ -89,14 +89,6 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
 
   return (
     <>
-      <p>
-        {JSON.stringify(values.subjects_attributes)}
-      </p>
-
-      <p>
-        {JSON.stringify(values.subject_ids)}
-      </p>
-
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
@@ -137,9 +129,11 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
           </div>
         )}
 
-        <div className={styles.new} onClick={handleSubjectAdd}>
-          Добавить предмет
-        </div>
+        {subjects.size < 6 &&
+          <div className={styles.new} onClick={handleSubjectAdd}>
+            Добавить предмет
+          </div>
+        }
       </div>
 
       <div className={form.item}>
@@ -178,12 +172,13 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
 Subject.propTypes = {
   subject: PropTypes.object,
   onSubjectChange: PropTypes.func,
+  onSubjectDelete: PropTypes.func,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   i: PropTypes.number
 }
 
-function Subject ({ subject, onSubjectChange, dictionaries, errors, i }) {
+function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, errors, i }) {
   const [values, setValues] = useState({ ...subject })
 
   useEffect(() => {
@@ -201,11 +196,14 @@ function Subject ({ subject, onSubjectChange, dictionaries, errors, i }) {
       </h4> */}
 
       <div className={form.item}>
-        {/* <button className={classNames(buttons.main, form.delete)} onClick={() => onSubjectDelete(subjectKey)}>
-          Удалить
-        </button> */}
 
         <div className={form.input}>
+          { i > 2 &&
+            <button className={classNames(buttons.main, form.delete)} onClick={() => onSubjectDelete(i)}>
+              Удалить
+            </button>
+          }
+
           <label>
             <div className={form.label}>
               Название предмета *

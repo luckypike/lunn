@@ -6,6 +6,7 @@
   }
 
   & .delete {
+    background-color: var(--rd_color);
     padding: var(--yr) calc(var(--yr) * 8) var(--yr) calc(var(--yr) * 2);
     position: absolute;
     right: 0;
@@ -24,6 +25,18 @@
       position: absolute;
       content: '✕';
       right: var(--yr);
+    }
+
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+
+    &:hover {
+      &:not(:disabled) {
+        &:not(.pending) {
+          background: #fd4a4a;
+        }
+      }
     }
   }
 }
