@@ -45,3 +45,25 @@
 .text {
   /* max-width: 60rem; */
 }
+
+.beta {
+  background-color: var(--hl_color);
+  color: #fff;
+  padding: calc(var(--yr) * var(--s4));
+}
+
+.betaText {
+  max-width: 45rem;
+
+  & a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: color-mod(#fff a(0.4));
+    transition: text-decoration 0.3s, color 0.3s;
+
+    &:hover {
+      color: #fff;
+      text-decoration-color: #fff;
+    }
+  }
+}

@@ -52,6 +52,26 @@ export default function New ({ locale, user: userJSON }) {
         h1={I18n.t('admissions.new.title')}
       />
 
+      <div className={styles.beta}>
+        <div className={pages.container}>
+          <div className={styles.betaText}>
+            <h2>
+              Открытый β-тест
+            </h2>
+
+            <p>
+              До 19 июня подача документов через сайт работает в тестовом режиме.
+              Это означает что часть функций тестируется и может работать некорректно.
+              Все заявления поданные до 19 числа не будут удалены и будут считаться полноценными заявлениями о поступлении.
+            </p>
+
+            <p>
+              Если у вас возникли трудости с заполнением или вы нашли техническую ошибку, которая мешает вам заполнить — просьба сообщить об этом на почту <a href="mailto:digital-lunn@yandex.ru">digital-lunn@yandex.ru</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className={pages.container}>
         <div className={styles.root}>
           {notFillingAdmissions && notFillingAdmissions.length > 0 &&
