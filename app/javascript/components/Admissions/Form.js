@@ -51,7 +51,12 @@ export default function Form ({ id, locale }) {
   const _fetch = async () => {
     const { data } = await axios.get(`/admissions/${id}/edit.json`)
 
-    setValues(data.values)
+    setValues({
+      ...data.values,
+      identity_birth_date: data.values.identity_birth_date ? new Date(data.values.identity_birth_date) : null,
+      document_issue_date: data.values.document_issue_date ? new Date(data.values.document_issue_date) : null,
+      school_document_date: data.values.school_document_date ? new Date(data.values.school_document_date) : null
+    })
     setAdmission(data.admission)
     setDictionaries(data.dictionaries)
   }
@@ -113,7 +118,7 @@ export default function Form ({ id, locale }) {
 
               <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
                 {admission.state === 'one' &&
-                  <StepOne onChange={handleInputChange} values={values} errors={errors}/>
+                  <StepOne onChange={handleInputChange} values={values} errors={errors} setValues={setValues} />
                 }
                 {admission.state === 'two' &&
                   <StepTwo

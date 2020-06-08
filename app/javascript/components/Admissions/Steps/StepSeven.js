@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import DatePicker from 'react-datepicker'
 
 import Documents from '../../Documents/Documents'
 
@@ -93,16 +94,19 @@ export default function StepSeven ({ values, documents, errors, onChange, setVal
 
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Дата выдачи *
-          </div>
+          <label>
+            <div className={form.label}>
+              Дата выдачи *
+            </div>
 
-          <input
-            type="date"
-            value={values.school_document_date}
-            name="school_document_date"
-            onChange={onChange}
-          />
+            <DatePicker
+              onChange={value => {
+                setValues({ ...values, school_document_date: value })
+              }}
+              dateFormat="dd/MM/yyyy"
+              selected={values.school_document_date}
+            />
+          </label>
         </div>
 
         <Errors errors={errors.school_document_date} />
