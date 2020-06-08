@@ -295,7 +295,7 @@ export default function Show ({ id, locale }) {
                 {admission.course_military !== '' &&
                   <div>{I18n.t('admissions.labels.course_military')}: {I18n.t(`admissions.options.course_military.${admission.course_military}`)}</div>
                 }
-                {admission.course_contract !== '' &&
+                {admission.course_study !== '' &&
                   <div>{I18n.t('admissions.labels.course_contract')}: {I18n.t(`admissions.options.course_study.${admission.course_study}`)}</div>
                 }
               </div>
