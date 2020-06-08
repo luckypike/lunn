@@ -66,7 +66,7 @@ class Admission < ApplicationRecord
   validate :document_presence
 
   validates :identity_first_name, :identity_last_name, :identity_middle_name,
-    :identity_sex, :identity_birth_date, :identity_birth_place,
+    :identity_sex, :identity_birth_date, :identity_birth_place, :residence_mobile,
     presence: true, if: -> { step_after?(1) }
 
   validates :document_nationality, :document_type, :document_series, :document_number,
@@ -81,7 +81,7 @@ class Admission < ApplicationRecord
     presence: true, if: -> { step_after?(4) }
 
   validates :residence_country, :residence_region,
-    :residence_index, :residence_street, :residence_house, :residence_mobile,
+    :residence_index, :residence_street, :residence_house,
     presence: true, if: -> { step_after?(5) }
 
   validates :school_type, :school_name, :school_graduation, :school_address,

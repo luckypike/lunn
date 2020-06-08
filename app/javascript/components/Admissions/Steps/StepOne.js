@@ -122,6 +122,40 @@ export default function StepOne ({ values, errors, onChange }) {
 
         <Errors errors={errors.identity_birth_place} />
       </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Мобильный телефон *
+          </div>
+
+          <input
+            type="text"
+            value={values.residence_mobile}
+            name="residence_mobile"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.residence_mobile} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Домашний телефон
+          </div>
+
+          <input
+            type="text"
+            value={values.residence_phone}
+            name="residence_phone"
+            onChange={onChange}
+          />
+        </div>
+
+        <Errors errors={errors.residence_phone} />
+      </div>
     </>
   )
 }
