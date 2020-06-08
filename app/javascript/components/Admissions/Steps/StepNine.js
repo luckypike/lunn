@@ -38,7 +38,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
     const newSubjects = new Map(subjects)
 
     newSubjects.set(subjects.size + 1, {
-      admission_subject_id: '', ege: '', grade: ''
+      subject: '', ege: '', grade: ''
     })
 
     setSubjects(newSubjects)
@@ -79,7 +79,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
     if (j < 3) {
       Array.from(Array(3 - j)).forEach((_, i) => {
         newSubjects.set(j + i, {
-          admission_subject_id: '', ege: '', grade: ''
+          subject: '', ege: '', grade: ''
         })
       })
     }
@@ -205,7 +205,7 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
               Название предмета *
             </div>
 
-            <select name="admission_subject_id" onChange={handleInputChange} value={values.admission_subject_id}>
+            <select name="subject" onChange={handleInputChange} value={values.subject}>
               <option value=""></option>
               <option value="1">Математика</option>
               <option value="2">Русский язык</option>
@@ -223,7 +223,7 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
           </label>
         </div>
 
-        <Errors errors={errors[`subjects[${i}].admission_subject`]} />
+        <Errors errors={errors[`subjects[${i}].subject`]} />
       </div>
 
       <div className={styles.row}>

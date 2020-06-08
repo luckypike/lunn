@@ -254,7 +254,7 @@ export default function Show ({ id, locale }) {
               <div className={styles.stepInfo}>
                 {admission.subjects && admission.subjects.map((subject, _) =>
                   <React.Fragment key={_}>
-                    <div>{I18n.t('admissions.labels.score_subject')}: {dictionaries.subjects.find(s => s.id === subject.admission_subject_id).label}</div>
+                    <div>{I18n.t('admissions.labels.score_subject')}: {I18n.t(`admissions.options.subjects.${subject.subject}`)}</div>
                     {subject.ege !== '' &&
                       <div>{I18n.t('admissions.labels.score_ege')}: {subject.ege}</div>
                     }
@@ -323,7 +323,7 @@ function Documents ({ documents, locale }) {
 
   return (
     <div className={styles.documents}>
-      {documents.map( document =>
+      {documents.map(document =>
         <div key={document.id} className={styles.document}>
           <div className={styles.section}>{I18n.t(`admissions.documents.section.${document.section}`)}: <a href={document.file_url}> {document.title}</a></div>
         </div>

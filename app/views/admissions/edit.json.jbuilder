@@ -20,7 +20,7 @@ json.values do
   json.subject_ids @admission.subjects.pluck(:id)
 
   json.subjects_attributes @admission.subjects.each do |subject|
-    json.extract! subject, :id, :admission_subject_id, :ege, :grade
+    json.extract! subject, :id, :subject, :ege, :grade
   end
 
   json.document_ids @admission.documents.pluck(:id)
