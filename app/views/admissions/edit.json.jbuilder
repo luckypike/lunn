@@ -9,6 +9,12 @@ json.values do
     end
   end
 
+  %i[agreements].each do |section|
+    Admission.stored_attributes[section].each do |key|
+      json.set! "#{section}_#{key}", @admission.send("#{section}_#{key}").presence || false
+    end
+  end
+
   json.state Admission.states.keys[Admission.states.keys.index(@admission.state) + 1]
 
   json.subject_ids @admission.subjects.pluck(:id)

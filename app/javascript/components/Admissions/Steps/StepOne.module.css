@@ -1,0 +1,10 @@
+.for {
+  font-weight: bold;
+}
+
+.sp {
+  border-bottom: 1px solid color-mod(var(--sp_color) shade(7%));
+  width: 100%;
+  height: 0;
+  margin-bottom: calc(var(--yr) * var(--s3));
+}
