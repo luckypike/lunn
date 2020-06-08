@@ -1,4 +1,8 @@
 import '@glidejs/glide/dist/css/glide.core'
+import 'react-datepicker/dist/react-datepicker.css'
+import { registerLocale, setDefaultLocale } from 'react-datepicker'
+import ru from 'date-fns/locale/ru'
+
 require('normalize.css/normalize.css')
 require('@rails/ujs').start()
 
@@ -8,6 +12,9 @@ require('@rails/ujs').start()
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+registerLocale('ru', ru)
+setDefaultLocale('ru')
 
 var componentRequireContext = require.context('components', true)
 var ReactRailsUJS = require('react_ujs')

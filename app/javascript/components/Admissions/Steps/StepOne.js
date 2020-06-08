@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import DatePicker from 'react-datepicker'
 
 import { Errors } from '../../Form'
 
@@ -9,10 +10,11 @@ import styles from './StepOne.module.css'
 StepOne.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
+  setValues: PropTypes.func,
   onChange: PropTypes.func
 }
 
-export default function StepOne ({ values, errors, onChange }) {
+export default function StepOne ({ values, errors, setValues, onChange }) {
   return (
     <>
       <div className={form.item}>
@@ -97,16 +99,24 @@ export default function StepOne ({ values, errors, onChange }) {
               Дата рождения *
             </div>
 
-            <input
+            {/* <input
               type="date"
               value={values.identity_birth_date}
               name="identity_birth_date"
               onChange={onChange}
+            /> */}
+
+            <DatePicker
+              onChange={value => {
+                setValues({ ...values, identity_birth_date: value })
+              }}
+              dateFormat="dd/MM/yyyy"
+              selected={values.identity_birth_date}
             />
           </label>
         </div>
 
-        <Errors errors={errors.identity_sex} />
+        <Errors errors={errors.identity_birth_date} />
       </div>
 
       <div className={form.item}>

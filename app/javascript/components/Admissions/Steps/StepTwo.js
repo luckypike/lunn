@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
+import DatePicker from 'react-datepicker'
 
 import Documents from '../../Documents/Documents'
 
@@ -118,14 +119,15 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Дата выдачи
+            Дата выдачи *
           </div>
 
-          <input
-            type="date"
-            value={values.document_issue_date}
-            name="document_issue_date"
-            onChange={onChange}
+          <DatePicker
+            onChange={value => {
+              setValues({ ...values, document_issue_date: value })
+            }}
+            dateFormat="dd/MM/yyyy"
+            selected={values.document_issue_date}
           />
         </div>
 
@@ -135,7 +137,7 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Паспорт
+            Паспорт *
           </div>
 
           <Errors errors={errors.documents} />
