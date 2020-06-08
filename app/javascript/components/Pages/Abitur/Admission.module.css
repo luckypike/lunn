@@ -36,3 +36,13 @@
     margin-right: var(--xr);
   }
 }
+
+.action {
+  & a {
+    margin-bottom: calc(var(--yr) * var(--s2));
+
+    @media (--s) {
+      margin-bottom: 0;
+    }
+  }
+}

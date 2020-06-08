@@ -14,7 +14,7 @@ export default function Admission () {
           В 2020 году прием документов мы будет осуществлять только в дистанционной форме, через личный кабинет абитуриента на нашем сайте, который откроется для вас 19 июня 2020 года.
         </p>
 
-        <p>
+        <p className={styles.action}>
           <a className={styles.button} href="/abitur/online">
             Как поступить в НГЛУ?
           </a>
