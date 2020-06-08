@@ -24,6 +24,11 @@ class Admission < ApplicationRecord
   has_many :documents, class_name: 'AdmissionDocument', as: :assignable, dependent: :delete_all
   accepts_nested_attributes_for :documents
 
+  store :agreements, accessors: %i[
+    schools rules dates credibility original privacy
+    ma sp exams target medical
+  ], coder: JSON, prefix: true
+
   store :identity, accessors: %i[
     first_name last_name middle_name sex birth_date birth_place
   ], coder: JSON, prefix: true
@@ -64,6 +69,10 @@ class Admission < ApplicationRecord
   validates :state, presence: true
 
   validate :document_presence
+
+  validates :agreements_schools, :agreements_rules, :agreements_dates,
+    :agreements_credibility, :agreements_original, :agreements_privacy,
+    acceptance: true, inclusion: [true, false], if: -> { step_after?(1) }
 
   validates :identity_first_name, :identity_last_name, :identity_middle_name,
     :identity_sex, :identity_birth_date, :identity_birth_place, :residence_mobile,
@@ -132,7 +141,8 @@ class Admission < ApplicationRecord
 
   class << self
     def allowed_params
-      Admission.stored_attributes[:identity].map { |key| "identity_#{key}" } +
+      Admission.stored_attributes[:agreements].map { |key| "agreements_#{key}" } +
+        Admission.stored_attributes[:identity].map { |key| "identity_#{key}" } +
         Admission.stored_attributes[:document].map { |key| "document_#{key}" } +
         Admission.stored_attributes[:parents].map { |key| "parents_#{key}" } +
         Admission.stored_attributes[:address].map { |key| "address_#{key}" } +

@@ -34,8 +34,8 @@ export function useForm (initValues) {
 
   const [values, setValues] = useState(initValues)
 
-  const handleInputChange = ({ target: { name, value } }) => {
-    setValues({ ...values, [name]: value })
+  const handleInputChange = ({ target: { type, name, value, checked } }) => {
+    setValues({ ...values, [name]: type === 'checkbox' ? checked : value })
   }
 
   const onSubmit = useCallback(
