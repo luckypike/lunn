@@ -26,7 +26,7 @@ json.values do
   json.document_ids @admission.documents.pluck(:id)
 
   json.documents_attributes @admission.documents do |document|
-    json.extract! document, :id, :title, :uuid, :section
+    json.partial! document
   end
 
   json.directions_attributes @admission.directions do |direction|

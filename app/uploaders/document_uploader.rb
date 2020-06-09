@@ -1,7 +1,7 @@
 class DocumentUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -44,4 +44,28 @@ class DocumentUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  process :rotate_according_to_exif
+  process resize_to_limit: [5000, 5000]
+  process :optimize
+
+  version :thumb do
+    process resize_to_fit: [200, 200]
+  end
+
+  def extension_whitelist
+    %w[jpg jpeg gif png]
+  end
+
+  # def store_dimensions
+  #   if file && model
+  #     model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
+  #   end
+  # end
+
+  # Override the filename of the uploaded files:
+  # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  def filename
+    "#{@model.uuid}.#{file.extension}"
+  end
 end

@@ -17,15 +17,15 @@ Documents.propTypes = {
   setValues: PropTypes.func
 }
 
-export default function Documents (props) {
-  const { setValues } = props
+export default function Documents ({ values, setValues }) {
+  // const { setValues } = props
   const [files, setFiles] = useState(new Map())
 
   useEffect(() => {
-    if (props.files) {
+    if (values) {
       const newFiles = new Map(files)
 
-      props.files.forEach(file => {
+      values.documents_attributes.forEach(file => {
         if (!files.has(file.uuid)) {
           newFiles.set(file.uuid, file)
         }
@@ -33,7 +33,7 @@ export default function Documents (props) {
 
       setFiles(newFiles)
     }
-  }, [props.files])
+  }, [])
 
   const onDrop = acceptedFiles => {
     const newFiles = new Map(files)
@@ -73,7 +73,7 @@ export default function Documents (props) {
   useEffect(() => {
     if (files.size > 0) {
       setValues({
-        ...props.values,
+        ...values,
         document_ids: [...files.values()].map(document => document.id),
         documents_attributes: [...files.values()].map(document => ({ id: document.id, title: document.title }))
       })
@@ -98,15 +98,13 @@ export default function Documents (props) {
       {files.size > 0 &&
         <div className={styles.files}>
           {[...files.keys()].map(uuid =>
-            (files.get(uuid).section === props.section || files.get(uuid).section === undefined) &&
-              <File
-                section={props.section}
-                key={uuid}
-                onFileChanged={handleFileChanged}
-                onFileDeleted={handleFileDeleted}
-                initFile={files.get(uuid)}
-                uuid={uuid}
-              />
+            <File
+              key={uuid}
+              onFileChanged={handleFileChanged}
+              onFileDeleted={handleFileDeleted}
+              initFile={files.get(uuid)}
+              uuid={uuid}
+            />
           )}
         </div>
       }
@@ -147,6 +145,8 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
 
   const isAttached = () => !!file.id
 
+  // console.log(file)
+
   useEffect(() => {
     const _attach = async () => {
       const formData = new FormData()
@@ -183,17 +183,15 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
     <div className={styles.file}>
       {isAttached() &&
         <div className={styles.row}>
-          <div className={classNames(form.input, styles.title)}>
-            <input
-              type="text"
-              value={title}
-              onChange={handleTitleChanged}
-            />
+          <div className={styles.thumb}>
+            <img src={file.file.thumb.url} />
           </div>
 
-          <a className={styles.delete} onClick={() => onFileDeleted(file)}>
-            удалить
-          </a>
+          <div className={styles.delete}>
+            <span onClick={() => onFileDeleted(file)}>
+              удалить
+            </span>
+          </div>
         </div>
       }
 
