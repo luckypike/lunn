@@ -107,10 +107,11 @@ export default function StepOne ({ values, errors, setValues, onChange }) {
             /> */}
 
             <DatePicker
+              placeholderText="01.01.2000"
               onChange={value => {
                 setValues({ ...values, identity_birth_date: value })
               }}
-              dateFormat="dd/MM/yyyy"
+              dateFormat="dd.MM.yyyy"
               selected={values.identity_birth_date}
             />
           </label>
@@ -127,6 +128,7 @@ export default function StepOne ({ values, errors, setValues, onChange }) {
             </div>
 
             <input
+              placeholder="Укажите место рождения по паспорту..."
               type="text"
               value={values.identity_birth_place}
               name="identity_birth_place"
@@ -145,6 +147,7 @@ export default function StepOne ({ values, errors, setValues, onChange }) {
           </div>
 
           <input
+            placeholder="+7 920 999-99-99"
             type="tel"
             value={values.residence_mobile}
             name="residence_mobile"
@@ -162,6 +165,7 @@ export default function StepOne ({ values, errors, setValues, onChange }) {
           </div>
 
           <input
+            placeholder="+7 831 299-99-99"
             type="tel"
             value={values.residence_phone}
             name="residence_phone"
