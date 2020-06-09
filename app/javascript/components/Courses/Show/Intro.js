@@ -30,9 +30,9 @@ export default function Intro ({ course }) {
 
         <br />
 
-        <a href="/admissions/new" className={buttons.sec}>
+        {/* <a href="/admissions/new" className={buttons.sec}>
           Подать документы
-        </a>
+        </a> */}
       </div>
 
       {course.youtube &&
