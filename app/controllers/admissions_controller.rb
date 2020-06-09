@@ -1,7 +1,7 @@
 class AdmissionsController < ApplicationController
   before_action :set_url_alias, only: :page
   before_action :set_node, only: :page
-  before_action :set_admission, only: %i[edit update show confirm accept]
+  before_action :set_admission, only: %i[edit update show confirm accept jump]
   before_action :authorize_admission
 
   after_action :verify_authorized
@@ -82,6 +82,12 @@ class AdmissionsController < ApplicationController
     else
       render json: @admission.errors, status: :unprocessable_entity
     end
+  end
+
+  def jump
+    @admission.update(admission_params)
+
+    head :ok
   end
 
   private

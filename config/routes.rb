@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       end
 
       member do
+        post :jump
         post :confirm
         post :accept
       end

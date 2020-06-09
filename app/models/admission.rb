@@ -118,6 +118,18 @@ class Admission < ApplicationRecord
     Admission.states[state] > step
   end
 
+  def step_current
+    Admission.states.keys.index(state)
+  end
+
+  def step_next
+    Admission.states.keys[Admission.states.keys.index(state) + 1]
+  end
+
+  def step_prev
+    Admission.states.keys[step_current - 1] if step_current > 0
+  end
+
   def number
     id
   end

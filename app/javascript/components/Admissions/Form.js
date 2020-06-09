@@ -88,6 +88,20 @@ export default function Form ({ id, locale }) {
     })
   }
 
+  const handlePrevClick = async e => {
+    e.preventDefault()
+
+    await axios.post(
+      `/admissions/${id}/jump.json`,
+      { admission: { state: admission.step_prev } },
+      { cancelToken: cancelToken.current.token }
+    ).then(res => {
+      _fetch()
+    }).catch(error => {
+      setErrors(error.response.data)
+    })
+  }
+
   return (
     <div className={pages.beta}>
       <Title
@@ -103,7 +117,7 @@ export default function Form ({ id, locale }) {
 
           <div className={styles.steps}>
             <div className={pages.container}>
-              <Steps admission={admission} locale={locale}/>
+              <Steps admission={admission} locale={locale} _fetch={_fetch} />
             </div>
           </div>
         </>
@@ -125,6 +139,7 @@ export default function Form ({ id, locale }) {
                 {admission.state === 'one' &&
                   <StepOne onChange={handleInputChange} values={values} errors={errors} setValues={setValues} />
                 }
+
                 {admission.state === 'two' &&
                   <StepTwo
                     onChange={handleInputChange}
@@ -135,18 +150,23 @@ export default function Form ({ id, locale }) {
                     errors={errors}
                   />
                 }
+
                 {admission.state === 'three' &&
                   <StepThree onChange={handleInputChange} values={values} errors={errors}/>
                 }
+
                 {admission.state === 'four' &&
                   <StepFour onChange={handleInputChange} values={values} errors={errors}/>
                 }
+
                 {admission.state === 'five' &&
                   <StepFive onChange={handleInputChange} values={values} errors={errors}/>
                 }
+
                 {admission.state === 'six' &&
                   <StepSix onChange={handleInputChange} values={values} errors={errors}/>
                 }
+
                 {admission.state === 'seven' &&
                   <StepSeven
                     onChange={handleInputChange}
@@ -155,9 +175,11 @@ export default function Form ({ id, locale }) {
                     documents={admission.documents}
                     errors={errors}/>
                 }
+
                 {admission.state === 'eight' &&
                   <StepEight onChange={handleInputChange} values={values} errors={errors}/>
                 }
+
                 {admission.state === 'nine' &&
                   <StepNine
                     onChange={handleInputChange}
@@ -166,6 +188,7 @@ export default function Form ({ id, locale }) {
                     dictionaries={dictionaries}
                     errors={errors}/>
                 }
+
                 {admission.state === 'ten' &&
                   <StepTen
                     onChange={handleInputChange}
@@ -175,15 +198,20 @@ export default function Form ({ id, locale }) {
                     errors={errors}
                   />
                 }
-                {admission.state === 'done' &&
-                  <div>
-                    <p>Спасибо за заполнение, ваша заявка принята и будет обработана в ближайшее время.</p>
-                  </div>
-                }
 
                 {admission.state !== 'done' &&
-                  <div className={classNames(form.submit, styles.submit)}>
-                    <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main_big, { [buttons.pending]: pending })} disabled={pending} />
+                  <div className={styles.actions}>
+                    {admission.state !== 'one' &&
+                      <div className={styles.prev}>
+                        <span onClick={handlePrevClick}>
+                          Назад
+                        </span>
+                      </div>
+                    }
+
+                    <div className={classNames(form.submit, styles.submit)}>
+                      <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main_big, { [buttons.pending]: pending })} disabled={pending} />
+                    </div>
                   </div>
                 }
               </form>

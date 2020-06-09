@@ -123,10 +123,11 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
           </div>
 
           <DatePicker
+            placeholderText="01.01.2000"
             onChange={value => {
               setValues({ ...values, document_issue_date: value })
             }}
-            dateFormat="dd/MM/yyyy"
+            dateFormat="dd.MM.yyyy"
             selected={values.document_issue_date}
           />
         </div>

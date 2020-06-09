@@ -100,10 +100,11 @@ export default function StepSeven ({ values, documents, errors, onChange, setVal
             </div>
 
             <DatePicker
+              placeholderText="01.01.2000"
               onChange={value => {
                 setValues({ ...values, school_document_date: value })
               }}
-              dateFormat="dd/MM/yyyy"
+              dateFormat="dd.MM.yyyy"
               selected={values.school_document_date}
             />
           </label>

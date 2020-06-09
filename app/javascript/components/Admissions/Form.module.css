@@ -30,3 +30,26 @@
     display: block;
   }
 }
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.submit {
+  margin-left: auto;
+}
+
+.prev {
+  & span {
+    user-select: none;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: color-mod(#000 a(0.4));
+    transition: text-decoration 0.3s, color 0.3s;
+
+    &:hover {
+      text-decoration-color: #000;
+    }
+  }
+}

@@ -243,7 +243,7 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
             </label>
           </div>
 
-          <div className={form.hint}>Поле может содержать значение от 0 до 100</div>
+          <div className={form.hint}>От 0 до 100</div>
 
           <Errors errors={errors[`subjects[${i}].ege`]} />
         </div>
@@ -264,7 +264,7 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
             </label>
           </div>
 
-          <div className={form.hint}>Поле может содержать значение от 3 до 5</div>
+          <div className={form.hint}>От 3 до 5</div>
 
           <Errors errors={errors[`subjects[${i}].grade`]} />
         </div>

@@ -1,5 +1,6 @@
 json.admission do
   json.partial! @admission
+  json.extract! @admission, :step_prev, :step_next
 end
 
 json.values do

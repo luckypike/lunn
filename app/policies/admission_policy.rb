@@ -38,4 +38,8 @@ class AdmissionPolicy < ApplicationPolicy
   def continue?
     user
   end
+
+  def jump?
+    update?
+  end
 end

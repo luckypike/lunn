@@ -17,7 +17,7 @@ Documents.propTypes = {
   setValues: PropTypes.func
 }
 
-export default function Documents ({ values, setValues }) {
+export default function Documents ({ values, setValues, section }) {
   // const { setValues } = props
   const [files, setFiles] = useState(new Map())
 
@@ -97,9 +97,10 @@ export default function Documents ({ values, setValues }) {
 
       {files.size > 0 &&
         <div className={styles.files}>
-          {[...files.keys()].map(uuid =>
+          {[...files.keys()].filter(uuid => files.get(uuid).section === section || files.get(uuid).section === undefined).map(uuid =>
             <File
               key={uuid}
+              section={section}
               onFileChanged={handleFileChanged}
               onFileDeleted={handleFileDeleted}
               initFile={files.get(uuid)}
