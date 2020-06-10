@@ -117,23 +117,6 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
 
       {values.score_skip !== true &&
         <>
-          <div className={form.item}>
-            <div className={form.input}>
-              <div className={form.label}>
-                Год сдачи ЕГЭ *
-              </div>
-
-              <input
-                type="text"
-                value={values.score_year}
-                name="score_year"
-                onChange={onChange}
-              />
-            </div>
-
-            <Errors errors={errors.score_year} />
-          </div>
-
           <div className={styles.subjects}>
             <h4>
               Экзамены и баллы
@@ -274,6 +257,29 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
         <Errors errors={errors[`subjects[${i}].subject`]} />
       </div>
 
+      <div className={form.item}>
+        <div className={form.input}>
+          <label>
+            <div className={form.label}>
+              Год сдачи *
+            </div>
+
+            <select name="year" onChange={handleInputChange} value={values.year}>
+              <option value=""></option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+            </select>
+          </label>
+        </div>
+
+        {/* <div className={form.hint}>2016 — 2020</div> */}
+
+        <Errors errors={errors[`subjects[${i}].year`]} />
+      </div>
+
       <div className={styles.row}>
         <div className={form.item}>
           <div className={form.input}>
@@ -291,7 +297,7 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
             </label>
           </div>
 
-          <div className={form.hint}>От 0 до 100</div>
+          <div className={form.hint}>1 — 100</div>
 
           <Errors errors={errors[`subjects[${i}].ege`]} />
         </div>
@@ -312,7 +318,7 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
             </label>
           </div>
 
-          <div className={form.hint}>От 3 до 5</div>
+          <div className={form.hint}>3 — 5</div>
 
           <Errors errors={errors[`subjects[${i}].grade`]} />
         </div>

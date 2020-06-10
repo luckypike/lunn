@@ -103,10 +103,10 @@ class Admission < ApplicationRecord
   validates :school_language,
     presence: true, if: -> { step_after?(8) }
 
-  validates :subjects, :score_year,
+  validates :subjects,
     presence: true, if: -> { step_after?(9) && score_skip != true }
 
-  validates :directions, :course_contract,
+  validates :directions,
     presence: true, if: -> { step_after?(10) }
 
   after_initialize do
@@ -163,7 +163,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         [score_achievements: []] +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
-        %i[state] + [subject_ids: []] + [subjects_attributes: %i[id subject ege grade]] +
+        %i[state] + [subject_ids: []] + [subjects_attributes: %i[id subject ege grade year]] +
         [document_ids: []] + [documents_attributes: %i[id title uuid section]] +
         [direction_ids: []] + [directions_attributes: %i[id course_id form basis]]
     end
