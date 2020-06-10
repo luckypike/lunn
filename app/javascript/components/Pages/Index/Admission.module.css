@@ -1,0 +1,47 @@
+.a {
+  color: #fff;
+  cursor: pointer;
+  padding: calc(var(--yr) * var(--s4)) 0;
+  display: block;
+  background: var(--hl_color);
+}
+
+.root {
+  @media (--m) {
+    display: flex;
+  }
+}
+
+.container {
+  composes: container from '../../Pages.module.css';
+}
+
+.title {
+  padding-right: calc(var(--xr) * 2);
+  margin-right: auto;
+
+  @media (--m) {
+    & h2 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.button {
+  composes: bt from '../../Fonts.module.css';
+  background-color: var(--hld_color);
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  transition: background 0.2s, color 0.2s;
+}
+
+.a:hover {
+  color: white;
+
+  & .button {
+    background-color: color-mod(var(--hld_color) shade(7%));
+  }
+}

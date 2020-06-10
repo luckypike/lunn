@@ -13,7 +13,6 @@
 
 .video {
   position: relative;
-  margin-bottom: calc(var(--yr) * var(--s5));
 
   & > video {
     /* z-index: -1; */
@@ -53,6 +52,10 @@
     opacity: 0.5;
     z-index: 0;
   }
+}
+
+.admission {
+  margin-bottom: calc(var(--yr) * var(--s5));
 }
 
 .news {
