@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Select from 'react-select'
 
 import { Errors } from '../../Form'
+import { I18nContext } from '../../I18n'
 
 import styles from './StepTen.module.css'
 import form from '../../FormStatic.module.css'
@@ -204,6 +205,8 @@ Direction.propTypes = {
 }
 
 function Direction ({ direction, directionKey, dictionaries, errors, onDirectionChange, onDirectionDelete }) {
+  const I18n = useContext(I18nContext)
+
   const [item, setItem] = useState(direction)
 
   useEffect(() => {
@@ -237,6 +240,7 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
               classNamePrefix="react-select"
               value={dictionaries.directions.find(d => d.id === item.course_id)}
               getOptionValue={option => option.id}
+              getOptionLabel={option => `${I18n.t(`courses.levels.${option.level}`)}. ${option.title} (${option.course_code}).${option.spec ? ` ${option.spec}.` : ''}`}
               noOptionsMessage={() => 'Ничего не найдено'}
               options={dictionaries.directions}
               placeholder="Выберите достижение.."

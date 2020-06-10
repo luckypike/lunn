@@ -133,6 +133,10 @@ class Node::Course < Node
     "#{title}#{spec.present? ? " - #{spec}" : ""}"
   end
 
+  def title_sort
+    [level.to_s.strip, title.to_s.strip, spec.to_s.strip]
+  end
+
   def url
     "/programs/#{nid}"
   end

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import Select from 'react-select'
 
 import { Errors } from '../../Form'
 
@@ -23,7 +22,7 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
   const [subjects, setSubjects] = useState(new Map())
 
   useEffect(() => {
-    if (subjects.size > 0) {
+    if (subjects.size > 0 && !values.score_skip) {
       setValues({
         ...values,
         subject_ids: [...subjects.values()].map(subject => subject.id),
@@ -87,54 +86,85 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
     setSubjects(newSubjects)
   }, [])
 
+  useEffect(() => {
+    if (values.score_skip) {
+      setValues({
+        ...values,
+        subject_ids: [],
+        subjects_attributes: []
+      })
+    }
+  }, [values.score_skip])
+
   return (
     <>
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Год сдачи ЕГЭ *
-          </div>
+          <label className={form.checkbox2}>
+            <div className={form.label}>
+              <input
+                type="checkbox"
+                checked={values.score_skip}
+                name="score_skip"
+                onChange={onChange}
+              />
 
-          <input
-            type="text"
-            value={values.score_year}
-            name="score_year"
-            onChange={onChange}
-          />
+              Не заполнять данные по ЕГЭ, если вы не знаете своих результатов или не сдаёте их, а также если поступаете в магистратуру или аспирантуру
+            </div>
+          </label>
         </div>
-
-        <Errors errors={errors.score_year} />
       </div>
 
-      <div className={styles.subjects}>
-        <h4>
-          Экзамены и баллы
-        </h4>
+      {values.score_skip !== true &&
+        <>
+          <div className={form.item}>
+            <div className={form.input}>
+              <div className={form.label}>
+                Год сдачи ЕГЭ *
+              </div>
 
-        <p>
-          Необходимо указать минимум 3 предмета и их баллы ЕГЭ, максимум можно указать до 6 предметов
-        </p>
+              <input
+                type="text"
+                value={values.score_year}
+                name="score_year"
+                onChange={onChange}
+              />
+            </div>
 
-        {[...subjects.keys()].map(i =>
-          <div key={i} className={styles.subject}>
-            <Subject
-              key={i}
-              i={i}
-              subject={subjects.get(i)}
-              dictionaries={dictionaries}
-              errors={errors}
-              onSubjectChange={handleSubjectChange}
-              onSubjectDelete={handleSubjectDelete}
-            />
+            <Errors errors={errors.score_year} />
           </div>
-        )}
 
-        {subjects.size < 6 &&
-          <div className={styles.new} onClick={handleSubjectAdd}>
-            Добавить предмет
+          <div className={styles.subjects}>
+            <h4>
+              Экзамены и баллы
+            </h4>
+
+            <p>
+              Необходимо указать минимум 3 предмета и их баллы ЕГЭ, максимум можно указать до 6 предметов
+            </p>
+
+            {[...subjects.keys()].map(i =>
+              <div key={i} className={styles.subject}>
+                <Subject
+                  key={i}
+                  i={i}
+                  subject={subjects.get(i)}
+                  dictionaries={dictionaries}
+                  errors={errors}
+                  onSubjectChange={handleSubjectChange}
+                  onSubjectDelete={handleSubjectDelete}
+                />
+              </div>
+            )}
+
+            {subjects.size < 6 &&
+              <div className={styles.new} onClick={handleSubjectAdd}>
+                Добавить предмет
+              </div>
+            }
           </div>
-        }
-      </div>
+        </>
+      }
 
       <div className={form.item}>
         <div className={form.checkbox}>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import classNames from 'classnames'
+import { navigate } from '@reach/router'
 import { Helmet } from 'react-helmet'
 
 import Title from '../Title'
@@ -29,6 +30,10 @@ export default function Show ({ id, locale }) {
 
   const _fetch = async () => {
     const { data } = await axios.get(`/admissions/${id}.json`)
+
+    if (data.admission && data.admission.state !== 'done') {
+      navigate(`/admissions/${id}/edit`)
+    }
 
     setAdmission(data.admission)
     setDictionaries(data.dictionaries)
@@ -58,7 +63,7 @@ export default function Show ({ id, locale }) {
 
           <div className={styles.steps}>
             <div className={pages.container}>
-              <Steps admission={admission} locale={locale}/>
+              <Steps admission={admission} locale={locale} _fetch={_fetch} />
             </div>
           </div>
         </>

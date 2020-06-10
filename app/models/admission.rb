@@ -59,7 +59,7 @@ class Admission < ApplicationRecord
   ], coder: JSON, prefix: true
 
   store :score, accessors: %i[
-    year achievements
+    year achievements skip
   ], coder: JSON, prefix: true
 
   store :course, accessors: %i[
@@ -104,7 +104,7 @@ class Admission < ApplicationRecord
     presence: true, if: -> { step_after?(8) }
 
   validates :subjects, :score_year,
-    presence: true, if: -> { step_after?(9) }
+    presence: true, if: -> { step_after?(9) && score_skip != true }
 
   validates :directions,
     presence: true, if: -> { step_after?(10) }

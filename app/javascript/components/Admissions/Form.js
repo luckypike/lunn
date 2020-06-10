@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet'
 import Title from '../Title'
 import Steps from './Form/Steps'
 import { useForm } from '../Form'
-import { useI18n } from '../I18n'
+import { I18nContext, useI18n } from '../I18n'
 
 import StepOne from './Steps/StepOne'
 import StepTwo from './Steps/StepTwo'
@@ -103,122 +103,124 @@ export default function Form ({ id, locale }) {
   }
 
   return (
-    <div className={pages.beta}>
-      <Title
-        beta
-        h1={admission && I18n.t('admissions.edit.title', { number: admission.number })}
-      />
+    <I18nContext.Provider value={I18n}>
+      <div className={pages.beta}>
+        <Title
+          beta
+          h1={admission && I18n.t('admissions.edit.title', { number: admission.number })}
+        />
 
-      {admission &&
-        <>
-          <Helmet>
-            <title>{I18n.t('admissions.edit.title', { number: admission.number })}</title>
-          </Helmet>
+        {admission &&
+          <>
+            <Helmet>
+              <title>{I18n.t('admissions.edit.title', { number: admission.number })}</title>
+            </Helmet>
 
-          <div className={styles.steps}>
-            <div className={pages.container}>
-              <Steps admission={admission} locale={locale} _fetch={_fetch} />
-            </div>
-          </div>
-        </>
-      }
-
-      <div className={styles.root}>
-        <div className={styles.form}>
-          {values && admission &&
-            <>
-              <div className={styles.step}>
-                <p>
-                  Шаг {admission.state_key} из 11
-                </p>
-
-                <h3>{I18n.t(`admissions.steps.${admission.state}`)}</h3>
+            <div className={styles.steps}>
+              <div className={pages.container}>
+                <Steps admission={admission} locale={locale} _fetch={_fetch} />
               </div>
+            </div>
+          </>
+        }
 
-              <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
-                {admission.state === 'one' &&
-                  <StepOne onChange={handleInputChange} values={values} errors={errors} setValues={setValues} />
-                }
+        <div className={styles.root}>
+          <div className={styles.form}>
+            {values && admission &&
+              <>
+                <div className={styles.step}>
+                  <p>
+                    Шаг {admission.state_key} из 11
+                  </p>
 
-                {admission.state === 'two' &&
-                  <StepTwo
-                    onChange={handleInputChange}
-                    values={values}
-                    setValues={setValues}
-                    documents={admission.documents}
-                    dictionaries={dictionaries}
-                    errors={errors}
-                  />
-                }
+                  <h3>{I18n.t(`admissions.steps.${admission.state}`)}</h3>
+                </div>
 
-                {admission.state === 'three' &&
-                  <StepThree onChange={handleInputChange} values={values} errors={errors}/>
-                }
+                <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
+                  {admission.state === 'one' &&
+                    <StepOne onChange={handleInputChange} values={values} errors={errors} setValues={setValues} />
+                  }
 
-                {admission.state === 'four' &&
-                  <StepFour onChange={handleInputChange} values={values} errors={errors}/>
-                }
+                  {admission.state === 'two' &&
+                    <StepTwo
+                      onChange={handleInputChange}
+                      values={values}
+                      setValues={setValues}
+                      documents={admission.documents}
+                      dictionaries={dictionaries}
+                      errors={errors}
+                    />
+                  }
 
-                {admission.state === 'five' &&
-                  <StepFive onChange={handleInputChange} values={values} errors={errors}/>
-                }
+                  {admission.state === 'three' &&
+                    <StepThree onChange={handleInputChange} values={values} errors={errors}/>
+                  }
 
-                {admission.state === 'six' &&
-                  <StepSix onChange={handleInputChange} values={values} errors={errors}/>
-                }
+                  {admission.state === 'four' &&
+                    <StepFour onChange={handleInputChange} values={values} errors={errors}/>
+                  }
 
-                {admission.state === 'seven' &&
-                  <StepSeven
-                    onChange={handleInputChange}
-                    values={values}
-                    setValues={setValues}
-                    documents={admission.documents}
-                    errors={errors}/>
-                }
+                  {admission.state === 'five' &&
+                    <StepFive onChange={handleInputChange} values={values} errors={errors}/>
+                  }
 
-                {admission.state === 'eight' &&
-                  <StepEight onChange={handleInputChange} values={values} errors={errors}/>
-                }
+                  {admission.state === 'six' &&
+                    <StepSix onChange={handleInputChange} values={values} errors={errors}/>
+                  }
 
-                {admission.state === 'nine' &&
-                  <StepNine
-                    onChange={handleInputChange}
-                    values={values}
-                    setValues={setValues}
-                    dictionaries={dictionaries}
-                    errors={errors}/>
-                }
+                  {admission.state === 'seven' &&
+                    <StepSeven
+                      onChange={handleInputChange}
+                      values={values}
+                      setValues={setValues}
+                      documents={admission.documents}
+                      errors={errors}/>
+                  }
 
-                {admission.state === 'ten' &&
-                  <StepTen
-                    onChange={handleInputChange}
-                    values={values}
-                    setValues={setValues}
-                    dictionaries={dictionaries}
-                    errors={errors}
-                  />
-                }
+                  {admission.state === 'eight' &&
+                    <StepEight onChange={handleInputChange} values={values} errors={errors}/>
+                  }
 
-                {admission.state !== 'done' &&
-                  <div className={styles.actions}>
-                    {admission.state !== 'one' &&
-                      <div className={styles.prev}>
-                        <span onClick={handlePrevClick}>
-                          Назад
-                        </span>
+                  {admission.state === 'nine' &&
+                    <StepNine
+                      onChange={handleInputChange}
+                      values={values}
+                      setValues={setValues}
+                      dictionaries={dictionaries}
+                      errors={errors}/>
+                  }
+
+                  {admission.state === 'ten' &&
+                    <StepTen
+                      onChange={handleInputChange}
+                      values={values}
+                      setValues={setValues}
+                      dictionaries={dictionaries}
+                      errors={errors}
+                    />
+                  }
+
+                  {admission.state !== 'done' &&
+                    <div className={styles.actions}>
+                      {admission.state !== 'one' &&
+                        <div className={styles.prev}>
+                          <span onClick={handlePrevClick}>
+                            Назад
+                          </span>
+                        </div>
+                      }
+
+                      <div className={classNames(form.submit, styles.submit)}>
+                        <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main_big, { [buttons.pending]: pending })} disabled={pending} />
                       </div>
-                    }
-
-                    <div className={classNames(form.submit, styles.submit)}>
-                      <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main_big, { [buttons.pending]: pending })} disabled={pending} />
                     </div>
-                  </div>
-                }
-              </form>
-            </>
-          }
+                  }
+                </form>
+              </>
+            }
+          </div>
         </div>
       </div>
-    </div>
+    </I18nContext.Provider>
   )
 }
