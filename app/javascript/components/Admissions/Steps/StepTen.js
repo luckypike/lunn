@@ -37,7 +37,7 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
   useEffect(() => {
     const newDirections = new Map(directions)
 
-    if (values.subjects_attributes.length > 0) {
+    if (values.directions_attributes.length > 0) {
       values.directions_attributes.forEach((direction, i) => {
         newDirections.set(i, direction)
       })
@@ -55,7 +55,7 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
 
   const handleDirectionAdd = (e) => {
     const newDirections = new Map(directions)
-    newDirections.set(directions.size + 1, { course_id: '', form: '', basis: '' })
+    newDirections.set(directions.size, { course_id: '', form: '', basis: '' })
 
     setDirections(newDirections)
 
@@ -84,7 +84,7 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
         </h4>
 
         <p>
-          Можно указать до 3-ех направлений для поступления.
+          Можно указать до 3-х направлений для поступления
         </p>
 
         {directions.size > 0 &&
@@ -106,39 +106,28 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
         }
 
         {directions.size < 3 &&
-          <div className={styles.new} onClick={handleDirectionAdd}>
-            Добавить направление
+          <div className={styles.new}>
+            <span onClick={handleDirectionAdd}>
+              Добавить ещё одно направление
+            </span>
           </div>
         }
       </div>
 
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Целевой договор
-          </div>
+          <label>
+            <div className={form.label}>
+              Социальное положение
+            </div>
 
-          <select name="course_contract" onChange={onChange} value={values.course_contract}>
-            <option value="1">Нет</option>
-            <option value="2">Да</option>
-          </select>
-        </div>
-
-        <Errors errors={errors.course_contract} />
-      </div>
-
-      <div className={form.item}>
-        <div className={form.input}>
-          <div className={form.label}>
-            Социальное положение
-          </div>
-
-          <select name="course_status" onChange={onChange} value={values.course_status}>
-            <option value=""></option>
-            <option value="1">Сирота</option>
-            <option value="2">Инвалид</option>
-            <option value="3">Ветеран боевых действий</option>
-          </select>
+            <select name="course_status" onChange={onChange} value={values.course_status}>
+              <option value=""></option>
+              <option value="1">Сирота</option>
+              <option value="2">Инвалид</option>
+              <option value="3">Ветеран боевых действий</option>
+            </select>
+          </label>
         </div>
 
         <Errors errors={errors.course_status} />
@@ -146,32 +135,37 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
 
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Олимпиады
-          </div>
+          <label className={form.checkbox2}>
+            <div className={form.label}>
+              <input
+                type="checkbox"
+                name="course_contract"
+                checked={values.course_contract}
+                onChange={onChange}
+              />
 
-          <select name="course_olympiad" onChange={onChange} value={values.course_olympiad}>
-            <option value=""></option>
-            <option value="1">Победитель Всероссийской олимпиады</option>
-            <option value="2">Призер Всероссийской олимпиады</option>
-            <option value="3">Победитель олимпиады школьников</option>
-            <option value="4">Призер олимпиады школьников</option>
-          </select>
+              Целевой договор
+            </div>
+          </label>
         </div>
 
-        <Errors errors={errors.course_olympiad} />
+        <Errors errors={errors.course_contract} />
       </div>
 
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Военнообязанный
-          </div>
+          <label className={form.checkbox2}>
+            <div className={form.label}>
+              <input
+                type="checkbox"
+                name="course_military"
+                checked={values.course_military}
+                onChange={onChange}
+              />
 
-          <select name="course_military" onChange={onChange} value={values.course_military}>
-            <option value="1">Нет</option>
-            <option value="2">Да</option>
-          </select>
+              Военнообязанный
+            </div>
+          </label>
         </div>
 
         <Errors errors={errors.course_military} />
@@ -179,14 +173,18 @@ export default function StepTen ({ values, setValues, dictionaries, errors, onCh
 
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Пройдено обучение на курсах НГЛУ
-          </div>
+          <label className={form.checkbox2}>
+            <div className={form.label}>
+              <input
+                type="checkbox"
+                name="course_study"
+                checked={values.course_study}
+                onChange={onChange}
+              />
 
-          <select name="course_study" onChange={onChange} value={values.course_study}>
-            <option value="1">Нет</option>
-            <option value="2">Да</option>
-          </select>
+              Пройдено обучение на курсах НГЛУ
+            </div>
+          </label>
         </div>
 
         <Errors errors={errors.course_study} />
@@ -207,6 +205,7 @@ Direction.propTypes = {
 function Direction ({ direction, directionKey, dictionaries, errors, onDirectionChange, onDirectionDelete }) {
   const I18n = useContext(I18nContext)
 
+  // const [level, setLevel] = useState()
   const [item, setItem] = useState(direction)
 
   useEffect(() => {
@@ -249,7 +248,7 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
           </label>
         </div>
 
-        <Errors errors={errors[`directions[${directionKey}].admission_direction`]} />
+        <Errors errors={errors[`directions[${directionKey}].course`]} />
       </div>
 
       <div className={styles.row}>

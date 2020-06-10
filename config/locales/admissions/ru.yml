@@ -181,9 +181,7 @@ ru:
         2: Очно-заочная
         3: Заочная
 
-      course_contract:
-        1: Да
-        2: Нет
+      course_contract: Целевой договор
 
       course_basis:
         1: Бюджет
@@ -200,13 +198,9 @@ ru:
         3: Победитель олимпиады школьников
         4: Призер олимпиады школьников
 
-      course_military:
-        1: Да
-        2: Нет
+      course_military: Военнообязанный
 
-      course_study:
-        1: Да
-        2: Нет
+      course_study: Пройдено обучение на курсах НГЛУ
 
     documents:
       section:

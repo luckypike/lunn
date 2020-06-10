@@ -4,5 +4,6 @@ json.dictionaries do
   json.achievements AdmissionAchievement.all, :id, :label
   json.directions Node::Course.where(type: :course).includes(:field_spec, :field_level, :field_course_code).sort_by(&:title_sort) do |course|
     json.extract! course, :id, :title, :spec, :level, :course_code
+    json.label "#{t("courses.levels.#{course.level}")}. #{course.title} (#{course.course_code}) #{course.spec ? ". #{course.spec}" : ''}"
   end
 end

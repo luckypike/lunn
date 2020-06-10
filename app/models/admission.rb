@@ -96,7 +96,7 @@ class Admission < ApplicationRecord
   validates :school_type, :school_name, :school_graduation, :school_address,
     presence: true, if: -> { step_after?(6) }
 
-  validates :school_type, :school_education, :school_document_type,
+  validates :school_education, :school_document_type,
     :school_document_number, :school_document_date,
     presence: true, if: -> { step_after?(7) }
 
@@ -106,7 +106,7 @@ class Admission < ApplicationRecord
   validates :subjects, :score_year,
     presence: true, if: -> { step_after?(9) && score_skip != true }
 
-  validates :directions,
+  validates :directions, :course_contract,
     presence: true, if: -> { step_after?(10) }
 
   after_initialize do

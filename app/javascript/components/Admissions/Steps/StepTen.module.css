@@ -11,5 +11,17 @@
 }
 
 .new {
-  composes: new from './StepNine.module.css';
+  margin-top: calc(var(--yr) * var(--s3));
+
+  & span {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: color-mod(var(--pr_color) a(0.4));
+    transition: text-decoration 0.3s, color 0.3s;
+
+    &:hover {
+      color: var(--pr_color);
+      text-decoration-color: var(--pr_color);
+    }
+  }
 }

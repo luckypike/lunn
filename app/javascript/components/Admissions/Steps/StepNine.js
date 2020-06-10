@@ -167,6 +167,24 @@ export default function StepNine ({ values, dictionaries, errors, onChange, setV
       }
 
       <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Олимпиады
+          </div>
+
+          <select name="course_olympiad" onChange={onChange} value={values.course_olympiad}>
+            <option value=""></option>
+            <option value="1">Победитель Всероссийской олимпиады</option>
+            <option value="2">Призер Всероссийской олимпиады</option>
+            <option value="3">Победитель олимпиады школьников</option>
+            <option value="4">Призер олимпиады школьников</option>
+          </select>
+        </div>
+
+        <Errors errors={errors.course_olympiad} />
+      </div>
+
+      <div className={form.item}>
         <div className={form.checkbox}>
           <div className={form.label}>
             Индивидуальные достижения

@@ -44,6 +44,11 @@ export default function Show ({ id, locale }) {
       `/admissions/${id}/confirm.json`
     ).then(res => {
       _fetch()
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     })
   }
 
@@ -271,6 +276,11 @@ export default function Show ({ id, locale }) {
                 )}
                 <div>{I18n.t('admissions.labels.score_year')}: {admission.score_year}</div>
                 <div>{I18n.t('admissions.labels.score_achievements')}: {dictionaries.achievements.filter(a => admission.score_achievements.includes(a.id)).map(a => a.label).join(', ')}</div>
+
+                {admission.course_olympiad !== '' &&
+                  <div>{I18n.t('admissions.labels.course_olympiad')}: {I18n.t(`admissions.options.course_olympiad.${admission.course_olympiad}`)}</div>
+                }
+
               </div>
             </div>
 
@@ -288,20 +298,21 @@ export default function Show ({ id, locale }) {
                     <br />
                   </React.Fragment>
                 )}
+
                 {admission.course_contract !== '' &&
-                  <div>{I18n.t('admissions.labels.course_contract')}: {I18n.t(`admissions.options.course_contract.${admission.course_contract}`)}</div>
+                  <div>{I18n.t('admissions.labels.course_contract')}: Да</div>
                 }
+
                 {admission.course_status !== '' &&
                   <div>{I18n.t('admissions.labels.course_status')}: {I18n.t(`admissions.options.course_status.${admission.course_status}`)}</div>
                 }
-                {admission.course_olympiad !== '' &&
-                  <div>{I18n.t('admissions.labels.course_olympiad')}: {I18n.t(`admissions.options.course_olympiad.${admission.course_olympiad}`)}</div>
-                }
+
                 {admission.course_military !== '' &&
-                  <div>{I18n.t('admissions.labels.course_military')}: {I18n.t(`admissions.options.course_military.${admission.course_military}`)}</div>
+                  <div>{I18n.t('admissions.labels.course_military')}: Да</div>
                 }
+
                 {admission.course_study !== '' &&
-                  <div>{I18n.t('admissions.labels.course_contract')}: {I18n.t(`admissions.options.course_study.${admission.course_study}`)}</div>
+                  <div>{I18n.t('admissions.labels.course_study')}: Да</div>
                 }
               </div>
             </div>
