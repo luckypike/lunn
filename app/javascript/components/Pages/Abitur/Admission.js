@@ -19,9 +19,9 @@ export default function Admission () {
             Как поступить в НГЛУ?
           </a>
 
-          {/* <a className={styles.button} href="/admissions/new">
+          <a className={styles.button} href="/admissions/new">
             Подать документы
-          </a> */}
+          </a>
         </p>
       </div>
     </div>
