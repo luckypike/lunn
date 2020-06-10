@@ -1,14 +1,27 @@
 .root {
-  @media (--l) {
-    display: grid;
+  display: grid;
+  grid-gap: calc(var(--yr) * var(--s3));
+
+  @media (--m) {
     grid-template-columns: 1fr 1fr;
     grid-gap: calc(var(--xr) * 2);
   }
 }
 
+/* .root {
+  & h2 {
+    @media (--m) {
+      padding-right: 50%;
+    }
+  }
+} */
+
 .desc {
   composes: bt from '../../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * var(--s3));
+}
+
+.how {
+  margin-bottom: calc(var(--yr) * var(--s4));
 }
 
 .address {
@@ -34,15 +47,5 @@
 
   &:not(:last-child) {
     margin-right: var(--xr);
-  }
-}
-
-.action {
-  & a {
-    margin-bottom: calc(var(--yr) * var(--s2));
-
-    @media (--s) {
-      margin-bottom: 0;
-    }
   }
 }
