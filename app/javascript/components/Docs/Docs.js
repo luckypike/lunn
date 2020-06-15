@@ -24,7 +24,7 @@ export default function Docs ({ docs, locale }) {
 
       <ul className={styles.docs}>
         {docs.map(doc =>
-          <li key={doc.fid}>
+          <li key={`${doc.fid}-${doc.delta}`}>
             <a href={doc.path} className={styles.doc} itemProp={doc.wrapper}>
               <div className={styles.title}>
                 {doc.title ? doc.title : doc.filename}

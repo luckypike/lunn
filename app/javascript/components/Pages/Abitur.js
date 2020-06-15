@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // import classNames from 'classnames'
+import { deserialize } from 'jsonapi-deserializer'
 
 import Title from '../Title'
 import Docs from '../Docs/Docs'
@@ -18,11 +19,13 @@ import Top from './Abitur/Top.jpg'
 Divisions.propTypes = {
   node: PropTypes.object,
   loaf: PropTypes.array,
-  docs: PropTypes.array,
+  docs: PropTypes.object,
   locale: PropTypes.string
 }
 
-export default function Divisions ({ node, loaf, docs, locale }) {
+export default function Divisions ({ node, loaf, docs: docsJson, locale }) {
+  const docs = deserialize(docsJson)
+
   return (
     <div className={pages.beta}>
       {node &&
