@@ -18,7 +18,7 @@ export default function StepSix ({ values, errors, onChange }) {
         <div className={form.input}>
           <label>
             <div className={form.label}>
-              Туп учебного заведения *
+              Тип учебного заведения *
             </div>
 
             <select name="school_type" onChange={onChange} value={values.school_type}>

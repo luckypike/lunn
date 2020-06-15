@@ -77,23 +77,6 @@ export default function StepSeven ({ values, documents, errors, onChange, setVal
 
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Документ об образовании *
-          </div>
-
-          <Errors errors={errors.documents} />
-
-          <Documents
-            files={documents}
-            section='school'
-            values={values}
-            setValues={setValues}
-          />
-        </div>
-      </div>
-
-      <div className={form.item}>
-        <div className={form.input}>
           <label>
             <div className={form.label}>
               Дата выдачи *
@@ -111,6 +94,67 @@ export default function StepSeven ({ values, documents, errors, onChange, setVal
         </div>
 
         <Errors errors={errors.school_document_date} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Скан/фото документа об образовании *
+          </div>
+
+          <div className={form.hint}>
+            Для иностранных граждан: скан/фото перевода документа об образовании на русский язык и скан/фото свидетельства о признании иностранного образования
+          </div>
+
+          <Errors errors={errors.documents} />
+
+          <Documents
+            files={documents}
+            section='school'
+            values={values}
+            setValues={setValues}
+          />
+        </div>
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Награда
+          </div>
+
+          <select name="school_merit" onChange={onChange} value={values.school_merit}>
+            <option value=""></option>
+            <option value="1">Аттестат с отличием</option>
+            <option value="2">Диплом с отличием</option>
+            <option value="3">Золотая медаль</option>
+            <option value="4">Серебряная медаль</option>
+          </select>
+        </div>
+
+        <Errors errors={errors.school_merit} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Изучаемый ранее иностранный язык *
+          </div>
+
+          <select name="school_language" onChange={onChange} value={values.school_language}>
+            <option value=""></option>
+            <option value="1">Английский</option>
+            <option value="2">Немецкий</option>
+            <option value="3">Французский</option>
+            <option value="4">Испанский</option>
+            <option value="5">Итальянский</option>
+            <option value="6">Китайский</option>
+            <option value="7">Японский</option>
+            <option value="8">Другой</option>
+          </select>
+        </div>
+
+        <Errors errors={errors.school_language} />
       </div>
 
       <div className={form.item}>

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import Select from 'react-select'
 
 import { Errors } from '../../Form'
+import { I18nContext } from '../../I18n'
 
 import styles from './StepNine.module.css'
 import form from '../../FormStatic.module.css'
@@ -10,319 +12,282 @@ import buttons from '../../Buttons.module.css'
 
 StepNine.propTypes = {
   values: PropTypes.object,
+  setValues: PropTypes.func,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   onChange: PropTypes.func,
-  setValues: PropTypes.func
+  onSelectChange: PropTypes.func
 }
 
-export default function StepNine ({ values, dictionaries, errors, onChange, setValues }) {
+export default function StepNine ({ values, setValues, dictionaries, errors, onChange, onSelectChange }) {
   if (!dictionaries) return null
 
-  const [subjects, setSubjects] = useState(new Map())
+  const [directions, setDirections] = useState(new Map())
 
   useEffect(() => {
-    if (subjects.size > 0 && !values.score_skip) {
+    if (directions.size > 0) {
       setValues({
         ...values,
-        subject_ids: [...subjects.values()].map(subject => subject.id),
-        subjects_attributes: [...subjects.values()].map(subject => (subject))
+        direction_ids: [...directions.values()].map(direction => direction.id),
+        directions_attributes: [...directions.values()].map(direction => (direction))
       })
     }
-  }, [subjects])
-
-  const handleSubjectAdd = e => {
-    e.preventDefault()
-
-    const newSubjects = new Map(subjects)
-
-    newSubjects.set(subjects.size + 1, {
-      subject: '', ege: '', grade: ''
-    })
-
-    setSubjects(newSubjects)
-  }
-
-  const handleSubjectDelete = (key) => {
-    const newSubjects = new Map(subjects)
-    newSubjects.delete(key)
-
-    setSubjects(newSubjects)
-  }
-
-  const handleSubjectChange = (i, subject) => {
-    const newSubjects = new Map(subjects)
-    newSubjects.set(i, subject)
-
-    setSubjects(newSubjects)
-  }
-
-  const handleAchievementsChange = (item) => {
-    if (values.score_achievements.includes(item)) {
-      setValues({ ...values, score_achievements: [...values.score_achievements.filter(id => id !== item)] })
-    } else {
-      setValues({ ...values, score_achievements: [...values.score_achievements, item] })
-    }
-  }
+  }, [directions])
 
   useEffect(() => {
-    const newSubjects = new Map(subjects)
+    const newDirections = new Map(directions)
 
-    if (values.subjects_attributes.length > 0) {
-      values.subjects_attributes.forEach((subject, i) => {
-        newSubjects.set(i, subject)
+    if (values.directions_attributes.length > 0) {
+      values.directions_attributes.forEach((direction, i) => {
+        newDirections.set(i, direction)
       })
     }
 
-    const j = newSubjects.size
-    if (j < 3) {
-      Array.from(Array(3 - j)).forEach((_, i) => {
-        newSubjects.set(j + i, {
-          subject: '', ege: '', grade: ''
-        })
+    const j = newDirections.size
+    if (j < 1) {
+      newDirections.set(0, {
+        course_id: '', form: '', basis: ''
       })
     }
 
-    setSubjects(newSubjects)
+    setDirections(newDirections)
   }, [])
 
-  useEffect(() => {
-    if (values.score_skip) {
-      setValues({
-        ...values,
-        subject_ids: [],
-        subjects_attributes: []
-      })
-    }
-  }, [values.score_skip])
+  const handleDirectionAdd = (e) => {
+    const newDirections = new Map(directions)
+    newDirections.set(directions.size, { course_id: '', form: '', basis: '' })
+
+    setDirections(newDirections)
+
+    e.preventDefault()
+  }
+
+  const handleDirectionDelete = (key) => {
+    const newDirections = new Map(directions)
+    newDirections.delete(key)
+
+    setDirections(newDirections)
+  }
+
+  const handleDirectionChange = (direction, directionKey) => {
+    const newDirections = new Map(directions)
+    newDirections.set(directionKey, direction)
+
+    setDirections(newDirections)
+  }
 
   return (
     <>
+      <div className={styles.directions}>
+        <h4>
+          Направления
+        </h4>
+
+        <p>
+          Можно указать до 3-х направлений для поступления
+        </p>
+
+        {directions.size > 0 &&
+          <>
+            {[...directions.keys()].map(key =>
+              <div key={key} className={styles.direction}>
+                <Direction
+                  key={key}
+                  directionKey={key}
+                  direction={directions.get(key)}
+                  dictionaries={dictionaries}
+                  errors={errors}
+                  onDirectionChange={handleDirectionChange}
+                  onDirectionDelete={handleDirectionDelete}
+                />
+              </div>
+            )}
+          </>
+        }
+
+        {directions.size < 3 &&
+          <div className={styles.new}>
+            <span onClick={handleDirectionAdd}>
+              Добавить ещё одно направление
+            </span>
+          </div>
+        }
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <label>
+            <div className={form.label}>
+              Основание для поступления на места в рамках особой квоты
+            </div>
+
+            <select name="course_status" onChange={onChange} value={values.course_status}>
+              <option value=""></option>
+              <option value="1">Сирота</option>
+              <option value="2">Инвалид</option>
+              <option value="3">Ветеран боевых действий</option>
+            </select>
+          </label>
+        </div>
+
+        <Errors errors={errors.course_status} />
+      </div>
+
       <div className={form.item}>
         <div className={form.input}>
           <label className={form.checkbox2}>
             <div className={form.label}>
               <input
                 type="checkbox"
-                checked={values.score_skip}
-                name="score_skip"
+                name="course_contract"
+                checked={values.course_contract}
                 onChange={onChange}
               />
 
-              Не заполнять данные по ЕГЭ, если вы не знаете своих результатов или не сдаёте их, а также если поступаете в магистратуру или аспирантуру
+              Целевой договор
             </div>
           </label>
         </div>
+
+        <Errors errors={errors.course_contract} />
       </div>
-
-      {values.score_skip !== true &&
-        <>
-          <div className={styles.subjects}>
-            <h4>
-              Экзамены и баллы
-            </h4>
-
-            <p>
-              Необходимо указать минимум 3 предмета и их баллы ЕГЭ, максимум можно указать до 6 предметов
-            </p>
-
-            {[...subjects.keys()].map(i =>
-              <div key={i} className={styles.subject}>
-                <Subject
-                  key={i}
-                  i={i}
-                  subject={subjects.get(i)}
-                  dictionaries={dictionaries}
-                  errors={errors}
-                  onSubjectChange={handleSubjectChange}
-                  onSubjectDelete={handleSubjectDelete}
-                />
-              </div>
-            )}
-
-            {subjects.size < 6 &&
-              <div className={styles.new} onClick={handleSubjectAdd}>
-                Добавить предмет
-              </div>
-            }
-          </div>
-        </>
-      }
 
       <div className={form.item}>
         <div className={form.input}>
-          <div className={form.label}>
-            Олимпиады
-          </div>
+          <label className={form.checkbox2}>
+            <div className={form.label}>
+              <input
+                type="checkbox"
+                name="course_military"
+                checked={values.course_military}
+                onChange={onChange}
+              />
 
-          <select name="course_olympiad" onChange={onChange} value={values.course_olympiad}>
-            <option value=""></option>
-            <option value="1">Победитель Всероссийской олимпиады</option>
-            <option value="2">Призер Всероссийской олимпиады</option>
-            <option value="3">Победитель олимпиады школьников</option>
-            <option value="4">Призер олимпиады школьников</option>
-          </select>
+              Военнообязанный
+            </div>
+          </label>
         </div>
 
-        <Errors errors={errors.course_olympiad} />
+        <Errors errors={errors.course_military} />
       </div>
 
       <div className={form.item}>
-        <div className={form.checkbox}>
-          <div className={form.label}>
-            Индивидуальные достижения
-          </div>
+        <div className={form.input}>
+          <label className={form.checkbox2}>
+            <div className={form.label}>
+              <input
+                type="checkbox"
+                name="course_study"
+                checked={values.course_study}
+                onChange={onChange}
+              />
 
-          {dictionaries.achievements &&
-            <div className={form.input}>
-              {dictionaries.achievements.map(achievement =>
-                <div key={achievement.id} className={form.checkbox}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name={achievement.id}
-                      disabled={values.score_achievements.length > 5 && !values.score_achievements.includes(achievement.id)}
-                      checked={values.score_achievements.includes(achievement.id)}
-                      onChange={() => handleAchievementsChange(parseInt(achievement.id))} />
-                    {achievement.label}
-                  </label>
-                </div>
-              )}
+              Пройдено обучение на курсах НГЛУ
             </div>
-          }
+          </label>
         </div>
 
-        {errors.audiences &&
-          <Errors errors={errors.audiences}/>
-        }
+        <Errors errors={errors.course_study} />
       </div>
     </>
   )
 }
 
-Subject.propTypes = {
-  subject: PropTypes.object,
-  onSubjectChange: PropTypes.func,
-  onSubjectDelete: PropTypes.func,
+Direction.propTypes = {
+  direction: PropTypes.object,
+  directionKey: PropTypes.number,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
-  i: PropTypes.number
+  onDirectionChange: PropTypes.func,
+  onDirectionDelete: PropTypes.func
 }
 
-function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, errors, i }) {
-  const [values, setValues] = useState({ ...subject })
+function Direction ({ direction, directionKey, dictionaries, errors, onDirectionChange, onDirectionDelete }) {
+  const I18n = useContext(I18nContext)
+
+  // const [level, setLevel] = useState()
+  const [item, setItem] = useState(direction)
 
   useEffect(() => {
-    onSubjectChange && onSubjectChange(i, values)
-  }, [values])
+    onDirectionChange && onDirectionChange(item, directionKey)
+  }, [item])
 
   const handleInputChange = ({ target: { name, value } }) => {
-    setValues({ ...values, [name]: value })
+    setItem({ ...item, [name]: value })
+  }
+
+  const handleSelectChange = (name, value) => {
+    setItem({ ...item, [name]: value })
   }
 
   return (
     <>
       <div className={form.item}>
-
-        <div className={form.input}>
-          { i > 2 &&
-            <button className={classNames(buttons.main, form.delete)} onClick={() => onSubjectDelete(i)}>
+        <div className={form.select}>
+          { directionKey > 1 &&
+            <button className={classNames(buttons.main, form.delete)} onClick={() => onDirectionDelete(directionKey)}>
               Удалить
             </button>
           }
 
           <label>
             <div className={form.label}>
-              Название предмета *
+              Направление/профиль *
             </div>
 
-            <select name="subject" onChange={handleInputChange} value={values.subject}>
-              <option value=""></option>
-              <option value="1">Математика</option>
-              <option value="2">Русский язык</option>
-              <option value="3">Иностранный язык (английский)</option>
-              <option value="4">Иностранный язык (немецкий)</option>
-              <option value="5">Иностранный язык (французский)</option>
-              <option value="6">Иностранный язык (итальянский)</option>
-              <option value="7">Иностранный язык (испанский)</option>
-              <option value="8">Иностранный язык (китайский)</option>
-              <option value="9">Иностранный язык (японский)</option>
-              <option value="10">История</option>
-              <option value="11">Обществознание</option>
-              <option value="12">Литература</option>
-            </select>
+            <Select
+              classNamePrefix="react-select"
+              value={dictionaries.directions.find(d => d.id === item.course_id)}
+              getOptionValue={option => option.id}
+              getOptionLabel={option => `${I18n.t(`courses.levels.${option.level}`)}. ${option.title} (${option.course_code}).${option.spec ? ` ${option.spec}.` : ''}`}
+              noOptionsMessage={() => 'Ничего не найдено'}
+              options={dictionaries.directions}
+              placeholder="Выберите направление.."
+              onChange={value => handleSelectChange('course_id', value.id)}
+            />
           </label>
         </div>
 
-        <Errors errors={errors[`subjects[${i}].subject`]} />
-      </div>
-
-      <div className={form.item}>
-        <div className={form.input}>
-          <label>
-            <div className={form.label}>
-              Год сдачи *
-            </div>
-
-            <select name="year" onChange={handleInputChange} value={values.year}>
-              <option value=""></option>
-              <option value="2016">2016</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-            </select>
-          </label>
-        </div>
-
-        {/* <div className={form.hint}>2016 — 2020</div> */}
-
-        <Errors errors={errors[`subjects[${i}].year`]} />
+        <Errors errors={errors[`directions[${directionKey}].course`]} />
       </div>
 
       <div className={styles.row}>
         <div className={form.item}>
-          <div className={form.input}>
-            <label>
-              <div className={form.label}>
-                Балл ЕГЭ *
-              </div>
 
-              <input
-                type="text"
-                value={values.ege}
-                name="ege"
-                onChange={handleInputChange}
-              />
-            </label>
+          <div className={form.input}>
+            <div className={form.label}>
+              Форма обучения *
+            </div>
+
+            <select name="form" onChange={handleInputChange} value={item.form}>
+              <option value=""></option>
+              <option value="1">Очная</option>
+              <option value="2">Очно-заочная</option>
+              <option value="3">Заочная</option>
+            </select>
           </div>
 
-          <div className={form.hint}>1 — 100</div>
-
-          <Errors errors={errors[`subjects[${i}].ege`]} />
+          <Errors errors={errors[`directions[${directionKey}].form`]} />
         </div>
 
         <div className={form.item}>
           <div className={form.input}>
-            <label>
-              <div className={form.label}>
-                Оценка из аттестата *
-              </div>
+            <div className={form.label}>
+              Финансовая основа *
+            </div>
 
-              <input
-                type="text"
-                value={values.grade}
-                name="grade"
-                onChange={handleInputChange}
-              />
-            </label>
+            <select name="basis" onChange={handleInputChange} value={item.basis}>
+              <option value=""></option>
+              <option value="1">Бюджет</option>
+              <option value="2">Фин. договор</option>
+            </select>
           </div>
 
-          <div className={form.hint}>3 — 5</div>
-
-          <Errors errors={errors[`subjects[${i}].grade`]} />
+          <Errors errors={errors[`directions[${directionKey}].basis`]} />
         </div>
       </div>
+
+      <br />
     </>
   )
 }

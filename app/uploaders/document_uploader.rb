@@ -45,13 +45,17 @@ class DocumentUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  process :rotate_according_to_exif
-  process resize_to_limit: [5000, 5000]
-  process :optimize
+  process :rotate_according_to_exif, if: :image?
+  process resize_to_limit: [5000, 5000], if: :image?
+  process :optimize, if: :image?
 
   version :thumb do
     process resize_to_fit: [200, 200]
     process convert: [:jpg, 0]
+
+    def full_filename(_for_file = model.logo.file)
+      "#{@model.uuid}_thumb.jpg"
+    end
   end
 
   def extension_whitelist
@@ -68,5 +72,11 @@ class DocumentUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
     "#{@model.uuid}.#{file.extension}"
+  end
+
+  protected
+
+  def image?(new_file)
+    new_file.content_type&.start_with?('image')
   end
 end

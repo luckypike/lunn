@@ -81,7 +81,7 @@ export default function Show ({ id, locale }) {
               <>
                 <div className={styles.header}>
                   <p>
-                    Шаг 11 из 11
+                    Шаг 10 из 10
                   </p>
 
                   <h3>Проверка данных</h3>
@@ -240,15 +240,7 @@ export default function Show ({ id, locale }) {
                 }
 
                 <Documents documents={admission.documents.filter(d => d.section === 'school')} locale={locale}/>
-              </div>
-            </div>
 
-            <div className={styles.step}>
-              <div className={styles.stepTitle}>
-                <h4>{I18n.t('admissions.steps.eight')}</h4>
-              </div>
-
-              <div className={styles.stepInfo}>
                 {admission.school_merit &&
                   <div>{I18n.t('admissions.labels.school_merit')}: {I18n.t(`admissions.options.school_merit.${admission.school_merit}`)}</div>
                 }

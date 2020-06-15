@@ -1,7 +1,7 @@
 class Admission < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
-  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, done: 99 }
+  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, done: 99 }
 
   enum status: { filling: 1, processing: 2, accepted: 4 } do
     event :confirm do
@@ -98,10 +98,8 @@ class Admission < ApplicationRecord
 
   validates :school_education, :school_document_type,
     :school_document_number, :school_document_date,
+    :school_language,
     presence: true, if: -> { step_after?(7) }
-
-  validates :school_language,
-    presence: true, if: -> { step_after?(8) }
 
   validates :subjects,
     presence: true, if: -> { step_after?(9) && score_skip != true }

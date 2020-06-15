@@ -35,7 +35,7 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
             getOptionValue={option => option.id}
             noOptionsMessage={() => 'Ничего не найдено'}
             options={dictionaries.citizenships}
-            placeholder="Выберите граданство.."
+            placeholder="Выберите гражданство.."
             onChange={value => setValues({ ...values, document_nationality: value.id })}
           />
         </div>
@@ -138,14 +138,18 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>
-            Паспорт *
+            Скан/фото паспорта *
+          </div>
+
+          <div className={form.hint}>
+            Для иностранных граждан: скан/фото перевода паспорта на русский язык
           </div>
 
           <Errors errors={errors.documents} />
 
           <Documents
             files={documents}
-            section='document'
+            section="document"
             values={values}
             setValues={setValues}
           />
