@@ -10,6 +10,8 @@ import { useForm } from '../Form'
 import styles from './Documents.module.css'
 import form from '../Form.module.css'
 
+import Loader from '!svg-react-loader?!../../images/oval.svg'
+
 Documents.propTypes = {
   files: PropTypes.array,
   section: PropTypes.string,
@@ -123,7 +125,7 @@ File.propTypes = {
 }
 
 function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectionChanged }) {
-  const { cancelToken } = useForm()
+  const { cancelToken, errors, setErrors } = useForm()
 
   const [upload, setUpload] = useState(0)
   const [title, setTitle] = useState(initFile.name || initFile.title)
@@ -160,8 +162,8 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
       await axios.post(
         '/admission_documents.json',
         formData,
-        { cancelToken: cancelToken.current.token },
         {
+          cancelToken: cancelToken.current.token,
           onUploadProgress: progressEvent => {
             const p = Math.floor((progressEvent.loaded * 100) / progressEvent.total)
             setUpload(p)
@@ -170,13 +172,17 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
       ).then(({ data }) => {
         setUpload(100)
         handleFileAttached(data)
-      }).catch(_error => {
-        // setErrors(error.response.data)
+      }).catch(error => {
+        setErrors(error.response.data)
       })
     }
 
     if (!isAttached()) {
       _attach()
+    }
+
+    return () => {
+      cancelToken.current.cancel()
     }
   }, [])
 
@@ -198,6 +204,10 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
 
       {!isAttached() &&
         <div className={styles.row}>
+          <div className={styles.thumb}>
+            <Loader className={styles.loader} />
+          </div>
+
           <div className={styles.title}>
             {title}
           </div>

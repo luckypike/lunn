@@ -51,10 +51,11 @@ class DocumentUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process resize_to_fit: [200, 200]
+    process convert: [:jpg, 0]
   end
 
   def extension_whitelist
-    %w[jpg jpeg gif png]
+    %w[jpg jpeg gif png pdf]
   end
 
   # def store_dimensions

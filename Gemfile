@@ -13,6 +13,7 @@ gem 'react-rails'
 gem 'webpacker'
 
 gem 'carrierwave'
+gem 'carrierwave-i18n'
 gem 'mini_magick'
 
 gem 'slim-rails'

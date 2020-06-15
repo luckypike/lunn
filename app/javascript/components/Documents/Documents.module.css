@@ -69,6 +69,16 @@
     padding-top: calc(1 / 1 * 100%);
   }
 
+  & .loader {
+    display: block;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   & img {
     display: block;
     position: absolute;
@@ -99,6 +109,13 @@
     right: 0;
     z-index: -2;
   }
+}
+
+.title {
+  composes: mt from '../Fonts.module.css';
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bar {
