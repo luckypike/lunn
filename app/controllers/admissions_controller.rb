@@ -20,7 +20,7 @@ class AdmissionsController < ApplicationController
 
   def export
     respond_to do |format|
-      format.csv { send_data Admission.done.to_csv, filename: "export.csv" }
+      format.csv { send_data Admission.done.processing.to_csv, filename: 'export.csv' }
     end
   end
 

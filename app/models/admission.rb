@@ -132,23 +132,6 @@ class Admission < ApplicationRecord
     id
   end
 
-  # Убрать отсюда если есть class << self
-  def self.to_csv
-    attributes = %i[id] + allowed_params + %i[created_at]
-
-    options = %i[identity_sex document_type school_type school_education school_document_type
-      school_diploma_type school_merit school_language course_form course_basis course_status
-      course_olympiad]
-
-    CSV.generate(headers: true) do |csv|
-      csv << attributes
-
-      all.each do |admission|
-        csv << attributes.map{ |attr| options.include?(attr.to_sym) ? (admission.send(attr.to_sym).present? ? I18n.t("admissions.options.#{attr.to_sym}.#{admission.send(attr.to_sym)}") : '') : admission.send(attr) }
-      end
-    end
-  end
-
   class << self
     def allowed_params
       Admission.stored_attributes[:agreements].map { |key| "agreements_#{key}" } +
@@ -164,6 +147,39 @@ class Admission < ApplicationRecord
         %i[state] + [subject_ids: []] + [subjects_attributes: %i[id subject ege grade year]] +
         [document_ids: []] + [documents_attributes: %i[id title uuid section]] +
         [direction_ids: []] + [directions_attributes: %i[id course_id form basis]]
+    end
+
+    def to_csv
+      attributes = %i[id created_at] + Admission.stored_attributes.map { |k, v| v.map { |a| "#{k}_#{a}".to_sym } }.flatten
+
+      options = %i[
+        identity_sex
+        document_type
+        parents_relation_degree_first parents_relation_degree_second
+        school_type school_education school_document_type
+        school_diploma_type school_merit school_language
+        course_status course_olympiad
+      ]
+
+      CSV.generate(headers: true) do |csv|
+        csv << attributes
+
+        all.find_each do |admission|
+          csv << attributes.map do |attr|
+            next if attr == :score_achievements
+
+            value = admission.send(attr)
+
+            if options.include?(attr)
+              value = value.present? ? I18n.t("admissions.options.#{attr}.#{value}") : ''
+            end
+
+            value = value ? 'Да' : 'Нет' if [true, false].include? value
+
+            value
+          end
+        end
+      end
     end
   end
 
