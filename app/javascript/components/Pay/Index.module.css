@@ -3,5 +3,11 @@
 }
 
 .search {
-  margin-top: calc(var(--yr) * var(--s5));
+  background-color: var(--sp_color);
+  padding-bottom: calc(var(--yr) * var(--s6));
+}
+
+.text {
+  margin-top: calc(var(--yr) * var(--s6));
+  max-width: 40rem;
 }

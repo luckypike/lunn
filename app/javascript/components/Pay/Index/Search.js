@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import Pay from '../Pay'
 
-import { Errors, useForm } from '../../Form'
+import { useForm } from '../../Form'
 
 import styles from './Search.module.css'
 import form from '../../FormStatic.module.css'
@@ -15,12 +15,12 @@ export default function Search () {
   const {
     values,
     // setValues,
-    saved,
-    setSaved,
+    // saved,
+    // setSaved,
     handleInputChange,
-    errors,
+    // errors,
     pending,
-    setErrors,
+    // setErrors,
     onSubmit,
     cancelToken
   } = useForm({ contract: '', last_name: '' })
@@ -45,18 +45,6 @@ export default function Search () {
 
   return (
     <div className={styles.root}>
-      <h2>
-        Поиск счетов
-      </h2>
-
-      <p>
-        Укажите ваши номер договора и фамилию чтобы найти ваши счета
-      </p>
-
-      {/* <p>
-        {JSON.stringify(values)}
-      </p> */}
-
       <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
         <div className={form.item}>
           <div className={form.input}>
@@ -66,6 +54,7 @@ export default function Search () {
               </div>
 
               <input
+                type="text"
                 value={values.contract}
                 name="contract"
                 onChange={handleInputChange}
@@ -82,6 +71,7 @@ export default function Search () {
               </div>
 
               <input
+                type="text"
                 value={values.last_name}
                 name="last_name"
                 onChange={handleInputChange}

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Title from '../Title'
+import Text from './Index/Text'
+import Intro from './Index/Intro'
 import { useI18n } from '../I18n'
 
 import Search from './Index/Search'
@@ -23,13 +25,20 @@ export default function Index ({ locale }) {
         h1={I18n.t('pay.index.title')}
       />
 
+      <div className={styles.search}>
+        <div className={pages.container}>
+          <Intro />
+
+          <Search />
+        </div>
+      </div>
+
       <div className={pages.container}>
         {/* <div className={styles.root}>
           QWE
         </div> */}
-
-        <div className={styles.search}>
-          <Search />
+        <div className={styles.text}>
+          <Text />
         </div>
       </div>
     </div>
