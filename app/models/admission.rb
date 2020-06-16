@@ -150,7 +150,13 @@ class Admission < ApplicationRecord
     end
 
     def to_csv
-      attributes = %i[id created_at] + Admission.stored_attributes.map { |k, v| v.map { |a| "#{k}_#{a}".to_sym } }.flatten
+      achievements = AdmissionAchievement.all.map{|a| [a.id, a.title]}.to_h
+      courses = Node::Course.where(type: :course).map{|c| [c.nid, c.label]}.to_h
+
+      attributes = %i[id created_at] + Admission.stored_attributes.map { |k, v| v.map { |a| "#{k}_#{a}".to_sym } }.flatten +
+      (0..5).to_a.map{|subj| ["subject_subject_#{subj}".to_sym, "subject_year_#{subj}".to_sym, "subject_ege_#{subj}".to_sym, "subject_grade_#{subj}".to_sym] }.flatten +
+      (0..5).to_a.map{|achievement| ["achievement_achievement_#{achievement}".to_sym] }.flatten +
+      (0..2).to_a.map{|dir| ["direction_course_#{dir}".to_sym, "direction_form_#{dir}".to_sym, "direction_basis_#{dir}".to_sym] }.flatten
 
       options = %i[
         identity_sex
@@ -165,16 +171,54 @@ class Admission < ApplicationRecord
         csv << attributes
 
         all.find_each do |admission|
+          subjects = admission.subjects
+          directions = admission.directions
+
+
           csv << attributes.map do |attr|
             next if attr == :score_achievements
 
-            value = admission.send(attr)
+            if attr.to_s.include?('subject')
+              split = attr.to_s.split('_')
+              if subjects[split[2].to_i].present?
+                if split[1] == 'subject'
+                  value = I18n.t("admissions.options.subjects.#{subjects[split[2].to_i][split[1]]}")
+                else
+                  value = subjects[split[2].to_i][split[1]]
+                end
+              else
+                next
+              end
 
-            if options.include?(attr)
-              value = value.present? ? I18n.t("admissions.options.#{attr}.#{value}") : ''
+            elsif attr.to_s.include?('achievement')
+              split = attr.to_s.split('_')
+              if admission.score_achievements[split[2].to_i].present?
+                value = achievements[admission.score_achievements[split[2].to_i]]
+              else
+                next
+              end
+
+            elsif attr.to_s.include?('direction')
+              split = attr.to_s.split('_')
+              if directions[split[2].to_i].present?
+                if split[1] == 'course'
+                  value = courses[directions[split[2].to_i]['course_id']]
+                else
+                  value = I18n.t("admissions.options.course_#{split[1]}.#{directions[split[2].to_i][split[1]]}")
+                end
+              else
+                next
+              end
+
+            else
+              value = admission.send(attr)
+
+              if options.include?(attr)
+                value = value.present? ? I18n.t("admissions.options.#{attr}.#{value}") : ''
+              end
+
+              value = value ? 'Да' : 'Нет' if [true, false].include? value
             end
-
-            value = value ? 'Да' : 'Нет' if [true, false].include? value
 
             value
           end
