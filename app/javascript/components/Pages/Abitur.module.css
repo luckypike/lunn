@@ -11,6 +11,10 @@
   margin: calc(var(--yr) * var(--s6)) 0;
 }
 
+.how {
+  margin: calc(var(--yr) * var(--s6)) 0;
+}
+
 .foreigners {
   margin: calc(var(--yr) * var(--s6)) 0;
 }

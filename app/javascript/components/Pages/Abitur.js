@@ -7,6 +7,7 @@ import Title from '../Title'
 import Docs from '../Docs/Docs'
 
 import Today from './Abitur/Today'
+import How from './Abitur/How'
 import Admission from './Abitur/Admission'
 import Courses from './Abitur/Courses'
 import Foreigners from './Abitur/Foreigners'
@@ -38,9 +39,9 @@ export default function Divisions ({ node, loaf, docs: docsJson, locale }) {
         />
       }
 
-      <div className={styles.today}>
+      <div className={styles.how}>
         <div className={pages.container}>
-          <Today />
+          <How />
         </div>
       </div>
 
@@ -50,15 +51,21 @@ export default function Divisions ({ node, loaf, docs: docsJson, locale }) {
         </div>
       </div>
 
+      <div className={styles.courses}>
+        <div className={pages.container}>
+          <Courses />
+        </div>
+      </div>
+
       <div className={styles.foreigners}>
         <div className={pages.container}>
           <Foreigners />
         </div>
       </div>
 
-      <div className={styles.courses}>
+      <div className={styles.today}>
         <div className={pages.container}>
-          <Courses />
+          <Today />
         </div>
       </div>
 

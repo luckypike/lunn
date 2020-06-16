@@ -30,7 +30,7 @@ export default function Admission ({ start }) {
 
           <div className={styles.action}>
             <span className={styles.button}>
-              Узнать больше о поступлении
+              Узнайте больше о поступлении
             </span>
 
             <div className={styles.better_call_saul}>
