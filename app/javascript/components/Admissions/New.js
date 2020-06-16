@@ -68,7 +68,7 @@ export default function New ({ locale, user: userJSON }) {
             </p>
 
             <p>
-              Если у вас возникли трудности с заполнением или Вы нашли техническую ошибку, которая мешает Вам заполнить формы, просьба сообщить об этом на почту <a href="mailto:digital-lunn@yandex.ru">digital-lunn@yandex.ru</a>
+              Если у вас возникли трудности с заполнением или Вы нашли техническую ошибку, которая мешает Вам заполнить формы, просьба сообщить об этом на почту <a href="mailto:lunnpriem2020@gmail.com">lunnpriem2020@gmail.com</a>
             </p>
           </div>
         </div>
