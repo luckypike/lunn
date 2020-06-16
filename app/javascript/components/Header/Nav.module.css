@@ -45,11 +45,24 @@
 
 .covid {
   background-color: #e63246;
-  line-height: calc(var(--yr) * 10);
+  line-height: calc(var(--yr) * 11);
   padding: 0 calc(var(--yr) * 4);
   color: #fff !important;
-  margin-top: calc(var(--yr) * 1);
-  border-radius: calc(var(--yr) * 2);
+  margin-top: calc(var(--yr) * 0.5);
+  /* border-radius: calc(var(--yr) * 2); */
+}
+
+.abitur {
+  background-color: var(--hl_color);
+  line-height: calc(var(--yr) * 11);
+  padding: 0 calc(var(--yr) * 4);
+  color: #fff !important;
+  margin-top: calc(var(--yr) * 0.5);
+  transition: background 0.2s;
+
+  &:hover {
+    background-color: var(--hl_h_color);
+  }
 }
 
 .nav {
