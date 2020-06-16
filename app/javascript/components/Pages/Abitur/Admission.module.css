@@ -22,6 +22,12 @@
 
 .how {
   margin-bottom: calc(var(--yr) * var(--s4));
+
+  & a {
+    &:not(:last-child) {
+      margin-bottom: calc(var(--yr) * var(--s2));
+    }
+  }
 }
 
 .address {

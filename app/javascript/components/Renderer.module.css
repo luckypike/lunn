@@ -176,7 +176,7 @@
   composes: bt from './Fonts.module.css';
   display: inline-block;
   cursor: pointer;
-  text-align: center;
+  /* text-align: center; */
   border: none;
   padding: calc(var(--yr) * var(--s2)) calc(var(--xr) * 2);
   transition: background 0.2s, color 0.2s;

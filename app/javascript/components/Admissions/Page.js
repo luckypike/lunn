@@ -22,7 +22,7 @@ export default function Page ({ node, user, loaf, locale }) {
       <Title
         h1={node.title}
         loaf={loaf}
-        desc="Как поступить в НГЛУ?"
+        desc="Поступай легко – поступай онлайн"
       />
 
       <div className={pages.container}>
