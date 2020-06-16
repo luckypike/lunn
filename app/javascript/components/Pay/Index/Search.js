@@ -45,7 +45,7 @@ export default function Search () {
 
   return (
     <div className={styles.root}>
-      <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
+      <form className={classNames(form.root, styles.form)} onSubmit={onSubmit(handleSubmit)}>
         <div className={form.item}>
           <div className={form.input}>
             <label>
@@ -100,27 +100,34 @@ export default function Search () {
           }
 
           {invoices.length > 0 &&
-            <div className={styles.invoices}>
+            <>
               <div className={styles.title}>
                 Неоплаченные счета
               </div>
-              {invoices.map(invoice =>
-                <div className={styles.invoice} key={invoice.id}>
-                  {/* href={`/invoices/${invoice.uuid}`} */}
-                  <div className={styles.number}>
-                    {invoice.number}
-                  </div>
 
-                  {invoice.desc &&
-                    <div className={styles.desc}>
-                      {invoice.desc}
+              <div className={styles.invoices}>
+                {invoices.map(invoice =>
+                  <div className={styles.invoice} key={invoice.id}>
+                    {/* href={`/invoices/${invoice.uuid}`} */}
+                    <div className={styles.number}>
+                      Счёт № {invoice.number}
                     </div>
-                  }
 
-                  <Pay invoice={invoice} />
-                </div>
-              )}
-            </div>
+                    <div className={styles.amount}>
+                      Сумма к оплате: {invoice.amount} ₽
+                    </div>
+
+                    {invoice.desc &&
+                      <div className={styles.desc}>
+                        {invoice.desc}
+                      </div>
+                    }
+
+                    <Pay invoice={invoice} />
+                  </div>
+                )}
+              </div>
+            </>
           }
         </div>
       }

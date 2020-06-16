@@ -1,4 +1,4 @@
-.root {
+.form {
   max-width: 30rem;
 }
 
@@ -7,20 +7,32 @@
 }
 
 .invoices {
-  margin-top: calc(var(--yr) * var(--s4));
+  display: grid;
+  grid-row-gap: calc(var(--yr) * var(--s3));
+
+  @media (--s) {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+
+  @media (--l) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .invoice {
+  background-color: #fff;
   display: block;
-  padding: calc(var(--yr) * var(--s3)) 0;
+  padding: calc(var(--yr) * var(--s3)) var(--xr);
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--sp_color);
+  @media (--s) {
+    padding: calc(var(--yr) * var(--s3)) calc(var(--xr) * 2);
   }
 }
 
 .title {
   composes: h3 from '../../Fonts.module.css';
+  margin-top: calc(var(--yr) * var(--s4));
 }
 
 .number {
@@ -30,4 +42,8 @@
 .desc {
   margin-top: calc(var(--yr) * var(--s1));
   color: var(--gr_color);
+}
+
+.amount {
+  margin-top: calc(var(--yr) * var(--s1));
 }
