@@ -1,0 +1,8 @@
+ru:
+  index:
+    admission:
+      start:
+        one: "%{count} день"
+        few: "%{count} дня"
+        many: "%{count} дней"
+        other: "%{count} дня"

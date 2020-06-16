@@ -22,10 +22,11 @@ import pages from '../Pages.module.css'
 
 Index.propTypes = {
   navs: PropTypes.array,
+  admission_start: PropTypes.number,
   locale: PropTypes.string
 }
 
-export default function Index ({ navs, locale }) {
+export default function Index ({ navs, admission_start: admissionStart, locale }) {
   const I18n = useI18n(locale)
 
   const [news, setNews] = useState()
@@ -65,7 +66,7 @@ export default function Index ({ navs, locale }) {
         </div>
 
         <div className={styles.admission}>
-          <Admission />
+          <Admission start={admissionStart} />
         </div>
 
         <div className={styles.sec}>

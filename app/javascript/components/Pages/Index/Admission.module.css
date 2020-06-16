@@ -19,11 +19,19 @@
 .title {
   padding-right: calc(var(--xr) * 2);
   margin-right: auto;
+  margin-bottom: calc(var(--yr) * var(--s3));
+
+  & h2 {
+    margin-bottom: 0;
+  }
+
+  & p {
+    margin-top: calc(var(--yr) * var(--s2));
+    margin-bottom: 0;
+  }
 
   @media (--m) {
-    & h2 {
-      margin-bottom: 0;
-    }
+    margin-bottom: 0;
   }
 }
 
@@ -44,4 +52,8 @@
   & .button {
     background-color: color-mod(var(--hld_color) shade(7%));
   }
+}
+
+.better_call_saul {
+  margin-top: calc(var(--yr) * var(--s2));
 }

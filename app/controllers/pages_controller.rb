@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   before_action :set_node, except: %i[index contacts announces]
 
   def index
+    @admission_start = ((Time.new(2020, 6, 19, 8, 0).in_time_zone.to_f - Time.current.to_f) / 1.day).ceil
+
     @news = Node.news.lang.includes(:summary)
       .order(created: :desc).limit(8)
 

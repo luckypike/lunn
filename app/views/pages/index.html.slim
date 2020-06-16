@@ -5,5 +5,6 @@
   canonical: root_url
 
 = react_component 'Pages/Index', { \
+  admission_start: @admission_start,
   navs: @navs.as_json(only: %i[mlid depth plid], methods: %i[title path image]) \
 }, { prerender: Rails.env.production? }
