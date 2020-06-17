@@ -18,7 +18,7 @@ export default function Admission ({ start }) {
         <div className={styles.root}>
           <div className={styles.title}>
             <h2>
-              Приемная кампания 2020 года
+              Приёмная кампания 2020 года
             </h2>
 
             {start > 0 &&
@@ -32,10 +32,6 @@ export default function Admission ({ start }) {
             <span className={styles.button}>
               Узнайте больше о поступлении
             </span>
-
-            <div className={styles.better_call_saul}>
-              или позвоните по +7 (831) 416-61-41
-            </div>
           </div>
         </div>
       </div>

@@ -1,3 +1,7 @@
+.contacts {
+  background-color: var(--hl_color);
+}
+
 .today {
   margin: calc(var(--yr) * var(--s6)) 0;
 }

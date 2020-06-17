@@ -1,0 +1,34 @@
+.root {
+  padding: calc(var(--yr) * var(--s5)) 0;
+  color: #fff;
+
+  @media (--m) {
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+  }
+}
+
+.title {
+  composes: h4 from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s4));
+
+  @media (--m) {
+    margin-bottom: 0;
+  }
+}
+
+.contacts {
+  composes: bt from '../../Fonts.module.css';
+}
+
+.a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: color-mod(#fff a(0.4));
+  transition: text-decoration 0.3s, color 0.3s;
+
+  &:hover {
+    text-decoration-color: var(#fff);
+    color: #fff;
+  }
+}

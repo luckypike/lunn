@@ -35,25 +35,27 @@
   }
 }
 
+.action {
+  /* align-self: center; */
+}
+
 .button {
-  composes: bt from '../../Fonts.module.css';
-  background-color: var(--hld_color);
+  composes: h4 from '../../Fonts.module.css';
+  background-color: #fff45a;
+  color: var(--pr_color);
   display: inline-block;
   cursor: pointer;
   text-align: center;
   border: none;
-  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  padding: calc(var(--yr) * 4) calc(var(--xr) * 2);
   transition: background 0.2s, color 0.2s;
+  margin-bottom: 0;
 }
 
 .a:hover {
   color: white;
 
   & .button {
-    background-color: color-mod(var(--hld_color) shade(7%));
+    background-color: color-mod(#fff45a shade(10%));
   }
-}
-
-.better_call_saul {
-  margin-top: calc(var(--yr) * var(--s2));
 }

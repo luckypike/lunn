@@ -6,6 +6,7 @@ import { deserialize } from 'jsonapi-deserializer'
 import Title from '../Title'
 import Docs from '../Docs/Docs'
 
+import Contacts from './Abitur/Contacts'
 import Today from './Abitur/Today'
 import How from './Abitur/How'
 import Admission from './Abitur/Admission'
@@ -38,6 +39,12 @@ export default function Divisions ({ node, loaf, docs: docsJson, locale }) {
           image={Top}
         />
       }
+
+      <div className={styles.contacts}>
+        <div className={pages.container}>
+          <Contacts />
+        </div>
+      </div>
 
       <div className={styles.how}>
         <div className={pages.container}>
