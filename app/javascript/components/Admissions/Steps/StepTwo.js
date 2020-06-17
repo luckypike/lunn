@@ -142,7 +142,7 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
           </div>
 
           <div className={form.hint}>
-            Для иностранных граждан: скан/фото перевода паспорта на русский язык
+            Для иностранных граждан: также скан/фото перевода паспорта на русский язык
           </div>
 
           <Errors errors={errors.documents} />

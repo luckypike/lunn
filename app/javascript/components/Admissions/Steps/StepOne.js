@@ -282,7 +282,7 @@ export default function StepOne ({ values, errors, setValues, onChange }) {
                 onChange={onChange}
               />
 
-              Подтверждаю согласие на обработку персональных данных
+              Подтверждаю <a className={styles.a} target="_blank" href="/terms/privacy">согласие на обработку персональных данных</a>
             </div>
           </label>
         </div>
