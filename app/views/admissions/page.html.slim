@@ -3,6 +3,7 @@
 
 = react_component 'Admissions/Page', { \
   node: @node.as_json(only: %i[nid title], methods: :text),
+  docs: DocSerializer.new(@node.docs),
   user: current_user,
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]) \
 }, { prerender: Rails.env.production? }
