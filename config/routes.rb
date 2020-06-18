@@ -74,6 +74,13 @@ Rails.application.routes.draw do
 
     get :pay, to: 'pay#index'
 
+    resources :payments, only: %i[] do
+      collection do
+        post :payed
+        get :success
+      end
+    end
+
     resources :invoices, only: %i[index create show] do
       collection do
         get :search

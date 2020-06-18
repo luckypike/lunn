@@ -1,0 +1,23 @@
+.logos {
+  margin-bottom: calc(var(--yr) * var(--s2));
+  display: flex;
+  align-items: center;
+
+  & img {
+    display: block;
+  }
+}
+
+.mc {
+  margin-right: var(--xr);
+  height: 30px;
+}
+
+.visa {
+  margin-right: var(--xr);
+  height: 20px;
+}
+
+.mir {
+  height: 20px;
+}

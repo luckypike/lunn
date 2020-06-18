@@ -1,0 +1,4 @@
+.text {
+  padding: calc(var(--yr) * var(--s6)) 0;
+  composes: bt from '../Fonts.module.css';
+}

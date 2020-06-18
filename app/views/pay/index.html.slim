@@ -1,4 +1,4 @@
 - set_meta_tags \
   title: t('pay.index.title')
 
-= react_component 'Pay/Index'
+= react_component 'Pay/Index', { gateway: Rails.application.credentials.dig(:payment, :gateway), return_url: Rails.application.credentials.dig(:payment, :return_url) }

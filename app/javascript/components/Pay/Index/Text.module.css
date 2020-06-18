@@ -19,3 +19,11 @@
 .payments {
   margin-bottom: calc(var(--yr) * var(--s4));
 }
+
+.ul {
+  composes: ul from '../../Renderer.module.css';
+}
+
+.contacts {
+  composes: h4 from '../../Fonts.module.css';
+}

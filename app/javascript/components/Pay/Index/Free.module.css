@@ -1,0 +1,16 @@
+.root {
+  max-width: 60rem;
+}
+
+.intro {
+  composes: bt from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.form {
+  @media (--s) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+}
