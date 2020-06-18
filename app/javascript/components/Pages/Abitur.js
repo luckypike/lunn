@@ -82,7 +82,7 @@ export default function Divisions ({ node, loaf, docs: docsJson, locale }) {
         {docs &&
           <div className={styles.docs}>
             <div className={pages.container}>
-              <Docs docs={docs} locale={locale} title="Знакомлюсь с правилами приёма" />
+              <Docs docs={docs} locale={locale} title="Ознакомиться с правилами приёма" />
             </div>
           </div>
         }
