@@ -157,17 +157,15 @@ export default function StepEight ({ values, dictionaries, errors, onChange, set
 
           <select name="course_olympiad" onChange={onChange} value={values.course_olympiad}>
             <option value=""></option>
-            <option value="1">Победитель Всероссийской олимпиады</option>
-            <option value="2">Призер Всероссийской олимпиады</option>
-            <option value="3">Победитель олимпиады школьников</option>
-            <option value="4">Призер олимпиады школьников</option>
+            <option value="1">Победитель заключительного этапа Всероссийской олимпиады школьников</option>
+            <option value="2">Призер заключительного этапа Всероссийской олимпиады школьников</option>
           </select>
         </div>
 
         <Errors errors={errors.course_olympiad} />
       </div>
 
-      <div className={form.item}>
+       <div className={form.item}>
         <div className={form.checkbox}>
           <div className={form.label}>
             Индивидуальные достижения
