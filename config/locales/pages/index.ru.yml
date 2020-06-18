@@ -2,7 +2,7 @@ ru:
   index:
     admission:
       start:
-        one: "%{count} день"
-        few: "%{count} дня"
-        many: "%{count} дней"
-        other: "%{count} дня"
+        one: "До начала остался %{count} день"
+        few: "До начала осталось %{count} дня"
+        many: "До начала осталось %{count} дней"
+        other: "До начала осталось %{count} дня"

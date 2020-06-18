@@ -23,7 +23,7 @@ export default function Admission ({ start }) {
 
             {start > 0 &&
               <p>
-                До начала осталось {I18n.t('index.admission.start', { count: start })}
+                {I18n.t('index.admission.start', { count: start })}
               </p>
             }
           </div>
