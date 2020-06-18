@@ -53,3 +53,8 @@
     }
   }
 }
+
+.errors {
+  color: var(--rd_color);
+  margin-top: calc(var(--yr) * var(--s2));
+}

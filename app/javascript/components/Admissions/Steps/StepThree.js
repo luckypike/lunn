@@ -18,6 +18,10 @@ export default function StepThree ({ values, errors, onChange }) {
         Родитель 1
       </h4>
 
+      <p>
+        Если родителей нет, укажите двух ближайших родственников
+      </p>
+
       <div className={form.item}>
         <div className={form.input}>
           <div className={form.label}>

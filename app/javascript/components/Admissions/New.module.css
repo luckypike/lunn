@@ -38,14 +38,6 @@
   composes: button--sec from '../Renderer.module.css';
 }
 
-.ul {
-  composes: ul from '../Renderer.module.css';
-}
-
-.text {
-  /* max-width: 60rem; */
-}
-
 .beta {
   background-color: var(--hl_color);
   color: #fff;

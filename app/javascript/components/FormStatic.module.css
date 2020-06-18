@@ -224,7 +224,7 @@
 }
 
 .hint {
-  composes: mt from './Fonts.module.css';
+  composes: at from './Fonts.module.css';
   color: var(--gr_color);
   padding-top: var(--yr);
 }

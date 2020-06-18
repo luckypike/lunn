@@ -181,6 +181,7 @@ export default function Form ({ id, locale }) {
                       onChange={handleInputChange}
                       values={values}
                       setValues={setValues}
+                      documents={admission.documents}
                       dictionaries={dictionaries}
                       errors={errors}/>
                   }
@@ -190,9 +191,16 @@ export default function Form ({ id, locale }) {
                       onChange={handleInputChange}
                       values={values}
                       setValues={setValues}
+                      documents={admission.documents}
                       dictionaries={dictionaries}
                       errors={errors}
                     />
+                  }
+
+                  {Object.keys(errors).length > 0 &&
+                    <div className={styles.errors}>
+                      Исправьте ошибки в форме чтобы продолжить заполнение!
+                    </div>
                   }
 
                   {admission.state !== 'done' &&

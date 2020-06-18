@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import { Errors } from '../../Form'
+import Documents from '../../Documents/Documents'
 
 import styles from './StepEight.module.css'
 import form from '../../FormStatic.module.css'
@@ -11,12 +12,13 @@ import buttons from '../../Buttons.module.css'
 StepEight.propTypes = {
   values: PropTypes.object,
   dictionaries: PropTypes.object,
+  documents: PropTypes.array,
   errors: PropTypes.object,
   onChange: PropTypes.func,
   setValues: PropTypes.func
 }
 
-export default function StepEight ({ values, dictionaries, errors, onChange, setValues }) {
+export default function StepEight ({ values, dictionaries, documents, errors, onChange, setValues }) {
   if (!dictionaries) return null
 
   const [subjects, setSubjects] = useState(new Map())
@@ -165,7 +167,28 @@ export default function StepEight ({ values, dictionaries, errors, onChange, set
         <Errors errors={errors.course_olympiad} />
       </div>
 
-       <div className={form.item}>
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Скан/фото диплома победителя (призера)
+          </div>
+
+          <div className={styles.hint}>
+
+          </div>
+
+          <Errors errors={errors.documents} />
+
+          <Documents
+            files={documents}
+            section="olympiad"
+            values={values}
+            setValues={setValues}
+          />
+        </div>
+      </div>
+
+      <div className={form.item}>
         <div className={form.checkbox}>
           <div className={form.label}>
             Индивидуальные достижения
@@ -189,10 +212,79 @@ export default function StepEight ({ values, dictionaries, errors, onChange, set
             </div>
           }
         </div>
+      </div>
 
-        {errors.audiences &&
-          <Errors errors={errors.audiences}/>
-        }
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Сканы/фото документов (грамоты, дипломы, сертификаты)
+          </div>
+
+          <div className={form.hint}>
+            Здесь вы можете загрузить копии своих грамот и дипломов, кроме дипломов победителей и призеров олимпиад, указанных выше.
+            <br />
+            <br />
+          </div>
+
+          <div className={styles.files}>
+            <ul>
+              <li>
+                <strong>
+                  Для бак-та/спец-та:
+                </strong>
+              </li>
+              <li className={styles.a}>
+                Удостоверение к золотому значку ГТО / выписка из приказа о награждении золотым значком ГТО
+              </li>
+              <li className={styles.a}>
+                Личная книжка волонтера (все заполненные страницы)
+              </li>
+              <li className={styles.a}>
+                Грамоты, дипломы, сертификаты (до 10 штук)
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                <strong>
+                  Для магистратуры
+                </strong>
+              </li>
+              <li className={styles.a}>
+                Публикации научных работ в изданиях РИНЦ (до 5 штук)
+              </li>
+              <li className={styles.a}>
+                Сертификат о сдаче  международного экзамена по иностр. языку
+              </li>
+              <li className={styles.a}>
+                Грамоты, дипломы, сертификаты (до 10 штук)
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                <strong>
+                  Для аспирантуры
+                </strong>
+              </li>
+              <li className={styles.a}>
+                Сертификат участника научных конференций
+              </li>
+              <li className={styles.a}>
+                Публикации научных работ
+              </li>
+            </ul>
+          </div>
+
+          <Errors errors={errors.documents} />
+
+          <Documents
+            files={documents}
+            section="achievements"
+            values={values}
+            setValues={setValues}
+          />
+        </div>
       </div>
     </>
   )

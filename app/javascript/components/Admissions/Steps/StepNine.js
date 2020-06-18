@@ -5,6 +5,7 @@ import Select from 'react-select'
 
 import { Errors } from '../../Form'
 import { I18nContext } from '../../I18n'
+import Documents from '../../Documents/Documents'
 
 import styles from './StepNine.module.css'
 import form from '../../FormStatic.module.css'
@@ -14,12 +15,13 @@ StepNine.propTypes = {
   values: PropTypes.object,
   setValues: PropTypes.func,
   dictionaries: PropTypes.object,
+  documents: PropTypes.array,
   errors: PropTypes.object,
   onChange: PropTypes.func,
   onSelectChange: PropTypes.func
 }
 
-export default function StepNine ({ values, setValues, dictionaries, errors, onChange, onSelectChange }) {
+export default function StepNine ({ values, setValues, dictionaries, documents, errors, onChange, onSelectChange }) {
   if (!dictionaries) return null
 
   const [directions, setDirections] = useState(new Map())
@@ -82,6 +84,10 @@ export default function StepNine ({ values, setValues, dictionaries, errors, onC
         <h4>
           Направления
         </h4>
+
+        <p>
+          Напоминаем вам, что в одном вузе абитуриент может выбрать максимум 3 направления подготовки. Обратите внимание: на одном направлении может быть несколько форм обучения, профилей, а на некоторых направлениях прием в нашем университете ведется раздельно в разные группы в зависимости от первого иностранного языка (это разделение отражено в нашем плане приема). Это значит, что вы можете выбрать в рамках одного направления разные профили и языки, очную, заочную и очно-заочную формы обучения (при их наличии), бюджетную или платную основу обучения, но все это будет считаться одним выбором (подсказка: одно направление обозначено в плане приема одним шифром, например: 41.03.05), то есть вы можете выбрать еще 2 направления подготовки. Внимание: «44.03.01 Педагогическое образование (иностранный язык)» и «44.03.05 Педагогическое образование с двумя профилями» - это два разных направления! Как и направление «45.03.02 Лингвистика (профиль Перевод и переводоведение)» и специальность «45.05.01 Перевод и переводоведение».
+        </p>
 
         {directions.size > 0 &&
           <>
@@ -184,6 +190,37 @@ export default function StepNine ({ values, setValues, dictionaries, errors, onC
         </div>
 
         <Errors errors={errors.course_study} />
+      </div>
+
+      <div className={form.item}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Сканы/фото подтверждающих документов
+          </div>
+
+          <div className={form.hint}>
+            <p>
+              Для целевого договора копия договора о целевом обучении.
+            </p>
+
+            <p>
+              Для льгот и особого права: справка об инвалидности, копия удостоверения ветерана боевых действий, копия свидетельства о рождении абитуриента, копия свидетельства о смерти отца, копия свидетельства о смерти матери, копия решения суда о лишении родительских прав одного или обоих родителей, справка из ЗАГСА о том, что отец записан со слов матери, копия решения о назначении опекуна.
+            </p>
+
+            <p>
+              Если вы уже готовы заключить договор о платном обучении, загрузите скан-копии или фотографии страниц паспорта с личными данными и пропиской одного из родителей (кто будет заказчиком в договоре). Для иностранных граждан, а также для абитуриентов, поступающих на направление «Педагогическое образование»: медицинские справки.
+            </p>
+          </div>
+
+          <Errors errors={errors.documents} />
+
+          <Documents
+            files={documents}
+            section="spec"
+            values={values}
+            setValues={setValues}
+          />
+        </div>
       </div>
     </>
   )

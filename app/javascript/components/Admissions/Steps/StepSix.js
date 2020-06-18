@@ -52,6 +52,10 @@ export default function StepSix ({ values, errors, onChange }) {
           />
         </div>
 
+        <div className={form.hint}>
+          Примеры названий учебного заведения: МБОУ СОШ № 3, ФГБОУ ВО НГЛУ им. Н.А. Добролюбова
+        </div>
+
         <Errors errors={errors.school_name} />
       </div>
 
@@ -83,6 +87,10 @@ export default function StepSix ({ values, errors, onChange }) {
             name="school_address"
             onChange={onChange}
           />
+        </div>
+
+        <div className={form.hint}>
+          Укажите город (населенный пункт), в котором находится учебное заведение
         </div>
 
         <Errors errors={errors.school_address} />
