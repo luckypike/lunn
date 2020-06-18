@@ -32,6 +32,11 @@
   composes: sec from '../Buttons.module.css';
 }
 
+.ext {
+  composes: mt from '../Fonts.module.css';
+  margin-top: calc(var(--yr) * var(--s2));
+}
+
 .label {
   max-width: 20rem;
   margin: 0 auto;
@@ -154,4 +159,10 @@
     /* line-height: calc(var(--yr) * 5); */
     /* height: calc(var(--yr) * 14); */
   }
+}
+
+.error {
+  composes: mt from '../Fonts.module.css';
+  color: var(--rd_color);
+  text-align: center;
 }

@@ -95,6 +95,10 @@ export default function Documents ({ values, setValues, section }) {
             Загрузить файлы
           </span>
         </div>
+
+        <div className={styles.ext}>
+          Только изображения: JPG, PNG или PDF
+        </div>
       </div>
 
       {files.size > 0 &&
@@ -204,18 +208,28 @@ function File ({ uuid, initFile, onFileChanged, onFileDeleted, section, onSectio
 
       {!isAttached() &&
         <div className={styles.row}>
-          <div className={styles.thumb}>
-            <Loader className={styles.loader} />
-          </div>
+          {errors.file &&
+            <div className={styles.error}>
+              {errors.file[0]}
+            </div>
+          }
 
-          <div className={styles.title}>
-            {title}
-          </div>
+          {!errors.file &&
+            <>
+              <div className={styles.thumb}>
+                <Loader className={styles.loader} />
+              </div>
 
-          <div className={styles.upload}>
-            <div className={styles.bar} style={{ width: `${upload}%` }} />
-            {upload >= 100 ? '99% обработка..' : upload + '%'}
-          </div>
+              <div className={styles.title}>
+                {title}
+              </div>
+
+              <div className={styles.upload}>
+                <div className={styles.bar} style={{ width: `${upload}%` }} />
+                {upload >= 100 ? '99% обработка..' : upload + '%'}
+              </div>
+            </>
+          }
         </div>
       }
     </div>
