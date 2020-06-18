@@ -20,7 +20,7 @@ export default function How () {
           </div>
 
           <div className={styles.title}>
-            Выбери направление подготовки
+            Выберите направление подготовки
           </div>
         </div>
 
@@ -90,7 +90,7 @@ export default function How () {
           </div>
 
           <div className={styles.title}>
-            Заключите договор если вы поступаете на платное обучение
+            Заключите договор, если вы поступаете на платное обучение
           </div>
         </div>
       </div>
