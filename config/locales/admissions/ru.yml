@@ -104,7 +104,7 @@ ru:
         7: Иностранный паспорт
         8: Вид на жительство
 
-      parents_relation_degree_first:
+      parents_relation_degree: &parents_relation_degree
         1: Отец
         2: Мать
         3: Опекун
@@ -115,16 +115,11 @@ ru:
         8: Дядя
         9: Тётя
 
+      parents_relation_degree_first:
+        <<: *parents_relation_degree
+
       parents_relation_degree_second:
-        1: Отец
-        2: Мать
-        3: Опекун
-        4: Дедушка
-        5: Бабушка
-        6: Муж
-        7: Жена
-        8: Дядя
-        9: Тётя
+        <<: *parents_relation_degree
 
       school_type:
         1: Школа

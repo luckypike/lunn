@@ -250,7 +250,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h4>{I18n.t('admissions.steps.nine')}</h4>
+                <h4>{I18n.t('admissions.steps.eight')}</h4>
               </div>
 
               <div className={styles.stepInfo}>
@@ -260,13 +260,18 @@ export default function Show ({ id, locale }) {
                     {subject.ege !== '' &&
                       <div>{I18n.t('admissions.labels.score_ege')}: {subject.ege}</div>
                     }
+
                     {subject.grade !== '' &&
                       <div>{I18n.t('admissions.labels.score_grade')}: {subject.grade}</div>
+                    }
+
+                    {subject.year !== '' &&
+                      <div>{I18n.t('admissions.labels.score_year')}: {subject.year}</div>
                     }
                     <br />
                   </React.Fragment>
                 )}
-                <div>{I18n.t('admissions.labels.score_year')}: {admission.score_year}</div>
+
                 <div>{I18n.t('admissions.labels.score_achievements')}: {dictionaries.achievements.filter(a => admission.score_achievements.includes(a.id)).map(a => a.label).join(', ')}</div>
 
                 {admission.course_olympiad !== '' &&
@@ -278,7 +283,7 @@ export default function Show ({ id, locale }) {
 
             <div className={styles.step}>
               <div className={styles.stepTitle}>
-                <h4>{I18n.t('admissions.steps.ten')}</h4>
+                <h4>{I18n.t('admissions.steps.nine')}</h4>
               </div>
 
               <div className={styles.stepInfo}>

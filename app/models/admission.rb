@@ -158,7 +158,7 @@ class Admission < ApplicationRecord
       attributes = %i[id created_at email] + Admission.stored_attributes.map { |k, v| v.map { |a| "#{k}_#{a}".to_sym } }.flatten +
       (0..5).to_a.map{|subj| ["subject_subject_#{subj}".to_sym, "subject_year_#{subj}".to_sym, "subject_ege_#{subj}".to_sym, "subject_grade_#{subj}".to_sym] }.flatten +
       (0..5).to_a.map{|achievement| ["achievement_achievement_#{achievement}".to_sym] }.flatten +
-      (0..2).to_a.map{|dir| ["direction_course_#{dir}".to_sym, "direction_form_#{dir}".to_sym, "direction_basis_#{dir}".to_sym] }.flatten
+      (0..69).to_a.map{|dir| ["direction_course_#{dir}".to_sym, "direction_form_#{dir}".to_sym, "direction_basis_#{dir}".to_sym] }.flatten
 
       options = %i[
         identity_sex

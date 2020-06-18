@@ -2,7 +2,7 @@ json.admission do
   json.partial! @admission
 
   json.subjects @admission.subjects.each do |subject|
-    json.extract! subject, :subject, :ege, :grade
+    json.extract! subject, :subject, :ege, :grade, :year
   end
 
   json.directions @admission.directions.each do |subject|

@@ -83,10 +83,6 @@ export default function StepNine ({ values, setValues, dictionaries, errors, onC
           Направления
         </h4>
 
-        <p>
-          Можно указать до 3-х направлений для поступления
-        </p>
-
         {directions.size > 0 &&
           <>
             {[...directions.keys()].map(key =>
@@ -105,7 +101,7 @@ export default function StepNine ({ values, setValues, dictionaries, errors, onC
           </>
         }
 
-        {directions.size < 3 &&
+        {directions.size < 70 &&
           <div className={styles.new}>
             <span onClick={handleDirectionAdd}>
               Добавить ещё одно направление
@@ -224,7 +220,7 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
     <>
       <div className={form.item}>
         <div className={form.select}>
-          { directionKey > 1 &&
+          {directionKey > 0 &&
             <button className={classNames(buttons.main, form.delete)} onClick={() => onDirectionDelete(directionKey)}>
               Удалить
             </button>
