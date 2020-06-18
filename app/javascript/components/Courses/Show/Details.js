@@ -46,7 +46,7 @@ export default function Details ({ course }) {
 
       <div className={styles.prices}>
         <div className={styles.title}>
-          Стоимость обучения в 2019-2020 уч.г.
+          Стоимость обучения в 2020-2021 уч.г.
         </div>
 
         {[1, 2, 3].filter(i => course[`time_${i}`] !== null && course[`places_${i}`] !== null).map(i =>

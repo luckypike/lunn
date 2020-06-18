@@ -38,3 +38,11 @@
     padding-right: 50%;
   }
 }
+
+.as {
+  margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.ul {
+  composes: ul from '../../Renderer.module.css';
+}

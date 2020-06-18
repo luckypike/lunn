@@ -25,6 +25,28 @@ export default function Division ({ level, division, locale }) {
           {division.title}
         </div>
 
+        {division.id === '6518' &&
+          <div className={styles.as}>
+            <p>
+              Бюджетные места на 2020-2021 учебный год (по направлениям):
+            </p>
+
+            <ul className={styles.ul}>
+              <li>
+                Языкознание и литературоведение — 1 место (очная форма)
+              </li>
+
+              <li>
+                Образование и педагогические науки — 1 место (очная форма)
+              </li>
+
+              <li>
+                Философия, этика и религиоведение — 1 место (очная форма)
+              </li>
+            </ul>
+          </div>
+        }
+
         <div className={styles.courses}>
           <Courses courses={courses} locale={locale} />
         </div>
