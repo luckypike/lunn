@@ -14,7 +14,7 @@ export default function Text () {
         </h4>
 
         <p>
-          Для возврата средств плательщику необходимо <a href="/refund.pdf">заполните заявление по форме</a>, подписать его собственноручно и направить на почту <a href="mailto:oplata@lunn.ru">oplata@lunn.ru</a>:
+          Для возврата средств плательщику необходимо <a href="/refund.doc">заполните заявление по форме</a>, подписать его собственноручно и направить на почту <a href="mailto:oplata@lunn.ru">oplata@lunn.ru</a>:
         </p>
 
         <ul className={styles.ul}>
