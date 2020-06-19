@@ -4,7 +4,8 @@
 
   @media (--m) {
     display: grid;
-    grid-template-columns: 8fr 4fr;
+    grid-template-columns: 1fr 24rem;
+    grid-column-gap: calc(var(--xr) * 4);
   }
 }
 
@@ -19,6 +20,22 @@
 
 .contacts {
   composes: bt from '../../Fonts.module.css';
+
+  @media (--s) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: calc(var(--yr) * var(--s1));
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+
+  & a {
+    display: block;
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 .a {
