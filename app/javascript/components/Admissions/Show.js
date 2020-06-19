@@ -81,7 +81,7 @@ export default function Show ({ id, locale }) {
               <>
                 <div className={styles.header}>
                   <p>
-                    Шаг 10 из 10
+                    Шаг 11 из 11
                   </p>
 
                   <h3>Проверка данных</h3>

@@ -70,7 +70,7 @@ export default function New ({ locale, user: userJSON }) {
                   </h4>
 
                   <p>
-                    Вы заполнили его на {((admissions[0].state_key <= 11 ? admissions[0].state_key : 11) - 1) * 10}%.
+                    Вы заполнили его на {parseInt((admissions[0].state_key <= 11 ? admissions[0].state_key : 11) / 11 * 100)}%.
                     Одновременно можно заполнять не более одного заявления.
                     Закончите заполенение текущего заявления и потом вы сможете подать еще одго при необходимости.
                   </p>

@@ -19,6 +19,7 @@ import StepSix from './Steps/StepSix'
 import StepSeven from './Steps/StepSeven'
 import StepEight from './Steps/StepEight'
 import StepNine from './Steps/StepNine'
+import StepTen from './Steps/StepTen'
 
 import styles from './Form.module.css'
 import pages from '../Pages.module.css'
@@ -129,7 +130,7 @@ export default function Form ({ id, locale }) {
               <>
                 <div className={styles.step}>
                   <p>
-                    Шаг {admission.state_key} из 10
+                    Шаг {admission.state_key} из 11
                   </p>
 
                   <h3>{I18n.t(`admissions.steps.${admission.state}`)}</h3>
@@ -193,6 +194,15 @@ export default function Form ({ id, locale }) {
                       setValues={setValues}
                       documents={admission.documents}
                       dictionaries={dictionaries}
+                      errors={errors}
+                    />
+                  }
+
+                  {admission.state === 'ten' &&
+                    <StepTen
+                      onChange={handleInputChange}
+                      values={values}
+                      setValues={setValues}
                       errors={errors}
                     />
                   }

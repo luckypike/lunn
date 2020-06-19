@@ -4,7 +4,7 @@ json.admission do
 end
 
 json.values do
-  %i[identity document parents address residence school score course].each do |section|
+  %i[identity document parents address residence school score course features].each do |section|
     Admission.stored_attributes[section].each do |key|
       json.set! "#{section}_#{key}", @admission.send("#{section}_#{key}").presence || ''
     end

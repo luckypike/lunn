@@ -1,7 +1,7 @@
 class Admission < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
-  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, done: 99 }
+  enum state: { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, done: 99 }
 
   enum status: { filling: 1, processing: 2, accepted: 4 } do
     event :confirm do
@@ -66,6 +66,10 @@ class Admission < ApplicationRecord
     contract status olympiad military study
   ], coder: JSON, prefix: true
 
+  store :features, accessors: %i[
+    campus
+  ], coder: JSON, prefix: true
+
   validates :state, presence: true
 
   validate :document_presence
@@ -107,6 +111,9 @@ class Admission < ApplicationRecord
   validates :directions,
     presence: true, if: -> { step_after?(10) }
 
+  validates :features_campus,
+    presence: true, if: -> { step_after?(11) }
+
   after_initialize do
     self.state ||= :one
     self.status ||= :processing
@@ -143,6 +150,7 @@ class Admission < ApplicationRecord
         Admission.stored_attributes[:address].map { |key| "address_#{key}" } +
         Admission.stored_attributes[:residence].map { |key| "residence_#{key}" } +
         Admission.stored_attributes[:school].map { |key| "school_#{key}" } +
+        Admission.stored_attributes[:features].map { |key| "features_#{key}" } +
         Admission.stored_attributes[:score].map { |key| "score_#{key}" } +
         [score_achievements: []] +
         Admission.stored_attributes[:course].map { |key| "course_#{key}" } +
