@@ -174,7 +174,7 @@ class Admission < ApplicationRecord
         parents_relation_degree_first parents_relation_degree_second
         school_type school_education school_document_type
         school_diploma_type school_merit school_language
-        course_status course_olympiad
+        course_status course_olympiad features_campus
       ]
 
       CSV.generate(headers: true, force_quotes: true) do |csv|
