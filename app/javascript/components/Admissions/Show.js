@@ -4,6 +4,8 @@ import axios from 'axios'
 import classNames from 'classnames'
 import { navigate } from '@reach/router'
 import { Helmet } from 'react-helmet'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
 
 import Title from '../Title'
 import Steps from './Form/Steps'
@@ -109,7 +111,7 @@ export default function Show ({ id, locale }) {
                 <div>{I18n.t('admissions.labels.identity_last_name')}: {admission.identity_last_name}</div>
                 <div>{I18n.t('admissions.labels.identity_middle_name')}: {admission.identity_middle_name}</div>
                 <div>{I18n.t('admissions.labels.identity_sex')}: {I18n.t(`admissions.options.identity_sex.${admission.identity_sex}`)}</div>
-                <div>{I18n.t('admissions.labels.identity_birth_date')}: {admission.identity_birth_date}</div>
+                <div>{I18n.t('admissions.labels.identity_birth_date')}: {dayjs(admission.identity_birth_date).format('DD.MM.YYYY')}</div>
                 <div>{I18n.t('admissions.labels.identity_birth_place')}: {admission.identity_birth_place}</div>
               </div>
             </div>
@@ -125,7 +127,7 @@ export default function Show ({ id, locale }) {
                 <div>{I18n.t('admissions.labels.document_series')}: {admission.document_series}</div>
                 <div>{I18n.t('admissions.labels.document_number')}: {admission.document_number}</div>
                 <div>{I18n.t('admissions.labels.document_issued_by')}: {admission.document_issued_by}</div>
-                <div>{I18n.t('admissions.labels.document_issue_date')}: {admission.document_issue_date}</div>
+                <div>{I18n.t('admissions.labels.document_issue_date')}: {dayjs(admission.document_issue_date).format('DD.MM.YYYY')}</div>
 
                 <Documents documents={admission.documents.filter(d => d.section === 'document')} locale={locale}/>
               </div>
@@ -234,7 +236,7 @@ export default function Show ({ id, locale }) {
                 <div>{I18n.t('admissions.labels.school_education')}: {I18n.t(`admissions.options.school_education.${admission.school_education}`)}</div>
                 <div>{I18n.t('admissions.labels.school_document_type')}: {I18n.t(`admissions.options.school_document_type.${admission.school_document_type}`)}</div>
                 <div>{I18n.t('admissions.labels.school_document_number')}: {admission.school_document_number}</div>
-                <div>{I18n.t('admissions.labels.school_document_date')}: {admission.school_document_date}</div>
+                <div>{I18n.t('admissions.labels.school_document_date')}: {dayjs(admission.school_document_date).format('DD.MM.YYYY')}</div>
                 {admission.school_diploma_type &&
                   <div>{I18n.t('admissions.labels.school_diploma_type')}: {I18n.t(`admissions.options.school_diploma_type.${admission.school_diploma_type}`)}</div>
                 }
