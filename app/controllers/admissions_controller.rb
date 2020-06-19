@@ -20,7 +20,13 @@ class AdmissionsController < ApplicationController
 
   def export
     respond_to do |format|
-      format.csv { send_data Admission.done.processing.to_csv, filename: 'export.csv' }
+      format.csv do
+        if Rails.application.credentials.dig(:api, :key) == params[:key]
+          send_data Admission.done.processing.to_csv, filename: 'export.csv'
+        else
+          head :unauthorized
+        end
+      end
     end
   end
 
