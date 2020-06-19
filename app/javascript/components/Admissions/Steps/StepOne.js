@@ -71,6 +71,10 @@ export default function StepOne ({ values, errors, setValues, onChange }) {
           </label>
         </div>
 
+        <div className={form.hint}>
+          Если отчества нет, поставьте почерк (-)
+        </div>
+
         <Errors errors={errors.identity_middle_name} />
       </div>
 
