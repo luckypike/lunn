@@ -10,16 +10,25 @@
   composes: steps from './Form.module.css';
 }
 
-.hint {
-  composes: bt from '../Fonts.module.css';
-  padding-bottom: calc(var(--yr) * var(--s4));
-}
-
 .step {
   padding-bottom: calc(var(--yr) * var(--s4));
 }
 
 .hint {
+  composes: bt from '../Fonts.module.css';
+  padding-bottom: calc(var(--yr) * var(--s4));
   border-bottom: 1px solid color-mod(var(--sp_color) shade(7%));
   margin-bottom: calc(var(--yr) * var(--s4));
+}
+
+.a {
+  color: var(--pr_color);
+  text-decoration: underline;
+  text-decoration-color: color-mod(var(--pr_color) a(0.4));
+  transition: text-decoration 0.3s, color 0.3s;
+
+  &:hover {
+    text-decoration-color: var(--hl_color);
+    color: var(--hl_color);
+  }
 }

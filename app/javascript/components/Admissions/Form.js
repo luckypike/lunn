@@ -199,7 +199,7 @@ export default function Form ({ id, locale }) {
 
                   {Object.keys(errors).length > 0 &&
                     <div className={styles.errors}>
-                      Исправьте ошибки в форме чтобы продолжить заполнение!
+                      Исправьте ошибки в форме, чтобы продолжить заполнение!
                     </div>
                   }
 

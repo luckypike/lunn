@@ -221,7 +221,7 @@ export default function StepEight ({ values, dictionaries, documents, errors, on
           </div>
 
           <div className={form.hint}>
-            Здесь вы можете загрузить копии своих грамот и дипломов, кроме дипломов победителей и призеров олимпиад, указанных выше.
+            Здесь вы можете загрузить копии своих грамот и дипломов, кроме дипломов победителей и призёров Всероссийской олимпиады школьников.
             <br />
             <br />
           </div>
@@ -230,7 +230,7 @@ export default function StepEight ({ values, dictionaries, documents, errors, on
             <ul>
               <li>
                 <strong>
-                  Для бак-та/спец-та:
+                  Для бакалавриата/специалитета:
                 </strong>
               </li>
               <li className={styles.a}>

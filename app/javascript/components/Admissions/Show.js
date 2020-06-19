@@ -88,7 +88,7 @@ export default function Show ({ id, locale }) {
                 </div>
 
                 <div className={styles.hint}>
-                  Уже почти всё, остался последний шаг. Пожалуйста, проверьте результат заполнения заявления и отправьте на приёмную комиссию на рассмотрение.
+                  Уже почти всё, остался последний шаг. Пожалуйста, проверьте результат заполнения заявления и отправьте в приёмную комиссию на рассмотрение.
                 </div>
               </>
             }
@@ -338,7 +338,7 @@ function Documents ({ documents, locale }) {
     <div className={styles.documents}>
       {documents.map(document =>
         <div key={document.id} className={styles.document}>
-          <div className={styles.section}>{I18n.t(`admissions.documents.section.${document.section}`)}: <a href={document.file_url}> {document.title}</a></div>
+          <div className={styles.section}>{I18n.t(`admissions.documents.section.${document.section}`)}: <a className={styles.a} href={document.file_url} target="_blank"> {document.title}</a></div>
         </div>
       )}
     </div>
