@@ -274,12 +274,15 @@ export default function Show ({ id, locale }) {
                   </React.Fragment>
                 )}
 
-                <div>{I18n.t('admissions.labels.score_achievements')}: {dictionaries.achievements.filter(a => admission.score_achievements.includes(a.id)).map(a => a.label).join(', ')}</div>
-
                 {admission.course_olympiad !== '' &&
                   <div>{I18n.t('admissions.labels.course_olympiad')}: {I18n.t(`admissions.options.course_olympiad.${admission.course_olympiad}`)}</div>
                 }
 
+                <Documents documents={admission.documents.filter(d => d.section === 'olympiad')} locale={locale}/>
+
+                <div>{I18n.t('admissions.labels.score_achievements')}: {dictionaries.achievements.filter(a => admission.score_achievements.includes(a.id)).map(a => a.label).join(', ')}</div>
+
+                <Documents documents={admission.documents.filter(d => d.section === 'achievements')} locale={locale}/>
               </div>
             </div>
 
@@ -313,6 +316,8 @@ export default function Show ({ id, locale }) {
                 {admission.course_study !== '' &&
                   <div>{I18n.t('admissions.labels.course_study')}: Да</div>
                 }
+
+                <Documents documents={admission.documents.filter(d => d.section === 'spec')} locale={locale}/>
               </div>
             </div>
 
@@ -334,15 +339,21 @@ Documents.propTypes = {
 function Documents ({ documents, locale }) {
   const I18n = useI18n(locale)
 
-  if (!documents) return null
+  if (!documents || documents.length < 1) return null
 
   return (
     <div className={styles.documents}>
-      {documents.map(document =>
-        <div key={document.id} className={styles.document}>
-          <div className={styles.section}>{I18n.t(`admissions.documents.section.${document.section}`)}: <a className={styles.a} href={document.file_url} target="_blank"> {document.title}</a></div>
-        </div>
-      )}
+      <strong>
+        {I18n.t(`admissions.documents.section.${documents[0].section}`)}
+      </strong>
+
+      <ol className={styles.ol}>
+        {documents.map(doc =>
+          <li key={doc.id} className={styles.document}>
+            <a className={styles.a} href={doc.file_url} target="_blank"> {doc.title}</a>
+          </li>
+        )}
+      </ol>
     </div>
   )
 }

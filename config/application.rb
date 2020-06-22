@@ -51,8 +51,10 @@ tables = %i[
   menu_links
   file_managed
 
-  users
   admissions
+  payments
   invoices
+  user_roles
+  users
 ]
 ActiveRecord::SchemaDumper.ignore_tables = [/^(?!(#{tables.join('|')})$).*/]

@@ -32,3 +32,11 @@
     color: var(--hl_color);
   }
 }
+
+.documents {
+  margin-top: calc(var(--yr) * var(--s1));
+}
+
+.ol {
+  composes: ol from '../Renderer.module.css';
+}
