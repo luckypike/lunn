@@ -79,6 +79,10 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
           />
         </div>
 
+        <div className={form.hint}>
+          Заполняется без пробелов
+        </div>
+
         <Errors errors={errors.document_series} />
       </div>
 
@@ -94,7 +98,10 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
             name="document_number"
             onChange={onChange}
           />
+        </div>
 
+        <div className={form.hint}>
+          Заполняется без пробелов
         </div>
 
         <Errors errors={errors.document_number} />

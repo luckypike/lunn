@@ -77,10 +77,10 @@ export default function StepEight ({ values, dictionaries, documents, errors, on
     }
 
     const j = newSubjects.size
-    if (j < 3) {
-      Array.from(Array(3 - j)).forEach((_, i) => {
+    if (j < 1) {
+      Array.from(Array(1 - j)).forEach((_, i) => {
         newSubjects.set(j + i, {
-          subject: '', ege: '', grade: ''
+          subject: '', year: '', ege: '', grade: ''
         })
       })
     }
@@ -315,7 +315,7 @@ function Subject ({ subject, onSubjectChange, onSubjectDelete, dictionaries, err
       <div className={form.item}>
 
         <div className={form.input}>
-          { i > 2 &&
+          { i > 1 &&
             <button className={classNames(buttons.main, form.delete)} onClick={() => onSubjectDelete(i)}>
               Удалить
             </button>
