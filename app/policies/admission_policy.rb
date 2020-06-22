@@ -8,7 +8,7 @@ class AdmissionPolicy < ApplicationPolicy
   end
 
   def show?
-    edit? || user.role?(:admissioner)
+    edit? || user&.role?(:admissioner)
   end
 
   def edit?
