@@ -1,5 +1,6 @@
 json.admission do
   json.partial! @admission
+  json.extract! @admission, :step_prev
 
   json.subjects @admission.subjects.each do |subject|
     json.extract! subject, :subject, :ege, :grade, :year

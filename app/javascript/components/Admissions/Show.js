@@ -9,6 +9,7 @@ import 'dayjs/locale/ru'
 
 import Title from '../Title'
 import Steps from './Form/Steps'
+import { useForm } from '../Form'
 import { useI18n } from '../I18n'
 
 import pages from '../Pages.module.css'
@@ -22,6 +23,10 @@ Show.propTypes = {
 
 export default function Show ({ id, locale }) {
   const I18n = useI18n(locale)
+
+  const {
+    cancelToken
+  } = useForm()
 
   const [admission, setAdmission] = useState()
   const [dictionaries, setDictionaries] = useState()
@@ -51,6 +56,18 @@ export default function Show ({ id, locale }) {
         top: 0,
         behavior: 'smooth'
       })
+    })
+  }
+
+  const handlePrevClick = async e => {
+    e.preventDefault()
+
+    await axios.post(
+      `/admissions/${id}/jump.json`,
+      { admission: { state: admission.step_prev } },
+      { cancelToken: cancelToken.current.token }
+    ).then(res => {
+      _fetch()
     })
   }
 
@@ -322,7 +339,15 @@ export default function Show ({ id, locale }) {
             </div>
 
             {admission.state === 'done' && admission.status === 'filling' &&
-              <button className={classNames(buttons.main, buttons.big)} onClick={() => handleAdmissionConfirm()}>Отправить заявление</button>
+              <div className={styles.actions}>
+                <div className={styles.prev}>
+                  <span onClick={handlePrevClick}>
+                    Назад
+                  </span>
+                </div>
+
+                <button className={classNames(buttons.main, buttons.big, styles.send)} onClick={() => handleAdmissionConfirm()}>Отправить заявление</button>
+              </div>
             }
           </div>
         </div>
@@ -350,7 +375,7 @@ function Documents ({ documents, locale }) {
       <ol className={styles.ol}>
         {documents.map(doc =>
           <li key={doc.id} className={styles.document}>
-            <a className={styles.a} href={doc.file_url} target="_blank"> {doc.title}</a>
+            <a className={styles.a} href={doc.file_url} target="_blank" rel="noreferrer"> {doc.title}</a>
           </li>
         )}
       </ol>
