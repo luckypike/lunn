@@ -37,7 +37,7 @@ gem 'exception_notification'
 
 gem 'bootsnap', require: false
 
-gem 'fast_jsonapi', github: 'fast-jsonapi/fast_jsonapi'
+gem 'jsonapi-serializer'
 gem 'mini_racer'
 
 gem 'whenever', require: false
