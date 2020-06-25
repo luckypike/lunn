@@ -177,6 +177,10 @@ class Admission < ApplicationRecord
         course_status course_olympiad features_campus
       ]
 
+      dates = %i[
+        created_at identity_birth_date school_document_date document_issue_date
+      ]
+
       CSV.generate(headers: true, force_quotes: true) do |csv|
         csv << attributes
 
@@ -225,6 +229,10 @@ class Admission < ApplicationRecord
 
               if options.include?(attr)
                 value = value.present? ? I18n.t("admissions.options.#{attr}.#{value}") : ''
+              end
+
+              if dates.include?(attr)
+                value = value.present? ? value.in_time_zone("Moscow").to_s : ''
               end
 
               value = value ? 'Да' : 'Нет' if [true, false].include? value
