@@ -17,7 +17,7 @@ export default function Navs ({ navs }) {
         <a
           href={nav.path}
           key={nav.mlid}
-          className={styles.item}
+          className={classNames(styles.item, styles[`item-${nav.mlid}`])}
           style={{
             backgroundImage: nav.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${nav.image})` : 'none'
           }}

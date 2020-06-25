@@ -14,90 +14,128 @@
 
 .items {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: calc(var(--yr) * 2);
+  grid-row-gap: calc(var(--yr) * var(--s1));
 
   @media (--s) {
-    grid-gap: calc(var(--xr) * 2);
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+    grid-row-gap: calc(var(--yr) * var(--s3));
   }
 
   @media (--m) {
-    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr; */
   }
 }
 
 .item {
   position: relative;
-  color: #fff;
-  min-height: calc(var(--yr) * 28);
+  min-height: calc(var(--yr) * 30);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--gr_color);
   background-position: center;
+  padding: calc(var(--yr) * var(--s4)) calc(var(--xr) * 2) calc(var(--yr) * var(--s3));
+  overflow: hidden;
 
-  @media (--s) {
-    min-height: calc(var(--yr) * 46);
+  &.hss {
+    background-image: url(./Images/hss.jpg);
   }
 
-  @media (--xl) {
-    min-height: calc(var(--yr) * 60);
+  &.abitur {
+    background-image: url(./Images/abitur.jpg);
+  }
+
+  &.student {
+    background-image: url(./Images/student.jpg);
+  }
+
+  &.graduate {
+    background-image: url(./Images/graduate.jpg);
   }
 
   &::after {
-    content: "";
+    content: '';
+    display: block;
     position: absolute;
     left: 0;
     right: 0;
+    top: 0;
     bottom: 0;
-    height: 100%;
-    background: #000;
-    opacity: 0.6;
-    transition: background 0.3s, opacity 0.3s;
+    background-color: #000;
+    opacity: 0.1;
+    transition: 0.3s background, 0.3s opacity;
   }
 
-  &:hover {
-    color: #fff;
+  @media (--s) {
+    padding: 0;
 
-    &::after {
-      background: var(--hl_color);
-      opacity: 0.75;
+    &::before {
+      display: block;
+      content: '';
+      padding-top: calc(300 / 570 * 100%);
+    }
+
+    & .title {
+      position: absolute;
     }
   }
 }
 
 .title {
-  composes: h4 from '../../Fonts.module.css';
+  composes: h3 from '../../Fonts.module.css';
   position: absolute;
-  z-index: 1;
-  left: var(--xr);
-  right: var(--xr);
-  bottom: calc(var(--yr) * var(--s4));
+  color: #fff;
+  z-index: 2;
+  left: calc(var(--xr) * 2);
+  top: calc(var(--yr) * var(--s4));
   margin-bottom: 0;
 
-  & svg {
-    display: none;
-    position: absolute;
-    right: 0;
-    bottom: var(--yr);
-    height: calc(var(--yr) * 4);
+  @media (--s) {
+    top: calc(var(--yr) * var(--s4));
+  }
+}
 
-    @media (--s) {
-      display: block;
-      height: calc(var(--yr) * 5);
-      bottom: calc(var(--yr));
-    }
+.more {
+  color: #fff;
+  composes: bt from '../../Fonts.module.css';
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: calc(var(--yr) * var(--s3)) calc(var(--xr) * 2);
+  z-index: 1;
+  transition: 0.3s background;
+
+  & span {
+    display: none;
+    margin-right: var(--xr);
+  }
+
+  & svg {
+    display: block;
+    width: 20px;
+    height: 14px;
+    transition: 0.2s transform;
   }
 
   @media (--s) {
-    left: calc(var(--xr) * 2);
-    right: calc(var(--xr) * 2);
+    height: auto;
+    padding-right: 32px;
+
+    & span {
+      display: block;
+    }
   }
 }
 
-.item--4564 {
-  background-image: url('./Images/fdopp.jpg') !important;
-}
+.item:hover {
+  color: #fff;
 
-.item--5491 {
-  background-image: url('./Images/ft.jpg') !important;
+  & .more {
+    & svg {
+      transform: translateX(calc(var(--yr) * 2));
+    }
+  }
 }
