@@ -232,7 +232,11 @@ class Admission < ApplicationRecord
               end
 
               if dates.include?(attr)
-                value = value.present? ? value.in_time_zone("Moscow").to_s : ''
+                if attr == :created_at
+                  value = value.present? ? DateTime.parse(value.to_s).new_offset("+3").to_s : ''
+                else
+                  value = value.present? ? DateTime.parse(value.to_s).new_offset("+#{24 - DateTime.parse(value.to_s).hour}").to_s : ''
+                end
               end
 
               value = value ? 'Да' : 'Нет' if [true, false].include? value
