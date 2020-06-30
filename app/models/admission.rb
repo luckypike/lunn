@@ -163,7 +163,7 @@ class Admission < ApplicationRecord
       rows = []
 
       Rails.cache.fetch('admissions/csv', expires_in: 1.hour) do
-        CSV.foreach(Rails.root.join('public/abitur/admissions.csv'), headers: true, liberal_parsing: true) do |row|
+        CSV.foreach(Rails.root.join('public/abitur/admissions.csv'), headers: true) do |row|
           rows << row.to_hash.with_indifferent_access
         end
 
