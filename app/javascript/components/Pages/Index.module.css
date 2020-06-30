@@ -152,8 +152,9 @@
   composes: h5 from '../Fonts.module.css';
   color: white;
   position: absolute;
-  bottom: 20%;
-  left: -23.5%;
+  bottom: calc(var(--xr) * 1);
+  left: 50%;
+  transform-origin: center left;
   transform: rotate(-90deg);
   margin: 0;
 }
