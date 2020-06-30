@@ -64,7 +64,7 @@
 
   @media (--m) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: calc(var(--xr) * 1.875);
   }
 }
@@ -85,9 +85,7 @@
 }
 
 .slider {
-  grid-column: span 2;
-  overflow: hidden;
-  position: relative;
+  margin-bottom: calc(var(--yr) * var(--s6));
 }
 
 .education {

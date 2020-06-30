@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def index
     @news = Node.news.lang.includes(:summary)
-      .order(created: :desc).limit(8)
+      .order(created: :desc).limit(6)
 
     @events = Node.events.joins(:date).lang
       .where(

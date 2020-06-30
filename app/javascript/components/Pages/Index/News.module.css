@@ -7,12 +7,7 @@
 }
 
 .label {
-  margin-bottom: calc(var(--yr) * var(--s4));
-  display: block;
-
-  @media (--m) {
-    display: none;
-  }
+  margin-bottom: calc(var(--yr) * var(--s3));
 }
 
 .items {
@@ -22,7 +17,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: calc(var(--xr) * 2);
-    /* grid-row-gap: calc(var(--yr) * 7); */
   }
 }
 
@@ -60,7 +54,6 @@
   cursor: pointer;
   border-top: 1px solid var(--sp_color);
   padding: calc(var(--yr) * var(--s3)) 0 calc(var(--yr) * var(--s4));
-  /* margin-bottom: calc(var(--yr) * var(--s3)); */
 
   @media (--s) {
     display: flex;
@@ -69,29 +62,22 @@
     & .date {
       margin-top: auto;
     }
-    /* margin-bottom: 0; */
   }
 }
 
 .title {
-  composes: bt from '../../Fonts.module.css';
+  composes: h4 from '../../Fonts.module.css';
   margin-bottom: calc(var(--yr) * var(--s2));
   hyphens: auto;
 }
 
 .more {
-  display: inline-block;
-  cursor: pointer;
   position: static;
-  text-align: center;
-  border-radius: calc(var(--yr) * 2);
-  padding: calc(var(--yr) * 3) calc(var(--xr) * 2);
-  color: #141414;
-  background-color: #eceff1;
 
-  & > a {
-    color: #fff;
-    display: block;
+  @media (--s) {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
@@ -101,11 +87,5 @@
 
   & p {
     margin-bottom: 0;
-  }
-}
-
-.button {
-  @media (--m) {
-    display: none;
   }
 }

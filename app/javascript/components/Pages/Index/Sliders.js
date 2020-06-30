@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Glide from '@glidejs/glide'
@@ -10,19 +10,15 @@ Sliders.propTypes = {
 }
 
 export default function Sliders ({ sliders }) {
-  const [current, setCurrent] = useState(0)
   const mount = useRef()
 
   useEffect(() => {
     const glide = new Glide(mount.current, {
-      type: 'carousel',
-      autoplay: 10000,
+      type: 'slider',
+      rewind: false,
+      // autoplay: 2000,
       hoverpause: true,
       gap: 0
-    })
-
-    glide.on(['mount.after', 'run'], () => {
-      setCurrent(glide.index)
     })
 
     glide.mount()
@@ -35,22 +31,45 @@ export default function Sliders ({ sliders }) {
           <div className={classNames('glide__slides', styles.slides)}>
             {sliders.map((slider, i) =>
               <a
+                className={classNames('glide__slide', styles.slide)}
                 href={slider.link}
                 key={slider.nid}
-                className={classNames('glide__slide', styles.image)}
-                style={{
-                  backgroundImage: slider.image ? `url(https://assets.lunn.ru/images/1200x1500,q80/legacy${slider.image.path})` : null
-                }}
-              />
+              >
+                <div
+                  className={styles.image}
+                  style={{
+                    backgroundImage: slider.image ? `url(https://assets.lunn.ru/images/1500x1200,q80/legacy${slider.image.path})` : null
+                  }}
+                />
+
+                <div className={styles.data}>
+                  <div className={styles.title}>
+                    {slider.title}
+                  </div>
+
+                  <div className={styles.action}>
+                    <span className={styles.button}>
+                      Подробнее
+                    </span>
+                  </div>
+                </div>
+              </a>
             )}
           </div>
-        </div>
-        <div className={classNames('glide__bullets', styles.bullets)} data-glide-el="controls[nav]">
-          {sliders.map((s, index) =>
-            <div key={index} className={styles.wrapper} data-glide-dir={`=${index}`}>
-              <div className={classNames(styles.bullet, { [styles.active]: current === index })} />
+
+          <div className={styles.nav} data-glide-el="controls">
+            <div className={styles.prev} data-glide-dir="<">
+              <svg viewBox="0 0 12 22" fill="none">
+                <path d="M11 21L1 11 11 1" stroke="#000"/>
+              </svg>
             </div>
-          )}
+
+            <div className={styles.next} data-glide-dir=">">
+              <svg viewBox="0 0 12 22" fill="none">
+                <path d="M1 21l10-10L1 1" stroke="#000"/>
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>

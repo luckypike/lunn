@@ -93,7 +93,7 @@
 .more {
   position: static;
 
-  @media (--m) {
+  @media (--s) {
     position: absolute;
     right: 0;
     top: 0;

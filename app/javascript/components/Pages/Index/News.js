@@ -33,7 +33,7 @@ export default function News ({ news, I18n }) {
         )}
       </div>
 
-      <a href="/news" className={classNames(buttons.sec, styles.button)}>
+      <a href="/news" className={classNames(buttons.sec, styles.more)}>
         Все новости
       </a>
     </div>
