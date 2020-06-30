@@ -5,7 +5,7 @@ json.news @news do |node|
 end
 
 json.sliders @sliders do |slider|
-  json.cache! [slider.nid], expires_in: 30.minutes do
+  json.cache! [slider.nid, slider.image.attachment&.fid], expires_in: 30.minutes do
 
     json.partial! slider
     json.link slider.link.value if slider.link
