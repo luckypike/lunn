@@ -1,8 +1,8 @@
-@profiles = []
-@categories = []
+json.cache! @list, expires_in: 1.hour do
+  @profiles = []
+  @categories = []
 
-json.list @list do |row|
-  json.cache! row[:id], expires_in: 1.hour do
+  json.list @list do |row|
     json.extract! row, :id, :family
     json.profiles (1..40).to_a do |i|
       if row["profil_#{i}"].present?
@@ -17,7 +17,7 @@ json.list @list do |row|
       end
     end
   end
-end
 
-json.profiles @profiles.uniq
-json.categories @categories.uniq
+  json.profiles @profiles.uniq
+  json.categories @categories.uniq
+end
