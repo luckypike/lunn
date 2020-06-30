@@ -7,7 +7,7 @@ set :deploy_to, '/home/deploy/apps/lunn.ru'
 
 append :linked_files, 'config/database.yml', 'config/master.key'
 
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/uploads', 'public/abitur'
 
 set :keep_releases, 3
 
