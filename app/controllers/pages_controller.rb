@@ -3,8 +3,6 @@ class PagesController < ApplicationController
   before_action :set_node, except: %i[index contacts announces]
 
   def index
-    @admission_start = ((Time.new(2020, 6, 19, 8, 0).in_time_zone.to_f - Time.current.to_f) / 1.day).ceil
-
     @news = Node.news.lang.includes(:summary)
       .order(created: :desc).limit(8)
 
@@ -30,20 +28,19 @@ class PagesController < ApplicationController
       .order(created: :desc)
       .limit(5)
 
-
-    @navs = Nav.active.sec.lang
-
-    navs_images = Node::SingleImage
-      .where(
-        entity_type: :node,
-        entity_id: @navs.map(&:link_nid).reject(&:zero?)
-      ).includes(:attachment)
-
-    @navs.map do |nav|
-      nav.image = navs_images.detect do |ni|
-        ni.entity_id == nav.link_nid
-      end&.attachment&.path
-    end
+    # @navs = Nav.active.sec.lang
+    #
+    # navs_images = Node::SingleImage
+    #   .where(
+    #     entity_type: :node,
+    #     entity_id: @navs.map(&:link_nid).reject(&:zero?)
+    #   ).includes(:attachment)
+    #
+    # @navs.map do |nav|
+    #   nav.image = navs_images.detect do |ni|
+    #     ni.entity_id == nav.link_nid
+    #   end&.attachment&.path
+    # end
 
     respond_to :html, :json
   end

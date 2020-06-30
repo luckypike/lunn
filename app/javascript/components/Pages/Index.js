@@ -26,7 +26,7 @@ Index.propTypes = {
   locale: PropTypes.string
 }
 
-export default function Index ({ navs, admission_start: admissionStart, locale }) {
+export default function Index ({ locale }) {
   const I18n = useI18n(locale)
 
   const [news, setNews] = useState()
@@ -66,17 +66,17 @@ export default function Index ({ navs, admission_start: admissionStart, locale }
         </div>
 
         <div className={styles.admission}>
-          <Admission start={admissionStart} />
+          <Admission />
         </div>
 
         <div className={styles.sec}>
           <div className={pages.container}>
-            <Sec navs={navs} />
+            <Sec />
           </div>
         </div>
 
         <div className={styles.schedule}>
-          <Schedule navs={navs} />
+          <Schedule />
         </div>
 
         <div className={styles.events}>

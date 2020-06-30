@@ -4,40 +4,63 @@ import classNames from 'classnames'
 
 import styles from './Sec.module.css'
 
+import ArrowImg from '!svg-react-loader?!../../../images/arrow-right.svg'
+
 Sec.propTypes = {
   navs: PropTypes.array
 }
 
-export default function Sec ({ navs }) {
+export default function Sec () {
   return (
     <div className={styles.root}>
       <div className={styles.items}>
-        {navs.filter(n => n.depth === 1).map(item =>
-          <a
-            href={item.path}
-            key={item.mlid}
-            className={classNames(styles.item, styles[`item--${item.mlid}`])}
-            style={{
-              backgroundImage: item.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${item.image})` : null
-            }}
-          >
-            <div className={styles.title}>
-              {item.title.replace(/\(([^)]+)\)/g, '')}
+        <a href="/page/shkolniku" className={classNames(styles.item, styles.hss)}>
+          <div className={styles.title}>
+            Школьнику
+          </div>
 
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 20">
-                <path
-                  fill="none"
-                  stroke="#fff"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeMiterlimit="10"
-                  d="M.7.7l9.4 9.3-9.4 9.3"
-                />
-              </svg>
-            </div>
-          </a>
-        )}
+          <div className={styles.more}>
+            <span>Подробнее</span>
+
+            <ArrowImg />
+          </div>
+        </a>
+
+        <a href="/abitur/2020" className={classNames(styles.item, styles.abitur)}>
+          <div className={styles.title}>
+            Абитуриенту
+          </div>
+
+          <div className={styles.more}>
+            <span>Подробнее</span>
+
+            <ArrowImg />
+          </div>
+        </a>
+
+        <a href="/page/studentu" className={classNames(styles.item, styles.student)}>
+          <div className={styles.title}>
+            Студенту
+          </div>
+
+          <div className={styles.more}>
+            <span>Подробнее</span>
+
+            <ArrowImg />
+          </div>
+        </a>
+
+        <a href="/page/vypuskniku" className={classNames(styles.item, styles.graduate)}>
+          <div className={styles.title}>
+            Выпускнику
+          </div>
+
+          <div className={styles.more}>
+            <span>Подробнее</span>
+
+            <ArrowImg />
+          </div>
+        </a>
       </div>
     </div>
   )
