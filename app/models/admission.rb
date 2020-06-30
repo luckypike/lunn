@@ -254,7 +254,7 @@ class Admission < ApplicationRecord
               value = value ? 'Да' : 'Нет' if [true, false].include? value
             end
 
-            value
+            "#{value}".gsub(/\R+/, ' ')
           end
         end
       end
