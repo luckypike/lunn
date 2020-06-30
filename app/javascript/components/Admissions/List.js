@@ -21,12 +21,16 @@ export default function List ({ node: nodeJson, loaf, locale }) {
   const I18n = useI18n(locale)
 
   const [list, setList] = useState()
+  const [profiles, setProfiles] = useState()
+  const [categories, setCategories] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
       const { data } = await axios.get('/abitur/2020/list.json')
 
       setList(data.list)
+      setProfiles(data.profiles)
+      setCategories(data.categories)
     }
 
     _fetch()
@@ -47,10 +51,28 @@ export default function List ({ node: nodeJson, loaf, locale }) {
       {list && list.length > 0 &&
         <div className={styles.list}>
           <div className={pages.container}>
-            {list.map(row =>
-              <div key={row.id}>
-                {row.family}
-              </div>
+            {profiles && Object.entries(profiles).map((profile) =>
+              <React.Fragment key={profile[0]}>
+                <div>{profile[1].profile} {profile[1].form} {profile[1].tax}</div>
+
+                {categories && categories.map((category, _) =>
+                  <React.Fragment key={_}>
+                    <div>{category}</div>
+
+                    {list.map((row, _) =>
+                      <React.Fragment key={_}>
+                        {row.profiles.map(p => (
+                          p.profile === profile[1].profile && p.form === profile[1].form && p.tax === profile[1].tax && p.categorob === category &&
+                            <div key={row.id}>
+                              {row.family}
+                            </div>
+                        ))}
+                      </React.Fragment>
+                    )}
+                  </React.Fragment>
+                )}
+
+              </React.Fragment>
             )}
           </div>
         </div>
