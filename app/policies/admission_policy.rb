@@ -35,6 +35,10 @@ class AdmissionPolicy < ApplicationPolicy
     new?
   end
 
+  def list?
+    true
+  end
+
   def continue?
     user
   end

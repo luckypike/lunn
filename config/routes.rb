@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '*path', to: 'admissions#page', constraints: { path: 'abitur/2020/basp' }
   get '*path', to: 'admissions#page', constraints: { path: 'abitur/2020/ma' }
   get '*path', to: 'admissions#page', constraints: { path: 'abitur/2020/as' }
+  get '*path', to: 'admissions#list', constraints: { path: 'abitur/2020/list' }
   get 'abitur/online', to: redirect('/abitur/2020/basp')
 
   # Abiturs

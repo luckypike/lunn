@@ -23,6 +23,7 @@
 
 /public/packs
 /public/uploads
+/public/abitur
 /public/packs-test
 /node_modules
 /yarn-error.log

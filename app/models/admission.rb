@@ -159,6 +159,18 @@ class Admission < ApplicationRecord
         [direction_ids: []] + [directions_attributes: %i[id course_id form basis]]
     end
 
+    def list
+      rows = []
+
+      Rails.cache.fetch('admissions/csv', expires_in: 1.hour) do
+        CSV.foreach(Rails.root.join('public/abitur/admissions.csv'), headers: true, liberal_parsing: true) do |row|
+          rows << row.to_hash.with_indifferent_access
+        end
+
+        rows
+      end
+    end
+
     def to_csv
       achievements = AdmissionAchievement.all.map{|a| [a.id, a.title]}.to_h
       courses = Node::Course.where(type: :course).map{|c| [c.nid, c.label]}.to_h

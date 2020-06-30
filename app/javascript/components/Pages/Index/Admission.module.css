@@ -41,7 +41,7 @@
 
 .button {
   composes: h4 from '../../Fonts.module.css';
-  background-color: #fff45a;
+  background-color: #49d3ff;
   color: var(--pr_color);
   display: inline-block;
   cursor: pointer;
@@ -56,6 +56,6 @@
   color: white;
 
   & .button {
-    background-color: color-mod(#fff45a shade(10%));
+    background-color: color-mod(#49d3ff shade(10%));
   }
 }

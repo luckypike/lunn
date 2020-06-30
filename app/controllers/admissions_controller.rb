@@ -1,6 +1,6 @@
 class AdmissionsController < ApplicationController
-  before_action :set_url_alias, only: :page
-  before_action :set_node, only: :page
+  before_action :set_url_alias, only: %i[page list]
+  before_action :set_node, only: %i[page list]
   before_action :set_admission, only: %i[edit update show confirm accept jump]
   before_action :authorize_admission
 
@@ -8,6 +8,15 @@ class AdmissionsController < ApplicationController
 
   def page
     # DO NOT REMOVE! @brg
+  end
+
+  def list
+    respond_to do |format|
+      format.html
+      format.json do
+        @list = Admission.list
+      end
+    end
   end
 
   def index
