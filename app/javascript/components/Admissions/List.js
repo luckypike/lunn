@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import classNames from 'classnames'
 import { deserialize } from 'jsonapi-deserializer'
 
 import Title from '../Title'
@@ -48,31 +49,16 @@ export default function List ({ node: nodeJson, loaf, locale }) {
         }
       </div>
 
-      {list && list.length > 0 &&
-        <div className={styles.list}>
-          <div className={pages.container}>
-            {profiles && Object.entries(profiles).map((profile) =>
-              <React.Fragment key={profile[0]}>
-                <div>{profile[1].profile} {profile[1].form} {profile[1].tax}</div>
-
-                {categories && categories.map((category, _) =>
-                  <React.Fragment key={_}>
-                    <div>{category}</div>
-
-                    {list.map((row, _) =>
-                      <React.Fragment key={_}>
-                        {row.profiles.map(p => (
-                          p.profile === profile[1].profile && p.form === profile[1].form && p.tax === profile[1].tax && p.categorob === category &&
-                            <div key={row.id}>
-                              {row.family}
-                            </div>
-                        ))}
-                      </React.Fragment>
-                    )}
-                  </React.Fragment>
-                )}
-
-              </React.Fragment>
+      {list && list.length > 0 && profiles && categories &&
+        <div className={pages.container}>
+          <div className={styles.list}>
+            {profiles.map((profile, i) =>
+              <Course
+                key={i}
+                categories={categories}
+                course={profile}
+                list={list.filter(l => l.profiles.filter(p => p.profile === profile.profile && p.form === profile.form && p.tax === profile.tax).length > 0)}
+              />
             )}
           </div>
         </div>
@@ -80,3 +66,116 @@ export default function List ({ node: nodeJson, loaf, locale }) {
     </I18nContext.Provider>
   )
 }
+
+Course.propTypes = {
+  course: PropTypes.object.isRequired,
+  categories: PropTypes.array.isRequired,
+  list: PropTypes.array.isRequired
+}
+
+function Course ({ course, categories, list }) {
+  const [active, setActive] = useState(false)
+
+  return (
+    <div className={styles.course}>
+      <div className={classNames(styles.handle, { [styles.active]: active })} onClick={() => setActive(!active)}>
+        <h4>
+          {course.profile}
+        </h4>
+
+        <div>
+          {course.form}, {course.tax}
+        </div>
+      </div>
+
+      {active &&
+        <div className={styles.abiturs}>
+          {list.map(abitur =>
+            <Abitur
+              key={abitur.id}
+              abitur={abitur}
+              course={abitur.profiles.filter(p => p.profile === course.profile && p.form === course.form && p.tax === course.tax)[0]}
+            />
+          )}
+        </div>
+      }
+    </div>
+  )
+}
+
+Abitur.propTypes = {
+  abitur: PropTypes.object.isRequired,
+  course: PropTypes.object.isRequired
+}
+
+function Abitur ({ abitur, course }) {
+  const [active, setActive] = useState(false)
+
+  return (
+    <div className={styles.abitur}>
+      <div className={styles.place}>
+        1.
+      </div>
+
+      <div className={styles.name}>
+        {abitur.family_name} {abitur.first_name} {abitur.middle_name}
+
+        {course.categorob !== 'По общему конкурсу' &&
+          <>
+            <br />
+            <span className={styles.cat}>
+              {course.categorob}
+            </span>
+          </>
+        }
+      </div>
+
+      <div className={styles.summary}>
+        250 баллов
+      </div>
+
+      <div className={styles.arrow} />
+    </div>
+  )
+}
+
+// Cat.propTypes = {
+//   cat: PropTypes.string.isRequired,
+//   list: PropTypes.array.isRequired
+// }
+//
+// function Cat ({ cat, list }) {
+//   if (list.length < 1) return null
+//
+//   return (
+//     <div className={styles.cat}>
+//       <div>
+//         <h5>
+//           {cat}
+//         </h5>
+//       </div>
+//
+//       <div>
+//         {list.map(abitur =>
+//           <div key={abitur.id} className={styles.abitur}>
+//             <div className={styles.name}>
+//               {abitur.family_name} {abitur.first_name} {abitur.middle_name}
+//             </div>
+//
+//             <div className={styles.summary}>
+//               <div className={styles.marks}>
+//                 250 баллов
+//               </div>
+//
+//               <div className={styles.achiv}>
+//                 2 инд. дост.
+//               </div>
+//             </div>
+//
+//             <div className={styles.arrow} />
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   )
+// }
