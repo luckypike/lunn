@@ -90,13 +90,17 @@ function Course ({ course, categories, list }) {
 
       {active &&
         <div className={styles.abiturs}>
-          {list.map(abitur =>
-            <Abitur
-              key={abitur.id}
-              abitur={abitur}
-              course={abitur.profiles.filter(p => p.profile === course.profile && p.form === course.form && p.tax === course.tax)[0]}
-            />
-          )}
+          {list.sort((a, b) => (a.achievements_all > b.achievements_all) ? -1 : 1)
+            .sort((a, b) => (a.subjects_all > b.subjects_all) ? -1 : 1)
+            .map((abitur, _) =>
+              <Abitur
+                index={_ + 1}
+                key={abitur.id}
+                abitur={abitur}
+                course={abitur.profiles.filter(p => p.profile === course.profile && p.form === course.form && p.tax === course.tax)[0]}
+              />
+            )
+          }
         </div>
       }
     </div>
@@ -105,36 +109,70 @@ function Course ({ course, categories, list }) {
 
 Abitur.propTypes = {
   abitur: PropTypes.object.isRequired,
-  course: PropTypes.object.isRequired
+  course: PropTypes.object.isRequired,
+  index: PropTypes.number
 }
 
-function Abitur ({ abitur, course }) {
+function Abitur ({ abitur, course, index }) {
   const [active, setActive] = useState(false)
 
   return (
     <div className={styles.abitur}>
-      <div className={styles.place}>
-        1.
+      <div className={styles.short} onClick={() => setActive(!active)}>
+        <div className={styles.place}>
+          {index}.
+        </div>
+
+        <div className={styles.name}>
+          {abitur.family_name} {abitur.first_name} {abitur.middle_name}
+
+          {course.categorob !== 'По общему конкурсу' &&
+            <>
+              <br />
+              <span className={styles.cat}>
+                {course.categorob}
+              </span>
+            </>
+          }
+        </div>
+
+        <div className={styles.summary}>
+          {abitur.achievements_all + abitur.subjects_all}
+        </div>
+
+        <div className={styles.arrow} />
       </div>
 
-      <div className={styles.name}>
-        {abitur.family_name} {abitur.first_name} {abitur.middle_name}
-
-        {course.categorob !== 'По общему конкурсу' &&
-          <>
-            <br />
-            <span className={styles.cat}>
-              {course.categorob}
-            </span>
-          </>
-        }
-      </div>
-
-      <div className={styles.summary}>
-        250 баллов
-      </div>
-
-      <div className={styles.arrow} />
+      {active &&
+        <div className={styles.details}>
+          {abitur.subjects && abitur.subjects.length > 0 &&
+            <div className={styles.section}>
+              <div className={styles.section_name}>Предметы</div>
+              <div className={styles.results}>
+                {abitur.subjects.map(s =>
+                  <div key={s.id} className={styles.result}>
+                    <div>{s.subject}</div>
+                    <div>{s.grade}</div>
+                  </div>
+                )}
+              </div>
+            </div>
+          }
+          {abitur.achievements && abitur.achievements.length > 0 &&
+            <div className={styles.section}>
+              <div className={styles.section_name}>Индивидуальные достижения</div>
+              <div className={styles.results}>
+                {abitur.achievements.map(a =>
+                  <div key={a.id} className={styles.result}>
+                    <div>{a.achievement}</div>
+                    <div>{a.grade}</div>
+                  </div>
+                )}
+              </div>
+            </div>
+          }
+        </div>
+      }
     </div>
   )
 }
