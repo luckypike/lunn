@@ -24,7 +24,7 @@ export default function Youtube () {
       />
 
       <Frame
-        id="zxGz0A9KTfk"
+        id="8Btint4aWjo"
         title="Поздравление Академического Хора НГЛУ выпускникам-2020"
         desc="30 июня"
       />
