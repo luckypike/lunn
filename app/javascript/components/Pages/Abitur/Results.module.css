@@ -1,0 +1,51 @@
+.results {
+  display: grid;
+
+  @media (--m) {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: calc(var(--xr) * 2);
+  }
+}
+
+.result {
+  composes: h4 from '../../Fonts.module.css';
+  border-bottom: 1px solid var(--sp_color);
+  padding: calc(var(--yr) * 5) 0;
+  margin-bottom: 0;
+  display: flex;
+  align-items: flex-start;
+
+  & span {
+    margin-right: auto;
+  }
+
+  & svg {
+    margin-top: var(--yr);
+    display: block;
+    width: 20px;
+    margin-left: var(--xr);
+
+    & path {
+      stroke: var(--pr_color);
+      transition: stroke 0.3s;
+    }
+  }
+
+  &:nth-child(-n+1) {
+    border-top: 1px solid var(--sp_color);
+  }
+
+  @media (--m) {
+    &:nth-child(-n+2) {
+      border-top: 1px solid var(--sp_color);
+    }
+  }
+
+  &:hover {
+    & svg {
+      & path {
+        stroke: var(--hl_color);
+      }
+    }
+  }
+}

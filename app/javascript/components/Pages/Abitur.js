@@ -13,6 +13,7 @@ import How from './Abitur/How'
 import Admission from './Abitur/Admission'
 import Courses from './Abitur/Courses'
 import Foreigners from './Abitur/Foreigners'
+import Results from './Abitur/Results'
 
 import styles from './Abitur.module.css'
 import pages from '../Pages.module.css'
@@ -58,6 +59,12 @@ export default function Divisions ({ node, loaf, docs: docsJson, locale }) {
         <div className={styles.admission}>
           <div className={pages.container}>
             <Admission />
+          </div>
+        </div>
+
+        <div className={styles.results}>
+          <div className={pages.container}>
+            <Results />
           </div>
         </div>
 

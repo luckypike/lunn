@@ -8,7 +8,7 @@
 
 .admission {
   background-color: var(--sp_color);
-  padding: calc(var(--yr) * var(--s6)) 0;
+  padding: calc(var(--yr) * var(--s6)) 0 calc(var(--yr) * var(--s4));
 }
 
 .courses {
@@ -21,4 +21,8 @@
 
 .foreigners {
   margin: calc(var(--yr) * var(--s6)) 0;
+}
+
+.results {
+  padding: calc(var(--yr) * var(--s4)) 0;
 }
