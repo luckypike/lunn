@@ -24,6 +24,7 @@ export default function List ({ node: nodeJson, loaf, locale }) {
   const [list, setList] = useState()
   const [profiles, setProfiles] = useState()
   const [categories, setCategories] = useState()
+  const [types, setTypes] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
@@ -32,6 +33,7 @@ export default function List ({ node: nodeJson, loaf, locale }) {
       setList(data.list)
       setProfiles(data.profiles)
       setCategories(data.categories)
+      setTypes(data.types)
     }
 
     _fetch()
@@ -49,18 +51,23 @@ export default function List ({ node: nodeJson, loaf, locale }) {
         }
       </div>
 
-      {list && list.length > 0 && profiles && categories &&
+      {list && list.length > 0 && profiles && categories && types &&
         <div className={pages.container}>
-          <div className={styles.list}>
-            {profiles.map((profile, i) =>
-              <Course
-                key={i}
-                categories={categories}
-                course={profile}
-                list={list.filter(l => l.profiles.filter(p => p.profile === profile.profile && p.form === profile.form && p.tax === profile.tax).length > 0)}
-              />
-            )}
-          </div>
+          {types.map((type, t) =>
+            <React.Fragment key={t}>
+              <h2>{type}</h2>
+              <div className={styles.list}>
+                {profiles.filter(p => p.type === type[0]).map((profile, i) =>
+                  <Course
+                    key={i}
+                    categories={categories}
+                    course={profile}
+                    list={list.filter(l => l.profiles.filter(p => p.profile === profile.profile && p.form === profile.form && p.tax === profile.tax).length > 0)}
+                  />
+                )}
+              </div>
+            </React.Fragment>
+          )}
         </div>
       }
     </I18nContext.Provider>
@@ -76,6 +83,10 @@ Course.propTypes = {
 function Course ({ course, categories, list }) {
   const [active, setActive] = useState(false)
 
+  const getProfile = (profiles) => {
+    return profiles.filter(p => p.profile === course.profile && p.form === course.form && p.tax === course.tax)[0]
+  }
+
   return (
     <div className={styles.course}>
       <div className={classNames(styles.handle, { [styles.active]: active })} onClick={() => setActive(!active)}>
@@ -90,14 +101,16 @@ function Course ({ course, categories, list }) {
 
       {active &&
         <div className={styles.abiturs}>
-          {list.sort((a, b) => (a.achievements_all > b.achievements_all) ? -1 : 1)
+          {list
+            .sort((a, b) => (a.achievements_all > b.achievements_all) ? -1 : 1)
             .sort((a, b) => (a.subjects_all > b.subjects_all) ? -1 : 1)
+            .sort((a, b) => (categories.indexOf(getProfile(a.profiles).categorob) > categories.indexOf(getProfile(b.profiles).categorob) ? -1 : 1))
             .map((abitur, _) =>
               <Abitur
                 index={_ + 1}
                 key={abitur.id}
                 abitur={abitur}
-                course={abitur.profiles.filter(p => p.profile === course.profile && p.form === course.form && p.tax === course.tax)[0]}
+                course={getProfile(abitur.profiles)}
               />
             )
           }
@@ -147,7 +160,6 @@ function Abitur ({ abitur, course, index }) {
         <div className={styles.details}>
           {abitur.subjects && abitur.subjects.length > 0 &&
             <div className={styles.section}>
-              <div className={styles.section_name}>Предметы</div>
               <div className={styles.results}>
                 {abitur.subjects.map(s =>
                   <div key={s.id} className={styles.result}>
@@ -160,7 +172,6 @@ function Abitur ({ abitur, course, index }) {
           }
           {abitur.achievements && abitur.achievements.length > 0 &&
             <div className={styles.section}>
-              <div className={styles.section_name}>Индивидуальные достижения</div>
               <div className={styles.results}>
                 {abitur.achievements.map(a =>
                   <div key={a.id} className={styles.result}>
@@ -171,6 +182,14 @@ function Abitur ({ abitur, course, index }) {
               </div>
             </div>
           }
+          <div className={styles.section}>
+            <div className={styles.results}>
+              <div className={styles.result}>
+                <div>Согласие (аттестат)</div>
+                <div>{course.soglasiye ? 'Да (оригинал)' : 'Нет (копия)'}</div>
+              </div>
+            </div>
+          </div>
         </div>
       }
     </div>

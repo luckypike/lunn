@@ -3,6 +3,10 @@
   max-width: 60rem;
 }
 
+.list {
+  margin-bottom: calc(var(--yr) * var(--s5));
+}
+
 .handle {
   padding: calc(var(--yr) * var(--s3)) 0;
   cursor: pointer;
@@ -62,7 +66,7 @@
   cursor: pointer;
   padding: calc(var(--yr) * var(--s1)) 0;
   display: grid;
-  grid-template-columns: 1.5rem 1fr auto 2rem;
+  grid-template-columns: 1.5rem 2fr 1fr 2rem;
 }
 
 .summary {
@@ -80,24 +84,13 @@
 
 .details {
   padding: calc(var(--yr)) 2rem calc(var(--yr)) 1.5rem;
-}
-
-.section {
-  margin-bottom: calc(var(--yr) * 6);
-
-  @media (--s) {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-}
-
-.section_name {
-  padding-bottom: var(--yr);
+  composes: at from '../Fonts.module.css';
+  color: var(--gr_color);
 }
 
 .result {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 2fr 1fr;
 
   & > div:last-child {
     padding-left: calc(var(--xr) * 2);
