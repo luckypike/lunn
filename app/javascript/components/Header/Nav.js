@@ -18,7 +18,7 @@ export default function Nav ({ navs, onToggle, index, menuActive, menuOpen }) {
       <ul className={styles.navs}>
         {navs.filter(n => n.depth === 1).map(nav =>
           <li key={nav.mlid} className={styles.nav} onMouseEnter={menuOpen} onMouseLeave={menuOpen}>
-            <a href={nav.path} className={classNames({ [styles.covid]: nav.mlid === 5123, [styles.abitur]: nav.mlid === 5617 })}>
+            <a href={nav.path} className={classNames({ [styles.covid]: nav.mlid === 5907, [styles.abitur]: nav.mlid === 5617 })}>
               {nav.title}
             </a>
           </li>
