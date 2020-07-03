@@ -226,3 +226,7 @@
     background-color: #d4d7d9;
   }
 }
+
+.p .button--sec {
+  margin-bottom: calc(var(--yr) * var(--s1));
+}
