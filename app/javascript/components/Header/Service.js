@@ -25,7 +25,7 @@ export default function Service ({
 }) {
   return (
     <div className={classNames(styles.root, { [styles.white]: index, [styles.black]: menuActive })}>
-      {/*<div className={styles.locales}>
+      {/* <div className={styles.locales}>
         {locale === 'ru' &&
           <a href="/en/page/study-russian-lunn">EN</a>
         }
@@ -33,13 +33,7 @@ export default function Service ({
         {locale !== 'ru' &&
           <a href="/">RU</a>
         }
-      </div>*/}
-
-      <div className={styles.covid}>
-        <a href="/covid-19">
-          COVID-19
-        </a>
-      </div>
+      </div> */}
 
       <div className={classNames(styles.special, { [styles.active]: specialActive })} onClick={onSpecialToggle} itemProp="copy">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
