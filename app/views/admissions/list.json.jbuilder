@@ -12,6 +12,9 @@ json.cache! 'admissions/list', expires_in: 1.hour do
         json.type row["profil_#{i}"][1].squish
         json.form row["form_#{i}"].squish
         json.tax row["tax_#{i}"].squish
+        json.overall row["summball_itog_#{i}"].squish.to_i
+        json.grades row["summball_exam_#{i}"].squish.to_i
+        json.achievements row["summball_achievement_#{i}"].squish.to_i
         json.soglasiye row["soglasiye_#{i}"].to_i
 
         @profiles << { profile: row["profil_#{i}"][6..-1].squish, form: row["form_#{i}"].strip, tax: row["tax_#{i}"].strip, type: row["profil_#{i}"][1].squish }
@@ -22,7 +25,6 @@ json.cache! 'admissions/list', expires_in: 1.hour do
     end
 
     @subjects_all = []
-    @achievements_all = []
 
     json.subjects (1..40).to_a do |s|
       if row["subject_#{s}"].present?
@@ -38,12 +40,8 @@ json.cache! 'admissions/list', expires_in: 1.hour do
         json.id a
         json.achievement row["achievement_#{a}"].squish
         json.grade row["achievement_ball_#{a}"].squish
-        @achievements_all << row["achievement_ball_#{a}"].squish.to_i
       end
     end
-
-    json.subjects_all @subjects_all.sum
-    json.achievements_all @achievements_all.sum
   end
 
   json.profiles(@profiles.uniq.sort_by { |p| [p[:profile], p[:form], p[:tax]] })

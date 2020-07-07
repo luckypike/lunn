@@ -102,8 +102,9 @@ function Course ({ course, categories, list }) {
       {active &&
         <div className={styles.abiturs}>
           {list
-            .sort((a, b) => (a.achievements_all > b.achievements_all) ? -1 : 1)
-            .sort((a, b) => (a.subjects_all > b.subjects_all) ? -1 : 1)
+            .sort((a, b) => (getProfile(a.profiles).achievements > getProfile(b.profiles).achievements) ? -1 : 1)
+            .sort((a, b) => (getProfile(a.profiles).grades > getProfile(b.profiles).grades) ? -1 : 1)
+            .sort((a, b) => (getProfile(a.profiles).overall > getProfile(b.profiles).overall) ? -1 : 1)
             .sort((a, b) => (categories.indexOf(getProfile(a.profiles).categorob) > categories.indexOf(getProfile(b.profiles).categorob) ? -1 : 1))
             .map((abitur, _) =>
               <Abitur
@@ -150,7 +151,7 @@ function Abitur ({ abitur, course, index }) {
         </div>
 
         <div className={styles.summary}>
-          {abitur.achievements_all + abitur.subjects_all}
+          {course.overall}
         </div>
 
         <div className={styles.arrow} />
