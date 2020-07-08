@@ -99,6 +99,7 @@ export default function StepNine ({ values, setValues, dictionaries, documents, 
                   direction={directions.get(key)}
                   dictionaries={dictionaries}
                   errors={errors}
+                  onChange={onChange}
                   onDirectionChange={handleDirectionChange}
                   onDirectionDelete={handleDirectionDelete}
                 />
@@ -245,10 +246,6 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
     onDirectionChange && onDirectionChange(item, directionKey)
   }, [item])
 
-  const handleInputChange = ({ target: { name, value } }) => {
-    setItem({ ...item, [name]: value })
-  }
-
   const handleSelectChange = (name, value) => {
     setItem({ ...item, [name]: value })
   }
@@ -256,12 +253,58 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
   return (
     <>
       <div className={form.item}>
-        <div className={form.select}>
+
+        <div className={form.input}>
           {directionKey > 0 &&
             <button className={classNames(buttons.main, form.delete)} onClick={() => onDirectionDelete(directionKey)}>
               Удалить
             </button>
           }
+
+          <div className={form.label}>
+            Форма обучения *
+          </div>
+
+          <div className={styles.tabs}>
+            <div className={classNames(styles.tab, { [styles.active]: item.form === 1 })} onClick={() => setItem({ ...item, form: 1, course_id: null })}>
+              Очная
+            </div>
+
+            <div className={classNames(styles.tab, { [styles.active]: item.form === 2 })} onClick={() => setItem({ ...item, form: 2, course_id: null })}>
+              Очно-заочная
+            </div>
+
+            <div className={classNames(styles.tab, { [styles.active]: item.form === 3 })} onClick={() => setItem({ ...item, form: 3, course_id: null })}>
+              Заочная
+            </div>
+          </div>
+        </div>
+
+        <Errors errors={errors[`directions[${directionKey}].form`]} />
+      </div>
+
+      <div className={classNames(form.item, { [styles.disabled]: !item.form })}>
+        <div className={form.input}>
+          <div className={form.label}>
+            Финансовая основа *
+          </div>
+
+          <div className={styles.tabs}>
+            <div className={classNames(styles.tab, { [styles.active]: item.basis === 1 })} onClick={() => setItem({ ...item, basis: 1 })}>
+              Бюджет
+            </div>
+
+            <div className={classNames(styles.tab, { [styles.active]: item.basis === 2 })} onClick={() => setItem({ ...item, basis: 2 })}>
+              Фин. договор
+            </div>
+          </div>
+        </div>
+
+        <Errors errors={errors[`directions[${directionKey}].basis`]} />
+      </div>
+
+      <div className={classNames(form.item, { [styles.disabled]: !item.basis })}>
+        <div className={form.select}>
 
           <label>
             <div className={form.label}>
@@ -270,11 +313,11 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
 
             <Select
               classNamePrefix="react-select"
-              value={dictionaries.directions.find(d => d.id === item.course_id)}
+              value={item.course_id ? dictionaries.directions.find(d => d.id === item.course_id) : ''}
               getOptionValue={option => option.id}
               getOptionLabel={option => `${I18n.t(`courses.levels.${option.level}`)}. ${option.title} (${option.course_code}).${option.spec ? ` ${option.spec}.` : ''}`}
               noOptionsMessage={() => 'Ничего не найдено'}
-              options={dictionaries.directions}
+              options={dictionaries.directions.filter(d => d[`time_${item.form}`] !== null)}
               placeholder="Выберите направление.."
               onChange={value => handleSelectChange('course_id', value.id)}
             />
@@ -282,42 +325,6 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
         </div>
 
         <Errors errors={errors[`directions[${directionKey}].course`]} />
-      </div>
-
-      <div className={styles.row}>
-        <div className={form.item}>
-
-          <div className={form.input}>
-            <div className={form.label}>
-              Форма обучения *
-            </div>
-
-            <select name="form" onChange={handleInputChange} value={item.form}>
-              <option value=""></option>
-              <option value="1">Очная</option>
-              <option value="2">Очно-заочная</option>
-              <option value="3">Заочная</option>
-            </select>
-          </div>
-
-          <Errors errors={errors[`directions[${directionKey}].form`]} />
-        </div>
-
-        <div className={form.item}>
-          <div className={form.input}>
-            <div className={form.label}>
-              Финансовая основа *
-            </div>
-
-            <select name="basis" onChange={handleInputChange} value={item.basis}>
-              <option value=""></option>
-              <option value="1">Бюджет</option>
-              <option value="2">Фин. договор</option>
-            </select>
-          </div>
-
-          <Errors errors={errors[`directions[${directionKey}].basis`]} />
-        </div>
       </div>
 
       <br />
