@@ -15,6 +15,7 @@ class AdmissionsController < ApplicationController
       format.html
       format.json do
         @list = Admission.list
+        @exams = Admission.exams
         @profiles = []
         @categories = []
       end

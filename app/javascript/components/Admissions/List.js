@@ -25,6 +25,7 @@ export default function List ({ node: nodeJson, loaf, locale }) {
   const [profiles, setProfiles] = useState()
   const [categories, setCategories] = useState()
   const [types, setTypes] = useState()
+  const [exams, setExams] = useState()
 
   useEffect(() => {
     const _fetch = async () => {
@@ -34,6 +35,7 @@ export default function List ({ node: nodeJson, loaf, locale }) {
       setProfiles(data.profiles)
       setCategories(data.categories)
       setTypes(data.types)
+      setExams(data.exams)
     }
 
     _fetch()
@@ -51,7 +53,7 @@ export default function List ({ node: nodeJson, loaf, locale }) {
         }
       </div>
 
-      {list && list.length > 0 && profiles && categories && types &&
+      {list && list.length > 0 && profiles && categories && types && exams &&
         <div className={pages.container}>
           {types.map((type, t) =>
             <React.Fragment key={t}>
@@ -62,6 +64,7 @@ export default function List ({ node: nodeJson, loaf, locale }) {
                     key={i}
                     categories={categories}
                     course={profile}
+                    exams={exams}
                     list={list.filter(l => l.profiles.filter(p => p.profile === profile.profile && p.form === profile.form && p.tax === profile.tax).length > 0)}
                   />
                 )}
@@ -77,10 +80,11 @@ export default function List ({ node: nodeJson, loaf, locale }) {
 Course.propTypes = {
   course: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
+  exams: PropTypes.array.isRequired
 }
 
-function Course ({ course, categories, list }) {
+function Course ({ course, categories, list, exams }) {
   const [active, setActive] = useState(false)
 
   const getProfile = (profiles) => {
@@ -111,6 +115,7 @@ function Course ({ course, categories, list }) {
                 index={_ + 1}
                 key={abitur.id}
                 abitur={abitur}
+                exams={exams.filter(e => e.profile === getProfile(abitur.profiles).id).map(e => e.exam)}
                 course={getProfile(abitur.profiles)}
               />
             )
@@ -124,10 +129,11 @@ function Course ({ course, categories, list }) {
 Abitur.propTypes = {
   abitur: PropTypes.object.isRequired,
   course: PropTypes.object.isRequired,
-  index: PropTypes.number
+  index: PropTypes.number,
+  exams: PropTypes.array.isRequired
 }
 
-function Abitur ({ abitur, course, index }) {
+function Abitur ({ abitur, course, index, exams }) {
   const [active, setActive] = useState(false)
 
   return (
@@ -162,7 +168,7 @@ function Abitur ({ abitur, course, index }) {
           {abitur.subjects && abitur.subjects.length > 0 &&
             <div className={styles.section}>
               <div className={styles.results}>
-                {abitur.subjects.map(s =>
+                {abitur.subjects.filter(s => exams.includes(s.id)).map(s =>
                   <div key={s.id} className={styles.result}>
                     <div>{s.subject}</div>
                     <div>{s.grade}</div>

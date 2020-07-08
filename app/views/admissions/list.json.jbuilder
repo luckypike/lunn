@@ -8,6 +8,7 @@ json.cache! 'admissions/list', expires_in: 1.hour do
 
     json.profiles (1..40).to_a do |i|
       if row["profil_#{i}"].present?
+        json.id row["profil_id_#{i}"].squish.to_i
         json.profile row["profil_#{i}"][6..-1].squish
         json.type row["profil_#{i}"][1].squish
         json.form row["form_#{i}"].squish
@@ -28,7 +29,7 @@ json.cache! 'admissions/list', expires_in: 1.hour do
 
     json.subjects (1..40).to_a do |s|
       if row["subject_#{s}"].present?
-        json.id s
+        json.id row["subject_id_#{s}"].squish.to_i
         json.subject row["subject_#{s}"].squish
         json.grade row["subject_ball_#{s}"].squish
         @subjects_all << row["subject_ball_#{s}"].squish.to_i
@@ -47,4 +48,9 @@ json.cache! 'admissions/list', expires_in: 1.hour do
   json.profiles(@profiles.uniq.sort_by { |p| [p[:profile], p[:form], p[:tax]] })
   json.categories @categories.uniq
   json.types ['Бакалавриат', 'Специалитет', 'Магистратура', 'Аспирантура']
+
+  json.exams @exams.each do |row|
+    json.profile row[:ProfilId].to_i
+    json.exam row[:SubjectId].to_i
+  end
 end
