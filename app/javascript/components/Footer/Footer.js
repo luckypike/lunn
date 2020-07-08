@@ -85,13 +85,13 @@ export default function Footer ({ navs: data, footer: footerData, partners, env,
 
               <li className={styles.nav}>
                 <ul className={classNames(styles.sec, styles.footer)}>
-                  {navs.filter(item => item.depth === 1 && navs.filter(i => i.depth === 2 && i.plid === item.mlid).length === 0).map(f =>
+                  {/* {navs.filter(item => item.depth === 1 && navs.filter(i => i.depth === 2 && i.plid === item.mlid).length === 0).map(f =>
                     <li key={f.mlid}>
                       <a href={f.path} className={styles.second}>
                         {f.title}
                       </a>
                     </li>
-                  )}
+                  )} */}
 
                   {footer.map(f =>
                     <li key={f.mlid}>
