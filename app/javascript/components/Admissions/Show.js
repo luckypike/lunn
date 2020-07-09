@@ -114,8 +114,48 @@ export default function Show ({ id, locale }) {
 
             { admission.status === 'processing' &&
               <>
-                <h2>Анкета отправлена</h2>
-                <div className={styles.hint}>Анкета сформирована и отправлена на рассмотрение</div>
+                <h2>Ваша анкета принята и передана на обработку сотрудникам приёмной комиссии</h2>
+                <div className={styles.hint}>
+                  <p>
+                    Обычно обработка анкеты занимает 1-2 рабочих дня.
+                  </p>
+
+                  <p>
+                    Если вы всё заполнили верно, и у приёмной комиссии нет вопросов по вашему заявлению, то заявление считается принятым.
+                  </p>
+
+                  <p>
+                    Принятые заявления появляются в <a className={styles.a} target="_blank" rel="noreferrer" href="/abitur/2020/list">списках абитуриентов</a>.
+                    Найдите себя в списках, чтобы убедиться, что всё в порядке.
+                    Списки обновляются 1 раз в сутки.
+                  </p>
+
+                  <p>
+                    Если возникнут вопросы по документам и анкете, сотрудники приёмной комиссии позвонят или напишут вам.
+                  </p>
+
+                  <p>
+                    Мы всегда на связи, задавайте нам вопросы.
+                  </p>
+
+                  <p className={styles.row}>
+                    <ul>
+                      <li>+7 831 416 6141</li>
+                      <li>+7 930 715 5798</li>
+                      <li>+7 920 047 6026</li>
+                    </ul>
+
+                    <ul>
+                      <li><a className={styles.a} target="_blank" rel="noreferrer" href="https://vk.com/linguistica">группа ВКонтакте</a></li>
+                      <li><a className={styles.a} target="_blank" rel="noreferrer" href="https://lunn.ru/abitur/2020">страница приёмной комиссии</a></li>
+                      <li><a className={styles.a} href="mailto:priem@lunn.ru">priem@lunn.ru</a></li>
+                    </ul>
+                  </p>
+
+                  <p>
+                    Спасибо, что выбрали нас!
+                  </p>
+                </div>
               </>
             }
             <div className={styles.step}>

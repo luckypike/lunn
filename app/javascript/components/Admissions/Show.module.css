@@ -63,3 +63,9 @@
 .send {
   margin-left: auto;
 }
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: var(--yr);
+}
