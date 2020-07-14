@@ -36,9 +36,25 @@ export default function Results () {
           <ArrowImg />
         </a>
 
+        <a className={styles.result} href="/abitur/2020/admission">
+          <span>
+            Информация о ходе приёма
+          </span>
+
+          <ArrowImg />
+        </a>
+
         <a className={styles.result} href="/abitur/2020/list">
           <span>
             Перечень абитуриентов
+          </span>
+
+          <ArrowImg />
+        </a>
+
+        <a className={styles.result} href="/abitur/2020/enrollments">
+          <span>
+            Приказы о зачислении
           </span>
 
           <ArrowImg />
