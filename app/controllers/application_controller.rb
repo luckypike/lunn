@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_global_navs
-    @header_navs = Nav.active.main.lang.where(depth: 1)
+    @header_navs = Nav.active.main_or_sec.lang.where(depth: 1)
 
     @footer_navs = Nav.active.main_or_sec.lang.unscope(:order)
       .order(menu_name: :desc, weight: :asc)

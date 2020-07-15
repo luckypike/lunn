@@ -23,7 +23,7 @@
   width: 100%;
   border: 0;
   padding-right: calc(var(--yr) * 12);
-  padding-left: calc(var(--yr) * 12);
+  padding-left: calc(var(--yr) * 8);
   composes: h3 from '../Fonts.module.css';
 
   @media (--s) {
@@ -38,7 +38,7 @@
   width: calc(var(--yr) * 8);
   height: calc(var(--yr) * 8);
   position: absolute;
-  left: calc(var(--yr) * 4);
+  left: calc(var(--yr) * 0);
   top: 50%;
   fill: var(--gr_color);
   transform: translateY(-50%);
@@ -55,8 +55,6 @@
   top: 50%;
   transform: translateY(-50%);
   margin-right: calc(var(--yr) * 3 * -1 - 3px);
-  /* padding: calc(var(--yr) * 2); */
-
   width: calc(var(--yr) * 12);
   height: calc(var(--yr) * 12);
   padding: calc(var(--yr) * 3);

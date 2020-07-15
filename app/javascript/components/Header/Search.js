@@ -38,7 +38,7 @@ export default function Search ({ onSearchToggle, searchActive }) {
               autoComplete="off"
               placeholder="Что нужно найти?"
             />
-          
+
             <div className={styles.close} onClick={onSearchToggle}>
               <Close />
             </div>

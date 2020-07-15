@@ -13,12 +13,12 @@
 }
 
 .container {
-  padding: 0 calc(var(--yr) * 5);
+  padding: 0 var(--xr);
   max-width: 120rem;
   margin: 0 auto;
 
   @media (--s) {
-    padding: 0 calc(var(--yr) * 8);
+    padding: 0 calc(var(--xr) * 2);
   }
 
   @media (--m) {

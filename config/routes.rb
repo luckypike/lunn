@@ -53,9 +53,9 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /en/ do
     get '', to: 'pages#index'
 
-    get 'index', to: 'pages#index', constraints: lambda { |request|
-      request.format == :json
-    }, format: :json
+    # get 'index', to: 'pages#index', constraints: lambda { |request|
+    #   request.format == :json
+    # }, format: :json
 
     resources :admissions, only: %i[index new create show edit update] do
       collection do

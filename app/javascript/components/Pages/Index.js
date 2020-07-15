@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+// import axios from 'axios'
+import { deserialize } from 'jsonapi-deserializer'
 
 import { I18nContext, useI18n } from '../I18n'
 
@@ -20,28 +21,18 @@ import pages from '../Pages.module.css'
 
 Index.propTypes = {
   navs: PropTypes.array,
-  admission_start: PropTypes.number,
+  news: PropTypes.object,
+  events: PropTypes.object,
+  sliders: PropTypes.object,
   locale: PropTypes.string
 }
 
-export default function Index ({ locale }) {
+export default function Index ({ locale, news: newsData, events: eventsData, sliders: slidersData }) {
   const I18n = useI18n(locale)
 
-  const [news, setNews] = useState()
-  const [events, setEvents] = useState()
-  const [sliders, setSliders] = useState()
-
-  useEffect(() => {
-    const _fetch = async () => {
-      const { data } = await axios.get((locale !== 'ru' ? `/${locale}` : '') + '/index.json')
-
-      setNews(data.news)
-      setEvents(data.events)
-      setSliders(data.sliders)
-    }
-
-    _fetch()
-  }, [])
+  const news = deserialize(newsData)
+  const events = deserialize(eventsData)
+  const sliders = deserialize(slidersData)
 
   return (
     <I18nContext.Provider value={I18n}>
@@ -79,13 +70,11 @@ export default function Index ({ locale }) {
 
         <div className={styles.events}>
           <div className={pages.container}>
-            {events && events.length > 0 &&
-              <Events events={events} />
-            }
+            <Events events={events} />
           </div>
 
           <a href="/events" className={styles.calendar}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 37 34">
+            <svg fill="none" viewBox="0 0 37 34">
               <path stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M1 13h36M8 4H1v29h36V4h-8M25 4H12M10 1v6M27 1v6"/>
             </svg>
 
@@ -96,21 +85,13 @@ export default function Index ({ locale }) {
         </div>
 
         <div className={pages.container}>
-          {!news &&
-            <div className={styles.placeholder} />
-          }
+          <div className={styles.slider}>
+            <Sliders sliders={sliders} />
+          </div>
 
-          {sliders && news &&
-            <>
-              <div className={styles.slider}>
-                <Sliders sliders={sliders} />
-              </div>
-
-              <div className={styles.news}>
-                <News news={news} I18n={I18n} />
-              </div>
-            </>
-          }
+          <div className={styles.news}>
+            <News news={news} I18n={I18n} />
+          </div>
 
           <Youtube />
 

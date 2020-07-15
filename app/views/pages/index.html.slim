@@ -4,4 +4,8 @@
   description: 'Один из крупнейших и престижнейших лингвистических вузов страны, уникальное высшее учебное заведение для регионов и федерального округа.',
   canonical: root_url
 
-= react_component 'Pages/Index', {}, { prerender: Rails.env.production? }
+= react_component 'Pages/Index', { \
+  sliders: SliderSerializer.new(@sliders).serializable_hash,
+  events: EventSerializer.new(@events).serializable_hash,
+  news: NewsSerializer.new(@news).serializable_hash \
+}, { prerender: Rails.env.production? }

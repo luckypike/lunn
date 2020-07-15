@@ -3,6 +3,7 @@ module.exports = {
     'stylelint-config-standard'
   ],
   rules: {
+    'no-descending-specificity': null,
     'property-no-unknown': [
       true,
       {

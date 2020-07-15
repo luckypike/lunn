@@ -1,10 +1,6 @@
 .root {
   padding: calc(var(--yr) * 2) 0;
   user-select: none;
-
-  @media (--s) {
-    /* padding: calc(var(--yr) * 10) 0; */
-  }
 }
 
 .toggle {
@@ -33,6 +29,8 @@
   display: none;
   line-height: calc(var(--yr) * 12);
   list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
 
   & a {
     color: #000;
@@ -49,7 +47,6 @@
   padding: 0 calc(var(--yr) * 4);
   color: #fff !important;
   margin-top: calc(var(--yr) * 0.5);
-  /* border-radius: calc(var(--yr) * 2); */
 }
 
 .abitur {
@@ -72,51 +69,19 @@
     display: block;
 
     &:hover {
-      color: var(--hl_color)
+      color: var(--hl_color);
     }
-  }
-}
-
-.more {
-  cursor: pointer;
-
-  &:hover {
-    color: var(--hl_color)
   }
 }
 
 .white {
   color: var(--wh_color);
 
-  & .more {
-    &:hover {
-      color: var(--wh_color)
-    }
-  }
-
   & a {
     color: var(--wh_color);
 
     &:hover {
       color: var(--wh_color);
-    }
-  }
-}
-
-.black {
-  color: #000;
-
-  & a {
-    color: #000;
-
-    &:hover {
-      color: var(--hl_color)
-    }
-  }
-
-  & .more {
-    &:hover {
-      color: var(--hl_color)
     }
   }
 }

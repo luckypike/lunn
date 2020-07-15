@@ -47,11 +47,11 @@ export default function Service ({
         </svg>
       </div>
 
-      <div className={styles.toggle} onClick={onToggle}>
+      {/* <div className={styles.toggle} onClick={onToggle}>
         <svg viewBox="0 0 24 24">
           <path d="M3,18h18v-2H3V18z M3,13h18v-2H3V13z M3,6v2h18V6H3z" />
         </svg>
-      </div>
+      </div> */}
     </div>
   )
 }

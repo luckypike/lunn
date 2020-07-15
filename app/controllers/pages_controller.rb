@@ -28,21 +28,7 @@ class PagesController < ApplicationController
       .order(created: :desc)
       .limit(5)
 
-    # @navs = Nav.active.sec.lang
-    #
-    # navs_images = Node::SingleImage
-    #   .where(
-    #     entity_type: :node,
-    #     entity_id: @navs.map(&:link_nid).reject(&:zero?)
-    #   ).includes(:attachment)
-    #
-    # @navs.map do |nav|
-    #   nav.image = navs_images.detect do |ni|
-    #     ni.entity_id == nav.link_nid
-    #   end&.attachment&.path
-    # end
-
-    respond_to :html, :json
+    # respond_to :html, :json
   end
 
   def contacts; end
