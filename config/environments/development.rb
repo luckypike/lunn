@@ -40,10 +40,10 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
-  #   address: Rails.application.credentials.dig(:mail, :address),
-  #   port: Rails.application.credentials.dig(:mail, :port),
-  #   user_name: Rails.application.credentials.dig(:mail, :username),
-  #   password: Rails.application.credentials.dig(:mail, :password),
+  #   address: Rails.application.credentials.dig(:mail, :yandex, :address),
+  #   port: Rails.application.credentials.dig(:mail, :yandex, :port),
+  #   user_name: Rails.application.credentials.dig(:mail, :yandex, :username),
+  #   password: Rails.application.credentials.dig(:mail, :yandex, :password),
   #   authentication: 'plain',
   #   enable_starttls_auto: true
   # }

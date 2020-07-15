@@ -56,10 +56,10 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: Rails.application.credentials.dig(:mail, :address),
-    port: Rails.application.credentials.dig(:mail, :port),
-    user_name: Rails.application.credentials.dig(:mail, :username),
-    password: Rails.application.credentials.dig(:mail, :password),
+    address: Rails.application.credentials.dig(:mail, :yandex, :address),
+    port: Rails.application.credentials.dig(:mail, :yandex, :port),
+    user_name: Rails.application.credentials.dig(:mail, :yandex, :username),
+    password: Rails.application.credentials.dig(:mail, :yandex, :password),
     authentication: 'plain',
     enable_starttls_auto: true
   }
@@ -112,7 +112,7 @@ Rails.application.configure do
     ExceptionNotification::Rack,
     email: {
       email_prefix: '[lunn] [ERROR] ',
-      sender_address: %("Luckybot" <#{Rails.application.credentials.dig(:mail, :username)}>),
+      sender_address: %("Luckybot" <#{Rails.application.credentials.dig(:mail, :yandex, :username)}>),
       exception_recipients: %w[log+lunn@luckypike.com]
     }
   )
