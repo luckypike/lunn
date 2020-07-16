@@ -42,6 +42,8 @@ gem 'mini_racer'
 
 gem 'whenever', require: false
 
+gem 'aws-sdk-s3', require: false
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
