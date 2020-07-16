@@ -66,6 +66,10 @@ export default function Item ({ course, locale }) {
         </div>
       }
 
+      {[5362, 5364, 5370, 5371, 5282, 5301, 5391, 5408, 5406].includes(parseInt(course.id)) &&
+        <div className={styles.excellent} />
+      }
+
       <div className={styles.more}>
         Подробнее
 

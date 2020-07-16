@@ -164,3 +164,13 @@
     }
   }
 }
+
+.excellent {
+  background: #000 url(./Images/excellent.jpg) no-repeat center;
+  background-size: cover;
+  height: 55px;
+  width: 140px;
+  margin-top: calc(var(--yr) * 3);
+  margin-bottom: calc(-1 * calc(var(--yr) * var(--s4)));
+  margin-left: calc(var(--yr) * 2);
+}
