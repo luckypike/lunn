@@ -8,7 +8,7 @@ export default function Contacts () {
       <div className={styles.title}>
         Не нашли ответа на интересующий вас вопрос?
         <br />
-        Свяжитесь с приёмной комиссией
+        Свяжитесь с приёмной комиссией (с 9:00 до 19:00)
       </div>
 
       <div className={styles.contacts}>
