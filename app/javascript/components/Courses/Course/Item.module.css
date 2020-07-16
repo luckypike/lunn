@@ -148,7 +148,7 @@
 
 .more {
   margin-top: calc(var(--yr) * var(--s4));
-  padding: calc(var(--yr) * 1.5);
+  padding: calc(var(--yr) * 1.5) 0;
   position: relative;
 
   & svg {
@@ -168,9 +168,6 @@
 .excellent {
   background: #000 url(./Images/excellent.jpg) no-repeat center;
   background-size: cover;
-  height: 55px;
-  width: 140px;
-  margin-top: calc(var(--yr) * 3);
-  margin-bottom: calc(-1 * calc(var(--yr) * var(--s4)));
-  margin-left: calc(var(--yr) * 2);
+  height: 30px;
+  width: 77px;
 }
