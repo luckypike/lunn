@@ -42,33 +42,38 @@
   line-height: calc(var(--yr) * 9);
   margin-top: auto;
   position: relative;
+  transition: color 0.3s;
 
   & svg {
-    display: block;
     position: absolute;
+    height: calc(var(--yr) * 9);
     right: 0;
     top: 0;
-    height: calc(var(--yr) * 8);
-    stroke-width: 2;
 
-    @media (--s) {
-      height: calc(var(--yr) * 9);
+    & path {
+      transition: 0.5s stroke;
+    }
+
+    & circle {
+      transition: 0.1s stroke, 0.5s fill;
     }
   }
 }
 
 .item:hover {
-  color: var(--pr_color);
+  color: inherit;
 
   & .more {
     color: var(--hl_color);
 
     & svg {
-      stroke: #fff;
+      & path {
+        stroke: #fff;
+      }
 
       & circle {
-        fill: var(--hl_color);
         stroke: var(--hl_color);
+        fill: var(--hl_color);
       }
     }
   }

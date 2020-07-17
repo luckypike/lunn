@@ -1,6 +1,4 @@
-class User < ApplicationRecord
-  connects_to database: { writing: :primary, reading: :primary }
-
+class User < ApplicationRecordPrimary
   has_many :admissions, dependent: :nullify
   has_many :user_roles, dependent: :destroy
 
@@ -12,6 +10,6 @@ class User < ApplicationRecord
   end
 
   def role?(role)
-    user_roles.pluck(:role).map(&:to_sym).include?(role)
+    user_roles.map(&:role).map(&:to_sym).include?(role)
   end
 end

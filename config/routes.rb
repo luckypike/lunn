@@ -95,7 +95,7 @@ Rails.application.routes.draw do
     end
 
     resources :news, only: %i[index show new create edit]
-
+    resources :tutors, only: %i[new create edit update]
     resources :events, only: %i[index show]
 
     get 'send-mail', to: 'feedback#index'
