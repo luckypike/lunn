@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { deserialize } from 'jsonapi-deserializer'
 import classNames from 'classnames'
 import axios from 'axios'
+import { useDropzone } from 'react-dropzone'
 
 import { useForm, Errors } from '../Form'
 import Title from '../Title'
@@ -45,6 +46,15 @@ export default function Form ({ tutor: tutorData }) {
     })
   }
 
+  const handlePhotoUpload = useCallback(async acceptedFiles => {
+    await axios.post('/rails/active_storage/direct_uploads.json')
+    console.log(acceptedFiles)
+  }, [])
+
+  const {
+    getRootProps, getInputProps, isDragActive
+  } = useDropzone({ onDrop: handlePhotoUpload, multiple: false })
+
   return (
     <div className={pages.beta}>
       <Title
@@ -55,6 +65,15 @@ export default function Form ({ tutor: tutorData }) {
       <div className={pages.container}>
         <div>
           <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              {
+                isDragActive ?
+                  <p>Drop the files here ...</p> :
+                  <p>Drag 'n' drop some files here, or click to select files</p>
+              }
+            </div>
+
             <div className={form.item}>
               <div className={form.input}>
                 <label>
