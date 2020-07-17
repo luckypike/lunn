@@ -107,6 +107,10 @@ Rails.application.routes.draw do
 
     # resources :users
 
+    namespace :dashboard, module: nil do
+      get '', to: 'dashboard#index'
+    end
+
     get '*path', to: 'pages#show', constraints: lambda { |params, _request|
       UrlAlias.lang(params[:locale]).where(alias: params[:path]).any?
     }
