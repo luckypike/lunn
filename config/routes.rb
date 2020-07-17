@@ -94,7 +94,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :news, only: %i[index show]
+    resources :news, only: %i[index show new create edit]
 
     resources :events, only: %i[index show]
 

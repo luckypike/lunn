@@ -1,0 +1,28 @@
+.root {
+  margin-bottom: calc(var(--yr) * var(--s4) * 2);
+
+  @media (--s) {
+    margin: 0 0 calc(var(--yr) * var(--s4));
+  }
+}
+
+.form {
+  background-color: var(--sp_color);
+  position: relative;
+  padding: calc(var(--yr) * var(--s3) * 2) var(--xr);
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.title {
+  & input {
+    padding: calc(var(--yr) * 6) var(--xr) calc(var(--yr) * 3);
+  }
+}
+
+.saved {
+  composes: h4 from '../Fonts.module.css';
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
