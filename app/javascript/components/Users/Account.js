@@ -8,6 +8,8 @@ import { useI18n } from '../I18n'
 import styles from './Account.module.css'
 import pages from '../Pages.module.css'
 
+import ArrowImg from '!svg-react-loader?!../../images/arrow.svg'
+
 Account.propTypes = {
   user: PropTypes.object,
   locale: PropTypes.string
@@ -49,23 +51,9 @@ export default function Account ({ user: data, locale }) {
             </div>
 
             <div className={styles.more}>
-              Подать документы
+              <span>Подать документы</span>
 
-              <svg viewBox="0 0 36 36" fill="none" stroke="black">
-                <circle cx="18" cy="18" r="17" />
-
-                <path
-                  d="M21 12L27 18L21 24"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-
-                <path
-                  d="M9 18H27"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ArrowImg />
             </div>
           </a>
 
@@ -82,6 +70,20 @@ export default function Account ({ user: data, locale }) {
               Временно недоступно
             </div>
           </div>
+
+          {user.tutor &&
+            <a href="/tutors/new" className={styles.item}>
+              <div className={styles.title}>
+                Кабинет преподавателя
+              </div>
+
+              <div className={styles.more}>
+                <span>Заполнить анкету</span>
+
+                <ArrowImg />
+              </div>
+            </a>
+          }
         </div>
       </div>
     </div>
