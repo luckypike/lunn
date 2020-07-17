@@ -75,7 +75,7 @@ export default function Show ({ id, locale, loaf }) {
             <div className={styles.photo}>
               <div className={styles.image}>
                 {node.image &&
-                  <img src={`https://assets.lunn.ru/images/800x1000,sc/legacy${node.image.path}`} />
+                  <img src={`https://assets.lunn.ru/imgproxy/rs:fill:480:600/g:sm/q:75/${node.image.encoded_path}.jpg`} />
                 }
               </div>
             </div>

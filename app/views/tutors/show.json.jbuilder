@@ -8,6 +8,7 @@ json.node do
       json.partial! @tutor.image
       # json.path "#{@node.image.attachment.host}#{@node.image.attachment.path}"
       json.path @tutor.image.attachment.path
+      json.encoded_path @tutor.image.attachment.encoded_path
     end
   end
 end

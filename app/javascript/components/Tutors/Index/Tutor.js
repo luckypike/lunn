@@ -17,7 +17,7 @@ export default function Tutor ({ tutor, itemProp }) {
       <a href={`/tutors/${tutor.id}`} className={styles.tutor} itemProp={itemProp}>
         <div className={styles.image}>
           {tutor.image &&
-            <img src={`https://assets.lunn.ru/images/480x600,sc/legacy${tutor.image.path}`} />
+            <img src={`https://assets.lunn.ru/imgproxy/rs:fill:480:600/g:sm/q:75/${tutor.image.encoded_path}.jpg`} />
           }
         </div>
 

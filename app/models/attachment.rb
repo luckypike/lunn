@@ -8,6 +8,10 @@ class Attachment < ApplicationRecord
     uri.gsub('public://', '/')
   end
 
+  def encoded_path
+    Base64.urlsafe_encode64(path.gsub('/media', 'local://')).tr('=', '').scan(/.{1,16}/).join('/')
+  end
+
   def host
     'https://assets.lunn.ru'
   end

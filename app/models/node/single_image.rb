@@ -6,5 +6,6 @@ class Node::SingleImage < ApplicationRecord
   belongs_to :node, -> { where(entity_type: :node) }, foreign_key: :entity_id, inverse_of: :image
 
   alias_attribute :id, :field_single_image_fid
-  delegate :path, to: :attachment
+  # delegate :path, to: :attachment
+  delegate :path, :encoded_path, to: :attachment
 end
