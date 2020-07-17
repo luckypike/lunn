@@ -19,7 +19,7 @@ export default function Navs ({ navs }) {
           key={nav.mlid}
           className={classNames(styles.item, styles[`item-${nav.mlid}`])}
           style={{
-            backgroundImage: nav.image ? `url(https://assets.lunn.ru/images/600x400,q65/legacy${nav.image})` : 'none'
+            backgroundImage: nav.image ? `url(https://assets.lunn.ru/imgproxy/rs:fill:600:400/g:sm/q:65/${nav.image})` : 'none'
           }}
         >
           <div className={styles.title}>

@@ -11,5 +11,6 @@ json.node do
     json.width image.field_multiple_image_width
     json.height image.field_multiple_image_height
     json.path image.attachment.path
+    json.encoded_path image.attachment.encoded_path
   end
 end

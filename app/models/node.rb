@@ -94,7 +94,7 @@ class Node < ApplicationRecord
     temp.map do |nav|
       nav.image = navs_images.detect do |ni|
         ni.entity_id == nav.link_nid
-      end&.attachment&.path
+      end&.attachment&.encoded_path
     end
 
     temp

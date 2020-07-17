@@ -11,7 +11,8 @@ class SliderSerializer
     {
       fid: slider.image.attachment.fid,
       filemime: slider.image.attachment.filemime,
-      path: slider.image.attachment.path
+      path: slider.image.attachment.path,
+      encoded_path: slider.image.attachment.encoded_path
     }
   end
 end

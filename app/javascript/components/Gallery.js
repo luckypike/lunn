@@ -43,7 +43,7 @@ export default function Gallery ({ images }) {
         <div className={classNames('glide__slides', styles.slides)}>
           {images.map(image =>
             <div key={image.fid} className={styles.image}>
-              <img src={`https://assets.lunn.ru/images/0x1024/legacy${image.path}`} />
+              <img src={`https://assets.lunn.ru/imgproxy/rs:fill:0:1024/g:sm/q:75/${image.encoded_path}.jpg`} />
             </div>
           )}
         </div>

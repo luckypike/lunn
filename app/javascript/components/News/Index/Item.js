@@ -21,7 +21,7 @@ export default function Item ({ item }) {
             {item.images.length > 0 &&
               <div className={styles.image}>
                 <div className={styles.inner}>
-                  <img src={`https://assets.lunn.ru/images/900x600,sc/legacy${item.images[0].path}`} />
+                  <img src={`https://assets.lunn.ru/imgproxy/rs:fill:800:450/g:sm/q:75/${item.images[0].encoded_path}.jpg`} />
                 </div>
               </div>
             }

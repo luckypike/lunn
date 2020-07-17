@@ -38,7 +38,7 @@ export default function Sliders ({ sliders }) {
                 <div
                   className={styles.image}
                   style={{
-                    backgroundImage: slider.image ? `url(https://assets.lunn.ru/images/1500x1200,q80/legacy${slider.image.path})` : null
+                    backgroundImage: slider.image ? `url(https://assets.lunn.ru/imgproxy/rs:fill:1500:1200/g:sm/q:75/${slider.image.encoded_path})` : null
                   }}
                 />
 

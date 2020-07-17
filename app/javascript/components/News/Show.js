@@ -57,7 +57,7 @@ export default function Show ({ slug, locale }) {
             <div className={styles.text}>
               {mainImage &&
                 <div className={styles.intro}>
-                  <img src={`https://assets.lunn.ru/images/1600x800,sc/legacy${mainImage.path}`} />
+                  <img src={`https://assets.lunn.ru/imgproxy/rs:fill:1600:900/g:sm/q:75/${mainImage.encoded_path}.jpg`} />
                 </div>
               }
 

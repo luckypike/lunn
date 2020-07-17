@@ -8,6 +8,7 @@ json.news @news do |node|
     json.partial! image
     # json.path "#{image.attachment.host}/900x600,sc#{image.attachment.path}"
     json.path image.attachment.path
+    json.encoded_path image.attachment.encoded_path
   end
 end
 
