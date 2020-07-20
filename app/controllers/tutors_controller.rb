@@ -1,6 +1,7 @@
 class TutorsController < ApplicationController
   before_action :set_url_alias, only: %i[index show]
   before_action :set_node, only: %i[index show]
+  before_action :set_tutor, only: %i[edit update]
   before_action :authorize_tutor
 
   after_action :verify_authorized
@@ -38,13 +39,31 @@ class TutorsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    respond_to do |format|
+      format.json do
+        if @tutor.update(tutor_params)
+          render json: { id: @tutor.id }, status: :created
+        else
+          render json: @tutor.errors, status: :unprocessable_entity
+        end
+      end
+    end
+  end
+
   private
+
+  def set_tutor
+    @tutor = Tutor.find(params[:id])
+  end
 
   def authorize_tutor
     authorize @tutor || Tutor
   end
 
   def tutor_params
-    params.require(:tutor).permit(:first_name, :last_name, :middle_name, :position)
+    params.require(:tutor).permit(:photo, :first_name, :last_name, :middle_name, :position)
   end
 end

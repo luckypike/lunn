@@ -14,4 +14,12 @@ class TutorPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def edit?
+    update?
+  end
+
+  def update?
+    user&.role?(:tutor) && user == record.user
+  end
 end

@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get '*path', to: 'pages#abitur', constraints: { path: 'abitur/2020' }
 
   get '*path', to: 'tutors#index', constraints: { path: 'tutors' }
-  get '*path/:id', to: 'tutors#show', constraints: { path: 'tutors', id: /\d.+/ }
+  get '*path/:id', to: 'tutors#show', constraints: { path: 'tutors', id: /\d+/ }
   get 'sveden/employees', to: redirect('/tutors')
 
   get '*path', to: 'docs#index', constraints: { path: 'sveden/document' }
