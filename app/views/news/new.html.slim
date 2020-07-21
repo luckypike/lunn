@@ -1,1 +1,1 @@
-= react_component 'News/Form', { user: current_user.slice(:id) }
+= react_component 'News/Form', { id: current_user.id, news: NewsPrimarySerializer.new(@news), aws: { bucket: Rails.application.credentials.dig(:aws, :bucket) } }

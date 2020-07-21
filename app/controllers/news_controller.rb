@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   before_action :set_node, only: :show
-  before_action :set_news, only: :edit
+  before_action :set_news, only: %i[edit update]
 
   def index
     respond_to do |format|
@@ -29,18 +29,34 @@ class NewsController < ApplicationController
   end
 
   def create
-    @news = News.where(user: current_user).first_or_initialize(news_params)
+    @news = News.new(news_params)
 
     sleep 1
 
-    if @news.save
-      head :created
-    else
-      render json: @news.errors, status: :unprocessable_entity
+    respond_to do |format|
+      format.json do
+        if @news.save
+          render json: @news, status: :created
+        else
+          render json: @news.errors, status: :unprocessable_entity
+        end
+      end
     end
   end
 
   def edit; end
+
+  def update
+    respond_to do |format|
+      format.json do
+        if @news.update(news_params)
+          status :created
+        else
+          render json: @news.errors, status: :unprocessable_entity
+        end
+      end
+    end
+  end
 
   private
 
@@ -50,7 +66,7 @@ class NewsController < ApplicationController
 
   def news_params
     params.require(:news).permit(
-      :title, :user_id, images: {}
+      :title, :user_id, images: []
     )
   end
 
