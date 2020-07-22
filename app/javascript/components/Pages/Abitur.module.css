@@ -15,6 +15,10 @@
   margin: calc(var(--yr) * var(--s6)) 0;
 }
 
+.timing {
+  margin: calc(var(--yr) * var(--s6)) 0;
+}
+
 .how {
   margin: calc(var(--yr) * var(--s6)) 0;
 }
@@ -24,5 +28,5 @@
 }
 
 .results {
-  padding: calc(var(--yr) * var(--s4)) 0;
+  margin: calc(var(--yr) * var(--s4)) 0;
 }
