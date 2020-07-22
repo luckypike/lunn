@@ -1,6 +1,6 @@
 .handle {
   border-top: 1px solid var(--sp_color);
-  padding: calc(var(--yr) * var(--s3));
+  padding: calc(var(--yr) * var(--s3)) 0;
   cursor: pointer;
   position: relative;
 
@@ -12,7 +12,7 @@
   &::before {
     content: '';
     position: absolute;
-    right: calc(var(--yr) * var(--s3));
+    right: 0;
     top: 50%;
     width: 26px;
     height: 2px;
@@ -23,7 +23,7 @@
   &::after {
     content: '';
     position: absolute;
-    right: calc(calc(var(--yr) * var(--s3)) + 13px);
+    right: 13px;
     top: 50%;
     width: 2px;
     height: 26px;
@@ -32,8 +32,6 @@
   }
 
   &.active {
-    background-color: var(--sp_color);
-
     &::after {
       opacity: 0;
     }
@@ -51,7 +49,7 @@ h4 {
 }
 
 .timing {
-  padding: calc(var(--yr) * var(--s3));
+  padding: calc(var(--yr) * var(--s3)) 0;
 }
 
 .date {
