@@ -5,7 +5,7 @@ import styles from './Timing.module.css'
 
 export default function Results () {
   const [bachelor, setBachelor] = useState(false)
-  const [magistracy, setMagistracy] = useState(true)
+  const [magistracy, setMagistracy] = useState(false)
 
   return (
     <div className={styles.root}>
