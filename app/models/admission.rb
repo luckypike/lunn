@@ -187,7 +187,7 @@ class Admission < ApplicationRecord
       achievements = AdmissionAchievement.all.map{|a| [a.id, a.title]}.to_h
       courses = Node::Course.where(type: :course).map{|c| [c.nid, c.label]}.to_h
 
-      attributes = %i[id created_at email] + Admission.stored_attributes.map { |k, v| v.map { |a| "#{k}_#{a}".to_sym } }.flatten +
+      attributes = %i[id updated_at email] + Admission.stored_attributes.map { |k, v| v.map { |a| "#{k}_#{a}".to_sym } }.flatten +
       (0..5).to_a.map{|subj| ["subject_subject_#{subj}".to_sym, "subject_year_#{subj}".to_sym, "subject_ege_#{subj}".to_sym, "subject_grade_#{subj}".to_sym] }.flatten +
       (0..5).to_a.map{|achievement| ["achievement_achievement_#{achievement}".to_sym] }.flatten +
       (0..39).to_a.map{|dir| ["direction_course_#{dir}".to_sym, "direction_form_#{dir}".to_sym, "direction_basis_#{dir}".to_sym] }.flatten
