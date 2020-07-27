@@ -192,8 +192,8 @@ function Abitur ({ abitur, course, index, exams }) {
           <div className={styles.section}>
             <div className={styles.results}>
               <div className={styles.result}>
-                <div>Согласие (аттестат)</div>
-                <div>{course.soglasiye ? 'Да (оригинал)' : 'Нет (копия)'}</div>
+                <div>Согласие</div>
+                <div>{course.soglasiye ? 'Да' : 'Нет'}</div>
               </div>
             </div>
           </div>
