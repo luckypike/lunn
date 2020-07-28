@@ -23,7 +23,7 @@ export default function Steps ({ admission, locale, _fetch }) {
   const handleClick = async (e, step, active) => {
     e.preventDefault()
 
-    if (active) {
+    if (active && admission.status !== 'processing') {
       await axios.post(
         `/admissions/${admission.id}/jump.json`,
         { admission: { state: step } }
@@ -41,7 +41,7 @@ export default function Steps ({ admission, locale, _fetch }) {
         {[...steps.keys()].map((key, _) =>
           <React.Fragment key={_}>
             <div
-              className={classNames(styles.step, { [styles.complete]: _ + 1 < steps.get(admission.state), [styles.current]: (key === admission.state && admission.status !== 'processing') })}
+              className={classNames(styles.step, { [styles.processing]: admission.status === 'processing', [styles.complete]: _ + 1 < steps.get(admission.state), [styles.current]: (key === admission.state && admission.status !== 'processing') })}
               onClick={e => handleClick(e, key, _ + 1 < steps.get(admission.state))}
             >
               <div className={styles.digit}>{_ + 1}</div>
