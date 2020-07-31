@@ -115,8 +115,6 @@
 }
 
 .schema {
-  box-shadow: none;
-
   &.white {
     background-image: url('./Images/Schema_normal.svg');
 
@@ -131,14 +129,5 @@
 
   &.blue {
     background-image: url('./Images/Schema_blue.svg');
-  }
-}
-
-.inactive {
-  opacity: 0.4;
-  cursor: not-allowed;
-
-  & .item {
-    cursor: not-allowed;
   }
 }
