@@ -41,6 +41,14 @@
   }
 }
 
+:global .font_3 {
+  & :local .navs {
+    @media (--l) {
+      flex-wrap: wrap;
+    }
+  }
+}
+
 .covid {
   background-color: #e63246;
   line-height: calc(var(--yr) * 11);

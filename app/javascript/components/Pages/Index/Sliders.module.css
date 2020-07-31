@@ -66,6 +66,12 @@
   margin-right: 5%;
 }
 
+:global .schema_2 {
+  & :local .title {
+    color: var(--wh_color);
+  }
+}
+
 .button {
   position: absolute;
   bottom: calc(var(--yr) * var(--s4));
@@ -110,6 +116,30 @@
   @media (--s) {
     width: calc(var(--yr) * 11);
     height: calc(var(--yr) * 11);
+  }
+}
+
+:global .schema_2 {
+  & :local .prev {
+    background-color: #161a1d;
+
+    & svg {
+      & path {
+        stroke: var(--wh_color);
+      }
+    }
+  }
+}
+
+:global .schema_2 {
+  & :local .next {
+    background-color: #161a1d;
+
+    & svg {
+      & path {
+        stroke: var(--wh_color);
+      }
+    }
   }
 }
 

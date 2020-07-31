@@ -91,6 +91,13 @@
   }
 }
 
+:global .schema_2 {
+  & :local .item {
+    background: #000;
+    color: var(--wh_color);
+  }
+}
+
 .reex {
   grid-column: 1 / -1;
 }

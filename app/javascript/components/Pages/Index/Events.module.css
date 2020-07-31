@@ -37,6 +37,22 @@
   margin-bottom: calc(var(--yr) * var(--s4));
 }
 
+:global .schema_2 {
+  & :local .events {
+    & a {
+      color: var(--wh_color);
+    }
+  }
+}
+
+:global .schema_2 {
+  & :local .event {
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .title {
   composes: h4 from '../../Fonts.module.css';
   padding-top: calc(var(--yr) * var(--s2));

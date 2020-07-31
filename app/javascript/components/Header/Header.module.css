@@ -109,6 +109,16 @@
   }
 }
 
+:global .schema_2 {
+  & :local .navIcon {
+    & svg {
+      & rect {
+        fill: var(--wh_color);
+      }
+    }
+  }
+}
+
 .specialIcon {
   width: calc(var(--yr) * 12);
   height: calc(var(--yr) * 12);
@@ -197,6 +207,12 @@
     @media (--s) {
       transform: translateY(calc(var(--yr) * -32));
     }
+  }
+}
+
+:global .schema_2 {
+  & :local .menu {
+    background: #161a1d;
   }
 }
 

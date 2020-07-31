@@ -80,6 +80,7 @@
 .label {
   display: none;
   margin-right: 8px;
+  color: #000;
 
   @media (--s) {
     display: block;

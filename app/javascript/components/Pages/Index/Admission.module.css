@@ -6,6 +6,13 @@
   background: var(--hl_color);
 }
 
+:global .schema_2 {
+  & :local .a {
+    background: #161a1d;
+    color: var(--wh_color);
+  }
+}
+
 .root {
   @media (--m) {
     display: flex;
@@ -50,6 +57,17 @@
   padding: calc(var(--yr) * 4) calc(var(--xr) * 2);
   transition: background 0.2s, color 0.2s;
   margin-bottom: 0;
+}
+
+:global .schema_2 {
+  & :local .button {
+    background: var(--hl_color);
+    color: var(--wh_color);
+
+    &:hover {
+      background: #35f;
+    }
+  }
 }
 
 .a:hover {
