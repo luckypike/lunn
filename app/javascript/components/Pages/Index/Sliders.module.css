@@ -8,6 +8,16 @@
   }
 }
 
+:global .schema_2 {
+  & :local .slider {
+    border-bottom: 1px solid #333;
+
+    @media (--m) {
+      border-top: 1px solid #333;
+    }
+  }
+}
+
 .slides {
   align-items: stretch;
 }

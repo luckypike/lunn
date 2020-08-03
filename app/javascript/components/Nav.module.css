@@ -14,6 +14,12 @@
   }
 }
 
+:global .schema_2 {
+  & :local .item {
+    color: var(--wh_color);
+  }
+}
+
 .item {
   display: block;
   border-bottom: 1px solid #dbddde;

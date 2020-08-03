@@ -11,6 +11,12 @@
   }
 }
 
+:global .schema_2 {
+  & :local .tab {
+    color: var(--wh_color);
+  }
+}
+
 .tab {
   composes: h3 from '../Fonts.module.css';
   margin-bottom: 0;

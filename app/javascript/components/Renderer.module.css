@@ -213,6 +213,18 @@
   }
 }
 
+:global .schema_2 {
+  & :local .button--main {
+    color: var(--wh_color);
+    background-color: var(--hl_color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .button--sec {
   appearance: none;
   background-color: #eceff1;
@@ -235,6 +247,18 @@
 
   &:active {
     background-color: #d4d7d9;
+  }
+}
+
+:global .schema_2 {
+  & :local .button--sec {
+    color: var(--wh_color);
+    background-color: var(--hl_color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--hl_color);
+    }
   }
 }
 
