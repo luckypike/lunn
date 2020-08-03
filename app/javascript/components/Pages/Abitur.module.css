@@ -11,6 +11,12 @@
   padding: calc(var(--yr) * var(--s6)) 0 calc(var(--yr) * var(--s4));
 }
 
+:global .schema_2 {
+  & :local .admission {
+    background-color: #161a1d;
+  }
+}
+
 .courses {
   margin: calc(var(--yr) * var(--s6)) 0;
 }

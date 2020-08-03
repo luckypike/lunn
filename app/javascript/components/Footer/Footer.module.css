@@ -80,6 +80,12 @@
   }
 }
 
+:global .schema_2 {
+  & :local .partners {
+    border-top: 2px solid #161a1d;
+  }
+}
+
 .navs {
   display: grid;
 

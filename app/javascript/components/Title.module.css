@@ -8,6 +8,12 @@
   }
 }
 
+:global .schema_2 {
+  & :local .root {
+    background-color: #161a1d;
+  }
+}
+
 .withi {
   color: #fafafa;
   position: relative;

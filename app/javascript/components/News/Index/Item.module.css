@@ -82,6 +82,16 @@
   }
 }
 
+:global .schema_2 {
+  & :local .title {
+    color: var(--wh_color);
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .news_item {
   position: relative;
   display: block;

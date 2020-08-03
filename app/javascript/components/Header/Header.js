@@ -30,7 +30,7 @@ export default function Header ({ navs: data, index, locale }) {
   const [white, setWhite] = useState(false)
 
   useEffect(() => {
-    if (index) {
+    if (index || document.documentElement.classList.contains('schema_2')) {
       setWhite(true)
     }
 

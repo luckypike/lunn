@@ -50,6 +50,20 @@
   }
 }
 
+:global .schema_2 {
+  & :local .docs {
+    & li {
+      & a {
+        color: #fff;
+
+        &:hover {
+          color: var(--hl_color);
+        }
+      }
+    }
+  }
+}
+
 .doc {
   display: block;
   padding: calc(var(--yr) * var(--s3)) 0;

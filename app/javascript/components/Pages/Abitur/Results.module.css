@@ -7,6 +7,12 @@
   }
 }
 
+:global .schema_2 {
+  & :local .result {
+    color: var(--wh_color);
+  }
+}
+
 .result {
   composes: h4 from '../../Fonts.module.css';
   border-bottom: 1px solid var(--sp_color);
