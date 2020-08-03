@@ -34,9 +34,17 @@ export default function Title ({ h1, h2, loaf, desc, date, beta, image, classNam
           <ul className={styles.loafs}>
             <li className={styles.wrapper}>
               <div className={styles.loaf}>
-                <a href={`${I18n.localePath() || '/'}`}>
-                  {I18n.t('loaf.home')}
-                </a>
+                {I18n &&
+                  <a href={`${I18n.localePath() || '/'}`}>
+                    {I18n.t('loaf.home')}
+                  </a>
+                }
+
+                {!I18n &&
+                  <a href="/">
+                    Главная
+                  </a>
+                }
               </div>
             </li>
 
@@ -72,7 +80,7 @@ export default function Title ({ h1, h2, loaf, desc, date, beta, image, classNam
 
         {date &&
           <p className={styles.date}>
-            {dayjs.unix(date).locale(I18n.locale).format('DD MMMM YYYY')}
+            {dayjs.unix(date).locale(I18n ? I18n.locale : 'ru').format('DD MMMM YYYY')}
           </p>
         }
       </div>
