@@ -81,3 +81,14 @@
     }
   }
 }
+
+:global .schema_3 {
+  & :local .sec {
+    background-color: #7fc5f5;
+    color: #339;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}

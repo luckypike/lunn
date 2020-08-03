@@ -18,6 +18,16 @@
   }
 }
 
+:global .schema_3 {
+  & :local .slider {
+    border-bottom: 1px solid #339;
+
+    @media (--m) {
+      border-top: 1px solid #339;
+    }
+  }
+}
+
 .slides {
   align-items: stretch;
 }
@@ -82,6 +92,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #339;
+  }
+}
+
 .button {
   position: absolute;
   bottom: calc(var(--yr) * var(--s4));
@@ -96,6 +112,13 @@
   padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
   transition: background 0.2s, color 0.2s;
   margin-bottom: 0;
+}
+
+:global .schema_3 {
+  & :local .button {
+    color: #9fd2fd;
+    background-color: var(--hl_color);
+  }
 }
 
 .nav {
@@ -141,6 +164,18 @@
   }
 }
 
+:global .schema_3 {
+  & :local .prev {
+    background-color: var(--hl_color);
+
+    & svg {
+      & path {
+        stroke: #9fd2fd;
+      }
+    }
+  }
+}
+
 :global .schema_2 {
   & :local .next {
     background-color: #161a1d;
@@ -148,6 +183,18 @@
     & svg {
       & path {
         stroke: var(--wh_color);
+      }
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .next {
+    background-color: var(--hl_color);
+
+    & svg {
+      & path {
+        stroke: #9fd2fd;
       }
     }
   }

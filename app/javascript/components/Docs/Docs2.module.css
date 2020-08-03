@@ -64,6 +64,13 @@
   }
 }
 
+:global .schema_3 {
+  & :local .handle {
+    border-bottom: 1px solid #339;
+    border-top: 1px solid #339;
+  }
+}
+
 .doc {
   display: block;
   padding: calc(var(--yr) * var(--s3)) 0;
@@ -76,9 +83,21 @@
   }
 }
 
+:global .schema_3 {
+  & :local .doc {
+    border-bottom: 1px solid #339;
+  }
+}
+
 .title {
   composes: h4 from '../Fonts.module.css';
   margin-bottom: 0;
+}
+
+:global .schema_3 {
+  & :local .title {
+    color: #339;
+  }
 }
 
 .meta {

@@ -82,6 +82,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .nav {
+    & a {
+      color: #339;
+    }
+  }
+}
+
 .white {
   color: var(--wh_color);
 
@@ -90,6 +98,14 @@
 
     &:hover {
       color: var(--wh_color);
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .white {
+    & a {
+      color: #9fd2fd;
     }
   }
 }

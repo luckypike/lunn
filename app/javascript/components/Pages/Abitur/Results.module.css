@@ -13,6 +13,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .result {
+    color: #339;
+  }
+}
+
 .result {
   composes: h4 from '../../Fonts.module.css';
   border-bottom: 1px solid var(--sp_color);
@@ -51,6 +57,22 @@
     & svg {
       & path {
         stroke: var(--hl_color);
+      }
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .result {
+    border-bottom: 1px solid #339;
+
+    &:nth-child(-n+1) {
+      border-top: 1px solid #339;
+    }
+
+    @media (--m) {
+      &:nth-child(-n+2) {
+        border-top: 1px solid #339;
       }
     }
   }

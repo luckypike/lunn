@@ -42,6 +42,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #9fd2fd;
+  }
+}
+
 .action {
   /* align-self: center; */
 }

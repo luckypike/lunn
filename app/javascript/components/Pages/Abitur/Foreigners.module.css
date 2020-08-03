@@ -19,6 +19,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .root {
+    & h2 {
+      color: #9fd2fd;
+    }
+  }
+}
+
 .image {
   background: url('./Foreigners.jpg') no-repeat center 15%;
   background-size: cover;

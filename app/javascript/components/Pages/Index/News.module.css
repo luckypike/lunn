@@ -76,6 +76,17 @@
   }
 }
 
+:global .schema_3 {
+  & :local .item {
+    color: #339;
+    border-top: 1px solid #339;
+
+    &:hover {
+      color: var(--hl_color);
+    }
+  }
+}
+
 .title {
   composes: h4 from '../../Fonts.module.css';
   margin-bottom: calc(var(--yr) * var(--s2));

@@ -20,6 +20,18 @@
   }
 }
 
+:global .schema_3 {
+  & :local .item {
+    border-bottom: 1px solid #7fc5f5;
+    color: #339;
+
+    &:hover {
+      color: var(--hl_color);
+      border-bottom: 1px solid var(--hl_color);
+    }
+  }
+}
+
 .item {
   display: block;
   border-bottom: 1px solid #dbddde;

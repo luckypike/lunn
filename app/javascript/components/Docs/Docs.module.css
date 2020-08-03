@@ -24,6 +24,20 @@
   }
 }
 
+:global .schema_3 {
+  & :local .docs {
+    & li {
+      & a {
+        color: #339;
+
+        &:hover {
+          color: var(--hl_color);
+        }
+      }
+    }
+  }
+}
+
 .doc {
   display: block;
   padding: calc(var(--yr) * var(--s3)) 0;
@@ -33,6 +47,12 @@
     display: grid;
     grid-template-columns: 1fr calc(1 / 9 * 100%);
     grid-gap: calc(var(--xr) * 2);
+  }
+}
+
+:global .schema_3 {
+  & :local .doc {
+    border-top: 1px solid #339;
   }
 }
 

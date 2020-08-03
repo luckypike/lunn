@@ -33,6 +33,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #9fd2fd;
+  }
+}
+
 .active {
   visibility: visible;
 

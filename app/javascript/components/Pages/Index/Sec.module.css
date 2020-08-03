@@ -95,6 +95,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #9fd2fd;
+  }
+}
+
 .more {
   color: #fff;
   composes: bt from '../../Fonts.module.css';
@@ -126,6 +132,18 @@
 
     & span {
       display: block;
+    }
+  }
+}
+
+:global .schema_3 {
+  & :local .more {
+    color: #9fd2fd;
+
+    & svg {
+      & path {
+        stroke: #9fd2fd;
+      }
     }
   }
 }

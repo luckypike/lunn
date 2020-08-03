@@ -15,6 +15,18 @@
   }
 }
 
+:global .schema_3 {
+  & :local .tutor {
+    & a {
+      color: #339;
+
+      &:hover {
+        color: var(--hl_color);
+      }
+    }
+  }
+}
+
 .image {
   position: relative;
   margin-bottom: calc(var(--yr) * var(--s2));
@@ -40,6 +52,12 @@
 :global .schema_2 {
   & :local .image {
     background-color: #161a1d;
+  }
+}
+
+:global .schema_3 {
+  & :local .image {
+    background-color: #339;
   }
 }
 

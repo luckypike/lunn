@@ -33,6 +33,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .root {
+    & a {
+      color: #339;
+    }
+  }
+}
+
 .container {
   padding: calc(var(--yr) * var(--s4) * 2) calc(var(--xr) * 1);
   max-width: 120rem;
@@ -91,6 +99,12 @@
   composes: bt from '../Fonts.module.css';
   padding: calc(var(--yr) * var(--s2)) 0;
   border-bottom: 1px solid var(--sp_color);
+}
+
+:global .schema_3 {
+  & :local .first {
+    border-bottom: 1px solid #339;
+  }
 }
 
 .close {

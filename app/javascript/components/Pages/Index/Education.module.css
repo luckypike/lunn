@@ -52,6 +52,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .line {
+    @media (--m) {
+      border-top: 2px dashed #339;
+    }
+  }
+}
+
 .container {
   display: none;
 
@@ -83,10 +91,22 @@
   }
 }
 
+:global .schema_3 {
+  & :local .image {
+    & svg > path {
+      fill: #9fd2fd;
+    }
+
+    & svg > g {
+      fill: #9fd2fd;
+    }
+  }
+}
+
 .ellipse {
   display: none;
 
-  @media(--m) {
+  @media (--m) {
     display: block;
     position: relative;
     height: 24px;
@@ -100,6 +120,12 @@
 :global .schema_2 {
   & :local .ellipse {
     background-color: #161a1d;
+  }
+}
+
+:global .schema_3 {
+  & :local .ellipse {
+    background-color: #339;
   }
 }
 

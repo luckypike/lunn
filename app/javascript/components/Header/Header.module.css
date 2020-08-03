@@ -119,6 +119,32 @@
   }
 }
 
+:global .schema_3 {
+  & :local .navIcon {
+    & svg {
+      & rect {
+        fill: #339;
+      }
+    }
+
+    &.white {
+      & svg {
+        & rect {
+          fill: #9fd2fd;
+        }
+      }
+    }
+
+    &.active {
+      & svg {
+        & rect {
+          fill: #339;
+        }
+      }
+    }
+  }
+}
+
 .specialIcon {
   width: calc(var(--yr) * 12);
   height: calc(var(--yr) * 12);
@@ -145,6 +171,16 @@
   }
 }
 
+:global .schema_3 {
+  & :local .specialIcon {
+    & svg {
+      & path {
+        fill: #9fd2fd;
+      }
+    }
+  }
+}
+
 .searchIcon {
   width: calc(var(--yr) * 12);
   height: calc(var(--yr) * 12);
@@ -168,6 +204,16 @@
 
   @media (--l) {
     order: 1;
+  }
+}
+
+:global .schema_3 {
+  & :local .searchIcon {
+    & svg {
+      & path {
+        fill: #9fd2fd;
+      }
+    }
   }
 }
 
@@ -213,6 +259,12 @@
 :global .schema_2 {
   & :local .menu {
     background: #161a1d;
+  }
+}
+
+:global .schema_3 {
+  & :local .menu {
+    background: #9fd2fd;
   }
 }
 

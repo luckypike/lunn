@@ -37,6 +37,12 @@
   border-bottom: 1px solid #dbddde;
 }
 
+:global .schema_3 {
+  & :local .digits {
+    border-bottom: 1px solid #339;
+  }
+}
+
 .fact {
   /* composes: h4 from '../../Fonts.module.css'; */
   margin-bottom: 0;

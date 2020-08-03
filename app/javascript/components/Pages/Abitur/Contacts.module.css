@@ -18,6 +18,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #9fd2fd;
+  }
+}
+
 .contacts {
   composes: bt from '../../Fonts.module.css';
 
@@ -38,6 +44,14 @@
   }
 }
 
+:global .schema_3 {
+  & :local .contacts {
+    & a {
+      color: #9fd2fd;
+    }
+  }
+}
+
 .a {
   color: #fff;
   text-decoration: underline;
@@ -47,5 +61,11 @@
   &:hover {
     text-decoration-color: var(#fff);
     color: #fff;
+  }
+}
+
+:global .schema_3 {
+  & :local .a {
+    color: #9fd2fd;
   }
 }

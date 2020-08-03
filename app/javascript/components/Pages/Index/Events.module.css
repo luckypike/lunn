@@ -60,6 +60,12 @@
   hyphens: auto;
 }
 
+:global .schema_3 {
+  & :local .title {
+    color: #339;
+  }
+}
+
 .date {
   color: var(--hl_color);
   composes: h3 from '../../Fonts.module.css';

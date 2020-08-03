@@ -17,6 +17,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .admission {
+    background-color: var(--hl_color);
+  }
+}
+
 .courses {
   margin: calc(var(--yr) * var(--s6)) 0;
 }

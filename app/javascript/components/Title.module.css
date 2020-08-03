@@ -14,6 +14,12 @@
   }
 }
 
+:global .schema_3 {
+  & :local .root {
+    background-color: #339;
+  }
+}
+
 .withi {
   color: #fafafa;
   position: relative;
@@ -30,6 +36,12 @@
     background: #000;
     z-index: -1;
     opacity: 0.4;
+  }
+}
+
+:global .schema_3 {
+  & :local .withi {
+    color: #7dc5ff;
   }
 }
 

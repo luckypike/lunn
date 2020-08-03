@@ -38,9 +38,23 @@
   }
 }
 
+:global .schema_3 {
+  & :local .handle {
+    border-top: 1px solid #339;
+  }
+}
+
 .program {
   &:last-child {
     border-bottom: 1px solid var(--sp_color);
+  }
+}
+
+:global .schema_3 {
+  & :local .program {
+    &:last-child {
+      border-bottom: 1px solid #339;
+    }
   }
 }
 

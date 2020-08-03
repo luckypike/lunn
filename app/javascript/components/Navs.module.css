@@ -108,3 +108,9 @@
     left: calc(var(--xr) * 2);
   }
 }
+
+:global .schema_3 {
+  & :local .item {
+    color: #9fd2fd;
+  }
+}
