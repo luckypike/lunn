@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
@@ -6,6 +6,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 import Title from '../Title'
 import List from './Index/List'
+import { I18nContext } from '../I18n'
 
 import { Link } from '@reach/router'
 
@@ -17,6 +18,7 @@ Index.propTypes = {
 }
 
 export default function Index ({ location }) {
+  const I18n = useContext(I18nContext)
   const query = new URLSearchParams(location.search)
   const perPage = 10
 
@@ -27,7 +29,7 @@ export default function Index ({ location }) {
 
   useEffect(() => {
     const _fetch = async () => {
-      const { data } = await axios.get('/news.json', {
+      const { data } = await axios.get(`${I18n.localePath()}/news.json`, {
         params: {
           limit: perPage,
           page: page
@@ -49,19 +51,21 @@ export default function Index ({ location }) {
   return (
     <div className={pages.beta}>
       <Title
-        h1='Новости'
+        h1={I18n.t('news.title')}
         loaf={[
           {
             mlid: 999,
-            path: location.pathname,
-            title: 'Новости'
+            path: `${I18n.localePath()}/news`,
+            title: I18n.t('news.title')
           }
         ]}
       />
 
       <HelmetProvider>
         <Helmet>
-          <title>Новости</title>
+          <title>
+            {I18n.t('news.title')}
+          </title>
         </Helmet>
       </HelmetProvider>
 

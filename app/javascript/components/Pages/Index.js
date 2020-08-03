@@ -46,10 +46,10 @@ export default function Index ({ locale, news: newsData, events: eventsData, sli
             <div className={styles.introduction}>
               <Introduction />
             </div>
-            <div className={styles.name}>
-              Нижегородский государственный лингвистический
+            <div className={styles.name}>{}
+              {I18n.t('pages.index.intro.first_line')}
               <br />
-              университет имени Н.А. Добролюбова
+              {I18n.t('pages.index.intro.second_line')}
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function Index ({ locale, news: newsData, events: eventsData, sli
           </div>
 
           <div className={styles.news}>
-            <News news={news} I18n={I18n} />
+            <News news={news} />
           </div>
 
           <Youtube />

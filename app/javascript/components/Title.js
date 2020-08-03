@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
+
+import { I18nContext } from './I18n'
 
 import styles from './Title.module.css'
 import pages from './Pages.module.css'
@@ -19,6 +21,8 @@ Title.propTypes = {
 }
 
 export default function Title ({ h1, h2, loaf, desc, date, beta, image, className }) {
+  const I18n = useContext(I18nContext)
+
   return (
     <div className={classNames(styles.root, styles.beta, { [styles.withi]: image }, className)}>
       {image &&
@@ -30,8 +34,8 @@ export default function Title ({ h1, h2, loaf, desc, date, beta, image, classNam
           <ul className={styles.loafs}>
             <li className={styles.wrapper}>
               <div className={styles.loaf}>
-                <a href="/">
-                  Главная
+                <a href={`${I18n.localePath() || '/'}`}>
+                  {I18n.t('loaf.home')}
                 </a>
               </div>
             </li>
@@ -68,7 +72,7 @@ export default function Title ({ h1, h2, loaf, desc, date, beta, image, classNam
 
         {date &&
           <p className={styles.date}>
-            {dayjs.unix(date).locale('ru').format('DD MMMM YYYY')}
+            {dayjs.unix(date).locale(I18n.locale).format('DD MMMM YYYY')}
           </p>
         }
       </div>

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
+
+import { I18nContext } from '../../I18n'
 
 import styles from './Events.module.css'
 import buttons from '../../Buttons.module.css'
@@ -12,13 +14,17 @@ Events.propTypes = {
 }
 
 export default function Events ({ events }) {
+  const I18n = useContext(I18nContext)
+
   var today = new Date()
   today.setHours(0, 0, 0, 0)
 
   return (
     <div className={styles.root}>
       <div className={styles.label}>
-        <h2>Анонсы событий</h2>
+        <h2>
+          {I18n.t('pages.index.events.title')}
+        </h2>
       </div>
 
       <div className={styles.events}>
@@ -42,7 +48,7 @@ export default function Events ({ events }) {
       </div>
 
       <a href="/events" className={classNames(buttons.sec, styles.more)}>
-        Все анонсы
+        {I18n.t('pages.index.events.more')}
       </a>
     </div>
   )

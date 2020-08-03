@@ -1,29 +1,29 @@
-ru:
+en:
   pages:
     index:
       intro:
-        first_line: Нижегородский государственный лингвистический
-        second_line: университет имени Н.А. Добролюбова
+        first_line: Linguistics University
+        second_line: of Nizhny Novgorod
 
       schedule:
-        title: Расписание
-        more: Смотреть
-        hide: Свернуть
+        title: Schedule
+        more: Show more
+        hide: Hide
 
       sec:
         school: Школьнику
         abitur: Абитуриенту
         student: Студенту
         alumni: Выпускнику
-        more: Подробнее
+        more: Show more
 
       events:
-        title: Анонсы событий
-        more: Все анонсы
+        title: Events
+        more: All events
 
       news:
-        title: Новости
-        more: Все новости
+        title: News
+        more: All news
 
       admission:
         start:

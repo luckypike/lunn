@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import AnimateHeight from 'react-animate-height'
 import classNames from 'classnames'
+
+import { I18nContext } from '../../I18n'
 
 import styles from './Schedule.module.css'
 import pages from '../../Pages.module.css'
 
 export default function Schedule () {
+  const I18n = useContext(I18nContext)
+
   const [height, setHeight] = useState(0)
 
   const active = () => height !== 0
@@ -14,14 +18,14 @@ export default function Schedule () {
     <div className={classNames(pages.container, styles.root)}>
       <div className={classNames(styles.toggle, { [styles.active]: active() })} onClick={() => setHeight(height === 0 ? 'auto' : 0)}>
         <div className={styles.header}>
-          Расписание
+          {I18n.t('pages.index.schedule.title')}
           {/* <span className={styles.hint}>
             занятий и ликвидации задолженностей
           </span> */}
         </div>
 
         <div className={styles.button}>
-          {active() ? 'Свернуть' : 'Смотреть'}
+          {active() ? I18n.t('pages.index.schedule.hide') : I18n.t('pages.index.schedule.more')}
         </div>
       </div>
 

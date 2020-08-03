@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import { I18nContext } from '../../I18n'
 
 import styles from './Sec.module.css'
 
@@ -11,16 +13,18 @@ Sec.propTypes = {
 }
 
 export default function Sec () {
+  const I18n = useContext(I18nContext)
+
   return (
     <div className={styles.root}>
       <div className={styles.items}>
         <a href="/page/shkolniku" className={classNames(styles.item, styles.hss)}>
           <div className={styles.title}>
-            Школьнику
+            {I18n.t('pages.index.sec.school')}
           </div>
 
           <div className={styles.more}>
-            <span>Подробнее</span>
+            <span>{I18n.t('pages.index.sec.more')}</span>
 
             <ArrowImg />
           </div>
@@ -28,11 +32,11 @@ export default function Sec () {
 
         <a href="/abitur/2020" className={classNames(styles.item, styles.abitur)}>
           <div className={styles.title}>
-            Абитуриенту
+            {I18n.t('pages.index.sec.abitur')}
           </div>
 
           <div className={styles.more}>
-            <span>Подробнее</span>
+            <span>{I18n.t('pages.index.sec.more')}</span>
 
             <ArrowImg />
           </div>
@@ -40,11 +44,11 @@ export default function Sec () {
 
         <a href="/page/studentu" className={classNames(styles.item, styles.student)}>
           <div className={styles.title}>
-            Студенту
+            {I18n.t('pages.index.sec.student')}
           </div>
 
           <div className={styles.more}>
-            <span>Подробнее</span>
+            <span>{I18n.t('pages.index.sec.more')}</span>
 
             <ArrowImg />
           </div>
@@ -52,11 +56,11 @@ export default function Sec () {
 
         <a href="/page/vypuskniku" className={classNames(styles.item, styles.graduate)}>
           <div className={styles.title}>
-            Выпускнику
+            {I18n.t('pages.index.sec.alumni')}
           </div>
 
           <div className={styles.more}>
-            <span>Подробнее</span>
+            <span>{I18n.t('pages.index.sec.more')}</span>
 
             <ArrowImg />
           </div>
