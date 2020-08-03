@@ -14,6 +14,7 @@ gem 'webpacker'
 
 gem 'carrierwave'
 gem 'carrierwave-i18n'
+gem 'carrierwave-vips'
 gem 'mini_magick'
 
 gem 'slim-rails'

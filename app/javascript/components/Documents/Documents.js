@@ -97,7 +97,7 @@ export default function Documents ({ values, setValues, section }) {
         </div>
 
         <div className={styles.ext}>
-          Только изображения: JPG, PNG или PDF
+          Только изображения: JPG или PNG
         </div>
       </div>
 
