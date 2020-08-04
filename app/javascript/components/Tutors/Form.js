@@ -5,6 +5,9 @@ import classNames from 'classnames'
 import axios from 'axios'
 import { useDropzone } from 'react-dropzone'
 import { DirectUpload } from '@rails/activestorage'
+import { Editor, EditorState, convertFromRaw, convertToRaw } from 'draft-js'
+
+import { useI18n } from '../I18n'
 
 import { useForm, Errors } from '../Form'
 import Title from '../Title'
@@ -16,11 +19,17 @@ import form from '../FormStatic.module.css'
 
 Form.propTypes = {
   tutor: PropTypes.object,
-  aws: PropTypes.object
+  aws: PropTypes.object,
+  locale: PropTypes.string,
+  courses: PropTypes.object
 }
 
-export default function Form ({ tutor: tutorData, aws }) {
+export default function Form ({ tutor: tutorData, aws, locale, courses: coursesData }) {
+  const I18n = useI18n(locale)
   const tutor = deserialize(tutorData)
+  const courses = deserialize(coursesData)
+
+  const pps = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   const {
     values, setValues, handleInputChange,
@@ -30,23 +39,50 @@ export default function Form ({ tutor: tutorData, aws }) {
     first_name: tutor.first_name || '',
     middle_name: tutor.middle_name || '',
     last_name: tutor.last_name || '',
-    position: tutor.position || ''
+    position: tutor.position || '',
+    courses: tutor.courses || [],
+    edu: tutor.edu || '',
+    quali: tutor.quali || '',
+    adegree: tutor.adegree || '',
+    atitle: tutor.atitle || '',
+    school: tutor.school || '',
+    edu_direction: tutor.edu_direction || '',
+    exp: tutor.exp || '',
+    edu_exp: tutor.edu_exp || '',
+    conference: tutor.conference ? EditorState.createWithContent(convertFromRaw(tutor.conference)) : EditorState.createEmpty(),
+    publication: tutor.publication ? EditorState.createWithContent(convertFromRaw(tutor.publication)) : EditorState.createEmpty(),
+    discipline: tutor.discipline ? EditorState.createWithContent(convertFromRaw(tutor.discipline)) : EditorState.createEmpty(),
+    training: tutor.training ? EditorState.createWithContent(convertFromRaw(tutor.training)) : EditorState.createEmpty(),
+    achievements: tutor.achievements ? EditorState.createWithContent(convertFromRaw(tutor.achievements)) : EditorState.createEmpty(),
+    pps: tutor.pps || [],
+    phone: tutor.phone || '',
+    email: tutor.email || '',
+    consultation: tutor.consultation || ''
   })
 
   const [photo, setPhoto] = useState(tutor.photo)
 
   const handleSubmit = e => {
+    const params = {
+      ...values,
+      conference: values.conference.getCurrentContent().hasText() ? convertToRaw(values.conference.getCurrentContent()) : null,
+      publication: values.publication.getCurrentContent().hasText() ? convertToRaw(values.publication.getCurrentContent()) : null,
+      discipline: values.discipline.getCurrentContent().hasText() ? convertToRaw(values.discipline.getCurrentContent()) : null,
+      training: values.training.getCurrentContent().hasText() ? convertToRaw(values.training.getCurrentContent()) : null,
+      achievements: values.achievements.getCurrentContent().hasText() ? convertToRaw(values.achievements.getCurrentContent()) : null
+    }
+
     if (tutor.id) {
-      handleUpdate()
+      handleUpdate(params)
     } else {
-      handleCreate()
+      handleCreate(params)
     }
   }
 
-  const handleCreate = async () => {
+  const handleCreate = async (params) => {
     await axios.post(
       '/tutors.json',
-      { tutor: values }
+      { tutor: params }
     ).then(res => {
       console.log(res)
     }).catch(error => {
@@ -54,10 +90,10 @@ export default function Form ({ tutor: tutorData, aws }) {
     })
   }
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (params) => {
     await axios.patch(
       `/tutors/${tutor.id}.json`,
-      { tutor: values }
+      { tutor: params }
     ).then(res => {
       console.log(res)
     }).catch(error => {
@@ -89,6 +125,35 @@ export default function Form ({ tutor: tutorData, aws }) {
     getRootProps, getInputProps, isDragActive
   } = useDropzone({ onDrop: handlePhotoUpload, multiple: false })
 
+  function setBlockStyle (block) {
+    switch (block.getType()) {
+      case 'unstyled': return `${styles.list_block}`
+      default: return null
+    }
+  }
+
+  const handleCoursesChange = (item) => {
+    const newCourses = values.courses
+    if (values.courses.includes(item)) {
+      newCourses.splice(newCourses.indexOf(item), 1)
+    } else {
+      newCourses.push(item)
+    }
+
+    setValues({ ...values, courses: newCourses })
+  }
+
+  const handlePpsChange = (item) => {
+    const newPps = values.pps
+    if (values.pps.includes(item)) {
+      newPps.splice(newPps.indexOf(item), 1)
+    } else {
+      newPps.push(item)
+    }
+
+    setValues({ ...values, pps: newPps })
+  }
+
   return (
     <div className={pages.beta}>
       <Title
@@ -97,7 +162,7 @@ export default function Form ({ tutor: tutorData, aws }) {
       />
 
       <div className={pages.container}>
-        <div>
+        <div className={styles.form}>
           <form className={form.root} onSubmit={onSubmit(handleSubmit)}>
             <div className={classNames(styles.dropzone, { [styles.drag]: isDragActive })} {...getRootProps()}>
               <input {...getInputProps()} />
@@ -108,7 +173,7 @@ export default function Form ({ tutor: tutorData, aws }) {
 
               {!photo &&
                 <p>
-                  Загрузите вашу фотографию
+                  Прикрепите файл перетащив его в эту область или кликните по ней.
                 </p>
               }
             </div>
@@ -187,6 +252,355 @@ export default function Form ({ tutor: tutorData, aws }) {
               </div>
 
               <Errors errors={errors.position} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.checkbox}>
+                <div className={form.label}>
+                  Направления подготовки
+                </div>
+
+                {courses &&
+                  <div className={form.input}>
+                    {courses.map(course =>
+                      <div key={course.id} className={form.checkbox}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            name={course.id}
+                            checked={values.courses.includes(parseInt(course.id))}
+                            onChange={() => handleCoursesChange(parseInt(course.id))} />
+                          {course.title} - {course.spec}
+                        </label>
+                      </div>
+                    )}
+                  </div>
+                }
+              </div>
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Уровень образования
+                  </div>
+
+                  <input
+                    value={values.edu}
+                    type="text"
+                    name="edu"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.edu} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Квалификация
+                  </div>
+
+                  <input
+                    value={values.quali}
+                    type="text"
+                    name="quali"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.quali} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Ученая степень
+                  </div>
+
+                  <input
+                    value={values.adegree}
+                    type="text"
+                    name="adegree"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.adegree} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Ученое звание
+                  </div>
+
+                  <input
+                    value={values.atitle}
+                    type="text"
+                    name="atitle"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.atitle} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Образование (вуз)
+                  </div>
+
+                  <input
+                    value={values.school}
+                    type="text"
+                    name="school"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.school} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Образование (направление)
+                  </div>
+
+                  <input
+                    value={values.edu_direction}
+                    type="text"
+                    name="edu_direction"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.edu_direction} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Общий стаж работы
+                  </div>
+
+                  <input
+                    value={values.exp}
+                    type="text"
+                    name="exp"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.exp} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Научно-педагогический стаж
+                  </div>
+
+                  <input
+                    value={values.edu_exp}
+                    type="text"
+                    name="edu_exp"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.edu_exp} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Публикации
+                  </div>
+
+                  <div className={form.draft}>
+                    <Editor
+                      blockStyleFn={setBlockStyle}
+                      editorState={values.publication}
+                      onChange={(editorState) => setValues({ ...values, publication: editorState })} />
+                  </div>
+                </label>
+              </div>
+
+              <Errors errors={errors.publication} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Участие в конферециях
+                  </div>
+
+                  <div className={form.draft}>
+                    <Editor
+                      blockStyleFn={setBlockStyle}
+                      editorState={values.conference}
+                      onChange={(editorState) => setValues({ ...values, conference: editorState })} />
+                  </div>
+                </label>
+              </div>
+
+              <Errors errors={errors.conference} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Преподаваемые дисциплины
+                  </div>
+
+                  <div className={form.draft}>
+                    <Editor
+                      blockStyleFn={setBlockStyle}
+                      editorState={values.discipline}
+                      onChange={(editorState) => setValues({ ...values, discipline: editorState })} />
+                  </div>
+                </label>
+              </div>
+
+              <Errors errors={errors.discipline} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Повышение квалификации
+                  </div>
+
+                  <div className={form.draft}>
+                    <Editor
+                      blockStyleFn={setBlockStyle}
+                      editorState={values.training}
+                      onChange={(editorState) => setValues({ ...values, training: editorState })} />
+                  </div>
+                </label>
+              </div>
+
+              <Errors errors={errors.training} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Особые достижения
+                  </div>
+
+                  <div className={form.draft}>
+                    <Editor
+                      blockStyleFn={setBlockStyle}
+                      editorState={values.achievements}
+                      onChange={(editorState) => setValues({ ...values, achievements: editorState })} />
+                  </div>
+                </label>
+              </div>
+
+              <Errors errors={errors.achievements} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.checkbox}>
+                <div className={form.label}>
+                  Тип ППС
+                </div>
+
+                <div className={form.input}>
+                  { pps.map(p =>
+                    <div key={p} className={form.checkbox}>
+                      <label>
+                        <input
+                          type="checkbox"
+                          name={p}
+                          checked={values.pps.includes(p)}
+                          onChange={() => handlePpsChange(p)} />
+                        {I18n.t(`tutor.pps.${p}`)}
+                      </label>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Телефон
+                  </div>
+
+                  <input
+                    value={values.phone}
+                    type="text"
+                    name="phone"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.phone} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Почта
+                  </div>
+
+                  <input
+                    value={values.email}
+                    type="text"
+                    name="email"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+
+              <Errors errors={errors.email} />
+            </div>
+
+            <div className={form.item}>
+              <div className={form.input}>
+                <label>
+                  <div className={form.label}>
+                    Время консультаций
+                  </div>
+
+                  <div className={form.input}>
+                    <textarea name="consultation" value={values.consultation} rows="4" onChange={handleInputChange} />
+                  </div>
+                </label>
+              </div>
+
+              <Errors errors={errors.consultation} />
             </div>
 
             <div className={form.submit}>

@@ -23,6 +23,7 @@ class TutorsController < ApplicationController
 
   def new
     @tutor = Tutor.new
+    @courses = Node::Course.where(type: :course).includes(:field_spec, :field_level, :field_course_code).sort_by(&:title_sort)
   end
 
   def create
@@ -39,7 +40,9 @@ class TutorsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @courses = Node::Course.where(type: :course).includes(:field_spec, :field_level, :field_course_code).sort_by(&:title_sort)
+  end
 
   def update
     respond_to do |format|
@@ -64,6 +67,6 @@ class TutorsController < ApplicationController
   end
 
   def tutor_params
-    params.require(:tutor).permit(:photo, :first_name, :last_name, :middle_name, :position)
+    params.require(:tutor).permit(:photo, :first_name, :last_name, :middle_name, :position, :edu, :quali, :adegree, :atitle, :school, :edu_direction, :exp, :edu_exp, :phone, :email, :consultation, conference: {}, publication: {}, discipline: {}, training: {}, achievements: {}, courses: [], pps: [])
   end
 end

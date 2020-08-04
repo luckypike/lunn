@@ -2,6 +2,8 @@ class User < ApplicationRecordPrimary
   has_many :admissions, dependent: :nullify
   has_many :user_roles, dependent: :destroy
 
+  has_one :tutor, dependent: :destroy
+
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :validatable
 

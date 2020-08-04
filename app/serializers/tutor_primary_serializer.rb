@@ -1,7 +1,9 @@
 class TutorPrimarySerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :first_name, :middle_name, :last_name, :position
+  attributes :id, :first_name, :last_name, :middle_name, :position, :edu, :quali,
+    :adegree, :atitle, :school, :edu_direction, :exp, :edu_exp, :phone, :email, :consultation,
+    :conference, :publication, :discipline, :training, :achievements, :courses, :pps
 
   attribute :photo do |tutor|
     if tutor.photo.attached?

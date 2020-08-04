@@ -72,17 +72,34 @@ export default function Account ({ user: data, locale }) {
           </div>
 
           {user.tutor &&
-            <a href="/tutors/new" className={styles.item}>
-              <div className={styles.title}>
-                Кабинет преподавателя
-              </div>
+            <>
+              {!user.has_page &&
+                <a href="/tutors/new" className={styles.item}>
+                  <div className={styles.title}>
+                    Кабинет преподавателя
+                  </div>
 
-              <div className={styles.more}>
-                <span>Заполнить анкету</span>
+                  <div className={styles.more}>
+                    <span>Заполнить анкету</span>
 
-                <ArrowImg />
-              </div>
-            </a>
+                    <ArrowImg />
+                  </div>
+                </a>
+              }
+              {user.has_page &&
+                <a href={`/tutors/${user.page}/edit`} className={styles.item}>
+                  <div className={styles.title}>
+                    Кабинет преподавателя
+                  </div>
+
+                  <div className={styles.more}>
+                    <span>Изменить анкету</span>
+
+                    <ArrowImg />
+                  </div>
+                </a>
+              }
+            </>
           }
         </div>
       </div>

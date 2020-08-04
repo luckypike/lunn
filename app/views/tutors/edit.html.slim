@@ -1,1 +1,1 @@
-= react_component 'Tutors/Form', { tutor: TutorPrimarySerializer.new(@tutor), aws: { bucket: Rails.application.credentials.dig(:aws, :bucket) } }
+= react_component 'Tutors/Form', { tutor: TutorPrimarySerializer.new(@tutor), aws: { bucket: Rails.application.credentials.dig(:aws, :bucket) }, courses: CourseSerializer.new(@courses, { params: { full: true } }).serializable_hash }
