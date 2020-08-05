@@ -3,6 +3,16 @@
   max-width: 60rem;
 }
 
+.dup {
+  background-color: var(--hl_color);
+  padding: calc(var(--yr) * var(--s4));
+  color: #fff;
+}
+
+.lead {
+  composes: h4 from '../Fonts.module.css';
+}
+
 .start {
   margin-bottom: calc(var(--yr) * var(--s4));
 }

@@ -53,6 +53,22 @@ export default function New ({ locale, user: userJSON }) {
         h1={I18n.t('admissions.new.title')}
       />
 
+      <div className={styles.dup}>
+        <div className={pages.container}>
+          <h2>
+            Повторная подача заявления
+          </h2>
+
+          <p className={styles.lead}>
+            Если вы уже заполнили анкету до получения ЕГЭ и отправили ее в приемную комиссию, убедительно просим вас не заполнять новую анкету и не вносить в нее баллы!
+          </p>
+
+          <p>
+            Мы сами проверяем баллы через Федеральную информационную систему и вносим их в нашу базу данных. После этого они появляются в списке абитуриентов. Обработка повторных заявлений и выявление «двойников» отнимает много времени и отвлекает от работы по внесению баллов ЕГЭ и обработке новых заявлений!
+          </p>
+        </div>
+      </div>
+
       <div className={pages.container}>
         <div className={styles.root}>
           {notFillingAdmissions && notFillingAdmissions.length > 0 &&
