@@ -1,14 +1,16 @@
 .form {
+  background-color: var(--sp_color);
   position: relative;
-  padding: calc(var(--yr) * var(--s3) * 2) 0;
-  max-width: 45rem;
+  padding: calc(var(--yr) * var(--s3) * 2) var(--xr);
+  max-width: 60rem;
+  margin: calc(var(--yr) * var(--s3)) auto 0;
 
   @media (--s) {
-    padding: calc(var(--yr) * var(--s3) * 2) 0;
+    padding: calc(var(--yr) * var(--s3) * 2) calc(var(--xr) * 2);
   }
 
   @media (--m) {
-    padding: calc(var(--yr) * var(--s3) * 2) 0;
+    padding: calc(var(--yr) * var(--s3) * 2) 8%;
   }
 }
 
@@ -45,13 +47,32 @@
   }
 
   &:hover {
-    background-color: var(--hl_color);
+    /* background-color: var(--hl_color); */
+    /* color: #fff; */
   }
 
   &.active {
     background-color: var(--hl_color);
     color: #fff;
   }
+}
+
+.buttons {
+  margin-top: calc(var(--yr) * var(--s2));
+}
+
+.button {
+  composes: sec from '../Buttons.module.css';
+}
+
+.ext {
+  composes: mt from '../Fonts.module.css';
+  margin-top: calc(var(--yr) * var(--s2));
+}
+
+.label {
+  max-width: 20rem;
+  margin: 0 auto;
 }
 
 .files {

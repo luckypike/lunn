@@ -172,9 +172,21 @@ export default function Form ({ tutor: tutorData, aws, locale, courses: coursesD
               }
 
               {!photo &&
-                <p>
-                  Прикрепите файл перетащив его в эту область или кликните по ней.
-                </p>
+                <>
+                  <div className={styles.label}>
+                    Прикрепите файл перетащив его в эту область или нажмите кнопку «Загрузить файл»
+                  </div>
+
+                  <div className={styles.buttons}>
+                    <span className={styles.button}>
+                      Загрузить файл
+                    </span>
+                  </div>
+
+                  <div className={styles.ext}>
+                    Только изображения: JPG, PNG или PDF
+                  </div>
+                </>
               }
             </div>
 
