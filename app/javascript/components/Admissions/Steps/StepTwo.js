@@ -13,12 +13,13 @@ StepTwo.propTypes = {
   values: PropTypes.object,
   setValues: PropTypes.func,
   documents: PropTypes.array,
+  setUploading: PropTypes.func,
   dictionaries: PropTypes.object,
   errors: PropTypes.object,
   onChange: PropTypes.func
 }
 
-export default function StepTwo ({ values, documents, dictionaries, errors, onChange, setValues }) {
+export default function StepTwo ({ values, documents, setUploading, dictionaries, errors, onChange, setValues }) {
   if (!dictionaries) return null
 
   return (
@@ -165,6 +166,7 @@ export default function StepTwo ({ values, documents, dictionaries, errors, onCh
             section="document"
             values={values}
             setValues={setValues}
+            setUploading={setUploading}
           />
         </div>
       </div>

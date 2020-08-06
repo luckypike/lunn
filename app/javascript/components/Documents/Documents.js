@@ -14,12 +14,13 @@ import Loader from '!svg-react-loader?!../../images/oval.svg'
 
 Documents.propTypes = {
   files: PropTypes.array,
+  setUploading: PropTypes.func,
   section: PropTypes.string,
   values: PropTypes.object,
   setValues: PropTypes.func
 }
 
-export default function Documents ({ values, setValues, section }) {
+export default function Documents ({ values, setUploading, setValues, section }) {
   // const { setValues } = props
   const [files, setFiles] = useState(new Map())
 
@@ -74,6 +75,10 @@ export default function Documents ({ values, setValues, section }) {
 
   useEffect(() => {
     if (files.size > 0) {
+      setUploading(true)
+      if (Array.from(files.keys()).every(f => files.get(f).id)) {
+        setUploading(false)
+      }
       setValues({
         ...values,
         document_ids: [...files.values()].map(document => document.id),

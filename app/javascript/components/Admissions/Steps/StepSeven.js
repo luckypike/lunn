@@ -11,12 +11,13 @@ import form from '../../FormStatic.module.css'
 StepSeven.propTypes = {
   values: PropTypes.object,
   documents: PropTypes.array,
+  setUploading: PropTypes.func,
   errors: PropTypes.object,
   onChange: PropTypes.func,
   setValues: PropTypes.func
 }
 
-export default function StepSeven ({ values, documents, errors, onChange, setValues }) {
+export default function StepSeven ({ values, documents, setUploading, errors, onChange, setValues }) {
   return (
     <>
       <div className={form.item}>
@@ -113,6 +114,7 @@ export default function StepSeven ({ values, documents, errors, onChange, setVal
             section='school'
             values={values}
             setValues={setValues}
+            setUploading={setUploading}
           />
         </div>
       </div>

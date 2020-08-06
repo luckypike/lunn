@@ -16,12 +16,13 @@ StepNine.propTypes = {
   setValues: PropTypes.func,
   dictionaries: PropTypes.object,
   documents: PropTypes.array,
+  setUploading: PropTypes.func,
   errors: PropTypes.object,
   onChange: PropTypes.func,
   onSelectChange: PropTypes.func
 }
 
-export default function StepNine ({ values, setValues, dictionaries, documents, errors, onChange, onSelectChange }) {
+export default function StepNine ({ values, setValues, dictionaries, documents, setUploading, errors, onChange, onSelectChange }) {
   if (!dictionaries) return null
 
   const [directions, setDirections] = useState(new Map())
@@ -220,6 +221,7 @@ export default function StepNine ({ values, setValues, dictionaries, documents, 
             section="spec"
             values={values}
             setValues={setValues}
+            setUploading={setUploading}
           />
         </div>
       </div>

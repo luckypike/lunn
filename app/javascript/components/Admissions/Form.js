@@ -48,6 +48,8 @@ export default function Form ({ id, locale }) {
   const [admission, setAdmission] = useState()
   const [dictionaries, setDictionaries] = useState()
 
+  const [uploading, setUploading] = useState(false)
+
   const _fetch = async () => {
     const { data } = await axios.get(`/admissions/${id}/edit.json`)
 
@@ -147,6 +149,7 @@ export default function Form ({ id, locale }) {
                       values={values}
                       setValues={setValues}
                       documents={admission.documents}
+                      setUploading={setUploading}
                       dictionaries={dictionaries}
                       errors={errors}
                     />
@@ -174,6 +177,7 @@ export default function Form ({ id, locale }) {
                       values={values}
                       setValues={setValues}
                       documents={admission.documents}
+                      setUploading={setUploading}
                       errors={errors}/>
                   }
 
@@ -183,6 +187,7 @@ export default function Form ({ id, locale }) {
                       values={values}
                       setValues={setValues}
                       documents={admission.documents}
+                      setUploading={setUploading}
                       dictionaries={dictionaries}
                       errors={errors}/>
                   }
@@ -193,6 +198,7 @@ export default function Form ({ id, locale }) {
                       values={values}
                       setValues={setValues}
                       documents={admission.documents}
+                      setUploading={setUploading}
                       dictionaries={dictionaries}
                       errors={errors}
                     />
@@ -224,7 +230,7 @@ export default function Form ({ id, locale }) {
                       }
 
                       <div className={classNames(form.submit, styles.submit)}>
-                        <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main_big, { [buttons.pending]: pending })} disabled={pending} />
+                        <input type="submit" value={pending ? 'Отправляем...' : 'Следующий шаг'} className={classNames(buttons.main_big, { [buttons.pending]: pending })} disabled={pending || uploading} />
                       </div>
                     </div>
                   }

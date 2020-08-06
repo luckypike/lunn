@@ -13,12 +13,13 @@ StepEight.propTypes = {
   values: PropTypes.object,
   dictionaries: PropTypes.object,
   documents: PropTypes.array,
+  setUploading: PropTypes.func,
   errors: PropTypes.object,
   onChange: PropTypes.func,
   setValues: PropTypes.func
 }
 
-export default function StepEight ({ values, dictionaries, documents, errors, onChange, setValues }) {
+export default function StepEight ({ values, dictionaries, documents, setUploading, errors, onChange, setValues }) {
   if (!dictionaries) return null
 
   const [subjects, setSubjects] = useState(new Map())
@@ -184,6 +185,7 @@ export default function StepEight ({ values, dictionaries, documents, errors, on
             section="olympiad"
             values={values}
             setValues={setValues}
+            setUploading={setUploading}
           />
         </div>
       </div>
@@ -283,6 +285,7 @@ export default function StepEight ({ values, dictionaries, documents, errors, on
             section="achievements"
             values={values}
             setValues={setValues}
+            setUploading={setUploading}
           />
         </div>
       </div>
