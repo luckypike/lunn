@@ -1,15 +1,15 @@
 .filters {
   display: none;
-  position: relative;
-  z-index: 1;
   margin-bottom: calc(var(--yr) * calc(var(--s2) * 2.75));
-}
 
-.active {
-  display: block;
+  @media (--s) {
+    display: block;
+  }
 }
 
 .wrapper {
+  user-select: none;
+
   &:last-child {
     & .filter {
       margin-bottom: 0;
@@ -24,11 +24,17 @@
   position: relative;
 
   & .item {
-    padding: calc(var(--yr) * 1.75) calc(var(--yr) * 3.75);
+    padding: calc(var(--yr) * 1.75) calc(var(--yr) * 10);
     background-color: var(--sp_color);
     border-radius: calc(var(--yr) * 2);
-    margin-right: calc(var(--yr) * 2);
     margin-bottom: calc(var(--yr) * 2);
+    width: 100%;
+    text-align: center;
+
+    @media (--s) {
+      margin-right: calc(var(--yr) * 2);
+      width: auto;
+    }
 
     @media (--m) {
       margin-bottom: 0;
@@ -38,61 +44,15 @@
       }
     }
 
-    & label {
-      display: block;
-      position: relative;
-      user-select: none;
-      cursor: pointer;
-
-      & input {
-        display: none;
-        appearance: none;
-        background: var(--wh_color);
-        border: 1px solid #dbddde;
-        box-sizing: border-box;
-        border-radius: 4px;
-        height: 1rem;
-        font-size: inherit;
-        position: absolute;
-        top: calc(var(--yr) * 0.5);
-        margin: 0;
-        left: 0;
-        width: 1rem;
-        outline: none;
-        transition-duration: 0.2s;
-        transition-property: background, border;
-
-        &:after {
-          content: '';
-          position: absolute;
-          display: block;
-          background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEwIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDRMNCA3TDkgMSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==);
-          background-size: cover;
-          width: 10px;
-          height: 8px;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          top: 50%;
-          opacity: 0;
-          transition-duration: 0.2s;
-          transition-property: opacity, transform;
-        }
-      }
-    }
-
     &.selected {
       background-color: var(--hl_color);
       color: #fff;
+      position: relative;
 
-      & label {
-        & input {
-          background-color: var(--hl_color);
-          border-color: var(--hl_color);
-
-          &:after {
-            opacity: 1;
-          }
-        }
+      &::after {
+        content: '✕';
+        position: absolute;
+        right: calc(var(--yr) * 4);
       }
     }
 
@@ -102,42 +62,8 @@
   }
 }
 
-.checked {
-  display: none;
-
-  @media (--s) {
-    font-size: calc(var(--yr) * 3.5);
-    line-height: calc(var(--yr) * 6);
-    display: inline-block;
-    background-color: var(--hl_color);
-    border-radius: 50%;
-    padding: 0 var(--yr);
-    right: calc(var(--yr) * 4);
-    color: var(--wh_color);
-    top: 50%;
-    transform: translate(0, -50%);
-    position: absolute;
-    width: calc(var(--yr) * 6);
-    text-align: center;
-  }
-}
-
-.title {
-  composes: bt from '../../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * var(--s2));
-}
-
 .handler {
-  display: flex;
-  margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.75));
-
-  @media (--m) {
-    cursor: pointer;
-    /* position: absolute; */
-    right: 0;
-    z-index: 2;
-    top: calc(var(--yr) * 2);
-  }
+  margin-top: calc(var(--yr) * 4);
 }
 
 .toggle {
@@ -146,6 +72,7 @@
   margin: 0;
   display: flex;
   align-items: center;
+  margin-bottom: calc(var(--yr) * 4);
 
   & svg {
     display: block;
@@ -153,53 +80,13 @@
     height: calc(var(--yr) * 3.5);
     margin-right: calc(var(--yr) * 2.5);
   }
-}
 
-.resetAll {
-  margin-left: auto;
-  display: none;
+  @media (--s) {
+    display: none;
+  }
 }
 
 .items {
   display: flex;
   flex-wrap: wrap;
 }
-
-.russian {
-  color: #fff;
-  opacity: 0.5;
-  background-color: var(--hl_color);
-}
-
-/* .items {
-  padding: calc(var(--yr) * 2) 0;
-  composes: at from '../../Fonts.module.css';
-  line-height: calc(var(--yr) * 5);
-  cursor: default;
-
-  @media (--m) {
-    visibility: hidden;
-    opacity: 0;
-
-    position: absolute;
-    top: calc(var(--yr) * 14);
-    left: 0;
-    width: 100%;
-    background-color: var(--sp_color);
-    padding: calc(var(--yr) * 7.5);
-    border-radius: calc(var(--yr) * 2);
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: -7px;
-
-      width: 0;
-      height: 0;
-      border-left: calc(var(--yr) * 2) solid transparent;
-      border-right: calc(var(--yr) * 2) solid transparent;
-
-      border-bottom: 7px solid var(--sp_color);
-    }
-  }
-} */

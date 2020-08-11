@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { navigate } from '@reach/router'
-import querystring from 'querystring'
 
 import { useI18n } from '../../I18n'
 
@@ -11,10 +9,10 @@ import styles from './Filters.module.css'
 Filters.propTypes = {
   locale: PropTypes.string,
   filters: PropTypes.object,
-  query: PropTypes.object
+  setFilters: PropTypes.func
 }
 
-export default function Filters ({ filters, query, locale }) {
+export default function Filters ({ filters, locale, setFilters }) {
   const [active, setActive] = useState(false)
 
   useEffect(() => {
@@ -29,7 +27,7 @@ export default function Filters ({ filters, query, locale }) {
 
   return (
     <>
-      <div className={styles.handler}>
+      {/* <div className={styles.handler}>
         <div className={styles.toggle} onClick={() => setActive(!active)}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 14">
             <path stroke="#141414" strokeWidth="2" d="M7 2h9M8 7h8M12 12h4"/>
@@ -38,18 +36,12 @@ export default function Filters ({ filters, query, locale }) {
 
           {active ? 'Скрыть фильтры' : 'Показать фильтры'}
         </div>
-
-        <div className={styles.resetAll} onClick={() => navigate('/programs')}>
-          Сбросить
-        </div>
-      </div>
+      </div> */}
 
       <div className={classNames(styles.filters, { [styles.active]: active })}>
-        <Filter title="Уровень подготовки" id="level" filters={filters} locale={locale}/>
+        <Filter id="time" options={[1, 2, 3]} filters={filters} locale={locale} setFilters={setFilters} />
 
-        <Filter title="Форма обучения" id="time" filters={filters} locale={locale}/>
-
-        <Filter title="Предметы ЕГЭ" id="ege" filters={filters} locale={locale} />
+        <Filter id="ege" options={['foreign', 'russian', 'lit', 'math', 'history']} locale={locale} filters={filters} setFilters={setFilters} />
       </div>
     </>
   )
@@ -59,57 +51,40 @@ Filter.propTypes = {
   locale: PropTypes.string,
   id: PropTypes.string,
   title: PropTypes.string,
-  filters: PropTypes.object
+  options: PropTypes.array,
+  filters: PropTypes.object,
+  setFilters: PropTypes.func
 }
 
-function Filter ({ locale, id, title, filters }) {
+function Filter ({ locale, id, title, options, filters, setFilters }) {
   const I18n = useI18n(locale)
-  const selectedFilters = [...filters.get(id)].filter(([key, value]) => value === true && key != 'russian')
+  const [selected, setSelected] = useState(filters.get(id) || [])
 
-  const handleClick = (id, value) => {
-    const query = querystring.stringify(Object.assign({}, ...[...filters.entries()].map(([k, v]) => ({ [k]: [...v].filter(ev => (ev[1] && ev[0] !== id) || (ev[0] === id && !value)).map(ev => ev[0]) }))))
-    // const query = querystring.stringify([...filters].map(e => [e[0], [...e[1]].filter(ev => (ev[1] && ev[0] !== id) || (ev[0] === id && !value)).map(ev => ev[0])]))
-    navigate(`?${query}`)
+  useEffect(() => {
+    const newFilters = new Map(filters)
+
+    newFilters.set(id, selected)
+    setFilters(newFilters)
+  }, [selected])
+
+  const handleToggle = (value) => {
+    const newSelected = [...selected]
+
+    if (newSelected.includes(value)) {
+      setSelected(newSelected.filter(item => item !== value))
+    } else {
+      newSelected.push(value)
+      setSelected(newSelected)
+    }
   }
 
   return (
     <div className={styles.wrapper}>
-      <div className={classNames(styles.filter, { [styles.active]: selectedFilters.length > 0 })}>
-        <div className={styles.title}>
-          {title}
-          {/* {selectedFilters.length > 0 &&
-            <div className={styles.checked}>
-              {selectedFilters.length}
-            </div>
-          } */}
-        </div>
-
+      <div className={styles.filter}>
         <div className={styles.items}>
-          { id && id === 'ege' &&
-            <div key="ege" className={classNames(styles.item, styles.selected, styles.russian)}>
-              <label>
-                <input
-                  disabled
-                  checked={true}
-                  type="checkbox"
-                  value="true"
-                />
-                {I18n.t(`courses.filters.russian`)}
-              </label>
-            </div>
-          }
-          {[...filters.get(id)].filter(([key, value]) => key != 'russian').map(e =>
-            <div key={e[0]} className={classNames(styles.item, { [styles.selected]: e[1] }, { [styles.disabled]: id === 'ege' && !e[1] && selectedFilters.length >= 2 })}>
-              <label>
-                <input
-                  disabled={selectedFilters.length >= 2 && !e[1] && id === 'ege' ? true : false}
-                  checked={e[1]}
-                  type="checkbox"
-                  value={e[1]}
-                  onChange={() => handleClick(e[0], e[1])}
-                />
-                {I18n.t(`courses.filters.${e[0]}`)}
-              </label>
+          { options && options.map(option =>
+            <div key={option} className={classNames(styles.item, { [styles.selected]: selected.includes(option) })} onClick={() => handleToggle(option)}>
+              {I18n.t(`courses.filters.${option}`)}
             </div>
           )}
         </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { deserialize } from 'jsonapi-deserializer'
@@ -6,6 +6,7 @@ import { deserialize } from 'jsonapi-deserializer'
 import Title from '../Title'
 
 import Division from './Index/Division'
+import Filters from './Index/Filters'
 
 import styles from './Index.module.css'
 import pages from '../Pages.module.css'
@@ -20,6 +21,7 @@ Index.propTypes = {
 
 export default function Index ({ node, loaf, level, divisions: data, locale }) {
   const divisions = deserialize(data)
+  const [filters, setFilters] = useState(new Map())
 
   return (
     <div className={pages.beta}>
@@ -59,11 +61,15 @@ export default function Index ({ node, loaf, level, divisions: data, locale }) {
             </li>
           </ul>
         </div>
+
+        {(level === 'ba' || level === 'sp') &&
+          <Filters filters={filters} setFilters={setFilters} locale={locale} level={level} />
+        }
       </div>
 
       {divisions &&
         divisions.filter(d => d.courses.length > 0).map(division =>
-          <Division key={division.nid} level={level} division={division} locale={locale} />
+          <Division key={division.nid} level={level} division={division} locale={locale} filters={filters} />
         )
       }
     </div>

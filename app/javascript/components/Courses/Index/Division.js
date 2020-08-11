@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
@@ -10,11 +10,28 @@ import pages from '../../Pages.module.css'
 Division.propTypes = {
   division: PropTypes.object,
   locale: PropTypes.string,
-  level: PropTypes.string
+  level: PropTypes.string,
+  filters: PropTypes.object
 }
 
-export default function Division ({ level, division, locale }) {
-  const courses = division.courses.filter(c => c.level === level)
+export default function Division ({ level, division, locale, filters }) {
+  const [courses, setCourses] = useState(division.courses.filter(c => c.level === level))
+
+  useEffect(() => {
+    let newData = division.courses.filter(c => c.level === level)
+
+    if (filters.get('ege') && filters.get('ege').length > 0) {
+      const ege = filters.get('ege')
+      newData = newData.filter(course => course.ege.some(v => ege.indexOf(v) !== -1))
+    }
+
+    if (filters.get('time') && filters.get('time').length > 0) {
+      const time = filters.get('time')
+      newData = newData.filter(course => time.some(time => course[`time_${time}`] != null))
+    }
+
+    setCourses(newData)
+  }, [filters])
 
   if (courses.length < 1) return null
 
