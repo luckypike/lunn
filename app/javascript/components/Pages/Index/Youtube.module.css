@@ -9,6 +9,18 @@
   }
 }
 
+:global .font_3 {
+  & :local .root {
+    @media (--l) {
+      display: block;
+    }
+
+    @media (--xl) {
+      display: grid;
+    }
+  }
+}
+
 .video {
   margin-bottom: calc(var(--yr) * 7);
 }

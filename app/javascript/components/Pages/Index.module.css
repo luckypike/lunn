@@ -166,6 +166,18 @@
   }
 }
 
+:global .font_3 {
+  & :local .calendar {
+    @media (--l) {
+      display: none;
+    }
+
+    @media (--xl) {
+      display: block;
+    }
+  }
+}
+
 .title {
   composes: h5 from '../Fonts.module.css';
   color: white;

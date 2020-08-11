@@ -22,6 +22,22 @@
   }
 }
 
+:global .font_3 {
+  & :local .facts {
+    @media (--l) {
+      & ul {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (--xl) {
+      & ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+    }
+  }
+}
+
 .gt {
   color: var(--gr_color);
   composes: at from '../../Fonts.module.css';
@@ -77,6 +93,18 @@
 
     & .w {
       grid-column: span 2;
+    }
+  }
+}
+
+:global .font_3 {
+  & :local .features {
+    @media (--l) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (--xl) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 }

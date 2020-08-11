@@ -103,3 +103,15 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+
+:global .font_3 {
+  & :local .steps {
+    @media (--l) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (--xl) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+}

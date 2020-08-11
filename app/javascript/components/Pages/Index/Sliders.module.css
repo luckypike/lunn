@@ -121,6 +121,20 @@
   }
 }
 
+:global .font_3 {
+  & :local .button {
+    @media (--l) {
+      bottom: 0;
+      right: 0;
+    }
+
+    @media (--xl) {
+      bottom: calc(var(--yr) * var(--s4));
+      right: inherit;
+    }
+  }
+}
+
 .nav {
   position: absolute;
   bottom: calc(var(--yr) * var(--s4));
@@ -129,6 +143,18 @@
 
   @media (--s) {
     right: calc(var(--xr) * 2);
+  }
+}
+
+:global .font_3 {
+  & :local .nav {
+    @media (--l) {
+      right: 0;
+    }
+
+    @media (--xl) {
+      right: calc(var(--xr) * 2);
+    }
   }
 }
 

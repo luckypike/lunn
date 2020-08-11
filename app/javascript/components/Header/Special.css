@@ -1,20 +1,20 @@
 .font_2 {
+  font-size: calc(var(--yr) * 3.5 * 1.25);
+  line-height: calc(var(--yr) * 5 * 1.25);
+
+  @media (--s) {
+    font-size: calc(var(--yr) * 4 * 1.25);
+    line-height: calc(var(--yr) * 6 * 1.25);
+  }
+}
+
+.font_3 {
   font-size: calc(var(--yr) * 3.5 * 1.5);
   line-height: calc(var(--yr) * 5 * 1.5);
 
   @media (--s) {
     font-size: calc(var(--yr) * 4 * 1.5);
     line-height: calc(var(--yr) * 6 * 1.5);
-  }
-}
-
-.font_3 {
-  font-size: calc(var(--yr) * 3.5 * 2);
-  line-height: calc(var(--yr) * 5 * 2);
-
-  @media (--s) {
-    font-size: calc(var(--yr) * 4 * 2);
-    line-height: calc(var(--yr) * 6 * 2);
   }
 }
 

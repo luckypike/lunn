@@ -27,6 +27,27 @@
   }
 }
 
+:global .font_3 {
+  & :local .items {
+    @media (--l) {
+      display: block;
+    }
+
+    @media (--xl) {
+      display: grid;
+    }
+  }
+}
+
+:global .font_3 {
+  & :local .item {
+    @media (--l) {
+      display: block;
+      margin-bottom: calc(var(--yr) * var(--s3));
+    }
+  }
+}
+
 .item {
   position: relative;
   min-height: calc(var(--yr) * 30);

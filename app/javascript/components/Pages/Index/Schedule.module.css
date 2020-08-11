@@ -48,6 +48,16 @@
   }
 }
 
+:global .font_3 {
+  & :local .toggle {
+    display: block;
+
+    @media (--m) {
+      display: flex;
+    }
+  }
+}
+
 .hint {
   display: none;
   margin-left: 0.4em;

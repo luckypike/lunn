@@ -20,6 +20,18 @@
   }
 }
 
+:global .font_3 {
+  & :local .events {
+    @media (--l) {
+      display: block;
+    }
+
+    @media (--xl) {
+      display: grid;
+    }
+  }
+}
+
 .event {
   display: block;
   margin-bottom: calc(var(--yr) * var(--s4));
@@ -119,6 +131,21 @@
     position: absolute;
     right: 0;
     top: 0;
+  }
+}
+
+
+:global .font_3 {
+  & :local .more {
+    @media (--l) {
+      position: static;
+      margin-top: calc(var(--yr) * var(--s3));
+    }
+
+    @media (--xl) {
+      position: absolute;
+      margin-top: 0;
+    }
   }
 }
 

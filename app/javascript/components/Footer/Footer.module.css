@@ -15,6 +15,16 @@
   }
 }
 
+:global .font_3 {
+  & :local .root {
+    word-break: break-all;
+
+    @media (--m) {
+      word-break: normal;
+    }
+  }
+}
+
 .container {
   padding: 0 calc(var(--yr) * 4);
   max-width: 120rem;
@@ -45,6 +55,14 @@
 
   @media (--l) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+:global .font_3 {
+  & :local .info {
+    @media (--l) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
 
@@ -112,6 +130,14 @@
     grid-column: span 4;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: calc(var(--xr) * 2);
+  }
+}
+
+:global .font_3 {
+  & :local .navs {
+    @media (--l) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
 

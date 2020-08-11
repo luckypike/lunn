@@ -44,6 +44,11 @@
 :global .font_3 {
   & :local .navs {
     @media (--l) {
+      display: none;
+    }
+
+    @media (--xl) {
+      display: flex;
       flex-wrap: wrap;
     }
   }
