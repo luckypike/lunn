@@ -9,7 +9,7 @@ export default function Results () {
 
   return (
     <div className={styles.root}>
-      <h2>Сроки проведения приёма на обучение по программам</h2>
+      <h2>Сроки проведения зачисления</h2>
 
       <div className={styles.program}>
         <div className={classNames(styles.handle, { [styles.active]: bachelor })} onClick={() => setBachelor(!bachelor)}>
