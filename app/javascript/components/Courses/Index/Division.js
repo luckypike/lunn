@@ -18,19 +18,21 @@ export default function Division ({ level, division, locale, filters }) {
   const [courses, setCourses] = useState(division.courses.filter(c => c.level === level))
 
   useEffect(() => {
-    let newData = division.courses.filter(c => c.level === level)
+    if (level === 'ba' || level === 'sp') {
+      let newData = division.courses.filter(c => c.level === level)
 
-    if (filters.get('ege') && filters.get('ege').length > 0) {
-      const ege = filters.get('ege')
-      newData = newData.filter(course => ege.every(v => course.ege.indexOf(v) !== -1))
+      if (filters.get('ege') && filters.get('ege').length > 0) {
+        const ege = filters.get('ege')
+        newData = newData.filter(course => ege.every(v => course.ege.indexOf(v) !== -1))
+      }
+
+      if (filters.get('time') && filters.get('time').length > 0) {
+        const time = filters.get('time')
+        newData = newData.filter(course => time.some(time => course[`time_${time}`] != null))
+      }
+
+      setCourses(newData)
     }
-
-    if (filters.get('time') && filters.get('time').length > 0) {
-      const time = filters.get('time')
-      newData = newData.filter(course => time.some(time => course[`time_${time}`] != null))
-    }
-
-    setCourses(newData)
   }, [filters])
 
   if (courses.length < 1) return null
