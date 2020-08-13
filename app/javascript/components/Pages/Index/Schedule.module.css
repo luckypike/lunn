@@ -1,7 +1,11 @@
 .header {
   composes: h2 from '../../Fonts.module.css';
-  margin-bottom: 0;
+  margin-bottom: calc(var(--yr) * 6);
   padding-right: 1em;
+
+  @media (--s) {
+    margin-bottom: 0;
+  }
 }
 
 .root {
@@ -31,7 +35,7 @@
 }
 
 .toggle {
-  display: flex;
+  display: block;
   align-items: center;
   cursor: pointer;
   padding: calc(var(--yr) * var(--s3)) 0;
@@ -45,6 +49,19 @@
 
   &.active {
     /* padding: calc(var(--yr) * var(--s6)) 0 calc(var(--yr) * var(--s3)); */
+  }
+
+  & a {
+    color: #fff;
+    width: 100%;
+
+    @media (--s) {
+      width: auto;
+    }
+  }
+
+  @media (--s) {
+    display: flex;
   }
 }
 
