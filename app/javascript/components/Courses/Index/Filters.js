@@ -90,7 +90,10 @@ function Filter ({ locale, id, title, options, filters, setFilters }) {
         setSelected(newSelected.filter(item => item !== value))
       }
     } else {
-      newSelected.push(value)
+      if (newSelected.length < 3) {
+        newSelected.push(value)
+      }
+
       setSelected(newSelected)
     }
   }

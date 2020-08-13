@@ -22,52 +22,50 @@
   margin-bottom: calc(var(--yr) * calc(var(--s2) * 1.75));
   cursor: pointer;
   position: relative;
+}
 
-  & .item {
-    padding: calc(var(--yr) * 1.75) calc(var(--yr) * 8) calc(var(--yr) * 1.75) calc(var(--yr) * 6);
-    background-color: var(--sp_color);
-    border-radius: calc(var(--yr) * 2);
-    margin-bottom: calc(var(--yr) * 2);
-    width: 100%;
-    text-align: center;
+.item {
+  padding: calc(var(--yr) * 1.5) calc(var(--yr) * 6) calc(var(--yr) * 1.5) calc(var(--yr) * 4);
+  background-color: var(--sp_color);
+  border-radius: calc(var(--yr) * 2);
+  margin-bottom: calc(var(--yr) * 2);
+  width: 100%;
+  text-align: center;
 
-    @media (--s) {
+  @media (--s) {
+    margin-right: calc(var(--yr) * 2);
+    width: auto;
+  }
+
+  @media (--m) {
+    /* margin-bottom: 0; */
+
+    &:not(:last-child) {
       margin-right: calc(var(--yr) * 2);
-      width: auto;
+    }
+  }
+
+  &.selected {
+    background-color: var(--hl_color);
+    color: #fff;
+    position: relative;
+
+    &::after {
+      content: '✕';
+      position: absolute;
+      right: calc(var(--yr) * 2);
+      font-size: 14px;
     }
 
-    @media (--m) {
-      margin-bottom: 0;
-
-      &:not(:last-child) {
-        margin-right: calc(var(--yr) * 2);
-      }
-    }
-
-    &.selected {
-      background-color: var(--hl_color);
-      color: #fff;
-      position: relative;
-
+    &.russian {
       &::after {
-        content: '✕';
-        position: absolute;
-        right: calc(var(--yr) * 3);
-      }
-
-      &.russian {
-        /* background-color: color-mod(var(--sp_color) shade(10%)); */
-        /* color: #000; */
-
-        &::after {
-          display: none;
-        }
+        display: none;
       }
     }
+  }
 
-    &.disabled {
-      color: #d4d7d9;
-    }
+  &.disabled {
+    color: #d4d7d9;
   }
 }
 
