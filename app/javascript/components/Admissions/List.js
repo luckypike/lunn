@@ -109,6 +109,7 @@ function Course ({ course, categories, list, exams }) {
             .sort((a, b) => (getProfile(a.profiles).achievements > getProfile(b.profiles).achievements) ? -1 : 1)
             .sort((a, b) => (getProfile(a.profiles).grades > getProfile(b.profiles).grades) ? -1 : 1)
             .sort((a, b) => (getProfile(a.profiles).overall > getProfile(b.profiles).overall) ? -1 : 1)
+            .sort((a, b) => (getProfile(a.profiles).admission > getProfile(b.profiles).admission) ? -1 : 1)
             .sort((a, b) => (categories.indexOf(getProfile(a.profiles).categorob) > categories.indexOf(getProfile(b.profiles).categorob) ? -1 : 1))
             .map((abitur, _) =>
               <Abitur
@@ -151,6 +152,16 @@ function Abitur ({ abitur, course, index, exams }) {
               <br />
               <span className={styles.cat}>
                 {course.categorob}
+              </span>
+
+            </>
+          }
+
+          {course.admission &&
+            <>
+              <br />
+              <span className={styles.cat}>
+                Согласие на зачисление
               </span>
             </>
           }

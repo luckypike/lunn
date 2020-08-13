@@ -17,6 +17,7 @@ json.cache! 'admissions/list', expires_in: 1.hour do
         json.grades row["summball_exam_#{i}"].squish.to_i
         json.achievements row["summball_achievement_#{i}"].squish.to_i
         json.soglasiye row["soglasiye_#{i}"].to_i
+        json.admission row["profil_id_#{i}"].squish.to_i == row['profil_id_zachisleniye'].squish.to_i
 
         @profiles << { profile: row["profil_#{i}"][6..-1].squish, form: row["form_#{i}"].strip, tax: row["tax_#{i}"].strip, type: row["profil_#{i}"][1].squish }
 
