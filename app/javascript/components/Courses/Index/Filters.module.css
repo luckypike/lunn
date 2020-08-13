@@ -24,7 +24,7 @@
   position: relative;
 
   & .item {
-    padding: calc(var(--yr) * 1.75) calc(var(--yr) * 10);
+    padding: calc(var(--yr) * 1.75) calc(var(--yr) * 8) calc(var(--yr) * 1.75) calc(var(--yr) * 6);
     background-color: var(--sp_color);
     border-radius: calc(var(--yr) * 2);
     margin-bottom: calc(var(--yr) * 2);
@@ -52,7 +52,16 @@
       &::after {
         content: '✕';
         position: absolute;
-        right: calc(var(--yr) * 4);
+        right: calc(var(--yr) * 3);
+      }
+
+      &.russian {
+        /* background-color: color-mod(var(--sp_color) shade(10%)); */
+        /* color: #000; */
+
+        &::after {
+          display: none;
+        }
       }
     }
 
@@ -89,4 +98,9 @@
 .items {
   display: flex;
   flex-wrap: wrap;
+}
+
+.title {
+  composes: bt from '../../Fonts.module.css';
+  margin-bottom: calc(var(--yr) * var(--s2));
 }

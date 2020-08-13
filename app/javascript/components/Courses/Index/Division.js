@@ -22,7 +22,7 @@ export default function Division ({ level, division, locale, filters }) {
 
     if (filters.get('ege') && filters.get('ege').length > 0) {
       const ege = filters.get('ege')
-      newData = newData.filter(course => course.ege.some(v => ege.indexOf(v) !== -1))
+      newData = newData.filter(course => ege.every(v => course.ege.indexOf(v) !== -1))
     }
 
     if (filters.get('time') && filters.get('time').length > 0) {

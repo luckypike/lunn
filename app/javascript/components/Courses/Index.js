@@ -21,7 +21,7 @@ Index.propTypes = {
 
 export default function Index ({ node, loaf, level, divisions: data, locale }) {
   const divisions = deserialize(data)
-  const [filters, setFilters] = useState(new Map())
+  const [filters, setFilters] = useState(new Map([['ege', ['russian']]]))
 
   return (
     <div className={pages.beta}>
@@ -62,7 +62,7 @@ export default function Index ({ node, loaf, level, divisions: data, locale }) {
           </ul>
         </div>
 
-        {(level === 'ba' || level === 'sp') &&
+        {level === 'ba' &&
           <Filters filters={filters} setFilters={setFilters} locale={locale} level={level} />
         }
       </div>

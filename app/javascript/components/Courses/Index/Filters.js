@@ -8,11 +8,12 @@ import styles from './Filters.module.css'
 
 Filters.propTypes = {
   locale: PropTypes.string,
+  level: PropTypes.string,
   filters: PropTypes.object,
   setFilters: PropTypes.func
 }
 
-export default function Filters ({ filters, locale, setFilters }) {
+export default function Filters ({ filters, locale, setFilters, level }) {
   const [active, setActive] = useState(false)
 
   useEffect(() => {
@@ -39,9 +40,23 @@ export default function Filters ({ filters, locale, setFilters }) {
       </div> */}
 
       <div className={classNames(styles.filters, { [styles.active]: active })}>
-        <Filter id="time" options={[1, 2, 3]} filters={filters} locale={locale} setFilters={setFilters} />
+        <Filter
+          title="Форма обучения"
+          id="time"
+          options={[1, 2, 3]}
+          filters={filters}
+          locale={locale}
+          setFilters={setFilters}
+        />
 
-        <Filter id="ege" options={['foreign', 'russian', 'lit', 'math', 'history']} locale={locale} filters={filters} setFilters={setFilters} />
+        <Filter
+          title="Предметы ЕГЭ"
+          id="ege"
+          options={['foreign', 'russian', 'lit', 'math', 'history', 'social']}
+          locale={locale}
+          filters={filters}
+          setFilters={setFilters}
+        />
       </div>
     </>
   )
@@ -71,7 +86,9 @@ function Filter ({ locale, id, title, options, filters, setFilters }) {
     const newSelected = [...selected]
 
     if (newSelected.includes(value)) {
-      setSelected(newSelected.filter(item => item !== value))
+      if (value !== 'russian') {
+        setSelected(newSelected.filter(item => item !== value))
+      }
     } else {
       newSelected.push(value)
       setSelected(newSelected)
@@ -81,9 +98,15 @@ function Filter ({ locale, id, title, options, filters, setFilters }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.filter}>
+        {title &&
+          <div className={styles.title}>
+            {title}
+          </div>
+        }
+
         <div className={styles.items}>
           { options && options.map(option =>
-            <div key={option} className={classNames(styles.item, { [styles.selected]: selected.includes(option) })} onClick={() => handleToggle(option)}>
+            <div key={option} className={classNames(styles.item, { [styles.selected]: selected.includes(option), [styles.russian]: option === 'russian' })} onClick={() => handleToggle(option)}>
               {I18n.t(`courses.filters.${option}`)}
             </div>
           )}
