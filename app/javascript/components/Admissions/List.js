@@ -157,11 +157,20 @@ function Abitur ({ abitur, course, index, exams }) {
             </>
           }
 
+          {course.soglasiye === 1 &&
+            <>
+              <br />
+              <span className={styles.cat}>
+                Согласие на зачисление
+              </span>
+            </>
+          }
+
           {course.admission &&
             <>
               <br />
               <span className={styles.cat}>
-                Отметка о зачислении: {abitur.profiles.find(p => p.admission === true).profile}
+                Зачислен: {abitur.profiles.find(p => p.admission === true).profile}
               </span>
             </>
           }
@@ -200,14 +209,6 @@ function Abitur ({ abitur, course, index, exams }) {
               </div>
             </div>
           }
-          <div className={styles.section}>
-            <div className={styles.results}>
-              <div className={styles.result}>
-                <div>Согласие</div>
-                <div>{course.soglasiye ? 'Да' : 'Нет'}</div>
-              </div>
-            </div>
-          </div>
         </div>
       }
     </div>
