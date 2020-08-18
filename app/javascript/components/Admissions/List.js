@@ -108,6 +108,9 @@ function Course ({ course, categories, list, exams }) {
           {list
             .sort((a, b) => (getProfile(a.profiles).achievements > getProfile(b.profiles).achievements) ? -1 : 1)
             .sort((a, b) => (getProfile(a.profiles).grades > getProfile(b.profiles).grades) ? -1 : 1)
+            .sort((a, b) => ((a.subjects.find(s => s.id === course.order[2]) ? a.subjects.find(s => s.id === course.order[2]).grade : 0) > (b.subjects.find(s => s.id === course.order[2]) ? b.subjects.find(s => s.id === course.order[2]).grade : 0)) ? -1 : 1)
+            .sort((a, b) => ((a.subjects.find(s => s.id === course.order[1]) ? a.subjects.find(s => s.id === course.order[1]).grade : 0) > (b.subjects.find(s => s.id === course.order[1]) ? b.subjects.find(s => s.id === course.order[1]).grade : 0)) ? -1 : 1)
+            .sort((a, b) => ((a.subjects.find(s => s.id === course.order[0]) ? a.subjects.find(s => s.id === course.order[0]).grade : 0) > (b.subjects.find(s => s.id === course.order[0]) ? b.subjects.find(s => s.id === course.order[0]).grade : 0)) ? -1 : 1)
             .sort((a, b) => (getProfile(a.profiles).overall > getProfile(b.profiles).overall) ? -1 : 1)
             .sort((a, b) => (getProfile(a.profiles).soglasiye > getProfile(b.profiles).soglasiye) ? -1 : 1)
             .sort((a, b) => (categories.indexOf(getProfile(a.profiles).categorob) > categories.indexOf(getProfile(b.profiles).categorob) ? -1 : 1))

@@ -19,7 +19,7 @@ json.cache! 'admissions/list', expires_in: 1.hour do
         json.soglasiye row["soglasiye_#{i}"].to_i
         json.admission row["profil_id_#{i}"].squish.to_i == row['profil_id_zachisleniye'].squish.to_i
 
-        @profiles << { profile: row["profil_#{i}"][6..-1].squish, form: row["form_#{i}"].strip, tax: row["tax_#{i}"].strip, type: row["profil_#{i}"][1].squish }
+        @profiles << { profile: row["profil_#{i}"][6..-1].squish, form: row["form_#{i}"].strip, tax: row["tax_#{i}"].strip, type: row["profil_#{i}"][1].squish, id: row["profil_id_#{i}"].squish.to_i, order: @order[row["profil_id_#{i}"].squish.to_i] ? @order[row["profil_id_#{i}"].squish.to_i] : [1, 2, 3] }
 
         json.categorob row["categorob_#{i}"]
         @categories << row["categorob_#{i}"]
@@ -32,7 +32,7 @@ json.cache! 'admissions/list', expires_in: 1.hour do
       if row["subject_#{s}"].present?
         json.id row["subject_id_#{s}"].squish.to_i
         json.subject row["subject_#{s}"].squish
-        json.grade row["subject_ball_#{s}"].squish
+        json.grade row["subject_ball_#{s}"].squish.to_i
         @subjects_all << row["subject_ball_#{s}"].squish.to_i
       end
     end
@@ -46,7 +46,7 @@ json.cache! 'admissions/list', expires_in: 1.hour do
     end
   end
 
-  json.profiles(@profiles.uniq.sort_by { |p| [p[:profile], p[:form], p[:tax]] })
+  json.profiles(@profiles.uniq.sort_by { |p| [p[:profile], p[:form], p[:tax], p[:order]] })
   json.categories @categories.uniq
   json.types ['Бакалавриат', 'Специалитет', 'Магистратура', 'Аспирантура']
 
