@@ -65,7 +65,7 @@ export default function List ({ node: nodeJson, loaf, locale }) {
                     categories={categories}
                     course={profile}
                     exams={exams}
-                    list={list.filter(l => l.profiles.filter(p => p.profile === profile.profile && p.form === profile.form && p.tax === profile.tax).length > 0)}
+                    listData={list.filter(l => l.profiles.filter(p => p.profile === profile.profile && p.form === profile.form && p.tax === profile.tax).length > 0)}
                   />
                 )}
               </div>
@@ -80,12 +80,31 @@ export default function List ({ node: nodeJson, loaf, locale }) {
 Course.propTypes = {
   course: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
-  list: PropTypes.array.isRequired,
+  listData: PropTypes.array.isRequired,
   exams: PropTypes.array.isRequired
 }
 
-function Course ({ course, categories, list, exams }) {
+function Course ({ course, categories, listData, exams }) {
   const [active, setActive] = useState(false)
+  const [list, setList] = useState(listData)
+
+  useEffect(() => {
+    const newList = [...listData]
+    const secondList = []
+
+    newList.map(l => {
+      if (l.profiles.find(p => (p.categorob !== 'По общему конкурсу' && p.id === course.id))) {
+        const abitur = Object.assign({}, l)
+        const profile = abitur.profiles.find(p => (p.categorob !== 'По общему конкурсу' && p.id === course.id))
+        if (abitur.profiles.filter(p => p.id === profile.id && p.form === profile.form && p.tax === profile.tax).length > 1) {
+          abitur.profiles = [...abitur.profiles.filter(p => (p.categorob !== profile.categorob && p.id === profile.id) || (p.id !== profile.id))]
+          secondList.push(abitur)
+        }
+      }
+    })
+
+    setList(listData.concat(secondList))
+  }, [listData])
 
   const getProfile = (profiles) => {
     return profiles.filter(p => p.profile === course.profile && p.form === course.form && p.tax === course.tax)[0]
@@ -117,7 +136,7 @@ function Course ({ course, categories, list, exams }) {
             .map((abitur, _) =>
               <Abitur
                 index={_ + 1}
-                key={abitur.id}
+                key={_}
                 abitur={abitur}
                 exams={exams.filter(e => e.profile === getProfile(abitur.profiles).id).map(e => e.exam)}
                 course={getProfile(abitur.profiles)}
