@@ -27,15 +27,33 @@ json.cache! 'admissions/list', expires_in: 1.hour do
     end
 
     @subjects_all = []
+    @subjects = []
+    @foreign = 0
 
-    json.subjects (1..40).to_a do |s|
+    (1..40).to_a.each do |s|
       if row["subject_#{s}"].present?
-        json.id row["subject_id_#{s}"].squish.to_i
-        json.subject row["subject_#{s}"].squish
-        json.grade row["subject_ball_#{s}"].squish.to_i
+        id = row["subject_id_#{s}"].squish.to_i
+        grade = row["subject_ball_#{s}"].squish.to_i
+        @subjects << { id: id, subject: row["subject_#{s}"].squish, grade: grade }
         @subjects_all << row["subject_ball_#{s}"].squish.to_i
+
+        if [49, 50].include?(id)
+          @foreign += grade
+        end
+
+        if [3, 4, 5, 6, 7, 8, 9, 49, 50].include?(id)
+          @foreign = @foreign < grade ? grade : @foreign
+        end
       end
     end
+
+    if @foreign > 0
+      @subjects << { id: 99, subject: 'Иностранный язык', grade: @foreign }
+    end
+
+    json.subjects @subjects
+
+
 
     json.achievements (1..16).to_a do |a|
       if row["achievement_#{a}"].present?
