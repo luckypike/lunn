@@ -38,7 +38,7 @@ export default function Results () {
 
         <a className={styles.result} href="/abitur/2020/admission">
           <span>
-            Новости и объявления
+            Согласие на зачисление
           </span>
 
           <ArrowImg />
