@@ -268,11 +268,11 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
           </div>
 
           <div className={styles.tabs}>
-            <div className={classNames(styles.tab, { [styles.active]: item.form === 1 })} onClick={() => setItem({ ...item, form: 1, course_id: null })}>
+            <div className={classNames(styles.tab, styles.disabled)}>
               Очная
             </div>
 
-            <div className={classNames(styles.tab, { [styles.active]: item.form === 2 })} onClick={() => setItem({ ...item, form: 2, course_id: null })}>
+            <div className={classNames(styles.tab, styles.disabled)}>
               Очно-заочная
             </div>
 
@@ -292,7 +292,7 @@ function Direction ({ direction, directionKey, dictionaries, errors, onDirection
           </div>
 
           <div className={styles.tabs}>
-            <div className={classNames(styles.tab, { [styles.active]: item.basis === 1 })} onClick={() => setItem({ ...item, basis: 1 })}>
+            <div className={classNames(styles.tab, styles.disabled)}>
               Бюджет
             </div>
 
