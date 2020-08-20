@@ -131,7 +131,7 @@ function Course ({ course, categories, listData, exams }) {
             .sort((a, b) => ((a.subjects.find(s => s.id === course.order[0]) ? a.subjects.find(s => s.id === course.order[0]).grade : 0) > (b.subjects.find(s => s.id === course.order[0]) ? b.subjects.find(s => s.id === course.order[0]).grade : 0)) ? -1 : 1)
             .sort((a, b) => (getProfile(a.profiles).grades > getProfile(b.profiles).grades) ? -1 : 1)
             .sort((a, b) => (getProfile(a.profiles).overall > getProfile(b.profiles).overall) ? -1 : 1)
-            .sort((a, b) => (getProfile(a.profiles).soglasiye > getProfile(b.profiles).soglasiye) ? -1 : 1)
+            .sort((a, b) => (getProfile(a.profiles).grades === 0 && getProfile(a.profiles).categorob === 'Иностранные граждане' ? 0 : getProfile(a.profiles).soglasiye > getProfile(b.profiles).grades && getProfile(b.profiles).categorob === 'Иностранные граждане' === 0 ? 0 : getProfile(b.profiles).soglasiye) ? -1 : 1)
             .sort((a, b) => (categories.indexOf(getProfile(a.profiles).categorob) > categories.indexOf(getProfile(b.profiles).categorob) ? -1 : 1))
             .map((abitur, _) =>
               <Abitur
