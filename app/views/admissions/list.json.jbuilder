@@ -22,6 +22,11 @@ json.cache! 'admissions/list', expires_in: 1.hour do
         @profiles << { profile: row["profil_#{i}"][6..-1].squish, form: row["form_#{i}"].strip, tax: row["tax_#{i}"].strip, type: row["profil_#{i}"][1].squish, id: row["profil_id_#{i}"].squish.to_i, order: @order[row["profil_id_#{i}"].squish.to_i] ? @order[row["profil_id_#{i}"].squish.to_i] : [1, 2, 3] }
 
         json.categorob row["categorob_#{i}"]
+        json.foreign false
+        if row["categorob_#{i}"] == 'Иностранные граждане'
+          json.categorob 'По общему конкурсу'
+          json.foreign true
+        end
         @categories << row["categorob_#{i}"]
       end
     end
