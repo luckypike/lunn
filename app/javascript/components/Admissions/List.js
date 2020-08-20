@@ -95,7 +95,7 @@ function Course ({ course, categories, listData, exams }) {
     newList.map(l => {
       if (l.profiles.find(p => (p.categorob !== 'По общему конкурсу' && p.id === course.id))) {
         const abitur = Object.assign({}, l)
-        const profile = abitur.profiles.find(p => (p.categorob !== 'По общему конкурсу' && p.id === course.id))
+        const profile = Object.assign({}, abitur.profiles.find(p => (p.categorob !== 'По общему конкурсу' && p.id === course.id && p.form === course.form && p.tax === course.tax)))
         if (abitur.profiles.filter(p => p.id === profile.id && p.form === profile.form && p.tax === profile.tax).length > 1) {
           abitur.profiles = [...abitur.profiles.filter(p => (p.categorob !== profile.categorob && p.id === profile.id) || (p.id !== profile.id))]
           secondList.push(abitur)
