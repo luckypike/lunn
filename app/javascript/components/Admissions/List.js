@@ -55,6 +55,10 @@ export default function List ({ node: nodeJson, loaf, locale }) {
 
       {list && list.length > 0 && profiles && categories && types && exams &&
         <div className={pages.container}>
+          <div className={styles.hint}>
+            Абитуриенты, подавшие согласие на зачисление, поднимаются в верхнюю часть списков
+          </div>
+
           {types.map((type, t) =>
             <React.Fragment key={t}>
               <h2>{type}</h2>

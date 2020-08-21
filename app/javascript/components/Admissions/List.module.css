@@ -7,6 +7,15 @@
   margin-bottom: calc(var(--yr) * var(--s5));
 }
 
+.hint {
+  background-color: var(--hl_color);
+  composes: bt from '../Fonts.module.css';
+  padding: calc(var(--yr) * 4);
+  color: #fff;
+  margin-bottom: calc(var(--yr) * var(--s5));
+  max-width: 60rem;
+}
+
 .handle {
   padding: calc(var(--yr) * var(--s3)) 0;
   cursor: pointer;
