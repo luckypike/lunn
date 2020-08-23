@@ -1,4 +1,4 @@
-json.cache! 'admissions/list', expires_in: 1.hour do
+json.cache! 'admissions/list', expires_in: 15.minutes do
   json.list(@list.sort_by { |a| [a[:family]] }) do |row|
     json.extract! row, :id
 
