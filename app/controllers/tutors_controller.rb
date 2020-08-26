@@ -3,7 +3,7 @@ class TutorsController < ApplicationController
   before_action :set_node
 
   def index
-    @tutors = Node::Tutor.lang
+    @tutors = Node::Tutor.published.lang
       .includes(
         :image, :field_tutor_types, :field_position,
         :field_tutor_email, :field_tutor_phone, :field_department
@@ -12,7 +12,7 @@ class TutorsController < ApplicationController
   end
 
   def show
-    @tutor = Node::Tutor.find(params[:id])
+    @tutor = Node::Tutor.published.find(params[:id])
 
     respond_to :html, :json
   end
