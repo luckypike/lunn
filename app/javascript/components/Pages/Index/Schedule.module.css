@@ -1,6 +1,6 @@
 .header {
   composes: h2 from '../../Fonts.module.css';
-  margin-bottom: calc(var(--yr) * 6);
+  margin-bottom: 0;
   padding-right: 1em;
 
   @media (--s) {
@@ -11,6 +11,15 @@
 .root {
   padding-top: calc(var(--yr) * calc(var(--s6) - var(--s3)));
   padding-bottom: calc(var(--yr) * calc(var(--s6) - var(--s3)));
+  display: block;
+
+  &:hover {
+    color: #000;
+
+    & .button {
+      background: #35f;
+    }
+  }
 }
 
 .button {
@@ -22,9 +31,13 @@
   cursor: pointer;
   text-align: center;
   border: none;
-  padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  padding: calc(var(--yr) * 2) calc(var(--xr) * 1);
   transition: background 0.2s, color 0.2s;
   outline: none;
+
+  @media (--s) {
+    padding: calc(var(--yr) * 2) calc(var(--xr) * 2);
+  }
 }
 
 :global .schema_3 {
@@ -35,17 +48,13 @@
 }
 
 .toggle {
-  display: block;
+  /* display: block; */
   align-items: center;
   cursor: pointer;
   padding: calc(var(--yr) * var(--s3)) 0;
   user-select: none;
-
-  &:hover {
-    & .button {
-      background: #35f;
-    }
-  }
+  display: flex;
+  /* justify-content: center; */
 
   &.active {
     /* padding: calc(var(--yr) * var(--s6)) 0 calc(var(--yr) * var(--s3)); */

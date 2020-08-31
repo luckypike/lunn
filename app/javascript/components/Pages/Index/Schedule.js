@@ -10,17 +10,17 @@ export default function Schedule () {
   const I18n = useContext(I18nContext)
 
   return (
-    <div className={classNames(pages.container, styles.root)}>
+    <a className={classNames(pages.container, styles.root)} href="/schedule">
       <div className={styles.toggle}>
         <div className={styles.header}>
-          Графики переэкзаменовок
+          Расписание
         </div>
 
-        <a className={styles.button} href="/schedule/reex">
+        <div className={styles.button} >
           {I18n.t('pages.index.schedule.more')}
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
   )
 }
 
