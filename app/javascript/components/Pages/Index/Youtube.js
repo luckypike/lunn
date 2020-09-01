@@ -18,15 +18,15 @@ export default function Youtube () {
       </div>
 
       <Frame
-        id="PI9nzd1suQY"
-        title="Заочное или вечернее обучение в НГЛУ - пожалуй, идеальный вариант совмещения работы и учебы!"
-        desc="20 июля"
+        id="_ZcEqmDB7Rg"
+        title="Ректор НГЛУ Жанна Никонова поздравляет студентов и педагогов университета с Днем знаний"
+        desc="1 сентября"
       />
 
       <Frame
-        id="Un62X53w9nM"
-        title="Высшая школа перевода НГЛУ — переводческий факультет"
-        desc="31 июля"
+        id="eOp3ke5wR80"
+        title="Академический хор НГЛУ представляет: Gaudeamus-2020"
+        desc="31 августа"
       />
     </div>
   )
@@ -39,7 +39,9 @@ function Frame ({ id, title, desc }) {
     <div className={styles.video}>
       <div className={classNames(styles.youtube, { [styles.active]: active })} onClick={() => setActive(true)} >
         {!active &&
-          <img src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`} />
+          <div className={styles.img}>
+            <img src={`https://img.youtube.com/vi/${id}/sddefault.jpg`} />
+          </div>
         }
 
         {active &&
