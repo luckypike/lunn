@@ -4,6 +4,8 @@ class Node::Image < ApplicationRecord
   belongs_to :attachment, foreign_key: :field_multiple_image_fid
   belongs_to :node, -> { where(entity_type: :node) }, foreign_key: :entity_id, inverse_of: :images
 
+  delegate :path, :encoded_path, to: :attachment
+
   def fid
     attachment.fid
   end
