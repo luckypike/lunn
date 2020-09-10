@@ -1,4 +1,8 @@
 class PaymentPolicy < ApplicationPolicy
+  def index?
+    user&.role?(:accountant)
+  end
+
   def success?
     true
   end

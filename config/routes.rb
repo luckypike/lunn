@@ -75,7 +75,7 @@ Rails.application.routes.draw do
 
     get :pay, to: 'pay#index'
 
-    resources :payments, only: %i[] do
+    resources :payments, only: %i[index] do
       collection do
         post :payed
         get :success

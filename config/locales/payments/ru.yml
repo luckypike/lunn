@@ -1,4 +1,7 @@
 ru:
   payments:
+    index:
+      title: Онлайн платежи
+
     success:
       title: Подтверждение оплаты

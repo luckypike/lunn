@@ -5,6 +5,10 @@ class PaymentsController < ApplicationController
 
   after_action :verify_authorized
 
+  def index
+    @payments = Payment.order(created_at: :desc)
+  end
+
   def success; end
 
   def fail; end

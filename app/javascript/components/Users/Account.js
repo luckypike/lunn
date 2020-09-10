@@ -39,6 +39,38 @@ export default function Account ({ user: data, locale }) {
         }
 
         <div className={styles.root}>
+          {user.is_accountant &&
+            <a href="/payments" className={styles.item}>
+              <div className={styles.title}>
+                Платежи
+              </div>
+
+              <div className={styles.desc}>
+                Платежи через сайт с рассчетом комиссии
+              </div>
+
+              <div className={styles.more}>
+                Список платежей
+
+                <svg viewBox="0 0 36 36" fill="none" stroke="black">
+                  <circle cx="18" cy="18" r="17" />
+
+                  <path
+                    d="M21 12L27 18L21 24"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+
+                  <path
+                    d="M9 18H27"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </a>
+          }
+
           <a href="/admissions/new" className={styles.item}>
             <div className={styles.title}>
               Поступай легко — поступай онлайн
@@ -69,7 +101,7 @@ export default function Account ({ user: data, locale }) {
             </div>
           </a>
 
-          <div className={styles.item}>
+          <a href="/pay" className={styles.item}>
             <div className={styles.title}>
               Оплата обучения
             </div>
@@ -79,9 +111,25 @@ export default function Account ({ user: data, locale }) {
             </div>
 
             <div className={styles.more}>
-              Временно недоступно
+              Оплатить онлайн
+
+              <svg viewBox="0 0 36 36" fill="none" stroke="black">
+                <circle cx="18" cy="18" r="17" />
+
+                <path
+                  d="M21 12L27 18L21 24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                <path
+                  d="M9 18H27"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

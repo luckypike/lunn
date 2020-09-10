@@ -2,5 +2,5 @@
   title: t('users.account.title')
 
 = react_component 'Users/Account', { \
-  user: UserSerializer.new(@user).serializable_hash, \
+  user: UserSerializer.new(@user, { params: { with_roles: true } }).serializable_hash, \
 }, { prerender: Rails.env.production? }

@@ -1,0 +1,24 @@
+.root {
+
+}
+
+.payments {
+
+}
+
+.payment {
+  border-bottom: 1px solid var(--sp_color);
+  padding: calc(var(--yr) * var(--s2));
+}
+
+.number {
+  margin-bottom: calc(var(--yr) * var(--s1));
+}
+
+.system {
+
+}
+
+.commission {
+
+}
