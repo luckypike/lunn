@@ -5,3 +5,8 @@ ru:
 
     success:
       title: Подтверждение оплаты
+
+    systems:
+      visa: Visa
+      mastercard: MC
+      mir: МИР

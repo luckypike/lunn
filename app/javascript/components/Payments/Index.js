@@ -41,11 +41,9 @@ export default function Index ({ locale }) {
                   Сумма платежа и комиссия: {amountToRub(payment.amount)} ({amountToRub(payment.commission)})
                 </div>
 
-                {payment.system === '' &&
-                  <div>
-                    {payment.card_number}
-                  </div>
-                }
+                <div className={styles.card}>
+                  Карта: {payment.card_number} ({I18n.t(`payments.systems.${payment.system}`)})
+                </div>
               </div>
             )}
           </div>

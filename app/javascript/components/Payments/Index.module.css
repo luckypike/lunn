@@ -15,6 +15,10 @@
   margin-bottom: calc(var(--yr) * var(--s1));
 }
 
+.card {
+  margin-top: calc(var(--yr) * var(--s1));
+}
+
 .system {
 
 }

@@ -2,7 +2,7 @@ class Payment < ApplicationRecord
   connects_to database: { writing: :primary, reading: :primary }
 
   def system
-    if card_number[0] == '5'
+    if %w[5 6].include?(card_number[0])
       :mastercard
     elsif card_number[0] == '4'
       :visa
