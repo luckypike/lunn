@@ -13,11 +13,11 @@ class Payment < ApplicationRecord
 
   def commission
     if system == :mastercard
-      amount * 0.02 + 1
+      amount * 0.02 + 2
     elsif system == :visa
-      amount * 0.012 + 1
+      amount * 0.012 + 2
     elsif system == :mir
-      amount * 0.012 + 1
+      amount * 0.012 + 2
     end
   end
 end

@@ -31,3 +31,7 @@ ru:
 
       messages:
         confirmation: не совпадает с паролем
+
+  date:
+    formats:
+      payment: "%d.%m.%Y"

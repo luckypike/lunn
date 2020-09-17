@@ -34,7 +34,7 @@ export default function Index ({ locale }) {
             {data.payments.map(payment =>
               <div key={payment.id} className={styles.payment}>
                 <div className={styles.number}>
-                  {payment.id}. <strong>{payment.number}</strong> — {payment.name}
+                  {payment.id}. <strong>{payment.number}</strong> ({payment.created_at}) — {payment.name}
                 </div>
 
                 <div className={styles.amount}>
