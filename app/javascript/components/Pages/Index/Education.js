@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { I18nContext } from '../../I18n'
 
 import styles from './Education.module.css'
 
@@ -8,10 +10,12 @@ import Studs from '!svg-react-loader?!./Images/Studs.svg'
 import Prepods from '!svg-react-loader?!./Images/Prepods.svg'
 
 export default function Education () {
+  const I18n = useContext(I18nContext)
+
   return (
     <div className={styles.root}>
       <div className={styles.intro}>
-         Более 100 лет в сфере образования
+        {I18n.t('pages.index.education.title')}
       </div>
 
       <div className={styles.blocks}>
@@ -19,14 +23,16 @@ export default function Education () {
           <div className={styles.image}>
             <Lang />
           </div>
-          <div className={styles.title}>16</div>
+          <div className={styles.title}>17</div>
           <div className={styles.container}>
             <div className={styles.ellipse}>
               <div className={styles.circle} />
             </div>
             <div className={styles.line} />
           </div>
-          <div className={styles.text}>иностранных языков</div>
+          <div className={styles.text}>
+            {I18n.t('pages.index.education.languages')}
+          </div>
         </div>
 
         <div className={styles.block}>
@@ -40,7 +46,9 @@ export default function Education () {
             </div>
             <div className={styles.line} />
           </div>
-          <div className={styles.text}>преподавателей — кандидаты и доктора наук</div>
+          <div className={styles.text}>
+            {I18n.t('pages.index.education.professors')}
+          </div>
         </div>
 
         <div className={styles.block}>
@@ -54,7 +62,9 @@ export default function Education () {
             </div>
             <div className={styles.line} />
           </div>
-          <div className={styles.text}>студентов</div>
+          <div className={styles.text}>
+            {I18n.t('pages.index.education.students')}
+          </div>
         </div>
 
         <div className={styles.block}>
@@ -67,7 +77,9 @@ export default function Education () {
               <div className={styles.circle} />
             </div>
           </div>
-          <div className={styles.text}>иностранных преподавателей — носители языка</div>
+          <div className={styles.text}>
+            {I18n.t('pages.index.education.native')}
+          </div>
         </div>
       </div>
     </div>

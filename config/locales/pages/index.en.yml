@@ -31,3 +31,10 @@ en:
           few: "До начала осталось %{count} дня"
           many: "До начала осталось %{count} дней"
           other: "До начала осталось %{count} дня"
+
+      education:
+        title: Over 100 Years in Education
+        languages: foreign languages
+        professors: of professors are PhD and Doctors of Sciences
+        students: students
+        native: foreign professors – native speakers
