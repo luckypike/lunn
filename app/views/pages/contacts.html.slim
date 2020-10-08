@@ -1,6 +1,7 @@
 - set_meta_tags \
-  title: 'Контакты'
+  title: t('pages.contacts.title')
 
 = react_component 'Pages/Contacts', { \
-  contacts: Variable.find_by(name: 'lunn_contacts:phonebook').value.lines.map { |line| line.strip.split('|').map(&:strip) }.reject(&:empty?) \
+  address: Variable.find_by(name: 'lunn_contacts:address', realm_key: I18n.locale).value,
+  contacts: Variable.find_by(name: 'lunn_contacts:phonebook', realm_key: I18n.locale).value.lines.map { |line| line.strip.split('|').map(&:strip) }.reject(&:empty?) \
 }, { prerender: Rails.env.production? }
