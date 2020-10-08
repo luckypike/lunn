@@ -19,7 +19,7 @@ export default function Docs ({ docs, locale }) {
   return (
     <div>
       <h2>
-        Документы
+        {I18n.t('documents')}
       </h2>
 
       <ul className={styles.docs}>
