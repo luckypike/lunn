@@ -108,12 +108,12 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.middleware.use(
-    ExceptionNotification::Rack,
-    email: {
-      email_prefix: '[lunn] [ERROR] ',
-      sender_address: %("Luckybot" <#{Rails.application.credentials.dig(:mail, :yandex, :username)}>),
-      exception_recipients: %w[log+lunn@luckypike.com]
-    }
-  )
+  # config.middleware.use(
+  #   ExceptionNotification::Rack,
+  #   email: {
+  #     email_prefix: '[lunn] [ERROR] ',
+  #     sender_address: %("Luckybot" <#{Rails.application.credentials.dig(:mail, :yandex, :username)}>),
+  #     exception_recipients: %w[log+lunn@luckypike.com]
+  #   }
+  # )
 end

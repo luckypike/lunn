@@ -19,8 +19,9 @@ class Nav < ApplicationRecord
   scope :loaf, -> { unscope(:order).order(has_children: :desc, menu_name: :asc) }
 
   def path
-    (I18n.locale != I18n.default_locale ? I18n.locale : nil).to_s +
-      UrlAlias.alias_path(link_path)
+    tp = UrlAlias.alias_path(link_path)
+    (I18n.locale != I18n.default_locale && !tp.start_with?('http') ? "/#{I18n.locale}" : nil).to_s +
+      tp
   end
 
   def url
