@@ -1,7 +1,7 @@
-ru:
+en:
   tutors:
-    search: Введите текст для поиска...
-    governance: Руководители
+    search: Search...
+    governance: Governance
 
   tutor:
     position: Должность

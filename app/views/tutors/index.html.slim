@@ -3,6 +3,7 @@
 
 = react_component 'Tutors/Index', { \
   node: @node.as_json(only: %i[nid title]),
-  tutors: @tutors.sort_by(&:title).as_json(only: %i[nid], methods: %i[id title path tutor_types department position tutor_phone_public tutor_email_public], include: { image: { only: [], methods: %i[id path encoded_path] } }),
+  tutors: TutorSerializer.new(@tutors),
+  divisions: DivisionSerializer.new(@divisions, { include: %i[departments departments.tutors], params: { with_departments: true } }),
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]) \
 }, { prerender: Rails.env.production? }

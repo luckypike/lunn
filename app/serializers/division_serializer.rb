@@ -3,6 +3,8 @@ class DivisionSerializer
 
   attributes :nid, :title, :desc
 
+  has_many :departments, if: proc { |_record, params| params[:with_departments] }
+
   has_many :courses do |object, params|
     if params[:with_courses]
       object.courses.sort_by do |course|

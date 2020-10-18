@@ -58,7 +58,7 @@ class Node < ApplicationRecord
     elsif type == 'news'
       Rails.application.routes.url_helpers.news_path(id: nid, locale: I18n.default_locale != I18n.locale ? I18n.locale : nil)
     elsif type == 'employee'
-      "/tutors/#{nid}"
+      (I18n.default_locale != I18n.locale ? "/#{I18n.locale}" : '') + "/tutors/#{nid}"
     else
       UrlAlias.alias_path("node/#{nid}")
     end

@@ -1,5 +1,5 @@
 class Node::Tutor < Node
-  default_scope { where(type: :employee) }
+  default_scope { where(type: :employee).order(title: :asc) }
 
   has_many :field_tutor_types, -> { where(entity_type: :node) }, class_name: 'Field::TutorType', foreign_key: :entity_id
   has_one :field_position, -> { where(entity_type: :node) }, class_name: 'Field::Position', foreign_key: :entity_id
