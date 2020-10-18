@@ -18,7 +18,7 @@ export default function Sec () {
   return (
     <div className={styles.root}>
       <div className={styles.items}>
-        <a href="/page/shkolniku" className={classNames(styles.item, styles.hss)}>
+        <a href={I18n.locale === 'en' ? '/en/admission' : '/page/shkolniku'} className={classNames(styles.item, styles.hss)}>
           <div className={styles.title}>
             {I18n.t('pages.index.sec.school')}
           </div>
@@ -30,7 +30,7 @@ export default function Sec () {
           </div>
         </a>
 
-        <a href="/abitur/2020" className={classNames(styles.item, styles.abitur)}>
+        <a href={I18n.locale === 'en' ? '/en/admission' : '/abitur/2020'} className={classNames(styles.item, styles.abitur)}>
           <div className={styles.title}>
             {I18n.t('pages.index.sec.abitur')}
           </div>
@@ -42,7 +42,7 @@ export default function Sec () {
           </div>
         </a>
 
-        <a href="/page/studentu" className={classNames(styles.item, styles.student)}>
+        <a href={I18n.locale === 'en' ? '/en/studies' : '/page/studentu'} className={classNames(styles.item, styles.student)}>
           <div className={styles.title}>
             {I18n.t('pages.index.sec.student')}
           </div>
@@ -54,7 +54,7 @@ export default function Sec () {
           </div>
         </a>
 
-        <a href="/page/vypuskniku" className={classNames(styles.item, styles.graduate)}>
+        <a href={I18n.locale === 'en' ? '/en/graduates' : '/page/vypuskniku'} className={classNames(styles.item, styles.graduate)}>
           <div className={styles.title}>
             {I18n.t('pages.index.sec.alumni')}
           </div>

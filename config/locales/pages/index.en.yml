@@ -11,10 +11,10 @@ en:
         hide: Hide
 
       sec:
-        school: Школьнику
-        abitur: Абитуриенту
-        student: Студенту
-        alumni: Выпускнику
+        school: Join Us
+        abitur: Admissions
+        student: Studies
+        alumni: Graduates
         more: Show more
 
       events:
@@ -26,6 +26,9 @@ en:
         more: All news
 
       admission:
+        title: Admissions
+        more: More
+
         start:
           one: "До начала остался %{count} день"
           few: "До начала осталось %{count} дня"

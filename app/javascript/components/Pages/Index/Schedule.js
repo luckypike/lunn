@@ -13,7 +13,7 @@ export default function Schedule () {
     <a className={classNames(pages.container, styles.root)} href="/schedule">
       <div className={styles.toggle}>
         <div className={styles.header}>
-          Расписание
+          {I18n.t('pages.index.schedule.title')}
         </div>
 
         <div className={styles.button} >

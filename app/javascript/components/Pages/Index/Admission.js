@@ -13,12 +13,12 @@ export default function Admission ({ start }) {
   const I18n = useContext(I18nContext)
 
   return (
-    <a className={styles.a} href="/abitur/2020">
+    <a className={styles.a} href={I18n.locale === 'en' ? '/en/admission' : '/abitur/2020'}>
       <div className={styles.container}>
         <div className={styles.root}>
           <div className={styles.title}>
             <h2>
-              Приёмная кампания 2020 года
+              {I18n.t('pages.index.admission.title')}
             </h2>
 
             {start > 0 &&
@@ -30,7 +30,7 @@ export default function Admission ({ start }) {
 
           <div className={styles.action}>
             <span className={styles.button}>
-              Узнайте больше о поступлении
+              {I18n.t('pages.index.admission.more')}
             </span>
           </div>
         </div>
