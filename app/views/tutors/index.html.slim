@@ -3,7 +3,7 @@
 
 = react_component 'Tutors/Index', { \
   node: @node.as_json(only: %i[nid title]),
-  tutors: TutorSerializer.new(@tutors),
-  divisions: DivisionSerializer.new(@divisions, { include: %i[departments departments.tutors], params: { with_departments: true } }),
+  tutors: TutorSerializer.new(@tutors).serializable_hash,
+  divisions: DivisionSerializer.new(@divisions, { include: %i[departments departments.tutors], params: { with_departments: true } }).serializable_hash,
   loaf: @node.loaf.as_json(only: %i[mlid depth], methods: %i[title path]) \
 }, { prerender: Rails.env.production? }
