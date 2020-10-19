@@ -20,10 +20,17 @@ ru:
       events:
         title: Анонсы событий
         more: Все анонсы
+        calendar: Календарь
 
       news:
         title: Новости
         more: Все новости
+
+      sliders:
+        more: Подробнее
+
+      youtube:
+        title: Видеоновости
 
       admission:
         title: Приёмная кампания 2020 года

@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import { I18nContext } from '../../I18n'
 
 import styles from './Youtube.module.css'
 
@@ -11,10 +13,12 @@ Frame.propTypes = {
 }
 
 export default function Youtube () {
+  const I18n = useContext(I18nContext)
+
   return (
     <div className={styles.root}>
       <div className={styles.heading}>
-        Видеоновости
+        {I18n.t('pages.index.youtube.title')}
       </div>
 
       <Frame

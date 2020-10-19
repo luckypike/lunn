@@ -20,10 +20,17 @@ en:
       events:
         title: Events
         more: All events
+        calendar: Calendar
 
       news:
         title: News
         more: All news
+
+      sliders:
+        more: Show more
+
+      youtube:
+        title: Video news
 
       admission:
         title: Admissions

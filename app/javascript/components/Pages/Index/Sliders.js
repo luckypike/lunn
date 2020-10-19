@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import Glide from '@glidejs/glide'
+
+import { I18nContext } from '../../I18n'
 
 import styles from './Sliders.module.css'
 
@@ -11,6 +13,7 @@ Sliders.propTypes = {
 
 export default function Sliders ({ sliders }) {
   const mount = useRef()
+  const I18n = useContext(I18nContext)
 
   useEffect(() => {
     const glide = new Glide(mount.current, {
@@ -49,7 +52,7 @@ export default function Sliders ({ sliders }) {
 
                   <div className={styles.action}>
                     <span className={styles.button}>
-                      Подробнее
+                      {I18n.t('pages.index.sliders.more')}
                     </span>
                   </div>
                 </div>

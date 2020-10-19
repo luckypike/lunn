@@ -68,21 +68,23 @@ export default function Index ({ locale, news: newsData, events: eventsData, sli
           <Schedule />
         </div>
 
-        <div className={styles.events}>
-          <div className={pages.container}>
-            <Events events={events} />
-          </div>
-
-          <a href="/events" className={styles.calendar}>
-            <svg fill="none" viewBox="0 0 37 34">
-              <path stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M1 13h36M8 4H1v29h36V4h-8M25 4H12M10 1v6M27 1v6"/>
-            </svg>
-
-            <div className={styles.title}>
-              Календарь
+        {events.length > 0 &&
+          <div className={styles.events}>
+            <div className={pages.container}>
+              <Events events={events} />
             </div>
-          </a>
-        </div>
+
+            <a href="/events" className={styles.calendar}>
+              <svg fill="none" viewBox="0 0 37 34">
+                <path stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M1 13h36M8 4H1v29h36V4h-8M25 4H12M10 1v6M27 1v6"/>
+              </svg>
+
+              <div className={styles.title}>
+                {I18n.t('pages.index.events.calendar')}
+              </div>
+            </a>
+          </div>
+        }
 
         <div className={pages.container}>
           <div className={styles.slider}>
