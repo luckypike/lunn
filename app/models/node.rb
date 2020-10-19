@@ -18,8 +18,8 @@ class Node < ApplicationRecord
   has_one :image, -> { includes(:attachment).where(entity_type: :node) }, class_name: 'SingleImage', dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
   has_many :docs, -> { includes(:attachment).where(entity_type: :node) }, dependent: :destroy, foreign_key: :entity_id, inverse_of: :node
 
-  has_many :departments, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_department_target_id, inverse_of: :node
-  has_many :tutors, through: :departments
+  has_many :node_departments, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_department_target_id, inverse_of: :node
+  has_many :node_tutors, through: :node_departments, class_name: 'Tutor'
 
   scope :news, -> { where(type: :news) }
   # scope :employees, -> { where(type: :employee) }
