@@ -1,6 +1,10 @@
 en:
   pages:
     contacts:
+      address: Address
+      phone: Phone
+      fax: Fax
+      email: E-mail
       title: Contacts
       about: About
       phones: Phones

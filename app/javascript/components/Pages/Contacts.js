@@ -59,28 +59,36 @@ export default function Contacts ({ address, contacts, locale }) {
 
           <div className={styles.items}>
             <div className={styles.item}>
-              <span className={styles.text}>Адрес:</span>
+              <span className={styles.text}>
+                {I18n.t('pages.contacts.address')}:
+              </span>
               <div className={styles.address}>
                 {address}
               </div>
             </div>
 
             <div className={styles.item}>
-              <span className={styles.text}>Телефон:</span>
+              <span className={styles.text}>
+                {I18n.t('pages.contacts.phone')}:
+              </span>
               <a href="tel:+78314361575" className={styles.tel}>
                 +7 (831) 436-15-75
               </a>
             </div>
 
             <div className={styles.item}>
-              <span className={styles.text}>Факс:</span>
+              <span className={styles.text}>
+                {I18n.t('pages.contacts.fax')}:
+              </span>
               <a href="tel:+78314166131" className={styles.tel}>
                 +7 (831) 416-61-31
               </a>
             </div>
 
             <div className={styles.item}>
-              <span className={styles.text}>Эл. почта:</span>
+              <span className={styles.text}>
+                {I18n.t('pages.contacts.email')}:
+              </span>
               <a href="mailto:admdep@lunn.ru" className={styles.button}>
                 admdep@lunn.ru
               </a>

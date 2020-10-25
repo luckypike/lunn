@@ -1,6 +1,10 @@
 ru:
   pages:
     contacts:
+      address: Адрес
+      phone: Телефон
+      fax: Факс
+      email: Эл. почта
       title: Контакты
       about: Об Университете
       phones: Телефоны
