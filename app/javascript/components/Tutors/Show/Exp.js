@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import AnimateHeight from 'react-animate-height'
 
-import { useI18n } from '../../I18n'
+import { I18nContext } from '../../I18n'
+import Renderer from '../../Renderer'
 
 import styles from './Exp.module.css'
 
@@ -11,13 +12,15 @@ Exp.propTypes = {
   e: PropTypes.string,
   node: PropTypes.object,
   item: PropTypes.string,
+  text: PropTypes.string,
   items: PropTypes.array,
   locale: PropTypes.string
 }
 
-export default function Exp ({ e, node, item, items, locale }) {
+export default function Exp ({ e, node, item, items, text }) {
   const [height, setHeight] = useState(0)
-  const I18n = useI18n(locale)
+  // const I18n = useI18n(locale)
+  const I18n = useContext(I18nContext)
 
   function handleClick () {
     setHeight(height === 0 ? 'auto' : 0)
@@ -33,16 +36,30 @@ export default function Exp ({ e, node, item, items, locale }) {
       <div>
         <AnimateHeight height={height} duration={300}>
           <>
-            {item &&
+            {e !== 'tutor_school' && item &&
               <p>
                 {item}
-                {e === 'tutor_school' &&
-                  <>
-                    <br />
-                    {node.tutor_direction}
-                  </>
-                }
               </p>
+            }
+
+            {e === 'tutor_school' && item &&
+              <>
+                <p>
+                  {item}
+                  <br />
+                  {node.tutor_direction}
+                </p>
+
+                {node.tutor_edu &&
+                  <p>
+                    {node.tutor_edu}
+                  </p>
+                }
+              </>
+            }
+
+            {text &&
+              <Renderer source={text} />
             }
 
             {items &&

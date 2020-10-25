@@ -4,20 +4,22 @@ en:
     governance: Governance
 
   tutor:
-    position: Должность
-    tutor_edu: Уровень образования
-    tutor_qual: Квалификация
-    tutor_adegree: Ученая степень
-    tutor_atitle: Ученое звание
-    tutor_school: Образование
-    tutor_direction: Образование (направление)
-    tutor_time: Общий стаж работы
-    tutor_stime: Научно-педагогический стаж
-    tutor_phone: Телефон
-    tutor_email: Почта
-    tutor_works: Публикации
-    tutor_conferences: Участие в конференциях
-    tutor_directions: Преподаваемые дисциплины
-    tutor_retraining: Повышение квалификации
-    tutor_special: Особые достижения
-    tutor_consult: Время консультаций
+    text: Biography
+    position: Position
+    tutor_edu: Level of Education
+    tutor_qual: Qualifications
+    tutor_adegree: Academic Degree
+    tutor_atitle: Academic Title
+    tutor_school: Education
+    tutor_direction: Major
+    tutor_time: Professional Experience
+    tutor_stime: Scientific and Pedagogical Experience
+    tutor_contacts: Contacts and Office Hours
+    tutor_phone: Phone
+    tutor_email: Email
+    tutor_works: Publications
+    tutor_conferences: Conferences
+    tutor_directions: Disciplines
+    tutor_retraining: Advanced Training
+    tutor_special: Excellence
+    tutor_consult: Office Hours

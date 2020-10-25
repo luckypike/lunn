@@ -15,11 +15,15 @@
     grid-gap: calc(var(--xr) * 2);
 
     & .photo {
-      grid-column: span 3;
+      grid-column: span 4;
     }
 
     & .desc {
-      grid-column: span 5;
+      grid-column: span 4;
+    }
+
+    & .sec {
+      grid-column: 1 / -1;
     }
 
     & .text {
@@ -28,6 +32,7 @@
   }
 }
 
+.sec,
 .desc {
   & p {
     margin-bottom: calc(var(--yr) * var(--s3));

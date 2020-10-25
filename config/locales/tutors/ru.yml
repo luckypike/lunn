@@ -4,6 +4,7 @@ ru:
     governance: Руководители
 
   tutor:
+    text: Биография
     position: Должность
     tutor_edu: Уровень образования
     tutor_qual: Квалификация
@@ -13,6 +14,7 @@ ru:
     tutor_direction: Образование (направление)
     tutor_time: Общий стаж работы
     tutor_stime: Научно-педагогический стаж
+    tutor_contacts: Контакты и время приема
     tutor_phone: Телефон
     tutor_email: Почта
     tutor_works: Публикации
