@@ -77,6 +77,10 @@
   background-image: url(./Pages/Index/Images/3.jpg) !important;
 }
 
+.item-6191 {
+  background-image: url(./Pages/Index/Images/bulletin.jpg) !important;
+}
+
 .external {
   position: absolute;
   bottom: calc(var(--yr) * 5);
