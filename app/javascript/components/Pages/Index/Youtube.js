@@ -44,7 +44,7 @@ function Frame ({ id, title, desc }) {
       <div className={classNames(styles.youtube, { [styles.active]: active })} onClick={() => setActive(true)} >
         {!active &&
           <div className={styles.img}>
-            <img src={`https://img.youtube.com/vi/${id}/sddefault.jpg`} />
+            <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} />
           </div>
         }
 
