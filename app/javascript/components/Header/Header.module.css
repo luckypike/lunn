@@ -217,6 +217,32 @@
   }
 }
 
+.accountIcon {
+  width: calc(var(--yr) * 12);
+  height: calc(var(--yr) * 12);
+  padding: calc(var(--yr) * 2);
+  cursor: pointer;
+  user-select: none;
+
+  & svg {
+    width: calc(var(--yr) * 8);
+    height: calc(var(--yr) * 8);
+    display: block;
+  }
+
+  &.white {
+    & svg {
+      & path {
+        fill: white;
+      }
+    }
+  }
+
+  @media (--l) {
+    order: 2;
+  }
+}
+
 .nav {
   display: none;
 
@@ -227,7 +253,24 @@
 }
 
 .locales {
-  display: none;
+  height: calc(var(--yr) * 12);
+
+  & a {
+    width: calc(var(--yr) * 12);
+    line-height: calc(var(--yr) * 12);
+    text-align: center;
+    display: block;
+  }
+
+  &.white {
+    & a {
+      color: #fff;
+    }
+  }
+
+  @media (--l) {
+    order: 1;
+  }
 }
 
 .menu {
