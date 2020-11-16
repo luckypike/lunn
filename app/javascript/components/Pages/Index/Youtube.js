@@ -28,9 +28,9 @@ export default function Youtube () {
       />
 
       <Frame
-        id="eOp3ke5wR80"
-        title="Академический хор НГЛУ представляет: Gaudeamus-2020"
-        desc="31 августа"
+        id="yhghSNPxc7g"
+        title="Ректор НГЛУ Жанна Никонова - о необходимости вакцинации от гриппа"
+        desc="16 ноября"
       />
     </div>
   )
