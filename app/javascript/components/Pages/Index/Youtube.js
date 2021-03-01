@@ -22,9 +22,9 @@ export default function Youtube () {
       </div>
 
       <Frame
-        id="XB2TWRneO0E"
-        title="Поздравление ректора НГЛУ Жанны Никоновой с Днём студента"
-        desc="12 января"
+        id="STTcLvOVfWM"
+        title="Гостиная ректора. Выпуск 3-й"
+        desc="15 февраля"
       />
 
 
