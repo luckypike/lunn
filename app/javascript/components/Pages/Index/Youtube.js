@@ -22,9 +22,9 @@ export default function Youtube () {
       </div>
 
       <Frame
-        id="STTcLvOVfWM"
-        title="Гостиная ректора. Выпуск 3-й"
-        desc="15 февраля"
+        id="ykYLn4nF420"
+        title="Поздравление с 8 марта от мужчин-сотрудников НГЛУ и студентов"
+        desc="8 марта"
       />
 
 
