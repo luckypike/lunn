@@ -6,7 +6,7 @@ gem 'rails', '~> 6.0.2'
 gem 'mysql2'
 gem 'pg', '~> 1'
 
-gem 'puma'
+gem 'puma', '~> 4'
 
 gem 'meta-tags'
 gem 'react-rails'
