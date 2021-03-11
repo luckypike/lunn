@@ -48,7 +48,7 @@ export default function How () {
           </div>
 
           <div className={styles.title}>
-            Подайте документы онлайн
+            Подайте документы лично, по почте или онлайн
           </div>
         </div>
 

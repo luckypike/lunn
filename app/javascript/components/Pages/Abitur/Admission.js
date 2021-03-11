@@ -10,9 +10,9 @@ export default function Admission () {
           Поступай легко — поступай онлайн
         </h2>
 
-        <p className={styles.desc}>
+        {/* <p className={styles.desc}>
           В 2020 году прием документов мы будет осуществлять только в дистанционной форме, через личный кабинет абитуриента на нашем сайте
-        </p>
+        </p> */}
       </div>
 
       <div className={styles.account}>
