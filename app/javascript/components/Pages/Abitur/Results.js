@@ -12,7 +12,7 @@ export default function Results () {
       </h3> */}
 
       <div className={styles.results}>
-        <a className={styles.result} href="https://docs.google.com/spreadsheets/d/1BUmiAKgPJkl-ZoRCUo-5i2NzY_YLVDsh2oBmBnQSVSY/edit#gid=0" target="_blank" rel="noopener noreferrer">
+        <a className={styles.result} href="/abitur/2021/basp-schedule">
           <span>
             Расписание экзаменов (бак. / спец.)
           </span>
@@ -20,7 +20,7 @@ export default function Results () {
           <ArrowImg />
         </a>
 
-        <a className={styles.result} href="https://docs.google.com/spreadsheets/d/1dFeNkB32OooHAvh3uMtfcrD_fCSiaCfR8070B0NuUT8/edit#gid=0" target="_blank" rel="noopener noreferrer">
+        <a className={styles.result} href="/abitur/2021/ma-schedule">
           <span>
             Расписание экзаменов (магистратура)
           </span>
@@ -28,7 +28,7 @@ export default function Results () {
           <ArrowImg />
         </a>
 
-        <a className={styles.result} href="/abitur/2020/info">
+        <a className={styles.result} href="/abitur/2021/results">
           <span>
             Результаты экзаменов
           </span>
@@ -36,15 +36,15 @@ export default function Results () {
           <ArrowImg />
         </a>
 
-        <a className={styles.result} href="/abitur/2020/admission">
+        <a className={styles.result} href="/abitur/2021/news">
           <span>
-            Согласие на зачисление
+            Новости и объявления
           </span>
 
           <ArrowImg />
         </a>
 
-        <a className={styles.result} href="/abitur/2020/list">
+        <a className={styles.result} href="https://abit.lunn.ru/">
           <span>
             Перечень абитуриентов
           </span>
@@ -52,7 +52,7 @@ export default function Results () {
           <ArrowImg />
         </a>
 
-        <a className={styles.result} href="/abitur/2020/enrollments">
+        <a className={styles.result} href="/abitur/2021/enrollments">
           <span>
             Приказы о зачислении
           </span>

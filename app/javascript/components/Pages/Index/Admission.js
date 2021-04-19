@@ -13,7 +13,7 @@ export default function Admission ({ start }) {
   const I18n = useContext(I18nContext)
 
   return (
-    <a className={styles.a} href={I18n.locale === 'en' ? '/en/admission' : '/abitur/2020'}>
+    <a className={styles.a} href={I18n.locale === 'en' ? '/en/admission' : '/abitur/2021'}>
       <div className={styles.container}>
         <div className={styles.root}>
           <div className={styles.title}>

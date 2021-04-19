@@ -30,7 +30,7 @@ export default function Sec () {
           </div>
         </a>
 
-        <a href={I18n.locale === 'en' ? '/en/admission' : '/abitur/2020'} className={classNames(styles.item, styles.abitur)}>
+        <a href={I18n.locale === 'en' ? '/en/admission' : '/abitur/2021'} className={classNames(styles.item, styles.abitur)}>
           <div className={styles.title}>
             {I18n.t('pages.index.sec.abitur')}
           </div>

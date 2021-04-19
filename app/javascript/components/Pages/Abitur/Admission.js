@@ -7,7 +7,7 @@ export default function Admission () {
     <div className={styles.root}>
       <div className={styles.online}>
         <h2>
-          Поступай легко — поступай онлайн
+          Поступай легко{' — '}поступай онлайн
         </h2>
 
         {/* <p className={styles.desc}>
@@ -21,17 +21,17 @@ export default function Admission () {
         </h3>
 
         <p className={styles.how}>
-          <a className={styles.button} href="/abitur/2020/basp">
+          <a className={styles.button} href="/abitur/2021/basp">
             Бакалавриат/специалитет
           </a>
 
           {/* <br /> */}
 
-          <a className={styles.button} href="/abitur/2020/ma">
+          <a className={styles.button} href="/abitur/2021/ma">
             Магистратура
           </a>
 
-          <a className={styles.button} href="/abitur/2020/as">
+          <a className={styles.button} href="/abitur/2021/as">
             Аспирантура
           </a>
         </p>
@@ -45,7 +45,7 @@ export default function Admission () {
         </p>
 
         <p>
-          <a className={styles.button} href="/admissions/new">
+          <a className={styles.button} href="https://abit.lunn.ru/">
             Подать документы
           </a>
         </p>

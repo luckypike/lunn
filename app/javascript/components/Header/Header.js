@@ -115,7 +115,7 @@ export default function Header ({ navs: data, index, locale }) {
           </div>
 
           <a
-            href="https://ucheb.lunn.ru:10443/WebApp/"
+            href="https://ucheb.lunn.ru/"
             className={classNames(styles.accountIcon, { [styles.white]: white })}
           >
             <svg viewBox="0 0 32 32">
