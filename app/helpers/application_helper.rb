@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def index?(node)
-    current_page?(root_url) || (node && [4734].include?(node.nid))
+    current_page?(root_url) || (node && [4734, 8103].include?(node.nid))
   end
 
   def load_partners
