@@ -18,19 +18,13 @@ export default function Intro ({ course }) {
       </div>
 
       <div className={styles.action}>
-        <a href="/abitur/2020" className={buttons.main}>
+        <a href="/abitur/2021" className={buttons.main}>
           Приёмная комиссия
         </a>
 
         <br />
 
-        <a href="/abitur/online" className={buttons.sec}>
-          Как поступить?
-        </a>
-
-        <br />
-
-        <a href="/admissions/new" className={buttons.sec}>
+        <a href="https://abit.lunn.ru/" className={buttons.sec}>
           Подать документы
         </a>
       </div>

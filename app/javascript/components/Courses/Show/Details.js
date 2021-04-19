@@ -118,12 +118,12 @@ function Ege ({ label }) {
 
 function Marks ({ point }) {
   const points = {
-    foreign: '40 баллов',
+    foreign: '30 баллов',
     russian: '40 баллов',
     lit: '40 баллов',
     math: '39 баллов',
-    history: '40 баллов',
-    social: '44 балла'
+    history: '35 баллов',
+    social: '45 баллов'
   }
 
   return points[point] || point
