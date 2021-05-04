@@ -28,7 +28,7 @@ class PagesController < ApplicationController
       .order(created: :desc)
       .limit(5)
 
-    @video = Node.video.lang.includes(:field_youtube).order(created: :desc).limit(2)
+    @video = Node.video.active.lang.includes(:field_youtube).order(created: :desc).limit(2)
     # respond_to :html, :json
   end
 
