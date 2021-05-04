@@ -21,8 +21,10 @@ class Node < ApplicationRecord
   has_many :node_departments, -> { where(entity_type: :node) }, dependent: :destroy, foreign_key: :field_department_target_id, inverse_of: :node
   has_many :node_tutors, through: :node_departments, class_name: 'Tutor'
 
+  has_one :field_youtube, -> { where(entity_type: :node) }, class_name: 'Field::Youtube', foreign_key: :entity_id
+
   scope :news, -> { where(type: :news) }
-  # scope :employees, -> { where(type: :employee) }
+  scope :video, -> { where(type: :video) }
   # scope :courses, -> { where(type: :course) }
   scope :events, -> { where(type: %i[news event]) }
   scope :sliders, -> { where(type: :slider_item) }
@@ -74,6 +76,26 @@ class Node < ApplicationRecord
 
   def menu_open?
     menu_open&.value
+  end
+
+  def youtube
+    @youtube ||= field_youtube&.value
+  end
+
+  def youtube_id
+    url = URI.parse(youtube)
+    case url.host.sub(/^www\./, '')
+    when 'youtube.com'
+      if url.path == '/watch'
+        URI.decode_www_form(url.query).to_h['v'].strip
+      else
+        false
+      end
+    when 'youtu.be'
+      url.path[1..-1]
+    end
+  rescue
+    nil
   end
 
   def dep?

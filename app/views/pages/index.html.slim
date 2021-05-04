@@ -5,6 +5,7 @@
   canonical: root_url
 
 = react_component 'Pages/Index', { \
+  video: VideoSerializer.new(@video).serializable_hash,
   sliders: SliderSerializer.new(@sliders).serializable_hash,
   events: EventSerializer.new(@events).serializable_hash,
   news: NewsSerializer.new(@news).serializable_hash \

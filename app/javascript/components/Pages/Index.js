@@ -24,15 +24,17 @@ Index.propTypes = {
   news: PropTypes.object,
   events: PropTypes.object,
   sliders: PropTypes.object,
+  video: PropTypes.object,
   locale: PropTypes.string
 }
 
-export default function Index ({ locale, news: newsData, events: eventsData, sliders: slidersData }) {
+export default function Index ({ locale, news: newsData, events: eventsData, sliders: slidersData, video: videoData }) {
   const I18n = useI18n(locale)
 
   const news = deserialize(newsData)
   const events = deserialize(eventsData)
   const sliders = deserialize(slidersData)
+  const video = deserialize(videoData)
 
   return (
     <I18nContext.Provider value={I18n}>
@@ -95,7 +97,7 @@ export default function Index ({ locale, news: newsData, events: eventsData, sli
             <News news={news} />
           </div>
 
-          <Youtube />
+          <Youtube video={video} />
 
           <div className={styles.education}>
             <Education />

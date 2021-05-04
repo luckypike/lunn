@@ -1,10 +1,16 @@
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
 
 import { I18nContext } from '../../I18n'
 
 import styles from './Youtube.module.css'
+
+Youtube.propTypes = {
+  video: PropTypes.array
+}
 
 Frame.propTypes = {
   id: PropTypes.string,
@@ -12,7 +18,7 @@ Frame.propTypes = {
   desc: PropTypes.string
 }
 
-export default function Youtube () {
+export default function Youtube ({ video }) {
   const I18n = useContext(I18nContext)
 
   return (
@@ -21,18 +27,14 @@ export default function Youtube () {
         {I18n.t('pages.index.youtube.title')}
       </div>
 
-      <Frame
-        id="ykYLn4nF420"
-        title="Поздравление с 8 марта от мужчин-сотрудников НГЛУ и студентов"
-        desc="8 марта"
-      />
-
-
-      <Frame
-        id="7w2Olwdw1uQ"
-        title={'Фильм о том, как придумывался, готовился и проводился Международный молодежный Фестиваль мобильного кино "Dobro&Lubov"'}
-        desc="25 декабря 2020"
-      />
+      {video.map((v, i) =>
+        <Frame
+          key={`${v.youtube_id}-${i}`}
+          id={v.youtube_id}
+          title={v.title}
+          desc={dayjs.unix(v.created).locale(I18n.locale).format('D MMMM YYYY')}
+        />
+      )}
     </div>
   )
 }
